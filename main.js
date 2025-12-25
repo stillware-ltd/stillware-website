@@ -3,6 +3,7 @@ import { Chart } from 'chart.js/auto';
 // Initialize Chart
 const ctx = document.getElementById('savingsChart');
 
+/* Chart logic disabled for new Comparison Table design
 if (ctx) {
     Chart.defaults.font.family = "'Inter', sans-serif";
     Chart.defaults.color = '#64748B';
@@ -105,3 +106,4 @@ if (ctx) {
         }
     });
 }
+*/
