@@ -440,6 +440,16 @@ section {
     padding: 8rem 0;
 }
 
+.section-header h2 {
+    font-size: 3rem;
+    margin-bottom: 2rem;
+    color: var(--color-secondary);
+}
+
+.center-text {
+    text-align: center;
+}
+
 .features-section .container {
     text-align: center;
 }
@@ -540,6 +550,19 @@ section {
     position: relative;
     overflow: hidden;
     /* Clean minimal background */
+}
+
+.pricing-header {
+    text-align: center;
+    margin-bottom: 4rem;
+    position: relative;
+    z-index: 2;
+}
+
+.pricing-header h2 {
+    font-size: 3rem;
+    color: white;
+    margin-bottom: 1rem;
 }
 
 /* Background gradient for depth */
