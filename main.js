@@ -150,17 +150,28 @@ document.addEventListener('DOMContentLoaded', () => {
 
         function startSlideshow() {
             // Clear existing to avoid multiples
-            if (slideInterval) clearInterval(slideInterval);
+            if (slideInterval) clearTimeout(slideInterval);
 
-            slideInterval = setInterval(() => {
+            // Determine delay: 10s if on last slide, else 5s
+            // Note: currentIndex is the *currently visible* slide.
+            // If we are at the last slide, we want to wait 10s before looping back to 0.
+            const isLastSlide = currentIndex === slides.length - 1;
+            const delay = isLastSlide ? 10000 : 5000;
+
+            slideInterval = setTimeout(() => {
                 if (!isPaused) {
                     scrollToSlide(currentIndex + 1);
+                    // Schedule next immediately after scrolling
+                    startSlideshow();
+                } else {
+                    // If paused, we don't schedule next automatically here.
+                    // The 'mouseleave' event will restart it.
                 }
-            }, intervalTime);
+            }, delay);
         }
 
         function stopSlideshow() {
-            clearInterval(slideInterval);
+            clearTimeout(slideInterval);
         }
 
         // --- Event Listeners ---
@@ -187,10 +198,18 @@ document.addEventListener('DOMContentLoaded', () => {
 
         hoverTarget.addEventListener('mouseenter', () => {
             isPaused = true;
+            // Optionally clear the timer so it doesn't trigger while hovering
+            // But requirement says "pause", usually implies freezing. 
+            // If we clear timeout, the progress is lost. 
+            // Simple approach: Let the timeout fire, check isPaused, and do nothing.
+            // BUT: we need to resume later. 
+            // Better: Stop timer on enter. Restart on leave.
+            stopSlideshow();
         });
 
         hoverTarget.addEventListener('mouseleave', () => {
             isPaused = false;
+            startSlideshow();
         });
 
         // Initialize
