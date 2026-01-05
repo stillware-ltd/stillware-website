@@ -107,3 +107,121 @@ if (ctx) {
     });
 }
 */
+
+
+// Auto-Slideshow Logic
+document.addEventListener('DOMContentLoaded', () => {
+    const slidesContainer = document.querySelector('.slides-container');
+    const slides = document.querySelectorAll('.slide-image');
+    const prevBtn = document.querySelector('.slide-nav-btn.prev');
+    const nextBtn = document.querySelector('.slide-nav-btn.next');
+
+    // Only proceed if elements exist
+    if (slidesContainer && slides.length > 0) {
+        let currentIndex = 0;
+        const intervalTime = 5000; // 5 seconds
+        let slideInterval;
+        let isPaused = false;
+
+        function scrollToSlide(index) {
+            // Handle wrapping
+            if (index >= slides.length) {
+                currentIndex = 0;
+            } else if (index < 0) {
+                currentIndex = slides.length - 1;
+            } else {
+                currentIndex = index;
+            }
+
+            const targetSlide = slides[currentIndex];
+
+            // Calculate center position based on relative offset
+            // We use the same robust logic as before
+            const containerCenter = slidesContainer.clientWidth / 2;
+            const slideCenter = targetSlide.clientWidth / 2;
+            const slideLeftRelative = targetSlide.offsetLeft - slidesContainer.offsetLeft;
+            const scrollLeft = slideLeftRelative - containerCenter + slideCenter;
+
+            slidesContainer.scrollTo({
+                left: scrollLeft,
+                behavior: 'smooth'
+            });
+        }
+
+        function startSlideshow() {
+            // Clear existing to avoid multiples
+            if (slideInterval) clearInterval(slideInterval);
+
+            slideInterval = setInterval(() => {
+                if (!isPaused) {
+                    scrollToSlide(currentIndex + 1);
+                }
+            }, intervalTime);
+        }
+
+        function stopSlideshow() {
+            clearInterval(slideInterval);
+        }
+
+        // --- Event Listeners ---
+
+        // Controls
+        if (nextBtn) {
+            nextBtn.addEventListener('click', () => {
+                scrollToSlide(currentIndex + 1);
+                // Reset timer on manual interaction
+                startSlideshow();
+            });
+        }
+
+        if (prevBtn) {
+            prevBtn.addEventListener('click', () => {
+                scrollToSlide(currentIndex - 1);
+                // Reset timer on manual interaction
+                startSlideshow();
+            });
+        }
+
+        // Pause on Hover
+        const hoverTarget = document.querySelector('.slides-container-wrapper') || slidesContainer;
+
+        hoverTarget.addEventListener('mouseenter', () => {
+            isPaused = true;
+        });
+
+        hoverTarget.addEventListener('mouseleave', () => {
+            isPaused = false;
+        });
+
+        // Initialize
+        // startSlideshow(); // <-- Removed immediate start
+
+        // --- Intersection Observer for Visibility ---
+        const observerOptions = {
+            root: null,
+            rootMargin: '0px',
+            threshold: 0.1 // Trigger when 10% visible
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    console.log('Slideshow entering viewport: User is viewing.');
+                    startSlideshow();
+                } else {
+                    console.log('Slideshow leaving viewport: Stopping.');
+                    stopSlideshow();
+                }
+            });
+        }, observerOptions);
+
+        // Observe the entire section or the wrapper
+        const section = document.querySelector('#mobile-slides');
+        if (section) {
+            observer.observe(section);
+        } else {
+            // Fallback if section ID missing
+            observer.observe(slidesContainer);
+        }
+    }
+});

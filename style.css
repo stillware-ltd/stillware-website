@@ -1291,3 +1291,111 @@ section {
     z-index: 10;
     white-space: nowrap;
 }
+
+/* Mobile Slides Section */
+.slides-section {
+    background-color: #F8FAFC;
+    /* Match surface color for contrast against white comparison */
+    padding: 6rem 0;
+    overflow: hidden;
+}
+
+.slides-container-wrapper {
+    position: relative;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
+
+.slides-container {
+    display: flex;
+    gap: 3rem;
+    padding: 2rem 10px;
+    /* Vertical padding + small horizontal space for shadow */
+    width: 100%;
+    max-width: 280px;
+    /* Exactly fit the 260px slide + borders/padding */
+    margin: 0 auto;
+    overflow-x: hidden;
+    /* Hide scrollbar and neighboring slides */
+    scroll-snap-type: x mandatory;
+    /* -webkit-overflow-scrolling: touch; */
+    /* Can cause issues with hiding overflow */
+    scrollbar-width: none;
+}
+
+.slides-container::-webkit-scrollbar {
+    display: none;
+}
+
+.slide-image {
+    flex: 0 0 auto;
+    width: 260px;
+    height: auto;
+    border-radius: 32px;
+    border: 8px solid var(--color-secondary);
+    scroll-snap-align: center;
+    box-shadow: 0 20px 40px -5px rgba(15, 23, 42, 0.2);
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    background: white;
+}
+
+.slide-image:hover {
+    transform: translateY(-8px);
+    /* Reduced hover movement to avoid clipping */
+    box-shadow: 0 30px 60px -10px rgba(15, 23, 42, 0.3);
+}
+
+.slide-nav-btn {
+    background: white;
+    border: 1px solid var(--color-border);
+    color: var(--color-primary);
+    width: 48px;
+    height: 48px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    box-shadow: var(--shadow-md);
+    transition: all 0.2s ease;
+    z-index: 10;
+}
+
+.slide-nav-btn:hover {
+    background: var(--color-surface);
+    transform: scale(1.1);
+    box-shadow: var(--shadow-lg);
+}
+
+.slide-nav-btn:active {
+    transform: scale(0.95);
+}
+
+/* Responsive adjustments */
+@media (max-width: 1024px) {
+    .slides-container {
+        justify-content: flex-start;
+        padding: 2rem 2rem 3rem;
+    }
+
+    .slide-image {
+        width: 240px;
+    }
+}
+
+@media (max-width: 768px) {
+    .slides-section {
+        padding: 4rem 0;
+    }
+
+    .slides-container {
+        gap: 1.5rem;
+        padding: 1rem 1.5rem 2rem;
+    }
+
+    .slide-image {
+        width: 220px;
+        border-width: 4px;
+    }
+}
