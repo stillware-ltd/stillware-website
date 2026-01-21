@@ -1,0 +1,317 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Delete Account & Data - Zeroed</title>
+    <link rel="canonical" href="https://stillwareltd.com/zeroed/delete-account" />
+    <meta name="description"
+        content="Learn how to delete your Zeroed app data, disconnect Google Drive sync, and manage your purchase history.">
+    <style>
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+            line-height: 1.6;
+            color: #333;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #f9f9f9;
+        }
+
+        .container {
+            background-color: #ffffff;
+            padding: 40px;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        h1 {
+            color: #1a1a1a;
+            border-bottom: 2px solid #eee;
+            padding-bottom: 10px;
+        }
+
+        h2 {
+            color: #2c3e50;
+            margin-top: 30px;
+        }
+
+        h3 {
+            color: #34495e;
+            margin-top: 20px;
+        }
+
+        p {
+            margin-bottom: 15px;
+        }
+
+        ul,
+        ol {
+            margin-bottom: 15px;
+            padding-left: 20px;
+        }
+
+        li {
+            margin-bottom: 8px;
+        }
+
+        .highlight {
+            background-color: #e8f4f8;
+            padding: 15px;
+            border-left: 4px solid #3498db;
+            border-radius: 4px;
+            margin: 20px 0;
+        }
+
+        .highlight.important {
+            background-color: #fef3e8;
+            border-left-color: #e67e22;
+        }
+
+        .section-card {
+            background-color: #fafafa;
+            border: 1px solid #eee;
+            border-radius: 8px;
+            padding: 25px;
+            margin: 25px 0;
+        }
+
+        .section-card h3 {
+            margin-top: 0;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .icon {
+            width: 24px;
+            height: 24px;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            background-color: #3498db;
+            color: white;
+            border-radius: 50%;
+            font-size: 14px;
+            font-weight: bold;
+        }
+
+        .icon.orange {
+            background-color: #e67e22;
+        }
+
+        .icon.green {
+            background-color: #27ae60;
+        }
+
+        .icon.purple {
+            background-color: #9b59b6;
+        }
+
+        a {
+            color: #3498db;
+            text-decoration: none;
+        }
+
+        a:hover {
+            text-decoration: underline;
+        }
+
+        .external-link {
+            display: inline-block;
+            background-color: #3498db;
+            color: white;
+            padding: 8px 16px;
+            border-radius: 6px;
+            margin-top: 10px;
+            font-weight: 500;
+            transition: background-color 0.2s ease;
+        }
+
+        .external-link:hover {
+            background-color: #2980b9;
+            text-decoration: none;
+        }
+
+        .step-list {
+            list-style: none;
+            padding-left: 0;
+            counter-reset: step-counter;
+        }
+
+        .step-list li {
+            counter-increment: step-counter;
+            position: relative;
+            padding-left: 35px;
+            margin-bottom: 12px;
+        }
+
+        .step-list li::before {
+            content: counter(step-counter);
+            position: absolute;
+            left: 0;
+            top: 0;
+            width: 24px;
+            height: 24px;
+            background-color: #3498db;
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 12px;
+            font-weight: bold;
+        }
+
+        code {
+            background-color: #f4f4f4;
+            padding: 2px 6px;
+            border-radius: 4px;
+            font-family: "SF Mono", Monaco, "Courier New", monospace;
+            font-size: 0.9em;
+        }
+
+        .contact-section {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            padding: 30px;
+            border-radius: 8px;
+            color: white;
+            text-align: center;
+            margin-top: 40px;
+        }
+
+        .contact-section h2 {
+            color: white;
+            margin-top: 0;
+        }
+
+        .contact-section a {
+            color: white;
+            font-weight: 600;
+        }
+
+        .contact-section .email-link {
+            display: inline-block;
+            background-color: rgba(255, 255, 255, 0.2);
+            padding: 10px 20px;
+            border-radius: 6px;
+            margin-top: 10px;
+            transition: background-color 0.2s ease;
+        }
+
+        .contact-section .email-link:hover {
+            background-color: rgba(255, 255, 255, 0.3);
+            text-decoration: none;
+        }
+
+        .footer {
+            margin-top: 40px;
+            text-align: center;
+            font-size: 0.9em;
+            color: #7f8c8d;
+        }
+
+        .footer a {
+            color: #7f8c8d;
+        }
+
+        .footer a:hover {
+            color: #3498db;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <h1>Delete Account & Data</h1>
+
+        <div class="highlight">
+            <p><strong>Zeroed is a Local-First App</strong></p>
+            <p>Unlike traditional apps, Zeroed does not have a central account system. Your data is stored on your
+                device, giving you complete control over your privacy and information.</p>
+        </div>
+
+        <h2>How to Remove Your Data</h2>
+        <p>Since Zeroed is designed with privacy in mind, removing your data is straightforward. Follow the steps below
+            based on the features you use.</p>
+
+        <div class="section-card">
+            <h3><span class="icon">1</span> Local Data (On Your Device)</h3>
+            <p>All your budget data, transactions, categories, and payees are stored locally on your device in an
+                encrypted database.</p>
+            <p><strong>To remove local data:</strong></p>
+            <ul>
+                <li><strong>Uninstall the app</strong> – This will delete all locally stored data automatically.</li>
+                <li><strong>Clear app data</strong> – Go to your device settings → Apps → Zeroed → Clear Data (or
+                    Storage) to remove all app data without uninstalling.</li>
+            </ul>
+            <div class="highlight important">
+                <p><strong>⚠️ Important:</strong> Once deleted, local data cannot be recovered unless you have a backup
+                    on Google Drive.</p>
+            </div>
+        </div>
+
+        <div class="section-card">
+            <h3><span class="icon orange">2</span> Google Drive Sync (If Enabled)</h3>
+            <p>If you use the cross-device sync feature, an encrypted copy of your data is stored in your personal
+                Google Drive account.</p>
+            <p><strong>To disconnect and remove synced data:</strong></p>
+            <ol class="step-list">
+                <li>Open Zeroed and <strong>sign out</strong> from your Google account in the app settings.</li>
+                <li>Visit the <strong>Google Account Permissions</strong> page to revoke Zeroed's access to your Drive.
+                </li>
+                <li>Open Google Drive and <strong>delete the <code>ZeroedData</code> folder</strong> to remove all
+                    synced data.</li>
+            </ol>
+            <a href="https://myaccount.google.com/permissions" target="_blank" rel="noopener noreferrer"
+                class="external-link">
+                Manage Google Account Permissions →
+            </a>
+        </div>
+
+        <div class="section-card">
+            <h3><span class="icon green">3</span> Purchases & Subscriptions (RevenueCat)</h3>
+            <p>Your purchase history for Zeroed Pro or the Universal Bundle is managed through your App Store (iOS) or
+                Play Store (Android) account, not directly through Zeroed.</p>
+            <p><strong>What this means:</strong></p>
+            <ul>
+                <li>Purchase records are tied to your Apple ID or Google Play account.</li>
+                <li>Zeroed uses RevenueCat to verify purchases but does not store your payment information.</li>
+                <li>To manage or cancel subscriptions, use your device's native subscription settings.</li>
+            </ul>
+            <p><strong>Manage subscriptions:</strong></p>
+            <ul>
+                <li><strong>iOS:</strong> Settings → Your Name → Subscriptions</li>
+                <li><strong>Android:</strong> Google Play Store → Account → Payments & Subscriptions</li>
+            </ul>
+        </div>
+
+        <div class="section-card">
+            <h3><span class="icon purple">4</span> Desktop Licenses (Lemon Squeezy)</h3>
+            <p>If you purchased a desktop license, your payment was processed by Lemon Squeezy, who acts as the Merchant
+                of Record.</p>
+            <p><strong>To manage your desktop license:</strong></p>
+            <ul>
+                <li>Check your email for the original purchase receipt from Lemon Squeezy.</li>
+                <li>Use the license management link in your receipt to deactivate or transfer your license.</li>
+                <li>For refund requests, contact Lemon Squeezy directly or reach out to us at the email below.</li>
+            </ul>
+        </div>
+
+        <div class="contact-section">
+            <h2>Need Assistance?</h2>
+            <p>If you have any questions or need help with data deletion, we're here to help.</p>
+            <a href="mailto:support@stillwareltd.com" class="email-link">
+                support@stillwareltd.com
+            </a>
+        </div>
+
+        <div class="footer">
+            <p>&copy; 2025 Stillware Ltd. All rights reserved.</p>
+            <p><a href="/zeroed/">Back to Zeroed</a> · <a href="/zeroed/privacy">Privacy Policy</a></p>
+        </div>
+    </div>
+</body>
+
+</html>
