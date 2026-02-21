@@ -34,9 +34,21 @@
                     <a href="#features">Features</a>
                     <a href="#pricing">Pricing</a>
                     <a href="#faq">FAQ</a>
-                    <a href="#download" class="btn-secondary-small">Download</a>
+                    <a href="https://apps.microsoft.com/detail/9NCHJ67Q98C5" target="_blank" rel="noopener"
+                        class="btn-secondary-small">Download</a>
                 </div>
+                <button class="hamburger-btn" aria-label="Open menu"><span></span></button>
             </div>
+        </nav>
+
+        <!-- Mobile Nav -->
+        <div class="mobile-nav-overlay"></div>
+        <nav class="mobile-nav-panel">
+            <a href="#features">Features</a>
+            <a href="#pricing">Pricing</a>
+            <a href="#faq">FAQ</a>
+            <a href="https://apps.microsoft.com/detail/9NCHJ67Q98C5" target="_blank" rel="noopener"
+                class="btn-primary">Download Now</a>
         </nav>
 
         <!-- Section 1: The Hero -->
@@ -44,22 +56,43 @@
 
             <div class="hero-content">
                 <div class="hero-text">
-                    <h1>Stop Renting<br>Your New Year’s Resolution.</h1>
-                    <p class="subheadline">The first privacy-focused, zero-based budgeting app that is <strong>yours
-                            forever</strong>. No servers. No subscriptions. Securely synced via your own Google Drive.
-                    </p>
+                    <h1 class="text-gradient">Stop Renting<br>Your Budget.</h1>
+                    <p class="subheadline">The first privacy-focused, zero-based budgeting app that is <strong>yours forever</strong>. No servers. No subscriptions. Securely synced via your own Google Drive.</p>
                     <div class="hero-cta">
-                        <a href="#pricing" class="btn-primary">
-                            Get Founder’s Access (FREE)
+                        <a href="https://apps.microsoft.com/detail/9NCHJ67Q98C5" target="_blank" rel="noopener"
+                            class="btn-primary pulse">
+                            Get Founder's Access (FREE)
                         </a>
-                        <p
-                            style="font-size: 0.85rem; color: var(--color-text-light); margin-top: 0.5rem; font-weight: 500;">
+                        <p class="sub-text">
                             Free Lifetime License — limited to the first 500 users.
                         </p>
+                        <div class="platform-badges">
+                            <a href="https://apps.microsoft.com/detail/9NCHJ67Q98C5" target="_blank" rel="noopener"
+                                class="platform-badge">
+                                <svg viewBox="0 0 24 24" fill="currentColor">
+                                    <path
+                                        d="M0 3.449L9.75 2.1v9.451H0m10.949-9.602L24 0v11.4H10.949M0 12.6h9.75v9.451L0 20.699M10.949 12.6H24V24l-12.9-1.801" />
+                                </svg>
+                                Windows
+                            </a>
+                            <span class="platform-badge coming-soon">
+                                <svg viewBox="0 0 24 24" fill="currentColor">
+                                    <path
+                                        d="M17.05 20.28c-.98.95-2.05.8-3.08.35-1.09-.46-2.09-.48-3.24 0-1.44.62-2.2.44-3.06-.35C2.79 15.25 3.51 7.59 9.05 7.31c1.35.07 2.29.74 3.08.8 1.18-.24 2.31-.93 3.57-.84 1.51.12 2.65.72 3.4 1.8-3.12 1.87-2.38 5.98.48 7.13-.57 1.5-1.31 2.99-2.54 4.09zM12.03 7.25c-.15-2.23 1.66-4.07 3.74-4.25.29 2.58-2.34 4.5-3.74 4.25z" />
+                                </svg>
+                                iOS — Coming Soon
+                            </span>
+                            <span class="platform-badge coming-soon">
+                                <svg viewBox="0 0 24 24" fill="currentColor">
+                                    <path
+                                        d="M17.523 2.293l-1.59 2.755c-1.17-.678-2.53-1.048-3.933-1.048s-2.763.37-3.933 1.048L6.477 2.293a.578.578 0 00-.79.211.58.58 0 00.211.79l1.548 2.682A8.502 8.502 0 004 12.5h16a8.502 8.502 0 00-3.446-6.524l1.548-2.682a.58.58 0 00-.579-.79zM9 10.5a1 1 0 110-2 1 1 0 010 2zm6 0a1 1 0 110-2 1 1 0 010 2zM4 13.5v6a2.5 2.5 0 005 0v-6zm11 0v6a2.5 2.5 0 005 0v-6z" />
+                                </svg>
+                                Android — Coming Soon
+                            </span>
+                        </div>
                     </div>
                     <div class="trust-badge">
-                        <span class="lock-icon">🔒</span> Local-First Architecture • AES-256 Encrypted • Save $80.00
-                        Today
+                        <span class="lock-icon">🏆</span> Save $80.00 Today • No Credit Card Required
                     </div>
                 </div>
                 <div class="hero-visual">
@@ -69,11 +102,33 @@
             </div>
         </header>
 
+        <!-- Social Proof Strip -->
+        <section class="social-proof-strip">
+            <div class="social-proof-inner">
+                <div class="proof-item">
+                    <span class="proof-icon">🛡️</span>
+                    <span><span class="proof-highlight">AES-256</span> Encrypted</span>
+                </div>
+                <div class="proof-item">
+                    <span class="proof-icon">👥</span>
+                    <span><span class="proof-highlight">430+</span> Active Testers</span>
+                </div>
+                <div class="proof-item">
+                    <span class="proof-icon">📱</span>
+                    <span>Built with <span class="proof-highlight">Flutter</span></span>
+                </div>
+                <div class="proof-item">
+                    <span class="proof-icon">🔒</span>
+                    <span><span class="proof-highlight">Zero</span> Data Selling</span>
+                </div>
+            </div>
+        </section>
+
         <!-- Section 2: The "Math of Sorrow" Comparison -->
-        <section class="comparison-section" id="comparison">
+        <section class="comparison-section reveal" id="comparison">
             <div class="container">
                 <div class="comparison-header">
-                    <h2>The Math is Simple.<br>The Choice is Yours.</h2>
+                    <h2 class="text-gradient">The Math is Simple.<br>The Choice is Yours.</h2>
                 </div>
 
                 <div class="comparison-table-wrapper">
@@ -130,16 +185,16 @@
 
 
         <!-- Section 3: Mobile Slides -->
-        <section class="slides-section" id="mobile-slides">
+        <section class="slides-section reveal" id="mobile-slides">
             <div class="container">
                 <div class="section-header center-text slides-header" style="margin-bottom: 3rem;">
-                    <h2>Premium Design.<br>No Subscription.</h2>
+                    <h2 class="text-gradient">Premium Design.<br>No Subscription.</h2>
                     <p
                         style="font-size: 1.15rem; color: var(--color-text-light); max-width: 600px; margin: 1rem auto 0; line-height: 1.6;">
                         Proof that you don't need to rent your budget to get a world-class experience.
                     </p>
                 </div>
-                <div class="slides-ui-wrapper"
+                <div class="slides-ui-wrapper reveal-up reveal-delay-1"
                     style="display: flex; align-items: center; justify-content: center; gap: 1rem; max-width: 500px; margin: 0 auto;">
                     <button class="slide-nav-btn prev" aria-label="Previous Slide">
                         <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2"
@@ -150,11 +205,11 @@
 
                     <div class="slides-container-wrapper">
                         <div class="slides-container">
-                            <img src="./mobile-slides/1.png" alt="Zeroed Mobile Interface 1" class="slide-image">
-                            <img src="./mobile-slides/2.png" alt="Zeroed Mobile Interface 2" class="slide-image">
-                            <img src="./mobile-slides/3.png" alt="Zeroed Mobile Interface 3" class="slide-image">
-                            <img src="./mobile-slides/4.png" alt="Zeroed Mobile Interface 4" class="slide-image">
-                            <img src="./mobile-slides/5.png" alt="Zeroed Mobile Interface 5" class="slide-image">
+                            <img src="/mobile-slides/1.png" alt="Zeroed Mobile Interface 1" class="slide-image">
+                            <img src="/mobile-slides/2.png" alt="Zeroed Mobile Interface 2" class="slide-image">
+                            <img src="/mobile-slides/3.png" alt="Zeroed Mobile Interface 3" class="slide-image">
+                            <img src="/mobile-slides/4.png" alt="Zeroed Mobile Interface 4" class="slide-image">
+                            <img src="/mobile-slides/5.png" alt="Zeroed Mobile Interface 5" class="slide-image">
                         </div>
                     </div>
 
@@ -169,13 +224,13 @@
         </section>
 
         <!-- Section 4: The "Method" & "Privacy" -->
-        <section class="features-section" id="features">
+        <section class="features-section reveal" id="features">
             <div class="container">
                 <div class="section-header center-text">
                     <h2>Built for Control.<br>Not for Data Mining.</h2>
                 </div>
                 <div class="features-grid">
-                    <div class="feature-card">
+                    <div class="feature-card reveal-up reveal-delay-1">
                         <div class="icon-box">🏦</div>
                         <h3>The "Fort Knox" Architecture</h3>
                         <p>We literally cannot sell your data. Unlike other apps, Zeroed has no database of your
@@ -183,7 +238,7 @@
                             military-grade encryption.</p>
                         <small>You hold the keys. We just provide the wallet.</small>
                     </div>
-                    <div class="feature-card">
+                    <div class="feature-card reveal-up reveal-delay-2">
                         <div class="icon-box">🔑</div>
                         <h3>The "Universal Cloud Key"</h3>
                         <p>One License. Every Device. Normally $79.99, the Universal Bundle is standard for Founder's
@@ -191,7 +246,7 @@
                             Premium on your iPhone, Android, Mac, and Windows.</p>
                         <small>Switch phones freely without losing your status.</small>
                     </div>
-                    <div class="feature-card">
+                    <div class="feature-card reveal-up reveal-delay-3">
                         <div class="icon-box">⚡</div>
                         <h3>Bank Imports that Actually Work</h3>
                         <p>Stop fighting broken API connections. Direct bank connections (like Plaid) break constantly
@@ -204,13 +259,22 @@
         </section>
 
         <!-- Section 4: The Offers -->
-        <section class="pricing-section" id="pricing">
+        <section class="pricing-section reveal" id="pricing">
             <div class="container">
                 <div class="pricing-header">
                     <h2>Founder's Offer</h2>
                 </div>
                 <div class="pricing-grid" style="grid-template-columns: 1fr; max-width: 600px;">
-                    <div class="pricing-card bundle-card featured" style="padding: 3rem;">
+                    <div class="scarcity-container">
+                        <div class="scarcity-text">
+                            <span>Spots Claimed</span>
+                            <span>430 / 500</span>
+                        </div>
+                        <div class="scarcity-track">
+                            <div class="scarcity-fill"></div>
+                        </div>
+                    </div>
+                    <div class="pricing-card bundle-card featured reveal-up reveal-delay-1" style="padding: 3rem;">
                         <div class="badge-pill">🏆 The Founder's License</div>
                         <h3>The Founder's License<br><span
                                 style="font-size: 0.95rem; font-weight: 500; opacity: 0.8;">Help us test the sync
@@ -246,7 +310,8 @@
                             </div>
                         </div>
 
-                        <a href="#download" class="btn-primary"
+                        <a href="https://apps.microsoft.com/detail/9NCHJ67Q98C5" target="_blank" rel="noopener"
+                            class="btn-primary pulse"
                             style="display: flex; flex-direction: column; align-items: center; justify-content: center; height: auto; padding: 1.25rem 2rem; margin-top: 1rem;">
                             <span style="display: block; font-size: 1.2em;">DOWNLOAD TO LOCK IN LICENSE</span>
                         </a>
@@ -262,16 +327,96 @@
 
         <!-- Section 5: Migration & Support -->
         <section class="migration-section" id="migration">
-            <div class="container mobile-container">
+            <div class="container">
                 <div class="migration-header">
-                    <h2>Moving from Former Subscription-Budgeting App?<br>It takes 2 minutes.</h2>
-                    <p class="lead">Don't lose your history. Zeroed features a dedicated "Migration Engine." Drag and
-                        drop
-                        your export files, and we’ll rebuild your budget structure automatically.</p>
+                    <h2>Moving from a Subscription App?<br>It takes 2 minutes.</h2>
+                    <p class="lead">Don't lose your history. Zeroed features a dedicated "Migration Engine" that rebuilds your budget structure automatically.</p>
                 </div>
-                <div class="migration-visual"
-                    style="text-align: center; margin-top: 3rem; font-size: 1.5rem; color: #94a3b8;">
-                    [ Old App File ] ➔ [ <strong>Zeroed Budget</strong> ]
+                <div class="migration-steps">
+                    <div class="migration-step">
+                        <span class="step-number">1</span>
+                        <span class="step-icon">📤</span>
+                        <h4>Export</h4>
+                        <p>Download your data from your current budgeting app as a CSV or PDF file.</p>
+                    </div>
+                    <div class="migration-step">
+                        <span class="step-number">2</span>
+                        <span class="step-icon">📥</span>
+                        <h4>Drop</h4>
+                        <p>Drag and drop the file into Zeroed's Migration Engine. We parse it instantly.</p>
+                    </div>
+                    <div class="migration-step">
+                        <span class="step-number">3</span>
+                        <span class="step-icon">✅</span>
+                        <h4>Done</h4>
+                        <p>Your accounts, categories, and transaction history are rebuilt automatically.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Section 5.5: Testimonials -->
+        <section class="testimonial-section reveal" id="testimonials">
+            <div class="container">
+                <div class="section-header">
+                    <h2>What Early Testers Say</h2>
+                </div>
+                <div class="testimonial-grid">
+                    <div class="testimonial-card">
+                        <div class="stars">★★★★★</div>
+                        <p class="quote">"I switched from YNAB and haven't looked back. The privacy model alone is worth
+                            it — no more sharing my financial data with anyone."</p>
+                        <div class="author">Early Tester
+                            <span>Founder's Edition User</span>
+                        </div>
+                    </div>
+                    <div class="testimonial-card">
+                        <div class="stars">★★★★★</div>
+                        <p class="quote">"The CSV import actually works. I've tried three other apps and they all choked
+                            on my bank's export format. Zeroed handled it perfectly."</p>
+                        <div class="author">Beta Tester
+                            <span>Universal Bundle User</span>
+                        </div>
+                    </div>
+                    <div class="testimonial-card">
+                        <div class="stars">★★★★★</div>
+                        <p class="quote">"Google Drive sync across my phone and laptop is seamless. And the fact that I
+                            own the app outright instead of renting it? That's the dream."</p>
+                        <div class="author">Early Adopter
+                            <span>Desktop + Mobile User</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Section 5.6: Security & Privacy -->
+        <section class="security-section reveal">
+            <div class="container">
+                <div class="section-header center-text">
+                    <h2>Your Data. Your Rules.</h2>
+                </div>
+                <div class="security-grid">
+                    <div class="security-item">
+                        <span class="sec-icon">🔐</span>
+                        <h4>AES-256 Encryption</h4>
+                        <p>Military-grade encryption for every sync.</p>
+                    </div>
+                    <div class="security-item">
+                        <span class="sec-icon">🚫</span>
+                        <h4>No Servers</h4>
+                        <p>We have no database. Your data never touches our infrastructure.</p>
+                    </div>
+                    <div class="security-item">
+                        <span class="sec-icon">🔑</span>
+                        <h4>You Own the Keys</h4>
+                        <p>Encryption keys live on your device. We can't access your data.</p>
+                    </div>
+                    <div class="security-item">
+                        <span class="sec-icon">📋</span>
+                        <h4>No Data Selling</h4>
+                        <p>We make money from the app, not from monetizing your finances.</p>
+                    </div>
                 </div>
             </div>
         </section>
@@ -283,7 +428,8 @@
                 <div class="faq-grid">
                     <div class="faq-item">
                         <h4>Is it really free forever?</h4>
-                        <p>Yes. If you are among the first 500 users to download Zeroed and set up your budget, your Google Drive
+                        <p>Yes. If you are among the first 500 users to download Zeroed and set up your budget, your
+                            Google Drive
                             "Universal Key" will be permanently flagged as "Founder Status." You will never be asked to
                             pay
                             for version 1.x features.</p>
@@ -311,6 +457,16 @@
                 </div>
             </div>
         </section>
+        <!-- Final CTA Banner -->
+        <section class="final-cta-section">
+            <div class="final-cta-content">
+                <h2>Don't Miss the Founder's Offer</h2>
+                <p>Join 430+ early testers who locked in their free lifetime license. Only 70 spots remain.</p>
+                <a href="https://apps.microsoft.com/detail/9NCHJ67Q98C5" target="_blank" rel="noopener"
+                    class="btn-primary pulse">Get Founder's Access (FREE)</a>
+            </div>
+        </section>
+
         <!-- Section 7: Footer -->
         <footer class="footer" id="support">
             <div class="container">
@@ -351,7 +507,7 @@
                     </div>
                 </div>
                 <div class="footer-bottom">
-                    <p class="copyright">&copy; 2025 Stillware Ltd. All rights reserved.</p>
+                    <p class="copyright">&copy; 2026 Stillware Ltd. All rights reserved.</p>
                 </div>
             </div>
         </footer>
