@@ -4,22 +4,11 @@ import { resolve } from 'path';
 console.log('Running post-build script...');
 
 const distDir = resolve('dist');
-const rootRedirectSrc = resolve('root_redirect.html');
-const rootRedirectDest = resolve(distDir, 'index.html');
 const redirectsSrc = resolve('public', '_redirects');
 const redirectsDest = resolve(distDir, '_redirects');
 
 if (!existsSync(distDir)) {
     console.error('Error: dist directory does not exist!');
-    process.exit(1);
-}
-
-// Copy root_redirect.html to dist/index.html
-if (existsSync(rootRedirectSrc)) {
-    console.log(`Copying ${rootRedirectSrc} to ${rootRedirectDest}`);
-    copyFileSync(rootRedirectSrc, rootRedirectDest);
-} else {
-    console.error(`Error: ${rootRedirectSrc} not found!`);
     process.exit(1);
 }
 
