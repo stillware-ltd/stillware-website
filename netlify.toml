@@ -4,3 +4,9 @@
 
 [context.production]
   environment = { NODE_VERSION = "20" }
+
+[[redirects]]
+  from = "/"
+  to = "/zeroed"
+  status = 302
+  force = true
