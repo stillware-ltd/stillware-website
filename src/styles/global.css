@@ -1,0 +1,300 @@
+/* ============================
+   CSS CUSTOM PROPERTIES
+   ============================ */
+:root {
+    --color-primary: #2563EB;
+    --color-primary-dark: #1d4ed8;
+    --color-secondary: #0F172A;
+    --color-text: #334155;
+    --color-text-light: #64748B;
+    --color-background: #FFFFFF;
+    --color-surface: #F8FAFC;
+    --color-border: #E2E8F0;
+
+    --gradient-obsidian: linear-gradient(135deg, #0F172A 0%, #1E293B 100%);
+    --gradient-midnight: radial-gradient(circle at top right, #1E293B 0%, #0F172A 100%);
+    --gradient-text: linear-gradient(135deg, #2563EB 0%, #60A5FA 100%);
+    --gradient-gold: linear-gradient(135deg, #F59E0B 0%, #FBBF24 100%);
+
+    --font-sans: 'Inter', system-ui, -apple-system, sans-serif;
+
+    --shadow-glow-blue: 0 0 40px rgba(37, 99, 235, 0.12);
+    --shadow-premium: 0 1px 1px rgba(0,0,0,0.02), 0 4px 8px rgba(0,0,0,0.04), 0 16px 32px rgba(0,0,0,0.06);
+    --transition-premium: cubic-bezier(0.16, 1, 0.3, 1);
+
+    --spacing-xs: 0.75rem;
+    --spacing-sm: 1.5rem;
+    --spacing-md: 3rem;
+    --spacing-lg: 5rem;
+    --spacing-xl: 8rem;
+
+    --border-radius: 16px;
+
+    --shadow-sm: 0 1px 2px 0 rgb(0 0 0 / 0.05);
+    --shadow-md: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.05);
+    --shadow-lg: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.05);
+    --shadow-xl: 0 20px 25px -5px rgb(0 0 0 / 0.1), 0 8px 10px -6px rgb(0 0 0 / 0.05);
+}
+
+/* ============================
+   RESET & BASE
+   ============================ */
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: var(--font-sans);
+    background-color: var(--color-background);
+    color: var(--color-text);
+    line-height: 1.7;
+    font-size: 1.125rem;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+    body::before {
+        content: '';
+        position: fixed;
+        inset: 0;
+        pointer-events: none;
+        z-index: 9999;
+        opacity: 0.02;
+        background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+        background-repeat: repeat;
+        background-size: 256px 256px;
+    }
+}
+
+h1, h2, h3, h4, h5, h6 {
+    color: var(--color-secondary);
+    line-height: 1.1;
+    letter-spacing: -0.03em;
+    font-weight: 800;
+    text-rendering: optimizeLegibility;
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
+    transition: all 0.2s ease;
+}
+
+img {
+    max-width: 100%;
+    height: auto;
+    display: block;
+}
+
+/* ============================
+   UTILITIES
+   ============================ */
+.container {
+    max-width: 1240px;
+    margin: 0 auto;
+    padding: 0 2rem;
+}
+
+.text-gradient {
+    background: var(--gradient-text);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    display: inline-block;
+    padding-bottom: 0.1em;
+}
+
+.text-primary { color: var(--color-primary); }
+.center-text { text-align: center; }
+
+/* ============================
+   SCROLL REVEAL
+   ============================ */
+.reveal, .reveal-up {
+    opacity: 0;
+    transform: translateY(24px);
+    transition: all 0.7s var(--transition-premium);
+}
+
+.reveal.active, .reveal-up.active {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.reveal-delay-1 { transition-delay: 0.1s; }
+.reveal-delay-2 { transition-delay: 0.2s; }
+.reveal-delay-3 { transition-delay: 0.3s; }
+.reveal-delay-4 { transition-delay: 0.4s; }
+
+/* ============================
+   BUTTONS
+   ============================ */
+.btn-primary {
+    background-color: var(--color-primary);
+    color: #ffffff;
+    padding: 1rem 2.5rem;
+    border-radius: 100px;
+    font-weight: 600;
+    font-size: 1.05rem;
+    letter-spacing: -0.01em;
+    transition: all 0.4s var(--transition-premium);
+    box-shadow: var(--shadow-md);
+    display: inline-flex;
+    align-items: center;
+    gap: 0.75rem;
+    border: 2px solid transparent;
+    position: relative;
+    overflow: hidden;
+    cursor: pointer;
+}
+
+@keyframes pulse-ring {
+    0% { transform: scale(0.95); box-shadow: 0 0 0 0 rgba(37, 99, 235, 0.7); }
+    70% { transform: scale(1); box-shadow: 0 0 0 10px rgba(37, 99, 235, 0); }
+    100% { transform: scale(0.95); box-shadow: 0 0 0 0 rgba(37, 99, 235, 0); }
+}
+
+.btn-primary.pulse {
+    animation: pulse-ring 2s infinite cubic-bezier(0.66, 0, 0, 1);
+}
+
+.btn-primary:hover {
+    background-color: var(--color-primary-dark);
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(37, 99, 235, 0.3), 0 0 0 4px rgba(37, 99, 235, 0.1), 0 0 40px rgba(37, 99, 235, 0.15);
+}
+
+.btn-primary:active {
+    transform: translateY(0px);
+    box-shadow: 0 2px 6px rgba(37, 99, 235, 0.2), 0 0 0 2px rgba(37, 99, 235, 0.1);
+    transition-duration: 0.1s;
+}
+
+.btn-secondary {
+    background-color: #ffffff;
+    color: var(--color-secondary);
+    padding: 1rem 2.5rem;
+    border-radius: 100px;
+    font-weight: 600;
+    font-size: 1.05rem;
+    border: 1px solid var(--color-border);
+    transition: all 0.2s ease;
+    box-shadow: var(--shadow-sm);
+    display: inline-flex;
+    align-items: center;
+    gap: 0.75rem;
+    cursor: pointer;
+}
+
+.btn-secondary:hover {
+    background-color: var(--color-surface);
+    border-color: #cbd5e1;
+    color: var(--color-primary);
+    transform: translateY(-1px);
+}
+
+.btn-secondary-small {
+    background-color: var(--color-secondary);
+    color: #ffffff;
+    padding: 0.6rem 1.4rem;
+    border-radius: 100px;
+    font-weight: 500;
+    font-size: 0.95rem;
+    transition: all 0.2s;
+}
+
+.btn-secondary-small:hover {
+    background-color: #1e293b;
+    transform: translateY(-1px);
+    box-shadow: 0 4px 12px rgba(15, 23, 42, 0.2), 0 0 0 3px rgba(15, 23, 42, 0.08);
+}
+
+.btn-text {
+    color: var(--color-text);
+    font-weight: 600;
+    text-decoration: underline;
+    text-decoration-color: rgba(37, 99, 235, 0.3);
+    text-underline-offset: 6px;
+    transition: all 0.2s;
+}
+
+.btn-text:hover {
+    color: var(--color-primary);
+    text-decoration-color: var(--color-primary);
+}
+
+/* ============================
+   ANIMATIONS
+   ============================ */
+@keyframes float-orb-1 {
+    0%, 100% { transform: translate(0, 0); }
+    33% { transform: translate(30px, 20px); }
+    66% { transform: translate(-20px, 10px); }
+}
+
+@keyframes float-orb-2 {
+    0%, 100% { transform: translate(0, 0); }
+    33% { transform: translate(-25px, -15px); }
+    66% { transform: translate(15px, -25px); }
+}
+
+@keyframes float {
+    0% { transform: perspective(1000px) rotateY(-8deg) rotateX(2deg) translateY(0px) translateX(20px); }
+    50% { transform: perspective(1000px) rotateY(-8deg) rotateX(2deg) translateY(-15px) translateX(20px); }
+    100% { transform: perspective(1000px) rotateY(-8deg) rotateX(2deg) translateY(0px) translateX(20px); }
+}
+
+/* ============================
+   SECTION DEFAULTS
+   ============================ */
+section {
+    padding: 8rem 0;
+}
+
+.section-header h2 {
+    font-size: 3rem;
+    margin-bottom: 2rem;
+    color: var(--color-secondary);
+}
+
+.section-header h2::after {
+    content: '';
+    display: block;
+    width: 48px;
+    height: 3px;
+    background: var(--gradient-text);
+    border-radius: 2px;
+    margin-top: 1rem;
+}
+
+.center-text h2::after,
+.section-header.center-text h2::after {
+    margin-left: auto;
+    margin-right: auto;
+}
+
+/* ============================
+   GRADIENT SECTION DIVIDERS
+   ============================ */
+.section-divider {
+    height: 1px;
+    background: linear-gradient(90deg, transparent, rgba(37, 99, 235, 0.2), transparent);
+    border: none;
+    margin: 0;
+}
+
+/* ============================
+   RESPONSIVE DEFAULTS
+   ============================ */
+@media (max-width: 768px) {
+    .container {
+        padding: 0 1.5rem;
+    }
+
+    section {
+        padding: 5rem 0;
+    }
+}

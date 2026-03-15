@@ -1,0 +1,148 @@
+Stillware Ltd Website - Astro Implementation Strategy
+Current State Summary
+The site is currently a single-product landing page for Zeroed, served via a Vite-bundled Vanilla HTML/CSS setup. It relies on a 302 redirect from the root domain.
+
+Target State Summary
+A highly performant, static, multi-page company website for Stillware Ltd built with Astro. It will serve as the hub for a movement against subscription software. The site will include a brand-level homepage, an apps directory, a manifesto page, a Markdown-powered blog for organic inbound marketing, and dedicated per-app pages (starting with /zeroed). The architecture prioritizes $0/month running costs, zero third-party tracking, and blazing-fast load times.
+
+Phase 1: Foundation & Astro Migration
+Goal: Migrate the existing Vite assets into a scalable Astro architecture and establish shared UI components.
+
+1.1 Astro Setup & Routing
+Initialize a new Astro project (npm create astro@latest).
+
+Remove the old _redirects file that forces / to /zeroed. The root domain (/) will now host the Stillware company homepage.
+
+Establish the Astro page routing structure in src/pages/:
+
+index.astro (Company Homepage)
+
+manifesto.astro (The Manifesto)
+
+apps.astro (App Directory)
+
+zeroed.astro (Zeroed App Page)
+
+support.astro (Support / Docs)
+
+1.2 Component Extraction (The Astro Way)
+Create a global Layout.astro wrapper to handle the <head>, SEO meta tags, and shared page structure.
+
+Extract the existing glass-morphism navigation into a <Header /> component.
+
+Links: Home (Logo), Apps, Manifesto, Blog, Support, [Get Zeroed] (Primary CTA).
+
+Extract the existing footer into a <Footer /> component.
+
+Links: Standard pages + Privacy, Terms, Delete Account.
+
+Addition: "Join the Rebellion" newsletter form.
+
+1.3 CSS Migration
+Maintain the Vanilla CSS approach (no Tailwind).
+
+Move shared utility classes, variables (--bg-dark, --text-light), and animations into src/styles/global.css.
+
+Utilize Astro's scoped styling (<style> tags inside .astro components) for page-specific CSS to prevent bleed.
+
+Phase 2: Company Homepage (/index.astro)
+Goal: Build the Stillware Ltd homepage to funnel visitors toward apps while establishing the "Digital Sovereign" brand identity.
+
+2.1 Hero Section
+Dark mode, minimalist design with crisp Inter typography.
+
+Headline: "Software you own. Not software you rent."
+
+Sub-headline: "Stillware builds premium, offline-first applications. No subscriptions. No data mining. Just incredibly fast, native tools that belong entirely to you."
+
+CTAs: [ View Our Apps ] [ Read The Manifesto ]
+
+2.2 The Four Pillars
+Four icon cards highlighting the non-negotiables:
+
+Pay Once, Own Forever.
+
+Zero Telemetry. 3. Local-First Native.
+
+Your Cloud, Your Rules.
+
+Use inline SVGs (Lucide or Phosphor icons) colored via CSS currentColor.
+
+2.3 Flagship Spotlight (Zeroed) & Ecosystem
+Zeroed Spotlight: High-quality mockup of Zeroed, AES-256 highlights, and a direct [ Explore Zeroed ] button.
+
+Ecosystem Teasers: Muted "Coming Soon" cards for Estate Keep and Fort Knox Diary with email collection inputs.
+
+Phase 3: The Manifesto (/manifesto)
+Goal: Create a compelling, text-heavy editorial page articulating the Stillware philosophy.
+
+Long-form, narrow-column reading layout (~700px max-width).
+
+Content flow: The Death of Software Ownership -> Subscription Fatigue -> The Data Trust Problem -> The Stillware Pledge.
+
+Scroll-triggered text reveals and large typographic pull-quotes.
+
+Strict Rule: Absolutely no third-party share widgets (Twitter/Facebook embeds) to maintain the zero-tracking pledge. Use static HTML intent links.
+
+Phase 4: The "Anti-SaaS" Content Engine (Blog)
+Goal: Implement a Markdown-based publishing system for organic SEO and guerrilla marketing (Hacker News, Reddit).
+
+4.1 Astro Content Collections
+Set up src/content/blog/ to house all .md files.
+
+Configure config.ts to enforce frontmatter schema (title, date, description, author).
+
+4.2 Blog Routing & Discovery
+Build /blog/index.astro to list articles chronologically.
+
+Build /blog/[slug].astro to dynamically generate individual post pages.
+
+Add @astrojs/rss to generate a feed.xml during the build process for RSS readers.
+
+Add @astrojs/sitemap to auto-generate sitemap.xml for Google indexing.
+
+Phase 5: Zeroed App Page Refinement (/zeroed)
+Goal: Adapt the existing Zeroed landing page into the new ecosystem structure.
+
+Reorganize flow: Hero (34-Day Trial CTA) -> UI/Features -> The Math (Zeroed vs YNAB 5-year cost) -> Testimonials -> FAQ.
+
+Ensure the global navigation highlights the "Apps" tab when users are on this page.
+
+Remove redundant security/privacy explanations that now live on the global Manifesto page.
+
+Phase 6: Email & Support Infrastructure
+Goal: Capture leads and support users with $0 monthly overhead.
+
+6.1 Netlify Forms Integration
+Add the data-netlify="true" attribute to the Footer newsletter form and the Ecosystem "Notify Me" forms.
+
+Configure a simple /success routing page for form submissions.
+
+(Requires zero backend setup; emails are stored in the Netlify dashboard for free).
+
+6.2 Support Hub (/support)
+Create a lightweight directory for: Local Sync Setup guides, Data Export instructions, and basic FAQs.
+
+Phase 7: Visual Polish, Performance & Ethics
+Goal: Achieve perfect Lighthouse scores and prove the brand's technical competence.
+
+Images: Convert all existing .png assets to .webp using Astro's native <Image /> component for automatic optimization and lazy loading.
+
+Icons: Strictly use inline SVGs to save HTTP requests.
+
+Analytics: Explicitly ban Google Analytics and Meta Pixels. Add a footer badge: "This site is tracked without cookies or IP logging." (Rely on Netlify's built-in server analytics, or add Plausible Analytics later).
+
+SEO: Ensure unique meta titles, descriptions, and Open Graph tags for every .astro page and Markdown blog post.
+
+Tech Stack & Cost Breakdown
+Framework: Astro (Static Site Generation)
+
+Styling: Vanilla CSS (CSS Variables)
+
+Hosting: Netlify (Starter Tier)
+
+Email Collection: Netlify Forms
+
+Content: Markdown (Astro Content Collections)
+
+Estimated Monthly Cost: $0.00

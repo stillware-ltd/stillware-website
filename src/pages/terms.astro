@@ -1,0 +1,89 @@
+---
+import Layout from '../layouts/Layout.astro';
+---
+
+<Layout
+  title="Terms and Conditions — Zeroed"
+  description="Terms and conditions for using the Zeroed application by Stillware Ltd."
+>
+    <article class="legal-page">
+        <header class="legal-hero">
+            <div class="container"><h1>Terms and Conditions</h1></div>
+        </header>
+        <div class="legal-body">
+            <div class="container">
+                <p><strong>Effective Date:</strong> December 26, 2025</p>
+                <p>By using the Zeroed application ("App"), you agree to these Terms and Conditions. If you do not agree, please do not use the App.</p>
+
+                <h2>1. License to Use</h2>
+                <p>Stillware Ltd grants you a revocable, non-exclusive, non-transferable, limited license to download, install, and use the App in accordance with these Terms.</p>
+                <div class="highlight">
+                    <p><strong>Ownership of Data:</strong> Zeroed is a local-first application. You retain full ownership of your financial data stored on your device and in your personal cloud storage.</p>
+                </div>
+
+                <h2>2. Pro and Universal Licenses</h2>
+                <ul>
+                    <li><strong>Lifetime License:</strong> A one-time payment granting access to the specified version indefinitely. Major version upgrades (e.g., v2.0) may require separate purchase unless explicitly stated.</li>
+                    <li><strong>Founder's Status:</strong> Users who obtain a license as part of the "Founder's Offer" (first 500 users) are granted "Founder Status," exempt from future paywalls for version 1.x features.</li>
+                    <li><strong>Refunds:</strong> Handled by the respective platform (Apple App Store, Google Play Store, or Lemon Squeezy).</li>
+                </ul>
+
+                <h2>3. Restrictions</h2>
+                <p>You agree not to:</p>
+                <ul>
+                    <li>License, sell, rent, or commercially exploit the App.</li>
+                    <li>Modify, disassemble, reverse compile, or reverse engineer any part of the App.</li>
+                    <li>Remove or alter any proprietary notices.</li>
+                </ul>
+
+                <h2>4. Intellectual Property</h2>
+                <p>The App and all intellectual property rights remain the sole property of Stillware Ltd.</p>
+
+                <h2>5. Third-Party Services</h2>
+                <p>The App may include or link to third-party services. Stillware Ltd is not responsible for their accuracy, legality, or quality.</p>
+
+                <h2>6. NO WARRANTY</h2>
+                <p>THE APP IS PROVIDED "AS IS" WITHOUT WARRANTY OF ANY KIND. STILLWARE LTD DISCLAIMS ALL WARRANTIES, EXPRESS OR IMPLIED, INCLUDING WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE.</p>
+
+                <h2>7. Limitation of Liability</h2>
+                <p>To the maximum extent permitted by law, Stillware Ltd shall not be liable for any special, incidental, indirect, or consequential damages arising from use of the App.</p>
+
+                <h2>8. Changes to Terms</h2>
+                <p>Stillware Ltd reserves the right to modify these Terms with at least 30 days' notice for material changes.</p>
+
+                <h2>9. Contact Us</h2>
+                <p><a href="mailto:support@stillwareltd.com">support@stillwareltd.com</a></p>
+            </div>
+        </div>
+    </article>
+</Layout>
+
+<style>
+    .legal-hero {
+        padding: 12rem 0 3rem;
+        background: var(--gradient-obsidian);
+        text-align: center;
+    }
+
+    .legal-hero h1 { color: #ffffff; font-size: 3rem; }
+
+    .legal-body {
+        padding: 3rem 0 6rem;
+        max-width: 800px;
+        margin: 0 auto;
+    }
+
+    .legal-body h2 { margin-top: 2.5rem; font-size: 1.5rem; margin-bottom: 1rem; }
+    .legal-body p { margin-bottom: 1rem; line-height: 1.7; }
+    .legal-body ul, .legal-body ol { margin: 1rem 0; padding-left: 1.5rem; }
+    .legal-body li { margin-bottom: 0.5rem; line-height: 1.6; }
+    .legal-body a { color: var(--color-primary); text-decoration: underline; }
+
+    .highlight {
+        background: rgba(37, 99, 235, 0.04);
+        padding: 1.25rem 1.5rem;
+        border-left: 4px solid var(--color-primary);
+        border-radius: 0 8px 8px 0;
+        margin: 1.5rem 0;
+    }
+</style>

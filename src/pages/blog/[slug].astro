@@ -1,0 +1,154 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import { getCollection } from 'astro:content';
+
+export async function getStaticPaths() {
+  const posts = await getCollection('blog');
+  return posts.map(post => ({
+    params: { slug: post.slug },
+    props: { post },
+  }));
+}
+
+const { post } = Astro.props;
+const { Content } = await post.render();
+---
+
+<Layout
+  title={`${post.data.title} — Stillware Ltd`}
+  description={post.data.description}
+>
+    <article class="blog-post">
+        <header class="post-hero">
+            <div class="post-hero-inner">
+                <time datetime={post.data.date.toISOString()}>
+                    {post.data.date.toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' })}
+                </time>
+                <h1>{post.data.title}</h1>
+                <p class="post-author">By {post.data.author}</p>
+            </div>
+        </header>
+        <div class="post-body">
+            <Content />
+        </div>
+        <footer class="post-footer">
+            <a href="/blog" class="btn-text">&larr; Back to Blog</a>
+        </footer>
+    </article>
+</Layout>
+
+<style>
+    .post-hero {
+        padding: 12rem 2rem 4rem;
+        text-align: center;
+        background: var(--gradient-obsidian);
+    }
+
+    .post-hero-inner {
+        max-width: 700px;
+        margin: 0 auto;
+    }
+
+    .post-hero time {
+        font-size: 0.85rem;
+        color: rgba(255, 255, 255, 0.5);
+        font-weight: 500;
+        text-transform: uppercase;
+        letter-spacing: 0.05em;
+    }
+
+    .post-hero h1 {
+        font-size: 3rem;
+        color: #ffffff;
+        margin: 1rem 0 0.75rem;
+        line-height: 1.15;
+    }
+
+    .post-author {
+        color: rgba(255, 255, 255, 0.5);
+        font-size: 1rem;
+    }
+
+    .post-body {
+        max-width: 700px;
+        margin: 0 auto;
+        padding: 3rem 2rem 4rem;
+    }
+
+    .post-body :global(h2) {
+        font-size: 1.75rem;
+        margin: 2.5rem 0 1rem;
+    }
+
+    .post-body :global(h3) {
+        font-size: 1.35rem;
+        margin: 2rem 0 0.75rem;
+    }
+
+    .post-body :global(p) {
+        font-size: 1.15rem;
+        line-height: 1.8;
+        color: var(--color-text);
+        margin-bottom: 1.25rem;
+    }
+
+    .post-body :global(ul), .post-body :global(ol) {
+        margin: 1.5rem 0;
+        padding-left: 1.5rem;
+    }
+
+    .post-body :global(li) {
+        font-size: 1.1rem;
+        line-height: 1.7;
+        margin-bottom: 0.5rem;
+    }
+
+    .post-body :global(blockquote) {
+        border-left: 4px solid var(--color-primary);
+        padding: 1rem 1.5rem;
+        margin: 2rem 0;
+        background: rgba(37, 99, 235, 0.04);
+        border-radius: 0 12px 12px 0;
+        font-style: italic;
+        color: var(--color-secondary);
+    }
+
+    .post-body :global(code) {
+        background: var(--color-surface);
+        padding: 2px 6px;
+        border-radius: 4px;
+        font-size: 0.9em;
+    }
+
+    .post-body :global(pre) {
+        background: var(--color-secondary);
+        color: #e2e8f0;
+        padding: 1.5rem;
+        border-radius: 12px;
+        overflow-x: auto;
+        margin: 2rem 0;
+    }
+
+    .post-body :global(pre code) {
+        background: none;
+        padding: 0;
+    }
+
+    .post-body :global(a) {
+        color: var(--color-primary);
+        text-decoration: underline;
+        text-underline-offset: 3px;
+    }
+
+    .post-footer {
+        max-width: 700px;
+        margin: 0 auto;
+        padding: 0 2rem 4rem;
+        border-top: 1px solid var(--color-border);
+        padding-top: 2rem;
+    }
+
+    @media (max-width: 768px) {
+        .post-hero h1 { font-size: 2.25rem; }
+    }
+</style>

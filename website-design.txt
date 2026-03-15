@@ -1,0 +1,89 @@
+Here is the ideal website structure and user flow for Stillware Ltd to maximize conversions and build cult-like brand loyalty.
+
+The Global Navigation (Header Menu)
+Keep it incredibly clean. No confusing dropdowns.
+
+Home (Logo)
+
+Apps (Links to a grid of your current and upcoming apps)
+
+The Manifesto (Your brand philosophy and the 4 rules of Stillware)
+
+Support / Docs (Where users can verify how to do local syncs, export data, etc.)
+
+[Get Zeroed] (A prominent, highlighted CTA button for your current flagship app)
+
+The Homepage Flow (Top to Bottom Scroll)
+1. The Hero Section (The Punchy Manifesto)
+This is above the fold. It needs a clean, minimalist design (think dark mode, crisp typography).
+
+Headline: Software you own. Not software you rent.
+
+Sub-headline: Stillware builds premium, offline-first applications. No subscriptions. No data mining. No cloud accounts. Just incredibly fast, native tools that belong entirely to you.
+
+Call to Action Buttons: [ View Our Apps ]  [ Read The Manifesto ]
+
+2. The Four Pillars (Building Instant Trust)
+Right below the hero, lay out your non-negotiable rules using simple, clean icons. This proves you aren't just saying buzzwords.
+
+Icon 1: Pay Once, Own Forever. (No recurring fees. Ever.)
+
+Icon 2: Zero Telemetry. (We literally cannot see your data. It lives on your device.)
+
+Icon 3: Local-First Native. (Lightning fast. Works flawlessly in a concrete bunker without Wi-Fi.)
+
+Icon 4: Your Cloud, Your Rules. (Sync between devices using your Google Drive or iCloud, not ours.)
+
+3. The Flagship Spotlight (Zeroed)
+Now that they trust you, show them what you've built.
+
+Heading: Meet Zeroed: The Zero-Trust Financial Ledger.
+
+Visual: A beautiful, high-quality mockup of Zeroed running on a phone and a laptop.
+
+Copy: Highlight the AES-256 encryption and the 34-day free trial.
+
+Button: [ Explore Zeroed ]
+
+4. The Ecosystem (The Roadmap)
+This is where you tease the future and show you are building a movement, not just one app. Show "coming soon" cards for the ideas we brainstormed.
+
+Heading: The Stillware Ecosystem is Growing.
+
+Cards: * Estate Keep (Homeowner Database) - In Development
+
+Fort Knox Diary (Encrypted Journal) - Coming Soon
+
+Monk Mode (Deep Focus Engine) - Planned
+
+Action: Let users enter their email to get notified when a specific app launches.
+
+5. The "Anti-SaaS" Social Proof
+Quote real reviews from Zeroed users, specifically highlighting people praising the lack of a subscription or the privacy aspect.
+
+6. The Footer
+Standard links, plus a newsletter signup: "Join the Rebellion. Get notified when we release new buy-once software."
+
+The Manifesto Page (/manifesto)
+This is where you go wild. This page should read almost like a letter to the tech industry.
+
+Talk about how the internet lost its way.
+
+Talk about "Subscription Fatigue."
+
+Explain the danger of trusting startups with sensitive personal or financial data.
+
+Make a hard pledge to the user: "If Stillware Ltd goes out of business tomorrow, every app you bought from us will continue to work perfectly on your device."
+
+The Individual App Pages (e.g., /zeroed)
+When they click an app, the page should follow a classic, high-converting structure:
+
+Hero: App name, one-sentence pitch, and a massive "Download Free 34-Day Trial" button.
+
+Features: Visuals of the UI, focusing on the offline speed and encryption.
+
+The Math: A simple table comparing Zeroed ($X one-time) vs. a competitor like YNAB ($100+/year). Show them how much money they save over 5 years.
+
+FAQ: Address common objections (e.g., "How does it sync if you don't have servers?").
+
+This flow respects the user's intelligence, establishes your authority immediately, and funnels them directly toward trying out Zeroed while building anticipation for the rest of your lineup

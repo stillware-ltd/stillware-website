@@ -1,0 +1,115 @@
+---
+import Layout from '../layouts/Layout.astro';
+---
+
+<Layout
+  title="Privacy Policy — Zeroed"
+  description="How Zeroed handles your data. Local-first architecture means your financial data stays on your device."
+>
+    <article class="legal-page">
+        <header class="legal-hero">
+            <div class="container"><h1>Privacy Policy</h1></div>
+        </header>
+        <div class="legal-body">
+            <div class="container">
+                <p><strong>Effective Date:</strong> December 26, 2025</p>
+                <p>Zeroed ("we", "our", or "us") is committed to protecting your privacy. We believe that your financial data belongs to you. This Privacy Policy explains how information is collected, used, and maintained by the Zeroed application.</p>
+
+                <div class="highlight">
+                    <p><strong>Core Principle: Local First</strong></p>
+                    <p>Zeroed is a local-first application. Your financial transactions, budgets, and account balances are stored directly on your device. We (the developers) do not have access to your personal financial data.</p>
+                </div>
+
+                <h2>1. Information Collection and Use</h2>
+                <h3>Personal Financial Data</h3>
+                <p>Your financial data (payees, categories, transactions, amounts) is stored locally on your device in an encrypted database. We do not transmit this data to our own servers.</p>
+
+                <h3>Data Synchronization (Google Drive)</h3>
+                <p>Zeroed offers an optional cross-platform synchronization feature using your personal Google Drive account.</p>
+                <ul>
+                    <li><strong>How it works:</strong> The app uploads an encrypted copy of your database to a folder named <code>ZeroedData</code> in your Google Drive.</li>
+                    <li><strong>Our Access:</strong> We utilize the <code>drive.file</code> scope, granting the app access <em>only</em> to files created by the app. <strong>We cannot view, edit, or delete any other files in your Google Drive.</strong></li>
+                    <li><strong>Your Control:</strong> You can delete the <code>ZeroedData</code> folder from your Google Drive at any time.</li>
+                </ul>
+
+                <h3>Receipt Scanning</h3>
+                <p>Zeroed uses on-device Machine Learning (Google ML Kit) to scan receipts. This processing happens entirely on your phone. No images or text are sent to our servers.</p>
+
+                <h3>Support Communications</h3>
+                <p>When you contact us for support, we receive your email address and any information you voluntarily provide. We use this strictly to assist you.</p>
+
+                <h2>2. Third-Party Services</h2>
+                <ul>
+                    <li><strong>RevenueCat:</strong> Manages subscriptions and purchase history. May collect anonymous App User IDs and purchase receipts.</li>
+                    <li><strong>Lemon Squeezy:</strong> Processes desktop payments as Merchant of Record. We do not store credit card details.</li>
+                    <li><strong>Google Drive API:</strong> Used solely for syncing your encrypted data between devices.</li>
+                </ul>
+
+                <h2>3. Data Retention and Deletion</h2>
+                <p>Since we do not host your data, we cannot "delete" your account in the traditional sense.</p>
+                <p><strong>To completely remove your data:</strong></p>
+                <ol>
+                    <li>Delete the Zeroed application from your device(s).</li>
+                    <li>Log in to your Google Drive and delete the <code>ZeroedData</code> folder.</li>
+                </ol>
+
+                <h2>4. Data Security</h2>
+                <ul>
+                    <li><strong>Local Encryption:</strong> Your database is encrypted on-device.</li>
+                    <li><strong>Transit Security:</strong> All communication occurs over secure HTTPS (SSL/TLS) connections.</li>
+                </ul>
+
+                <h2>5. Children's Privacy</h2>
+                <p>Zeroed does not knowingly collect information from children under 13.</p>
+
+                <h2>6. Changes to This Policy</h2>
+                <p>We may update this Privacy Policy from time to time by posting the new version on this page.</p>
+
+                <h2>7. Beta Feedback Collection</h2>
+                <p>If you participate in the Founder's Beta Exchange, we collect your email address, device OS, and written feedback strictly for product improvement and granting your Lifetime License.</p>
+                <div class="highlight">
+                    <p>Your email and feedback are <strong>never</strong> linked to your financial data. Your financial data remains encrypted locally and on your personal Google Drive.</p>
+                </div>
+                <p>You may request deletion of your beta feedback at any time via our <a href="/delete-account">Account Deletion page</a>.</p>
+
+                <h2>8. Contact Us</h2>
+                <p><a href="mailto:support@stillwareltd.com">support@stillwareltd.com</a></p>
+            </div>
+        </div>
+    </article>
+</Layout>
+
+<style>
+    .legal-hero {
+        padding: 12rem 0 3rem;
+        background: var(--gradient-obsidian);
+        text-align: center;
+    }
+
+    .legal-hero h1 { color: #ffffff; font-size: 3rem; }
+
+    .legal-body {
+        padding: 3rem 0 6rem;
+        max-width: 800px;
+        margin: 0 auto;
+    }
+
+    .legal-body h2 { margin-top: 2.5rem; font-size: 1.5rem; margin-bottom: 1rem; }
+    .legal-body h3 { margin-top: 1.5rem; font-size: 1.2rem; margin-bottom: 0.75rem; color: #34495e; }
+    .legal-body p { margin-bottom: 1rem; line-height: 1.7; }
+    .legal-body ul, .legal-body ol { margin: 1rem 0; padding-left: 1.5rem; }
+    .legal-body li { margin-bottom: 0.5rem; line-height: 1.6; }
+    .legal-body code { background: var(--color-surface); padding: 2px 6px; border-radius: 4px; font-size: 0.9em; }
+    .legal-body a { color: var(--color-primary); text-decoration: underline; }
+
+    .highlight {
+        background: rgba(37, 99, 235, 0.04);
+        padding: 1.25rem 1.5rem;
+        border-left: 4px solid var(--color-primary);
+        border-radius: 0 8px 8px 0;
+        margin: 1.5rem 0;
+    }
+
+    .highlight p { margin-bottom: 0.5rem; }
+    .highlight p:last-child { margin-bottom: 0; }
+</style>

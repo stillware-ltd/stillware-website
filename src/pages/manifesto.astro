@@ -1,0 +1,269 @@
+---
+import Layout from '../layouts/Layout.astro';
+---
+
+<Layout
+  title="The Manifesto — Stillware Ltd"
+  description="Our pledge: if Stillware goes out of business tomorrow, every app you bought from us will continue to work perfectly on your device."
+>
+    <article class="manifesto">
+        <header class="manifesto-hero">
+            <div class="manifesto-hero-inner">
+                <h1>The Stillware<br />Manifesto</h1>
+                <p class="lead">A pledge to the people who use our software.</p>
+            </div>
+        </header>
+
+        <div class="manifesto-body">
+            <!-- Chapter 1 -->
+            <section class="chapter reveal">
+                <h2>The Death of Software Ownership</h2>
+                <p>There was a time when you bought software and it was yours. You installed it, you used it, and it worked whether or not the company that made it still existed. That era is dying.</p>
+                <p>Today, the industry has decided that you don't deserve to own the tools you depend on. Instead, you rent them. Month after month. Year after year. And the moment you stop paying, everything disappears — your data, your workflows, your muscle memory. Gone.</p>
+                <p>We think that's wrong.</p>
+            </section>
+
+            <!-- Chapter 2 -->
+            <section class="chapter reveal">
+                <h2>Subscription Fatigue</h2>
+                <p>Add up every subscription you pay for. Go ahead. Streaming services, cloud storage, productivity tools, budgeting apps, note-taking apps, password managers, email providers, VPNs. The average household now spends hundreds of dollars a month on software they will never own.</p>
+                <blockquote class="pull-quote reveal-up">
+                    "You are not a customer. You are a recurring revenue metric on someone else's growth chart."
+                </blockquote>
+                <p>For a personal finance app — a tool whose entire purpose is to help you spend less money — charging a monthly subscription is not just ironic. It's insulting.</p>
+            </section>
+
+            <!-- Chapter 3 -->
+            <section class="chapter reveal">
+                <h2>The Data Trust Problem</h2>
+                <p>Every time you hand your financial data to a cloud-based budgeting app, you are trusting that:</p>
+                <ul>
+                    <li>Their servers won't be breached.</li>
+                    <li>Their employees won't misuse your information.</li>
+                    <li>Their investors won't pressure them to monetize your data.</li>
+                    <li>The company itself won't go bankrupt and leave your data in limbo.</li>
+                </ul>
+                <p>That's a lot of trust to place in a startup. We decided to eliminate the need for it entirely. When your data never leaves your device, there is nothing to breach, nothing to sell, and nothing to lose.</p>
+            </section>
+
+            <!-- Chapter 4 -->
+            <section class="chapter reveal">
+                <blockquote class="pledge reveal-up">
+                    <p>"If Stillware Ltd goes out of business tomorrow, every app you bought from us will continue to work perfectly on your device."</p>
+                </blockquote>
+                <h2>The Stillware Pledge</h2>
+                <p>This is not a marketing slogan. It is a direct consequence of how we build software. Our apps are local-first. They run on your device. They store data on your device. They sync through your own cloud storage — Google Drive, iCloud — not through our servers.</p>
+                <p>We have no database of your information. We have no server infrastructure that, if shut down, would render your purchase useless. Your license lives in your own cloud storage as a verification file. Your data lives in your own encrypted database.</p>
+                <p>If we vanish, your software keeps running. That's the way it should be.</p>
+            </section>
+
+            <!-- Chapter 5 -->
+            <section class="chapter reveal">
+                <h2>The Four Rules of Stillware</h2>
+                <div class="rules-grid">
+                    <div class="rule-item">
+                        <span class="rule-number">01</span>
+                        <h3>Pay Once, Own Forever</h3>
+                        <p>No recurring fees. No "annual plans." One payment, permanent access. Major version upgrades may be paid, but you always keep what you bought.</p>
+                    </div>
+                    <div class="rule-item">
+                        <span class="rule-number">02</span>
+                        <h3>Zero Telemetry</h3>
+                        <p>We do not collect analytics. We do not track usage patterns. We do not phone home. Your device, your data, your business.</p>
+                    </div>
+                    <div class="rule-item">
+                        <span class="rule-number">03</span>
+                        <h3>Local-First Native</h3>
+                        <p>Every Stillware app works offline. Not "degraded mode." Full functionality. An internet connection is optional, not required.</p>
+                    </div>
+                    <div class="rule-item">
+                        <span class="rule-number">04</span>
+                        <h3>Your Cloud, Your Rules</h3>
+                        <p>Cross-device sync happens through your own cloud storage. We never see, touch, or store your data on our infrastructure.</p>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Chapter 6 -->
+            <section class="chapter cta-chapter reveal">
+                <h2>Join Us</h2>
+                <p>We are building a small, focused portfolio of buy-once, own-forever tools. Software that respects your wallet, your privacy, and your intelligence.</p>
+                <p>Start with Zeroed. See what software ownership feels like.</p>
+                <div class="manifesto-cta">
+                    <a href="/zeroed" class="btn-primary">Try Zeroed Free</a>
+                    <a href="/apps" class="btn-text">View All Apps</a>
+                </div>
+            </section>
+
+            <footer class="manifesto-sig">
+                <p>— The Stillware Team</p>
+            </footer>
+        </div>
+    </article>
+</Layout>
+
+<style>
+    .manifesto-hero {
+        background: var(--gradient-obsidian);
+        padding: 12rem 2rem 6rem;
+        text-align: center;
+    }
+
+    .manifesto-hero-inner {
+        max-width: 700px;
+        margin: 0 auto;
+    }
+
+    .manifesto-hero h1 {
+        font-size: 4rem;
+        color: #ffffff;
+        margin-bottom: 1rem;
+        letter-spacing: -0.04em;
+        line-height: 1.1;
+    }
+
+    .manifesto-hero .lead {
+        font-size: 1.3rem;
+        color: rgba(255, 255, 255, 0.6);
+        font-weight: 400;
+    }
+
+    .manifesto-body {
+        max-width: 700px;
+        margin: 0 auto;
+        padding: 4rem 2rem 6rem;
+    }
+
+    .chapter {
+        margin-bottom: 4rem;
+    }
+
+    .chapter h2 {
+        font-size: 2rem;
+        margin-bottom: 1.5rem;
+        color: var(--color-secondary);
+    }
+
+    .chapter p {
+        font-size: 1.15rem;
+        line-height: 1.8;
+        color: var(--color-text);
+        margin-bottom: 1.25rem;
+    }
+
+    .chapter ul {
+        margin: 1.5rem 0;
+        padding-left: 1.5rem;
+    }
+
+    .chapter li {
+        font-size: 1.1rem;
+        line-height: 1.7;
+        margin-bottom: 0.5rem;
+        color: var(--color-text);
+    }
+
+    .pull-quote {
+        border-left: 4px solid var(--color-primary);
+        padding: 1.5rem 2rem;
+        margin: 2.5rem 0;
+        background: rgba(37, 99, 235, 0.04);
+        border-radius: 0 12px 12px 0;
+        font-size: 1.3rem;
+        font-style: italic;
+        color: var(--color-secondary);
+        font-weight: 600;
+        line-height: 1.5;
+    }
+
+    .pledge {
+        background: var(--gradient-obsidian);
+        padding: 3rem;
+        border-radius: 20px;
+        margin-bottom: 2rem;
+        border: none;
+    }
+
+    .pledge p {
+        font-size: 1.4rem;
+        color: #ffffff;
+        font-style: italic;
+        font-weight: 600;
+        line-height: 1.5;
+        margin: 0;
+        text-align: center;
+    }
+
+    .rules-grid {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 2rem;
+        margin-top: 2rem;
+    }
+
+    .rule-item {
+        padding: 2rem;
+        background: var(--color-surface);
+        border-radius: 16px;
+        border: 1px solid var(--color-border);
+    }
+
+    .rule-number {
+        display: inline-block;
+        font-size: 0.8rem;
+        font-weight: 700;
+        color: var(--color-primary);
+        letter-spacing: 0.05em;
+        margin-bottom: 0.75rem;
+        background: rgba(37, 99, 235, 0.1);
+        padding: 0.25rem 0.75rem;
+        border-radius: 100px;
+    }
+
+    .rule-item h3 {
+        font-size: 1.15rem;
+        margin-bottom: 0.5rem;
+    }
+
+    .rule-item p {
+        font-size: 0.95rem;
+        color: var(--color-text-light);
+        line-height: 1.6;
+        margin-bottom: 0;
+    }
+
+    .cta-chapter {
+        text-align: center;
+        border-top: 1px solid var(--color-border);
+        padding-top: 4rem;
+    }
+
+    .manifesto-cta {
+        display: flex;
+        gap: 1.5rem;
+        justify-content: center;
+        align-items: center;
+        margin-top: 2rem;
+    }
+
+    .manifesto-sig {
+        text-align: center;
+        margin-top: 4rem;
+        padding-top: 2rem;
+        border-top: 1px solid var(--color-border);
+    }
+
+    .manifesto-sig p {
+        font-size: 1.1rem;
+        font-style: italic;
+        color: var(--color-text-light);
+        font-weight: 500;
+    }
+
+    @media (max-width: 768px) {
+        .manifesto-hero { padding: 10rem 1.5rem 4rem; }
+        .manifesto-hero h1 { font-size: 2.75rem; }
+        .rules-grid { grid-template-columns: 1fr; }
+        .manifesto-body { padding: 3rem 1.5rem 4rem; }
+    }
+</style>

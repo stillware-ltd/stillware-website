@@ -1,0 +1,587 @@
+---
+import Layout from '../layouts/Layout.astro';
+---
+
+<Layout
+  title="Stillware Ltd — Software You Own"
+  description="Stillware builds premium, offline-first applications. No subscriptions. No data mining. Just incredibly fast, native tools that belong entirely to you."
+>
+    <!-- Hero -->
+    <header class="hero-section">
+        <div class="hero-ambient" aria-hidden="true"></div>
+        <div class="hero-content">
+            <h1>Software you own.<br />Not software you rent.</h1>
+            <p class="hero-sub">Stillware builds premium, offline-first applications. No subscriptions. No data mining. Just incredibly fast, native tools that belong entirely to you.</p>
+            <div class="hero-cta">
+                <a href="/apps" class="btn-secondary">View Our Apps</a>
+                <a href="/manifesto" class="btn-text">Read The Manifesto</a>
+            </div>
+        </div>
+    </header>
+
+    <!-- Four Pillars -->
+    <section class="pillars-section reveal">
+        <div class="container">
+            <div class="pillars-grid">
+                <div class="pillar-card reveal-up reveal-delay-1">
+                    <div class="pillar-icon">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="7" width="20" height="14" rx="2" ry="2"/><path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"/></svg>
+                    </div>
+                    <h3>Pay Once, Own Forever.</h3>
+                    <p>No recurring fees. Ever.</p>
+                </div>
+                <div class="pillar-card reveal-up reveal-delay-2">
+                    <div class="pillar-icon">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 20V6a2 2 0 0 0-2-2H8a2 2 0 0 0-2 2v14"/><path d="M2 20h20"/><path d="M14 12v.01"/></svg>
+                    </div>
+                    <h3>Zero Telemetry.</h3>
+                    <p>We literally cannot see your data. It lives on your device.</p>
+                </div>
+                <div class="pillar-card reveal-up reveal-delay-3">
+                    <div class="pillar-icon">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="4" width="16" height="16" rx="2" ry="2"/><rect x="9" y="9" width="6" height="6"/><path d="M15 2v2"/><path d="M15 20v2"/><path d="M2 15h2"/><path d="M2 9h2"/><path d="M20 15h2"/><path d="M20 9h2"/><path d="M9 2v2"/><path d="M9 20v2"/></svg>
+                    </div>
+                    <h3>Local-First Native.</h3>
+                    <p>Lightning fast. Works flawlessly in a concrete bunker without Wi-Fi.</p>
+                </div>
+                <div class="pillar-card reveal-up reveal-delay-4">
+                    <div class="pillar-icon">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17.5 19H9a7 7 0 1 1 6.71-9h1.79a4.5 4.5 0 1 1 0 9Z"/></svg>
+                    </div>
+                    <h3>Your Cloud, Your Rules.</h3>
+                    <p>Sync between devices using your Google Drive or iCloud, not ours.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Flagship Spotlight -->
+    <section class="spotlight-section reveal">
+        <div class="container">
+            <div class="spotlight-grid">
+                <div class="spotlight-text">
+                    <h2>Meet Zeroed:<br />The Zero-Trust Financial Ledger.</h2>
+                    <p>Your budget data is encrypted with AES-256 and lives on your device. No servers. No subscriptions. Try it free for 34 days.</p>
+                    <a href="/zeroed" class="btn-primary">Explore Zeroed</a>
+                </div>
+                <div class="spotlight-visual">
+                    <img src="/Zeroed_Windows_Landing_Page_Screen.png" alt="Zeroed App — Dashboard" class="spotlight-image" width="600" height="400" loading="lazy" />
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Ecosystem -->
+    <section class="ecosystem-section reveal">
+        <div class="container">
+            <div class="section-header center-text">
+                <h2>The Stillware Ecosystem is Growing.</h2>
+            </div>
+            <div class="ecosystem-grid">
+                <div class="eco-card reveal-up reveal-delay-1">
+                    <span class="eco-badge in-dev">In Development</span>
+                    <div class="eco-icon">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
+                    </div>
+                    <h3>Estate Keep</h3>
+                    <p>The encrypted homeowner database. Maintenance logs, warranties, and documents — all local, all yours.</p>
+                    <form name="notify-estate-keep" method="POST" data-netlify="true" action="/success" class="notify-form">
+                        <input type="hidden" name="form-name" value="notify-estate-keep" />
+                        <input type="hidden" name="subject" value="Notify Me: Estate Keep" />
+                        <input type="email" name="email" placeholder="Notify me" required aria-label="Email for Estate Keep notifications" />
+                        <button type="submit">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/></svg>
+                        </button>
+                    </form>
+                </div>
+                <div class="eco-card reveal-up reveal-delay-2">
+                    <span class="eco-badge coming-soon">Coming Soon</span>
+                    <div class="eco-icon">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/></svg>
+                    </div>
+                    <h3>Fort Knox Diary</h3>
+                    <p>The encrypted personal journal. AES-256 protected entries that never leave your device.</p>
+                    <form name="notify-fort-knox" method="POST" data-netlify="true" action="/success" class="notify-form">
+                        <input type="hidden" name="form-name" value="notify-fort-knox" />
+                        <input type="hidden" name="subject" value="Notify Me: Fort Knox Diary" />
+                        <input type="email" name="email" placeholder="Notify me" required aria-label="Email for Fort Knox Diary notifications" />
+                        <button type="submit">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/></svg>
+                        </button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Social Proof -->
+    <section class="social-proof-section reveal">
+        <div class="container">
+            <div class="section-header center-text">
+                <h2>What Early Testers Say</h2>
+            </div>
+            <div class="testimonial-grid">
+                <div class="testimonial-card">
+                    <div class="stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+                    <p class="quote">"I switched from YNAB and haven't looked back. The privacy model alone is worth it — no more sharing my financial data with anyone."</p>
+                    <div class="author">Early Tester<span>Founder's Edition User</span></div>
+                </div>
+                <div class="testimonial-card">
+                    <div class="stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+                    <p class="quote">"The CSV import actually works. I've tried three other apps and they all choked on my bank's export format. Zeroed handled it perfectly."</p>
+                    <div class="author">Beta Tester<span>Universal Bundle User</span></div>
+                </div>
+                <div class="testimonial-card">
+                    <div class="stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+                    <p class="quote">"Google Drive sync across my phone and laptop is seamless. And the fact that I own the app outright instead of renting it? That's the dream."</p>
+                    <div class="author">Early Adopter<span>Desktop + Mobile User</span></div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Final CTA -->
+    <section class="final-cta-section">
+        <div class="final-cta-content">
+            <h2>Own Your Software.</h2>
+            <p>Join the movement against subscription fatigue. Start with Zeroed — the budgeting app you pay for once and keep forever.</p>
+            <a href="/zeroed" class="btn-primary pulse">Explore Zeroed</a>
+        </div>
+    </section>
+</Layout>
+
+<style>
+    /* Hero */
+    .hero-section {
+        position: relative;
+        overflow: visible;
+        padding: 12rem 0 8rem;
+        text-align: center;
+        background:
+            radial-gradient(ellipse 900px 700px at 50% 40%, rgba(37, 99, 235, 0.07) 0%, transparent 70%),
+            radial-gradient(ellipse 600px 600px at 85% 20%, rgba(99, 102, 241, 0.05) 0%, transparent 60%),
+            var(--gradient-obsidian);
+    }
+
+    .hero-ambient {
+        position: absolute;
+        inset: 0;
+        overflow: hidden;
+        pointer-events: none;
+        z-index: 0;
+    }
+
+    .hero-ambient::before {
+        content: '';
+        position: absolute;
+        top: -200px;
+        left: -100px;
+        width: 600px;
+        height: 600px;
+        border-radius: 50%;
+        background: radial-gradient(circle, rgba(37, 99, 235, 0.12) 0%, transparent 70%);
+        filter: blur(60px);
+        animation: float-orb-1 20s ease-in-out infinite;
+    }
+
+    .hero-ambient::after {
+        content: '';
+        position: absolute;
+        bottom: -150px;
+        right: -50px;
+        width: 500px;
+        height: 500px;
+        border-radius: 50%;
+        background: radial-gradient(circle, rgba(99, 102, 241, 0.08) 0%, transparent 70%);
+        filter: blur(80px);
+        animation: float-orb-2 25s ease-in-out infinite;
+    }
+
+    .hero-content {
+        position: relative;
+        z-index: 1;
+        max-width: 800px;
+        margin: 0 auto;
+        padding: 0 2rem;
+    }
+
+    .hero-content h1 {
+        font-size: 4.5rem;
+        font-weight: 800;
+        color: #ffffff;
+        margin-bottom: 1.5rem;
+        letter-spacing: -0.04em;
+        line-height: 1.1;
+    }
+
+    .hero-sub {
+        font-size: 1.3rem;
+        color: rgba(255, 255, 255, 0.75);
+        margin-bottom: 2.5rem;
+        max-width: 620px;
+        margin-left: auto;
+        margin-right: auto;
+        line-height: 1.7;
+    }
+
+    .hero-cta {
+        display: flex;
+        gap: 1.5rem;
+        justify-content: center;
+        align-items: center;
+        flex-wrap: wrap;
+    }
+
+    .hero-cta .btn-secondary {
+        background: rgba(255, 255, 255, 0.1);
+        color: #ffffff;
+        border-color: rgba(255, 255, 255, 0.25);
+    }
+
+    .hero-cta .btn-secondary:hover {
+        background: rgba(255, 255, 255, 0.2);
+        border-color: rgba(255, 255, 255, 0.5);
+        color: #ffffff;
+    }
+
+    .hero-cta .btn-text {
+        color: rgba(255, 255, 255, 0.8);
+        text-decoration-color: rgba(255, 255, 255, 0.3);
+    }
+
+    .hero-cta .btn-text:hover {
+        color: #ffffff;
+        text-decoration-color: #ffffff;
+    }
+
+    /* Pillars */
+    .pillars-section {
+        padding: 6rem 0;
+        background: var(--color-surface);
+    }
+
+    .pillars-grid {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        gap: 2rem;
+    }
+
+    .pillar-card {
+        text-align: center;
+        padding: 2.5rem 1.5rem;
+        background: #ffffff;
+        border-radius: 20px;
+        border: 1px solid rgba(226, 232, 240, 0.6);
+        transition: all 0.4s var(--transition-premium);
+        box-shadow: var(--shadow-premium);
+    }
+
+    .pillar-card:hover {
+        transform: translateY(-6px);
+        box-shadow: 0 8px 24px rgba(37, 99, 235, 0.08);
+        border-color: rgba(37, 99, 235, 0.15);
+    }
+
+    .pillar-icon {
+        width: 64px;
+        height: 64px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin: 0 auto 1.5rem;
+        background: linear-gradient(135deg, #EFF6FF, #DBEAFE);
+        border-radius: 16px;
+        color: var(--color-primary);
+        box-shadow: 0 2px 8px rgba(37, 99, 235, 0.1);
+        transition: all 0.4s var(--transition-premium);
+    }
+
+    .pillar-card:hover .pillar-icon {
+        transform: scale(1.1) rotate(3deg);
+        background: linear-gradient(135deg, #DBEAFE, #BFDBFE);
+        box-shadow: 0 4px 16px rgba(37, 99, 235, 0.2);
+    }
+
+    .pillar-card h3 {
+        font-size: 1.25rem;
+        margin-bottom: 0.5rem;
+    }
+
+    .pillar-card p {
+        color: var(--color-text-light);
+        font-size: 1rem;
+    }
+
+    /* Spotlight */
+    .spotlight-section {
+        padding: 8rem 0;
+    }
+
+    .spotlight-grid {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 5rem;
+        align-items: center;
+    }
+
+    .spotlight-text h2 {
+        font-size: 3rem;
+        margin-bottom: 1.5rem;
+        line-height: 1.1;
+    }
+
+    .spotlight-text p {
+        font-size: 1.15rem;
+        color: var(--color-text-light);
+        margin-bottom: 2rem;
+        line-height: 1.7;
+    }
+
+    .spotlight-image {
+        width: 100%;
+        border-radius: 20px;
+        box-shadow: 0 25px 50px -12px rgba(15, 23, 42, 0.25);
+        animation: float 6s ease-in-out infinite;
+    }
+
+    /* Ecosystem */
+    .ecosystem-section {
+        padding: 6rem 0;
+        background: var(--color-surface);
+    }
+
+    .ecosystem-grid {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 2rem;
+        max-width: 800px;
+        margin: 3rem auto 0;
+    }
+
+    .eco-card {
+        background: #ffffff;
+        padding: 2.5rem;
+        border-radius: 20px;
+        border: 1px solid var(--color-border);
+        position: relative;
+        transition: all 0.4s var(--transition-premium);
+        box-shadow: var(--shadow-premium);
+    }
+
+    .eco-card:hover {
+        transform: translateY(-4px);
+        border-color: rgba(37, 99, 235, 0.15);
+    }
+
+    .eco-badge {
+        display: inline-block;
+        padding: 0.25rem 0.75rem;
+        border-radius: 100px;
+        font-size: 0.75rem;
+        font-weight: 600;
+        text-transform: uppercase;
+        letter-spacing: 0.05em;
+        margin-bottom: 1.25rem;
+    }
+
+    .eco-badge.in-dev {
+        background: rgba(37, 99, 235, 0.1);
+        color: var(--color-primary);
+    }
+
+    .eco-badge.coming-soon {
+        background: rgba(245, 158, 11, 0.1);
+        color: #B45309;
+    }
+
+    .eco-icon {
+        color: var(--color-primary);
+        margin-bottom: 1rem;
+    }
+
+    .eco-card h3 {
+        font-size: 1.4rem;
+        margin-bottom: 0.5rem;
+    }
+
+    .eco-card p {
+        color: var(--color-text-light);
+        font-size: 1rem;
+        line-height: 1.6;
+        margin-bottom: 1.5rem;
+    }
+
+    .notify-form {
+        display: flex;
+        gap: 0.5rem;
+    }
+
+    .notify-form input[type="email"] {
+        flex: 1;
+        padding: 0.6rem 1rem;
+        border: 1px solid var(--color-border);
+        border-radius: 100px;
+        font-size: 0.9rem;
+        font-family: var(--font-sans);
+        outline: none;
+        transition: border-color 0.2s ease;
+    }
+
+    .notify-form input[type="email"]:focus {
+        border-color: var(--color-primary);
+    }
+
+    .notify-form button {
+        width: 40px;
+        height: 40px;
+        border-radius: 50%;
+        border: none;
+        background: var(--color-primary);
+        color: #ffffff;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        cursor: pointer;
+        transition: all 0.2s ease;
+        flex-shrink: 0;
+    }
+
+    .notify-form button:hover {
+        background: var(--color-primary-dark);
+        transform: scale(1.05);
+    }
+
+    /* Testimonials */
+    .social-proof-section {
+        padding: 6rem 0;
+    }
+
+    .testimonial-grid {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 2rem;
+        max-width: 1100px;
+        margin: 3rem auto 0;
+    }
+
+    .testimonial-card {
+        background: #ffffff;
+        padding: 2.5rem;
+        border-radius: 20px;
+        border: 1px solid rgba(226, 232, 240, 0.6);
+        transition: all 0.4s var(--transition-premium);
+        position: relative;
+        box-shadow: var(--shadow-premium);
+    }
+
+    .testimonial-card::before {
+        content: '\201C';
+        position: absolute;
+        top: 1.25rem;
+        right: 1.5rem;
+        font-size: 4rem;
+        font-family: Georgia, serif;
+        color: rgba(37, 99, 235, 0.08);
+        line-height: 1;
+        pointer-events: none;
+    }
+
+    .testimonial-card:hover {
+        transform: translateY(-6px);
+        box-shadow: 0 8px 16px rgba(37, 99, 235, 0.06), 0 20px 40px rgba(37, 99, 235, 0.08);
+        border-color: rgba(37, 99, 235, 0.12);
+    }
+
+    .stars {
+        background: linear-gradient(90deg, #F59E0B, #FBBF24);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        background-clip: text;
+        font-size: 1.2rem;
+        margin-bottom: 1rem;
+        letter-spacing: 3px;
+    }
+
+    .quote {
+        font-size: 1.05rem;
+        color: var(--color-text);
+        line-height: 1.6;
+        font-style: italic;
+        margin-bottom: 1.25rem;
+    }
+
+    .author {
+        font-size: 0.9rem;
+        font-weight: 600;
+        color: var(--color-secondary);
+    }
+
+    .author span {
+        display: block;
+        font-weight: 400;
+        color: var(--color-text-light);
+        font-size: 0.85rem;
+        margin-top: 0.15rem;
+    }
+
+    /* Final CTA */
+    .final-cta-section {
+        background: linear-gradient(135deg, #0F172A 0%, #1E293B 50%, #0F172A 100%);
+        padding: 5rem 0;
+        text-align: center;
+        position: relative;
+        overflow: hidden;
+    }
+
+    .final-cta-section::before {
+        content: '';
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        width: 800px;
+        height: 800px;
+        background:
+            radial-gradient(circle, rgba(37, 99, 235, 0.15) 0%, transparent 50%),
+            radial-gradient(circle at 30% 70%, rgba(96, 165, 250, 0.08) 0%, transparent 50%);
+        pointer-events: none;
+    }
+
+    .final-cta-content {
+        position: relative;
+        z-index: 2;
+        max-width: 650px;
+        margin: 0 auto;
+        padding: 0 2rem;
+    }
+
+    .final-cta-content h2 {
+        font-size: 2.5rem;
+        color: #ffffff;
+        margin-bottom: 1rem;
+    }
+
+    .final-cta-content p {
+        font-size: 1.15rem;
+        color: rgba(255, 255, 255, 0.7);
+        margin-bottom: 2rem;
+        line-height: 1.6;
+    }
+
+    /* Responsive */
+    @media (max-width: 1024px) {
+        .hero-content h1 { font-size: 3.5rem; }
+        .pillars-grid { grid-template-columns: repeat(2, 1fr); }
+    }
+
+    @media (max-width: 768px) {
+        .hero-section { padding: 10rem 0 6rem; }
+        .hero-content h1 { font-size: 2.75rem; }
+        .hero-sub { font-size: 1.1rem; }
+        .pillars-grid { grid-template-columns: 1fr; max-width: 400px; margin: 0 auto; }
+        .spotlight-grid { grid-template-columns: 1fr; text-align: center; }
+        .spotlight-text h2 { font-size: 2.25rem; }
+        .ecosystem-grid { grid-template-columns: 1fr; }
+        .testimonial-grid { grid-template-columns: 1fr; }
+    }
+</style>

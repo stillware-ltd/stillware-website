@@ -1,0 +1,161 @@
+---
+import Layout from '../layouts/Layout.astro';
+---
+
+<Layout
+  title="Support — Stillware Ltd"
+  description="Get help with Stillware apps. Guides for local sync setup, data export, and common questions."
+>
+    <header class="support-hero">
+        <div class="container">
+            <h1>Support</h1>
+            <p>Everything you need to get the most out of your Stillware apps.</p>
+        </div>
+    </header>
+
+    <section class="support-content">
+        <div class="container">
+            <div class="support-grid">
+                <div class="support-card reveal">
+                    <div class="support-icon">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>
+                    </div>
+                    <h2>Getting Started</h2>
+                    <p>Download Zeroed from the Microsoft Store and launch it. The app walks you through setting up your first budget, categories, and accounts in under two minutes.</p>
+                    <a href="https://apps.microsoft.com/detail/9NCHJ67Q98C5" target="_blank" rel="noopener" class="btn-text">Download Zeroed &rarr;</a>
+                </div>
+
+                <div class="support-card reveal">
+                    <div class="support-icon">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17.5 19H9a7 7 0 1 1 6.71-9h1.79a4.5 4.5 0 1 1 0 9Z"/></svg>
+                    </div>
+                    <h2>Local Sync Setup</h2>
+                    <p>Zeroed syncs through your personal Google Drive. Sign in with your Google account inside the app settings. A <code>ZeroedData</code> folder is created automatically — encrypted and accessible only by Zeroed.</p>
+                    <p>Any other device signed into the same Google account will detect the folder and sync automatically.</p>
+                </div>
+
+                <div class="support-card reveal">
+                    <div class="support-icon">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+                    </div>
+                    <h2>Data Export</h2>
+                    <p>Your data is yours. Export transactions, categories, and accounts as CSV at any time from the app's Settings menu. Since Zeroed uses your own Google Drive for storage, you can also access the encrypted database directly.</p>
+                </div>
+
+                <div class="support-card reveal">
+                    <div class="support-icon">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
+                    </div>
+                    <h2>FAQ</h2>
+                    <ul>
+                        <li><strong>How does sync work without servers?</strong> — Through your personal Google Drive. We never see your data.</li>
+                        <li><strong>What if I switch phones?</strong> — Sign into the same Google account and Zeroed picks up where you left off.</li>
+                        <li><strong>Can I use it offline?</strong> — Yes. Zeroed works fully offline. Sync happens when you reconnect.</li>
+                    </ul>
+                    <a href="/zeroed#faq" class="btn-text">More Zeroed FAQs &rarr;</a>
+                </div>
+            </div>
+
+            <div class="contact-section reveal">
+                <h2>Still Need Help?</h2>
+                <p>Reach out and we'll get back to you as soon as possible.</p>
+                <a href="mailto:support@stillwareltd.com" class="btn-primary">Email Support</a>
+            </div>
+        </div>
+    </section>
+</Layout>
+
+<style>
+    .support-hero {
+        padding: 12rem 0 4rem;
+        text-align: center;
+        background: var(--gradient-obsidian);
+    }
+
+    .support-hero h1 { font-size: 3.5rem; color: #ffffff; margin-bottom: 1rem; }
+    .support-hero p { font-size: 1.2rem; color: rgba(255, 255, 255, 0.65); }
+
+    .support-content { padding: 4rem 0 8rem; }
+
+    .support-grid {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 2rem;
+        margin-bottom: 4rem;
+    }
+
+    .support-card {
+        background: #ffffff;
+        padding: 2.5rem;
+        border-radius: 20px;
+        border: 1px solid rgba(226, 232, 240, 0.6);
+        box-shadow: var(--shadow-premium);
+        transition: all 0.4s var(--transition-premium);
+    }
+
+    .support-card:hover {
+        transform: translateY(-4px);
+        border-color: rgba(37, 99, 235, 0.15);
+    }
+
+    .support-icon {
+        width: 56px;
+        height: 56px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background: linear-gradient(135deg, #EFF6FF, #DBEAFE);
+        border-radius: 16px;
+        color: var(--color-primary);
+        margin-bottom: 1.5rem;
+    }
+
+    .support-card h2 {
+        font-size: 1.5rem;
+        margin-bottom: 1rem;
+    }
+
+    .support-card p {
+        color: var(--color-text-light);
+        line-height: 1.6;
+        margin-bottom: 1rem;
+    }
+
+    .support-card code {
+        background: var(--color-surface);
+        padding: 2px 6px;
+        border-radius: 4px;
+        font-size: 0.9em;
+    }
+
+    .support-card ul {
+        list-style: none;
+        padding: 0;
+    }
+
+    .support-card li {
+        padding: 0.75rem 0;
+        border-bottom: 1px solid var(--color-border);
+        color: var(--color-text-light);
+        line-height: 1.5;
+    }
+
+    .support-card li:last-child { border-bottom: none; }
+    .support-card li strong { color: var(--color-secondary); }
+
+    .contact-section {
+        text-align: center;
+        padding: 4rem;
+        background: var(--color-surface);
+        border-radius: 24px;
+        border: 1px solid var(--color-border);
+    }
+
+    .contact-section h2 { font-size: 2rem; margin-bottom: 0.75rem; }
+    .contact-section p { color: var(--color-text-light); margin-bottom: 1.5rem; font-size: 1.1rem; }
+
+    @media (max-width: 768px) {
+        .support-hero h1 { font-size: 2.5rem; }
+        .support-grid { grid-template-columns: 1fr; }
+    }
+</style>

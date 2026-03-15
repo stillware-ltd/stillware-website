@@ -1,0 +1,236 @@
+---
+import Layout from '../layouts/Layout.astro';
+---
+
+<Layout
+  title="Apps — Stillware Ltd"
+  description="Browse the Stillware portfolio. Buy-once, own-forever tools built with privacy and performance in mind."
+>
+    <header class="apps-hero">
+        <div class="container">
+            <h1>Our Apps</h1>
+            <p>Buy once. Own forever. Every Stillware app is local-first, encrypted, and subscription-free.</p>
+        </div>
+    </header>
+
+    <section class="apps-grid-section">
+        <div class="container">
+            <!-- Live App -->
+            <div class="app-card live reveal">
+                <div class="app-card-content">
+                    <span class="app-status live-badge">Available Now</span>
+                    <div class="app-icon">
+                        <img src="/logo.png" alt="Zeroed" width="64" height="64" />
+                    </div>
+                    <h2>Zeroed</h2>
+                    <p class="app-tagline">The Zero-Trust Financial Ledger</p>
+                    <p class="app-desc">Privacy-first, zero-based budgeting. AES-256 encrypted, synced via your own Google Drive. No servers, no subscriptions.</p>
+                    <div class="app-platforms">
+                        <span class="platform-tag">Windows</span>
+                        <span class="platform-tag muted">iOS — Soon</span>
+                        <span class="platform-tag">Android</span>
+                    </div>
+                    <a href="/zeroed" class="btn-primary">Explore Zeroed</a>
+                </div>
+            </div>
+
+            <div class="upcoming-grid">
+                <!-- Upcoming Apps -->
+                <div class="app-card upcoming reveal reveal-delay-1">
+                    <span class="app-status dev-badge">In Development</span>
+                    <div class="app-icon-placeholder">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
+                    </div>
+                    <h3>Estate Keep</h3>
+                    <p class="app-tagline">The Encrypted Homeowner Database</p>
+                    <p class="app-desc">Maintenance logs, warranties, appliance records, and home documents — all local, all encrypted, all yours.</p>
+                    <form name="notify-estate-keep-apps" method="POST" data-netlify="true" action="/success" class="notify-form">
+                        <input type="hidden" name="form-name" value="notify-estate-keep-apps" />
+                        <input type="hidden" name="subject" value="Notify Me: Estate Keep" />
+                        <input type="email" name="email" placeholder="Get notified" required aria-label="Email" />
+                        <button type="submit" class="btn-secondary-small">Notify Me</button>
+                    </form>
+                </div>
+
+                <div class="app-card upcoming reveal reveal-delay-2">
+                    <span class="app-status soon-badge">Coming Soon</span>
+                    <div class="app-icon-placeholder">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/></svg>
+                    </div>
+                    <h3>Fort Knox Diary</h3>
+                    <p class="app-tagline">The Encrypted Personal Journal</p>
+                    <p class="app-desc">Private journaling with military-grade encryption. Your thoughts never leave your device.</p>
+                    <form name="notify-fort-knox-apps" method="POST" data-netlify="true" action="/success" class="notify-form">
+                        <input type="hidden" name="form-name" value="notify-fort-knox-apps" />
+                        <input type="hidden" name="subject" value="Notify Me: Fort Knox Diary" />
+                        <input type="email" name="email" placeholder="Get notified" required aria-label="Email" />
+                        <button type="submit" class="btn-secondary-small">Notify Me</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+</Layout>
+
+<style>
+    .apps-hero {
+        padding: 12rem 0 4rem;
+        text-align: center;
+        background: var(--gradient-obsidian);
+    }
+
+    .apps-hero h1 {
+        font-size: 3.5rem;
+        color: #ffffff;
+        margin-bottom: 1rem;
+    }
+
+    .apps-hero p {
+        font-size: 1.2rem;
+        color: rgba(255, 255, 255, 0.65);
+        max-width: 550px;
+        margin: 0 auto;
+    }
+
+    .apps-grid-section {
+        padding: 4rem 0 8rem;
+    }
+
+    .app-card.live {
+        background: linear-gradient(135deg, rgba(37, 99, 235, 0.04) 0%, rgba(37, 99, 235, 0.01) 100%);
+        border: 2px solid rgba(37, 99, 235, 0.15);
+        border-radius: 24px;
+        padding: 4rem;
+        margin-bottom: 3rem;
+        text-align: center;
+    }
+
+    .app-card-content {
+        max-width: 600px;
+        margin: 0 auto;
+    }
+
+    .app-status {
+        display: inline-block;
+        padding: 0.3rem 1rem;
+        border-radius: 100px;
+        font-size: 0.8rem;
+        font-weight: 600;
+        text-transform: uppercase;
+        letter-spacing: 0.05em;
+        margin-bottom: 1.5rem;
+    }
+
+    .live-badge { background: rgba(16, 185, 129, 0.1); color: #059669; }
+    .dev-badge { background: rgba(37, 99, 235, 0.1); color: var(--color-primary); }
+    .soon-badge { background: rgba(245, 158, 11, 0.1); color: #B45309; }
+
+    .app-icon {
+        margin-bottom: 1.5rem;
+    }
+
+    .app-icon img {
+        margin: 0 auto;
+    }
+
+    .app-icon-placeholder {
+        width: 64px;
+        height: 64px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin: 0 auto 1.5rem;
+        background: linear-gradient(135deg, #EFF6FF, #DBEAFE);
+        border-radius: 16px;
+        color: var(--color-primary);
+    }
+
+    .app-card h2, .app-card h3 {
+        margin-bottom: 0.5rem;
+    }
+
+    .app-card h2 { font-size: 2rem; }
+    .app-card h3 { font-size: 1.5rem; }
+
+    .app-tagline {
+        color: var(--color-primary);
+        font-weight: 600;
+        font-size: 1rem;
+        margin-bottom: 1rem;
+    }
+
+    .app-desc {
+        color: var(--color-text-light);
+        line-height: 1.6;
+        margin-bottom: 1.5rem;
+        max-width: 450px;
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+    .app-platforms {
+        display: flex;
+        gap: 0.5rem;
+        justify-content: center;
+        flex-wrap: wrap;
+        margin-bottom: 2rem;
+    }
+
+    .platform-tag {
+        padding: 0.35rem 0.75rem;
+        border: 1px solid var(--color-border);
+        border-radius: 6px;
+        font-size: 0.8rem;
+        font-weight: 600;
+    }
+
+    .platform-tag.muted { opacity: 0.5; }
+
+    .upcoming-grid {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 2rem;
+    }
+
+    .app-card.upcoming {
+        background: #ffffff;
+        border: 1px solid var(--color-border);
+        border-radius: 20px;
+        padding: 2.5rem;
+        text-align: center;
+        transition: all 0.4s var(--transition-premium);
+        box-shadow: var(--shadow-premium);
+    }
+
+    .app-card.upcoming:hover {
+        transform: translateY(-4px);
+        border-color: rgba(37, 99, 235, 0.15);
+    }
+
+    .notify-form {
+        display: flex;
+        gap: 0.5rem;
+        max-width: 320px;
+        margin: 0 auto;
+    }
+
+    .notify-form input[type="email"] {
+        flex: 1;
+        padding: 0.6rem 1rem;
+        border: 1px solid var(--color-border);
+        border-radius: 100px;
+        font-size: 0.9rem;
+        font-family: var(--font-sans);
+        outline: none;
+    }
+
+    .notify-form input[type="email"]:focus {
+        border-color: var(--color-primary);
+    }
+
+    @media (max-width: 768px) {
+        .apps-hero h1 { font-size: 2.5rem; }
+        .upcoming-grid { grid-template-columns: 1fr; }
+        .app-card.live { padding: 2.5rem 1.5rem; }
+    }
+</style>
