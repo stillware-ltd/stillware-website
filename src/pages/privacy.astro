@@ -3,8 +3,8 @@ import Layout from '../layouts/Layout.astro';
 ---
 
 <Layout
-  title="Privacy Policy — Zeroed"
-  description="How Zeroed handles your data. Local-first architecture means your financial data stays on your device."
+  title="Privacy Policy — Stillware Ltd"
+  description="How Stillware Ltd handles your data. Local-first architecture means your data stays on your device."
 >
     <article class="legal-page">
         <header class="legal-hero">
@@ -12,67 +12,84 @@ import Layout from '../layouts/Layout.astro';
         </header>
         <div class="legal-body">
             <div class="container">
-                <p><strong>Effective Date:</strong> December 26, 2025</p>
-                <p>Zeroed ("we", "our", or "us") is committed to protecting your privacy. We believe that your financial data belongs to you. This Privacy Policy explains how information is collected, used, and maintained by the Zeroed application.</p>
+                <p><strong>Effective Date:</strong> March 17, 2026</p>
+                <p><strong>Company:</strong> Stillware Ltd</p>
+                <p>Stillware Ltd ("we", "our", or "us") builds software you own. We believe that your private data—whether it is financial ledgers, personal journals, home inventories, or health records—belongs exclusively to you.</p>
+                <p>This Privacy Policy explains our strict, privacy-first approach to information across all Stillware Ltd applications (including Zeroed and all future releases).</p>
 
                 <div class="highlight">
-                    <p><strong>Core Principle: Local First</strong></p>
-                    <p>Zeroed is a local-first application. Your financial transactions, budgets, and account balances are stored directly on your device. We (the developers) do not have access to your personal financial data.</p>
+                    <p><strong>Core Principle: Local-First &amp; Zero Telemetry</strong></p>
+                    <p>All Stillware applications are built on a "local-first" architecture. The data you create inside our apps is stored directly on your physical device. We do not have servers that host, process, or read your personal app data, and we utilize zero telemetry or behavioral tracking.</p>
                 </div>
 
                 <h2>1. Information Collection and Use</h2>
-                <h3>Personal Financial Data</h3>
-                <p>Your financial data (payees, categories, transactions, amounts) is stored locally on your device in an encrypted database. We do not transmit this data to our own servers.</p>
+                <h3>Your Application Data</h3>
+                <p>Whatever data you input into a Stillware app (e.g., transactions, text entries, photos, audio logs) is encrypted and saved strictly to your local device storage. We do not collect, transmit, or have access to this data.</p>
 
-                <h3>Data Synchronization (Google Drive)</h3>
-                <p>Zeroed offers an optional cross-platform synchronization feature using your personal Google Drive account.</p>
+                <h3>Data Synchronization (Your Cloud, Your Rules)</h3>
+                <p>Many Stillware apps offer cross-device synchronization using your personal cloud storage (such as Google Drive or Apple iCloud).</p>
                 <ul>
-                    <li><strong>How it works:</strong> The app uploads an encrypted copy of your database to a folder named <code>ZeroedData</code> in your Google Drive.</li>
-                    <li><strong>Our Access:</strong> We utilize the <code>drive.file</code> scope, granting the app access <em>only</em> to files created by the app. <strong>We cannot view, edit, or delete any other files in your Google Drive.</strong></li>
-                    <li><strong>Your Control:</strong> You can delete the <code>ZeroedData</code> folder from your Google Drive at any time.</li>
+                    <li><strong>How it works:</strong> Our apps communicate directly with your personal cloud provider to sync an encrypted backup of your local database.</li>
+                    <li><strong>Our Access:</strong> We request the strictest, most limited permissions available (e.g., the <code>drive.file</code> scope on Google Drive). This means our apps can only access the specific sync folders they create. We cannot view, edit, or delete any other files in your personal cloud.</li>
+                    <li><strong>Your Control:</strong> You retain ultimate ownership. You can revoke the app's access or delete the sync folders from your personal cloud at any time.</li>
                 </ul>
 
-                <h3>Receipt Scanning</h3>
-                <p>Zeroed uses on-device Machine Learning (Google ML Kit) to scan receipts. This processing happens entirely on your phone. No images or text are sent to our servers.</p>
+                <h3>On-Device Processing</h3>
+                <p>Some of our apps utilize Machine Learning (like receipt scanning, OCR text extraction, or image filtering). All processing happens locally on your device's hardware. No images, text, or audio are ever sent to our servers for processing.</p>
+
+                <h3>Website &amp; Blog Analytics</h3>
+                <p>The stillwareltd.com website is tracked strictly without the use of cookies or IP logging. We do not use invasive third-party trackers like Google Analytics or Meta Pixels.</p>
 
                 <h3>Support Communications</h3>
-                <p>When you contact us for support, we receive your email address and any information you voluntarily provide. We use this strictly to assist you.</p>
+                <p>When you contact us for technical support, we receive your email address and any information you voluntarily provide in your message. We use this information exclusively to assist you and resolve your issue.</p>
 
-                <h2>2. Third-Party Services</h2>
+                <h2>2. Website Communications &amp; Newsletters ("Join the Rebellion")</h2>
+                <p>We offer voluntary email subscriptions on our website (stillwareltd.com) so you can be notified when we launch new apps, publish new blog posts, or release major updates.</p>
                 <ul>
-                    <li><strong>RevenueCat:</strong> Manages subscriptions and purchase history. May collect anonymous App User IDs and purchase receipts.</li>
-                    <li><strong>Lemon Squeezy:</strong> Processes desktop payments as Merchant of Record. We do not store credit card details.</li>
-                    <li><strong>Google Drive API:</strong> Used solely for syncing your encrypted data between devices.</li>
+                    <li><strong>What we collect:</strong> If you choose to subscribe to our newsletter or request to be notified about an upcoming app (e.g., Estate Keep), we collect only the email address you provide.</li>
+                    <li><strong>How we use it:</strong> We use this email address strictly to send you the specific communications you requested. We do not track your email open rates with invisible pixels, and we do not profile your reading habits.</li>
+                    <li><strong>Our Promise:</strong> We will never sell, rent, or trade your email address to third-party marketers, data brokers, or advertisers.</li>
+                    <li><strong>Your Control:</strong> You can opt-out and unsubscribe from these emails at any time by clicking the "Unsubscribe" link at the bottom of any email we send you, or by contacting support. Upon unsubscribing, your email is permanently removed from our active mailing list.</li>
+                    <li><strong>Separation of Data:</strong> Your newsletter subscription is managed entirely separately from our applications. Subscribing to our website does not link your email address to your encrypted, local app data.</li>
                 </ul>
 
-                <h2>3. Data Retention and Deletion</h2>
-                <p>Since we do not host your data, we cannot "delete" your account in the traditional sense.</p>
-                <p><strong>To completely remove your data:</strong></p>
+                <h2>3. Third-Party Services</h2>
+                <p>Because we do not host your data, our use of third-party services is strictly limited to facilitating purchases and app functionality:</p>
+                <ul>
+                    <li><strong>Payment Processors (Lemon Squeezy, Apple App Store, Google Play):</strong> These services process your payments and act as the Merchant of Record. We do not collect or store your credit card details.</li>
+                    <li><strong>RevenueCat:</strong> We use RevenueCat to manage purchase histories and validate lifetime licenses across devices. They may collect anonymous App User IDs and anonymous purchase receipts, but this is never linked to your actual app data.</li>
+                    <li><strong>Cloud APIs (Google Drive / Apple iCloud):</strong> Used solely to route your encrypted data between your own devices.</li>
+                </ul>
+
+                <h2>4. Data Retention and Deletion</h2>
+                <p>Because Stillware Ltd does not host user accounts or store your app data on our servers, we cannot "delete your account" in the traditional cloud-software sense, because we have nothing to delete.</p>
+                <p><strong>To completely and permanently destroy your data:</strong></p>
                 <ol>
-                    <li>Delete the Zeroed application from your device(s).</li>
-                    <li>Log in to your Google Drive and delete the <code>ZeroedData</code> folder.</li>
+                    <li>Delete the specific Stillware application(s) from your device(s).</li>
+                    <li>Log in to your personal cloud provider (Google Drive, iCloud) and delete the app-specific data folder (e.g., <code>ZeroedData</code>).</li>
                 </ol>
 
-                <h2>4. Data Security</h2>
+                <h2>5. Security</h2>
                 <ul>
-                    <li><strong>Local Encryption:</strong> Your database is encrypted on-device.</li>
-                    <li><strong>Transit Security:</strong> All communication occurs over secure HTTPS (SSL/TLS) connections.</li>
+                    <li><strong>Local Encryption:</strong> Where applicable, your databases are encrypted on-device using industry-standard protocols (such as AES-256) before they are ever synced to your personal cloud.</li>
+                    <li><strong>Transit Security:</strong> All communication between your device and your cloud provider, or your device and our payment processors, occurs over secure HTTPS (SSL/TLS) connections.</li>
                 </ul>
 
-                <h2>5. Children's Privacy</h2>
-                <p>Zeroed does not knowingly collect information from children under 13.</p>
+                <h2>6. Children's Privacy</h2>
+                <p>While Stillware Ltd designs some offline-native applications specifically intended to be safe, secure sandboxes for pre-teens and teenagers, we do not collect personal information from children. Because our apps operate entirely offline and do not transmit user data to our servers, there is no mechanism for us to collect, store, or share data from minors.</p>
 
-                <h2>6. Changes to This Policy</h2>
-                <p>We may update this Privacy Policy from time to time by posting the new version on this page.</p>
-
-                <h2>7. Beta Feedback Collection</h2>
-                <p>If you participate in the Founder's Beta Exchange, we collect your email address, device OS, and written feedback strictly for product improvement and granting your Lifetime License.</p>
+                <h2>7. Beta Testing &amp; Feedback</h2>
+                <p>If you participate in a Stillware Beta Exchange, we may collect your email address, device OS, and written feedback to improve the product and grant you a lifetime software license.</p>
                 <div class="highlight">
-                    <p>Your email and feedback are <strong>never</strong> linked to your financial data. Your financial data remains encrypted locally and on your personal Google Drive.</p>
+                    <p>Your email and feedback are <strong>never</strong> linked to your in-app data.</p>
                 </div>
-                <p>You may request deletion of your beta feedback at any time via our <a href="/delete-account">Account Deletion page</a>.</p>
+                <p>You may request the deletion of your beta feedback or email from our contact records at any time by emailing support.</p>
 
-                <h2>8. Contact Us</h2>
+                <h2>8. Changes to This Policy</h2>
+                <p>As we release new applications, we may update this Privacy Policy. We will notify users of any material changes by posting the new version on this page and updating the "Effective Date." Because we do not require user accounts, checking this page is the best way to stay informed.</p>
+
+                <h2>9. Contact Us</h2>
+                <p>If you have any questions about this Privacy Policy or how your data is handled, please contact us at:</p>
                 <p><a href="mailto:support@stillwareltd.com">support@stillwareltd.com</a></p>
             </div>
         </div>
