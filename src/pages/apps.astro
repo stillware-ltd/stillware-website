@@ -34,6 +34,25 @@ import Layout from '../layouts/Layout.astro';
                 </div>
             </div>
 
+            <!-- RankUpChess - Coming Soon -->
+            <div class="app-card featured-upcoming reveal">
+                <div class="app-card-content">
+                    <span class="app-status soon-badge">Coming Soon</span>
+                    <div class="app-icon">
+                        <img src="/RankUpChess_logo.png" alt="RankUpChess" width="64" height="64" />
+                    </div>
+                    <h2>RankUpChess</h2>
+                    <p class="app-tagline">The Offline Chess Academy for Kids</p>
+                    <p class="app-desc">A premium, 100% offline chess academy. 5,000+ puzzles, 10-tier AI engine, interactive lessons, and a parental gate system. No subscriptions, no data harvesting.</p>
+                    <div class="app-platforms">
+                        <span class="platform-tag">Windows</span>
+                        <span class="platform-tag muted">iOS — Soon</span>
+                        <span class="platform-tag muted">Android — Soon</span>
+                    </div>
+                    <a href="/rankupchess" class="btn-primary chess-cta">Explore RankUpChess</a>
+                </div>
+            </div>
+
             <div class="upcoming-grid">
                 <!-- Upcoming Apps -->
                 <div class="app-card upcoming reveal reveal-delay-1">
@@ -228,9 +247,32 @@ import Layout from '../layouts/Layout.astro';
         border-color: var(--color-primary);
     }
 
+    .app-card.featured-upcoming {
+        background: linear-gradient(135deg, rgba(245, 158, 11, 0.04) 0%, rgba(245, 158, 11, 0.01) 100%);
+        border: 2px solid rgba(245, 158, 11, 0.15);
+        border-radius: 24px;
+        padding: 4rem;
+        margin-bottom: 3rem;
+        text-align: center;
+    }
+
+    .app-card.featured-upcoming .app-icon img {
+        border-radius: 16px;
+    }
+
+    .chess-cta {
+        background: linear-gradient(135deg, #F59E0B 0%, #D97706 100%) !important;
+        border-color: transparent !important;
+    }
+
+    .chess-cta:hover {
+        background: linear-gradient(135deg, #FBBF24 0%, #F59E0B 100%) !important;
+    }
+
     @media (max-width: 768px) {
         .apps-hero h1 { font-size: 2.5rem; }
         .upcoming-grid { grid-template-columns: 1fr; }
         .app-card.live { padding: 2.5rem 1.5rem; }
+        .app-card.featured-upcoming { padding: 2.5rem 1.5rem; }
     }
 </style>
