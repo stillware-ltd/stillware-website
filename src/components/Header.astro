@@ -20,8 +20,11 @@ function isActive(href: string): boolean {
 <nav class="navbar glass-nav">
     <div class="nav-container">
         <a href="/" class="logo-group">
-            <img src="/StillwareLtd_logo_title.png" alt="Stillware Ltd" class="logo-img" width="85" height="85" />
-            <span class="logo-slogan">Software you own.</span>
+            <img src="/StillwareLtd_logo.png" alt="Stillware Ltd" class="logo-img" width="85" height="85" />
+            <div class="logo-text">
+                <span class="logo-company">Stillware Ltd</span>
+                <span class="logo-slogan">Software you own.</span>
+            </div>
         </a>
         <div class="nav-links">
             {navLinks.map(link => (
@@ -111,16 +114,29 @@ function isActive(href: string): boolean {
         transition: height 0.3s ease;
     }
 
-    .logo-slogan {
-        font-size: 0.95rem;
-        font-weight: 500;
-        color: var(--color-text-light);
+    .logo-text {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
         border-left: 1px solid var(--color-border);
         padding-left: 1rem;
-        height: 24px;
-        display: flex;
-        align-items: center;
+        gap: 0.15rem;
+    }
+
+    .logo-company {
+        font-size: 1.15rem;
+        font-weight: 700;
+        color: var(--color-secondary);
+        letter-spacing: -0.02em;
+        line-height: 1.2;
+    }
+
+    .logo-slogan {
+        font-size: 0.8rem;
+        font-weight: 500;
+        color: var(--color-text-light);
         letter-spacing: -0.01em;
+        line-height: 1.2;
     }
 
     .nav-links {
