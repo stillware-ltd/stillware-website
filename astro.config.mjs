@@ -5,4 +5,7 @@ export default defineConfig({
   site: 'https://www.stillwareltd.com',
   integrations: [sitemap()],
   output: 'static',
+  redirects: {
+    '/zeroed/delete-account.html': '/delete-account/',
+  },
 });
