@@ -24,7 +24,7 @@
   
 
   <rect x="86" y="90" width="230" height="130" rx="12" fill="#f0f5ff" stroke="#2563eb" stroke-width="1.5"/>
-  <rect x="86" y="90" width="230" height="4" rx="12 12 0 0" fill="#2563eb"/>
+  <rect x="86" y="90" width="230" height="4" rx="2" fill="#2563eb"/>
   <text x="201" y="128" text-anchor="middle" font-size="15" font-weight="600" fill="#1e293b">Your Device</text>
 
   <foreignObject x="100" y="138" width="202" height="72">
@@ -37,7 +37,7 @@
   
 
   <rect x="352" y="90" width="230" height="130" rx="12" fill="#f0f5ff" stroke="#2563eb" stroke-width="1.5"/>
-  <rect x="352" y="90" width="230" height="4" rx="12 12 0 0" fill="#2563eb"/>
+  <rect x="352" y="90" width="230" height="4" rx="2" fill="#2563eb"/>
   <text x="467" y="128" text-anchor="middle" font-size="15" font-weight="600" fill="#1e293b">Company Server</text>
 
   <foreignObject x="366" y="138" width="202" height="72">
@@ -50,7 +50,7 @@
   
 
   <rect x="618" y="90" width="230" height="130" rx="12" fill="#f0f5ff" stroke="#2563eb" stroke-width="1.5"/>
-  <rect x="618" y="90" width="230" height="4" rx="12 12 0 0" fill="#2563eb"/>
+  <rect x="618" y="90" width="230" height="4" rx="2" fill="#2563eb"/>
   <text x="733" y="128" text-anchor="middle" font-size="15" font-weight="600" fill="#1e293b">Their Analytics</text>
 
   <foreignObject x="632" y="138" width="202" height="72">
@@ -63,7 +63,7 @@
   
 
   <rect x="884" y="90" width="230" height="130" rx="12" fill="#f0f5ff" stroke="#2563eb" stroke-width="1.5"/>
-  <rect x="884" y="90" width="230" height="4" rx="12 12 0 0" fill="#2563eb"/>
+  <rect x="884" y="90" width="230" height="4" rx="2" fill="#2563eb"/>
   <text x="999" y="128" text-anchor="middle" font-size="15" font-weight="600" fill="#1e293b">Third-Party APIs</text>
 
   <foreignObject x="898" y="138" width="202" height="72">
@@ -76,7 +76,7 @@
   
 
   <rect x="86" y="280" width="230" height="130" rx="12" fill="#f0f5ff" stroke="#2563eb" stroke-width="1.5"/>
-  <rect x="86" y="280" width="230" height="4" rx="12 12 0 0" fill="#2563eb"/>
+  <rect x="86" y="280" width="230" height="4" rx="2" fill="#2563eb"/>
   <text x="201" y="318" text-anchor="middle" font-size="15" font-weight="600" fill="#1e293b">Your Device</text>
 
   <foreignObject x="100" y="328" width="202" height="72">
@@ -89,7 +89,7 @@
   
 
   <rect x="352" y="280" width="230" height="130" rx="12" fill="#f0f5ff" stroke="#2563eb" stroke-width="1.5"/>
-  <rect x="352" y="280" width="230" height="4" rx="12 12 0 0" fill="#2563eb"/>
+  <rect x="352" y="280" width="230" height="4" rx="2" fill="#2563eb"/>
   <text x="467" y="318" text-anchor="middle" font-size="15" font-weight="600" fill="#1e293b">Your Cloud Drive</text>
 
   <foreignObject x="366" y="328" width="202" height="72">
@@ -102,7 +102,7 @@
   
 
   <rect x="618" y="280" width="230" height="130" rx="12" fill="#f0f5ff" stroke="#2563eb" stroke-width="1.5"/>
-  <rect x="618" y="280" width="230" height="4" rx="12 12 0 0" fill="#2563eb"/>
+  <rect x="618" y="280" width="230" height="4" rx="2" fill="#2563eb"/>
   <text x="733" y="318" text-anchor="middle" font-size="15" font-weight="600" fill="#1e293b">Your Other Devices</text>
 
   <foreignObject x="632" y="328" width="202" height="72">
@@ -115,7 +115,7 @@
   
 
   <rect x="884" y="280" width="230" height="130" rx="12" fill="#f0f5ff" stroke="#2563eb" stroke-width="1.5"/>
-  <rect x="884" y="280" width="230" height="4" rx="12 12 0 0" fill="#2563eb"/>
+  <rect x="884" y="280" width="230" height="4" rx="2" fill="#2563eb"/>
   <text x="999" y="318" text-anchor="middle" font-size="15" font-weight="600" fill="#1e293b">No Server Needed</text>
 
   <foreignObject x="898" y="328" width="202" height="72">
