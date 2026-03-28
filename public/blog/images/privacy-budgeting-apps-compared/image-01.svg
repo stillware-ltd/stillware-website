@@ -1,9 +1,15 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 675" width="1200" height="675">
+
+
+
+
+
+
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 429" width="1200" height="429">
   <style>
     text { font-family: Inter, system-ui, -apple-system, sans-serif; }
   </style>
 
-  <rect width="1200" height="675" fill="#ffffff"/>
+  <rect width="1200" height="429" fill="#ffffff"/>
 
   <!-- Title -->
   <text x="600" y="50" text-anchor="middle" font-size="28" font-weight="700" fill="#1e293b">Core Data Architecture Comparison of Privacy-First Budgeting Apps</text>
@@ -11,13 +17,9 @@
   <!-- Table -->
   
   
-  
-
-  
-  
 
   <!-- Column header -->
-  <rect x="100" y="80" width="250" height="48" fill="#2563eb" rx="10" ry="0"/>
+  <rect x="100" y="80" width="250" height="48" fill="#2563eb"/>
   <text x="225" y="110" text-anchor="middle" font-size="17" font-weight="600" fill="#ffffff">Zeroed</text>
 
   <!-- Rows -->
@@ -46,7 +48,7 @@
   
 
   <!-- Column header -->
-  <rect x="350" y="80" width="250" height="48" fill="#2563eb" />
+  <rect x="350" y="80" width="250" height="48" fill="#2563eb"/>
   <text x="475" y="110" text-anchor="middle" font-size="17" font-weight="600" fill="#ffffff">Actual</text>
 
   <!-- Rows -->
@@ -75,7 +77,7 @@
   
 
   <!-- Column header -->
-  <rect x="600" y="80" width="250" height="48" fill="#2563eb" />
+  <rect x="600" y="80" width="250" height="48" fill="#2563eb"/>
   <text x="725" y="110" text-anchor="middle" font-size="17" font-weight="600" fill="#ffffff">Buckets</text>
 
   <!-- Rows -->
@@ -104,7 +106,7 @@
   
 
   <!-- Column header -->
-  <rect x="850" y="80" width="250" height="48" fill="#2563eb" rx="10" ry="0"/>
+  <rect x="850" y="80" width="250" height="48" fill="#2563eb"/>
   <text x="975" y="110" text-anchor="middle" font-size="17" font-weight="600" fill="#ffffff">Banktivity</text>
 
   <!-- Rows -->
@@ -132,6 +134,5 @@
   
 
   <!-- Bottom border -->
-  
-  <rect x="100" y="380" width="1000" height="3" fill="#2563eb"/>
+  <rect x="100" y="386" width="1000" height="3" fill="#2563eb"/>
 </svg>
