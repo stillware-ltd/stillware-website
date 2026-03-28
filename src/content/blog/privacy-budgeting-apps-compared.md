@@ -12,7 +12,7 @@ The promise of a budgeting app is control, but the reality for most is a trade-o
 
 We'll move beyond marketing claims and examine the technical reality: where is your financial data stored, who holds the encryption keys, and what are you truly agreeing to when you connect your bank? The primary keyword for this deep dive is **privacy budgeting apps**, and we'll evaluate each contender on the merits of its architecture, not its slogans.
 
-![Core Data Architecture Comparison of Privacy-First Budgeting Apps](./images/privacy-budgeting-apps-compared/image-01.svg)
+![Core Data Architecture Comparison of Privacy-First Budgeting Apps](/blog/images/privacy-budgeting-apps-compared/image-01.svg)
 
 ### Data Storage: Device vs. Cloud Security
 
@@ -45,7 +45,7 @@ Automated bank imports are the biggest privacy hurdle. The standard method uses 
 
 For users of **offline finance apps**, manual file import isn't a limitation; it's the defining, privacy-preserving feature. It ensures a clean break between your banking infrastructure and your budgeting tool.
 
-![The Data Journey: Cloud-Based vs. Local-First Budgeting](./images/privacy-budgeting-apps-compared/image-02.svg)
+![The Data Journey: Cloud-Based vs. Local-First Budgeting](/blog/images/privacy-budgeting-apps-compared/image-02.svg)
 
 ### Head-to-Head: Top Privacy Budgeting Apps Compared
 
@@ -74,7 +74,7 @@ The subscription model common to cloud-based privacy apps creates a recurring de
 
 **The most private tools often have a higher upfront cost or require more manual effort because they are selling you software, not a data-harvesting service.** This economic alignment is a key feature for the privacy-conscious buyer.
 
-![5-Year Total Cost of Ownership Comparison](./images/privacy-budgeting-apps-compared/image-03.svg)
+![5-Year Total Cost of Ownership Comparison](/blog/images/privacy-budgeting-apps-compared/image-03.svg)
 
 ### How to Choose the Right Privacy Budgeting App
 

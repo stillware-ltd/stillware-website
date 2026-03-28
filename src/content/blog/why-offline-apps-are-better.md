@@ -20,7 +20,7 @@ When your data lives primarily on a company's server, you are not the owner; you
 
 This principle is core to how we built Zeroed. Your budget data is encrypted and stored locally. If you choose to sync across devices, you use *your* Google Drive as a passive storage locker—we provide the encrypted container, but you control the space and the access. As we've detailed in our deep dive on [how Zeroed encrypts your data without a server](/blog/how-zeroed-encrypts-your-data/), this architecture means we literally cannot sell or leak your financial information.
 
-![Data flow comparison: Cloud-First vs. Offline-First architecture](./images/why-offline-apps-are-better/image-01.svg)
+![Data flow comparison: Cloud-First vs. Offline-First architecture](/blog/images/why-offline-apps-are-better/image-01.svg)
 
 ## Benefit #2: Unmatched Reliability and Performance
 
@@ -48,7 +48,7 @@ The subscription model is the economic engine of cloud-dependent software. You a
 
 The financial upside is staggering. As we explored in our analysis of [the true cost of YNAB over 5 years](/blog/true-cost-of-ynab/), subscription costs compound into a significant sum. A one-time purchase isn't just cheaper; it's a capital investment in a tool, not an operational expense for a service. This philosophy is so central to our ethos that we dedicated an entire article to [why we don't do subscriptions](/blog/why-we-dont-do-subscriptions/).
 
-![Five-year total cost of ownership comparison for budgeting software](./images/why-offline-apps-are-better/image-02.svg)
+![Five-year total cost of ownership comparison for budgeting software](/blog/images/why-offline-apps-are-better/image-02.svg)
 
 ## The Offline-First Mindset: Beyond the App
 
