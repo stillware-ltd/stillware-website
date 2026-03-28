@@ -25,7 +25,7 @@
   
   <rect x="100" y="138" width="250" height="56" fill="#f0f5ff" stroke="#e2e8f0" stroke-width="1"/>
   <text x="116" y="162" font-size="14" font-weight="600" fill="#1e293b">Data Location</text>
-  <text x="116" y="182" font-size="14" fill="#64748b">User Device & Google Drive</text>
+  <text x="116" y="182" font-size="14" fill="#64748b">User Device &amp; Google Drive</text>
   
   
   <rect x="100" y="200" width="250" height="56" fill="#ffffff" stroke="#e2e8f0" stroke-width="1"/>
