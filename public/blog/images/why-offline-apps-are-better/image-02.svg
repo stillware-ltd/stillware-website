@@ -1,0 +1,65 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 675" width="1200" height="675">
+  <style>
+    :root { --accent: #2563eb; --text: #1e293b; --muted: #64748b; --border: #e2e8f0; --bg: #ffffff; }
+    text { font-family: Inter, system-ui, -apple-system, sans-serif; }
+    .title { font-size: 28px; font-weight: 700; fill: var(--text); }
+    .bar-label { font-size: 14px; fill: var(--text); font-weight: 500; }
+    .bar-value { font-size: 14px; fill: var(--muted); font-weight: 600; }
+    .axis { stroke: var(--border); stroke-width: 1; }
+  </style>
+
+  <rect width="1200" height="675" fill="var(--bg)"/>
+
+  <!-- Title -->
+  <text x="600" y="50" text-anchor="middle" class="title">Five-year total cost of ownership comparison for budgeting software</text>
+
+  <!-- Chart area -->
+  
+  
+  
+  
+  
+  
+  
+
+  <!-- Y axis -->
+  <line x1="200" y1="90" x2="200" y2="620" class="axis"/>
+
+  
+  
+  
+
+  <!-- Label -->
+  <text x="190" y="185" text-anchor="end" class="bar-label">App A (Sub)</text>
+
+  <!-- Bar -->
+  <rect x="205" y="100" width="820" height="161" rx="4" fill="#2563eb"/>
+
+  <!-- Value -->
+  <text x="1035" y="185" class="bar-value">600.0</text>
+  
+  
+  
+
+  <!-- Label -->
+  <text x="190" y="361" text-anchor="end" class="bar-label">App B (Sub)</text>
+
+  <!-- Bar -->
+  <rect x="205" y="276" width="615" height="161" rx="4" fill="#2563eb"/>
+
+  <!-- Value -->
+  <text x="830" y="361" class="bar-value">450.0</text>
+  
+  
+  
+
+  <!-- Label -->
+  <text x="190" y="537" text-anchor="end" class="bar-label">Zeroed (One-Time)</text>
+
+  <!-- Bar -->
+  <rect x="205" y="452" width="54" height="161" rx="4" fill="#2563eb"/>
+
+  <!-- Value -->
+  <text x="269" y="537" class="bar-value">39.99</text>
+  
+</svg>

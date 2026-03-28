@@ -1,0 +1,47 @@
+Page Layout: www.stillwareltd.com/rankupchess
+[Hero Section]
+(Visual Idea: A clean, premium graphic of your RankUpChess mascot or a sleek chessboard, overlaid on a dark, secure-looking background.)
+
+Headline: Stop renting your kids’ educational apps.
+Sub-headline: Welcome to RankUpChess. A premium, 100% offline chess academy designed for kids. No monthly subscriptions, no internet required, and absolutely no data harvesting. Just pure chess.
+[CTA Button 1: Download for Windows]
+[CTA Button 2: Get it on App Store]
+[CTA Button 3: Get it on Google Play]
+
+[Section 2: The Stillware Difference (The Problem vs. Our Solution)]
+The Subscription Trap is Over.
+Most modern kids' apps are built to drain your wallet with $50/year subscriptions while secretly harvesting your child's data in the cloud. We built RankUpChess to be the ultimate subscription-free alternative to legacy chess giants.
+
+Every feature in RankUpChess is designed to help your child master the game—from absolute beginner to tournament ready—while keeping them in a completely closed, 100% offline environment. Zero stress. Total control.
+
+[Section 3: Key Features & Benefits]
+(Format matches the "Zeroed" feature list style)
+
+🚀 Core Features & Stillware Benefits:
+
+Pay Once, Own Forever: Stop paying endless monthly fees just to let your child play chess. RankUpChess offers a lifetime license for just $5. You own the software, forever.
+
+The "Fort Knox" Privacy Architecture: 100% offline, local-first gameplay. We have no central servers, no chat rooms, and literally cannot track your child. It is the safest digital environment possible.
+
+5,000+ Tactical Puzzles: A massive, built-in library of brain-teasing puzzles. From simple mate-in-ones to advanced middle-game strategies, your child will never run out of challenges.
+
+10-Tier AI Engine: Practice against an adaptive AI. Start at Level 1 (Beginner - 400 Elo) and work up to Level 10 (World Class - 3200 Elo) as your child's skills grow.
+
+The "Zero-Friction" Learn Module: An interactive, completely distraction-free learning environment. Master piece movements, castling, and advanced tactics without needing an internet connection.
+
+Advanced Coach's Dashboard: Review past games with instant replays and track concrete metrics to measure your child's improvement over time.
+
+[Section 4: Built for Kids, Controlled by Parents]
+Total Peace of Mind.
+We built RankUpChess with a strict Parental Gate system. Kids can launch the app and jump into a game in seconds with zero friction. Meanwhile, sensitive settings, profile resets, and the premium upgrade screen are locked safely behind a parental pin.
+
+Let them learn, play, and make mistakes—without worrying about what they might click on.
+
+[Section 5: Pricing & Trial Information]
+Try it Risk-Free.
+RankUpChess is completely free to download. Your child can try the Learn module, play the introductory AI levels, and solve a starter pack of daily puzzles to experience the app risk-free.
+
+Ready to unlock their full potential?
+A single, one-time purchase of $5.00 unlocks the entire suite—5000+ puzzles, advanced AI, and deep analytics. We will never charge you a recurring subscription.
+
+[CTA Button: Start Your Chess Journey Today]
