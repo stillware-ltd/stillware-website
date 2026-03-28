@@ -1,17 +1,12 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 675" width="1200" height="675">
   <style>
-    :root { --accent: #2563eb; --text: #1e293b; --muted: #64748b; --border: #e2e8f0; --bg: #ffffff; }
     text { font-family: Inter, system-ui, -apple-system, sans-serif; }
-    .title { font-size: 28px; font-weight: 700; fill: var(--text); }
-    .bar-label { font-size: 14px; fill: var(--text); font-weight: 500; }
-    .bar-value { font-size: 14px; fill: var(--muted); font-weight: 600; }
-    .axis { stroke: var(--border); stroke-width: 1; }
   </style>
 
-  <rect width="1200" height="675" fill="var(--bg)"/>
+  <rect width="1200" height="675" fill="#ffffff"/>
 
   <!-- Title -->
-  <text x="600" y="50" text-anchor="middle" class="title">5-Year Total Cost of Ownership Comparison</text>
+  <text x="600" y="50" text-anchor="middle" font-size="28" font-weight="700" fill="#1e293b">5-Year Total Cost of Ownership Comparison</text>
 
   <!-- Chart area -->
   
@@ -23,67 +18,90 @@
   
 
   <!-- Y axis -->
-  <line x1="200" y1="90" x2="200" y2="620" class="axis"/>
+  <line x1="220" y1="90" x2="220" y2="620" stroke="#e2e8f0" stroke-width="1"/>
+
+  <!-- Gridlines -->
+  
+  
+  <line x1="380" y1="90" x2="380" y2="620" stroke="#f1f5f9" stroke-width="1"/>
+  
+  
+  <line x1="540" y1="90" x2="540" y2="620" stroke="#f1f5f9" stroke-width="1"/>
+  
+  
+  <line x1="700" y1="90" x2="700" y2="620" stroke="#f1f5f9" stroke-width="1"/>
+  
+  
+  <line x1="860" y1="90" x2="860" y2="620" stroke="#f1f5f9" stroke-width="1"/>
+  
+  
+  <line x1="1020" y1="90" x2="1020" y2="620" stroke="#f1f5f9" stroke-width="1"/>
+  
 
   
   
   
 
   <!-- Label -->
-  <text x="190" y="150" text-anchor="end" class="bar-label">App</text>
+  <text x="208" y="149" text-anchor="end" font-size="14" font-weight="500" fill="#1e293b">YNAB (Subscription)</text>
 
-  <!-- Bar -->
-  <rect x="205" y="100" width="0" height="91" rx="4" fill="#2563eb"/>
+  <!-- Bar with rounded right end -->
+  <rect x="225" y="100" width="800" height="88" rx="6" fill="#ef4444" opacity="0.85"/>
+  <rect x="225" y="100" width="800" height="88" rx="6" fill="#ef4444" opacity="0.15"/>
 
   <!-- Value -->
-  <text x="215" y="150" class="bar-value">0</text>
+  <text x="1036" y="149" font-size="14" font-weight="600" fill="#64748b">600</text>
   
   
   
 
   <!-- Label -->
-  <text x="190" y="256" text-anchor="end" class="bar-label">Cost</text>
+  <text x="208" y="255" text-anchor="end" font-size="14" font-weight="500" fill="#1e293b">Actual Cloud (Sub)</text>
 
-  <!-- Bar -->
-  <rect x="205" y="206" width="0" height="91" rx="4" fill="#2563eb"/>
+  <!-- Bar with rounded right end -->
+  <rect x="225" y="206" width="600" height="88" rx="6" fill="#f97316" opacity="0.85"/>
+  <rect x="225" y="206" width="600" height="88" rx="6" fill="#f97316" opacity="0.15"/>
 
   <!-- Value -->
-  <text x="215" y="256" class="bar-value">0</text>
+  <text x="836" y="255" font-size="14" font-weight="600" fill="#64748b">450</text>
   
   
   
 
   <!-- Label -->
-  <text x="190" y="362" text-anchor="end" class="bar-label">Cost</text>
+  <text x="208" y="361" text-anchor="end" font-size="14" font-weight="500" fill="#1e293b">Banktivity + Data</text>
 
-  <!-- Bar -->
-  <rect x="205" y="312" width="0" height="91" rx="4" fill="#2563eb"/>
+  <!-- Bar with rounded right end -->
+  <rect x="225" y="312" width="200" height="88" rx="6" fill="#eab308" opacity="0.85"/>
+  <rect x="225" y="312" width="200" height="88" rx="6" fill="#eab308" opacity="0.15"/>
 
   <!-- Value -->
-  <text x="215" y="362" class="bar-value">0</text>
+  <text x="436" y="361" font-size="14" font-weight="600" fill="#64748b">150</text>
   
   
   
 
   <!-- Label -->
-  <text x="190" y="468" text-anchor="end" class="bar-label">Cost</text>
+  <text x="208" y="467" text-anchor="end" font-size="14" font-weight="500" fill="#1e293b">Zeroed (One-Time)</text>
 
-  <!-- Bar -->
-  <rect x="205" y="418" width="0" height="91" rx="4" fill="#2563eb"/>
+  <!-- Bar with rounded right end -->
+  <rect x="225" y="418" width="53" height="88" rx="6" fill="#2563eb" opacity="0.85"/>
+  <rect x="225" y="418" width="53" height="88" rx="6" fill="#2563eb" opacity="0.15"/>
 
   <!-- Value -->
-  <text x="215" y="468" class="bar-value">0</text>
+  <text x="289" y="467" font-size="14" font-weight="600" fill="#64748b">39.99</text>
   
   
   
 
   <!-- Label -->
-  <text x="190" y="574" text-anchor="end" class="bar-label">Cost</text>
+  <text x="208" y="573" text-anchor="end" font-size="14" font-weight="500" fill="#1e293b">Buckets (One-Time)</text>
 
-  <!-- Bar -->
-  <rect x="205" y="524" width="820" height="91" rx="4" fill="#2563eb"/>
+  <!-- Bar with rounded right end -->
+  <rect x="225" y="524" width="66" height="88" rx="6" fill="#22c55e" opacity="0.85"/>
+  <rect x="225" y="524" width="66" height="88" rx="6" fill="#22c55e" opacity="0.15"/>
 
   <!-- Value -->
-  <text x="1035" y="574" class="bar-value">49.99</text>
+  <text x="302" y="573" font-size="14" font-weight="600" fill="#64748b">49.99</text>
   
 </svg>

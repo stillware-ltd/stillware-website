@@ -1,17 +1,12 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 675" width="1200" height="675">
   <style>
-    :root { --accent: #2563eb; --accent-light: #dbeafe; --text: #1e293b; --muted: #64748b; --border: #e2e8f0; --bg: #ffffff; }
     text { font-family: Inter, system-ui, -apple-system, sans-serif; }
-    .title { font-size: 28px; font-weight: 700; fill: var(--text); }
-    .header { font-size: 18px; font-weight: 600; fill: var(--bg); }
-    .label { font-size: 15px; font-weight: 500; fill: var(--text); }
-    .value { font-size: 15px; fill: var(--muted); }
   </style>
 
-  <rect width="1200" height="675" fill="var(--bg)"/>
+  <rect width="1200" height="675" fill="#ffffff"/>
 
   <!-- Title -->
-  <text x="600" y="50" text-anchor="middle" class="title">Core Data Architecture Comparison of Privacy-First Budgeting Apps</text>
+  <text x="600" y="50" text-anchor="middle" font-size="28" font-weight="700" fill="#1e293b">Core Data Architecture Comparison of Privacy-First Budgeting Apps</text>
 
   <!-- Table -->
   
@@ -22,117 +17,121 @@
   
 
   <!-- Column header -->
-  <rect x="100" y="80" width="250" height="45" fill="var(--accent)" rx="8 0 0 0"/>
-  <text x="225" y="108" text-anchor="middle" class="header">App</text>
+  <rect x="100" y="80" width="250" height="48" fill="#2563eb" rx="10 0 0 0"/>
+  <text x="225" y="110" text-anchor="middle" font-size="17" font-weight="600" fill="#ffffff">Zeroed</text>
 
   <!-- Rows -->
   
   
-  <rect x="100" y="135" width="250" height="55" fill="var(--accent-light)" stroke="var(--border)" stroke-width="1"/>
-  <text x="115" y="158" class="label">App</text>
-  <text x="115" y="178" class="value">Zeroed</text>
+  <rect x="100" y="138" width="250" height="56" fill="#f0f5ff" stroke="#e2e8f0" stroke-width="1"/>
+  <text x="116" y="162" font-size="14" font-weight="600" fill="#1e293b">Data Location</text>
+  <text x="116" y="182" font-size="14" fill="#64748b">User Device & Google Drive</text>
   
   
-  <rect x="100" y="195" width="250" height="55" fill="var(--bg)" stroke="var(--border)" stroke-width="1"/>
-  <text x="115" y="218" class="label">Data Location</text>
-  <text x="115" y="238" class="value">User's Device & User's Google Drive</text>
+  <rect x="100" y="200" width="250" height="56" fill="#ffffff" stroke="#e2e8f0" stroke-width="1"/>
+  <text x="116" y="224" font-size="14" font-weight="600" fill="#1e293b">Encryption Keys</text>
+  <text x="116" y="244" font-size="14" fill="#64748b">User-Held</text>
   
   
-  <rect x="100" y="255" width="250" height="55" fill="var(--accent-light)" stroke="var(--border)" stroke-width="1"/>
-  <text x="115" y="278" class="label">Encryption Keys</text>
-  <text x="115" y="298" class="value">User-Held</text>
+  <rect x="100" y="262" width="250" height="56" fill="#f0f5ff" stroke="#e2e8f0" stroke-width="1"/>
+  <text x="116" y="286" font-size="14" font-weight="600" fill="#1e293b">Bank Sync</text>
+  <text x="116" y="306" font-size="14" fill="#64748b">Optional CSV/PDF</text>
   
   
-  <rect x="100" y="315" width="250" height="55" fill="var(--bg)" stroke="var(--border)" stroke-width="1"/>
-  <text x="115" y="338" class="label">Bank Sync</text>
-  <text x="115" y="358" class="value">Optional CSV/PDF</text>
+  <rect x="100" y="324" width="250" height="56" fill="#ffffff" stroke="#e2e8f0" stroke-width="1"/>
+  <text x="116" y="348" font-size="14" font-weight="600" fill="#1e293b">Business Model</text>
+  <text x="116" y="368" font-size="14" fill="#64748b">One-Time Purchase</text>
   
   
   
 
   <!-- Column header -->
-  <rect x="350" y="80" width="250" height="45" fill="var(--accent)" rx="0"/>
-  <text x="475" y="108" text-anchor="middle" class="header">App</text>
+  <rect x="350" y="80" width="250" height="48" fill="#2563eb" rx="0"/>
+  <text x="475" y="110" text-anchor="middle" font-size="17" font-weight="600" fill="#ffffff">Actual</text>
 
   <!-- Rows -->
   
   
-  <rect x="350" y="135" width="250" height="55" fill="var(--accent-light)" stroke="var(--border)" stroke-width="1"/>
-  <text x="365" y="158" class="label">App</text>
-  <text x="365" y="178" class="value">Actual</text>
+  <rect x="350" y="138" width="250" height="56" fill="#f0f5ff" stroke="#e2e8f0" stroke-width="1"/>
+  <text x="366" y="162" font-size="14" font-weight="600" fill="#1e293b">Data Location</text>
+  <text x="366" y="182" font-size="14" fill="#64748b">Encrypted Cloud (Actual Servers)</text>
   
   
-  <rect x="350" y="195" width="250" height="55" fill="var(--bg)" stroke="var(--border)" stroke-width="1"/>
-  <text x="365" y="218" class="label">Data Location</text>
-  <text x="365" y="238" class="value">Encrypted Cloud (Actual Servers)</text>
+  <rect x="350" y="200" width="250" height="56" fill="#ffffff" stroke="#e2e8f0" stroke-width="1"/>
+  <text x="366" y="224" font-size="14" font-weight="600" fill="#1e293b">Encryption Keys</text>
+  <text x="366" y="244" font-size="14" fill="#64748b">User-Held</text>
   
   
-  <rect x="350" y="255" width="250" height="55" fill="var(--accent-light)" stroke="var(--border)" stroke-width="1"/>
-  <text x="365" y="278" class="label">Encryption Keys</text>
-  <text x="365" y="298" class="value">User-Held</text>
+  <rect x="350" y="262" width="250" height="56" fill="#f0f5ff" stroke="#e2e8f0" stroke-width="1"/>
+  <text x="366" y="286" font-size="14" font-weight="600" fill="#1e293b">Bank Sync</text>
+  <text x="366" y="306" font-size="14" fill="#64748b">Optional (Plaid on cloud)</text>
   
   
-  <rect x="350" y="315" width="250" height="55" fill="var(--bg)" stroke="var(--border)" stroke-width="1"/>
-  <text x="365" y="338" class="label">Bank Sync</text>
-  <text x="365" y="358" class="value">Optional</text>
+  <rect x="350" y="324" width="250" height="56" fill="#ffffff" stroke="#e2e8f0" stroke-width="1"/>
+  <text x="366" y="348" font-size="14" font-weight="600" fill="#1e293b">Business Model</text>
+  <text x="366" y="368" font-size="14" fill="#64748b">Subscription / Donation</text>
   
   
   
 
   <!-- Column header -->
-  <rect x="600" y="80" width="250" height="45" fill="var(--accent)" rx="0"/>
-  <text x="725" y="108" text-anchor="middle" class="header">App</text>
+  <rect x="600" y="80" width="250" height="48" fill="#2563eb" rx="0"/>
+  <text x="725" y="110" text-anchor="middle" font-size="17" font-weight="600" fill="#ffffff">Buckets</text>
 
   <!-- Rows -->
   
   
-  <rect x="600" y="135" width="250" height="55" fill="var(--accent-light)" stroke="var(--border)" stroke-width="1"/>
-  <text x="615" y="158" class="label">App</text>
-  <text x="615" y="178" class="value">Buckets</text>
+  <rect x="600" y="138" width="250" height="56" fill="#f0f5ff" stroke="#e2e8f0" stroke-width="1"/>
+  <text x="616" y="162" font-size="14" font-weight="600" fill="#1e293b">Data Location</text>
+  <text x="616" y="182" font-size="14" fill="#64748b">User Device Only</text>
   
   
-  <rect x="600" y="195" width="250" height="55" fill="var(--bg)" stroke="var(--border)" stroke-width="1"/>
-  <text x="615" y="218" class="label">Data Location</text>
-  <text x="615" y="238" class="value">User's Device</text>
+  <rect x="600" y="200" width="250" height="56" fill="#ffffff" stroke="#e2e8f0" stroke-width="1"/>
+  <text x="616" y="224" font-size="14" font-weight="600" fill="#1e293b">Encryption Keys</text>
+  <text x="616" y="244" font-size="14" fill="#64748b">User-Held</text>
   
   
-  <rect x="600" y="255" width="250" height="55" fill="var(--accent-light)" stroke="var(--border)" stroke-width="1"/>
-  <text x="615" y="278" class="label">Encryption Keys</text>
-  <text x="615" y="298" class="value">User-Held</text>
+  <rect x="600" y="262" width="250" height="56" fill="#f0f5ff" stroke="#e2e8f0" stroke-width="1"/>
+  <text x="616" y="286" font-size="14" font-weight="600" fill="#1e293b">Bank Sync</text>
+  <text x="616" y="306" font-size="14" fill="#64748b">None</text>
   
   
-  <rect x="600" y="315" width="250" height="55" fill="var(--bg)" stroke="var(--border)" stroke-width="1"/>
-  <text x="615" y="338" class="label">Bank Sync</text>
-  <text x="615" y="358" class="value">None</text>
+  <rect x="600" y="324" width="250" height="56" fill="#ffffff" stroke="#e2e8f0" stroke-width="1"/>
+  <text x="616" y="348" font-size="14" font-weight="600" fill="#1e293b">Business Model</text>
+  <text x="616" y="368" font-size="14" fill="#64748b">One-Time Purchase</text>
   
   
   
 
   <!-- Column header -->
-  <rect x="850" y="80" width="250" height="45" fill="var(--accent)" rx="0 8 0 0"/>
-  <text x="975" y="108" text-anchor="middle" class="header">App</text>
+  <rect x="850" y="80" width="250" height="48" fill="#2563eb" rx="0 10 0 0"/>
+  <text x="975" y="110" text-anchor="middle" font-size="17" font-weight="600" fill="#ffffff">Banktivity</text>
 
   <!-- Rows -->
   
   
-  <rect x="850" y="135" width="250" height="55" fill="var(--accent-light)" stroke="var(--border)" stroke-width="1"/>
-  <text x="865" y="158" class="label">App</text>
-  <text x="865" y="178" class="value">Banktivity</text>
+  <rect x="850" y="138" width="250" height="56" fill="#f0f5ff" stroke="#e2e8f0" stroke-width="1"/>
+  <text x="866" y="162" font-size="14" font-weight="600" fill="#1e293b">Data Location</text>
+  <text x="866" y="182" font-size="14" fill="#64748b">User Device (iCloud Opt.)</text>
   
   
-  <rect x="850" y="195" width="250" height="55" fill="var(--bg)" stroke="var(--border)" stroke-width="1"/>
-  <text x="865" y="218" class="label">Data Location</text>
-  <text x="865" y="238" class="value">User's Device (iCloud Optional)</text>
+  <rect x="850" y="200" width="250" height="56" fill="#ffffff" stroke="#e2e8f0" stroke-width="1"/>
+  <text x="866" y="224" font-size="14" font-weight="600" fill="#1e293b">Encryption Keys</text>
+  <text x="866" y="244" font-size="14" fill="#64748b">User-Held (Local)</text>
   
   
-  <rect x="850" y="255" width="250" height="55" fill="var(--accent-light)" stroke="var(--border)" stroke-width="1"/>
-  <text x="865" y="278" class="label">Encryption Keys</text>
-  <text x="865" y="298" class="value">User-Held (Local)</text>
+  <rect x="850" y="262" width="250" height="56" fill="#f0f5ff" stroke="#e2e8f0" stroke-width="1"/>
+  <text x="866" y="286" font-size="14" font-weight="600" fill="#1e293b">Bank Sync</text>
+  <text x="866" y="306" font-size="14" fill="#64748b">Optional Direct Connect</text>
   
   
-  <rect x="850" y="315" width="250" height="55" fill="var(--bg)" stroke="var(--border)" stroke-width="1"/>
-  <text x="865" y="338" class="label">Bank Sync</text>
-  <text x="865" y="358" class="value">Optional Direct Connect</text>
+  <rect x="850" y="324" width="250" height="56" fill="#ffffff" stroke="#e2e8f0" stroke-width="1"/>
+  <text x="866" y="348" font-size="14" font-weight="600" fill="#1e293b">Business Model</text>
+  <text x="866" y="368" font-size="14" fill="#64748b">One-Time + Data Sub</text>
   
   
+
+  <!-- Bottom border -->
+  
+  <rect x="100" y="380" width="1000" height="3" fill="#2563eb" rx="0 0 10 10"/>
 </svg>
