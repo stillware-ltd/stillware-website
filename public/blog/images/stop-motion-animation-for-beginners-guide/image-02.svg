@@ -1,0 +1,95 @@
+
+
+
+
+
+
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 380" width="1200" height="380">
+  <style>
+    text { font-family: Inter, system-ui, -apple-system, sans-serif; }
+  </style>
+
+  <rect width="1200" height="380" fill="#ffffff"/>
+
+  <!-- Title -->
+  <text x="600" y="50" text-anchor="middle" font-size="28" font-weight="700" fill="#1e293b">The Simple Character Walk Project: From Setup to Export</text>
+
+  
+  
+  
+
+  <!-- Step circle -->
+  <circle cx="400" cy="140" r="32" fill="#2563eb"/>
+  <circle cx="400" cy="140" r="32" fill="none" stroke="#dbeafe" stroke-width="3" opacity="0.5"/>
+  <text x="400" y="149" text-anchor="middle" font-size="22" font-weight="700" fill="#ffffff">1</text>
+
+  <!-- Connector line from circle to box -->
+  <line x1="400" y1="172" x2="400" y2="200" stroke="#2563eb" stroke-width="2"/>
+
+  <!-- Step box -->
+  <rect x="320" y="200" width="160" height="130" rx="10" fill="#f0f5ff" stroke="#2563eb" stroke-width="1.5"/>
+  <text x="400" y="235" text-anchor="middle" font-size="15" font-weight="600" fill="#1e293b">Setup:2min</text>
+
+  <!-- Description -->
+  <foreignObject x="330" y="245" width="140" height="75">
+    <p xmlns="http://www.w3.org/1999/xhtml" style="font-family:Inter,system-ui,sans-serif;font-size:12px;color:#64748b;margin:0;line-height:1.4;"></p>
+  </foreignObject>
+
+  <!-- Arrow to next step -->
+  
+  
+  <line x1="485" y1="265" x2="513" y2="265" stroke="#2563eb" stroke-width="2"/>
+  <polygon points="513,259 522,265 513,271" fill="#2563eb"/>
+  
+  
+  
+  
+
+  <!-- Step circle -->
+  <circle cx="600" cy="140" r="32" fill="#2563eb"/>
+  <circle cx="600" cy="140" r="32" fill="none" stroke="#dbeafe" stroke-width="3" opacity="0.5"/>
+  <text x="600" y="149" text-anchor="middle" font-size="22" font-weight="700" fill="#ffffff">2</text>
+
+  <!-- Connector line from circle to box -->
+  <line x1="600" y1="172" x2="600" y2="200" stroke="#2563eb" stroke-width="2"/>
+
+  <!-- Step box -->
+  <rect x="520" y="200" width="160" height="130" rx="10" fill="#f0f5ff" stroke="#2563eb" stroke-width="1.5"/>
+  <text x="600" y="235" text-anchor="middle" font-size="15" font-weight="600" fill="#1e293b">Shooting:15min</text>
+
+  <!-- Description -->
+  <foreignObject x="530" y="245" width="140" height="75">
+    <p xmlns="http://www.w3.org/1999/xhtml" style="font-family:Inter,system-ui,sans-serif;font-size:12px;color:#64748b;margin:0;line-height:1.4;"></p>
+  </foreignObject>
+
+  <!-- Arrow to next step -->
+  
+  
+  <line x1="685" y1="265" x2="713" y2="265" stroke="#2563eb" stroke-width="2"/>
+  <polygon points="713,259 722,265 713,271" fill="#2563eb"/>
+  
+  
+  
+  
+
+  <!-- Step circle -->
+  <circle cx="800" cy="140" r="32" fill="#2563eb"/>
+  <circle cx="800" cy="140" r="32" fill="none" stroke="#dbeafe" stroke-width="3" opacity="0.5"/>
+  <text x="800" y="149" text-anchor="middle" font-size="22" font-weight="700" fill="#ffffff">3</text>
+
+  <!-- Connector line from circle to box -->
+  <line x1="800" y1="172" x2="800" y2="200" stroke="#2563eb" stroke-width="2"/>
+
+  <!-- Step box -->
+  <rect x="720" y="200" width="160" height="130" rx="10" fill="#f0f5ff" stroke="#2563eb" stroke-width="1.5"/>
+  <text x="800" y="235" text-anchor="middle" font-size="15" font-weight="600" fill="#1e293b">Export:1min</text>
+
+  <!-- Description -->
+  <foreignObject x="730" y="245" width="140" height="75">
+    <p xmlns="http://www.w3.org/1999/xhtml" style="font-family:Inter,system-ui,sans-serif;font-size:12px;color:#64748b;margin:0;line-height:1.4;"></p>
+  </foreignObject>
+
+  <!-- Arrow to next step -->
+  
+  
+</svg>

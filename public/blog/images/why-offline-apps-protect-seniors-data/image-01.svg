@@ -1,0 +1,50 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 675" width="1200" height="675">
+  <style>
+    text { font-family: Inter, system-ui, -apple-system, sans-serif; }
+  </style>
+
+  <rect width="1200" height="675" fill="#ffffff"/>
+
+  <!-- Title -->
+  <text x="600" y="50" text-anchor="middle" font-size="28" font-weight="700" fill="#1e293b">Data flow of a cloud app vs. an offline app for a senior user</text>
+
+  <!-- Boxes arranged in a grid (2 rows, up to 4 columns) -->
+  
+  
+  
+  
+  
+  
+  
+
+  
+  
+  
+  
+  
+
+  <rect x="352" y="90" width="230" height="130" rx="12" fill="#f0f5ff" stroke="#2563eb" stroke-width="1.5"/>
+  <rect x="352" y="90" width="230" height="4" rx="2" fill="#2563eb"/>
+  <text x="467" y="128" text-anchor="middle" font-size="15" font-weight="600" fill="#1e293b">Cloud_App</text>
+
+  <foreignObject x="366" y="138" width="202" height="72">
+    <p xmlns="http://www.w3.org/1999/xhtml" style="font-family:Inter,system-ui,sans-serif;font-size:12px;color:#64748b;margin:0;line-height:1.35;text-align:center;">User_Device-&gt;Company_Server-&gt;Third_Party</p>
+  </foreignObject>
+  
+  
+  
+  
+  
+
+  <rect x="618" y="90" width="230" height="130" rx="12" fill="#f0f5ff" stroke="#2563eb" stroke-width="1.5"/>
+  <rect x="618" y="90" width="230" height="4" rx="2" fill="#2563eb"/>
+  <text x="733" y="128" text-anchor="middle" font-size="15" font-weight="600" fill="#1e293b">Offline_App</text>
+
+  <foreignObject x="632" y="138" width="202" height="72">
+    <p xmlns="http://www.w3.org/1999/xhtml" style="font-family:Inter,system-ui,sans-serif;font-size:12px;color:#64748b;margin:0;line-height:1.35;text-align:center;">User_Device-&gt;Local_Storage_Only</p>
+  </foreignObject>
+  
+
+  <!-- Connections (dashed lines between box centers) -->
+  
+</svg>

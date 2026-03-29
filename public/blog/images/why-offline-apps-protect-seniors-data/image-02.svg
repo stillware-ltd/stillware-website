@@ -1,0 +1,31 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 675" width="1200" height="675">
+  <style>
+    text { font-family: Inter, system-ui, -apple-system, sans-serif; }
+  </style>
+
+  <rect width="1200" height="675" fill="#ffffff"/>
+
+  <!-- Title -->
+  <text x="600" y="50" text-anchor="middle" font-size="28" font-weight="700" fill="#1e293b">The user journey of logging health data in a cloud app vs. an offline app</text>
+
+  <!-- Divider -->
+  <line x1="600" y1="80" x2="600" y2="640" stroke="#2563eb" stroke-width="2" stroke-dasharray="8,4"/>
+
+  <!-- VS badge -->
+  <circle cx="600" cy="110" r="20" fill="#2563eb"/>
+  <text x="600" y="116" text-anchor="middle" font-size="13" font-weight="700" fill="#ffffff">VS</text>
+
+  <!-- Before panel -->
+  <rect x="40" y="80" width="520" height="560" rx="14" fill="#fee2e2" opacity="0.25"/>
+  <rect x="40" y="80" width="520" height="560" rx="14" fill="none" stroke="#fca5a5" stroke-width="1"/>
+  <text x="300" y="120" text-anchor="middle" font-size="22" font-weight="700" fill="#dc2626">Before</text>
+
+  
+
+  <!-- After panel -->
+  <rect x="640" y="80" width="520" height="560" rx="14" fill="#dcfce7" opacity="0.25"/>
+  <rect x="640" y="80" width="520" height="560" rx="14" fill="none" stroke="#86efac" stroke-width="1"/>
+  <text x="900" y="120" text-anchor="middle" font-size="22" font-weight="700" fill="#16a34a">After</text>
+
+  
+</svg>
