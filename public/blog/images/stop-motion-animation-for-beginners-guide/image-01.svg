@@ -6,7 +6,7 @@
   <rect width="1200" height="675" fill="#ffffff"/>
 
   <!-- Title -->
-  <text x="600" y="50" text-anchor="middle" font-size="28" font-weight="700" fill="#1e293b">The Minimalist Stop Motion Toolkit: Smartphone, DIY Tripod, Clay, Lamp, Free App</text>
+  <text x="600" y="50" text-anchor="middle" font-size="28" font-weight="700" fill="#1e293b">The Minimalist Stop Motion Toolkit</text>
 
   <!-- Grid: up to 4 columns, 2 rows -->
   
@@ -17,5 +17,105 @@
   
   
 
+  
+  
+  
+  
+  
+
+  <!-- Card background -->
+  <rect x="64" y="100" width="250" height="240" rx="12" fill="#f8fafc" stroke="#e2e8f0" stroke-width="1"/>
+
+  <!-- Icon circle with first letter -->
+  <circle cx="189" cy="145" r="30" fill="#2563eb"/>
+  <text x="189" y="154" text-anchor="middle" font-size="22" font-weight="700" fill="#ffffff">P</text>
+
+  <!-- Label -->
+  <text x="189" y="200" text-anchor="middle" font-size="15" font-weight="600" fill="#1e293b">Smartphone</text>
+
+  <!-- Description -->
+  <foreignObject x="78" y="210" width="222" height="90">
+    <p xmlns="http://www.w3.org/1999/xhtml" style="font-family:Inter,system-ui,sans-serif;font-size:12px;color:#64748b;margin:0;line-height:1.4;text-align:center;">Your camera and preview screen</p>
+  </foreignObject>
+  
+  
+  
+  
+  
+
+  <!-- Card background -->
+  <rect x="338" y="100" width="250" height="240" rx="12" fill="#f8fafc" stroke="#e2e8f0" stroke-width="1"/>
+
+  <!-- Icon circle with first letter -->
+  <circle cx="463" cy="145" r="30" fill="#2563eb"/>
+  <text x="463" y="154" text-anchor="middle" font-size="22" font-weight="700" fill="#ffffff">T</text>
+
+  <!-- Label -->
+  <text x="463" y="200" text-anchor="middle" font-size="15" font-weight="600" fill="#1e293b">DIY Tripod</text>
+
+  <!-- Description -->
+  <foreignObject x="352" y="210" width="222" height="90">
+    <p xmlns="http://www.w3.org/1999/xhtml" style="font-family:Inter,system-ui,sans-serif;font-size:12px;color:#64748b;margin:0;line-height:1.4;text-align:center;">Stable surface or phone mount</p>
+  </foreignObject>
+  
+  
+  
+  
+  
+
+  <!-- Card background -->
+  <rect x="612" y="100" width="250" height="240" rx="12" fill="#f8fafc" stroke="#e2e8f0" stroke-width="1"/>
+
+  <!-- Icon circle with first letter -->
+  <circle cx="737" cy="145" r="30" fill="#2563eb"/>
+  <text x="737" y="154" text-anchor="middle" font-size="22" font-weight="700" fill="#ffffff">C</text>
+
+  <!-- Label -->
+  <text x="737" y="200" text-anchor="middle" font-size="15" font-weight="600" fill="#1e293b">Clay/Figures</text>
+
+  <!-- Description -->
+  <foreignObject x="626" y="210" width="222" height="90">
+    <p xmlns="http://www.w3.org/1999/xhtml" style="font-family:Inter,system-ui,sans-serif;font-size:12px;color:#64748b;margin:0;line-height:1.4;text-align:center;">Moldable characters or objects</p>
+  </foreignObject>
+  
+  
+  
+  
+  
+
+  <!-- Card background -->
+  <rect x="886" y="100" width="250" height="240" rx="12" fill="#f8fafc" stroke="#e2e8f0" stroke-width="1"/>
+
+  <!-- Icon circle with first letter -->
+  <circle cx="1011" cy="145" r="30" fill="#2563eb"/>
+  <text x="1011" y="154" text-anchor="middle" font-size="22" font-weight="700" fill="#ffffff">L</text>
+
+  <!-- Label -->
+  <text x="1011" y="200" text-anchor="middle" font-size="15" font-weight="600" fill="#1e293b">Desk Lamp</text>
+
+  <!-- Description -->
+  <foreignObject x="900" y="210" width="222" height="90">
+    <p xmlns="http://www.w3.org/1999/xhtml" style="font-family:Inter,system-ui,sans-serif;font-size:12px;color:#64748b;margin:0;line-height:1.4;text-align:center;">Consistent lighting source</p>
+  </foreignObject>
+  
+  
+  
+  
+  
+
+  <!-- Card background -->
+  <rect x="64" y="370" width="250" height="240" rx="12" fill="#f8fafc" stroke="#e2e8f0" stroke-width="1"/>
+
+  <!-- Icon circle with first letter -->
+  <circle cx="189" cy="415" r="30" fill="#2563eb"/>
+  <text x="189" y="424" text-anchor="middle" font-size="22" font-weight="700" fill="#ffffff">A</text>
+
+  <!-- Label -->
+  <text x="189" y="470" text-anchor="middle" font-size="15" font-weight="600" fill="#1e293b">Free App</text>
+
+  <!-- Description -->
+  <foreignObject x="78" y="480" width="222" height="90">
+    <p xmlns="http://www.w3.org/1999/xhtml" style="font-family:Inter,system-ui,sans-serif;font-size:12px;color:#64748b;margin:0;line-height:1.4;text-align:center;">Stop Motion Studio or similar</p>
+  </foreignObject>
   
 </svg>

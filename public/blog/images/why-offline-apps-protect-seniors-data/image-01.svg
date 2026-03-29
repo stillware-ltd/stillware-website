@@ -23,12 +23,25 @@
   
   
 
+  <rect x="86" y="90" width="230" height="130" rx="12" fill="#f0f5ff" stroke="#2563eb" stroke-width="1.5"/>
+  <rect x="86" y="90" width="230" height="4" rx="2" fill="#2563eb"/>
+  <text x="201" y="128" text-anchor="middle" font-size="15" font-weight="600" fill="#1e293b">Cloud App</text>
+
+  <foreignObject x="100" y="138" width="202" height="72">
+    <p xmlns="http://www.w3.org/1999/xhtml" style="font-family:Inter,system-ui,sans-serif;font-size:12px;color:#64748b;margin:0;line-height:1.35;text-align:center;">Data flows to company servers</p>
+  </foreignObject>
+  
+  
+  
+  
+  
+
   <rect x="352" y="90" width="230" height="130" rx="12" fill="#f0f5ff" stroke="#2563eb" stroke-width="1.5"/>
   <rect x="352" y="90" width="230" height="4" rx="2" fill="#2563eb"/>
-  <text x="467" y="128" text-anchor="middle" font-size="15" font-weight="600" fill="#1e293b">Cloud_App</text>
+  <text x="467" y="128" text-anchor="middle" font-size="15" font-weight="600" fill="#1e293b">Company Server</text>
 
   <foreignObject x="366" y="138" width="202" height="72">
-    <p xmlns="http://www.w3.org/1999/xhtml" style="font-family:Inter,system-ui,sans-serif;font-size:12px;color:#64748b;margin:0;line-height:1.35;text-align:center;">User_Device-&gt;Company_Server-&gt;Third_Party</p>
+    <p xmlns="http://www.w3.org/1999/xhtml" style="font-family:Inter,system-ui,sans-serif;font-size:12px;color:#64748b;margin:0;line-height:1.35;text-align:center;">Stored remotely, at risk of breach</p>
   </foreignObject>
   
   
@@ -38,10 +51,49 @@
 
   <rect x="618" y="90" width="230" height="130" rx="12" fill="#f0f5ff" stroke="#2563eb" stroke-width="1.5"/>
   <rect x="618" y="90" width="230" height="4" rx="2" fill="#2563eb"/>
-  <text x="733" y="128" text-anchor="middle" font-size="15" font-weight="600" fill="#1e293b">Offline_App</text>
+  <text x="733" y="128" text-anchor="middle" font-size="15" font-weight="600" fill="#1e293b">Third Parties</text>
 
   <foreignObject x="632" y="138" width="202" height="72">
-    <p xmlns="http://www.w3.org/1999/xhtml" style="font-family:Inter,system-ui,sans-serif;font-size:12px;color:#64748b;margin:0;line-height:1.35;text-align:center;">User_Device-&gt;Local_Storage_Only</p>
+    <p xmlns="http://www.w3.org/1999/xhtml" style="font-family:Inter,system-ui,sans-serif;font-size:12px;color:#64748b;margin:0;line-height:1.35;text-align:center;">Data shared with analytics firms</p>
+  </foreignObject>
+  
+  
+  
+  
+  
+
+  <rect x="884" y="90" width="230" height="130" rx="12" fill="#f0f5ff" stroke="#2563eb" stroke-width="1.5"/>
+  <rect x="884" y="90" width="230" height="4" rx="2" fill="#2563eb"/>
+  <text x="999" y="128" text-anchor="middle" font-size="15" font-weight="600" fill="#1e293b">Offline App</text>
+
+  <foreignObject x="898" y="138" width="202" height="72">
+    <p xmlns="http://www.w3.org/1999/xhtml" style="font-family:Inter,system-ui,sans-serif;font-size:12px;color:#64748b;margin:0;line-height:1.35;text-align:center;">Data stays on the device</p>
+  </foreignObject>
+  
+  
+  
+  
+  
+
+  <rect x="86" y="280" width="230" height="130" rx="12" fill="#f0f5ff" stroke="#2563eb" stroke-width="1.5"/>
+  <rect x="86" y="280" width="230" height="4" rx="2" fill="#2563eb"/>
+  <text x="201" y="318" text-anchor="middle" font-size="15" font-weight="600" fill="#1e293b">Local Storage</text>
+
+  <foreignObject x="100" y="328" width="202" height="72">
+    <p xmlns="http://www.w3.org/1999/xhtml" style="font-family:Inter,system-ui,sans-serif;font-size:12px;color:#64748b;margin:0;line-height:1.35;text-align:center;">Encrypted files on your phone</p>
+  </foreignObject>
+  
+  
+  
+  
+  
+
+  <rect x="352" y="280" width="230" height="130" rx="12" fill="#f0f5ff" stroke="#2563eb" stroke-width="1.5"/>
+  <rect x="352" y="280" width="230" height="4" rx="2" fill="#2563eb"/>
+  <text x="467" y="318" text-anchor="middle" font-size="15" font-weight="600" fill="#1e293b">No External Access</text>
+
+  <foreignObject x="366" y="328" width="202" height="72">
+    <p xmlns="http://www.w3.org/1999/xhtml" style="font-family:Inter,system-ui,sans-serif;font-size:12px;color:#64748b;margin:0;line-height:1.35;text-align:center;">Nothing leaves the device</p>
   </foreignObject>
   
 

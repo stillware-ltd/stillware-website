@@ -23,12 +23,77 @@
   
   
 
-  <rect x="485" y="90" width="230" height="130" rx="12" fill="#f0f5ff" stroke="#2563eb" stroke-width="1.5"/>
-  <rect x="485" y="90" width="230" height="4" rx="2" fill="#2563eb"/>
-  <text x="600" y="128" text-anchor="middle" font-size="15" font-weight="600" fill="#1e293b">Conventional</text>
+  <rect x="86" y="90" width="230" height="130" rx="12" fill="#f0f5ff" stroke="#2563eb" stroke-width="1.5"/>
+  <rect x="86" y="90" width="230" height="4" rx="2" fill="#2563eb"/>
+  <text x="201" y="128" text-anchor="middle" font-size="15" font-weight="600" fill="#1e293b">User Input</text>
 
-  <foreignObject x="499" y="138" width="202" height="72">
-    <p xmlns="http://www.w3.org/1999/xhtml" style="font-family:Inter,system-ui,sans-serif;font-size:12px;color:#64748b;margin:0;line-height:1.35;text-align:center;">User Input-&gt;Cloud Server-&gt;Third Party Analytics;Privacy-First:User Input-&gt;Local Device-&gt;User-Controlled Storage</p>
+  <foreignObject x="100" y="138" width="202" height="72">
+    <p xmlns="http://www.w3.org/1999/xhtml" style="font-family:Inter,system-ui,sans-serif;font-size:12px;color:#64748b;margin:0;line-height:1.35;text-align:center;">Financial transactions entered</p>
+  </foreignObject>
+  
+  
+  
+  
+  
+
+  <rect x="352" y="90" width="230" height="130" rx="12" fill="#f0f5ff" stroke="#2563eb" stroke-width="1.5"/>
+  <rect x="352" y="90" width="230" height="4" rx="2" fill="#2563eb"/>
+  <text x="467" y="128" text-anchor="middle" font-size="15" font-weight="600" fill="#1e293b">Cloud Server</text>
+
+  <foreignObject x="366" y="138" width="202" height="72">
+    <p xmlns="http://www.w3.org/1999/xhtml" style="font-family:Inter,system-ui,sans-serif;font-size:12px;color:#64748b;margin:0;line-height:1.35;text-align:center;">Data stored on company servers</p>
+  </foreignObject>
+  
+  
+  
+  
+  
+
+  <rect x="618" y="90" width="230" height="130" rx="12" fill="#f0f5ff" stroke="#2563eb" stroke-width="1.5"/>
+  <rect x="618" y="90" width="230" height="4" rx="2" fill="#2563eb"/>
+  <text x="733" y="128" text-anchor="middle" font-size="15" font-weight="600" fill="#1e293b">Third-Party Analytics</text>
+
+  <foreignObject x="632" y="138" width="202" height="72">
+    <p xmlns="http://www.w3.org/1999/xhtml" style="font-family:Inter,system-ui,sans-serif;font-size:12px;color:#64748b;margin:0;line-height:1.35;text-align:center;">Data shared with advertisers</p>
+  </foreignObject>
+  
+  
+  
+  
+  
+
+  <rect x="884" y="90" width="230" height="130" rx="12" fill="#f0f5ff" stroke="#2563eb" stroke-width="1.5"/>
+  <rect x="884" y="90" width="230" height="4" rx="2" fill="#2563eb"/>
+  <text x="999" y="128" text-anchor="middle" font-size="15" font-weight="600" fill="#1e293b">Privacy-First Input</text>
+
+  <foreignObject x="898" y="138" width="202" height="72">
+    <p xmlns="http://www.w3.org/1999/xhtml" style="font-family:Inter,system-ui,sans-serif;font-size:12px;color:#64748b;margin:0;line-height:1.35;text-align:center;">Same financial transactions</p>
+  </foreignObject>
+  
+  
+  
+  
+  
+
+  <rect x="86" y="280" width="230" height="130" rx="12" fill="#f0f5ff" stroke="#2563eb" stroke-width="1.5"/>
+  <rect x="86" y="280" width="230" height="4" rx="2" fill="#2563eb"/>
+  <text x="201" y="318" text-anchor="middle" font-size="15" font-weight="600" fill="#1e293b">Local Device</text>
+
+  <foreignObject x="100" y="328" width="202" height="72">
+    <p xmlns="http://www.w3.org/1999/xhtml" style="font-family:Inter,system-ui,sans-serif;font-size:12px;color:#64748b;margin:0;line-height:1.35;text-align:center;">Data stays on your device</p>
+  </foreignObject>
+  
+  
+  
+  
+  
+
+  <rect x="352" y="280" width="230" height="130" rx="12" fill="#f0f5ff" stroke="#2563eb" stroke-width="1.5"/>
+  <rect x="352" y="280" width="230" height="4" rx="2" fill="#2563eb"/>
+  <text x="467" y="318" text-anchor="middle" font-size="15" font-weight="600" fill="#1e293b">User-Controlled Storage</text>
+
+  <foreignObject x="366" y="328" width="202" height="72">
+    <p xmlns="http://www.w3.org/1999/xhtml" style="font-family:Inter,system-ui,sans-serif;font-size:12px;color:#64748b;margin:0;line-height:1.35;text-align:center;">You own your data files</p>
   </foreignObject>
   
 

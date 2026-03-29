@@ -6,7 +6,7 @@
   <rect width="1200" height="675" fill="#ffffff"/>
 
   <!-- Title -->
-  <text x="600" y="45" text-anchor="middle" font-size="28" font-weight="700" fill="#1e293b">Simple flowchart for evaluating if an app is safe for sensitive senior data</text>
+  <text x="600" y="45" text-anchor="middle" font-size="28" font-weight="700" fill="#1e293b">Is this app safe for sensitive senior data?</text>
 
   
   
@@ -19,7 +19,7 @@
   
   <rect x="460" y="75" width="280" height="72" rx="12" fill="#f0f5ff" stroke="#2563eb" stroke-width="2"/>
   <foreignObject x="472" y="83" width="256" height="56">
-    <p xmlns="http://www.w3.org/1999/xhtml" style="font-family:Inter,system-ui,sans-serif;font-size:14px;color:#1e293b;margin:0;line-height:1.35;text-align:center;font-weight:600;">Start:New_App-&gt;Q1_Need_Account</p>
+    <p xmlns="http://www.w3.org/1999/xhtml" style="font-family:Inter,system-ui,sans-serif;font-size:14px;color:#1e293b;margin:0;line-height:1.35;text-align:center;font-weight:600;">Does the app require an account</p>
   </foreignObject>
 
   <!-- Yes path (left) -->
@@ -28,7 +28,7 @@
   <rect x="280" y="81" width="220" height="60" rx="10" fill="#dcfce7" stroke="#16a34a" stroke-width="1.5"/>
   <text x="290" y="101" font-size="12" font-weight="700" fill="#16a34a">Yes:</text>
   <foreignObject x="290" y="104" width="198" height="35">
-    <p xmlns="http://www.w3.org/1999/xhtml" style="font-family:Inter,system-ui,sans-serif;font-size:12px;color:#64748b;margin:0;line-height:1.3;">-&gt;Yes:Cloud_Risk-&gt;Q2_Hold_Sensitive_Data?-&gt;Yes:Consider_Offline_Alternative</p>
+    <p xmlns="http://www.w3.org/1999/xhtml" style="font-family:Inter,system-ui,sans-serif;font-size:12px;color:#64748b;margin:0;line-height:1.3;">Higher data risk</p>
   </foreignObject>
 
   <!-- No path (right) -->
@@ -37,7 +37,75 @@
   <rect x="780" y="81" width="220" height="60" rx="10" fill="#fee2e2" stroke="#dc2626" stroke-width="1.5"/>
   <text x="790" y="101" font-size="12" font-weight="700" fill="#dc2626">No:</text>
   <foreignObject x="790" y="104" width="198" height="35">
-    <p xmlns="http://www.w3.org/1999/xhtml" style="font-family:Inter,system-ui,sans-serif;font-size:12px;color:#64748b;margin:0;line-height:1.3;"></p>
+    <p xmlns="http://www.w3.org/1999/xhtml" style="font-family:Inter,system-ui,sans-serif;font-size:12px;color:#64748b;margin:0;line-height:1.3;">Good sign</p>
+  </foreignObject>
+
+  <!-- Vertical connector to next question -->
+  
+  <line x1="600" y1="147" x2="600" y2="225" stroke="#64748b" stroke-width="1.5"/>
+  <polygon points="596,221 600,225 604,221" fill="#64748b"/>
+  
+  
+  
+  
+
+  <!-- Question node -->
+  
+  <rect x="460" y="225" width="280" height="72" rx="12" fill="#f0f5ff" stroke="#2563eb" stroke-width="2"/>
+  <foreignObject x="472" y="233" width="256" height="56">
+    <p xmlns="http://www.w3.org/1999/xhtml" style="font-family:Inter,system-ui,sans-serif;font-size:14px;color:#1e293b;margin:0;line-height:1.35;text-align:center;font-weight:600;">Does it store data in the cloud</p>
+  </foreignObject>
+
+  <!-- Yes path (left) -->
+  
+  <line x1="460" y1="261" x2="560" y2="261" stroke="#64748b" stroke-width="1.5"/>
+  <rect x="280" y="231" width="220" height="60" rx="10" fill="#dcfce7" stroke="#16a34a" stroke-width="1.5"/>
+  <text x="290" y="251" font-size="12" font-weight="700" fill="#16a34a">Yes:</text>
+  <foreignObject x="290" y="254" width="198" height="35">
+    <p xmlns="http://www.w3.org/1999/xhtml" style="font-family:Inter,system-ui,sans-serif;font-size:12px;color:#64748b;margin:0;line-height:1.3;">Check privacy policy</p>
+  </foreignObject>
+
+  <!-- No path (right) -->
+  
+  <line x1="740" y1="261" x2="780" y2="261" stroke="#64748b" stroke-width="1.5"/>
+  <rect x="780" y="231" width="220" height="60" rx="10" fill="#fee2e2" stroke="#dc2626" stroke-width="1.5"/>
+  <text x="790" y="251" font-size="12" font-weight="700" fill="#dc2626">No:</text>
+  <foreignObject x="790" y="254" width="198" height="35">
+    <p xmlns="http://www.w3.org/1999/xhtml" style="font-family:Inter,system-ui,sans-serif;font-size:12px;color:#64748b;margin:0;line-height:1.3;">Data stays local</p>
+  </foreignObject>
+
+  <!-- Vertical connector to next question -->
+  
+  <line x1="600" y1="297" x2="600" y2="375" stroke="#64748b" stroke-width="1.5"/>
+  <polygon points="596,371 600,375 604,371" fill="#64748b"/>
+  
+  
+  
+  
+
+  <!-- Question node -->
+  
+  <rect x="460" y="375" width="280" height="72" rx="12" fill="#f0f5ff" stroke="#2563eb" stroke-width="2"/>
+  <foreignObject x="472" y="383" width="256" height="56">
+    <p xmlns="http://www.w3.org/1999/xhtml" style="font-family:Inter,system-ui,sans-serif;font-size:14px;color:#1e293b;margin:0;line-height:1.35;text-align:center;font-weight:600;">Does it share data with third parties</p>
+  </foreignObject>
+
+  <!-- Yes path (left) -->
+  
+  <line x1="460" y1="411" x2="560" y2="411" stroke="#64748b" stroke-width="1.5"/>
+  <rect x="280" y="381" width="220" height="60" rx="10" fill="#dcfce7" stroke="#16a34a" stroke-width="1.5"/>
+  <text x="290" y="401" font-size="12" font-weight="700" fill="#16a34a">Yes:</text>
+  <foreignObject x="290" y="404" width="198" height="35">
+    <p xmlns="http://www.w3.org/1999/xhtml" style="font-family:Inter,system-ui,sans-serif;font-size:12px;color:#64748b;margin:0;line-height:1.3;">Avoid for sensitive data</p>
+  </foreignObject>
+
+  <!-- No path (right) -->
+  
+  <line x1="740" y1="411" x2="780" y2="411" stroke="#64748b" stroke-width="1.5"/>
+  <rect x="780" y="381" width="220" height="60" rx="10" fill="#fee2e2" stroke="#dc2626" stroke-width="1.5"/>
+  <text x="790" y="401" font-size="12" font-weight="700" fill="#dc2626">No:</text>
+  <foreignObject x="790" y="404" width="198" height="35">
+    <p xmlns="http://www.w3.org/1999/xhtml" style="font-family:Inter,system-ui,sans-serif;font-size:12px;color:#64748b;margin:0;line-height:1.3;">Likely safe to use</p>
   </foreignObject>
 
   <!-- Vertical connector to next question -->
