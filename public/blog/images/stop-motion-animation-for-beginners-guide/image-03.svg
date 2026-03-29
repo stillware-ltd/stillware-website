@@ -6,7 +6,7 @@
   <rect width="1200" height="675" fill="#ffffff"/>
 
   <!-- Title -->
-  <text x="600" y="50" text-anchor="middle" font-size="28" font-weight="700" fill="#1e293b">Avoiding Common Pitfalls: From Jerky Motion to Smooth Animation</text>
+  <text x="600" y="50" text-anchor="middle" font-size="28" font-weight="700" fill="#1e293b">From Jerky Motion to Smooth Animation</text>
 
   <!-- Divider -->
   <line x1="600" y1="80" x2="600" y2="640" stroke="#2563eb" stroke-width="2" stroke-dasharray="8,4"/>
@@ -18,26 +18,74 @@
   <!-- Before panel -->
   <rect x="40" y="80" width="520" height="560" rx="14" fill="#fee2e2" opacity="0.25"/>
   <rect x="40" y="80" width="520" height="560" rx="14" fill="none" stroke="#fca5a5" stroke-width="1"/>
-  <text x="300" y="120" text-anchor="middle" font-size="22" font-weight="700" fill="#dc2626">Before</text>
+  <text x="300" y="120" text-anchor="middle" font-size="22" font-weight="700" fill="#dc2626">Common Mistakes</text>
 
   
   
   <circle cx="80" cy="158" r="7" fill="#dc2626" opacity="0.7"/>
   <foreignObject x="98" y="143" width="440" height="48">
-    <p xmlns="http://www.w3.org/1999/xhtml" style="font-family:Inter,system-ui,sans-serif;font-size:14px;color:#1e293b;margin:0;line-height:1.45;">No Onion Skin</p>
+    <p xmlns="http://www.w3.org/1999/xhtml" style="font-family:Inter,system-ui,sans-serif;font-size:14px;color:#1e293b;margin:0;line-height:1.45;">No onion skin overlay</p>
   </foreignObject>
   
   
   <circle cx="80" cy="216" r="7" fill="#dc2626" opacity="0.7"/>
   <foreignObject x="98" y="201" width="440" height="48">
-    <p xmlns="http://www.w3.org/1999/xhtml" style="font-family:Inter,system-ui,sans-serif;font-size:14px;color:#1e293b;margin:0;line-height:1.45;">After:Onion Skin On</p>
+    <p xmlns="http://www.w3.org/1999/xhtml" style="font-family:Inter,system-ui,sans-serif;font-size:14px;color:#1e293b;margin:0;line-height:1.45;">Inconsistent lighting</p>
+  </foreignObject>
+  
+  
+  <circle cx="80" cy="274" r="7" fill="#dc2626" opacity="0.7"/>
+  <foreignObject x="98" y="259" width="440" height="48">
+    <p xmlns="http://www.w3.org/1999/xhtml" style="font-family:Inter,system-ui,sans-serif;font-size:14px;color:#1e293b;margin:0;line-height:1.45;">Moving objects too far per frame</p>
+  </foreignObject>
+  
+  
+  <circle cx="80" cy="332" r="7" fill="#dc2626" opacity="0.7"/>
+  <foreignObject x="98" y="317" width="440" height="48">
+    <p xmlns="http://www.w3.org/1999/xhtml" style="font-family:Inter,system-ui,sans-serif;font-size:14px;color:#1e293b;margin:0;line-height:1.45;">Bumping the camera mid-shoot</p>
+  </foreignObject>
+  
+  
+  <circle cx="80" cy="390" r="7" fill="#dc2626" opacity="0.7"/>
+  <foreignObject x="98" y="375" width="440" height="48">
+    <p xmlns="http://www.w3.org/1999/xhtml" style="font-family:Inter,system-ui,sans-serif;font-size:14px;color:#1e293b;margin:0;line-height:1.45;">Too few frames per second</p>
   </foreignObject>
   
 
   <!-- After panel -->
   <rect x="640" y="80" width="520" height="560" rx="14" fill="#dcfce7" opacity="0.25"/>
   <rect x="640" y="80" width="520" height="560" rx="14" fill="none" stroke="#86efac" stroke-width="1"/>
-  <text x="900" y="120" text-anchor="middle" font-size="22" font-weight="700" fill="#16a34a">After</text>
+  <text x="900" y="120" text-anchor="middle" font-size="22" font-weight="700" fill="#16a34a">Pro Techniques</text>
 
+  
+  
+  <circle cx="680" cy="158" r="7" fill="#16a34a" opacity="0.7"/>
+  <foreignObject x="698" y="143" width="440" height="48">
+    <p xmlns="http://www.w3.org/1999/xhtml" style="font-family:Inter,system-ui,sans-serif;font-size:14px;color:#1e293b;margin:0;line-height:1.45;">Onion skin always enabled</p>
+  </foreignObject>
+  
+  
+  <circle cx="680" cy="216" r="7" fill="#16a34a" opacity="0.7"/>
+  <foreignObject x="698" y="201" width="440" height="48">
+    <p xmlns="http://www.w3.org/1999/xhtml" style="font-family:Inter,system-ui,sans-serif;font-size:14px;color:#1e293b;margin:0;line-height:1.45;">Fixed desk lamp position</p>
+  </foreignObject>
+  
+  
+  <circle cx="680" cy="274" r="7" fill="#16a34a" opacity="0.7"/>
+  <foreignObject x="698" y="259" width="440" height="48">
+    <p xmlns="http://www.w3.org/1999/xhtml" style="font-family:Inter,system-ui,sans-serif;font-size:14px;color:#1e293b;margin:0;line-height:1.45;">Small incremental movements</p>
+  </foreignObject>
+  
+  
+  <circle cx="680" cy="332" r="7" fill="#16a34a" opacity="0.7"/>
+  <foreignObject x="698" y="317" width="440" height="48">
+    <p xmlns="http://www.w3.org/1999/xhtml" style="font-family:Inter,system-ui,sans-serif;font-size:14px;color:#1e293b;margin:0;line-height:1.45;">Tripod or weighted mount</p>
+  </foreignObject>
+  
+  
+  <circle cx="680" cy="390" r="7" fill="#16a34a" opacity="0.7"/>
+  <foreignObject x="698" y="375" width="440" height="48">
+    <p xmlns="http://www.w3.org/1999/xhtml" style="font-family:Inter,system-ui,sans-serif;font-size:14px;color:#1e293b;margin:0;line-height:1.45;">12+ frames per second</p>
+  </foreignObject>
   
 </svg>

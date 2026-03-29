@@ -19,20 +19,47 @@
   
 
   <!-- Step circle -->
+  <circle cx="200" cy="140" r="32" fill="#2563eb"/>
+  <circle cx="200" cy="140" r="32" fill="none" stroke="#dbeafe" stroke-width="3" opacity="0.5"/>
+  <text x="200" y="149" text-anchor="middle" font-size="22" font-weight="700" fill="#ffffff">1</text>
+
+  <!-- Connector line from circle to box -->
+  <line x1="200" y1="172" x2="200" y2="200" stroke="#2563eb" stroke-width="2"/>
+
+  <!-- Step box -->
+  <rect x="120" y="200" width="160" height="130" rx="10" fill="#f0f5ff" stroke="#2563eb" stroke-width="1.5"/>
+  <text x="200" y="235" text-anchor="middle" font-size="15" font-weight="600" fill="#1e293b">Set Up Scene</text>
+
+  <!-- Description -->
+  <foreignObject x="130" y="245" width="140" height="75">
+    <p xmlns="http://www.w3.org/1999/xhtml" style="font-family:Inter,system-ui,sans-serif;font-size:12px;color:#64748b;margin:0;line-height:1.4;">Position camera, lighting, and background</p>
+  </foreignObject>
+
+  <!-- Arrow to next step -->
+  
+  
+  <line x1="285" y1="265" x2="313" y2="265" stroke="#2563eb" stroke-width="2"/>
+  <polygon points="313,259 322,265 313,271" fill="#2563eb"/>
+  
+  
+  
+  
+
+  <!-- Step circle -->
   <circle cx="400" cy="140" r="32" fill="#2563eb"/>
   <circle cx="400" cy="140" r="32" fill="none" stroke="#dbeafe" stroke-width="3" opacity="0.5"/>
-  <text x="400" y="149" text-anchor="middle" font-size="22" font-weight="700" fill="#ffffff">1</text>
+  <text x="400" y="149" text-anchor="middle" font-size="22" font-weight="700" fill="#ffffff">2</text>
 
   <!-- Connector line from circle to box -->
   <line x1="400" y1="172" x2="400" y2="200" stroke="#2563eb" stroke-width="2"/>
 
   <!-- Step box -->
   <rect x="320" y="200" width="160" height="130" rx="10" fill="#f0f5ff" stroke="#2563eb" stroke-width="1.5"/>
-  <text x="400" y="235" text-anchor="middle" font-size="15" font-weight="600" fill="#1e293b">Setup:2min</text>
+  <text x="400" y="235" text-anchor="middle" font-size="15" font-weight="600" fill="#1e293b">Pose Character</text>
 
   <!-- Description -->
   <foreignObject x="330" y="245" width="140" height="75">
-    <p xmlns="http://www.w3.org/1999/xhtml" style="font-family:Inter,system-ui,sans-serif;font-size:12px;color:#64748b;margin:0;line-height:1.4;"></p>
+    <p xmlns="http://www.w3.org/1999/xhtml" style="font-family:Inter,system-ui,sans-serif;font-size:12px;color:#64748b;margin:0;line-height:1.4;">Make small adjustments between frames</p>
   </foreignObject>
 
   <!-- Arrow to next step -->
@@ -48,18 +75,18 @@
   <!-- Step circle -->
   <circle cx="600" cy="140" r="32" fill="#2563eb"/>
   <circle cx="600" cy="140" r="32" fill="none" stroke="#dbeafe" stroke-width="3" opacity="0.5"/>
-  <text x="600" y="149" text-anchor="middle" font-size="22" font-weight="700" fill="#ffffff">2</text>
+  <text x="600" y="149" text-anchor="middle" font-size="22" font-weight="700" fill="#ffffff">3</text>
 
   <!-- Connector line from circle to box -->
   <line x1="600" y1="172" x2="600" y2="200" stroke="#2563eb" stroke-width="2"/>
 
   <!-- Step box -->
   <rect x="520" y="200" width="160" height="130" rx="10" fill="#f0f5ff" stroke="#2563eb" stroke-width="1.5"/>
-  <text x="600" y="235" text-anchor="middle" font-size="15" font-weight="600" fill="#1e293b">Shooting:15min</text>
+  <text x="600" y="235" text-anchor="middle" font-size="15" font-weight="600" fill="#1e293b">Capture Frames</text>
 
   <!-- Description -->
   <foreignObject x="530" y="245" width="140" height="75">
-    <p xmlns="http://www.w3.org/1999/xhtml" style="font-family:Inter,system-ui,sans-serif;font-size:12px;color:#64748b;margin:0;line-height:1.4;"></p>
+    <p xmlns="http://www.w3.org/1999/xhtml" style="font-family:Inter,system-ui,sans-serif;font-size:12px;color:#64748b;margin:0;line-height:1.4;">Take photos for each position</p>
   </foreignObject>
 
   <!-- Arrow to next step -->
@@ -75,18 +102,45 @@
   <!-- Step circle -->
   <circle cx="800" cy="140" r="32" fill="#2563eb"/>
   <circle cx="800" cy="140" r="32" fill="none" stroke="#dbeafe" stroke-width="3" opacity="0.5"/>
-  <text x="800" y="149" text-anchor="middle" font-size="22" font-weight="700" fill="#ffffff">3</text>
+  <text x="800" y="149" text-anchor="middle" font-size="22" font-weight="700" fill="#ffffff">4</text>
 
   <!-- Connector line from circle to box -->
   <line x1="800" y1="172" x2="800" y2="200" stroke="#2563eb" stroke-width="2"/>
 
   <!-- Step box -->
   <rect x="720" y="200" width="160" height="130" rx="10" fill="#f0f5ff" stroke="#2563eb" stroke-width="1.5"/>
-  <text x="800" y="235" text-anchor="middle" font-size="15" font-weight="600" fill="#1e293b">Export:1min</text>
+  <text x="800" y="235" text-anchor="middle" font-size="15" font-weight="600" fill="#1e293b">Review Sequence</text>
 
   <!-- Description -->
   <foreignObject x="730" y="245" width="140" height="75">
-    <p xmlns="http://www.w3.org/1999/xhtml" style="font-family:Inter,system-ui,sans-serif;font-size:12px;color:#64748b;margin:0;line-height:1.4;"></p>
+    <p xmlns="http://www.w3.org/1999/xhtml" style="font-family:Inter,system-ui,sans-serif;font-size:12px;color:#64748b;margin:0;line-height:1.4;">Play back and check for smoothness</p>
+  </foreignObject>
+
+  <!-- Arrow to next step -->
+  
+  
+  <line x1="885" y1="265" x2="913" y2="265" stroke="#2563eb" stroke-width="2"/>
+  <polygon points="913,259 922,265 913,271" fill="#2563eb"/>
+  
+  
+  
+  
+
+  <!-- Step circle -->
+  <circle cx="1000" cy="140" r="32" fill="#2563eb"/>
+  <circle cx="1000" cy="140" r="32" fill="none" stroke="#dbeafe" stroke-width="3" opacity="0.5"/>
+  <text x="1000" y="149" text-anchor="middle" font-size="22" font-weight="700" fill="#ffffff">5</text>
+
+  <!-- Connector line from circle to box -->
+  <line x1="1000" y1="172" x2="1000" y2="200" stroke="#2563eb" stroke-width="2"/>
+
+  <!-- Step box -->
+  <rect x="920" y="200" width="160" height="130" rx="10" fill="#f0f5ff" stroke="#2563eb" stroke-width="1.5"/>
+  <text x="1000" y="235" text-anchor="middle" font-size="15" font-weight="600" fill="#1e293b">Edit &amp; Export</text>
+
+  <!-- Description -->
+  <foreignObject x="930" y="245" width="140" height="75">
+    <p xmlns="http://www.w3.org/1999/xhtml" style="font-family:Inter,system-ui,sans-serif;font-size:12px;color:#64748b;margin:0;line-height:1.4;">Adjust timing and export as video</p>
   </foreignObject>
 
   <!-- Arrow to next step -->
