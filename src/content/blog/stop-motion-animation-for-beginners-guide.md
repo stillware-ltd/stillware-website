@@ -1,7 +1,7 @@
 ---
 title: "Stop Motion Animation For Beginners Guide"
 date: 2026-03-29
-description: ""
+description: "Start your first stop motion animation with just a smartphone and household items. This beginner guide covers setup, onion skinning, and your first project."
 author: "Stillware Team"
 wordCount: 1356
 ---

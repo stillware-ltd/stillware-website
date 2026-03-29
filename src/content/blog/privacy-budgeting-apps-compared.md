@@ -1,7 +1,7 @@
 ---
 title: "Privacy Budgeting Apps Compared"
 date: 2026-03-28
-description: ""
+description: "We compare 5 privacy budgeting apps on encryption, data storage, and key ownership. Find out which ones actually protect your financial data."
 author: "Stillware Team"
 wordCount: 1541
 ---
