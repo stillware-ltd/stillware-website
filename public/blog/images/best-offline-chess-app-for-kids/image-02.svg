@@ -1,0 +1,93 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 675" width="1200" height="675">
+  <style>
+    text { font-family: Inter, system-ui, -apple-system, sans-serif; }
+  </style>
+
+  <rect width="1200" height="675" fill="#fffbeb"/>
+
+  <!-- Background pattern (per-article variation) -->
+  
+
+  <!-- Subtle top accent bar -->
+  <rect width="1200" height="4" fill="#2563eb"/>
+
+  <!-- Title -->
+  <text x="600" y="55" text-anchor="middle" font-size="28" font-weight="700" fill="#1e293b">5-Year Total Cost of Ownership for a Child&#39;s Chess App</text>
+
+  <!-- Chart area -->
+  
+  
+  
+  
+  
+  
+  
+
+  <!-- Y axis -->
+  <line x1="240" y1="85" x2="240" y2="610" stroke="#e2e8f0" stroke-width="1"/>
+
+  <!-- Gridlines -->
+  
+  
+  <line x1="396" y1="85" x2="396" y2="610" stroke="#f1f5f9" stroke-width="1"/>
+  
+  
+  <line x1="552" y1="85" x2="552" y2="610" stroke="#f1f5f9" stroke-width="1"/>
+  
+  
+  <line x1="708" y1="85" x2="708" y2="610" stroke="#f1f5f9" stroke-width="1"/>
+  
+  
+  <line x1="864" y1="85" x2="864" y2="610" stroke="#f1f5f9" stroke-width="1"/>
+  
+  
+  <line x1="1020" y1="85" x2="1020" y2="610" stroke="#f1f5f9" stroke-width="1"/>
+  
+
+  
+  
+  
+  
+
+  <!-- Label -->
+  <text x="226" y="177" text-anchor="end" font-size="14" font-weight="500" fill="#1e293b">ChessKid Subscription</text>
+
+  <!-- Bar with rounded right end -->
+  <rect x="245" y="93" width="346" height="159" rx="18" fill="#dc2626" opacity="0.85"/>
+  <rect x="245" y="93" width="346" height="159" rx="18" fill="#dc2626" opacity="0.12"/>
+
+  <!-- Value label -->
+  <text x="602" y="177" font-size="14" font-weight="700" fill="#dc2626">$399.95</text>
+  
+  
+  
+  
+
+  <!-- Label -->
+  <text x="226" y="352" text-anchor="end" font-size="14" font-weight="500" fill="#1e293b">Dr. Wolf Subscription</text>
+
+  <!-- Bar with rounded right end -->
+  <rect x="245" y="268" width="780" height="159" rx="18" fill="#f59e0b" opacity="0.85"/>
+  <rect x="245" y="268" width="780" height="159" rx="18" fill="#f59e0b" opacity="0.12"/>
+
+  <!-- Value label -->
+  <text x="1036" y="352" font-size="14" font-weight="700" fill="#f59e0b">$899.40</text>
+  
+  
+  
+  
+
+  <!-- Label -->
+  <text x="226" y="527" text-anchor="end" font-size="14" font-weight="500" fill="#1e293b">One-Time Purchase App</text>
+
+  <!-- Bar with rounded right end -->
+  <rect x="245" y="443" width="34" height="159" rx="18" fill="#16a34a" opacity="0.85"/>
+  <rect x="245" y="443" width="34" height="159" rx="18" fill="#16a34a" opacity="0.12"/>
+
+  <!-- Value label -->
+  <text x="290" y="527" font-size="14" font-weight="700" fill="#16a34a">$39.99</text>
+  
+
+  <!-- Source attribution -->
+  <text x="1190" y="665" text-anchor="end" font-size="10" fill="#cbd5e1">stillwareltd.com</text>
+</svg>
