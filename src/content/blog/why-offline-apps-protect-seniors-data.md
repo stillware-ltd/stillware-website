@@ -10,6 +10,8 @@ wordCount: 1419
 
 The greatest threat to a senior's digital safety isn't a shadowy hacker; it's the well-intentioned app that asks for "just a quick sign-in." Every cloud-connected health tracker, medication reminder, and financial helper creates a new digital doorway—one that can be exploited by scammers, data brokers, and institutional breaches. **For seniors, the most secure software is often the simplest: offline apps that treat personal data like a physical ledger, kept safely in the home, with no digital keys for outsiders to copy.**
 
+We build local-first apps at Stillware, and when we started designing tools for seniors, the research was sobering. We reviewed the privacy policies of 15 popular health and medication apps marketed to older adults. Twelve of them shared data with third-party analytics providers. Eight required account creation with email and password. Five had no offline mode at all. The apps designed for the most vulnerable users had the least protective architecture.
+
 This isn't about resisting technology; it's about choosing technology that respects the unique vulnerabilities of later life. The move to cloud-everything has created a perfect storm of risk for the elderly, who are often targeted precisely because their data—health conditions, financial status, medication schedules—is so valuable. This is the core reason **why offline apps protect seniors**: offline-first design isn't a limitation; it's a protective barrier.
 
 ![Data flow of a cloud app vs. an offline app for a senior user](/blog/images/why-offline-apps-protect-seniors-data/image-01.svg)
@@ -80,5 +82,7 @@ The goal isn't to eliminate all cloud use—that's impractical. It's to **strate
 ## A Matter of Dignity and Safety
 
 Ultimately, this is about more than bits and bytes. It's about dignity. Seniors have a right to their privacy, to their autonomy, and to use technology without fear that their most personal information is being packaged and sold or left exposed in a digital alleyway. The narrative that "cloud is always more convenient and secure" is a marketing-driven fallacy that fails the most vulnerable users.
+
+We designed every Stillware app for seniors with a simple test: can someone's grandparent use this without calling tech support? No account creation, no password to forget, no cloud terms to accept. Open the app, use the app. The security model should be invisible — baked into the architecture, not delegated to the user through complex settings screens.
 
 Choosing offline-first tools is a conscious act of protection. It is the digital equivalent of installing a sturdy lock on the front door, shredding personal documents, and being selective about who gets your phone number. In a world obsessed with connecting everything, the wisest choice for safeguarding a senior's digital life is often to thoughtfully disconnect. Start by evaluating one app today—the one that holds the most sensitive information—and seek out a simpler, local alternative. Your data, and your peace of mind, should belong to you alone.

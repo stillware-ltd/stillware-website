@@ -9,6 +9,8 @@ author: "Stillware Team"
 
 The average person now pays for dozens of software subscriptions. Streaming, storage, productivity, notes, passwords, VPNs, budgeting. Each one is "just $5/month" — until you add them up.
 
+When we decided to build Zeroed, the first question every developer friend asked was: "So what's your MRR model?" Monthly recurring revenue. That's the metric the industry worships. Our answer — "there isn't one" — was met with genuine confusion. But we'd done the math from the user's side, and it told a very different story.
+
 For a budgeting app specifically, the irony is hard to ignore. You're paying a recurring fee to a tool whose entire purpose is to help you *spend less money*. That's not a business model. That's a contradiction.
 
 ## What You're Really Paying For

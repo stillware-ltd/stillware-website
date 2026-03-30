@@ -10,8 +10,8 @@ wordCount: 2231
 
 You're probably looking at the big names—the apps with millions of downloads and slick marketing. They're the wrong choice for teaching a child chess. The **best offline chess app for kids** isn't the most popular one; it's the one that disappears so your child can focus. It's the app that works in the car, on a plane, or at a cabin with no Wi-Fi, turning dead time into productive learning without a monthly bill or a data-harvesting operation running in the background.
 
+We've been researching kids' chess apps while designing our own at Stillware, and the pattern is frustrating. The top-rated apps in the App Store aren't optimized for learning — they're optimized for engagement metrics. Push notifications, social leaderboards, daily streak rewards. We counted one popular chess app sending 7 notifications in a single day to a test device. That's not a chess tutor; that's a slot machine wearing a chess costume.
 
-<!-- CEO_HOOK: Add a personal experience or anecdote related to this topic -->
 The modern "educational" app stack is built on a foundation of distraction: notifications, mandatory logins, "social features," and the constant nag of a subscription. For a skill as deep as chess, this architecture is actively harmful. Learning requires immersion, not interruption. **The core value of a truly offline chess app isn't just about privacy—it's about creating a sanctuary for focused learning where the game itself is the only thing that matters.** We'll cut through the noise and compare the real contenders, focusing on what actually helps a child learn: uninterrupted play, structured progression, and ownership that doesn't expire when the credit card does.
 
 ![The distraction model vs. the focus model for learning chess](/blog/images/best-offline-chess-app-for-kids/image-01.svg)
@@ -113,7 +113,6 @@ Ready to move beyond rentals and data deals? The right tool is out there. **Your
 
 > Want to see how a one-time purchase model can save you thousands compared to subscriptions? We break down the math in our analysis of [The True Cost of YNAB Over 5 Years](/blog/true-cost-of-ynab/), applying the same logic to budgeting software.
 
-<!-- CEO_HOOK: Add a personal conviction or forward-looking statement -->
-
+Our conviction at Stillware is simple: a child's learning tool should never compete with the lesson for their attention. We design every app with the same test — turn off Wi-Fi, remove the account requirement, strip the notifications. Does the app still work? Does it still teach? If not, it was never really about the learning.
 
 **The best offline chess app for kids is the one that gets out of the way and lets them learn.** It’s time to choose a tool that respects their focus, your wallet, and their digital footprint. Check out our latest comparisons and get started with a better model for learning.

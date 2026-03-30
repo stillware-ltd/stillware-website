@@ -12,6 +12,8 @@ Stop motion animation for beginners is pure, tactile magic. It's the art of brin
 
 ### Essential Stop Motion Animation for Beginners: What You Actually Need
 
+We've been studying creative apps for kids while building local-first tools at Stillware, and stop motion is the format that consistently produces the most finished projects. Unlike digital drawing apps with infinite undo and overwhelming toolbars, stop motion has natural constraints — one frame at a time, one movement at a time. Those constraints are what make it work for beginners.
+
 The biggest barrier to starting is often the belief that you need professional gear. You don't. The core principle is capturing incremental change. Here's the minimalist toolkit for your first project:
 
 *   **A Camera:** The camera on your current smartphone or tablet is perfect. Modern devices have excellent sensors. Just ensure you can mount it so it doesn't move.

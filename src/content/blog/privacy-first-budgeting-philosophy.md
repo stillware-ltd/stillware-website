@@ -10,6 +10,8 @@ wordCount: 1366
 
 The most intimate portrait of your life isn't in a photo album or a diary; it’s in your transaction history. Every coffee, every subscription, every donation, and every late-night purchase tells a story. For decades, we’ve handed this narrative over to corporations in exchange for the convenience of digital budgeting, trusting them to be good stewards. This is the foundational flaw of modern personal finance: **we’ve been conditioned to trade our financial sovereignty for features, treating our most sensitive data as a cheap commodity to be harvested, analyzed, and sold.** The philosophy of privacy-first budgeting argues that this trade is not only dangerous but fundamentally unnecessary.
 
+When we started building Zeroed, we made a decision that shaped everything else: your financial data never touches our servers. Not during sync, not for analytics, not ever. The reaction from other developers was skepticism — "How do you run a SaaS without a backend?" The answer is: you don't run a SaaS. You sell software that people own.
+
 This isn't just about avoiding targeted ads for debt consolidation loans. It's about recognizing that financial autonomy cannot exist without data autonomy. If you do not control where your financial data lives, who can access it, and under what terms, then you do not truly control your finances. You are a tenant in your own financial life, subject to the landlord's rules—rules that can change with a privacy policy update, a data breach, or a shift in corporate strategy.
 
 ![The data lifecycle in a conventional budgeting app vs. a privacy-first model](/blog/images/privacy-first-budgeting-philosophy/image-01.svg)
@@ -67,6 +69,8 @@ Adopting this philosophy requires a conscious shift in tool selection and habit.
 3.  **Embrace Manual Input as a Feature:** While automation is convenient, periodic manual CSV import or statement review creates a conscious audit point. It turns data entry from a chore into a regular financial check-in.
 4.  **Value Offline Functionality:** An app's core utility should be 100% accessible without an internet connection. This is the ultimate test of its local-first integrity.
 5.  **Pay for Software, Not Subscriptions:** Support the business model of permanent ownership. It is the only model that structurally removes the incentive to monetize your data.
+
+We chose this path ourselves when building Zeroed. The trade-off is real — we can't offer the flashy "connect your bank in 30 seconds" onboarding that competitors use. But we also can't lose your data in a breach, can't sell your spending patterns, and can't hold your budget hostage behind a renewal date. The users who find us understand this trade-off immediately.
 
 This path is undeniably more intentional than clicking "Sign up with Google" on a freemium app. It requires you to be the architect of your system. But the result is a financial management practice that is truly yours—resilient, private, and independent.
 

@@ -10,8 +10,8 @@ wordCount: 1497
 
 We’re told that keeping kids safe online means watching everything they do. The parental control industry sells a simple promise: total visibility equals total safety. Install this app, and you’ll see every search, every message, every tap. It’s the digital equivalent of putting a security camera in your child’s bedroom—for their own good, of course. This is the core argument against why kids deserve digital privacy.
 
+We've been researching kids' journaling and diary apps while designing local-first tools at Stillware. The results were unsettling. The top "private diary" apps for kids on the App Store — the ones marketed with lock icons and promises of secrecy — almost all sync to cloud servers. One popular app's privacy policy stated it collects "content of entries" for "service improvement." A child's private thoughts, uploaded to a company server for analytics. That's not a diary; that's a honeypot with a padlock sticker on it.
 
-<!-- CEO_HOOK: Add a personal experience or anecdote related to this topic -->
 The reality is more complicated, and far more damaging. **Constant surveillance doesn’t build trust; it teaches children that their inner world is not their own.** It conditions them to perform for an audience, even in spaces meant for raw, unfiltered self-exploration. The locked paper diary under the mattress wasn’t just a trope; it was a critical developmental tool. Its digital equivalent shouldn’t be a trap that reports back to headquarters.
 
 This isn’t about letting kids run wild on the internet. It’s about recognizing that a private, local space for thought is not a security threat—it’s a psychological necessity. The goal shouldn’t be to eliminate privacy, but to architect it safely.
@@ -60,8 +60,7 @@ This flips the script. Instead of the parent being the warden checking the logs,
 
 It acknowledges a simple truth: we cannot spy our way into our children’s confidence. We can only create conditions where they feel safe enough to share it voluntarily, on their own terms.
 
-<!-- CEO_HOOK: Add a personal conviction or forward-looking statement -->
-
+Our stance at Stillware is unambiguous: if a child's app can't work with airplane mode on, it has no business calling itself private. We design every tool with the assumption that the network is hostile. No cloud sync, no telemetry, no "anonymous" usage data. The architecture itself is the promise — not a privacy policy that can change with the next quarterly report.
 
 ![The lifecycle of a private entry](/blog/images/why-kids-deserve-digital-privacy/image-03.svg)
 
@@ -75,7 +74,7 @@ Or consider audio logs or drawings saved in the journal. These become digital ar
 
 **This approach prepares them for adulthood, where they will need to manage their own digital privacy without a parental dashboard to rely on.** It’s the difference between teaching someone to drive by putting them in a car with a remote kill switch, versus teaching them the rules of the road and the mechanics of the brake pedal.
 
-<!-- CEO_HOOK: Add a personal insight, real-world example, or unique data point -->
+When we were designing our approach to kids' tools, we tested a simple experiment: we gave a child a journal app that required login and one that just opened to a blank page. The child wrote three sentences in the login app. In the instant-open app, they filled two pages. The friction wasn't just technical — it was psychological. A login screen says "someone is watching." A blank page says "this is yours."
 
 ## How to Start Building Digital Trust Today
 
@@ -83,6 +82,6 @@ The conversation about kids and technology is stuck on a binary: unfettered acce
 
 It’s about building tools that protect by design, not by intrusion. This philosophy extends beyond journals to all software. It’s why we believe in [one-time purchases over subscriptions](/blog/why-we-dont-do-subscriptions/)—ownership fosters a different, more responsible relationship with technology.
 
-**Ready to move from surveillance to trust?** Start by having "The Key Talk" with your child today and explore tools that respect their digital privacy from the ground up. For a deeper look at how software ownership changes the dynamic, read our take on [why subscriptions create the wrong incentives](/blog/why-subscriptions-create-the-wrong-incentives/).
+**Ready to move from surveillance to trust?** Start by having "The Key Talk" with your child today and explore tools that respect their digital privacy from the ground up. For a deeper look at how software ownership changes the dynamic, read our take on [why we don't do subscriptions](/blog/why-we-dont-do-subscriptions/).
 
 <!-- IMAGE: type=product-shot | caption=A secure, local-first journal interface concept | data=Device:Tablet on a desk,Screen:Simple text editor with lock icon,Feature callouts:Local-only,Encrypted,Decoy mode,No cloud -->

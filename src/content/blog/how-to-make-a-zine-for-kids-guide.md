@@ -103,7 +103,7 @@ Here’s the truly magical part: once the master zine is created, they become a 
 *   **The Digital Bridge:** If using a layout app, the exported PDF can be printed at home, at a library, or even sent to a grandparent across the country to print locally. The creator controls the distribution.
 *   **Establish Distribution:** Create a "zine library" in a classroom. Trade zines with friends. Leave one in a neighborhood little free library.
 
-This step transforms the project from a one-off art activity into a lesson in production and sharing. **They learn that publishing isn't a mystical industry act, but the simple process of making copies of your work and getting it into readers' hands.** For more on fostering creative confidence in kids, check out our guide on [analog creativity projects](/blog/analog-creativity-projects-for-kids/).
+This step transforms the project from a one-off art activity into a lesson in production and sharing. **They learn that publishing isn't a mystical industry act, but the simple process of making copies of your work and getting it into readers' hands.** For more on fostering creative confidence in kids, check out our guide on analog creativity projects.
 
 ![The journey from idea to shared publication](/blog/images/how-to-make-a-zine-for-kids-guide/image-04.svg)
 
@@ -111,7 +111,7 @@ When we evaluated kids' creative apps for our own design research, we noticed so
 
 ## Give It a Try This Weekend
 
-The barrier to entry is a sheet of paper. The potential outcome is a newfound identity as a creator. This weekend, skip the complex craft kits and the aimless screen time. Sit down with a kid, fold that paper, and ask them what they want the world to know about. The process—the folding, the planning, the drawing, the sharing—is where the real magic happens. It’s creative confidence, built page by page. If you're looking for the perfect first project, our list of [simple creative activities](/blog/simple-creative-activities/) has great starter ideas.
+The barrier to entry is a sheet of paper. The potential outcome is a newfound identity as a creator. This weekend, skip the complex craft kits and the aimless screen time. Sit down with a kid, fold that paper, and ask them what they want the world to know about. The process—the folding, the planning, the drawing, the sharing—is where the real magic happens. It’s creative confidence, built page by page. If you're looking for the perfect first project, our list of simple creative activities has great starter ideas.
 
 Our philosophy at Stillware is that the best kids' software gets out of the way. It doesn't gamify creativity with stars and streaks. It doesn't harvest a child's drawings for cloud analytics. It just helps them make something real they can hold in their hands and show someone they care about. That's the bar we set for every tool we build.
 
