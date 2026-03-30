@@ -1,0 +1,94 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 675" width="1200" height="675">
+  <style>
+    text { font-family: Inter, system-ui, -apple-system, sans-serif; }
+  </style>
+
+  <rect width="1200" height="675" fill="#f0fdf4"/>
+
+  <!-- Background pattern (per-article variation) -->
+  <rect width="1200" height="675" fill="#ecfdf5" opacity="0.4"/>
+
+  <!-- Subtle top accent bar -->
+  <rect width="1200" height="4" fill="#0891b2"/>
+
+  <!-- Title -->
+  <text x="600" y="50" text-anchor="middle" font-size="28" font-weight="700" fill="#1e293b">The doctor&#39;s appointment: Cloud dependency vs. local access | alt=Two-panel comic showing frustration with a cloud app vs. confidence with a local app</text>
+
+  <!-- Divider -->
+  <line x1="600" y1="80" x2="600" y2="635" stroke="#0891b2" stroke-width="2" stroke-dasharray="8,4"/>
+
+  <!-- VS badge -->
+  <circle cx="600" cy="110" r="22" fill="#0891b2"/>
+  <text x="600" y="116" text-anchor="middle" font-size="13" font-weight="700" fill="#ffffff">VS</text>
+
+  <!-- Before panel -->
+  <rect x="40" y="80" width="520" height="555" rx="14" fill="#dc2626" opacity="0.06"/>
+  <rect x="40" y="80" width="520" height="555" rx="14" fill="none" stroke="#dc2626" stroke-width="1.5" opacity="0.4"/>
+  <text x="290" y="120" text-anchor="middle" font-size="20" font-weight="700" fill="#dc2626">Cloud-Dependent App</text>
+
+  
+  
+  <circle cx="78" cy="156" r="6" fill="#dc2626" opacity="0.6"/>
+  <foreignObject x="96" y="142" width="444" height="46">
+    <p xmlns="http://www.w3.org/1999/xhtml" style="font-family:Inter,system-ui,sans-serif;font-size:15px;color:#1e293b;margin:0;line-height:1.45;">No Signal in Office:App fails to load history</p>
+  </foreignObject>
+  
+  
+  <circle cx="78" cy="212" r="6" fill="#dc2626" opacity="0.6"/>
+  <foreignObject x="96" y="198" width="444" height="46">
+    <p xmlns="http://www.w3.org/1999/xhtml" style="font-family:Inter,system-ui,sans-serif;font-size:15px;color:#1e293b;margin:0;line-height:1.45;">Memory Reliance:You struggle to recall details and dosages</p>
+  </foreignObject>
+  
+  
+  <circle cx="78" cy="268" r="6" fill="#dc2626" opacity="0.6"/>
+  <foreignObject x="96" y="254" width="444" height="46">
+    <p xmlns="http://www.w3.org/1999/xhtml" style="font-family:Inter,system-ui,sans-serif;font-size:15px;color:#1e293b;margin:0;line-height:1.45;">Delayed Care:Doctor works with incomplete information</p>
+  </foreignObject>
+  
+  
+  <circle cx="78" cy="324" r="6" fill="#dc2626" opacity="0.6"/>
+  <foreignObject x="96" y="310" width="444" height="46">
+    <p xmlns="http://www.w3.org/1999/xhtml" style="font-family:Inter,system-ui,sans-serif;font-size:15px;color:#1e293b;margin:0;line-height:1.45;">Post-Visit Email:You promise to send data later via email</p>
+  </foreignObject>
+  
+
+  <!-- After panel -->
+  <rect x="640" y="80" width="520" height="555" rx="14" fill="#16a34a" opacity="0.06"/>
+  <rect x="640" y="80" width="520" height="555" rx="14" fill="none" stroke="#16a34a" stroke-width="1.5" opacity="0.4"/>
+  <text x="900" y="120" text-anchor="middle" font-size="20" font-weight="700" fill="#16a34a">Local-First App</text>
+
+  
+  
+  <circle cx="678" cy="156" r="6" fill="#16a34a" opacity="0.6"/>
+  <foreignObject x="696" y="142" width="444" height="46">
+    <p xmlns="http://www.w3.org/1999/xhtml" style="font-family:Inter,system-ui,sans-serif;font-size:15px;color:#1e293b;margin:0;line-height:1.45;">Instant Access:Full history available immediately</p>
+  </foreignObject>
+  
+  
+  <circle cx="678" cy="212" r="6" fill="#16a34a" opacity="0.6"/>
+  <foreignObject x="696" y="198" width="444" height="46">
+    <p xmlns="http://www.w3.org/1999/xhtml" style="font-family:Inter,system-ui,sans-serif;font-size:15px;color:#1e293b;margin:0;line-height:1.45;">Printed PDF in Hand:You provide a complete</p>
+  </foreignObject>
+  
+  
+  <circle cx="678" cy="268" r="6" fill="#16a34a" opacity="0.6"/>
+  <foreignObject x="696" y="254" width="444" height="46">
+    <p xmlns="http://www.w3.org/1999/xhtml" style="font-family:Inter,system-ui,sans-serif;font-size:15px;color:#1e293b;margin:0;line-height:1.45;">readable report</p>
+  </foreignObject>
+  
+  
+  <circle cx="678" cy="324" r="6" fill="#16a34a" opacity="0.6"/>
+  <foreignObject x="696" y="310" width="444" height="46">
+    <p xmlns="http://www.w3.org/1999/xhtml" style="font-family:Inter,system-ui,sans-serif;font-size:15px;color:#1e293b;margin:0;line-height:1.45;">Informed Discussion:Care is based on accurate historical data</p>
+  </foreignObject>
+  
+  
+  <circle cx="678" cy="380" r="6" fill="#16a34a" opacity="0.6"/>
+  <foreignObject x="696" y="366" width="444" height="46">
+    <p xmlns="http://www.w3.org/1999/xhtml" style="font-family:Inter,system-ui,sans-serif;font-size:15px;color:#1e293b;margin:0;line-height:1.45;">Confidence:You leave knowing nothing was missed</p>
+  </foreignObject>
+  
+
+  <!-- Source attribution -->
+  <text x="1190" y="665" text-anchor="end" font-size="10" fill="#cbd5e1">stillwareltd.com</text>
+</svg>

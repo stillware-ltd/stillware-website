@@ -1,0 +1,195 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 675" width="1200" height="675">
+  <style>
+    text { font-family: Inter, system-ui, -apple-system, sans-serif; }
+  </style>
+
+  <rect width="1200" height="675" fill="#f0fdf4"/>
+
+  <!-- Background pattern (per-article variation) -->
+  <rect width="1200" height="675" fill="#ecfdf5" opacity="0.4"/>
+
+  <!-- Subtle top accent bar -->
+  <rect width="1200" height="4" fill="#0891b2"/>
+
+  <!-- Title -->
+  <text x="600" y="50" text-anchor="middle" font-size="28" font-weight="700" fill="#1e293b">The offline health command center: Essential features for data sovereignty | alt=Icons representing local data storage, pill ID, PDF reports, high contrast, and no account needed</text>
+
+  <!-- Icon color palette (theme-aware) -->
+  
+
+  <!-- Grid: up to 4 columns, 2 rows -->
+  
+  
+  
+  
+  
+  
+  
+
+  
+  
+  
+  
+  
+  
+
+  <!-- Card background -->
+  <rect x="64" y="95" width="250" height="240" rx="14" fill="#ecfdf5" stroke="#e2e8f0" stroke-width="1"/>
+
+  <!-- Icon circle with symbol -->
+  <circle cx="189" cy="137" r="28" fill="#0891b2" opacity="0.12"/>
+  <circle cx="189" cy="137" r="28" fill="none" stroke="#0891b2" stroke-width="2"/>
+
+  <!-- Icon symbol (SVG paths for common types, fallback to letter) -->
+  
+  <path d="179" transform="translate(179, 127)" fill="#0891b2">
+    <animate attributeName="d" values=""/>
+  </path>
+  <text x="189" y="144" text-anchor="middle" font-size="20" font-weight="700" fill="#0891b2">&#x1F6E1;</text>
+  
+
+  <!-- Label -->
+  <text x="189" y="190" text-anchor="middle" font-size="16" font-weight="600" fill="#1e293b">Local OCR</text>
+
+  <!-- Description -->
+  <foreignObject x="78" y="199" width="222" height="100">
+    <p xmlns="http://www.w3.org/1999/xhtml" style="font-family:Inter,system-ui,sans-serif;font-size:12px;color:#64748b;margin:0;line-height:1.4;text-align:center;">Pill identification via camera happens on your device</p>
+  </foreignObject>
+  
+  
+  
+  
+  
+  
+
+  <!-- Card background -->
+  <rect x="338" y="95" width="250" height="240" rx="14" fill="#ecfdf5" stroke="#e2e8f0" stroke-width="1"/>
+
+  <!-- Icon circle with symbol -->
+  <circle cx="463" cy="137" r="28" fill="#60a5fa" opacity="0.12"/>
+  <circle cx="463" cy="137" r="28" fill="none" stroke="#60a5fa" stroke-width="2"/>
+
+  <!-- Icon symbol (SVG paths for common types, fallback to letter) -->
+  
+  <text x="463" y="144" text-anchor="middle" font-size="20" font-weight="700" fill="#60a5fa">&#x21C4;</text>
+  
+
+  <!-- Label -->
+  <text x="463" y="190" text-anchor="middle" font-size="16" font-weight="600" fill="#1e293b">no cloud upload</text>
+
+  <!-- Description -->
+  <foreignObject x="352" y="199" width="222" height="100">
+    <p xmlns="http://www.w3.org/1999/xhtml" style="font-family:Inter,system-ui,sans-serif;font-size:12px;color:#64748b;margin:0;line-height:1.4;text-align:center;"></p>
+  </foreignObject>
+  
+  
+  
+  
+  
+  
+
+  <!-- Card background -->
+  <rect x="612" y="95" width="250" height="240" rx="14" fill="#ecfdf5" stroke="#e2e8f0" stroke-width="1"/>
+
+  <!-- Icon circle with symbol -->
+  <circle cx="737" cy="137" r="28" fill="#0891b2" opacity="0.12"/>
+  <circle cx="737" cy="137" r="28" fill="none" stroke="#0891b2" stroke-width="2"/>
+
+  <!-- Icon symbol (SVG paths for common types, fallback to letter) -->
+  
+  <text x="737" y="144" text-anchor="middle" font-size="20" font-weight="700" fill="#0891b2">&#x25A0;</text>
+  
+
+  <!-- Label -->
+  <text x="737" y="190" text-anchor="middle" font-size="16" font-weight="600" fill="#1e293b">On-Device Data</text>
+
+  <!-- Description -->
+  <foreignObject x="626" y="199" width="222" height="100">
+    <p xmlns="http://www.w3.org/1999/xhtml" style="font-family:Inter,system-ui,sans-serif;font-size:12px;color:#64748b;margin:0;line-height:1.4;text-align:center;">All logs and history stored locally in an encrypted database</p>
+  </foreignObject>
+  
+  
+  
+  
+  
+  
+
+  <!-- Card background -->
+  <rect x="886" y="95" width="250" height="240" rx="14" fill="#ecfdf5" stroke="#e2e8f0" stroke-width="1"/>
+
+  <!-- Icon circle with symbol -->
+  <circle cx="1011" cy="137" r="28" fill="#dc2626" opacity="0.12"/>
+  <circle cx="1011" cy="137" r="28" fill="none" stroke="#dc2626" stroke-width="2"/>
+
+  <!-- Icon symbol (SVG paths for common types, fallback to letter) -->
+  
+  <text x="1011" y="144" text-anchor="middle" font-size="22" font-weight="700" fill="#dc2626">&#x2713;</text>
+  
+
+  <!-- Label -->
+  <text x="1011" y="190" text-anchor="middle" font-size="16" font-weight="600" fill="#1e293b">One-Tap PDF</text>
+
+  <!-- Description -->
+  <foreignObject x="900" y="199" width="222" height="100">
+    <p xmlns="http://www.w3.org/1999/xhtml" style="font-family:Inter,system-ui,sans-serif;font-size:12px;color:#64748b;margin:0;line-height:1.4;text-align:center;">Generate doctor-ready reports without an internet connection</p>
+  </foreignObject>
+  
+  
+  
+  
+  
+  
+
+  <!-- Card background -->
+  <rect x="64" y="363" width="250" height="240" rx="14" fill="#ecfdf5" stroke="#e2e8f0" stroke-width="1"/>
+
+  <!-- Icon circle with symbol -->
+  <circle cx="189" cy="405" r="28" fill="#16a34a" opacity="0.12"/>
+  <circle cx="189" cy="405" r="28" fill="none" stroke="#16a34a" stroke-width="2"/>
+
+  <!-- Icon symbol (SVG paths for common types, fallback to letter) -->
+  
+  <text x="189" y="412" text-anchor="middle" font-size="22" font-weight="700" fill="#16a34a">&#x2600;</text>
+  
+
+  <!-- Label -->
+  <text x="189" y="458" text-anchor="middle" font-size="16" font-weight="600" fill="#1e293b">High Contrast Mode</text>
+
+  <!-- Description -->
+  <foreignObject x="78" y="467" width="222" height="100">
+    <p xmlns="http://www.w3.org/1999/xhtml" style="font-family:Inter,system-ui,sans-serif;font-size:12px;color:#64748b;margin:0;line-height:1.4;text-align:center;">Legible displays in any lighting condition for safe dosage checks</p>
+  </foreignObject>
+  
+  
+  
+  
+  
+  
+
+  <!-- Card background -->
+  <rect x="338" y="363" width="250" height="240" rx="14" fill="#ecfdf5" stroke="#e2e8f0" stroke-width="1"/>
+
+  <!-- Icon circle with symbol -->
+  <circle cx="463" cy="405" r="28" fill="#f59e0b" opacity="0.12"/>
+  <circle cx="463" cy="405" r="28" fill="none" stroke="#f59e0b" stroke-width="2"/>
+
+  <!-- Icon symbol (SVG paths for common types, fallback to letter) -->
+  
+  <path d="453" transform="translate(453, 395)" fill="#f59e0b">
+    <animate attributeName="d" values=""/>
+  </path>
+  <text x="463" y="412" text-anchor="middle" font-size="20" font-weight="700" fill="#f59e0b">&#x1F6E1;</text>
+  
+
+  <!-- Label -->
+  <text x="463" y="458" text-anchor="middle" font-size="16" font-weight="600" fill="#1e293b">No Account Needed</text>
+
+  <!-- Description -->
+  <foreignObject x="352" y="467" width="222" height="100">
+    <p xmlns="http://www.w3.org/1999/xhtml" style="font-family:Inter,system-ui,sans-serif;font-size:12px;color:#64748b;margin:0;line-height:1.4;text-align:center;">Use immediately without signing away personal data</p>
+  </foreignObject>
+  
+
+  <!-- Source attribution -->
+  <text x="1190" y="665" text-anchor="end" font-size="10" fill="#cbd5e1">stillwareltd.com</text>
+</svg>
