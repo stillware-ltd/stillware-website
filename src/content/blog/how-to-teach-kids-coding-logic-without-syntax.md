@@ -16,7 +16,7 @@ The industry's focus on text-based languages as the "real" starting point is a p
 
 This isn't just an inconvenience; it fundamentally changes the creative process. The tool becomes a service, the child's work becomes data on a server, and the focus shifts from immediate, tangible creation to waiting for pages to load and accounts to sync. **We believe the first coding environment should be as immediate and self-contained as a box of LEGO—no login, no Wi-Fi, just pure building.**
 
-![The logical steps to make a sandwich, mapped like a computer program](/blog/images/sandwich-algorithm-flow.png)
+![The logical steps to make a sandwich, mapped like a computer program](/blog/images/how-to-teach-kids-coding-logic-without-syntax/image-01.png)
 
 ## 5 Unplugged Activities to Build a Logic Foundation
 
@@ -53,7 +53,7 @@ Write story events on index cards and have the child put them in a logical order
 
 This is programming. It’s sequencing, conditionals, and problem-solving. The transition to a digital tool should scaffold this exact thinking, not replace it with a new, foreign language.
 
-![The cognitive load difference: text syntax vs. visual logic](/blog/images/text-vs-visual-coding.png)
+![The cognitive load difference: text syntax vs. visual logic](/blog/images/how-to-teach-kids-coding-logic-without-syntax/image-02.png)
 
 ## Why Visual, Node-Based Programming Wins for Early Learning
 
@@ -92,7 +92,7 @@ The act of building is the act of connecting these decisions. The child literall
 
 The instant feedback loop—build, test, tweak—is addictive and educational. **The magic happens when they hit a dead end in their own story and have to trace back to find the missing connection, which is the essence of debugging.** They learn that logic is about ensuring every possible input has a defined output.
 
-![The node-based architecture of a simple Choose Your Own Adventure game](/blog/images/choose-adventure-node-diagram.png)
+![The node-based architecture of a simple Choose Your Own Adventure game](/blog/images/how-to-teach-kids-coding-logic-without-syntax/image-03.png)
 
 ## The Problem with Cloud-First Coding Toys (And What to Look For Instead)
 
@@ -116,7 +116,7 @@ Look for tools that prioritize offline-first creation. The checklist is simple:
 
 This architecture respects the child as a creator, not a data point. It teaches that digital creations are things you own and control, not just experiences you temporarily access.
 
-![Choosing the right coding logic tool for your child](/blog/images/coding-tool-decision-tree.png)
+![Choosing the right coding logic tool for your child](/blog/images/how-to-teach-kids-coding-logic-without-syntax/image-04.png)
 
 ## The Parent's Guide: Fostering a Coder's Mindset at Home
 
