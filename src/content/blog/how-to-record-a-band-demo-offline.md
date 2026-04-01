@@ -8,6 +8,7 @@ tags: ["Creative Tools", "Offline-First", "Guide"]
 pillar: "problem-solution"
 appCluster: "general"
 relatedSlugs: ["stop-motion-animation-for-beginners-guide", "why-offline-apps-are-better", "how-to-make-a-zine-for-kids-guide"]
+ogImage: "/blog/images/how-to-record-a-band-demo-offline/og-card.svg"
 ---
 
 ## The Take That Got Away

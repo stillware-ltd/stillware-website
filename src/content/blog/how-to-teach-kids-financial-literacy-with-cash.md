@@ -8,6 +8,7 @@ tags: ["Kids & Tech", "Education", "Personal Finance", "Guide"]
 pillar: "problem-solution"
 appCluster: "zeroed"
 relatedSlugs: ["why-kids-deserve-digital-privacy", "privacy-first-budgeting-philosophy", "best-offline-chess-app-for-kids"]
+ogImage: "/blog/images/how-to-teach-kids-financial-literacy-with-cash/og-card.svg"
 ---
 
 ## The $20 Bill That Changed Everything

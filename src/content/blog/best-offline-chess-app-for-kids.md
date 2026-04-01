@@ -8,6 +8,7 @@ tags: ["Kids & Tech", "Education", "Offline-First", "Comparison"]
 pillar: "comparison"
 appCluster: "rankupchess"
 relatedSlugs: ["why-kids-deserve-digital-privacy", "how-to-teach-kids-coding-logic-without-syntax", "how-to-teach-kids-financial-literacy-with-cash"]
+ogImage: "/blog/images/best-offline-chess-app-for-kids/og-card.svg"
 ---
 
 ## The $200 Mistake Most Parents Make with Chess Apps

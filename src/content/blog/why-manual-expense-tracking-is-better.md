@@ -8,6 +8,7 @@ tags: ["Personal Finance", "Offline-First", "Guide"]
 pillar: "philosophy"
 appCluster: "zeroed"
 relatedSlugs: ["privacy-first-budgeting-philosophy", "true-cost-of-ynab", "privacy-budgeting-apps-compared"]
+ogImage: "/blog/images/why-manual-expense-tracking-is-better/og-card.svg"
 ---
 
 ## Why Manual Expense Tracking Is Better: 3 Proven Benefits

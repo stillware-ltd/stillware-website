@@ -8,6 +8,7 @@ tags: ["Kids & Tech", "Creative Tools", "Education", "Guide"]
 pillar: "problem-solution"
 appCluster: "general"
 relatedSlugs: ["how-to-teach-kids-coding-logic-without-syntax", "stop-motion-animation-for-beginners-guide", "why-kids-deserve-digital-privacy"]
+ogImage: "/blog/images/how-to-make-a-zine-for-kids-guide/og-card.svg"
 ---
 
 ## The Best Publishing Platform for Kids Isn't an App Store

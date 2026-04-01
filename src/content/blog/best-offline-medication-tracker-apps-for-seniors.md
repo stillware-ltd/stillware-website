@@ -8,6 +8,7 @@ tags: ["Seniors & Accessibility", "Health & Wellness", "Privacy", "Comparison"]
 pillar: "comparison"
 appCluster: "general"
 relatedSlugs: ["best-offline-medication-trackers-for-seniors", "why-offline-apps-protect-seniors-data", "how-to-spot-a-scam-for-seniors-guide"]
+ogImage: "/blog/images/best-offline-medication-tracker-apps-for-seniors/og-card.svg"
 ---
 
 ## What If Your Medication App Stops Working When You Need It Most?

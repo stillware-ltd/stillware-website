@@ -9,6 +9,7 @@ featured: true
 pillar: "philosophy"
 appCluster: "zeroed"
 relatedSlugs: ["why-we-dont-do-subscriptions", "how-zeroed-encrypts-your-data", "why-manual-expense-tracking-is-better"]
+ogImage: "/blog/images/privacy-first-budgeting-philosophy/og-card.svg"
 ---
 
 ## Your Financial Data Is Not a Commodity

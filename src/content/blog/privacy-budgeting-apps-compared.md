@@ -8,6 +8,7 @@ tags: ["Comparison", "Personal Finance", "Privacy", "Offline-First"]
 pillar: "comparison"
 appCluster: "zeroed"
 relatedSlugs: ["true-cost-of-ynab", "how-zeroed-encrypts-your-data", "privacy-first-budgeting-philosophy"]
+ogImage: "/blog/images/privacy-budgeting-apps-compared/og-card.svg"
 ---
 
 ## Privacy Budgeting Apps Compared: A Security Architecture Review

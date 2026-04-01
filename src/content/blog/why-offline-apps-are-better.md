@@ -8,6 +8,7 @@ tags: ["Offline-First", "Anti-SaaS", "Privacy"]
 pillar: "philosophy"
 appCluster: "general"
 relatedSlugs: ["why-we-dont-do-subscriptions", "privacy-first-budgeting-philosophy", "why-offline-apps-protect-seniors-data"]
+ogImage: "/blog/images/why-offline-apps-are-better/og-card.svg"
 ---
 
 ## The Unseen Cost of Constant Connectivity

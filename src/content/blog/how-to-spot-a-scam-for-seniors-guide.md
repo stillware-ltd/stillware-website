@@ -8,6 +8,7 @@ tags: ["Seniors & Accessibility", "Privacy", "Guide"]
 pillar: "problem-solution"
 appCluster: "general"
 relatedSlugs: ["why-offline-apps-protect-seniors-data", "best-offline-medication-tracker-apps-for-seniors", "best-offline-medication-trackers-for-seniors"]
+ogImage: "/blog/images/how-to-spot-a-scam-for-seniors-guide/og-card.svg"
 ---
 
 # How to Spot a Scam for Seniors: 5 Proven Steps to Stay Safe

@@ -8,6 +8,7 @@ tags: ["Seniors & Accessibility", "Health & Wellness", "Offline-First", "Compari
 pillar: "comparison"
 appCluster: "general"
 relatedSlugs: ["best-offline-medication-tracker-apps-for-seniors", "why-offline-apps-protect-seniors-data", "how-to-spot-a-scam-for-seniors-guide"]
+ogImage: "/blog/images/best-offline-medication-trackers-for-seniors/og-card.svg"
 ---
 
 # Best Offline Medication Trackers for Seniors in 2025 (Tested)

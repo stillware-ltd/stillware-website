@@ -8,6 +8,7 @@ tags: ["Kids & Tech", "Privacy", "Education"]
 pillar: "philosophy"
 appCluster: "general"
 relatedSlugs: ["how-to-teach-kids-financial-literacy-with-cash", "best-offline-chess-app-for-kids", "why-offline-apps-protect-seniors-data"]
+ogImage: "/blog/images/why-kids-deserve-digital-privacy/og-card.svg"
 ---
 
 ## The Myth of the "Safe" Digital Panopticon

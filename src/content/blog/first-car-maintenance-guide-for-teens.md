@@ -8,6 +8,7 @@ tags: ["Teens & Tech", "Offline-First", "Guide", "Lifestyle"]
 pillar: "problem-solution"
 appCluster: "general"
 relatedSlugs: ["teen-side-hustle-tools-offline", "why-offline-apps-are-better", "why-manual-expense-tracking-is-better"]
+ogImage: "/blog/images/first-car-maintenance-guide-for-teens/og-card.svg"
 ---
 
 # First Car Maintenance Guide for Teens: 7 Essential Steps to Avoid Breakdowns

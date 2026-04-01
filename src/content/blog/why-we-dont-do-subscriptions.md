@@ -9,6 +9,7 @@ featured: true
 pillar: "philosophy"
 appCluster: "general"
 relatedSlugs: ["privacy-first-budgeting-philosophy", "true-cost-of-ynab", "why-offline-apps-are-better"]
+ogImage: "/blog/images/why-we-dont-do-subscriptions/og-card.svg"
 ---
 
 ## The Subscription Tax

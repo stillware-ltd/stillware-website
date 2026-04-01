@@ -8,6 +8,7 @@ tags: ["Kids & Tech", "Education", "Offline-First", "Guide"]
 pillar: "problem-solution"
 appCluster: "general"
 relatedSlugs: ["best-offline-chess-app-for-kids", "how-to-make-a-zine-for-kids-guide", "why-kids-deserve-digital-privacy"]
+ogImage: "/blog/images/how-to-teach-kids-coding-logic-without-syntax/og-card.svg"
 ---
 
 ## The Syntax Trap: Why Most "Coding for Kids" Tools Teach the Wrong Thing First
