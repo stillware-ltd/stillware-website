@@ -3,6 +3,11 @@ title: "The True Cost of YNAB Over 5 Years"
 date: 2026-02-28
 description: "YNAB costs $99/year. Over five years, that's nearly $500 for software you'll never own. Here's what that money could do instead."
 author: "Stillware Team"
+wordCount: 291
+tags: ["Comparison", "Personal Finance", "Anti-SaaS"]
+pillar: "comparison"
+appCluster: "zeroed"
+relatedSlugs: ["why-we-dont-do-subscriptions", "privacy-budgeting-apps-compared", "why-manual-expense-tracking-is-better"]
 ---
 
 ## A Great App With a Broken Model

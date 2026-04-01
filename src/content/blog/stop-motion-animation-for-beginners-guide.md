@@ -4,6 +4,10 @@ date: 2026-03-29
 description: "Start your first stop motion animation with just a smartphone and household items. This beginner guide covers setup, onion skinning, and your first project."
 author: "Stillware Team"
 wordCount: 1356
+tags: ["Creative Tools", "Offline-First", "Guide", "Kids & Tech"]
+pillar: "problem-solution"
+appCluster: "general"
+relatedSlugs: ["how-to-make-a-zine-for-kids-guide", "how-to-record-a-band-demo-offline", "how-to-teach-kids-coding-logic-without-syntax"]
 ---
 
 ## The Joy of Frame-by-Frame: Your First Stop Motion Adventure

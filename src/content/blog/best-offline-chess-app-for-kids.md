@@ -1,9 +1,13 @@
 ---
 title: "Best Offline Chess App For Kids"
 date: 2026-04-01
-description: ""
+description: "Most chess apps for kids demand Wi-Fi and subscriptions. We tested the top options to find truly offline, privacy-respecting chess apps your kids can own."
 author: "Stillware Team"
 wordCount: 2338
+tags: ["Kids & Tech", "Education", "Offline-First", "Comparison"]
+pillar: "comparison"
+appCluster: "rankupchess"
+relatedSlugs: ["why-kids-deserve-digital-privacy", "how-to-teach-kids-coding-logic-without-syntax", "how-to-teach-kids-financial-literacy-with-cash"]
 ---
 
 ## The $200 Mistake Most Parents Make with Chess Apps

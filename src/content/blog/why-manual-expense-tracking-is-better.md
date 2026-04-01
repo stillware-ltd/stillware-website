@@ -1,9 +1,13 @@
 ---
 title: "Why Manual Expense Tracking Is Better"
 date: 2026-04-01
-description: ""
+description: "Manual expense tracking builds financial mindfulness that automation destroys. Learn the 3 proven benefits of hands-on budgeting and why friction is a feature."
 author: "Stillware Team"
 wordCount: 1163
+tags: ["Personal Finance", "Offline-First", "Guide"]
+pillar: "philosophy"
+appCluster: "zeroed"
+relatedSlugs: ["privacy-first-budgeting-philosophy", "true-cost-of-ynab", "privacy-budgeting-apps-compared"]
 ---
 
 ## Why Manual Expense Tracking Is Better: 3 Proven Benefits

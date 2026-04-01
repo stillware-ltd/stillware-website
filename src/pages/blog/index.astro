@@ -2,9 +2,17 @@
 import Layout from '../../layouts/Layout.astro';
 import { getCollection } from 'astro:content';
 
-const posts = (await getCollection('blog')).sort(
+const allPosts = (await getCollection('blog')).sort(
   (a, b) => b.data.date.valueOf() - a.data.date.valueOf()
 );
+
+const featuredPosts = allPosts.filter(p => p.data.featured);
+const regularPosts = allPosts.filter(p => !p.data.featured);
+
+function readingTime(wordCount?: number): string {
+  if (!wordCount) return '';
+  return `${Math.ceil(wordCount / 238)} min read`;
+}
 ---
 
 <Layout
@@ -22,22 +30,80 @@ const posts = (await getCollection('blog')).sort(
         </div>
     </header>
 
+    {featuredPosts.length > 0 && (
+        <section class="featured-section">
+            <div class="container">
+                <h2 class="section-label">Featured</h2>
+                <div class="featured-grid">
+                    {featuredPosts.map(post => (
+                        <a href={`/blog/${post.slug}`} class="featured-card reveal">
+                            <span class="featured-badge">Featured</span>
+                            <h3>{post.data.title}</h3>
+                            <p>{post.data.description}</p>
+                            <div class="featured-meta">
+                                <time datetime={post.data.date.toISOString()}>
+                                    {post.data.date.toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' })}
+                                </time>
+                                {post.data.wordCount && (
+                                    <span class="reading-time">{readingTime(post.data.wordCount)}</span>
+                                )}
+                            </div>
+                            {post.data.tags && (
+                                <div class="featured-tags">
+                                    {post.data.tags.map(tag => (
+                                        <span class="tag-pill tag-pill-featured">{tag}</span>
+                                    ))}
+                                </div>
+                            )}
+                        </a>
+                    ))}
+                </div>
+            </div>
+        </section>
+    )}
+
     <section class="blog-list">
         <div class="container">
-            {posts.length === 0 && (
+            {regularPosts.length === 0 && featuredPosts.length === 0 && (
                 <div class="empty-state">
                     <p>No posts yet. Check back soon.</p>
                 </div>
             )}
-            {posts.map(post => (
-                <article class="post-card reveal">
-                    <time datetime={post.data.date.toISOString()}>
-                        {post.data.date.toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' })}
-                    </time>
-                    <h2><a href={`/blog/${post.slug}`}>{post.data.title}</a></h2>
-                    <p>{post.data.description}</p>
-                    <a href={`/blog/${post.slug}`} class="read-more">Read more &rarr;</a>
-                </article>
+            {regularPosts.map((post, index) => (
+                <>
+                    {index === 4 && (
+                        <div class="newsletter-cta reveal">
+                            <h3>Join the Privacy-First Movement</h3>
+                            <p>Get notified when we release new buy-once, offline-first software.</p>
+                            <form name="newsletter" method="POST" data-netlify="true" action="/success" class="newsletter-cta-form">
+                                <input type="hidden" name="form-name" value="newsletter" />
+                                <input type="hidden" name="subject" value="New Newsletter Subscriber" />
+                                <input type="email" name="email" placeholder="your@email.com" required aria-label="Email address" />
+                                <button type="submit" class="btn-primary">Subscribe</button>
+                            </form>
+                        </div>
+                    )}
+                    <article class="post-card reveal">
+                        <div class="post-meta">
+                            <time datetime={post.data.date.toISOString()}>
+                                {post.data.date.toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' })}
+                            </time>
+                            {post.data.wordCount && (
+                                <span class="reading-time">{readingTime(post.data.wordCount)}</span>
+                            )}
+                        </div>
+                        <h2><a href={`/blog/${post.slug}`}>{post.data.title}</a></h2>
+                        {post.data.description && <p>{post.data.description}</p>}
+                        {post.data.tags && (
+                            <div class="post-tags">
+                                {post.data.tags.map(tag => (
+                                    <a href={`/blog/tag/${tag.toLowerCase().replace(/ & /g, '-').replace(/ /g, '-')}`} class="tag-pill">{tag}</a>
+                                ))}
+                            </div>
+                        )}
+                        <a href={`/blog/${post.slug}`} class="read-more">Read more &rarr;</a>
+                    </article>
+                </>
             ))}
         </div>
     </section>
@@ -65,7 +131,115 @@ const posts = (await getCollection('blog')).sort(
 
     .rss-link:hover { color: #ffffff; }
 
-    .blog-list { padding: 4rem 0 8rem; max-width: 750px; margin: 0 auto; }
+    /* ── Featured Section ── */
+
+    .featured-section {
+        padding: 3rem 0 1rem;
+        max-width: 750px;
+        margin: 0 auto;
+    }
+
+    .section-label {
+        font-size: 0.8rem;
+        font-weight: 600;
+        text-transform: uppercase;
+        letter-spacing: 0.1em;
+        color: var(--color-primary);
+        margin-bottom: 1.25rem;
+    }
+
+    .featured-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+        gap: 1.5rem;
+    }
+
+    .featured-card {
+        display: block;
+        position: relative;
+        background: var(--gradient-obsidian);
+        border-radius: var(--border-radius);
+        padding: 2rem;
+        text-decoration: none;
+        transition: transform 0.3s var(--transition-premium), box-shadow 0.3s ease;
+        box-shadow: var(--shadow-md);
+    }
+
+    .featured-card:hover {
+        transform: translateY(-4px);
+        box-shadow: var(--shadow-xl);
+    }
+
+    .featured-badge {
+        display: inline-block;
+        background: var(--color-primary);
+        color: #ffffff;
+        font-size: 0.7rem;
+        font-weight: 700;
+        text-transform: uppercase;
+        letter-spacing: 0.08em;
+        padding: 0.25rem 0.65rem;
+        border-radius: 100px;
+        margin-bottom: 1rem;
+    }
+
+    .featured-card h3 {
+        color: #ffffff;
+        font-size: 1.5rem;
+        line-height: 1.3;
+        margin-bottom: 0.75rem;
+    }
+
+    .featured-card p {
+        color: rgba(255, 255, 255, 0.6);
+        font-size: 0.95rem;
+        line-height: 1.6;
+        margin-bottom: 1rem;
+    }
+
+    .featured-meta {
+        display: flex;
+        align-items: center;
+        gap: 0.75rem;
+        margin-bottom: 0.75rem;
+    }
+
+    .featured-meta time {
+        font-size: 0.8rem;
+        color: rgba(255, 255, 255, 0.4);
+        font-weight: 500;
+        text-transform: uppercase;
+        letter-spacing: 0.05em;
+    }
+
+    .featured-meta .reading-time {
+        font-size: 0.8rem;
+        color: rgba(255, 255, 255, 0.4);
+    }
+
+    .featured-meta .reading-time::before {
+        content: "\00b7";
+        margin-right: 0.75rem;
+    }
+
+    .featured-tags {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 0.4rem;
+    }
+
+    .tag-pill-featured {
+        background: transparent;
+        border: 1px solid rgba(255, 255, 255, 0.2);
+        color: rgba(255, 255, 255, 0.6);
+        font-size: 0.7rem;
+        padding: 0.2rem 0.55rem;
+        border-radius: 100px;
+    }
+
+    /* ── Blog List ── */
+
+    .blog-list { padding: 3rem 0 8rem; max-width: 750px; margin: 0 auto; }
 
     .post-card {
         padding: 2.5rem 0;
@@ -74,7 +248,14 @@ const posts = (await getCollection('blog')).sort(
 
     .post-card:first-child { padding-top: 0; }
 
-    .post-card time {
+    .post-meta {
+        display: flex;
+        align-items: center;
+        gap: 0.75rem;
+        margin-bottom: 0.5rem;
+    }
+
+    .post-meta time {
         font-size: 0.85rem;
         color: var(--color-text-light);
         font-weight: 500;
@@ -82,9 +263,19 @@ const posts = (await getCollection('blog')).sort(
         letter-spacing: 0.05em;
     }
 
+    .reading-time {
+        font-size: 0.85rem;
+        color: var(--color-text-light);
+    }
+
+    .reading-time::before {
+        content: "\00b7";
+        margin-right: 0.75rem;
+    }
+
     .post-card h2 {
         font-size: 1.75rem;
-        margin: 0.5rem 0 0.75rem;
+        margin: 0 0 0.75rem;
         line-height: 1.3;
     }
 
@@ -101,6 +292,31 @@ const posts = (await getCollection('blog')).sort(
         margin-bottom: 0.75rem;
     }
 
+    .post-tags {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 0.4rem;
+        margin-bottom: 0.75rem;
+    }
+
+    .tag-pill {
+        display: inline-block;
+        background: var(--color-surface);
+        border: 1px solid var(--color-border);
+        color: var(--color-text-light);
+        font-size: 0.75rem;
+        font-weight: 500;
+        padding: 0.2rem 0.6rem;
+        border-radius: 100px;
+        text-decoration: none;
+        transition: border-color 0.2s ease, color 0.2s ease;
+    }
+
+    .tag-pill:hover {
+        border-color: var(--color-primary);
+        color: var(--color-primary);
+    }
+
     .read-more {
         color: var(--color-primary);
         font-weight: 600;
@@ -108,6 +324,62 @@ const posts = (await getCollection('blog')).sort(
     }
 
     .read-more:hover { text-decoration: underline; }
+
+    /* ── Newsletter CTA ── */
+
+    .newsletter-cta {
+        padding: 2.5rem;
+        margin: 2rem 0;
+        background: var(--color-surface);
+        border: 1px solid var(--color-border);
+        border-radius: var(--border-radius);
+        text-align: center;
+    }
+
+    .newsletter-cta h3 {
+        font-size: 1.35rem;
+        color: var(--color-secondary);
+        margin-bottom: 0.5rem;
+    }
+
+    .newsletter-cta p {
+        color: var(--color-text-light);
+        font-size: 0.95rem;
+        margin-bottom: 1.25rem;
+    }
+
+    .newsletter-cta-form {
+        display: flex;
+        gap: 0.75rem;
+        max-width: 440px;
+        margin: 0 auto;
+    }
+
+    .newsletter-cta-form input[type="email"] {
+        flex: 1;
+        padding: 0.75rem 1rem;
+        border: 1px solid var(--color-border);
+        border-radius: 100px;
+        font-size: 0.9rem;
+        font-family: var(--font-sans);
+        background: #ffffff;
+        color: var(--color-secondary);
+    }
+
+    .newsletter-cta-form input[type="email"]::placeholder {
+        color: var(--color-text-light);
+    }
+
+    .newsletter-cta-form input[type="email"]:focus {
+        outline: none;
+        border-color: var(--color-primary);
+    }
+
+    .newsletter-cta-form .btn-primary {
+        padding: 0.75rem 1.5rem;
+        font-size: 0.9rem;
+        white-space: nowrap;
+    }
 
     .empty-state {
         text-align: center;
@@ -117,5 +389,18 @@ const posts = (await getCollection('blog')).sort(
 
     @media (max-width: 768px) {
         .blog-hero h1 { font-size: 2.5rem; }
+
+        .featured-grid {
+            grid-template-columns: 1fr;
+        }
+
+        .newsletter-cta-form {
+            flex-direction: column;
+        }
+
+        .newsletter-cta-form .btn-primary {
+            width: 100%;
+            justify-content: center;
+        }
     }
 </style>

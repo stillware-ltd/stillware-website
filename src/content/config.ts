@@ -7,6 +7,16 @@ const blog = defineCollection({
     date: z.date(),
     description: z.string(),
     author: z.string().default('Stillware Team'),
+    tags: z.array(z.string()).optional(),
+    featured: z.boolean().optional(),
+    relatedSlugs: z.array(z.string()).optional(),
+    ogImage: z.string().optional(),
+    wordCount: z.number().optional(),
+    pillar: z.string().optional(),
+    appCluster: z.string().optional(),
+    primaryKeyword: z.string().optional(),
+    qualityScore: z.number().optional(),
+    heroImage: z.string().optional(),
   }),
 });
 

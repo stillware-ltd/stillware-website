@@ -155,9 +155,44 @@ declare module 'astro:content' {
   collection: "blog";
   data: InferEntrySchema<"blog">
 } & { render(): Render[".md"] };
+"best-offline-medication-trackers-for-seniors.md": {
+	id: "best-offline-medication-trackers-for-seniors.md";
+  slug: "best-offline-medication-trackers-for-seniors";
+  body: string;
+  collection: "blog";
+  data: InferEntrySchema<"blog">
+} & { render(): Render[".md"] };
+"first-car-maintenance-guide-for-teens.md": {
+	id: "first-car-maintenance-guide-for-teens.md";
+  slug: "first-car-maintenance-guide-for-teens";
+  body: string;
+  collection: "blog";
+  data: InferEntrySchema<"blog">
+} & { render(): Render[".md"] };
 "how-to-make-a-zine-for-kids-guide.md": {
 	id: "how-to-make-a-zine-for-kids-guide.md";
   slug: "how-to-make-a-zine-for-kids-guide";
+  body: string;
+  collection: "blog";
+  data: InferEntrySchema<"blog">
+} & { render(): Render[".md"] };
+"how-to-record-a-band-demo-offline.md": {
+	id: "how-to-record-a-band-demo-offline.md";
+  slug: "how-to-record-a-band-demo-offline";
+  body: string;
+  collection: "blog";
+  data: InferEntrySchema<"blog">
+} & { render(): Render[".md"] };
+"how-to-spot-a-scam-for-seniors-guide.md": {
+	id: "how-to-spot-a-scam-for-seniors-guide.md";
+  slug: "how-to-spot-a-scam-for-seniors-guide";
+  body: string;
+  collection: "blog";
+  data: InferEntrySchema<"blog">
+} & { render(): Render[".md"] };
+"how-to-teach-kids-coding-logic-without-syntax.md": {
+	id: "how-to-teach-kids-coding-logic-without-syntax.md";
+  slug: "how-to-teach-kids-coding-logic-without-syntax";
   body: string;
   collection: "blog";
   data: InferEntrySchema<"blog">
@@ -193,6 +228,13 @@ declare module 'astro:content' {
 "stop-motion-animation-for-beginners-guide.md": {
 	id: "stop-motion-animation-for-beginners-guide.md";
   slug: "stop-motion-animation-for-beginners-guide";
+  body: string;
+  collection: "blog";
+  data: InferEntrySchema<"blog">
+} & { render(): Render[".md"] };
+"teen-side-hustle-tools-offline.md": {
+	id: "teen-side-hustle-tools-offline.md";
+  slug: "teen-side-hustle-tools-offline";
   body: string;
   collection: "blog";
   data: InferEntrySchema<"blog">

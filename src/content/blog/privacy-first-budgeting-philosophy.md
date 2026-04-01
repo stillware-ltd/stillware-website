@@ -4,6 +4,11 @@ date: 2026-03-29
 description: "Your financial data is not a commodity. Learn why privacy-first budgeting puts you back in control and why cloud-based tools cost more than money."
 author: "Stillware Team"
 wordCount: 1366
+tags: ["Privacy", "Anti-SaaS", "Personal Finance", "Offline-First"]
+featured: true
+pillar: "philosophy"
+appCluster: "zeroed"
+relatedSlugs: ["why-we-dont-do-subscriptions", "how-zeroed-encrypts-your-data", "why-manual-expense-tracking-is-better"]
 ---
 
 ## Your Financial Data Is Not a Commodity

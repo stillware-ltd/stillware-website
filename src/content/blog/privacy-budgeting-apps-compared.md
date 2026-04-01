@@ -4,6 +4,10 @@ date: 2026-03-28
 description: "We compare 5 privacy budgeting apps on encryption, data storage, and key ownership. Find out which ones actually protect your financial data."
 author: "Stillware Team"
 wordCount: 1541
+tags: ["Comparison", "Personal Finance", "Privacy", "Offline-First"]
+pillar: "comparison"
+appCluster: "zeroed"
+relatedSlugs: ["true-cost-of-ynab", "how-zeroed-encrypts-your-data", "privacy-first-budgeting-philosophy"]
 ---
 
 ## Privacy Budgeting Apps Compared: A Security Architecture Review

@@ -4,6 +4,10 @@ date: 2026-03-29
 description: "Cloud apps create scam vectors seniors can't defend against. Discover why offline apps protect seniors with zero server exposure and simpler security."
 author: "Stillware Team"
 wordCount: 1419
+tags: ["Seniors & Accessibility", "Privacy", "Offline-First"]
+pillar: "philosophy"
+appCluster: "general"
+relatedSlugs: ["best-offline-medication-tracker-apps-for-seniors", "how-to-spot-a-scam-for-seniors-guide", "why-offline-apps-are-better"]
 ---
 
 ## The Hidden Dangers of "Convenient" Cloud Apps for Seniors

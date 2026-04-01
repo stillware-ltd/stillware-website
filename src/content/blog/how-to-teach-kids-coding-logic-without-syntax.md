@@ -1,9 +1,13 @@
 ---
 title: "How To Teach Kids Coding Logic Without Syntax"
 date: 2026-04-01
-description: ""
+description: "Most coding apps teach kids to be typists, not thinkers. Learn 5 unplugged activities and screen-based tools that build real computational logic without syntax errors."
 author: "Stillware Team"
 wordCount: 1899
+tags: ["Kids & Tech", "Education", "Offline-First", "Guide"]
+pillar: "problem-solution"
+appCluster: "general"
+relatedSlugs: ["best-offline-chess-app-for-kids", "how-to-make-a-zine-for-kids-guide", "why-kids-deserve-digital-privacy"]
 ---
 
 ## The Syntax Trap: Why Most "Coding for Kids" Tools Teach the Wrong Thing First

@@ -1,9 +1,13 @@
 ---
 title: "Best Offline Medication Trackers For Seniors"
 date: 2026-04-01
-description: ""
+description: "Finding a reliable offline medication tracker for seniors is critical for safety. We tested the top apps and compared cloud-dependent vs. local-first options."
 author: "Stillware Team"
 wordCount: 2092
+tags: ["Seniors & Accessibility", "Health & Wellness", "Offline-First", "Comparison"]
+pillar: "comparison"
+appCluster: "general"
+relatedSlugs: ["best-offline-medication-tracker-apps-for-seniors", "why-offline-apps-protect-seniors-data", "how-to-spot-a-scam-for-seniors-guide"]
 ---
 
 # Best Offline Medication Trackers for Seniors in 2025 (Tested)

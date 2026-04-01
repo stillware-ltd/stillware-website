@@ -3,6 +3,11 @@ title: "How Zeroed Encrypts Your Data Without a Server"
 date: 2026-03-05
 description: "A technical look at how Zeroed achieves bank-grade encryption and cross-device sync without ever touching our infrastructure."
 author: "Stillware Team"
+wordCount: 407
+tags: ["Technical", "Privacy", "Offline-First"]
+pillar: "technical"
+appCluster: "zeroed"
+relatedSlugs: ["privacy-first-budgeting-philosophy", "privacy-budgeting-apps-compared", "why-offline-apps-are-better"]
 ---
 
 ## The Problem with Cloud-Based Budgeting Apps

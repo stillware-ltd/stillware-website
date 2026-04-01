@@ -3,6 +3,12 @@ title: "Why We Don't Do Subscriptions"
 date: 2026-03-10
 description: "The subscription model is broken for personal software. Here's why Stillware chose a different path — and why it matters for your wallet and your data."
 author: "Stillware Team"
+wordCount: 378
+tags: ["Anti-SaaS", "Privacy", "Personal Finance"]
+featured: true
+pillar: "philosophy"
+appCluster: "general"
+relatedSlugs: ["privacy-first-budgeting-philosophy", "true-cost-of-ynab", "why-offline-apps-are-better"]
 ---
 
 ## The Subscription Tax

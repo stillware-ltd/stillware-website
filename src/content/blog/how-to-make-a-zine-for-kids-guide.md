@@ -1,9 +1,13 @@
 ---
 title: "How To Make A Zine For Kids Guide"
 date: 2026-03-30
-description: ""
+description: "The best publishing platform for kids is a folded sheet of paper. Learn how to make a zine with your child using household supplies and build creative confidence."
 author: "Stillware Team"
 wordCount: 1941
+tags: ["Kids & Tech", "Creative Tools", "Education", "Guide"]
+pillar: "problem-solution"
+appCluster: "general"
+relatedSlugs: ["how-to-teach-kids-coding-logic-without-syntax", "stop-motion-animation-for-beginners-guide", "why-kids-deserve-digital-privacy"]
 ---
 
 ## The Best Publishing Platform for Kids Isn't an App Store
