@@ -141,6 +141,34 @@ declare module 'astro:content' {
 
 	type ContentEntryMap = {
 		"blog": {
+"best-offline-chess-app-for-kids.md": {
+	id: "best-offline-chess-app-for-kids.md";
+  slug: "best-offline-chess-app-for-kids";
+  body: string;
+  collection: "blog";
+  data: InferEntrySchema<"blog">
+} & { render(): Render[".md"] };
+"best-offline-medication-tracker-apps-for-seniors.md": {
+	id: "best-offline-medication-tracker-apps-for-seniors.md";
+  slug: "best-offline-medication-tracker-apps-for-seniors";
+  body: string;
+  collection: "blog";
+  data: InferEntrySchema<"blog">
+} & { render(): Render[".md"] };
+"how-to-make-a-zine-for-kids-guide.md": {
+	id: "how-to-make-a-zine-for-kids-guide.md";
+  slug: "how-to-make-a-zine-for-kids-guide";
+  body: string;
+  collection: "blog";
+  data: InferEntrySchema<"blog">
+} & { render(): Render[".md"] };
+"how-to-teach-kids-financial-literacy-with-cash.md": {
+	id: "how-to-teach-kids-financial-literacy-with-cash.md";
+  slug: "how-to-teach-kids-financial-literacy-with-cash";
+  body: string;
+  collection: "blog";
+  data: InferEntrySchema<"blog">
+} & { render(): Render[".md"] };
 "how-zeroed-encrypts-your-data.md": {
 	id: "how-zeroed-encrypts-your-data.md";
   slug: "how-zeroed-encrypts-your-data";
@@ -148,9 +176,58 @@ declare module 'astro:content' {
   collection: "blog";
   data: InferEntrySchema<"blog">
 } & { render(): Render[".md"] };
+"privacy-budgeting-apps-compared.md": {
+	id: "privacy-budgeting-apps-compared.md";
+  slug: "privacy-budgeting-apps-compared";
+  body: string;
+  collection: "blog";
+  data: InferEntrySchema<"blog">
+} & { render(): Render[".md"] };
+"privacy-first-budgeting-philosophy.md": {
+	id: "privacy-first-budgeting-philosophy.md";
+  slug: "privacy-first-budgeting-philosophy";
+  body: string;
+  collection: "blog";
+  data: InferEntrySchema<"blog">
+} & { render(): Render[".md"] };
+"stop-motion-animation-for-beginners-guide.md": {
+	id: "stop-motion-animation-for-beginners-guide.md";
+  slug: "stop-motion-animation-for-beginners-guide";
+  body: string;
+  collection: "blog";
+  data: InferEntrySchema<"blog">
+} & { render(): Render[".md"] };
 "true-cost-of-ynab.md": {
 	id: "true-cost-of-ynab.md";
   slug: "true-cost-of-ynab";
+  body: string;
+  collection: "blog";
+  data: InferEntrySchema<"blog">
+} & { render(): Render[".md"] };
+"why-kids-deserve-digital-privacy.md": {
+	id: "why-kids-deserve-digital-privacy.md";
+  slug: "why-kids-deserve-digital-privacy";
+  body: string;
+  collection: "blog";
+  data: InferEntrySchema<"blog">
+} & { render(): Render[".md"] };
+"why-manual-expense-tracking-is-better.md": {
+	id: "why-manual-expense-tracking-is-better.md";
+  slug: "why-manual-expense-tracking-is-better";
+  body: string;
+  collection: "blog";
+  data: InferEntrySchema<"blog">
+} & { render(): Render[".md"] };
+"why-offline-apps-are-better.md": {
+	id: "why-offline-apps-are-better.md";
+  slug: "why-offline-apps-are-better";
+  body: string;
+  collection: "blog";
+  data: InferEntrySchema<"blog">
+} & { render(): Render[".md"] };
+"why-offline-apps-protect-seniors-data.md": {
+	id: "why-offline-apps-protect-seniors-data.md";
+  slug: "why-offline-apps-protect-seniors-data";
   body: string;
   collection: "blog";
   data: InferEntrySchema<"blog">

@@ -12,7 +12,7 @@
   <rect width="1200" height="4" fill="#059669"/>
 
   <!-- Title -->
-  <text x="600" y="50" text-anchor="middle" font-size="26" font-weight="700" fill="#1e293b">Automated tracking vs. manual awareness</text>
+  <text x="600" y="50" text-anchor="middle" font-size="26" font-weight="700" fill="#1e293b">The cognitive difference between automated and manual tracking</text>
 
   <!-- Divider -->
   <line x1="600" y1="80" x2="600" y2="635" stroke="#059669" stroke-width="2" stroke-dasharray="8,4"/>
@@ -24,31 +24,31 @@
   <!-- Before panel -->
   <rect x="40" y="80" width="520" height="555" rx="12" fill="#dc2626" opacity="0.06"/>
   <rect x="40" y="80" width="520" height="555" rx="12" fill="none" stroke="#dc2626" stroke-width="1.5" opacity="0.4"/>
-  <text x="290" y="120" text-anchor="middle" font-size="20" font-weight="700" fill="#dc2626">Automated Sync</text>
+  <text x="290" y="120" text-anchor="middle" font-size="20" font-weight="700" fill="#dc2626">Automated Import</text>
 
   
   
   <circle cx="78" cy="156" r="6" fill="#dc2626" opacity="0.6"/>
   <foreignObject x="96" y="142" width="444" height="46">
-    <p xmlns="http://www.w3.org/1999/xhtml" style="font-family:Inter,system-ui,sans-serif;font-size:13px;color:#1e293b;margin:0;line-height:1.45;">Transactions appear magically</p>
+    <p xmlns="http://www.w3.org/1999/xhtml" style="font-family:Inter,system-ui,sans-serif;font-size:13px;color:#1e293b;margin:0;line-height:1.45;">Transactions appear silently</p>
   </foreignObject>
   
   
   <circle cx="78" cy="212" r="6" fill="#dc2626" opacity="0.6"/>
   <foreignObject x="96" y="198" width="444" height="46">
-    <p xmlns="http://www.w3.org/1999/xhtml" style="font-family:Inter,system-ui,sans-serif;font-size:13px;color:#1e293b;margin:0;line-height:1.45;">Spending feels abstract</p>
+    <p xmlns="http://www.w3.org/1999/xhtml" style="font-family:Inter,system-ui,sans-serif;font-size:13px;color:#1e293b;margin:0;line-height:1.45;">Categorization happens automatically</p>
   </foreignObject>
   
   
   <circle cx="78" cy="268" r="6" fill="#dc2626" opacity="0.6"/>
   <foreignObject x="96" y="254" width="444" height="46">
-    <p xmlns="http://www.w3.org/1999/xhtml" style="font-family:Inter,system-ui,sans-serif;font-size:13px;color:#1e293b;margin:0;line-height:1.45;">No mental transaction cost</p>
+    <p xmlns="http://www.w3.org/1999/xhtml" style="font-family:Inter,system-ui,sans-serif;font-size:13px;color:#1e293b;margin:0;line-height:1.45;">Spending feels abstract</p>
   </foreignObject>
   
   
   <circle cx="78" cy="324" r="6" fill="#dc2626" opacity="0.6"/>
   <foreignObject x="96" y="310" width="444" height="46">
-    <p xmlns="http://www.w3.org/1999/xhtml" style="font-family:Inter,system-ui,sans-serif;font-size:13px;color:#1e293b;margin:0;line-height:1.45;">Data lives on company servers</p>
+    <p xmlns="http://www.w3.org/1999/xhtml" style="font-family:Inter,system-ui,sans-serif;font-size:13px;color:#1e293b;margin:0;line-height:1.45;">Review is a passive audit</p>
   </foreignObject>
   
 
@@ -61,25 +61,25 @@
   
   <circle cx="678" cy="156" r="6" fill="#16a34a" opacity="0.6"/>
   <foreignObject x="696" y="142" width="444" height="46">
-    <p xmlns="http://www.w3.org/1999/xhtml" style="font-family:Inter,system-ui,sans-serif;font-size:13px;color:#1e293b;margin:0;line-height:1.45;">You record each dollar spent</p>
+    <p xmlns="http://www.w3.org/1999/xhtml" style="font-family:Inter,system-ui,sans-serif;font-size:13px;color:#1e293b;margin:0;line-height:1.45;">You physically enter each amount</p>
   </foreignObject>
   
   
   <circle cx="678" cy="212" r="6" fill="#16a34a" opacity="0.6"/>
   <foreignObject x="696" y="198" width="444" height="46">
-    <p xmlns="http://www.w3.org/1999/xhtml" style="font-family:Inter,system-ui,sans-serif;font-size:13px;color:#1e293b;margin:0;line-height:1.45;">Tangible connection to money</p>
+    <p xmlns="http://www.w3.org/1999/xhtml" style="font-family:Inter,system-ui,sans-serif;font-size:13px;color:#1e293b;margin:0;line-height:1.45;">You assign each category</p>
   </foreignObject>
   
   
   <circle cx="678" cy="268" r="6" fill="#16a34a" opacity="0.6"/>
   <foreignObject x="696" y="254" width="444" height="46">
-    <p xmlns="http://www.w3.org/1999/xhtml" style="font-family:Inter,system-ui,sans-serif;font-size:13px;color:#1e293b;margin:0;line-height:1.45;">Intentional friction builds habit</p>
+    <p xmlns="http://www.w3.org/1999/xhtml" style="font-family:Inter,system-ui,sans-serif;font-size:13px;color:#1e293b;margin:0;line-height:1.45;">Spending feels concrete</p>
   </foreignObject>
   
   
   <circle cx="678" cy="324" r="6" fill="#16a34a" opacity="0.6"/>
   <foreignObject x="696" y="310" width="444" height="46">
-    <p xmlns="http://www.w3.org/1999/xhtml" style="font-family:Inter,system-ui,sans-serif;font-size:13px;color:#1e293b;margin:0;line-height:1.45;">Data lives only on your device</p>
+    <p xmlns="http://www.w3.org/1999/xhtml" style="font-family:Inter,system-ui,sans-serif;font-size:13px;color:#1e293b;margin:0;line-height:1.45;">Review is an active reconciliation</p>
   </foreignObject>
   
 

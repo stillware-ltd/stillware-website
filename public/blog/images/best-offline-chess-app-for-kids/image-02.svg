@@ -12,80 +12,231 @@
   <rect width="1200" height="4" fill="#2563eb"/>
 
   <!-- Title -->
-  <text x="600" y="55" text-anchor="middle" font-size="28" font-weight="700" fill="#1e293b">5-Year Total Cost of Ownership for a Child&#39;s Chess App</text>
+  <text x="600" y="50" text-anchor="middle" font-size="28" font-weight="700" fill="#1e293b">Core features of a dedicated offline chess tutor</text>
 
-  <!-- Chart area -->
-  
-  
-  
-  
-  
-  
+  <!-- Icon color palette (theme-aware) -->
   
 
-  <!-- Y axis -->
-  <line x1="240" y1="85" x2="240" y2="610" stroke="#e2e8f0" stroke-width="1"/>
-
-  <!-- Gridlines -->
+  <!-- Grid: up to 4 columns, 2 rows -->
   
   
-  <line x1="396" y1="85" x2="396" y2="610" stroke="#f1f5f9" stroke-width="1"/>
   
   
-  <line x1="552" y1="85" x2="552" y2="610" stroke="#f1f5f9" stroke-width="1"/>
   
   
-  <line x1="708" y1="85" x2="708" y2="610" stroke="#f1f5f9" stroke-width="1"/>
-  
-  
-  <line x1="864" y1="85" x2="864" y2="610" stroke="#f1f5f9" stroke-width="1"/>
-  
-  
-  <line x1="1020" y1="85" x2="1020" y2="610" stroke="#f1f5f9" stroke-width="1"/>
   
 
   
   
   
   
-
-  <!-- Label -->
-  <text x="226" y="177" text-anchor="end" font-size="14" font-weight="500" fill="#1e293b">ChessKid Subscription</text>
-
-  <!-- Bar with rounded right end -->
-  <rect x="245" y="93" width="346" height="159" rx="18" fill="#dc2626" opacity="0.85"/>
-  <rect x="245" y="93" width="346" height="159" rx="18" fill="#dc2626" opacity="0.12"/>
-
-  <!-- Value label -->
-  <text x="602" y="177" font-size="14" font-weight="700" fill="#dc2626">$399.95</text>
   
   
+
+  <!-- Card background -->
+  <rect x="64" y="95" width="250" height="240" rx="18" fill="#fef3c7" stroke="#e2e8f0" stroke-width="1"/>
+
+  <!-- Icon circle with symbol -->
+  <circle cx="189" cy="137" r="28" fill="#2563eb" opacity="0.12"/>
+  <circle cx="189" cy="137" r="28" fill="none" stroke="#2563eb" stroke-width="2"/>
+
+  <!-- Icon symbol (SVG paths for common types, fallback to letter) -->
   
+  <path d="179" transform="translate(179, 127)" fill="#2563eb">
+    <animate attributeName="d" values=""/>
+  </path>
+  <text x="189" y="144" text-anchor="middle" font-size="20" font-weight="700" fill="#2563eb">&#x1F6E1;</text>
   
 
   <!-- Label -->
-  <text x="226" y="352" text-anchor="end" font-size="14" font-weight="500" fill="#1e293b">Dr. Wolf Subscription</text>
+  <text x="189" y="190" text-anchor="middle" font-size="15" font-weight="600" fill="#1e293b">Privacy by Default</text>
 
-  <!-- Bar with rounded right end -->
-  <rect x="245" y="268" width="780" height="159" rx="18" fill="#f59e0b" opacity="0.85"/>
-  <rect x="245" y="268" width="780" height="159" rx="18" fill="#f59e0b" opacity="0.12"/>
+  <!-- Description -->
+  <foreignObject x="78" y="199" width="222" height="100">
+    <p xmlns="http://www.w3.org/1999/xhtml" style="font-family:Inter,system-ui,sans-serif;font-size:12px;color:#64748b;margin:0;line-height:1.4;text-align:center;">No accounts</p>
+  </foreignObject>
+  
+  
+  
+  
+  
+  
 
-  <!-- Value label -->
-  <text x="1036" y="352" font-size="14" font-weight="700" fill="#f59e0b">$899.40</text>
+  <!-- Card background -->
+  <rect x="338" y="95" width="250" height="240" rx="18" fill="#fef3c7" stroke="#e2e8f0" stroke-width="1"/>
+
+  <!-- Icon circle with symbol -->
+  <circle cx="463" cy="137" r="28" fill="#60a5fa" opacity="0.12"/>
+  <circle cx="463" cy="137" r="28" fill="none" stroke="#60a5fa" stroke-width="2"/>
+
+  <!-- Icon symbol (SVG paths for common types, fallback to letter) -->
   
-  
-  
+  <text x="463" y="144" text-anchor="middle" font-size="20" font-weight="700" fill="#60a5fa">I</text>
   
 
   <!-- Label -->
-  <text x="226" y="527" text-anchor="end" font-size="14" font-weight="500" fill="#1e293b">One-Time Purchase App</text>
+  <text x="463" y="190" text-anchor="middle" font-size="15" font-weight="600" fill="#1e293b">no data collection</text>
 
-  <!-- Bar with rounded right end -->
-  <rect x="245" y="443" width="34" height="159" rx="18" fill="#16a34a" opacity="0.85"/>
-  <rect x="245" y="443" width="34" height="159" rx="18" fill="#16a34a" opacity="0.12"/>
+  <!-- Description -->
+  <foreignObject x="352" y="199" width="222" height="100">
+    <p xmlns="http://www.w3.org/1999/xhtml" style="font-family:Inter,system-ui,sans-serif;font-size:12px;color:#64748b;margin:0;line-height:1.4;text-align:center;"></p>
+  </foreignObject>
+  
+  
+  
+  
+  
+  
 
-  <!-- Value label -->
-  <text x="290" y="527" font-size="14" font-weight="700" fill="#16a34a">$39.99</text>
+  <!-- Card background -->
+  <rect x="612" y="95" width="250" height="240" rx="18" fill="#fef3c7" stroke="#e2e8f0" stroke-width="1"/>
+
+  <!-- Icon circle with symbol -->
+  <circle cx="737" cy="137" r="28" fill="#0891b2" opacity="0.12"/>
+  <circle cx="737" cy="137" r="28" fill="none" stroke="#0891b2" stroke-width="2"/>
+
+  <!-- Icon symbol (SVG paths for common types, fallback to letter) -->
+  
+  <text x="737" y="144" text-anchor="middle" font-size="20" font-weight="700" fill="#0891b2">I</text>
+  
+
+  <!-- Label -->
+  <text x="737" y="190" text-anchor="middle" font-size="15" font-weight="600" fill="#1e293b">COPPA-compliant</text>
+
+  <!-- Description -->
+  <foreignObject x="626" y="199" width="222" height="100">
+    <p xmlns="http://www.w3.org/1999/xhtml" style="font-family:Inter,system-ui,sans-serif;font-size:12px;color:#64748b;margin:0;line-height:1.4;text-align:center;"></p>
+  </foreignObject>
+  
+  
+  
+  
+  
+  
+
+  <!-- Card background -->
+  <rect x="886" y="95" width="250" height="240" rx="18" fill="#fef3c7" stroke="#e2e8f0" stroke-width="1"/>
+
+  <!-- Icon circle with symbol -->
+  <circle cx="1011" cy="137" r="28" fill="#dc2626" opacity="0.12"/>
+  <circle cx="1011" cy="137" r="28" fill="none" stroke="#dc2626" stroke-width="2"/>
+
+  <!-- Icon symbol (SVG paths for common types, fallback to letter) -->
+  
+  <text x="1011" y="144" text-anchor="middle" font-size="20" font-weight="700" fill="#dc2626">B</text>
+  
+
+  <!-- Label -->
+  <text x="1011" y="190" text-anchor="middle" font-size="15" font-weight="600" fill="#1e293b">Structured Path</text>
+
+  <!-- Description -->
+  <foreignObject x="900" y="199" width="222" height="100">
+    <p xmlns="http://www.w3.org/1999/xhtml" style="font-family:Inter,system-ui,sans-serif;font-size:12px;color:#64748b;margin:0;line-height:1.4;text-align:center;">8-chapter curriculum from beginner to competitive</p>
+  </foreignObject>
+  
+  
+  
+  
+  
+  
+
+  <!-- Card background -->
+  <rect x="64" y="363" width="250" height="240" rx="18" fill="#fef3c7" stroke="#e2e8f0" stroke-width="1"/>
+
+  <!-- Icon circle with symbol -->
+  <circle cx="189" cy="405" r="28" fill="#16a34a" opacity="0.12"/>
+  <circle cx="189" cy="405" r="28" fill="none" stroke="#16a34a" stroke-width="2"/>
+
+  <!-- Icon symbol (SVG paths for common types, fallback to letter) -->
+  
+  <text x="189" y="412" text-anchor="middle" font-size="20" font-weight="700" fill="#16a34a">B</text>
+  
+
+  <!-- Label -->
+  <text x="189" y="458" text-anchor="middle" font-size="15" font-weight="600" fill="#1e293b">Offline AI</text>
+
+  <!-- Description -->
+  <foreignObject x="78" y="467" width="222" height="100">
+    <p xmlns="http://www.w3.org/1999/xhtml" style="font-family:Inter,system-ui,sans-serif;font-size:12px;color:#64748b;margin:0;line-height:1.4;text-align:center;">Stockfish 16 with 10 difficulty levels on-device</p>
+  </foreignObject>
+  
+  
+  
+  
+  
+  
+
+  <!-- Card background -->
+  <rect x="338" y="363" width="250" height="240" rx="18" fill="#fef3c7" stroke="#e2e8f0" stroke-width="1"/>
+
+  <!-- Icon circle with symbol -->
+  <circle cx="463" cy="405" r="28" fill="#f59e0b" opacity="0.12"/>
+  <circle cx="463" cy="405" r="28" fill="none" stroke="#f59e0b" stroke-width="2"/>
+
+  <!-- Icon symbol (SVG paths for common types, fallback to letter) -->
+  
+  <text x="463" y="412" text-anchor="middle" font-size="20" font-weight="700" fill="#f59e0b">P</text>
+  
+
+  <!-- Label -->
+  <text x="463" y="458" text-anchor="middle" font-size="15" font-weight="600" fill="#1e293b">Deep Puzzle Library</text>
+
+  <!-- Description -->
+  <foreignObject x="352" y="467" width="222" height="100">
+    <p xmlns="http://www.w3.org/1999/xhtml" style="font-family:Inter,system-ui,sans-serif;font-size:12px;color:#64748b;margin:0;line-height:1.4;text-align:center;">5</p>
+  </foreignObject>
+  
+  
+  
+  
+  
+  
+
+  <!-- Card background -->
+  <rect x="612" y="363" width="250" height="240" rx="18" fill="#fef3c7" stroke="#e2e8f0" stroke-width="1"/>
+
+  <!-- Icon circle with symbol -->
+  <circle cx="737" cy="405" r="28" fill="#ec4899" opacity="0.12"/>
+  <circle cx="737" cy="405" r="28" fill="none" stroke="#ec4899" stroke-width="2"/>
+
+  <!-- Icon symbol (SVG paths for common types, fallback to letter) -->
+  
+  <text x="737" y="412" text-anchor="middle" font-size="20" font-weight="700" fill="#ec4899">&#x25A0;</text>
+  
+
+  <!-- Label -->
+  <text x="737" y="458" text-anchor="middle" font-size="15" font-weight="600" fill="#1e293b">000+ tactical puzzles stored l</text>
+
+  <!-- Description -->
+  <foreignObject x="626" y="467" width="222" height="100">
+    <p xmlns="http://www.w3.org/1999/xhtml" style="font-family:Inter,system-ui,sans-serif;font-size:12px;color:#64748b;margin:0;line-height:1.4;text-align:center;"></p>
+  </foreignObject>
+  
+  
+  
+  
+  
+  
+
+  <!-- Card background -->
+  <rect x="886" y="363" width="250" height="240" rx="18" fill="#fef3c7" stroke="#e2e8f0" stroke-width="1"/>
+
+  <!-- Icon circle with symbol -->
+  <circle cx="1011" cy="405" r="28" fill="#6366f1" opacity="0.12"/>
+  <circle cx="1011" cy="405" r="28" fill="none" stroke="#6366f1" stroke-width="2"/>
+
+  <!-- Icon symbol (SVG paths for common types, fallback to letter) -->
+  
+  <text x="1011" y="412" text-anchor="middle" font-size="20" font-weight="700" fill="#6366f1">T</text>
+  
+
+  <!-- Label -->
+  <text x="1011" y="458" text-anchor="middle" font-size="15" font-weight="600" fill="#1e293b">Achievement System</text>
+
+  <!-- Description -->
+  <foreignObject x="900" y="467" width="222" height="100">
+    <p xmlns="http://www.w3.org/1999/xhtml" style="font-family:Inter,system-ui,sans-serif;font-size:12px;color:#64748b;margin:0;line-height:1.4;text-align:center;">Motivational goals without online leaderboards</p>
+  </foreignObject>
   
 
   <!-- Source attribution -->

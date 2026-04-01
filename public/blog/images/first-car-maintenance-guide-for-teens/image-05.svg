@@ -1,0 +1,107 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 675" width="1200" height="675">
+  <style>
+    text { font-family: Inter, system-ui, -apple-system, sans-serif; }
+  </style>
+
+  <rect width="1200" height="675" fill="#faf5ff"/>
+
+  <!-- Background pattern (per-article variation) -->
+  
+
+  <!-- Subtle top accent bar -->
+  <rect width="1200" height="4" fill="#059669"/>
+
+  <!-- Title -->
+  <text x="600" y="55" text-anchor="middle" font-size="26" font-weight="700" fill="#1e293b">How MPG trends reveal car problems | alt=Bar chart showing declining MPG indicating various car issues</text>
+
+  <!-- Chart area -->
+  
+  
+  
+  
+  
+  
+  
+
+  <!-- Y axis -->
+  <line x1="240" y1="85" x2="240" y2="610" stroke="#e2e8f0" stroke-width="1"/>
+
+  <!-- Gridlines -->
+  
+  
+  <line x1="396" y1="85" x2="396" y2="610" stroke="#f1f5f9" stroke-width="1"/>
+  
+  
+  <line x1="552" y1="85" x2="552" y2="610" stroke="#f1f5f9" stroke-width="1"/>
+  
+  
+  <line x1="708" y1="85" x2="708" y2="610" stroke="#f1f5f9" stroke-width="1"/>
+  
+  
+  <line x1="864" y1="85" x2="864" y2="610" stroke="#f1f5f9" stroke-width="1"/>
+  
+  
+  <line x1="1020" y1="85" x2="1020" y2="610" stroke="#f1f5f9" stroke-width="1"/>
+  
+
+  
+  
+  
+  
+
+  <!-- Label -->
+  <text x="226" y="155" text-anchor="end" font-size="13" font-weight="500" fill="#1e293b">Normal Range</text>
+
+  <!-- Bar with rounded right end -->
+  <rect x="245" y="93" width="780" height="115" rx="10" fill="#059669" opacity="0.85"/>
+  <rect x="245" y="93" width="780" height="115" rx="10" fill="#059669" opacity="0.12"/>
+
+  <!-- Value label -->
+  <text x="1036" y="155" font-size="13" font-weight="700" fill="#059669">29.5</text>
+  
+  
+  
+  
+
+  <!-- Label -->
+  <text x="226" y="286" text-anchor="end" font-size="13" font-weight="500" fill="#1e293b">Winter Blend Fuel</text>
+
+  <!-- Bar with rounded right end -->
+  <rect x="245" y="224" width="742" height="115" rx="10" fill="#dc2626" opacity="0.85"/>
+  <rect x="245" y="224" width="742" height="115" rx="10" fill="#dc2626" opacity="0.12"/>
+
+  <!-- Value label -->
+  <text x="998" y="286" font-size="13" font-weight="700" fill="#dc2626">28.1</text>
+  
+  
+  
+  
+
+  <!-- Label -->
+  <text x="226" y="417" text-anchor="end" font-size="13" font-weight="500" fill="#1e293b">Under-Inflated Tires</text>
+
+  <!-- Bar with rounded right end -->
+  <rect x="245" y="355" width="682" height="115" rx="10" fill="#f59e0b" opacity="0.85"/>
+  <rect x="245" y="355" width="682" height="115" rx="10" fill="#f59e0b" opacity="0.12"/>
+
+  <!-- Value label -->
+  <text x="938" y="417" font-size="13" font-weight="700" fill="#f59e0b">25.8</text>
+  
+  
+  
+  
+
+  <!-- Label -->
+  <text x="226" y="548" text-anchor="end" font-size="13" font-weight="500" fill="#1e293b">Dragging Brake/Faulty Sensor</text>
+
+  <!-- Bar with rounded right end -->
+  <rect x="245" y="486" width="592" height="115" rx="10" fill="#2563eb" opacity="0.85"/>
+  <rect x="245" y="486" width="592" height="115" rx="10" fill="#2563eb" opacity="0.12"/>
+
+  <!-- Value label -->
+  <text x="848" y="548" font-size="13" font-weight="700" fill="#2563eb">22.4</text>
+  
+
+  <!-- Source attribution -->
+  <text x="1190" y="665" text-anchor="end" font-size="10" fill="#cbd5e1">stillwareltd.com</text>
+</svg>

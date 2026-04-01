@@ -9,16 +9,16 @@
     text { font-family: Inter, system-ui, -apple-system, sans-serif; }
   </style>
 
-  <rect width="1200" height="390" fill="#ffffff"/>
+  <rect width="1200" height="390" fill="#faf5ff"/>
 
   <!-- Background pattern (per-article variation) -->
-  <rect width="1200" height="6" fill="#7c3aed"/><rect y="6" width="1200" height="2" fill="#a78bfa" opacity="0.4"/>
+  
 
   <!-- Subtle top accent bar -->
   <rect width="1200" height="4" fill="#059669"/>
 
   <!-- Title -->
-  <text x="600" y="50" text-anchor="middle" font-size="26" font-weight="700" fill="#1e293b">The manual tracking feedback loop that builds financial muscle memory</text>
+  <text x="600" y="50" text-anchor="middle" font-size="26" font-weight="700" fill="#1e293b">How to correctly log a maintenance action | alt=Five step process flow for logging car maintenance from service to filing</text>
 
   <!-- Step accent colors (theme-aware with alternation) -->
   
@@ -37,13 +37,13 @@
   <line x1="97" y1="153" x2="97" y2="180" stroke="#059669" stroke-width="2"/>
 
   <!-- Step box -->
-  <rect x="15" y="180" width="165" height="155" rx="12" fill="#f8fafc" stroke="#e2e8f0" stroke-width="1.5"/>
+  <rect x="15" y="180" width="165" height="155" rx="10" fill="#f3e8ff" stroke="#e2e8f0" stroke-width="1.5"/>
   <rect x="15" y="180" width="165" height="4" rx="2" fill="#059669"/>
-  <text x="97" y="216" text-anchor="middle" font-size="14" font-weight="600" fill="#1e293b">Spend Money</text>
+  <text x="97" y="216" text-anchor="middle" font-size="14" font-weight="600" fill="#1e293b">Perform Service</text>
 
   <!-- Description -->
   <foreignObject x="25" y="224" width="145" height="100">
-    <p xmlns="http://www.w3.org/1999/xhtml" style="font-family:Inter,system-ui,sans-serif;font-size:11.5px;color:#64748b;margin:0;line-height:1.4;text-align:center;">The physical exchange of currency</p>
+    <p xmlns="http://www.w3.org/1999/xhtml" style="font-family:Inter,system-ui,sans-serif;font-size:11.5px;color:#64748b;margin:0;line-height:1.4;text-align:center;">Change oil</p>
   </foreignObject>
 
   <!-- Arrow to next step -->
@@ -58,21 +58,21 @@
   
 
   <!-- Step circle -->
-  <circle cx="298" cy="125" r="28" fill="#a78bfa"/>
-  <circle cx="298" cy="125" r="28" fill="none" stroke="#a78bfa" stroke-width="3" opacity="0.25"/>
+  <circle cx="298" cy="125" r="28" fill="#34d399"/>
+  <circle cx="298" cy="125" r="28" fill="none" stroke="#34d399" stroke-width="3" opacity="0.25"/>
   <text x="298" y="133" text-anchor="middle" font-size="18" font-weight="700" fill="#ffffff">2</text>
 
   <!-- Connector line from circle to box -->
-  <line x1="298" y1="153" x2="298" y2="180" stroke="#a78bfa" stroke-width="2"/>
+  <line x1="298" y1="153" x2="298" y2="180" stroke="#34d399" stroke-width="2"/>
 
   <!-- Step box -->
-  <rect x="216" y="180" width="165" height="155" rx="12" fill="#f8fafc" stroke="#e2e8f0" stroke-width="1.5"/>
-  <rect x="216" y="180" width="165" height="4" rx="2" fill="#a78bfa"/>
-  <text x="298" y="216" text-anchor="middle" font-size="14" font-weight="600" fill="#1e293b">Immediate Recording</text>
+  <rect x="216" y="180" width="165" height="155" rx="10" fill="#f3e8ff" stroke="#e2e8f0" stroke-width="1.5"/>
+  <rect x="216" y="180" width="165" height="4" rx="2" fill="#34d399"/>
+  <text x="298" y="216" text-anchor="middle" font-size="14" font-weight="600" fill="#1e293b">rotate tires</text>
 
   <!-- Description -->
   <foreignObject x="226" y="224" width="145" height="100">
-    <p xmlns="http://www.w3.org/1999/xhtml" style="font-family:Inter,system-ui,sans-serif;font-size:11.5px;color:#64748b;margin:0;line-height:1.4;text-align:center;">Log the amount &amp; category in your app</p>
+    <p xmlns="http://www.w3.org/1999/xhtml" style="font-family:Inter,system-ui,sans-serif;font-size:11.5px;color:#64748b;margin:0;line-height:1.4;text-align:center;"></p>
   </foreignObject>
 
   <!-- Arrow to next step -->
@@ -95,13 +95,13 @@
   <line x1="499" y1="153" x2="499" y2="180" stroke="#0891b2" stroke-width="2"/>
 
   <!-- Step box -->
-  <rect x="417" y="180" width="165" height="155" rx="12" fill="#f8fafc" stroke="#e2e8f0" stroke-width="1.5"/>
+  <rect x="417" y="180" width="165" height="155" rx="10" fill="#f3e8ff" stroke="#e2e8f0" stroke-width="1.5"/>
   <rect x="417" y="180" width="165" height="4" rx="2" fill="#0891b2"/>
-  <text x="499" y="216" text-anchor="middle" font-size="14" font-weight="600" fill="#1e293b">Moment of Reflection</text>
+  <text x="499" y="216" text-anchor="middle" font-size="14" font-weight="600" fill="#1e293b">etc.</text>
 
   <!-- Description -->
   <foreignObject x="427" y="224" width="145" height="100">
-    <p xmlns="http://www.w3.org/1999/xhtml" style="font-family:Inter,system-ui,sans-serif;font-size:11.5px;color:#64748b;margin:0;line-height:1.4;text-align:center;">A conscious acknowledgment of the trade-off</p>
+    <p xmlns="http://www.w3.org/1999/xhtml" style="font-family:Inter,system-ui,sans-serif;font-size:11.5px;color:#64748b;margin:0;line-height:1.4;text-align:center;"></p>
   </foreignObject>
 
   <!-- Arrow to next step -->
@@ -124,13 +124,13 @@
   <line x1="700" y1="153" x2="700" y2="180" stroke="#059669" stroke-width="2"/>
 
   <!-- Step box -->
-  <rect x="618" y="180" width="165" height="155" rx="12" fill="#f8fafc" stroke="#e2e8f0" stroke-width="1.5"/>
+  <rect x="618" y="180" width="165" height="155" rx="10" fill="#f3e8ff" stroke="#e2e8f0" stroke-width="1.5"/>
   <rect x="618" y="180" width="165" height="4" rx="2" fill="#059669"/>
-  <text x="700" y="216" text-anchor="middle" font-size="14" font-weight="600" fill="#1e293b">Category Check</text>
+  <text x="700" y="216" text-anchor="middle" font-size="14" font-weight="600" fill="#1e293b">Record Odometer</text>
 
   <!-- Description -->
   <foreignObject x="628" y="224" width="145" height="100">
-    <p xmlns="http://www.w3.org/1999/xhtml" style="font-family:Inter,system-ui,sans-serif;font-size:11.5px;color:#64748b;margin:0;line-height:1.4;text-align:center;">See the remaining balance in that budget</p>
+    <p xmlns="http://www.w3.org/1999/xhtml" style="font-family:Inter,system-ui,sans-serif;font-size:11.5px;color:#64748b;margin:0;line-height:1.4;text-align:center;">Note exact mileage from dashboard</p>
   </foreignObject>
 
   <!-- Arrow to next step -->
@@ -145,21 +145,21 @@
   
 
   <!-- Step circle -->
-  <circle cx="901" cy="125" r="28" fill="#a78bfa"/>
-  <circle cx="901" cy="125" r="28" fill="none" stroke="#a78bfa" stroke-width="3" opacity="0.25"/>
+  <circle cx="901" cy="125" r="28" fill="#34d399"/>
+  <circle cx="901" cy="125" r="28" fill="none" stroke="#34d399" stroke-width="3" opacity="0.25"/>
   <text x="901" y="133" text-anchor="middle" font-size="18" font-weight="700" fill="#ffffff">5</text>
 
   <!-- Connector line from circle to box -->
-  <line x1="901" y1="153" x2="901" y2="180" stroke="#a78bfa" stroke-width="2"/>
+  <line x1="901" y1="153" x2="901" y2="180" stroke="#34d399" stroke-width="2"/>
 
   <!-- Step box -->
-  <rect x="819" y="180" width="165" height="155" rx="12" fill="#f8fafc" stroke="#e2e8f0" stroke-width="1.5"/>
-  <rect x="819" y="180" width="165" height="4" rx="2" fill="#a78bfa"/>
-  <text x="901" y="216" text-anchor="middle" font-size="14" font-weight="600" fill="#1e293b">Pattern Recognition</text>
+  <rect x="819" y="180" width="165" height="155" rx="10" fill="#f3e8ff" stroke="#e2e8f0" stroke-width="1.5"/>
+  <rect x="819" y="180" width="165" height="4" rx="2" fill="#34d399"/>
+  <text x="901" y="216" text-anchor="middle" font-size="14" font-weight="600" fill="#1e293b">Document Details</text>
 
   <!-- Description -->
   <foreignObject x="829" y="224" width="145" height="100">
-    <p xmlns="http://www.w3.org/1999/xhtml" style="font-family:Inter,system-ui,sans-serif;font-size:11.5px;color:#64748b;margin:0;line-height:1.4;text-align:center;">Weekly review reveals true spending habits</p>
+    <p xmlns="http://www.w3.org/1999/xhtml" style="font-family:Inter,system-ui,sans-serif;font-size:11.5px;color:#64748b;margin:0;line-height:1.4;text-align:center;">List parts</p>
   </foreignObject>
 
   <!-- Arrow to next step -->
@@ -182,13 +182,13 @@
   <line x1="1102" y1="153" x2="1102" y2="180" stroke="#0891b2" stroke-width="2"/>
 
   <!-- Step box -->
-  <rect x="1020" y="180" width="165" height="155" rx="12" fill="#f8fafc" stroke="#e2e8f0" stroke-width="1.5"/>
+  <rect x="1020" y="180" width="165" height="155" rx="10" fill="#f3e8ff" stroke="#e2e8f0" stroke-width="1.5"/>
   <rect x="1020" y="180" width="165" height="4" rx="2" fill="#0891b2"/>
-  <text x="1102" y="216" text-anchor="middle" font-size="14" font-weight="600" fill="#1e293b">Informed Adjustment</text>
+  <text x="1102" y="216" text-anchor="middle" font-size="14" font-weight="600" fill="#1e293b">fluids</text>
 
   <!-- Description -->
   <foreignObject x="1030" y="224" width="145" height="100">
-    <p xmlns="http://www.w3.org/1999/xhtml" style="font-family:Inter,system-ui,sans-serif;font-size:11.5px;color:#64748b;margin:0;line-height:1.4;text-align:center;">You consciously adapt future behavior based on clarity</p>
+    <p xmlns="http://www.w3.org/1999/xhtml" style="font-family:Inter,system-ui,sans-serif;font-size:11.5px;color:#64748b;margin:0;line-height:1.4;text-align:center;"></p>
   </foreignObject>
 
   <!-- Arrow to next step -->

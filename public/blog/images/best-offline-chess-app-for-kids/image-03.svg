@@ -1,0 +1,171 @@
+
+
+
+
+
+
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 390" width="1200" height="390">
+  <style>
+    text { font-family: Inter, system-ui, -apple-system, sans-serif; }
+  </style>
+
+  <rect width="1200" height="390" fill="#fffbeb"/>
+
+  <!-- Background pattern (per-article variation) -->
+  
+
+  <!-- Subtle top accent bar -->
+  <rect width="1200" height="4" fill="#2563eb"/>
+
+  <!-- Title -->
+  <text x="600" y="50" text-anchor="middle" font-size="28" font-weight="700" fill="#1e293b">The offline chess learning loop for sustained skill development</text>
+
+  <!-- Step accent colors (theme-aware with alternation) -->
+  
+
+  
+  
+  
+  
+
+  <!-- Step circle -->
+  <circle cx="197" cy="125" r="28" fill="#2563eb"/>
+  <circle cx="197" cy="125" r="28" fill="none" stroke="#2563eb" stroke-width="3" opacity="0.25"/>
+  <text x="197" y="133" text-anchor="middle" font-size="18" font-weight="700" fill="#ffffff">1</text>
+
+  <!-- Connector line from circle to box -->
+  <line x1="197" y1="153" x2="197" y2="180" stroke="#2563eb" stroke-width="2"/>
+
+  <!-- Step box -->
+  <rect x="115" y="180" width="165" height="155" rx="18" fill="#fef3c7" stroke="#e2e8f0" stroke-width="1.5"/>
+  <rect x="115" y="180" width="165" height="4" rx="2" fill="#2563eb"/>
+  <text x="197" y="216" text-anchor="middle" font-size="15" font-weight="600" fill="#1e293b">Learn Concept</text>
+
+  <!-- Description -->
+  <foreignObject x="125" y="224" width="145" height="100">
+    <p xmlns="http://www.w3.org/1999/xhtml" style="font-family:Inter,system-ui,sans-serif;font-size:11.5px;color:#64748b;margin:0;line-height:1.4;text-align:center;">Interactive lesson from embedded curriculum</p>
+  </foreignObject>
+
+  <!-- Arrow to next step -->
+  
+  
+  <line x1="284" y1="257" x2="308" y2="257" stroke="#cbd5e1" stroke-width="2"/>
+  <polygon points="308,252 317,257 308,262" fill="#cbd5e1"/>
+  
+  
+  
+  
+  
+
+  <!-- Step circle -->
+  <circle cx="398" cy="125" r="28" fill="#60a5fa"/>
+  <circle cx="398" cy="125" r="28" fill="none" stroke="#60a5fa" stroke-width="3" opacity="0.25"/>
+  <text x="398" y="133" text-anchor="middle" font-size="18" font-weight="700" fill="#ffffff">2</text>
+
+  <!-- Connector line from circle to box -->
+  <line x1="398" y1="153" x2="398" y2="180" stroke="#60a5fa" stroke-width="2"/>
+
+  <!-- Step box -->
+  <rect x="316" y="180" width="165" height="155" rx="18" fill="#fef3c7" stroke="#e2e8f0" stroke-width="1.5"/>
+  <rect x="316" y="180" width="165" height="4" rx="2" fill="#60a5fa"/>
+  <text x="398" y="216" text-anchor="middle" font-size="15" font-weight="600" fill="#1e293b">Practice Tactics</text>
+
+  <!-- Description -->
+  <foreignObject x="326" y="224" width="145" height="100">
+    <p xmlns="http://www.w3.org/1999/xhtml" style="font-family:Inter,system-ui,sans-serif;font-size:11.5px;color:#64748b;margin:0;line-height:1.4;text-align:center;">Solve relevant puzzles from local library</p>
+  </foreignObject>
+
+  <!-- Arrow to next step -->
+  
+  
+  <line x1="485" y1="257" x2="509" y2="257" stroke="#cbd5e1" stroke-width="2"/>
+  <polygon points="509,252 518,257 509,262" fill="#cbd5e1"/>
+  
+  
+  
+  
+  
+
+  <!-- Step circle -->
+  <circle cx="599" cy="125" r="28" fill="#0891b2"/>
+  <circle cx="599" cy="125" r="28" fill="none" stroke="#0891b2" stroke-width="3" opacity="0.25"/>
+  <text x="599" y="133" text-anchor="middle" font-size="18" font-weight="700" fill="#ffffff">3</text>
+
+  <!-- Connector line from circle to box -->
+  <line x1="599" y1="153" x2="599" y2="180" stroke="#0891b2" stroke-width="2"/>
+
+  <!-- Step box -->
+  <rect x="517" y="180" width="165" height="155" rx="18" fill="#fef3c7" stroke="#e2e8f0" stroke-width="1.5"/>
+  <rect x="517" y="180" width="165" height="4" rx="2" fill="#0891b2"/>
+  <text x="599" y="216" text-anchor="middle" font-size="15" font-weight="600" fill="#1e293b">Apply in Game</text>
+
+  <!-- Description -->
+  <foreignObject x="527" y="224" width="145" height="100">
+    <p xmlns="http://www.w3.org/1999/xhtml" style="font-family:Inter,system-ui,sans-serif;font-size:11.5px;color:#64748b;margin:0;line-height:1.4;text-align:center;">Play against adaptive AI opponent</p>
+  </foreignObject>
+
+  <!-- Arrow to next step -->
+  
+  
+  <line x1="686" y1="257" x2="710" y2="257" stroke="#cbd5e1" stroke-width="2"/>
+  <polygon points="710,252 719,257 710,262" fill="#cbd5e1"/>
+  
+  
+  
+  
+  
+
+  <!-- Step circle -->
+  <circle cx="800" cy="125" r="28" fill="#2563eb"/>
+  <circle cx="800" cy="125" r="28" fill="none" stroke="#2563eb" stroke-width="3" opacity="0.25"/>
+  <text x="800" y="133" text-anchor="middle" font-size="18" font-weight="700" fill="#ffffff">4</text>
+
+  <!-- Connector line from circle to box -->
+  <line x1="800" y1="153" x2="800" y2="180" stroke="#2563eb" stroke-width="2"/>
+
+  <!-- Step box -->
+  <rect x="718" y="180" width="165" height="155" rx="18" fill="#fef3c7" stroke="#e2e8f0" stroke-width="1.5"/>
+  <rect x="718" y="180" width="165" height="4" rx="2" fill="#2563eb"/>
+  <text x="800" y="216" text-anchor="middle" font-size="15" font-weight="600" fill="#1e293b">Review Mistakes</text>
+
+  <!-- Description -->
+  <foreignObject x="728" y="224" width="145" height="100">
+    <p xmlns="http://www.w3.org/1999/xhtml" style="font-family:Inter,system-ui,sans-serif;font-size:11.5px;color:#64748b;margin:0;line-height:1.4;text-align:center;">Post-game analysis with on-device engine</p>
+  </foreignObject>
+
+  <!-- Arrow to next step -->
+  
+  
+  <line x1="887" y1="257" x2="911" y2="257" stroke="#cbd5e1" stroke-width="2"/>
+  <polygon points="911,252 920,257 911,262" fill="#cbd5e1"/>
+  
+  
+  
+  
+  
+
+  <!-- Step circle -->
+  <circle cx="1001" cy="125" r="28" fill="#60a5fa"/>
+  <circle cx="1001" cy="125" r="28" fill="none" stroke="#60a5fa" stroke-width="3" opacity="0.25"/>
+  <text x="1001" y="133" text-anchor="middle" font-size="18" font-weight="700" fill="#ffffff">5</text>
+
+  <!-- Connector line from circle to box -->
+  <line x1="1001" y1="153" x2="1001" y2="180" stroke="#60a5fa" stroke-width="2"/>
+
+  <!-- Step box -->
+  <rect x="919" y="180" width="165" height="155" rx="18" fill="#fef3c7" stroke="#e2e8f0" stroke-width="1.5"/>
+  <rect x="919" y="180" width="165" height="4" rx="2" fill="#60a5fa"/>
+  <text x="1001" y="216" text-anchor="middle" font-size="15" font-weight="600" fill="#1e293b">Earn Reward</text>
+
+  <!-- Description -->
+  <foreignObject x="929" y="224" width="145" height="100">
+    <p xmlns="http://www.w3.org/1999/xhtml" style="font-family:Inter,system-ui,sans-serif;font-size:11.5px;color:#64748b;margin:0;line-height:1.4;text-align:center;">Unlock achievements &amp; advance chapters</p>
+  </foreignObject>
+
+  <!-- Arrow to next step -->
+  
+  
+
+  <!-- Source attribution -->
+  <text x="1190" y="382" text-anchor="end" font-size="10" fill="#cbd5e1">stillwareltd.com</text>
+</svg>

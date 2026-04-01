@@ -1,0 +1,129 @@
+
+
+
+
+
+
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 597" width="1200" height="597">
+  <style>
+    text { font-family: Inter, system-ui, -apple-system, sans-serif; }
+  </style>
+
+  <rect width="1200" height="597" fill="#faf5ff"/>
+
+  <!-- Background pattern (per-article variation) -->
+  
+
+  <!-- Subtle top accent bar -->
+  <rect width="1200" height="4" fill="#059669"/>
+
+  <!-- Title -->
+  <text x="600" y="50" text-anchor="middle" font-size="26" font-weight="700" fill="#1e293b">Seasonal maintenance priorities comparison | alt=Table comparing winter versus summer car maintenance tasks</text>
+
+  <!-- Column header colors (theme-aware alternation) -->
+  
+  
+
+  <!-- Table -->
+  
+  
+  
+
+  <!-- Column header -->
+  <rect x="100" y="80" width="500" height="52" fill="#059669"/>
+  
+  <rect x="100" y="80" width="4" height="52" fill="#059669"/>
+  
+  <text x="350" y="112" text-anchor="middle" font-size="16" font-weight="600" fill="#ffffff">Focus Area</text>
+
+  <!-- Rows -->
+  
+  
+  <rect x="100" y="148" width="500" height="52" fill="#f3e8ff" stroke="#e2e8f0" stroke-width="0.5"/>
+  <text x="116" y="170" font-size="13" font-weight="600" fill="#1e293b">Focus Area</text>
+  <text x="116" y="190" font-size="13" fill="#64748b">Winter Prep</text>
+  
+  
+  <rect x="100" y="206" width="500" height="52" fill="#faf5ff" stroke="#e2e8f0" stroke-width="0.5"/>
+  <text x="116" y="228" font-size="13" font-weight="600" fill="#1e293b">Key Tasks</text>
+  <text x="116" y="248" font-size="13" fill="#64748b">Battery test</text>
+  
+  
+  <rect x="100" y="264" width="500" height="52" fill="#f3e8ff" stroke="#e2e8f0" stroke-width="0.5"/>
+  <text x="116" y="286" font-size="13" font-weight="600" fill="#1e293b">winter washer fluid</text>
+  <text x="116" y="306" font-size="13" fill="#64748b">winter washer fluid</text>
+  
+  
+  <rect x="100" y="322" width="500" height="52" fill="#faf5ff" stroke="#e2e8f0" stroke-width="0.5"/>
+  <text x="116" y="344" font-size="13" font-weight="600" fill="#1e293b">tire tread/pressure check</text>
+  <text x="116" y="364" font-size="13" fill="#64748b">tire tread/pressure check</text>
+  
+  
+  <rect x="100" y="380" width="500" height="52" fill="#f3e8ff" stroke="#e2e8f0" stroke-width="0.5"/>
+  <text x="116" y="402" font-size="13" font-weight="600" fill="#1e293b">Why Critical</text>
+  <text x="116" y="422" font-size="13" fill="#64748b">Cold reduces battery output</text>
+  
+  
+  <rect x="100" y="438" width="500" height="52" fill="#faf5ff" stroke="#e2e8f0" stroke-width="0.5"/>
+  <text x="116" y="460" font-size="13" font-weight="600" fill="#1e293b">ice needs clearing</text>
+  <text x="116" y="480" font-size="13" fill="#64748b">ice needs clearing</text>
+  
+  
+  <rect x="100" y="496" width="500" height="52" fill="#f3e8ff" stroke="#e2e8f0" stroke-width="0.5"/>
+  <text x="116" y="518" font-size="13" font-weight="600" fill="#1e293b">traction is paramount</text>
+  <text x="116" y="538" font-size="13" fill="#64748b">traction is paramount</text>
+  
+  
+  
+  
+
+  <!-- Column header -->
+  <rect x="600" y="80" width="500" height="52" fill="#34d399"/>
+  
+  <text x="850" y="112" text-anchor="middle" font-size="16" font-weight="600" fill="#ffffff">Focus Area</text>
+
+  <!-- Rows -->
+  
+  
+  <rect x="600" y="148" width="500" height="52" fill="#f3e8ff" stroke="#e2e8f0" stroke-width="0.5"/>
+  <text x="616" y="170" font-size="13" font-weight="600" fill="#1e293b">Focus Area</text>
+  <text x="616" y="190" font-size="13" fill="#64748b">Summer Prep</text>
+  
+  
+  <rect x="600" y="206" width="500" height="52" fill="#faf5ff" stroke="#e2e8f0" stroke-width="0.5"/>
+  <text x="616" y="228" font-size="13" font-weight="600" fill="#1e293b">Key Tasks</text>
+  <text x="616" y="248" font-size="13" fill="#64748b">Coolant level</text>
+  
+  
+  <rect x="600" y="264" width="500" height="52" fill="#f3e8ff" stroke="#e2e8f0" stroke-width="0.5"/>
+  <text x="616" y="286" font-size="13" font-weight="600" fill="#1e293b">A/C performance</text>
+  <text x="616" y="306" font-size="13" fill="#64748b">A/C performance</text>
+  
+  
+  <rect x="600" y="322" width="500" height="52" fill="#faf5ff" stroke="#e2e8f0" stroke-width="0.5"/>
+  <text x="616" y="344" font-size="13" font-weight="600" fill="#1e293b">tire pressure check</text>
+  <text x="616" y="364" font-size="13" fill="#64748b">tire pressure check</text>
+  
+  
+  <rect x="600" y="380" width="500" height="52" fill="#f3e8ff" stroke="#e2e8f0" stroke-width="0.5"/>
+  <text x="616" y="402" font-size="13" font-weight="600" fill="#1e293b">Why Critical</text>
+  <text x="616" y="422" font-size="13" fill="#64748b">Engine overheating risk</text>
+  
+  
+  <rect x="600" y="438" width="500" height="52" fill="#faf5ff" stroke="#e2e8f0" stroke-width="0.5"/>
+  <text x="616" y="460" font-size="13" font-weight="600" fill="#1e293b">comfort and safety</text>
+  <text x="616" y="480" font-size="13" fill="#64748b">comfort and safety</text>
+  
+  
+  <rect x="600" y="496" width="500" height="52" fill="#f3e8ff" stroke="#e2e8f0" stroke-width="0.5"/>
+  <text x="616" y="518" font-size="13" font-weight="600" fill="#1e293b">heat increases tire pressure</text>
+  <text x="616" y="538" font-size="13" fill="#64748b">heat increases tire pressure</text>
+  
+  
+
+  <!-- Bottom border -->
+  <rect x="100" y="554" width="1000" height="3" fill="#059669"/>
+
+  <!-- Source attribution -->
+  <text x="1190" y="589" text-anchor="end" font-size="10" fill="#cbd5e1">stillwareltd.com</text>
+</svg>

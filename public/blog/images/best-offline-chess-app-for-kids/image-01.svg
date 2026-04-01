@@ -12,7 +12,7 @@
   <rect width="1200" height="4" fill="#2563eb"/>
 
   <!-- Title -->
-  <text x="600" y="50" text-anchor="middle" font-size="28" font-weight="700" fill="#1e293b">The distraction model vs. the focus model for learning chess</text>
+  <text x="600" y="50" text-anchor="middle" font-size="28" font-weight="700" fill="#1e293b">Cloud-dependent vs. fully offline chess app experience</text>
 
   <!-- Divider -->
   <line x1="600" y1="80" x2="600" y2="635" stroke="#2563eb" stroke-width="2" stroke-dasharray="8,4"/>
@@ -24,62 +24,68 @@
   <!-- Before panel -->
   <rect x="40" y="80" width="520" height="555" rx="18" fill="#dc2626" opacity="0.06"/>
   <rect x="40" y="80" width="520" height="555" rx="18" fill="none" stroke="#dc2626" stroke-width="1.5" opacity="0.4"/>
-  <text x="290" y="120" text-anchor="middle" font-size="20" font-weight="700" fill="#dc2626">Typical &#34;Kids&#34; Chess App</text>
+  <text x="290" y="120" text-anchor="middle" font-size="20" font-weight="700" fill="#dc2626">Cloud-Dependent</text>
 
   
   
   <circle cx="78" cy="156" r="6" fill="#dc2626" opacity="0.6"/>
   <foreignObject x="96" y="142" width="444" height="46">
-    <p xmlns="http://www.w3.org/1999/xhtml" style="font-family:Inter,system-ui,sans-serif;font-size:14px;color:#1e293b;margin:0;line-height:1.45;">Requires constant internet</p>
+    <p xmlns="http://www.w3.org/1999/xhtml" style="font-family:Inter,system-ui,sans-serif;font-size:14px;color:#1e293b;margin:0;line-height:1.45;">Requires Wi-Fi for AI moves</p>
   </foreignObject>
   
   
   <circle cx="78" cy="212" r="6" fill="#dc2626" opacity="0.6"/>
   <foreignObject x="96" y="198" width="444" height="46">
-    <p xmlns="http://www.w3.org/1999/xhtml" style="font-family:Inter,system-ui,sans-serif;font-size:14px;color:#1e293b;margin:0;line-height:1.45;">Social notifications &amp; chats</p>
+    <p xmlns="http://www.w3.org/1999/xhtml" style="font-family:Inter,system-ui,sans-serif;font-size:14px;color:#1e293b;margin:0;line-height:1.45;">Puzzles streamed monthly</p>
   </foreignObject>
   
   
   <circle cx="78" cy="268" r="6" fill="#dc2626" opacity="0.6"/>
   <foreignObject x="96" y="254" width="444" height="46">
-    <p xmlns="http://www.w3.org/1999/xhtml" style="font-family:Inter,system-ui,sans-serif;font-size:14px;color:#1e293b;margin:0;line-height:1.45;">Monthly subscription fee</p>
+    <p xmlns="http://www.w3.org/1999/xhtml" style="font-family:Inter,system-ui,sans-serif;font-size:14px;color:#1e293b;margin:0;line-height:1.45;">Progress syncs to account</p>
   </foreignObject>
   
   
   <circle cx="78" cy="324" r="6" fill="#dc2626" opacity="0.6"/>
   <foreignObject x="96" y="310" width="444" height="46">
-    <p xmlns="http://www.w3.org/1999/xhtml" style="font-family:Inter,system-ui,sans-serif;font-size:14px;color:#1e293b;margin:0;line-height:1.45;">COPPA-compliant cloud data</p>
+    <p xmlns="http://www.w3.org/1999/xhtml" style="font-family:Inter,system-ui,sans-serif;font-size:14px;color:#1e293b;margin:0;line-height:1.45;">Monthly subscription fee</p>
   </foreignObject>
   
 
   <!-- After panel -->
   <rect x="640" y="80" width="520" height="555" rx="18" fill="#16a34a" opacity="0.06"/>
   <rect x="640" y="80" width="520" height="555" rx="18" fill="none" stroke="#16a34a" stroke-width="1.5" opacity="0.4"/>
-  <text x="900" y="120" text-anchor="middle" font-size="20" font-weight="700" fill="#16a34a">Offline-First Chess App</text>
+  <text x="900" y="120" text-anchor="middle" font-size="20" font-weight="700" fill="#16a34a">Fully Offline</text>
 
   
   
   <circle cx="678" cy="156" r="6" fill="#16a34a" opacity="0.6"/>
   <foreignObject x="696" y="142" width="444" height="46">
-    <p xmlns="http://www.w3.org/1999/xhtml" style="font-family:Inter,system-ui,sans-serif;font-size:14px;color:#1e293b;margin:0;line-height:1.45;">Zero connectivity needed</p>
+    <p xmlns="http://www.w3.org/1999/xhtml" style="font-family:Inter,system-ui,sans-serif;font-size:14px;color:#1e293b;margin:0;line-height:1.45;">AI runs on device processor</p>
   </foreignObject>
   
   
   <circle cx="678" cy="212" r="6" fill="#16a34a" opacity="0.6"/>
   <foreignObject x="696" y="198" width="444" height="46">
-    <p xmlns="http://www.w3.org/1999/xhtml" style="font-family:Inter,system-ui,sans-serif;font-size:14px;color:#1e293b;margin:0;line-height:1.45;">No accounts or logins</p>
+    <p xmlns="http://www.w3.org/1999/xhtml" style="font-family:Inter,system-ui,sans-serif;font-size:14px;color:#1e293b;margin:0;line-height:1.45;">5</p>
   </foreignObject>
   
   
   <circle cx="678" cy="268" r="6" fill="#16a34a" opacity="0.6"/>
   <foreignObject x="696" y="254" width="444" height="46">
-    <p xmlns="http://www.w3.org/1999/xhtml" style="font-family:Inter,system-ui,sans-serif;font-size:14px;color:#1e293b;margin:0;line-height:1.45;">One-time purchase</p>
+    <p xmlns="http://www.w3.org/1999/xhtml" style="font-family:Inter,system-ui,sans-serif;font-size:14px;color:#1e293b;margin:0;line-height:1.45;">000+ puzzles pre-loaded</p>
   </foreignObject>
   
   
   <circle cx="678" cy="324" r="6" fill="#16a34a" opacity="0.6"/>
   <foreignObject x="696" y="310" width="444" height="46">
-    <p xmlns="http://www.w3.org/1999/xhtml" style="font-family:Inter,system-ui,sans-serif;font-size:14px;color:#1e293b;margin:0;line-height:1.45;">All data stays on device</p>
+    <p xmlns="http://www.w3.org/1999/xhtml" style="font-family:Inter,system-ui,sans-serif;font-size:14px;color:#1e293b;margin:0;line-height:1.45;">Progress saved locally</p>
+  </foreignObject>
+  
+  
+  <circle cx="678" cy="380" r="6" fill="#16a34a" opacity="0.6"/>
+  <foreignObject x="696" y="366" width="444" height="46">
+    <p xmlns="http://www.w3.org/1999/xhtml" style="font-family:Inter,system-ui,sans-serif;font-size:14px;color:#1e293b;margin:0;line-height:1.45;">One-time purchase</p>
   </foreignObject>
   
 
