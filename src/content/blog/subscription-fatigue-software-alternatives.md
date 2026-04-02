@@ -4,6 +4,7 @@ date: 2026-04-02
 description: ""
 author: "Stillware Team"
 wordCount: 1309
+heroImage: "/blog/images/subscription-fatigue-software-alternatives/hero.webp"
 ---
 
 # 5 Signs of Subscription Fatigue (And How to Escape It)

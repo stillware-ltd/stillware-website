@@ -4,6 +4,7 @@ date: 2026-04-02
 description: ""
 author: "Stillware Team"
 wordCount: 1989
+heroImage: "/blog/images/best-offline-chess-app-for-kids-2026/hero.webp"
 ---
 
 # Best Offline Chess App for Kids in 2026 (Tested & Reviewed)

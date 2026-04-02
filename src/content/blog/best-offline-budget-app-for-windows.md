@@ -4,6 +4,7 @@ date: 2026-04-02
 description: ""
 author: "Stillware Team"
 wordCount: 2239
+heroImage: "/blog/images/best-offline-budget-app-for-windows/hero.webp"
 ---
 
 ## Myth vs. Reality: Finding a Budget App for Windows

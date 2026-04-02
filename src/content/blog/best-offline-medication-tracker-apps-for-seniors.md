@@ -4,6 +4,7 @@ date: 2026-04-02
 description: ""
 author: "Stillware Team"
 wordCount: 1892
+heroImage: "/blog/images/best-offline-medication-tracker-apps-for-seniors/hero.webp"
 ---
 
 ## The Doctor Is In — But Your Wi-Fi Isn’t

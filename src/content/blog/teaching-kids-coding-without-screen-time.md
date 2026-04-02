@@ -4,6 +4,7 @@ date: 2026-04-02
 description: ""
 author: "Stillware Team"
 wordCount: 2031
+heroImage: "/blog/images/teaching-kids-coding-without-screen-time/hero.webp"
 ---
 
 ## Teaching Kids Coding Without Screen Time: The Unplugged Path
