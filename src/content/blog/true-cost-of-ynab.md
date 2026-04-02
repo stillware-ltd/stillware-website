@@ -9,6 +9,7 @@ pillar: "comparison"
 appCluster: "zeroed"
 relatedSlugs: ["why-we-dont-do-subscriptions", "privacy-budgeting-apps-compared", "why-manual-expense-tracking-is-better"]
 ogImage: "/blog/images/true-cost-of-ynab/og-card.svg"
+heroImage: "/blog/images/true-cost-of-ynab/hero.webp"
 ---
 
 ## A Great App With a Broken Model

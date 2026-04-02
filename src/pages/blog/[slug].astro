@@ -36,7 +36,7 @@ const shareUrlEncoded = encodeURIComponent(shareUrl);
 <Layout
   title={`${post.data.title} — Stillware Ltd`}
   description={post.data.description}
-  ogImage={post.data.ogImage}
+  ogImage={post.data.heroImage || post.data.ogImage}
 >
     <article class="blog-post">
         <header class="post-hero">
@@ -60,6 +60,12 @@ const shareUrlEncoded = encodeURIComponent(shareUrl);
                 )}
             </div>
         </header>
+
+        {post.data.heroImage && (
+            <div class="article-hero-image">
+                <img src={post.data.heroImage} alt="" />
+            </div>
+        )}
 
         <div class="post-body">
             <Content />
@@ -164,6 +170,23 @@ const shareUrlEncoded = encodeURIComponent(shareUrl);
     .post-hero-inner {
         max-width: 700px;
         margin: 0 auto;
+    }
+
+    .article-hero-image {
+        max-width: 900px;
+        margin: -4rem auto 2rem;
+        padding: 0 2rem;
+        position: relative;
+        z-index: 10;
+    }
+
+    .article-hero-image img {
+        width: 100%;
+        height: auto;
+        border-radius: 16px;
+        box-shadow: var(--shadow-xl);
+        border: 1px solid rgba(255, 255, 255, 0.1);
+        display: block;
     }
 
     .post-hero-meta {

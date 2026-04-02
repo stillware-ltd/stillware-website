@@ -9,6 +9,7 @@ pillar: "philosophy"
 appCluster: "general"
 relatedSlugs: ["best-offline-medication-tracker-apps-for-seniors", "how-to-spot-a-scam-for-seniors-guide", "why-offline-apps-are-better"]
 ogImage: "/blog/images/why-offline-apps-protect-seniors-data/og-card.svg"
+heroImage: "/blog/images/why-offline-apps-protect-seniors-data/hero.webp"
 ---
 
 ## The Hidden Dangers of "Convenient" Cloud Apps for Seniors

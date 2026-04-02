@@ -1,4 +1,5 @@
 ---
+heroImage: "/blog/images/how-to-teach-kids-financial-literacy-with-cash/hero.png"
 title: "How To Teach Kids Financial Literacy With Cash"
 date: 2026-03-29
 description: "Digital allowance apps teach the wrong lessons. Learn the three-jar cash method paired with private tracking to build real financial literacy in children."

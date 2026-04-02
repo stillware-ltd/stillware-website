@@ -1,4 +1,5 @@
 ---
+heroImage: "/blog/images/how-to-teach-kids-coding-logic-without-syntax/hero.png"
 title: "How To Teach Kids Coding Logic Without Syntax"
 date: 2026-04-01
 description: "Most coding apps teach kids to be typists, not thinkers. Learn 5 unplugged activities and screen-based tools that build real computational logic without syntax errors."

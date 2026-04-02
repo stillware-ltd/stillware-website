@@ -9,6 +9,7 @@ pillar: "problem-solution"
 appCluster: "general"
 relatedSlugs: ["how-to-make-a-zine-for-kids-guide", "how-to-record-a-band-demo-offline", "how-to-teach-kids-coding-logic-without-syntax"]
 ogImage: "/blog/images/stop-motion-animation-for-beginners-guide/og-card.svg"
+heroImage: "/blog/images/stop-motion-animation-for-beginners-guide/hero.webp"
 ---
 
 ## The Joy of Frame-by-Frame: Your First Stop Motion Adventure

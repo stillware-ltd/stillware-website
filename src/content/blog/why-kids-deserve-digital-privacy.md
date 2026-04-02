@@ -9,6 +9,7 @@ pillar: "philosophy"
 appCluster: "general"
 relatedSlugs: ["how-to-teach-kids-financial-literacy-with-cash", "best-offline-chess-app-for-kids", "why-offline-apps-protect-seniors-data"]
 ogImage: "/blog/images/why-kids-deserve-digital-privacy/og-card.svg"
+heroImage: "/blog/images/why-kids-deserve-digital-privacy/hero.webp"
 ---
 
 ## The Myth of the "Safe" Digital Panopticon

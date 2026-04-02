@@ -1,4 +1,5 @@
 ---
+heroImage: "/blog/images/how-to-make-a-zine-for-kids-guide/hero.png"
 title: "How To Make A Zine For Kids Guide"
 date: 2026-03-30
 description: "The best publishing platform for kids is a folded sheet of paper. Learn how to make a zine with your child using household supplies and build creative confidence."

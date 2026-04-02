@@ -1,4 +1,5 @@
 ---
+heroImage: "/blog/images/first-car-maintenance-guide-for-teens/hero.png"
 title: "First Car Maintenance Guide For Teens"
 date: 2026-04-01
 description: "Your car's maintenance history shouldn't depend on Wi-Fi. Learn the 7 essential checks every teen driver needs and how to build a local maintenance log."

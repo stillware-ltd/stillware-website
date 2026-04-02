@@ -1,4 +1,5 @@
 ---
+heroImage: "/blog/images/best-offline-chess-app-for-kids/hero.png"
 title: "Best Offline Chess App For Kids"
 date: 2026-04-01
 description: "Most chess apps for kids demand Wi-Fi and subscriptions. We tested the top options to find truly offline, privacy-respecting chess apps your kids can own."

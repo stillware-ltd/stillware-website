@@ -1,4 +1,5 @@
 ---
+heroImage: "/blog/images/how-zeroed-encrypts-your-data/hero.png"
 title: "How Zeroed Encrypts Your Data Without a Server"
 date: 2026-03-05
 description: "A technical look at how Zeroed achieves bank-grade encryption and cross-device sync without ever touching our infrastructure."

@@ -1,4 +1,5 @@
 ---
+heroImage: "/blog/images/how-to-record-a-band-demo-offline/hero.png"
 title: "How To Record A Band Demo Offline"
 date: 2026-04-01
 description: "Cloud recording tools fail in garages, basements, and rehearsal spaces. Learn the complete offline setup for capturing your band's demo with zero internet dependency."

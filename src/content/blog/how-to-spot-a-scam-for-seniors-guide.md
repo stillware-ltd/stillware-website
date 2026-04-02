@@ -1,4 +1,5 @@
 ---
+heroImage: "/blog/images/how-to-spot-a-scam-for-seniors-guide/hero.png"
 title: "How To Spot A Scam For Seniors Guide"
 date: 2026-04-01
 description: "Scammers exploit decency, not ignorance. Learn the 3-act structure of every modern scam and 5 proven steps seniors can take to stay safe."

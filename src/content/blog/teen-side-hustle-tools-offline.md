@@ -9,6 +9,7 @@ pillar: "problem-solution"
 appCluster: "general"
 relatedSlugs: ["first-car-maintenance-guide-for-teens", "why-offline-apps-are-better", "why-we-dont-do-subscriptions"]
 ogImage: "/blog/images/teen-side-hustle-tools-offline/og-card.svg"
+heroImage: "/blog/images/teen-side-hustle-tools-offline/hero.webp"
 ---
 
 ## The Hidden Cost of "Free" Business Tools

@@ -9,6 +9,7 @@ pillar: "philosophy"
 appCluster: "general"
 relatedSlugs: ["why-we-dont-do-subscriptions", "privacy-first-budgeting-philosophy", "why-offline-apps-protect-seniors-data"]
 ogImage: "/blog/images/why-offline-apps-are-better/og-card.svg"
+heroImage: "/blog/images/why-offline-apps-are-better/hero.webp"
 ---
 
 ## The Unseen Cost of Constant Connectivity

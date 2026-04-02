@@ -1,4 +1,5 @@
 ---
+heroImage: "/blog/images/privacy-budgeting-apps-compared/hero.png"
 title: "Privacy Budgeting Apps Compared"
 date: 2026-03-28
 description: "We compare 5 privacy budgeting apps on encryption, data storage, and key ownership. Find out which ones actually protect your financial data."

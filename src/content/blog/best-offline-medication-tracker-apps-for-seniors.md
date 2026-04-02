@@ -1,4 +1,5 @@
 ---
+heroImage: "/blog/images/best-offline-medication-tracker-apps-for-seniors/hero.png"
 title: "Best Offline Medication Tracker Apps For Seniors"
 date: 2026-03-30
 description: "Cloud medication apps fail when seniors need them most. We compare privacy-first, offline medication trackers that work without Wi-Fi or subscriptions."

@@ -1,4 +1,5 @@
 ---
+heroImage: "/blog/images/best-offline-medication-trackers-for-seniors/hero.png"
 title: "Best Offline Medication Trackers For Seniors"
 date: 2026-04-01
 description: "Finding a reliable offline medication tracker for seniors is critical for safety. We tested the top apps and compared cloud-dependent vs. local-first options."
