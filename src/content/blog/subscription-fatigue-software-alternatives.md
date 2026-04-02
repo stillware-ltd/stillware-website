@@ -13,7 +13,7 @@ What’s the real price of convenience? It’s not just the $9.99 a month. It’
 
 The modern digital life comes with a standard stack: a streaming service, a music platform, a creative suite, a budgeting app, cloud storage. Individually, each seems reasonable. Together, they form a leaky bucket of recurring charges, auto-renewals, and forgotten trials. This isn't accidental. It's a business model perfected to feel frictionless while systematically eroding the concept of ownership.
 
-<!-- IMAGE: type=conceptual-art | layout=full-width | ratio=16:9 | caption=The subscription trap as a digital cage | scene=A person made of glowing data streams, trapped inside a cage constructed from endless subscription logos like Netflix, Adobe, and Spotify, the bars made of dollar signs, a sense of quiet entrapment in a digital void, surreal but photorealistic -->
+![The subscription trap as a digital cage](/blog/images/subscription-fatigue-software-alternatives/photo-01.webp)
 
 ## The Hidden Math of Forever Payments
 
@@ -43,7 +43,7 @@ How do you know if you're just managing modern life or if you're genuinely fatig
 
 If you see yourself here, you're not being cheap. You're recognizing a broken relationship.
 
-<!-- IMAGE: type=timeline | layout=full-width | caption=The decade-long shift from ownership to rental | data=2005:Buy Software:You purchase a box with a CD and a license key,2010:SaaS Emerges:Adobe Creative Cloud pioneers the subscription shift,2015:Everything Subscribes:From cars to razors to software, the model dominates,2020:Fatigue Sets In:Consumer pushback grows as bills stack up,2025:The Local-First Counter-Movement:Users seek tools they can own and control offline -->
+![The decade-long shift from ownership to rental](/blog/images/subscription-fatigue-software-alternatives/image-01.svg)
 
 ## Why the Buy-It-Once Ethos is Digital Minimalism
 
@@ -55,7 +55,7 @@ This ethos is why we chose to make Zeroed a hardcore, manual-entry, envelope-bud
 
 This approach is a filter. It appeals to those who want a focused tool, not an all-encompassing platform. It’s the difference between buying a well-made chef's knife and subscribing to a "knife-of-the-month" club. One is a lifetime tool you master; the other is a source of endless, accumulating novelty.
 
-<!-- IMAGE: type=before-after | layout=full-width | caption=The clutter of subscriptions vs. the clarity of ownership | data=before:Subscription Sprawl:Dozens of app icons, each a monthly bill, notifications begging for attention, data scattered across company servers, constant updates changing layouts|after:Ownership Stack:A few purpose-built tools, no recurring charges, data stored locally or in your controlled cloud, interfaces that stay familiar, updates that add value without bloat -->
+![The clutter of subscriptions vs. the clarity of ownership](/blog/images/subscription-fatigue-software-alternatives/image-02.svg)
 
 ## How to Find Real Subscription Fatigue Software Alternatives
 

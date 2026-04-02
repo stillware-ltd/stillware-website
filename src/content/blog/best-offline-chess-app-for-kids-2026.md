@@ -30,7 +30,7 @@ Consider the actual environments where kids learn best:
 
 The online model fails in all these scenarios. The app becomes a paperweight.
 
-![A child focused on a chess puzzle during a long car ride](/blog/images/child-car-chess-puzzle.jpg)
+![A child focused on a chess puzzle during a long car ride](/blog/images/best-offline-chess-app-for-kids-2026/photo-01.webp)
 
 ## The Offline Advantage: Constraint as a Superpower
 
@@ -79,7 +79,7 @@ When choosing educational software, it's easy to be swayed by big names and shin
 
 The core of a great learning tool is its ability to foster independence and concentration. An offline chess app does this by design, removing the digital noise that plagues connected experiences.
 
-![Learning chess analysis without an internet connection](/blog/images/tablet-backyard-analysis.jpg)
+![Learning chess analysis without an internet connection](/blog/images/best-offline-chess-app-for-kids-2026/photo-02.webp)
 
 ## The Dual Benefit: Strategic Thinking Meets Digital Peace of Mind
 
@@ -105,6 +105,6 @@ The landscape of kids' software is cluttered with noisy, extractive products. Th
 
 Ready to see what a focused, private, and ownership-based approach to learning chess looks like? **Rank Up Chess is built on the principle that deep learning happens away from the noise of the network.** We're in the final stages before launch.
 
-![Rank Up Chess app interface showing a puzzle challenge](/blog/images/rank-up-chess-puzzle-interface.jpg)
+![Rank Up Chess app interface showing a puzzle challenge](/blog/images/best-offline-chess-app-for-kids-2026/photo-03.webp)
 
 Give your child the gift of undivided attention. [Get notified when Rank Up Chess launches](/apps)—it's a one-time purchase, with a full free trial, and zero data collection. Let them learn strategy, not subscription habits. **Try the waitlist today and be the first to get access.** For more on our philosophy, read about why we build software you can own.

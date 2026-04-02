@@ -1,0 +1,169 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 675" width="1200" height="675">
+  <style>
+    text { font-family: Inter, system-ui, -apple-system, sans-serif; }
+  </style>
+
+  <rect width="1200" height="675" fill="#ffffff"/>
+
+  <!-- Background pattern (per-article variation) -->
+  <rect width="1200" height="6" fill="#2563eb"/><rect y="6" width="1200" height="2" fill="#60a5fa" opacity="0.4"/>
+
+  <!-- Subtle top accent bar -->
+  <rect width="1200" height="4" fill="#2563eb"/>
+
+  <!-- Title -->
+  <text x="600" y="50" text-anchor="middle" font-size="26" font-weight="700" fill="#1e293b">The decade-long shift from ownership to rental</text>
+
+  
+  
+  
+  
+
+  <!-- Dot accent colors (theme-aware) -->
+  
+
+  <!-- Horizontal timeline line -->
+  <line x1="95" y1="330" x2="1105" y2="330" stroke="#e2e8f0" stroke-width="3" stroke-linecap="round"/>
+  <!-- Colored overlay on the line -->
+  <line x1="95" y1="330" x2="1105" y2="330" stroke="#2563eb" stroke-width="3" stroke-linecap="round" opacity="0.25"/>
+
+  
+  
+  
+  
+
+  <!-- Dot -->
+  <circle cx="110" cy="330" r="10" fill="#ffffff" stroke="#2563eb" stroke-width="3"/>
+  <circle cx="110" cy="330" r="4" fill="#2563eb"/>
+
+  <!-- Vertical connector -->
+  
+  <line x1="110" y1="320" x2="110" y2="280" stroke="#e2e8f0" stroke-width="1.5"/>
+  
+
+  <!-- Event card -->
+  
+  
+  
+
+  <rect x="30" y="120" width="160" height="155" rx="12" fill="#f8fafc" stroke="#e2e8f0" stroke-width="1"/>
+  <rect x="30" y="120" width="160" height="4" rx="2" fill="#2563eb"/>
+  <text x="110" y="148" text-anchor="middle" font-size="12" font-weight="700" fill="#2563eb">2005</text>
+  <text x="110" y="168" text-anchor="middle" font-size="13" font-weight="600" fill="#1e293b">Buy Software</text>
+
+  <foreignObject x="40" y="176" width="140" height="85">
+    <p xmlns="http://www.w3.org/1999/xhtml" style="font-family:Inter,system-ui,sans-serif;font-size:11px;color:#64748b;margin:0;line-height:1.35;text-align:center;">You purchase a box with a CD and a license key</p>
+  </foreignObject>
+  
+  
+  
+  
+
+  <!-- Dot -->
+  <circle cx="355" cy="330" r="10" fill="#ffffff" stroke="#60a5fa" stroke-width="3"/>
+  <circle cx="355" cy="330" r="4" fill="#60a5fa"/>
+
+  <!-- Vertical connector -->
+  
+  <line x1="355" y1="340" x2="355" y2="380" stroke="#e2e8f0" stroke-width="1.5"/>
+  
+
+  <!-- Event card -->
+  
+  
+  
+
+  <rect x="275" y="385" width="160" height="155" rx="12" fill="#f8fafc" stroke="#e2e8f0" stroke-width="1"/>
+  <rect x="275" y="385" width="160" height="4" rx="2" fill="#60a5fa"/>
+  <text x="355" y="413" text-anchor="middle" font-size="12" font-weight="700" fill="#60a5fa">2010</text>
+  <text x="355" y="433" text-anchor="middle" font-size="13" font-weight="600" fill="#1e293b">SaaS Emerges</text>
+
+  <foreignObject x="285" y="441" width="140" height="85">
+    <p xmlns="http://www.w3.org/1999/xhtml" style="font-family:Inter,system-ui,sans-serif;font-size:11px;color:#64748b;margin:0;line-height:1.35;text-align:center;">Adobe Creative Cloud pioneers the subscription shift</p>
+  </foreignObject>
+  
+  
+  
+  
+
+  <!-- Dot -->
+  <circle cx="600" cy="330" r="10" fill="#ffffff" stroke="#0891b2" stroke-width="3"/>
+  <circle cx="600" cy="330" r="4" fill="#0891b2"/>
+
+  <!-- Vertical connector -->
+  
+  <line x1="600" y1="320" x2="600" y2="280" stroke="#e2e8f0" stroke-width="1.5"/>
+  
+
+  <!-- Event card -->
+  
+  
+  
+
+  <rect x="520" y="120" width="160" height="155" rx="12" fill="#f8fafc" stroke="#e2e8f0" stroke-width="1"/>
+  <rect x="520" y="120" width="160" height="4" rx="2" fill="#0891b2"/>
+  <text x="600" y="148" text-anchor="middle" font-size="12" font-weight="700" fill="#0891b2">2015</text>
+  <text x="600" y="168" text-anchor="middle" font-size="13" font-weight="600" fill="#1e293b">Everything Subscribes</text>
+
+  <foreignObject x="530" y="176" width="140" height="85">
+    <p xmlns="http://www.w3.org/1999/xhtml" style="font-family:Inter,system-ui,sans-serif;font-size:11px;color:#64748b;margin:0;line-height:1.35;text-align:center;">From cars to razors to software</p>
+  </foreignObject>
+  
+  
+  
+  
+
+  <!-- Dot -->
+  <circle cx="845" cy="330" r="10" fill="#ffffff" stroke="#dc2626" stroke-width="3"/>
+  <circle cx="845" cy="330" r="4" fill="#dc2626"/>
+
+  <!-- Vertical connector -->
+  
+  <line x1="845" y1="340" x2="845" y2="380" stroke="#e2e8f0" stroke-width="1.5"/>
+  
+
+  <!-- Event card -->
+  
+  
+  
+
+  <rect x="765" y="385" width="160" height="155" rx="12" fill="#f8fafc" stroke="#e2e8f0" stroke-width="1"/>
+  <rect x="765" y="385" width="160" height="4" rx="2" fill="#dc2626"/>
+  <text x="845" y="413" text-anchor="middle" font-size="12" font-weight="700" fill="#dc2626">2020</text>
+  <text x="845" y="433" text-anchor="middle" font-size="13" font-weight="600" fill="#1e293b">Fatigue Sets In</text>
+
+  <foreignObject x="775" y="441" width="140" height="85">
+    <p xmlns="http://www.w3.org/1999/xhtml" style="font-family:Inter,system-ui,sans-serif;font-size:11px;color:#64748b;margin:0;line-height:1.35;text-align:center;">Consumer pushback grows as bills stack up</p>
+  </foreignObject>
+  
+  
+  
+  
+
+  <!-- Dot -->
+  <circle cx="1090" cy="330" r="10" fill="#ffffff" stroke="#16a34a" stroke-width="3"/>
+  <circle cx="1090" cy="330" r="4" fill="#16a34a"/>
+
+  <!-- Vertical connector -->
+  
+  <line x1="1090" y1="320" x2="1090" y2="280" stroke="#e2e8f0" stroke-width="1.5"/>
+  
+
+  <!-- Event card -->
+  
+  
+  
+
+  <rect x="1010" y="120" width="160" height="155" rx="12" fill="#f8fafc" stroke="#e2e8f0" stroke-width="1"/>
+  <rect x="1010" y="120" width="160" height="4" rx="2" fill="#16a34a"/>
+  <text x="1090" y="148" text-anchor="middle" font-size="12" font-weight="700" fill="#16a34a">2025</text>
+  <text x="1090" y="168" text-anchor="middle" font-size="13" font-weight="600" fill="#1e293b">The Local-First Counter-Movement</text>
+
+  <foreignObject x="1020" y="176" width="140" height="85">
+    <p xmlns="http://www.w3.org/1999/xhtml" style="font-family:Inter,system-ui,sans-serif;font-size:11px;color:#64748b;margin:0;line-height:1.35;text-align:center;">Users seek tools they can own and control offline</p>
+  </foreignObject>
+  
+
+  <!-- Source attribution -->
+  <text x="1190" y="665" text-anchor="end" font-size="10" fill="#cbd5e1">stillwareltd.com</text>
+</svg>
