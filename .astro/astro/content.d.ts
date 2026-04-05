@@ -141,6 +141,20 @@ declare module 'astro:content' {
 
 	type ContentEntryMap = {
 		"blog": {
+"best-offline-budget-app-for-windows.md": {
+	id: "best-offline-budget-app-for-windows.md";
+  slug: "best-offline-budget-app-for-windows";
+  body: string;
+  collection: "blog";
+  data: InferEntrySchema<"blog">
+} & { render(): Render[".md"] };
+"best-offline-chess-app-for-kids-2026.md": {
+	id: "best-offline-chess-app-for-kids-2026.md";
+  slug: "best-offline-chess-app-for-kids-2026";
+  body: string;
+  collection: "blog";
+  data: InferEntrySchema<"blog">
+} & { render(): Render[".md"] };
 "best-offline-chess-app-for-kids.md": {
 	id: "best-offline-chess-app-for-kids.md";
   slug: "best-offline-chess-app-for-kids";
@@ -228,6 +242,20 @@ declare module 'astro:content' {
 "stop-motion-animation-for-beginners-guide.md": {
 	id: "stop-motion-animation-for-beginners-guide.md";
   slug: "stop-motion-animation-for-beginners-guide";
+  body: string;
+  collection: "blog";
+  data: InferEntrySchema<"blog">
+} & { render(): Render[".md"] };
+"subscription-fatigue-software-alternatives.md": {
+	id: "subscription-fatigue-software-alternatives.md";
+  slug: "subscription-fatigue-software-alternatives";
+  body: string;
+  collection: "blog";
+  data: InferEntrySchema<"blog">
+} & { render(): Render[".md"] };
+"teaching-kids-coding-without-screen-time.md": {
+	id: "teaching-kids-coding-without-screen-time.md";
+  slug: "teaching-kids-coding-without-screen-time";
   body: string;
   collection: "blog";
   data: InferEntrySchema<"blog">

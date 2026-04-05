@@ -12,13 +12,13 @@
   <rect width="1200" height="390" fill="#ffffff"/>
 
   <!-- Background pattern (per-article variation) -->
-  <rect width="1200" height="675" fill="#f8fafc" opacity="0.4"/>
+  
 
   <!-- Subtle top accent bar -->
-  <rect width="1200" height="4" fill="#0891b2"/>
+  <rect width="1200" height="4" fill="#16a34a"/>
 
   <!-- Title -->
-  <text x="600" y="50" text-anchor="middle" font-size="26" font-weight="700" fill="#1e293b">The offline medication management workflow</text>
+  <text x="600" y="50" text-anchor="middle" font-size="26" font-weight="700" fill="#1e293b">How to transition to an offline-first mapping setup</text>
 
   <!-- Step accent colors (theme-aware with alternation) -->
   
@@ -29,21 +29,21 @@
   
 
   <!-- Step circle -->
-  <circle cx="97" cy="125" r="28" fill="#0891b2"/>
-  <circle cx="97" cy="125" r="28" fill="none" stroke="#0891b2" stroke-width="3" opacity="0.25"/>
+  <circle cx="97" cy="125" r="28" fill="#16a34a"/>
+  <circle cx="97" cy="125" r="28" fill="none" stroke="#16a34a" stroke-width="3" opacity="0.25"/>
   <text x="97" y="133" text-anchor="middle" font-size="18" font-weight="700" fill="#ffffff">1</text>
 
   <!-- Connector line from circle to box -->
-  <line x1="97" y1="153" x2="97" y2="180" stroke="#0891b2" stroke-width="2"/>
+  <line x1="97" y1="153" x2="97" y2="180" stroke="#16a34a" stroke-width="2"/>
 
   <!-- Step box -->
   <rect x="15" y="180" width="165" height="155" rx="12" fill="#f8fafc" stroke="#e2e8f0" stroke-width="1.5"/>
-  <rect x="15" y="180" width="165" height="4" rx="2" fill="#0891b2"/>
-  <text x="97" y="216" text-anchor="middle" font-size="14" font-weight="600" fill="#1e293b">Log Dose</text>
+  <rect x="15" y="180" width="165" height="4" rx="2" fill="#16a34a"/>
+  <text x="97" y="216" text-anchor="middle" font-size="14" font-weight="600" fill="#1e293b">Audit Current Apps</text>
 
   <!-- Description -->
   <foreignObject x="25" y="224" width="145" height="100">
-    <p xmlns="http://www.w3.org/1999/xhtml" style="font-family:Inter,system-ui,sans-serif;font-size:11.5px;color:#64748b;margin:0;line-height:1.4;text-align:center;">Tap to log medication directly on device</p>
+    <p xmlns="http://www.w3.org/1999/xhtml" style="font-family:Inter,system-ui,sans-serif;font-size:11.5px;color:#64748b;margin:0;line-height:1.4;text-align:center;">Test offline function and export your data</p>
   </foreignObject>
 
   <!-- Arrow to next step -->
@@ -58,21 +58,21 @@
   
 
   <!-- Step circle -->
-  <circle cx="298" cy="125" r="28" fill="#34d399"/>
-  <circle cx="298" cy="125" r="28" fill="none" stroke="#34d399" stroke-width="3" opacity="0.25"/>
+  <circle cx="298" cy="125" r="28" fill="#60a5fa"/>
+  <circle cx="298" cy="125" r="28" fill="none" stroke="#60a5fa" stroke-width="3" opacity="0.25"/>
   <text x="298" y="133" text-anchor="middle" font-size="18" font-weight="700" fill="#ffffff">2</text>
 
   <!-- Connector line from circle to box -->
-  <line x1="298" y1="153" x2="298" y2="180" stroke="#34d399" stroke-width="2"/>
+  <line x1="298" y1="153" x2="298" y2="180" stroke="#60a5fa" stroke-width="2"/>
 
   <!-- Step box -->
   <rect x="216" y="180" width="165" height="155" rx="12" fill="#f8fafc" stroke="#e2e8f0" stroke-width="1.5"/>
-  <rect x="216" y="180" width="165" height="4" rx="2" fill="#34d399"/>
-  <text x="298" y="216" text-anchor="middle" font-size="14" font-weight="600" fill="#1e293b">Data Stored Locally</text>
+  <rect x="216" y="180" width="165" height="4" rx="2" fill="#60a5fa"/>
+  <text x="298" y="216" text-anchor="middle" font-size="14" font-weight="600" fill="#1e293b">Choose Your Model</text>
 
   <!-- Description -->
   <foreignObject x="226" y="224" width="145" height="100">
-    <p xmlns="http://www.w3.org/1999/xhtml" style="font-family:Inter,system-ui,sans-serif;font-size:11.5px;color:#64748b;margin:0;line-height:1.4;text-align:center;">Encrypted entry saved to phone&#39;s storage</p>
+    <p xmlns="http://www.w3.org/1999/xhtml" style="font-family:Inter,system-ui,sans-serif;font-size:11.5px;color:#64748b;margin:0;line-height:1.4;text-align:center;">Decide between subscription convenience or one-time ownership</p>
   </foreignObject>
 
   <!-- Arrow to next step -->
@@ -97,11 +97,11 @@
   <!-- Step box -->
   <rect x="417" y="180" width="165" height="155" rx="12" fill="#f8fafc" stroke="#e2e8f0" stroke-width="1.5"/>
   <rect x="417" y="180" width="165" height="4" rx="2" fill="#0891b2"/>
-  <text x="499" y="216" text-anchor="middle" font-size="14" font-weight="600" fill="#1e293b">Set Local Reminder</text>
+  <text x="499" y="216" text-anchor="middle" font-size="14" font-weight="600" fill="#1e293b">Download Core Maps</text>
 
   <!-- Description -->
   <foreignObject x="427" y="224" width="145" height="100">
-    <p xmlns="http://www.w3.org/1999/xhtml" style="font-family:Inter,system-ui,sans-serif;font-size:11.5px;color:#64748b;margin:0;line-height:1.4;text-align:center;">Device alarm set for next dose</p>
+    <p xmlns="http://www.w3.org/1999/xhtml" style="font-family:Inter,system-ui,sans-serif;font-size:11.5px;color:#64748b;margin:0;line-height:1.4;text-align:center;">On Wi-Fi</p>
   </foreignObject>
 
   <!-- Arrow to next step -->
@@ -116,17 +116,17 @@
   
 
   <!-- Step circle -->
-  <circle cx="700" cy="125" r="28" fill="#0891b2"/>
-  <circle cx="700" cy="125" r="28" fill="none" stroke="#0891b2" stroke-width="3" opacity="0.25"/>
+  <circle cx="700" cy="125" r="28" fill="#16a34a"/>
+  <circle cx="700" cy="125" r="28" fill="none" stroke="#16a34a" stroke-width="3" opacity="0.25"/>
   <text x="700" y="133" text-anchor="middle" font-size="18" font-weight="700" fill="#ffffff">4</text>
 
   <!-- Connector line from circle to box -->
-  <line x1="700" y1="153" x2="700" y2="180" stroke="#0891b2" stroke-width="2"/>
+  <line x1="700" y1="153" x2="700" y2="180" stroke="#16a34a" stroke-width="2"/>
 
   <!-- Step box -->
   <rect x="618" y="180" width="165" height="155" rx="12" fill="#f8fafc" stroke="#e2e8f0" stroke-width="1.5"/>
-  <rect x="618" y="180" width="165" height="4" rx="2" fill="#0891b2"/>
-  <text x="700" y="216" text-anchor="middle" font-size="14" font-weight="600" fill="#1e293b">no cloud</text>
+  <rect x="618" y="180" width="165" height="4" rx="2" fill="#16a34a"/>
+  <text x="700" y="216" text-anchor="middle" font-size="14" font-weight="600" fill="#1e293b">download topographic maps f...</text>
 
   <!-- Description -->
   <foreignObject x="628" y="224" width="145" height="100">
@@ -145,21 +145,21 @@
   
 
   <!-- Step circle -->
-  <circle cx="901" cy="125" r="28" fill="#34d399"/>
-  <circle cx="901" cy="125" r="28" fill="none" stroke="#34d399" stroke-width="3" opacity="0.25"/>
+  <circle cx="901" cy="125" r="28" fill="#60a5fa"/>
+  <circle cx="901" cy="125" r="28" fill="none" stroke="#60a5fa" stroke-width="3" opacity="0.25"/>
   <text x="901" y="133" text-anchor="middle" font-size="18" font-weight="700" fill="#ffffff">5</text>
 
   <!-- Connector line from circle to box -->
-  <line x1="901" y1="153" x2="901" y2="180" stroke="#34d399" stroke-width="2"/>
+  <line x1="901" y1="153" x2="901" y2="180" stroke="#60a5fa" stroke-width="2"/>
 
   <!-- Step box -->
   <rect x="819" y="180" width="165" height="155" rx="12" fill="#f8fafc" stroke="#e2e8f0" stroke-width="1.5"/>
-  <rect x="819" y="180" width="165" height="4" rx="2" fill="#34d399"/>
-  <text x="901" y="216" text-anchor="middle" font-size="14" font-weight="600" fill="#1e293b">Weekly Export</text>
+  <rect x="819" y="180" width="165" height="4" rx="2" fill="#60a5fa"/>
+  <text x="901" y="216" text-anchor="middle" font-size="14" font-weight="600" fill="#1e293b">Perform a Local Test</text>
 
   <!-- Description -->
   <foreignObject x="829" y="224" width="145" height="100">
-    <p xmlns="http://www.w3.org/1999/xhtml" style="font-family:Inter,system-ui,sans-serif;font-size:11.5px;color:#64748b;margin:0;line-height:1.4;text-align:center;">Generate PDF report for personal records</p>
+    <p xmlns="http://www.w3.org/1999/xhtml" style="font-family:Inter,system-ui,sans-serif;font-size:11.5px;color:#64748b;margin:0;line-height:1.4;text-align:center;">Navigate in Airplane Mode in a familiar area</p>
   </foreignObject>
 
   <!-- Arrow to next step -->
@@ -184,11 +184,11 @@
   <!-- Step box -->
   <rect x="1020" y="180" width="165" height="155" rx="12" fill="#f8fafc" stroke="#e2e8f0" stroke-width="1.5"/>
   <rect x="1020" y="180" width="165" height="4" rx="2" fill="#0891b2"/>
-  <text x="1102" y="216" text-anchor="middle" font-size="14" font-weight="600" fill="#1e293b">Doctor Visit</text>
+  <text x="1102" y="216" text-anchor="middle" font-size="14" font-weight="600" fill="#1e293b">Establish a Backup</text>
 
   <!-- Description -->
   <foreignObject x="1030" y="224" width="145" height="100">
-    <p xmlns="http://www.w3.org/1999/xhtml" style="font-family:Inter,system-ui,sans-serif;font-size:11.5px;color:#64748b;margin:0;line-height:1.4;text-align:center;">Show PDF on phone or print a copy</p>
+    <p xmlns="http://www.w3.org/1999/xhtml" style="font-family:Inter,system-ui,sans-serif;font-size:11.5px;color:#64748b;margin:0;line-height:1.4;text-align:center;">Regularly export tracks to your personal computer</p>
   </foreignObject>
 
   <!-- Arrow to next step -->

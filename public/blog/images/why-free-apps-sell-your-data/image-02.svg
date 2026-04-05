@@ -9,10 +9,10 @@
   <rect width="1200" height="675" fill="#f8fafc" opacity="0.4"/>
 
   <!-- Subtle top accent bar -->
-  <rect width="1200" height="4" fill="#0891b2"/>
+  <rect width="1200" height="4" fill="#059669"/>
 
   <!-- Title -->
-  <text x="600" y="50" text-anchor="middle" font-size="26" font-weight="700" fill="#1e293b">Core features of a reliable offline medication tracker</text>
+  <text x="600" y="50" text-anchor="middle" font-size="26" font-weight="700" fill="#1e293b">The 4 pillars of a privacy-first app architecture</text>
 
   <!-- Icon color palette (theme-aware) -->
   
@@ -37,23 +37,23 @@
   <rect x="64" y="95" width="250" height="240" rx="12" fill="#f8fafc" stroke="#e2e8f0" stroke-width="1"/>
 
   <!-- Icon circle with symbol -->
-  <circle cx="189" cy="137" r="28" fill="#0891b2" opacity="0.12"/>
-  <circle cx="189" cy="137" r="28" fill="none" stroke="#0891b2" stroke-width="2"/>
+  <circle cx="189" cy="137" r="28" fill="#059669" opacity="0.12"/>
+  <circle cx="189" cy="137" r="28" fill="none" stroke="#059669" stroke-width="2"/>
 
   <!-- Icon symbol (SVG paths for common types, fallback to letter) -->
   
-  <path d="179" transform="translate(179, 127)" fill="#0891b2">
+  <path d="179" transform="translate(179, 127)" fill="#059669">
     <animate attributeName="d" values=""/>
   </path>
-  <text x="189" y="144" text-anchor="middle" font-size="20" font-weight="700" fill="#0891b2">&#x1F6E1;</text>
+  <text x="189" y="144" text-anchor="middle" font-size="20" font-weight="700" fill="#059669">&#x1F6E1;</text>
   
 
   <!-- Label -->
-  <text x="189" y="190" text-anchor="middle" font-size="14" font-weight="600" fill="#1e293b">Local &amp; Encrypted</text>
+  <text x="189" y="190" text-anchor="middle" font-size="14" font-weight="600" fill="#1e293b">On-Device Encryption</text>
 
   <!-- Description -->
   <foreignObject x="78" y="199" width="222" height="100">
-    <p xmlns="http://www.w3.org/1999/xhtml" style="font-family:Inter,system-ui,sans-serif;font-size:12px;color:#64748b;margin:0;line-height:1.4;text-align:center;">Data stays on your device with encryption</p>
+    <p xmlns="http://www.w3.org/1999/xhtml" style="font-family:Inter,system-ui,sans-serif;font-size:12px;color:#64748b;margin:0;line-height:1.4;text-align:center;">Data is encrypted and never leaves your device in readable form</p>
   </foreignObject>
   
   
@@ -66,20 +66,23 @@
   <rect x="338" y="95" width="250" height="240" rx="12" fill="#f8fafc" stroke="#e2e8f0" stroke-width="1"/>
 
   <!-- Icon circle with symbol -->
-  <circle cx="463" cy="137" r="28" fill="#34d399" opacity="0.12"/>
-  <circle cx="463" cy="137" r="28" fill="none" stroke="#34d399" stroke-width="2"/>
+  <circle cx="463" cy="137" r="28" fill="#a78bfa" opacity="0.12"/>
+  <circle cx="463" cy="137" r="28" fill="none" stroke="#a78bfa" stroke-width="2"/>
 
   <!-- Icon symbol (SVG paths for common types, fallback to letter) -->
   
-  <text x="463" y="144" text-anchor="middle" font-size="20" font-weight="700" fill="#34d399">&#x21C4;</text>
+  <path d="453" transform="translate(453, 127)" fill="#a78bfa">
+    <animate attributeName="d" values=""/>
+  </path>
+  <text x="463" y="144" text-anchor="middle" font-size="20" font-weight="700" fill="#a78bfa">&#x1F6E1;</text>
   
 
   <!-- Label -->
-  <text x="463" y="190" text-anchor="middle" font-size="14" font-weight="600" fill="#1e293b">no cloud upload</text>
+  <text x="463" y="190" text-anchor="middle" font-size="14" font-weight="600" fill="#1e293b">No Telemetry</text>
 
   <!-- Description -->
   <foreignObject x="352" y="199" width="222" height="100">
-    <p xmlns="http://www.w3.org/1999/xhtml" style="font-family:Inter,system-ui,sans-serif;font-size:12px;color:#64748b;margin:0;line-height:1.4;text-align:center;"></p>
+    <p xmlns="http://www.w3.org/1999/xhtml" style="font-family:Inter,system-ui,sans-serif;font-size:12px;color:#64748b;margin:0;line-height:1.4;text-align:center;">Zero analytics or usage tracking code in the app</p>
   </foreignObject>
   
   
@@ -97,15 +100,15 @@
 
   <!-- Icon symbol (SVG paths for common types, fallback to letter) -->
   
-  <text x="737" y="144" text-anchor="middle" font-size="20" font-weight="700" fill="#0891b2">P</text>
+  <text x="737" y="144" text-anchor="middle" font-size="20" font-weight="700" fill="#0891b2">&#x21C4;</text>
   
 
   <!-- Label -->
-  <text x="737" y="190" text-anchor="middle" font-size="14" font-weight="600" fill="#1e293b">Printable Reports</text>
+  <text x="737" y="190" text-anchor="middle" font-size="14" font-weight="600" fill="#1e293b">cloud-slash</text>
 
   <!-- Description -->
   <foreignObject x="626" y="199" width="222" height="100">
-    <p xmlns="http://www.w3.org/1999/xhtml" style="font-family:Inter,system-ui,sans-serif;font-size:12px;color:#64748b;margin:0;line-height:1.4;text-align:center;">Generate clear PDFs for doctors</p>
+    <p xmlns="http://www.w3.org/1999/xhtml" style="font-family:Inter,system-ui,sans-serif;font-size:12px;color:#64748b;margin:0;line-height:1.4;text-align:center;">Optional</p>
   </foreignObject>
   
   
@@ -123,15 +126,15 @@
 
   <!-- Icon symbol (SVG paths for common types, fallback to letter) -->
   
-  <text x="1011" y="144" text-anchor="middle" font-size="20" font-weight="700" fill="#dc2626">I</text>
+  <text x="1011" y="144" text-anchor="middle" font-size="20" font-weight="700" fill="#dc2626">&#x21C4;</text>
   
 
   <!-- Label -->
-  <text x="1011" y="190" text-anchor="middle" font-size="14" font-weight="600" fill="#1e293b">works without internet</text>
+  <text x="1011" y="190" text-anchor="middle" font-size="14" font-weight="600" fill="#1e293b">User-Controlled Sync</text>
 
   <!-- Description -->
   <foreignObject x="900" y="199" width="222" height="100">
-    <p xmlns="http://www.w3.org/1999/xhtml" style="font-family:Inter,system-ui,sans-serif;font-size:12px;color:#64748b;margin:0;line-height:1.4;text-align:center;"></p>
+    <p xmlns="http://www.w3.org/1999/xhtml" style="font-family:Inter,system-ui,sans-serif;font-size:12px;color:#64748b;margin:0;line-height:1.4;text-align:center;">Sync via your own cloud account (e.g.</p>
   </foreignObject>
   
   
@@ -149,15 +152,15 @@
 
   <!-- Icon symbol (SVG paths for common types, fallback to letter) -->
   
-  <text x="189" y="412" text-anchor="middle" font-size="20" font-weight="700" fill="#16a34a">B</text>
+  <text x="189" y="412" text-anchor="middle" font-size="20" font-weight="700" fill="#16a34a">I</text>
   
 
   <!-- Label -->
-  <text x="189" y="458" text-anchor="middle" font-size="14" font-weight="600" fill="#1e293b">Offline Reminders</text>
+  <text x="189" y="458" text-anchor="middle" font-size="14" font-weight="600" fill="#1e293b">Google Drive)</text>
 
   <!-- Description -->
   <foreignObject x="78" y="467" width="222" height="100">
-    <p xmlns="http://www.w3.org/1999/xhtml" style="font-family:Inter,system-ui,sans-serif;font-size:12px;color:#64748b;margin:0;line-height:1.4;text-align:center;">Notifications use device alarms</p>
+    <p xmlns="http://www.w3.org/1999/xhtml" style="font-family:Inter,system-ui,sans-serif;font-size:12px;color:#64748b;margin:0;line-height:1.4;text-align:center;"></p>
   </foreignObject>
   
   
@@ -175,11 +178,14 @@
 
   <!-- Icon symbol (SVG paths for common types, fallback to letter) -->
   
-  <text x="463" y="412" text-anchor="middle" font-size="20" font-weight="700" fill="#f59e0b">&#x21C4;</text>
+  <path d="453" transform="translate(453, 395)" fill="#f59e0b">
+    <animate attributeName="d" values=""/>
+  </path>
+  <text x="463" y="412" text-anchor="middle" font-size="20" font-weight="700" fill="#f59e0b">&#x1F6E1;</text>
   
 
   <!-- Label -->
-  <text x="463" y="458" text-anchor="middle" font-size="14" font-weight="600" fill="#1e293b">no cloud service needed</text>
+  <text x="463" y="458" text-anchor="middle" font-size="14" font-weight="600" fill="#1e293b">you hold the keys</text>
 
   <!-- Description -->
   <foreignObject x="352" y="467" width="222" height="100">
@@ -201,15 +207,15 @@
 
   <!-- Icon symbol (SVG paths for common types, fallback to letter) -->
   
-  <text x="737" y="412" text-anchor="middle" font-size="20" font-weight="700" fill="#ec4899">&#x25A0;</text>
+  <text x="737" y="412" text-anchor="middle" font-size="22" font-weight="700" fill="#ec4899">$</text>
   
 
   <!-- Label -->
-  <text x="737" y="458" text-anchor="middle" font-size="14" font-weight="600" fill="#1e293b">One-Time Purchase</text>
+  <text x="737" y="458" text-anchor="middle" font-size="14" font-weight="600" fill="#1e293b">One-Time Price</text>
 
   <!-- Description -->
   <foreignObject x="626" y="467" width="222" height="100">
-    <p xmlns="http://www.w3.org/1999/xhtml" style="font-family:Inter,system-ui,sans-serif;font-size:12px;color:#64748b;margin:0;line-height:1.4;text-align:center;">Own the tool forever</p>
+    <p xmlns="http://www.w3.org/1999/xhtml" style="font-family:Inter,system-ui,sans-serif;font-size:12px;color:#64748b;margin:0;line-height:1.4;text-align:center;">Clear</p>
   </foreignObject>
   
   
@@ -227,11 +233,11 @@
 
   <!-- Icon symbol (SVG paths for common types, fallback to letter) -->
   
-  <text x="1011" y="412" text-anchor="middle" font-size="20" font-weight="700" fill="#6366f1">I</text>
+  <text x="1011" y="412" text-anchor="middle" font-size="22" font-weight="700" fill="#6366f1">$</text>
   
 
   <!-- Label -->
-  <text x="1011" y="458" text-anchor="middle" font-size="14" font-weight="600" fill="#1e293b">no subscription to manage</text>
+  <text x="1011" y="458" text-anchor="middle" font-size="14" font-weight="600" fill="#1e293b">upfront cost with no recurring</text>
 
   <!-- Description -->
   <foreignObject x="900" y="467" width="222" height="100">

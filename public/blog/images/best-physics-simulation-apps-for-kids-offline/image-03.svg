@@ -3,16 +3,16 @@
     text { font-family: Inter, system-ui, -apple-system, sans-serif; }
   </style>
 
-  <rect width="1200" height="675" fill="#ffffff"/>
+  <rect width="1200" height="675" fill="#fffbeb"/>
 
   <!-- Background pattern (per-article variation) -->
-  <rect width="1200" height="675" fill="#f8fafc" opacity="0.4"/>
+  <pattern id="dots" width="20" height="20" patternUnits="userSpaceOnUse"><circle cx="10" cy="10" r="1" fill="#059669" opacity="0.06"/></pattern><rect width="1200" height="675" fill="url(#dots)"/>
 
   <!-- Subtle top accent bar -->
-  <rect width="1200" height="4" fill="#0891b2"/>
+  <rect width="1200" height="4" fill="#06b6d4"/>
 
   <!-- Title -->
-  <text x="600" y="50" text-anchor="middle" font-size="26" font-weight="700" fill="#1e293b">Core features of a reliable offline medication tracker</text>
+  <text x="600" y="50" text-anchor="middle" font-size="28" font-weight="700" fill="#1e293b">The pillars of a private, offline physics sandbox for kids</text>
 
   <!-- Icon color palette (theme-aware) -->
   
@@ -34,26 +34,26 @@
   
 
   <!-- Card background -->
-  <rect x="64" y="95" width="250" height="240" rx="12" fill="#f8fafc" stroke="#e2e8f0" stroke-width="1"/>
+  <rect x="64" y="95" width="250" height="240" rx="18" fill="#fef3c7" stroke="#e2e8f0" stroke-width="1"/>
 
   <!-- Icon circle with symbol -->
-  <circle cx="189" cy="137" r="28" fill="#0891b2" opacity="0.12"/>
-  <circle cx="189" cy="137" r="28" fill="none" stroke="#0891b2" stroke-width="2"/>
+  <circle cx="189" cy="137" r="28" fill="#06b6d4" opacity="0.12"/>
+  <circle cx="189" cy="137" r="28" fill="none" stroke="#06b6d4" stroke-width="2"/>
 
   <!-- Icon symbol (SVG paths for common types, fallback to letter) -->
   
-  <path d="179" transform="translate(179, 127)" fill="#0891b2">
+  <path d="179" transform="translate(179, 127)" fill="#06b6d4">
     <animate attributeName="d" values=""/>
   </path>
-  <text x="189" y="144" text-anchor="middle" font-size="20" font-weight="700" fill="#0891b2">&#x1F6E1;</text>
+  <text x="189" y="144" text-anchor="middle" font-size="20" font-weight="700" fill="#06b6d4">&#x1F6E1;</text>
   
 
   <!-- Label -->
-  <text x="189" y="190" text-anchor="middle" font-size="14" font-weight="600" fill="#1e293b">Local &amp; Encrypted</text>
+  <text x="189" y="190" text-anchor="middle" font-size="15" font-weight="600" fill="#1e293b">No Accounts</text>
 
   <!-- Description -->
   <foreignObject x="78" y="199" width="222" height="100">
-    <p xmlns="http://www.w3.org/1999/xhtml" style="font-family:Inter,system-ui,sans-serif;font-size:12px;color:#64748b;margin:0;line-height:1.4;text-align:center;">Data stays on your device with encryption</p>
+    <p xmlns="http://www.w3.org/1999/xhtml" style="font-family:Inter,system-ui,sans-serif;font-size:12px;color:#64748b;margin:0;line-height:1.4;text-align:center;">Open and play immediately</p>
   </foreignObject>
   
   
@@ -63,7 +63,7 @@
   
 
   <!-- Card background -->
-  <rect x="338" y="95" width="250" height="240" rx="12" fill="#f8fafc" stroke="#e2e8f0" stroke-width="1"/>
+  <rect x="338" y="95" width="250" height="240" rx="18" fill="#fef3c7" stroke="#e2e8f0" stroke-width="1"/>
 
   <!-- Icon circle with symbol -->
   <circle cx="463" cy="137" r="28" fill="#34d399" opacity="0.12"/>
@@ -71,11 +71,11 @@
 
   <!-- Icon symbol (SVG paths for common types, fallback to letter) -->
   
-  <text x="463" y="144" text-anchor="middle" font-size="20" font-weight="700" fill="#34d399">&#x21C4;</text>
+  <text x="463" y="144" text-anchor="middle" font-size="20" font-weight="700" fill="#34d399">I</text>
   
 
   <!-- Label -->
-  <text x="463" y="190" text-anchor="middle" font-size="14" font-weight="600" fill="#1e293b">no cloud upload</text>
+  <text x="463" y="190" text-anchor="middle" font-size="15" font-weight="600" fill="#1e293b">no sign-in gatekeeping</text>
 
   <!-- Description -->
   <foreignObject x="352" y="199" width="222" height="100">
@@ -89,7 +89,7 @@
   
 
   <!-- Card background -->
-  <rect x="612" y="95" width="250" height="240" rx="12" fill="#f8fafc" stroke="#e2e8f0" stroke-width="1"/>
+  <rect x="612" y="95" width="250" height="240" rx="18" fill="#fef3c7" stroke="#e2e8f0" stroke-width="1"/>
 
   <!-- Icon circle with symbol -->
   <circle cx="737" cy="137" r="28" fill="#0891b2" opacity="0.12"/>
@@ -97,15 +97,15 @@
 
   <!-- Icon symbol (SVG paths for common types, fallback to letter) -->
   
-  <text x="737" y="144" text-anchor="middle" font-size="20" font-weight="700" fill="#0891b2">P</text>
+  <text x="737" y="144" text-anchor="middle" font-size="20" font-weight="700" fill="#0891b2">&#x25A0;</text>
   
 
   <!-- Label -->
-  <text x="737" y="190" text-anchor="middle" font-size="14" font-weight="600" fill="#1e293b">Printable Reports</text>
+  <text x="737" y="190" text-anchor="middle" font-size="15" font-weight="600" fill="#1e293b">Local Processing</text>
 
   <!-- Description -->
   <foreignObject x="626" y="199" width="222" height="100">
-    <p xmlns="http://www.w3.org/1999/xhtml" style="font-family:Inter,system-ui,sans-serif;font-size:12px;color:#64748b;margin:0;line-height:1.4;text-align:center;">Generate clear PDFs for doctors</p>
+    <p xmlns="http://www.w3.org/1999/xhtml" style="font-family:Inter,system-ui,sans-serif;font-size:12px;color:#64748b;margin:0;line-height:1.4;text-align:center;">The physics engine runs on your device&#39;s chip</p>
   </foreignObject>
   
   
@@ -115,7 +115,7 @@
   
 
   <!-- Card background -->
-  <rect x="886" y="95" width="250" height="240" rx="12" fill="#f8fafc" stroke="#e2e8f0" stroke-width="1"/>
+  <rect x="886" y="95" width="250" height="240" rx="18" fill="#fef3c7" stroke="#e2e8f0" stroke-width="1"/>
 
   <!-- Icon circle with symbol -->
   <circle cx="1011" cy="137" r="28" fill="#dc2626" opacity="0.12"/>
@@ -127,7 +127,7 @@
   
 
   <!-- Label -->
-  <text x="1011" y="190" text-anchor="middle" font-size="14" font-weight="600" fill="#1e293b">works without internet</text>
+  <text x="1011" y="190" text-anchor="middle" font-size="15" font-weight="600" fill="#1e293b">not a remote server</text>
 
   <!-- Description -->
   <foreignObject x="900" y="199" width="222" height="100">
@@ -141,7 +141,7 @@
   
 
   <!-- Card background -->
-  <rect x="64" y="363" width="250" height="240" rx="12" fill="#f8fafc" stroke="#e2e8f0" stroke-width="1"/>
+  <rect x="64" y="363" width="250" height="240" rx="18" fill="#fef3c7" stroke="#e2e8f0" stroke-width="1"/>
 
   <!-- Icon circle with symbol -->
   <circle cx="189" cy="405" r="28" fill="#16a34a" opacity="0.12"/>
@@ -149,15 +149,15 @@
 
   <!-- Icon symbol (SVG paths for common types, fallback to letter) -->
   
-  <text x="189" y="412" text-anchor="middle" font-size="20" font-weight="700" fill="#16a34a">B</text>
+  <text x="189" y="412" text-anchor="middle" font-size="20" font-weight="700" fill="#16a34a">&#x21C4;</text>
   
 
   <!-- Label -->
-  <text x="189" y="458" text-anchor="middle" font-size="14" font-weight="600" fill="#1e293b">Offline Reminders</text>
+  <text x="189" y="458" text-anchor="middle" font-size="15" font-weight="600" fill="#1e293b">sync</text>
 
   <!-- Description -->
   <foreignObject x="78" y="467" width="222" height="100">
-    <p xmlns="http://www.w3.org/1999/xhtml" style="font-family:Inter,system-ui,sans-serif;font-size:12px;color:#64748b;margin:0;line-height:1.4;text-align:center;">Notifications use device alarms</p>
+    <p xmlns="http://www.w3.org/1999/xhtml" style="font-family:Inter,system-ui,sans-serif;font-size:12px;color:#64748b;margin:0;line-height:1.4;text-align:center;">Your Data</p>
   </foreignObject>
   
   
@@ -167,7 +167,7 @@
   
 
   <!-- Card background -->
-  <rect x="338" y="363" width="250" height="240" rx="12" fill="#f8fafc" stroke="#e2e8f0" stroke-width="1"/>
+  <rect x="338" y="363" width="250" height="240" rx="18" fill="#fef3c7" stroke="#e2e8f0" stroke-width="1"/>
 
   <!-- Icon circle with symbol -->
   <circle cx="463" cy="405" r="28" fill="#f59e0b" opacity="0.12"/>
@@ -175,15 +175,15 @@
 
   <!-- Icon symbol (SVG paths for common types, fallback to letter) -->
   
-  <text x="463" y="412" text-anchor="middle" font-size="20" font-weight="700" fill="#f59e0b">&#x21C4;</text>
+  <text x="463" y="412" text-anchor="middle" font-size="20" font-weight="700" fill="#f59e0b">I</text>
   
 
   <!-- Label -->
-  <text x="463" y="458" text-anchor="middle" font-size="14" font-weight="600" fill="#1e293b">no cloud service needed</text>
+  <text x="463" y="458" text-anchor="middle" font-size="15" font-weight="600" fill="#1e293b">Your Control</text>
 
   <!-- Description -->
   <foreignObject x="352" y="467" width="222" height="100">
-    <p xmlns="http://www.w3.org/1999/xhtml" style="font-family:Inter,system-ui,sans-serif;font-size:12px;color:#64748b;margin:0;line-height:1.4;text-align:center;"></p>
+    <p xmlns="http://www.w3.org/1999/xhtml" style="font-family:Inter,system-ui,sans-serif;font-size:12px;color:#64748b;margin:0;line-height:1.4;text-align:center;">Creations save directly to your device&#39;s storage</p>
   </foreignObject>
   
   
@@ -193,7 +193,7 @@
   
 
   <!-- Card background -->
-  <rect x="612" y="363" width="250" height="240" rx="12" fill="#f8fafc" stroke="#e2e8f0" stroke-width="1"/>
+  <rect x="612" y="363" width="250" height="240" rx="18" fill="#fef3c7" stroke="#e2e8f0" stroke-width="1"/>
 
   <!-- Icon circle with symbol -->
   <circle cx="737" cy="405" r="28" fill="#ec4899" opacity="0.12"/>
@@ -201,15 +201,15 @@
 
   <!-- Icon symbol (SVG paths for common types, fallback to letter) -->
   
-  <text x="737" y="412" text-anchor="middle" font-size="20" font-weight="700" fill="#ec4899">&#x25A0;</text>
+  <text x="737" y="412" text-anchor="middle" font-size="22" font-weight="700" fill="#ec4899">$</text>
   
 
   <!-- Label -->
-  <text x="737" y="458" text-anchor="middle" font-size="14" font-weight="600" fill="#1e293b">One-Time Purchase</text>
+  <text x="737" y="458" text-anchor="middle" font-size="15" font-weight="600" fill="#1e293b">One-Time Cost</text>
 
   <!-- Description -->
   <foreignObject x="626" y="467" width="222" height="100">
-    <p xmlns="http://www.w3.org/1999/xhtml" style="font-family:Inter,system-ui,sans-serif;font-size:12px;color:#64748b;margin:0;line-height:1.4;text-align:center;">Own the tool forever</p>
+    <p xmlns="http://www.w3.org/1999/xhtml" style="font-family:Inter,system-ui,sans-serif;font-size:12px;color:#64748b;margin:0;line-height:1.4;text-align:center;">Pay once to own the tool forever</p>
   </foreignObject>
   
   
@@ -219,7 +219,7 @@
   
 
   <!-- Card background -->
-  <rect x="886" y="363" width="250" height="240" rx="12" fill="#f8fafc" stroke="#e2e8f0" stroke-width="1"/>
+  <rect x="886" y="363" width="250" height="240" rx="18" fill="#fef3c7" stroke="#e2e8f0" stroke-width="1"/>
 
   <!-- Icon circle with symbol -->
   <circle cx="1011" cy="405" r="28" fill="#6366f1" opacity="0.12"/>
@@ -231,7 +231,7 @@
   
 
   <!-- Label -->
-  <text x="1011" y="458" text-anchor="middle" font-size="14" font-weight="600" fill="#1e293b">no subscription to manage</text>
+  <text x="1011" y="458" text-anchor="middle" font-size="15" font-weight="600" fill="#1e293b">no subscriptions</text>
 
   <!-- Description -->
   <foreignObject x="900" y="467" width="222" height="100">

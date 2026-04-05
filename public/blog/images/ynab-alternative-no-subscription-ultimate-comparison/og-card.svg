@@ -5,8 +5,8 @@
       <stop offset="100%" style="stop-color:#1e293b;stop-opacity:1" />
     </linearGradient>
     <linearGradient id="accentGrad" x1="0%" y1="0%" x2="100%" y2="0%">
-      <stop offset="0%" style="stop-color:#0891b2;stop-opacity:1" />
-      <stop offset="100%" style="stop-color:#34d399;stop-opacity:1" />
+      <stop offset="0%" style="stop-color:#059669;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#60a5fa;stop-opacity:1" />
     </linearGradient>
   </defs>
 
@@ -29,9 +29,9 @@
 
   <!-- Tag badge -->
   
-  <rect x="80" y="80" width="131" height="36" rx="18" fill="#0891b2" opacity="0.2"/>
-  <rect x="80" y="80" width="131" height="36" rx="18" fill="none" stroke="#0891b2" stroke-width="1.5" opacity="0.6"/>
-  <text x="145" y="103" text-anchor="middle" font-size="14" font-weight="600" fill="#34d399" letter-spacing="1">ANTI-SAAS</text>
+  <rect x="80" y="80" width="131" height="36" rx="18" fill="#059669" opacity="0.2"/>
+  <rect x="80" y="80" width="131" height="36" rx="18" fill="none" stroke="#059669" stroke-width="1.5" opacity="0.6"/>
+  <text x="145" y="103" text-anchor="middle" font-size="14" font-weight="600" fill="#60a5fa" letter-spacing="1">ANTI-SAAS</text>
   
 
   <!-- Title (multi-line with word wrap approximation) -->
@@ -68,29 +68,21 @@
       
     
   
-    
-      
-    
-  
-    
-      
-    
-  
   
     
   
 
   
-  <text x="80" y="180" font-size="52" font-weight="800" fill="#ffffff" letter-spacing="-1">Best Offline Medication Tracker</text>
+  <text x="80" y="180" font-size="52" font-weight="800" fill="#ffffff" letter-spacing="-1">YNAB Alternative No Subscription:</text>
   
-  <text x="80" y="244" font-size="52" font-weight="800" fill="#ffffff" letter-spacing="-1">Apps for Seniors in 2025</text>
+  <text x="80" y="244" font-size="52" font-weight="800" fill="#ffffff" letter-spacing="-1">2026 Ultimate Comparison</text>
   
 
   <!-- Description (if provided) -->
   
   
   <text x="80" y="332" font-size="20" fill="#94a3b8" font-weight="400">
-    Worried about Wi-Fi in the doctor&#39;s office? Discover the best offline medicat...
+    Tired of YNAB&#39;s $99/year fee? We compared 4 top budgeting apps to find the be...
   </text>
   
 
@@ -98,8 +90,8 @@
   <line x1="80" y1="530" x2="1120" y2="530" stroke="#334155" stroke-width="1"/>
 
   <!-- Stillware logo mark (S in circle) -->
-  <circle cx="110" cy="572" r="22" fill="none" stroke="#0891b2" stroke-width="2"/>
-  <text x="110" y="580" text-anchor="middle" font-size="22" font-weight="700" fill="#0891b2">S</text>
+  <circle cx="110" cy="572" r="22" fill="none" stroke="#059669" stroke-width="2"/>
+  <text x="110" y="580" text-anchor="middle" font-size="22" font-weight="700" fill="#059669">S</text>
 
   <!-- Company name -->
   <text x="145" y="578" font-size="18" font-weight="600" fill="#e2e8f0" letter-spacing="0.5">stillwareltd.com</text>
@@ -108,6 +100,6 @@
   <text x="1120" y="578" text-anchor="end" font-size="15" fill="#64748b" font-weight="400">Software you own, not software you rent.</text>
 
   <!-- Accent glow at bottom-right corner (decorative) -->
-  <circle cx="1100" cy="530" r="120" fill="#0891b2" opacity="0.04"/>
-  <circle cx="1150" cy="580" r="80" fill="#34d399" opacity="0.03"/>
+  <circle cx="1100" cy="530" r="120" fill="#059669" opacity="0.04"/>
+  <circle cx="1150" cy="580" r="80" fill="#60a5fa" opacity="0.03"/>
 </svg>
