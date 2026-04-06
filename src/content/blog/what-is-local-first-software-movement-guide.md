@@ -4,6 +4,7 @@ date: 2026-04-05
 description: ""
 author: "Stillware Team"
 wordCount: 1482
+heroImage: "/blog/images/what-is-local-first-software-movement-guide/hero.webp"
 ---
 
 # What Is the Local-First Software Movement? (The 2026 Guide)

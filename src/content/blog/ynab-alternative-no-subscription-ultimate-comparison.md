@@ -4,6 +4,7 @@ date: 2026-04-05
 description: ""
 author: "Stillware Team"
 wordCount: 1588
+heroImage: "/blog/images/ynab-alternative-no-subscription-ultimate-comparison/hero.webp"
 ---
 
 # YNAB Alternative With No Subscription: 2026 Ultimate Comparison

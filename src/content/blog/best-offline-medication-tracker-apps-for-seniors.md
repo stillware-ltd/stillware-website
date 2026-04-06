@@ -4,6 +4,7 @@ date: 2026-04-05
 description: ""
 author: "Stillware Team"
 wordCount: 1317
+heroImage: "/blog/images/best-offline-medication-tracker-apps-for-seniors/hero.webp"
 ---
 
 # Best Offline Medication Tracker Apps for Seniors in 2025

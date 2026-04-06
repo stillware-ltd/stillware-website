@@ -4,6 +4,7 @@ date: 2026-04-05
 description: ""
 author: "Stillware Team"
 wordCount: 1886
+heroImage: "/blog/images/home-inventory-app-insurance-claims-guide/hero.webp"
 ---
 
 ## The One Document That Determines Your Insurance Payout

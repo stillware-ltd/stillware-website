@@ -4,6 +4,7 @@ date: 2026-04-05
 description: ""
 author: "Stillware Team"
 wordCount: 1356
+heroImage: "/blog/images/why-free-apps-sell-your-data/hero.webp"
 ---
 
 # Why Free Apps Sell Your Data: The $12/Year Truth

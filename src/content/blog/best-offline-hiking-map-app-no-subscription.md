@@ -4,6 +4,7 @@ date: 2026-04-05
 description: ""
 author: "Stillware Team"
 wordCount: 2052
+heroImage: "/blog/images/best-offline-hiking-map-app-no-subscription/hero.webp"
 ---
 
 # 7 Best Offline Hiking Map Apps (No Subscription Required)

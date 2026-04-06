@@ -4,6 +4,7 @@ date: 2026-04-05
 description: ""
 author: "Stillware Team"
 wordCount: 1610
+heroImage: "/blog/images/pixel-art-tutorial-for-kids-16x16-grid-guide/hero.webp"
 ---
 
 ## How to Make Pixel Art for Kids: A 16x16 Grid Starter Guide

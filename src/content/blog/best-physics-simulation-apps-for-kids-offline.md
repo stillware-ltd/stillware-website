@@ -4,6 +4,7 @@ date: 2026-04-05
 description: ""
 author: "Stillware Team"
 wordCount: 2425
+heroImage: "/blog/images/best-physics-simulation-apps-for-kids-offline/hero.webp"
 ---
 
 # 5 Best Physics Simulation Apps for Kids That Work Offline
