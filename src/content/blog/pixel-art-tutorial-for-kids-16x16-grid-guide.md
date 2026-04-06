@@ -42,7 +42,7 @@ Let's create something concrete. You'll need any app that lets you draw on a gri
 
 You've just made a game asset. That's the key. This isn't an abstract drawing; it's a functional object. From here, you can animate it, create a friend for it, or export it and print it out.
 
-<!-- IMAGE: type=process-flow | layout=full-width | caption=The four-step animation loop for a pixel art sprite | data=Draw Base Frame:Create your first sprite on a 16x16 grid,Duplicate & Modify:Copy the frame and alter pixels for movement,Test Timing:Flip between frames to see the motion,Adjust Speed:Change frame duration to control the animation pace] -->
+![The four-step animation loop for a pixel art sprite](/blog/images/pixel-art-tutorial-for-kids-16x16-grid-guide/image-01.svg)
 
 ### How to Animate Your Pixel Art Sprite
 

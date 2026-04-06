@@ -4,21 +4,21 @@
 
 
 
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 539" width="1200" height="539">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 481" width="1200" height="481">
   <style>
     text { font-family: Inter, system-ui, -apple-system, sans-serif; }
   </style>
 
-  <rect width="1200" height="539" fill="#f0fdf4"/>
+  <rect width="1200" height="481" fill="#ffffff"/>
 
   <!-- Background pattern (per-article variation) -->
-  <rect width="1200" height="675" fill="#ecfdf5" opacity="0.4"/>
+  <rect width="1200" height="675" fill="#f8fafc" opacity="0.4"/>
 
   <!-- Subtle top accent bar -->
-  <rect width="1200" height="4" fill="#0891b2"/>
+  <rect width="1200" height="4" fill="#2563eb"/>
 
   <!-- Title -->
-  <text x="600" y="50" text-anchor="middle" font-size="28" font-weight="700" fill="#1e293b">Architectural comparison: Cloud-dependent vs. Local-first medication apps | alt=Table comparing cloud vs local app data storage, access, and cost</text>
+  <text x="600" y="50" text-anchor="middle" font-size="26" font-weight="700" fill="#1e293b">Architectural priorities: Cloud-first vs. Patient-first apps</text>
 
   <!-- Column header colors (theme-aware alternation) -->
   
@@ -30,43 +30,38 @@
   
 
   <!-- Column header -->
-  <rect x="100" y="80" width="500" height="52" fill="#0891b2"/>
+  <rect x="100" y="80" width="500" height="52" fill="#2563eb"/>
   
-  <rect x="100" y="80" width="4" height="52" fill="#0891b2"/>
+  <rect x="100" y="80" width="4" height="52" fill="#2563eb"/>
   
-  <text x="350" y="112" text-anchor="middle" font-size="16" font-weight="600" fill="#ffffff">Data Storage</text>
+  <text x="350" y="112" text-anchor="middle" font-size="16" font-weight="600" fill="#ffffff">Priority</text>
 
   <!-- Rows -->
   
   
-  <rect x="100" y="148" width="500" height="52" fill="#ecfdf5" stroke="#e2e8f0" stroke-width="0.5"/>
-  <text x="116" y="170" font-size="15" font-weight="600" fill="#1e293b">Data Storage</text>
-  <text x="116" y="190" font-size="15" fill="#64748b">Company servers</text>
+  <rect x="100" y="148" width="500" height="52" fill="#f8fafc" stroke="#e2e8f0" stroke-width="0.5"/>
+  <text x="116" y="170" font-size="13" font-weight="600" fill="#1e293b">Priority</text>
+  <text x="116" y="190" font-size="13" fill="#64748b">Developer Convenience</text>
   
   
-  <rect x="100" y="206" width="500" height="52" fill="#f0fdf4" stroke="#e2e8f0" stroke-width="0.5"/>
-  <text x="116" y="228" font-size="15" font-weight="600" fill="#1e293b">Access</text>
-  <text x="116" y="248" font-size="15" fill="#64748b">Requires internet &amp; login</text>
+  <rect x="100" y="206" width="500" height="52" fill="#ffffff" stroke="#e2e8f0" stroke-width="0.5"/>
+  <text x="116" y="228" font-size="13" font-weight="600" fill="#1e293b">Data Location</text>
+  <text x="116" y="248" font-size="13" fill="#64748b">Company Servers</text>
   
   
-  <rect x="100" y="264" width="500" height="52" fill="#ecfdf5" stroke="#e2e8f0" stroke-width="0.5"/>
-  <text x="116" y="286" font-size="15" font-weight="600" fill="#1e293b">Cost Model</text>
-  <text x="116" y="306" font-size="15" fill="#64748b">Monthly/Yearly subscription</text>
+  <rect x="100" y="264" width="500" height="52" fill="#f8fafc" stroke="#e2e8f0" stroke-width="0.5"/>
+  <text x="116" y="286" font-size="13" font-weight="600" fill="#1e293b">Primary Access Method</text>
+  <text x="116" y="306" font-size="13" fill="#64748b">Internet Connection</text>
   
   
-  <rect x="100" y="322" width="500" height="52" fill="#f0fdf4" stroke="#e2e8f0" stroke-width="0.5"/>
-  <text x="116" y="344" font-size="15" font-weight="600" fill="#1e293b">Data Portability</text>
-  <text x="116" y="364" font-size="15" fill="#64748b">Difficult to export</text>
+  <rect x="100" y="322" width="500" height="52" fill="#ffffff" stroke="#e2e8f0" stroke-width="0.5"/>
+  <text x="116" y="344" font-size="13" font-weight="600" fill="#1e293b">Data Longevity</text>
+  <text x="116" y="364" font-size="13" fill="#64748b">Tied to Company Survival</text>
   
   
-  <rect x="100" y="380" width="500" height="52" fill="#ecfdf5" stroke="#e2e8f0" stroke-width="0.5"/>
-  <text x="116" y="402" font-size="15" font-weight="600" fill="#1e293b">Offline Use</text>
-  <text x="116" y="422" font-size="15" fill="#64748b">Limited or none</text>
-  
-  
-  <rect x="100" y="438" width="500" height="52" fill="#f0fdf4" stroke="#e2e8f0" stroke-width="0.5"/>
-  <text x="116" y="460" font-size="15" font-weight="600" fill="#1e293b">Primary Risk</text>
-  <text x="116" y="480" font-size="15" fill="#64748b">Service shutdown locks data</text>
+  <rect x="100" y="380" width="500" height="52" fill="#f8fafc" stroke="#e2e8f0" stroke-width="0.5"/>
+  <text x="116" y="402" font-size="13" font-weight="600" fill="#1e293b">Business Model</text>
+  <text x="116" y="422" font-size="13" fill="#64748b">Recurring Subscription</text>
   
   
   
@@ -75,50 +70,40 @@
   <!-- Column header -->
   <rect x="600" y="80" width="500" height="52" fill="#60a5fa"/>
   
-  <text x="850" y="112" text-anchor="middle" font-size="16" font-weight="600" fill="#ffffff">Data Storage</text>
+  <text x="850" y="112" text-anchor="middle" font-size="16" font-weight="600" fill="#ffffff">Priority</text>
 
   <!-- Rows -->
   
   
-  <rect x="600" y="148" width="500" height="52" fill="#ecfdf5" stroke="#e2e8f0" stroke-width="0.5"/>
-  <text x="616" y="170" font-size="15" font-weight="600" fill="#1e293b">Data Storage</text>
-  <text x="616" y="190" font-size="15" fill="#64748b">Your device only</text>
+  <rect x="600" y="148" width="500" height="52" fill="#f8fafc" stroke="#e2e8f0" stroke-width="0.5"/>
+  <text x="616" y="170" font-size="13" font-weight="600" fill="#1e293b">Priority</text>
+  <text x="616" y="190" font-size="13" fill="#64748b">Patient Reliability</text>
   
   
-  <rect x="600" y="206" width="500" height="52" fill="#f0fdf4" stroke="#e2e8f0" stroke-width="0.5"/>
-  <text x="616" y="228" font-size="15" font-weight="600" fill="#1e293b">Access</text>
-  <text x="616" y="248" font-size="15" fill="#64748b">Instant</text>
+  <rect x="600" y="206" width="500" height="52" fill="#ffffff" stroke="#e2e8f0" stroke-width="0.5"/>
+  <text x="616" y="228" font-size="13" font-weight="600" fill="#1e293b">Data Location</text>
+  <text x="616" y="248" font-size="13" fill="#64748b">Your Device Only</text>
   
   
-  <rect x="600" y="264" width="500" height="52" fill="#ecfdf5" stroke="#e2e8f0" stroke-width="0.5"/>
-  <text x="616" y="286" font-size="15" font-weight="600" fill="#1e293b">no account</text>
-  <text x="616" y="306" font-size="15" fill="#64748b">no account</text>
+  <rect x="600" y="264" width="500" height="52" fill="#f8fafc" stroke="#e2e8f0" stroke-width="0.5"/>
+  <text x="616" y="286" font-size="13" font-weight="600" fill="#1e293b">Primary Access Method</text>
+  <text x="616" y="306" font-size="13" fill="#64748b">Always Available Offline</text>
   
   
-  <rect x="600" y="322" width="500" height="52" fill="#f0fdf4" stroke="#e2e8f0" stroke-width="0.5"/>
-  <text x="616" y="344" font-size="15" font-weight="600" fill="#1e293b">Cost Model</text>
-  <text x="616" y="364" font-size="15" fill="#64748b">One-time purchase</text>
+  <rect x="600" y="322" width="500" height="52" fill="#ffffff" stroke="#e2e8f0" stroke-width="0.5"/>
+  <text x="616" y="344" font-size="13" font-weight="600" fill="#1e293b">Data Longevity</text>
+  <text x="616" y="364" font-size="13" fill="#64748b">You Control Export/Backup</text>
   
   
-  <rect x="600" y="380" width="500" height="52" fill="#ecfdf5" stroke="#e2e8f0" stroke-width="0.5"/>
-  <text x="616" y="402" font-size="15" font-weight="600" fill="#1e293b">Data Portability</text>
-  <text x="616" y="422" font-size="15" fill="#64748b">Easy export/PDF</text>
-  
-  
-  <rect x="600" y="438" width="500" height="52" fill="#f0fdf4" stroke="#e2e8f0" stroke-width="0.5"/>
-  <text x="616" y="460" font-size="15" font-weight="600" fill="#1e293b">Offline Use</text>
-  <text x="616" y="480" font-size="15" fill="#64748b">Full functionality</text>
-  
-  
-  <rect x="600" y="496" width="500" height="52" fill="#ecfdf5" stroke="#e2e8f0" stroke-width="0.5"/>
-  <text x="616" y="518" font-size="15" font-weight="600" fill="#1e293b">Primary Risk</text>
-  <text x="616" y="538" font-size="15" fill="#64748b">None beyond device loss</text>
+  <rect x="600" y="380" width="500" height="52" fill="#f8fafc" stroke="#e2e8f0" stroke-width="0.5"/>
+  <text x="616" y="402" font-size="13" font-weight="600" fill="#1e293b">Business Model</text>
+  <text x="616" y="422" font-size="13" fill="#64748b">One-Time Purchase</text>
   
   
 
   <!-- Bottom border -->
-  <rect x="100" y="496" width="1000" height="3" fill="#0891b2"/>
+  <rect x="100" y="438" width="1000" height="3" fill="#2563eb"/>
 
   <!-- Source attribution -->
-  <text x="1190" y="531" text-anchor="end" font-size="10" fill="#cbd5e1">stillwareltd.com</text>
+  <text x="1190" y="473" text-anchor="end" font-size="10" fill="#cbd5e1">stillwareltd.com</text>
 </svg>

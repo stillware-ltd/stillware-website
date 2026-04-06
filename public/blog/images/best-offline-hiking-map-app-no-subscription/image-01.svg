@@ -1,0 +1,145 @@
+
+
+
+
+
+
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 481" width="1200" height="481">
+  <style>
+    text { font-family: Inter, system-ui, -apple-system, sans-serif; }
+  </style>
+
+  <rect width="1200" height="481" fill="#ffffff"/>
+
+  <!-- Background pattern (per-article variation) -->
+  
+
+  <!-- Subtle top accent bar -->
+  <rect width="1200" height="4" fill="#2563eb"/>
+
+  <!-- Title -->
+  <text x="600" y="50" text-anchor="middle" font-size="26" font-weight="700" fill="#1e293b">Subscription vs. One-Time Purchase: 5-Year Cost Analysis</text>
+
+  <!-- Column header colors (theme-aware alternation) -->
+  
+  
+
+  <!-- Table -->
+  
+  
+  
+
+  <!-- Column header -->
+  <rect x="100" y="80" width="333" height="52" fill="#2563eb"/>
+  
+  <rect x="100" y="80" width="4" height="52" fill="#2563eb"/>
+  
+  <text x="266" y="112" text-anchor="middle" font-size="16" font-weight="600" fill="#ffffff">App</text>
+
+  <!-- Rows -->
+  
+  
+  <rect x="100" y="148" width="333" height="52" fill="#f8fafc" stroke="#e2e8f0" stroke-width="0.5"/>
+  <text x="116" y="170" font-size="13" font-weight="600" fill="#1e293b">App</text>
+  <text x="116" y="190" font-size="13" fill="#64748b">Gaia GPS</text>
+  
+  
+  <rect x="100" y="206" width="333" height="52" fill="#ffffff" stroke="#e2e8f0" stroke-width="0.5"/>
+  <text x="116" y="228" font-size="13" font-weight="600" fill="#1e293b">Offline Access</text>
+  <text x="116" y="248" font-size="13" fill="#64748b">Premium Subscription ($39.99/yr)</text>
+  
+  
+  <rect x="100" y="264" width="333" height="52" fill="#f8fafc" stroke="#e2e8f0" stroke-width="0.5"/>
+  <text x="116" y="286" font-size="13" font-weight="600" fill="#1e293b">5-Year Cost</text>
+  <text x="116" y="306" font-size="13" fill="#64748b">$199.95</text>
+  
+  
+  <rect x="100" y="322" width="333" height="52" fill="#ffffff" stroke="#e2e8f0" stroke-width="0.5"/>
+  <text x="116" y="344" font-size="13" font-weight="600" fill="#1e293b">Data Ownership</text>
+  <text x="116" y="364" font-size="13" fill="#64748b">No</text>
+  
+  
+  <rect x="100" y="380" width="333" height="52" fill="#f8fafc" stroke="#e2e8f0" stroke-width="0.5"/>
+  <text x="116" y="402" font-size="13" font-weight="600" fill="#1e293b">Access if Lapsed</text>
+  <text x="116" y="422" font-size="13" fill="#64748b">None</text>
+  
+  
+  
+  
+
+  <!-- Column header -->
+  <rect x="433" y="80" width="333" height="52" fill="#60a5fa"/>
+  
+  <text x="599" y="112" text-anchor="middle" font-size="16" font-weight="600" fill="#ffffff">App</text>
+
+  <!-- Rows -->
+  
+  
+  <rect x="433" y="148" width="333" height="52" fill="#f8fafc" stroke="#e2e8f0" stroke-width="0.5"/>
+  <text x="449" y="170" font-size="13" font-weight="600" fill="#1e293b">App</text>
+  <text x="449" y="190" font-size="13" fill="#64748b">AllTrails</text>
+  
+  
+  <rect x="433" y="206" width="333" height="52" fill="#ffffff" stroke="#e2e8f0" stroke-width="0.5"/>
+  <text x="449" y="228" font-size="13" font-weight="600" fill="#1e293b">Offline Access</text>
+  <text x="449" y="248" font-size="13" fill="#64748b">AllTrails+ ($35.99/yr)</text>
+  
+  
+  <rect x="433" y="264" width="333" height="52" fill="#f8fafc" stroke="#e2e8f0" stroke-width="0.5"/>
+  <text x="449" y="286" font-size="13" font-weight="600" fill="#1e293b">5-Year Cost</text>
+  <text x="449" y="306" font-size="13" fill="#64748b">$179.95</text>
+  
+  
+  <rect x="433" y="322" width="333" height="52" fill="#ffffff" stroke="#e2e8f0" stroke-width="0.5"/>
+  <text x="449" y="344" font-size="13" font-weight="600" fill="#1e293b">Data Ownership</text>
+  <text x="449" y="364" font-size="13" fill="#64748b">No</text>
+  
+  
+  <rect x="433" y="380" width="333" height="52" fill="#f8fafc" stroke="#e2e8f0" stroke-width="0.5"/>
+  <text x="449" y="402" font-size="13" font-weight="600" fill="#1e293b">Access if Lapsed</text>
+  <text x="449" y="422" font-size="13" fill="#64748b">None</text>
+  
+  
+  
+  
+
+  <!-- Column header -->
+  <rect x="766" y="80" width="333" height="52" fill="#2563eb"/>
+  
+  <text x="932" y="112" text-anchor="middle" font-size="16" font-weight="600" fill="#ffffff">App</text>
+
+  <!-- Rows -->
+  
+  
+  <rect x="766" y="148" width="333" height="52" fill="#f8fafc" stroke="#e2e8f0" stroke-width="0.5"/>
+  <text x="782" y="170" font-size="13" font-weight="600" fill="#1e293b">App</text>
+  <text x="782" y="190" font-size="13" fill="#64748b">One-Time Purchase</text>
+  
+  
+  <rect x="766" y="206" width="333" height="52" fill="#ffffff" stroke="#e2e8f0" stroke-width="0.5"/>
+  <text x="782" y="228" font-size="13" font-weight="600" fill="#1e293b">Offline Access</text>
+  <text x="782" y="248" font-size="13" fill="#64748b">Unlocked with single fee</text>
+  
+  
+  <rect x="766" y="264" width="333" height="52" fill="#f8fafc" stroke="#e2e8f0" stroke-width="0.5"/>
+  <text x="782" y="286" font-size="13" font-weight="600" fill="#1e293b">5-Year Cost</text>
+  <text x="782" y="306" font-size="13" fill="#64748b">~$30-$50</text>
+  
+  
+  <rect x="766" y="322" width="333" height="52" fill="#ffffff" stroke="#e2e8f0" stroke-width="0.5"/>
+  <text x="782" y="344" font-size="13" font-weight="600" fill="#1e293b">Data Ownership</text>
+  <text x="782" y="364" font-size="13" fill="#64748b">Yes</text>
+  
+  
+  <rect x="766" y="380" width="333" height="52" fill="#f8fafc" stroke="#e2e8f0" stroke-width="0.5"/>
+  <text x="782" y="402" font-size="13" font-weight="600" fill="#1e293b">Access if Lapsed</text>
+  <text x="782" y="422" font-size="13" fill="#64748b">Full access forever</text>
+  
+  
+
+  <!-- Bottom border -->
+  <rect x="100" y="438" width="999" height="3" fill="#2563eb"/>
+
+  <!-- Source attribution -->
+  <text x="1190" y="473" text-anchor="end" font-size="10" fill="#cbd5e1">stillwareltd.com</text>
+</svg>

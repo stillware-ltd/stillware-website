@@ -27,7 +27,7 @@ The architecture of most apps creates inherent points of failure that are unacce
 
 The table below contrasts the priorities of a cloud-first architecture versus a patient-first, local approach.
 
-<!-- IMAGE: type=comparison-table | layout=full-width | caption=Architectural priorities: Cloud-first vs. Patient-first apps | data=Priority:Developer Convenience,Data Location:Company Servers,Primary Access Method:Internet Connection,Data Longevity:Tied to Company Survival,Business Model:Recurring Subscription;Priority:Patient Reliability,Data Location:Your Device Only,Primary Access Method:Always Available Offline,Data Longevity:You Control Export/Backup,Business Model:One-Time Purchase -->
+![Architectural priorities: Cloud-first vs. Patient-first apps](/blog/images/best-offline-medication-tracker-apps-for-seniors/image-01.svg)
 
 We believe health tools should work offline by default. The core function of a medication tracker—recording what you took and when—does not require an internet connection. Syncing should be optional and user-controlled, not a mandatory gateway to your own information.
 

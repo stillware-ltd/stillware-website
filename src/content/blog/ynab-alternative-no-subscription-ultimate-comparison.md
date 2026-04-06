@@ -21,7 +21,7 @@ The most persuasive argument for a subscription is that it funds continuous upda
 
 Let's run the numbers with a five-year horizon, a reasonable lifespan for a budgeting method you trust:
 
-<!-- IMAGE: type=data-bar-chart | layout=full-width | caption=Five-Year Total Cost of Ownership for Popular Budgeting Apps | data=YNAB:$495,EveryDollar:$480,Goodbudget:$300,Zeroed:$39.99 -->
+![Five-Year Total Cost of Ownership for Popular Budgeting Apps](/blog/images/ynab-alternative-no-subscription-ultimate-comparison/image-01.svg)
 
 YNAB’s $99 annual fee totals $495 over five years. EveryDollar Plus, at $8/month, hits $480. Even Goodbudget’s “free” tier pushes you to its $7/month Plus plan, tallying $420. **The subscription model quietly turns a simple tool into one of your more expensive software relationships.**
 

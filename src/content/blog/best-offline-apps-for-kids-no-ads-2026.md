@@ -31,7 +31,7 @@ Consider the practicalities: offline apps work in the car, on airplanes, in rura
 
 Here’s a breakdown of what you’re *actually* choosing between:
 
-<!-- IMAGE: type=comparison-table | layout=full-width | caption=The Hidden Costs of "Free" vs. Paid Kids Apps | data=Model:Free with Ads,Data Practice:Extensive tracking for ad targeting,User Experience:Interrupted, designed for maximum screen time,Business Incentive:Sell attention and data,Long-term Cost:High (data privacy, attention fragmentation, in-app purchases);Model:Paid, Offline & Ad-Free,Data Practice:Zero collection (data stays on device),User Experience:Uninterrupted, designed for skill mastery,Business Incentive:Make a great product you buy once,Long-term Cost:Low (one-time fee, owned forever) -->
+![The Hidden Costs of "Free" vs. Paid Kids Apps](/blog/images/best-offline-apps-for-kids-no-ads-2026/image-01.svg)
 
 **The core shift is from software as a service (exploiting a user) to software as a tool (empowering a user).** For a child, the tool should disappear, letting the learning or creation take center stage.
 

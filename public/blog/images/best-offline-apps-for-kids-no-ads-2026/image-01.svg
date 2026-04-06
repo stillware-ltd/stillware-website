@@ -1,0 +1,139 @@
+
+
+
+
+
+
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 655" width="1200" height="655">
+  <style>
+    text { font-family: Inter, system-ui, -apple-system, sans-serif; }
+  </style>
+
+  <rect width="1200" height="655" fill="#ffffff"/>
+
+  <!-- Background pattern (per-article variation) -->
+  <rect width="1200" height="6" fill="#2563eb"/><rect y="6" width="1200" height="2" fill="#60a5fa" opacity="0.4"/>
+
+  <!-- Subtle top accent bar -->
+  <rect width="1200" height="4" fill="#2563eb"/>
+
+  <!-- Title -->
+  <text x="600" y="50" text-anchor="middle" font-size="26" font-weight="700" fill="#1e293b">The Hidden Costs of &#34;Free&#34; vs. Paid Kids Apps</text>
+
+  <!-- Column header colors (theme-aware alternation) -->
+  
+  
+
+  <!-- Table -->
+  
+  
+  
+
+  <!-- Column header -->
+  <rect x="100" y="80" width="500" height="52" fill="#2563eb"/>
+  
+  <rect x="100" y="80" width="4" height="52" fill="#2563eb"/>
+  
+  <text x="350" y="112" text-anchor="middle" font-size="16" font-weight="600" fill="#ffffff">Model</text>
+
+  <!-- Rows -->
+  
+  
+  <rect x="100" y="148" width="500" height="52" fill="#f8fafc" stroke="#e2e8f0" stroke-width="0.5"/>
+  <text x="116" y="170" font-size="13" font-weight="600" fill="#1e293b">Model</text>
+  <text x="116" y="190" font-size="13" fill="#64748b">Free with Ads</text>
+  
+  
+  <rect x="100" y="206" width="500" height="52" fill="#ffffff" stroke="#e2e8f0" stroke-width="0.5"/>
+  <text x="116" y="228" font-size="13" font-weight="600" fill="#1e293b">Data Practice</text>
+  <text x="116" y="248" font-size="13" fill="#64748b">Extensive tracking for ad targeting</text>
+  
+  
+  <rect x="100" y="264" width="500" height="52" fill="#f8fafc" stroke="#e2e8f0" stroke-width="0.5"/>
+  <text x="116" y="286" font-size="13" font-weight="600" fill="#1e293b">User Experience</text>
+  <text x="116" y="306" font-size="13" fill="#64748b">Interrupted</text>
+  
+  
+  <rect x="100" y="322" width="500" height="52" fill="#ffffff" stroke="#e2e8f0" stroke-width="0.5"/>
+  <text x="116" y="344" font-size="13" font-weight="600" fill="#1e293b">designed for maximum screen time</text>
+  <text x="116" y="364" font-size="13" fill="#64748b">designed for maximum screen time</text>
+  
+  
+  <rect x="100" y="380" width="500" height="52" fill="#f8fafc" stroke="#e2e8f0" stroke-width="0.5"/>
+  <text x="116" y="402" font-size="13" font-weight="600" fill="#1e293b">Business Incentive</text>
+  <text x="116" y="422" font-size="13" fill="#64748b">Sell attention and data</text>
+  
+  
+  <rect x="100" y="438" width="500" height="52" fill="#ffffff" stroke="#e2e8f0" stroke-width="0.5"/>
+  <text x="116" y="460" font-size="13" font-weight="600" fill="#1e293b">Long-term Cost</text>
+  <text x="116" y="480" font-size="13" fill="#64748b">High (data privacy</text>
+  
+  
+  <rect x="100" y="496" width="500" height="52" fill="#f8fafc" stroke="#e2e8f0" stroke-width="0.5"/>
+  <text x="116" y="518" font-size="13" font-weight="600" fill="#1e293b">attention fragmentation</text>
+  <text x="116" y="538" font-size="13" fill="#64748b">attention fragmentation</text>
+  
+  
+  <rect x="100" y="554" width="500" height="52" fill="#ffffff" stroke="#e2e8f0" stroke-width="0.5"/>
+  <text x="116" y="576" font-size="13" font-weight="600" fill="#1e293b">in-app purchases)</text>
+  <text x="116" y="596" font-size="13" fill="#64748b">in-app purchases)</text>
+  
+  
+  
+  
+
+  <!-- Column header -->
+  <rect x="600" y="80" width="500" height="52" fill="#60a5fa"/>
+  
+  <text x="850" y="112" text-anchor="middle" font-size="16" font-weight="600" fill="#ffffff">Model</text>
+
+  <!-- Rows -->
+  
+  
+  <rect x="600" y="148" width="500" height="52" fill="#f8fafc" stroke="#e2e8f0" stroke-width="0.5"/>
+  <text x="616" y="170" font-size="13" font-weight="600" fill="#1e293b">Model</text>
+  <text x="616" y="190" font-size="13" fill="#64748b">Paid</text>
+  
+  
+  <rect x="600" y="206" width="500" height="52" fill="#ffffff" stroke="#e2e8f0" stroke-width="0.5"/>
+  <text x="616" y="228" font-size="13" font-weight="600" fill="#1e293b">Offline &amp; Ad-Free</text>
+  <text x="616" y="248" font-size="13" fill="#64748b">Offline &amp; Ad-Free</text>
+  
+  
+  <rect x="600" y="264" width="500" height="52" fill="#f8fafc" stroke="#e2e8f0" stroke-width="0.5"/>
+  <text x="616" y="286" font-size="13" font-weight="600" fill="#1e293b">Data Practice</text>
+  <text x="616" y="306" font-size="13" fill="#64748b">Zero collection (data stays on device)</text>
+  
+  
+  <rect x="600" y="322" width="500" height="52" fill="#ffffff" stroke="#e2e8f0" stroke-width="0.5"/>
+  <text x="616" y="344" font-size="13" font-weight="600" fill="#1e293b">User Experience</text>
+  <text x="616" y="364" font-size="13" fill="#64748b">Uninterrupted</text>
+  
+  
+  <rect x="600" y="380" width="500" height="52" fill="#f8fafc" stroke="#e2e8f0" stroke-width="0.5"/>
+  <text x="616" y="402" font-size="13" font-weight="600" fill="#1e293b">designed for skill mastery</text>
+  <text x="616" y="422" font-size="13" fill="#64748b">designed for skill mastery</text>
+  
+  
+  <rect x="600" y="438" width="500" height="52" fill="#ffffff" stroke="#e2e8f0" stroke-width="0.5"/>
+  <text x="616" y="460" font-size="13" font-weight="600" fill="#1e293b">Business Incentive</text>
+  <text x="616" y="480" font-size="13" fill="#64748b">Make a great product you buy once</text>
+  
+  
+  <rect x="600" y="496" width="500" height="52" fill="#f8fafc" stroke="#e2e8f0" stroke-width="0.5"/>
+  <text x="616" y="518" font-size="13" font-weight="600" fill="#1e293b">Long-term Cost</text>
+  <text x="616" y="538" font-size="13" fill="#64748b">Low (one-time fee</text>
+  
+  
+  <rect x="600" y="554" width="500" height="52" fill="#ffffff" stroke="#e2e8f0" stroke-width="0.5"/>
+  <text x="616" y="576" font-size="13" font-weight="600" fill="#1e293b">owned forever)</text>
+  <text x="616" y="596" font-size="13" fill="#64748b">owned forever)</text>
+  
+  
+
+  <!-- Bottom border -->
+  <rect x="100" y="612" width="1000" height="3" fill="#2563eb"/>
+
+  <!-- Source attribution -->
+  <text x="1190" y="647" text-anchor="end" font-size="10" fill="#cbd5e1">stillwareltd.com</text>
+</svg>

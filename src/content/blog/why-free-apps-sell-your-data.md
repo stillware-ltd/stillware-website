@@ -33,7 +33,7 @@ The illusion of free software is maintained by three primary revenue streams, al
 
 When we built Zeroed, we tested this model by examining the network traffic of popular free budgeting apps. The sheer volume of calls to external domains—analytics.track.com, ads.serve.net—was staggering, often exceeding calls to their own core services. **The architecture of a typical free app is often designed more for data extraction than for user utility.**
 
-<!-- IMAGE: type=data-bar-chart | layout=full-width | caption=Estimated annual value of user data segments (per user) | data=Basic Demographic (Age, Gender):$0.50,Location History:$2.10,Financial App Transaction Data:$4.75,Health & Fitness Data:$8.30,Comprehensive Behavioral Profile:$12.50 -->
+![Estimated annual value of user data segments (per user)](/blog/images/why-free-apps-sell-your-data/image-01.svg)
 
 ## The Shocking Annual Value of Your Data
 

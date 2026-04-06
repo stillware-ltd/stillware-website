@@ -1,0 +1,135 @@
+
+
+
+
+
+
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 481" width="1200" height="481">
+  <style>
+    text { font-family: Inter, system-ui, -apple-system, sans-serif; }
+  </style>
+
+  <rect width="1200" height="481" fill="#ffffff"/>
+
+  <!-- Background pattern (per-article variation) -->
+  
+
+  <!-- Subtle top accent bar -->
+  <rect width="1200" height="4" fill="#2563eb"/>
+
+  <!-- Title -->
+  <text x="600" y="50" text-anchor="middle" font-size="26" font-weight="700" fill="#1e293b">The Real Cost of Free vs. Owned Business Tools for Teens</text>
+
+  <!-- Column header colors (theme-aware alternation) -->
+  
+  
+
+  <!-- Table -->
+  
+  
+  
+
+  <!-- Column header -->
+  <rect x="100" y="80" width="333" height="52" fill="#2563eb"/>
+  
+  <rect x="100" y="80" width="4" height="52" fill="#2563eb"/>
+  
+  <text x="266" y="112" text-anchor="middle" font-size="16" font-weight="600" fill="#ffffff">Tool Type</text>
+
+  <!-- Rows -->
+  
+  
+  <rect x="100" y="148" width="333" height="52" fill="#f8fafc" stroke="#e2e8f0" stroke-width="0.5"/>
+  <text x="116" y="170" font-size="13" font-weight="600" fill="#1e293b">Tool Type</text>
+  <text x="116" y="190" font-size="13" fill="#64748b">Free Social/Planning App</text>
+  
+  
+  <rect x="100" y="206" width="333" height="52" fill="#ffffff" stroke="#e2e8f0" stroke-width="0.5"/>
+  <text x="116" y="228" font-size="13" font-weight="600" fill="#1e293b">Data Location</text>
+  <text x="116" y="248" font-size="13" fill="#64748b">Company Servers</text>
+  
+  
+  <rect x="100" y="264" width="333" height="52" fill="#f8fafc" stroke="#e2e8f0" stroke-width="0.5"/>
+  <text x="116" y="286" font-size="13" font-weight="600" fill="#1e293b">Primary Cost</text>
+  <text x="116" y="306" font-size="13" fill="#64748b">Your personal data &amp; habits</text>
+  
+  
+  <rect x="100" y="322" width="333" height="52" fill="#ffffff" stroke="#e2e8f0" stroke-width="0.5"/>
+  <text x="116" y="344" font-size="13" font-weight="600" fill="#1e293b">Access</text>
+  <text x="116" y="364" font-size="13" fill="#64748b">Requires internet</text>
+  
+  
+  <rect x="100" y="380" width="333" height="52" fill="#f8fafc" stroke="#e2e8f0" stroke-width="0.5"/>
+  <text x="116" y="402" font-size="13" font-weight="600" fill="#1e293b">Long-term Risk</text>
+  <text x="116" y="422" font-size="13" fill="#64748b">Service shuts down</text>
+  
+  
+  
+  
+
+  <!-- Column header -->
+  <rect x="433" y="80" width="333" height="52" fill="#60a5fa"/>
+  
+  <text x="599" y="112" text-anchor="middle" font-size="16" font-weight="600" fill="#ffffff">your records vanish|Tool Type</text>
+
+  <!-- Rows -->
+  
+  
+  <rect x="433" y="148" width="333" height="52" fill="#f8fafc" stroke="#e2e8f0" stroke-width="0.5"/>
+  <text x="449" y="170" font-size="13" font-weight="600" fill="#1e293b">your records vanish|Tool Type</text>
+  <text x="449" y="190" font-size="13" fill="#64748b">Owned</text>
+  
+  
+  <rect x="433" y="206" width="333" height="52" fill="#ffffff" stroke="#e2e8f0" stroke-width="0.5"/>
+  <text x="449" y="228" font-size="13" font-weight="600" fill="#1e293b">Offline Tool</text>
+  <text x="449" y="248" font-size="13" fill="#64748b">Offline Tool</text>
+  
+  
+  <rect x="433" y="264" width="333" height="52" fill="#f8fafc" stroke="#e2e8f0" stroke-width="0.5"/>
+  <text x="449" y="286" font-size="13" font-weight="600" fill="#1e293b">Data Location</text>
+  <text x="449" y="306" font-size="13" fill="#64748b">Your device only</text>
+  
+  
+  <rect x="433" y="322" width="333" height="52" fill="#ffffff" stroke="#e2e8f0" stroke-width="0.5"/>
+  <text x="449" y="344" font-size="13" font-weight="600" fill="#1e293b">Primary Cost</text>
+  <text x="449" y="364" font-size="13" fill="#64748b">One-time purchase (or free)</text>
+  
+  
+  <rect x="433" y="380" width="333" height="52" fill="#f8fafc" stroke="#e2e8f0" stroke-width="0.5"/>
+  <text x="449" y="402" font-size="13" font-weight="600" fill="#1e293b">Access</text>
+  <text x="449" y="422" font-size="13" fill="#64748b">Works anywhere</text>
+  
+  
+  <rect x="433" y="438" width="333" height="52" fill="#ffffff" stroke="#e2e8f0" stroke-width="0.5"/>
+  <text x="449" y="460" font-size="13" font-weight="600" fill="#1e293b">anytime</text>
+  <text x="449" y="480" font-size="13" fill="#64748b">anytime</text>
+  
+  
+  <rect x="433" y="496" width="333" height="52" fill="#f8fafc" stroke="#e2e8f0" stroke-width="0.5"/>
+  <text x="449" y="518" font-size="13" font-weight="600" fill="#1e293b">Long-term Risk</text>
+  <text x="449" y="538" font-size="13" fill="#64748b">You control the data file</text>
+  
+  
+  
+  
+
+  <!-- Column header -->
+  <rect x="766" y="80" width="333" height="52" fill="#2563eb"/>
+  
+  <text x="932" y="112" text-anchor="middle" font-size="16" font-weight="600" fill="#ffffff">it lasts as long as your device does</text>
+
+  <!-- Rows -->
+  
+  
+  <rect x="766" y="148" width="333" height="52" fill="#f8fafc" stroke="#e2e8f0" stroke-width="0.5"/>
+  <text x="782" y="170" font-size="13" font-weight="600" fill="#1e293b">it lasts as long as your device does</text>
+  <text x="782" y="190" font-size="13" fill="#64748b">it lasts as long as your device does</text>
+  
+  
+
+  <!-- Bottom border -->
+  <rect x="100" y="438" width="999" height="3" fill="#2563eb"/>
+
+  <!-- Source attribution -->
+  <text x="1190" y="473" text-anchor="end" font-size="10" fill="#cbd5e1">stillwareltd.com</text>
+</svg>

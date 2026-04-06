@@ -57,7 +57,7 @@ AllTrails excels at discovery and community. Its database of trail reviews and p
 
 > The recurring cost of a hiking app subscription often exceeds the one-time price of detailed regional map data within two years. You're paying for access, not ownership.
 
-<!-- IMAGE: type=comparison-table | layout=full-width | caption=Subscription vs. One-Time Purchase: 5-Year Cost Analysis | data=App:Gaia GPS,Offline Access:Premium Subscription ($39.99/yr),5-Year Cost:$199.95,Data Ownership:No,Access if Lapsed:None;App:AllTrails,Offline Access:AllTrails+ ($35.99/yr),5-Year Cost:$179.95,Data Ownership:No,Access if Lapsed:None;App:One-Time Purchase,Offline Access:Unlocked with single fee,5-Year Cost:~$30-$50,Data Ownership:Yes,Access if Lapsed:Full access forever -->
+![Subscription vs. One-Time Purchase: 5-Year Cost Analysis](/blog/images/best-offline-hiking-map-app-no-subscription/image-01.svg)
 
 ## The True Offline Alternatives: One-Time Purchase Champions
 

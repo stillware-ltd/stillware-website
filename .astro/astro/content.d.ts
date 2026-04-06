@@ -141,6 +141,20 @@ declare module 'astro:content' {
 
 	type ContentEntryMap = {
 		"blog": {
+"best-offline-apps-for-kids-no-ads-2026.md": {
+	id: "best-offline-apps-for-kids-no-ads-2026.md";
+  slug: "best-offline-apps-for-kids-no-ads-2026";
+  body: string;
+  collection: "blog";
+  data: InferEntrySchema<"blog">
+} & { render(): Render[".md"] };
+"best-offline-apps-for-kids-no-ads.md": {
+	id: "best-offline-apps-for-kids-no-ads.md";
+  slug: "best-offline-apps-for-kids-no-ads";
+  body: string;
+  collection: "blog";
+  data: InferEntrySchema<"blog">
+} & { render(): Render[".md"] };
 "best-offline-budget-app-for-windows.md": {
 	id: "best-offline-budget-app-for-windows.md";
   slug: "best-offline-budget-app-for-windows";
@@ -162,6 +176,20 @@ declare module 'astro:content' {
   collection: "blog";
   data: InferEntrySchema<"blog">
 } & { render(): Render[".md"] };
+"best-offline-hiking-map-app-no-subscription-compared.md": {
+	id: "best-offline-hiking-map-app-no-subscription-compared.md";
+  slug: "best-offline-hiking-map-app-no-subscription-compared";
+  body: string;
+  collection: "blog";
+  data: InferEntrySchema<"blog">
+} & { render(): Render[".md"] };
+"best-offline-hiking-map-app-no-subscription.md": {
+	id: "best-offline-hiking-map-app-no-subscription.md";
+  slug: "best-offline-hiking-map-app-no-subscription";
+  body: string;
+  collection: "blog";
+  data: InferEntrySchema<"blog">
+} & { render(): Render[".md"] };
 "best-offline-medication-tracker-apps-for-seniors.md": {
 	id: "best-offline-medication-tracker-apps-for-seniors.md";
   slug: "best-offline-medication-tracker-apps-for-seniors";
@@ -176,9 +204,37 @@ declare module 'astro:content' {
   collection: "blog";
   data: InferEntrySchema<"blog">
 } & { render(): Render[".md"] };
+"best-physics-simulation-apps-for-kids-offline.md": {
+	id: "best-physics-simulation-apps-for-kids-offline.md";
+  slug: "best-physics-simulation-apps-for-kids-offline";
+  body: string;
+  collection: "blog";
+  data: InferEntrySchema<"blog">
+} & { render(): Render[".md"] };
 "first-car-maintenance-guide-for-teens.md": {
 	id: "first-car-maintenance-guide-for-teens.md";
   slug: "first-car-maintenance-guide-for-teens";
+  body: string;
+  collection: "blog";
+  data: InferEntrySchema<"blog">
+} & { render(): Render[".md"] };
+"focus-music-without-streaming-offline-alternatives.md": {
+	id: "focus-music-without-streaming-offline-alternatives.md";
+  slug: "focus-music-without-streaming-offline-alternatives";
+  body: string;
+  collection: "blog";
+  data: InferEntrySchema<"blog">
+} & { render(): Render[".md"] };
+"home-inventory-app-insurance-claims-guide.md": {
+	id: "home-inventory-app-insurance-claims-guide.md";
+  slug: "home-inventory-app-insurance-claims-guide";
+  body: string;
+  collection: "blog";
+  data: InferEntrySchema<"blog">
+} & { render(): Render[".md"] };
+"how-to-learn-coding-on-phone-offline.md": {
+	id: "how-to-learn-coding-on-phone-offline.md";
+  slug: "how-to-learn-coding-on-phone-offline";
   body: string;
   collection: "blog";
   data: InferEntrySchema<"blog">
@@ -204,6 +260,13 @@ declare module 'astro:content' {
   collection: "blog";
   data: InferEntrySchema<"blog">
 } & { render(): Render[".md"] };
+"how-to-start-a-side-hustle-at-16.md": {
+	id: "how-to-start-a-side-hustle-at-16.md";
+  slug: "how-to-start-a-side-hustle-at-16";
+  body: string;
+  collection: "blog";
+  data: InferEntrySchema<"blog">
+} & { render(): Render[".md"] };
 "how-to-teach-kids-coding-logic-without-syntax.md": {
 	id: "how-to-teach-kids-coding-logic-without-syntax.md";
   slug: "how-to-teach-kids-coding-logic-without-syntax";
@@ -221,6 +284,20 @@ declare module 'astro:content' {
 "how-zeroed-encrypts-your-data.md": {
 	id: "how-zeroed-encrypts-your-data.md";
   slug: "how-zeroed-encrypts-your-data";
+  body: string;
+  collection: "blog";
+  data: InferEntrySchema<"blog">
+} & { render(): Render[".md"] };
+"offline-medication-tracker-app-for-seniors.md": {
+	id: "offline-medication-tracker-app-for-seniors.md";
+  slug: "offline-medication-tracker-app-for-seniors";
+  body: string;
+  collection: "blog";
+  data: InferEntrySchema<"blog">
+} & { render(): Render[".md"] };
+"pixel-art-tutorial-for-kids-16x16-grid-guide.md": {
+	id: "pixel-art-tutorial-for-kids-16x16-grid-guide.md";
+  slug: "pixel-art-tutorial-for-kids-16x16-grid-guide";
   body: string;
   collection: "blog";
   data: InferEntrySchema<"blog">
@@ -274,6 +351,27 @@ declare module 'astro:content' {
   collection: "blog";
   data: InferEntrySchema<"blog">
 } & { render(): Render[".md"] };
+"what-is-local-first-software-movement-guide.md": {
+	id: "what-is-local-first-software-movement-guide.md";
+  slug: "what-is-local-first-software-movement-guide";
+  body: string;
+  collection: "blog";
+  data: InferEntrySchema<"blog">
+} & { render(): Render[".md"] };
+"what-is-local-first-software-movement.md": {
+	id: "what-is-local-first-software-movement.md";
+  slug: "what-is-local-first-software-movement";
+  body: string;
+  collection: "blog";
+  data: InferEntrySchema<"blog">
+} & { render(): Render[".md"] };
+"why-free-apps-sell-your-data.md": {
+	id: "why-free-apps-sell-your-data.md";
+  slug: "why-free-apps-sell-your-data";
+  body: string;
+  collection: "blog";
+  data: InferEntrySchema<"blog">
+} & { render(): Render[".md"] };
 "why-kids-deserve-digital-privacy.md": {
 	id: "why-kids-deserve-digital-privacy.md";
   slug: "why-kids-deserve-digital-privacy";
@@ -305,6 +403,27 @@ declare module 'astro:content' {
 "why-we-dont-do-subscriptions.md": {
 	id: "why-we-dont-do-subscriptions.md";
   slug: "why-we-dont-do-subscriptions";
+  body: string;
+  collection: "blog";
+  data: InferEntrySchema<"blog">
+} & { render(): Render[".md"] };
+"ynab-alternative-no-subscription-ultimate-comparison.md": {
+	id: "ynab-alternative-no-subscription-ultimate-comparison.md";
+  slug: "ynab-alternative-no-subscription-ultimate-comparison";
+  body: string;
+  collection: "blog";
+  data: InferEntrySchema<"blog">
+} & { render(): Render[".md"] };
+"ynab-alternatives-local-storage.md": {
+	id: "ynab-alternatives-local-storage.md";
+  slug: "ynab-alternatives-local-storage";
+  body: string;
+  collection: "blog";
+  data: InferEntrySchema<"blog">
+} & { render(): Render[".md"] };
+"zero-based-budgeting-explained-simply.md": {
+	id: "zero-based-budgeting-explained-simply.md";
+  slug: "zero-based-budgeting-explained-simply";
   body: string;
   collection: "blog";
   data: InferEntrySchema<"blog">

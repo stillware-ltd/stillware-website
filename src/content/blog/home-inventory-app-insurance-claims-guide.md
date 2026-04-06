@@ -41,7 +41,7 @@ The classic "fireproof safe" with paper receipts. It's better than nothing, but 
 
 **The industry standard for documentation is a collection of workarounds, not a solution.** We believe home tools should work offline by default because a crisis doesn't wait for a Wi-Fi signal. Your proof of ownership must be as permanent and accessible as the device in your pocket.
 
-<!-- IMAGE: type=before-after | layout=full-width | caption=The documentation gap in a standard claim | data=before:Disaster Strikes,Panic search for records,Blurry photos from memory,Missing serial numbers,Estimates from memory,Long claim delays,Potential underpayment|after:Disaster Strikes,Open app on phone,High-res photos with metadata,Scanned serial numbers logged,Stored receipts with dates,Organized report generated,Streamlined claim process -->
+![The documentation gap in a standard claim](/blog/images/home-inventory-app-insurance-claims-guide/image-01.svg)
 
 ## How a Home Inventory App for Insurance Claims Actually Works
 
@@ -68,7 +68,7 @@ This is where precision pays. Include:
 *   **Category:** Electronics, furniture, jewelry, clothing—for organizational sorting.
 *   **Location:** Specific room. This helps if only part of the home is damaged.
 
-<!-- IMAGE: type=process-flow | layout=full-width | caption=The room-by-room inventory workflow | data=Start One Room:Pick a single, manageable space like a home office,Document Each Item:One asset per entry, no grouping,Capture Proof:Take photos; scan barcodes; save receipts,Enter Key Data:Model, serial#, date, price, location,Review & Finalize:Verify all data is attached and clear,Move to Next Room:Repeat until the home is fully documented] -->
+![The room-by-room inventory workflow](/blog/images/home-inventory-app-insurance-claims-guide/image-02.svg)
 
 **Most home inventory apps share a troubling assumption: that your data is more valuable on their servers than on your device.** They lure you with "easy cloud backup," creating a honeypot of your most sensitive financial information—a list of every valuable thing you own. The correct architecture is local-first: your device is the primary database. Optional, encrypted backups to a service *you* control (like your personal cloud drive) are acceptable. Mandatory cloud sync is a liability.
 

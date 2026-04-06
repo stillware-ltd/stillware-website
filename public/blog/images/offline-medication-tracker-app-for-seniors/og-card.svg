@@ -1,0 +1,120 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 630" width="1200" height="630">
+  <defs>
+    <linearGradient id="bgGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#ffffff;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#1e293b;stop-opacity:1" />
+    </linearGradient>
+    <linearGradient id="accentGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" style="stop-color:#0891b2;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#34d399;stop-opacity:1" />
+    </linearGradient>
+  </defs>
+
+  <style>
+    text { font-family: Inter, system-ui, -apple-system, sans-serif; }
+  </style>
+
+  <!-- Dark background -->
+  <rect width="1200" height="630" fill="url(#bgGrad)"/>
+
+  <!-- Accent bar at top -->
+  <rect width="1200" height="6" fill="url(#accentGrad)"/>
+
+  <!-- Subtle grid pattern -->
+  <pattern id="grid" width="40" height="40" patternUnits="userSpaceOnUse">
+    <rect width="40" height="40" fill="none"/>
+    <path d="M 40 0 L 0 0 0 40" fill="none" stroke="#ffffff" stroke-width="0.3" opacity="0.05"/>
+  </pattern>
+  <rect width="1200" height="630" fill="url(#grid)"/>
+
+  <!-- Tag badge -->
+  
+  <rect x="80" y="80" width="131" height="36" rx="18" fill="#0891b2" opacity="0.2"/>
+  <rect x="80" y="80" width="131" height="36" rx="18" fill="none" stroke="#0891b2" stroke-width="1.5" opacity="0.6"/>
+  <text x="145" y="103" text-anchor="middle" font-size="14" font-weight="600" fill="#34d399" letter-spacing="1">ANTI-SAAS</text>
+  
+
+  <!-- Title (multi-line with word wrap approximation) -->
+  
+  
+  
+  
+    
+      
+    
+  
+    
+      
+    
+  
+    
+      
+    
+  
+    
+      
+    
+  
+    
+      
+      
+    
+  
+    
+      
+    
+  
+    
+      
+    
+  
+    
+      
+    
+  
+    
+      
+      
+    
+  
+    
+      
+    
+  
+  
+    
+  
+
+  
+  <text x="80" y="180" font-size="52" font-weight="800" fill="#ffffff" letter-spacing="-1">7 Essential Offline Medication</text>
+  
+  <text x="80" y="244" font-size="52" font-weight="800" fill="#ffffff" letter-spacing="-1">Tracker Features for Seniors</text>
+  
+  <text x="80" y="308" font-size="52" font-weight="800" fill="#ffffff" letter-spacing="-1">(Privacy First)</text>
+  
+
+  <!-- Description (if provided) -->
+  
+  
+  <text x="80" y="396" font-size="20" fill="#94a3b8" font-weight="400">
+    Worried about cloud-based health app privacy? Discover the 7 essential featur...
+  </text>
+  
+
+  <!-- Bottom section: branding -->
+  <line x1="80" y1="530" x2="1120" y2="530" stroke="#334155" stroke-width="1"/>
+
+  <!-- Stillware logo mark (S in circle) -->
+  <circle cx="110" cy="572" r="22" fill="none" stroke="#0891b2" stroke-width="2"/>
+  <text x="110" y="580" text-anchor="middle" font-size="22" font-weight="700" fill="#0891b2">S</text>
+
+  <!-- Company name -->
+  <text x="145" y="578" font-size="18" font-weight="600" fill="#e2e8f0" letter-spacing="0.5">stillwareltd.com</text>
+
+  <!-- Tagline -->
+  <text x="1120" y="578" text-anchor="end" font-size="15" fill="#64748b" font-weight="400">Software you own, not software you rent.</text>
+
+  <!-- Accent glow at bottom-right corner (decorative) -->
+  <circle cx="1100" cy="530" r="120" fill="#0891b2" opacity="0.04"/>
+  <circle cx="1150" cy="580" r="80" fill="#34d399" opacity="0.03"/>
+</svg>
