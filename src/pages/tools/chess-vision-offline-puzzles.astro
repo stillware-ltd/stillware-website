@@ -1,0 +1,316 @@
+---
+import Layout from '../../layouts/Layout.astro';
+---
+
+<Layout
+  title="Chess Vision Offline Puzzles — 50 Free Printable Tactical Puzzles for Kids | Stillware Ltd"
+  description="50 hand-picked chess tactical puzzles your child can solve without a screen. Printable PDF — forks, pins, skewers, and checkmates sorted by difficulty. Free download."
+>
+  <header class="tool-hero">
+    <div class="container">
+      <nav class="breadcrumb" aria-label="Breadcrumb">
+        <a href="/tools">Tools</a> <span>/</span> <span>Chess Vision Offline Puzzles</span>
+      </nav>
+      <h1>Chess Vision Offline Puzzles</h1>
+      <p>50 tactical puzzles your child can solve with a pencil and zero screen time. Forks, pins, skewers, and checkmates — sorted from beginner to advanced.</p>
+    </div>
+  </header>
+
+  <section class="gated-section">
+    <div class="container">
+      <div class="gated-layout">
+        <div class="preview-panel">
+          <h2>What's Inside the Pack</h2>
+
+          <div class="difficulty-grid">
+            <div class="diff-card beginner">
+              <span class="diff-badge">Beginner</span>
+              <h3>Puzzles 1–15</h3>
+              <p>One-move checkmates and simple forks. Perfect for players rated under 600 or just starting tournaments.</p>
+            </div>
+            <div class="diff-card intermediate">
+              <span class="diff-badge">Intermediate</span>
+              <h3>Puzzles 16–35</h3>
+              <p>Two-move combinations: pins, discovered attacks, and deflections. For players rated 600–1000.</p>
+            </div>
+            <div class="diff-card advanced">
+              <span class="diff-badge">Advanced</span>
+              <h3>Puzzles 36–50</h3>
+              <p>Multi-move tactical sequences and sacrifices. Stretch puzzles for aspiring club players (1000+).</p>
+            </div>
+          </div>
+
+          <div class="features-list">
+            <h3>Format Details</h3>
+            <ul>
+              <li>High-resolution diagrams — clear even on black-and-white printers</li>
+              <li>Answer key on a separate page (no peeking)</li>
+              <li>Space for your child to write their solution</li>
+              <li>Works beautifully printed double-sided and stapled into a booklet</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="download-panel">
+          <div class="download-card">
+            <div class="pdf-icon">
+              <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/><polyline points="10 9 9 9 8 9"/></svg>
+            </div>
+            <h3>Get the Free Puzzle Pack</h3>
+            <p>50 puzzles, printable PDF. We'll send it straight to your inbox — no account needed.</p>
+            <form name="chess-puzzles" method="POST" data-netlify="true" action="/success" class="gated-form">
+              <input type="hidden" name="form-name" value="chess-puzzles" />
+              <input type="hidden" name="subject" value="Download: Chess Vision Offline Puzzles" />
+              <input type="email" name="email" placeholder="your@email.com" required aria-label="Email address" />
+              <button type="submit" class="btn-primary chess-cta">Send Me the Puzzles</button>
+            </form>
+            <p class="privacy-note">No spam. We only email to deliver your PDF.</p>
+          </div>
+
+          <div class="app-promo">
+            <img src="/RankUpChess_logo.png" alt="RankUpChess" width="48" height="48" class="promo-logo" />
+            <div>
+              <h4>Want 5,000+ Puzzles?</h4>
+              <p>RankUpChess is a full offline chess academy — puzzles, lessons, AI opponents. Buy once, no subscriptions.</p>
+              <a href="/rankupchess" class="btn-text">Explore RankUpChess &rarr;</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+</Layout>
+
+<style>
+  .tool-hero {
+    padding: 12rem 0 4rem;
+    background: var(--gradient-obsidian);
+  }
+
+  .breadcrumb {
+    margin-bottom: 1.5rem;
+    font-size: 0.9rem;
+  }
+
+  .breadcrumb a {
+    color: rgba(255, 255, 255, 0.5);
+    text-decoration: none;
+    transition: color 0.2s;
+  }
+
+  .breadcrumb a:hover { color: #ffffff; }
+  .breadcrumb span { color: rgba(255, 255, 255, 0.3); margin: 0 0.5rem; }
+  .breadcrumb span:last-child { color: rgba(255, 255, 255, 0.7); margin: 0; }
+
+  .tool-hero h1 {
+    font-size: 3rem;
+    color: #ffffff;
+    margin-bottom: 1rem;
+    max-width: 700px;
+  }
+
+  .tool-hero p {
+    font-size: 1.15rem;
+    color: rgba(255, 255, 255, 0.6);
+    max-width: 620px;
+    line-height: 1.6;
+  }
+
+  .gated-section {
+    padding: 4rem 0 8rem;
+  }
+
+  .gated-layout {
+    display: grid;
+    grid-template-columns: 1fr 400px;
+    gap: 4rem;
+    align-items: start;
+  }
+
+  .preview-panel h2 {
+    font-size: 1.75rem;
+    margin-bottom: 2rem;
+  }
+
+  .difficulty-grid {
+    display: flex;
+    flex-direction: column;
+    gap: 1.25rem;
+    margin-bottom: 2.5rem;
+  }
+
+  .diff-card {
+    padding: 1.5rem;
+    border-radius: 14px;
+    border: 1px solid var(--color-border);
+  }
+
+  .diff-card.beginner { background: rgba(16, 185, 129, 0.04); border-color: rgba(16, 185, 129, 0.15); }
+  .diff-card.intermediate { background: rgba(245, 158, 11, 0.04); border-color: rgba(245, 158, 11, 0.15); }
+  .diff-card.advanced { background: rgba(220, 38, 38, 0.04); border-color: rgba(220, 38, 38, 0.15); }
+
+  .diff-badge {
+    display: inline-block;
+    padding: 0.2rem 0.65rem;
+    border-radius: 100px;
+    font-size: 0.7rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    margin-bottom: 0.5rem;
+  }
+
+  .beginner .diff-badge { background: rgba(16, 185, 129, 0.1); color: #059669; }
+  .intermediate .diff-badge { background: rgba(245, 158, 11, 0.1); color: #B45309; }
+  .advanced .diff-badge { background: rgba(220, 38, 38, 0.1); color: #DC2626; }
+
+  .diff-card h3 {
+    font-size: 1.05rem;
+    margin-bottom: 0.35rem;
+  }
+
+  .diff-card p {
+    color: var(--color-text-light);
+    font-size: 0.9rem;
+    line-height: 1.5;
+  }
+
+  .features-list h3 {
+    font-size: 1.1rem;
+    margin-bottom: 0.75rem;
+  }
+
+  .features-list ul {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    padding-left: 0;
+  }
+
+  .features-list li {
+    color: var(--color-text);
+    font-size: 0.95rem;
+    padding-left: 1.5rem;
+    position: relative;
+  }
+
+  .features-list li::before {
+    content: '\2713';
+    position: absolute;
+    left: 0;
+    color: #059669;
+    font-weight: 700;
+  }
+
+  .download-panel {
+    position: sticky;
+    top: 120px;
+  }
+
+  .download-card {
+    background: #ffffff;
+    border: 2px solid rgba(245, 158, 11, 0.2);
+    border-radius: 20px;
+    padding: 2.5rem;
+    text-align: center;
+    box-shadow: var(--shadow-premium);
+  }
+
+  .pdf-icon {
+    color: var(--color-primary);
+    margin-bottom: 1.25rem;
+  }
+
+  .pdf-icon svg { margin: 0 auto; }
+
+  .download-card h3 {
+    font-size: 1.35rem;
+    margin-bottom: 0.75rem;
+  }
+
+  .download-card > p {
+    color: var(--color-text-light);
+    font-size: 0.9rem;
+    line-height: 1.5;
+    margin-bottom: 1.5rem;
+  }
+
+  .gated-form {
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+  }
+
+  .gated-form input[type="email"] {
+    padding: 0.85rem 1.25rem;
+    border: 1px solid var(--color-border);
+    border-radius: 100px;
+    font-size: 1rem;
+    font-family: var(--font-sans);
+    outline: none;
+    text-align: center;
+    transition: border-color 0.2s;
+  }
+
+  .gated-form input[type="email"]:focus {
+    border-color: var(--color-primary);
+  }
+
+  .gated-form .btn-primary {
+    width: 100%;
+    justify-content: center;
+  }
+
+  .chess-cta {
+    background: linear-gradient(135deg, #F59E0B 0%, #D97706 100%) !important;
+    border-color: transparent !important;
+  }
+
+  .chess-cta:hover {
+    background: linear-gradient(135deg, #FBBF24 0%, #F59E0B 100%) !important;
+  }
+
+  .privacy-note {
+    font-size: 0.75rem;
+    color: var(--color-text-light);
+    margin-top: 1rem;
+  }
+
+  .app-promo {
+    display: flex;
+    gap: 1rem;
+    align-items: flex-start;
+    background: var(--color-surface);
+    border-radius: 16px;
+    padding: 1.5rem;
+    margin-top: 1.5rem;
+  }
+
+  .promo-logo {
+    border-radius: 12px;
+    flex-shrink: 0;
+  }
+
+  .app-promo h4 {
+    font-size: 0.95rem;
+    margin-bottom: 0.35rem;
+  }
+
+  .app-promo p {
+    font-size: 0.8rem;
+    color: var(--color-text-light);
+    line-height: 1.4;
+    margin-bottom: 0.5rem;
+  }
+
+  @media (max-width: 900px) {
+    .gated-layout { grid-template-columns: 1fr; }
+    .download-panel { position: static; }
+  }
+
+  @media (max-width: 768px) {
+    .tool-hero h1 { font-size: 2.25rem; }
+    .download-card { padding: 1.75rem; }
+  }
+</style>

@@ -1,0 +1,299 @@
+---
+import Layout from '../../layouts/Layout.astro';
+---
+
+<Layout
+  title="Cash Envelope Ledger Sheets — Free Printable Budget Tracker | Stillware Ltd"
+  description="Beautiful, printable cash envelope ledger sheets for zero-based budgeting. Track every envelope by hand — the method that actually sticks. Free PDF download."
+>
+  <header class="tool-hero">
+    <div class="container">
+      <nav class="breadcrumb" aria-label="Breadcrumb">
+        <a href="/tools">Tools</a> <span>/</span> <span>Cash Envelope Ledger Sheets</span>
+      </nav>
+      <h1>Cash Envelope Ledger Sheets</h1>
+      <p>Zero-based budgeting works best when you write it down. These printable ledger sheets fit inside standard cash envelopes and track every pound in and out.</p>
+    </div>
+  </header>
+
+  <section class="gated-section">
+    <div class="container">
+      <div class="gated-layout">
+        <div class="preview-panel">
+          <h2>What You Get</h2>
+
+          <div class="feature-blocks">
+            <div class="feature-block">
+              <h3>10 Category Sheets</h3>
+              <p>Pre-labelled sheets for Groceries, Transport, Entertainment, Dining Out, Clothing, Gifts, Personal Care, Household, Savings, and one blank for your own category.</p>
+            </div>
+            <div class="feature-block">
+              <h3>Monthly Summary Page</h3>
+              <p>A single page to track all envelope totals, total spend vs. budget, and leftover amounts. See your entire month at a glance.</p>
+            </div>
+            <div class="feature-block">
+              <h3>Printer-Friendly Design</h3>
+              <p>Clean black-and-white layout that uses minimal ink. Designed to be printed, folded, and tucked into a standard #10 envelope.</p>
+            </div>
+          </div>
+
+          <div class="how-it-works">
+            <h3>How the Envelope Method Works</h3>
+            <ol>
+              <li><strong>Set your budget</strong> — decide how much cash goes in each envelope</li>
+              <li><strong>Spend from the envelope</strong> — when you buy groceries, log it on the sheet</li>
+              <li><strong>When it's empty, stop</strong> — that's the discipline that makes it work</li>
+              <li><strong>Roll over or redistribute</strong> — leftover cash at month-end is a win</li>
+            </ol>
+          </div>
+        </div>
+
+        <div class="download-panel">
+          <div class="download-card">
+            <div class="pdf-icon">
+              <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/><polyline points="10 9 9 9 8 9"/></svg>
+            </div>
+            <h3>Get the Free Ledger Sheets</h3>
+            <p>10 category sheets + monthly summary. High-res PDF — print as many copies as you need, forever.</p>
+            <form name="cash-envelope-ledgers" method="POST" data-netlify="true" action="/success" class="gated-form">
+              <input type="hidden" name="form-name" value="cash-envelope-ledgers" />
+              <input type="hidden" name="subject" value="Download: Cash Envelope Ledger Sheets" />
+              <input type="email" name="email" placeholder="your@email.com" required aria-label="Email address" />
+              <button type="submit" class="btn-primary">Send Me the Ledger Sheets</button>
+            </form>
+            <p class="privacy-note">No spam. We only email to deliver your PDF.</p>
+          </div>
+
+          <div class="app-promo">
+            <img src="/logo.png" alt="Zeroed" width="48" height="48" class="promo-logo" />
+            <div>
+              <h4>Ready to Go Digital?</h4>
+              <p>Zeroed is a zero-based budgeting app you buy once and own forever. Same envelope method, AES-256 encrypted, synced via your Google Drive.</p>
+              <a href="/zeroed" class="btn-text">Get Zeroed — &pound;19.99 for Life &rarr;</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+</Layout>
+
+<style>
+  .tool-hero {
+    padding: 12rem 0 4rem;
+    background: var(--gradient-obsidian);
+  }
+
+  .breadcrumb {
+    margin-bottom: 1.5rem;
+    font-size: 0.9rem;
+  }
+
+  .breadcrumb a {
+    color: rgba(255, 255, 255, 0.5);
+    text-decoration: none;
+    transition: color 0.2s;
+  }
+
+  .breadcrumb a:hover { color: #ffffff; }
+  .breadcrumb span { color: rgba(255, 255, 255, 0.3); margin: 0 0.5rem; }
+  .breadcrumb span:last-child { color: rgba(255, 255, 255, 0.7); margin: 0; }
+
+  .tool-hero h1 {
+    font-size: 3rem;
+    color: #ffffff;
+    margin-bottom: 1rem;
+    max-width: 700px;
+  }
+
+  .tool-hero p {
+    font-size: 1.15rem;
+    color: rgba(255, 255, 255, 0.6);
+    max-width: 620px;
+    line-height: 1.6;
+  }
+
+  .gated-section {
+    padding: 4rem 0 8rem;
+  }
+
+  .gated-layout {
+    display: grid;
+    grid-template-columns: 1fr 400px;
+    gap: 4rem;
+    align-items: start;
+  }
+
+  .preview-panel h2 {
+    font-size: 1.75rem;
+    margin-bottom: 2rem;
+  }
+
+  .feature-blocks {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+    margin-bottom: 2.5rem;
+  }
+
+  .feature-block {
+    padding: 1.5rem;
+    background: var(--color-surface);
+    border-radius: 14px;
+    border: 1px solid var(--color-border);
+  }
+
+  .feature-block h3 {
+    font-size: 1.05rem;
+    margin-bottom: 0.5rem;
+    color: var(--color-secondary);
+  }
+
+  .feature-block p {
+    color: var(--color-text-light);
+    font-size: 0.9rem;
+    line-height: 1.5;
+  }
+
+  .how-it-works h3 {
+    font-size: 1.1rem;
+    margin-bottom: 1rem;
+  }
+
+  .how-it-works ol {
+    list-style: none;
+    counter-reset: steps;
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+    padding-left: 0;
+  }
+
+  .how-it-works li {
+    counter-increment: steps;
+    padding-left: 2.25rem;
+    position: relative;
+    color: var(--color-text);
+    font-size: 0.95rem;
+    line-height: 1.5;
+  }
+
+  .how-it-works li::before {
+    content: counter(steps);
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 1.5rem;
+    height: 1.5rem;
+    background: rgba(37, 99, 235, 0.08);
+    color: var(--color-primary);
+    border-radius: 50%;
+    font-size: 0.8rem;
+    font-weight: 700;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .download-panel {
+    position: sticky;
+    top: 120px;
+  }
+
+  .download-card {
+    background: #ffffff;
+    border: 2px solid rgba(37, 99, 235, 0.15);
+    border-radius: 20px;
+    padding: 2.5rem;
+    text-align: center;
+    box-shadow: var(--shadow-premium);
+  }
+
+  .pdf-icon {
+    color: var(--color-primary);
+    margin-bottom: 1.25rem;
+  }
+
+  .pdf-icon svg { margin: 0 auto; }
+
+  .download-card h3 {
+    font-size: 1.35rem;
+    margin-bottom: 0.75rem;
+  }
+
+  .download-card > p {
+    color: var(--color-text-light);
+    font-size: 0.9rem;
+    line-height: 1.5;
+    margin-bottom: 1.5rem;
+  }
+
+  .gated-form {
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+  }
+
+  .gated-form input[type="email"] {
+    padding: 0.85rem 1.25rem;
+    border: 1px solid var(--color-border);
+    border-radius: 100px;
+    font-size: 1rem;
+    font-family: var(--font-sans);
+    outline: none;
+    text-align: center;
+    transition: border-color 0.2s;
+  }
+
+  .gated-form input[type="email"]:focus {
+    border-color: var(--color-primary);
+  }
+
+  .gated-form .btn-primary {
+    width: 100%;
+    justify-content: center;
+  }
+
+  .privacy-note {
+    font-size: 0.75rem;
+    color: var(--color-text-light);
+    margin-top: 1rem;
+  }
+
+  .app-promo {
+    display: flex;
+    gap: 1rem;
+    align-items: flex-start;
+    background: var(--color-surface);
+    border-radius: 16px;
+    padding: 1.5rem;
+    margin-top: 1.5rem;
+  }
+
+  .promo-logo {
+    border-radius: 12px;
+    flex-shrink: 0;
+  }
+
+  .app-promo h4 {
+    font-size: 0.95rem;
+    margin-bottom: 0.35rem;
+  }
+
+  .app-promo p {
+    font-size: 0.8rem;
+    color: var(--color-text-light);
+    line-height: 1.4;
+    margin-bottom: 0.5rem;
+  }
+
+  @media (max-width: 900px) {
+    .gated-layout { grid-template-columns: 1fr; }
+    .download-panel { position: static; }
+  }
+
+  @media (max-width: 768px) {
+    .tool-hero h1 { font-size: 2.25rem; }
+    .download-card { padding: 1.75rem; }
+  }
+</style>

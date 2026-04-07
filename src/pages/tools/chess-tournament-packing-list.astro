@@ -1,0 +1,286 @@
+---
+import Layout from '../../layouts/Layout.astro';
+---
+
+<Layout
+  title="Chess Tournament Packing List — Free Printable Checklist for Parents | Stillware Ltd"
+  description="The complete printable chess tournament packing checklist. Everything your child needs for competition day — clock, board, snacks, paperwork, and more. Free PDF download."
+>
+  <header class="tool-hero">
+    <div class="container">
+      <nav class="breadcrumb" aria-label="Breadcrumb">
+        <a href="/tools">Tools</a> <span>/</span> <span>Chess Tournament Packing List</span>
+      </nav>
+      <h1>Chess Tournament Packing List</h1>
+      <p>It's Friday night before the tournament. You're panicking. We've been there. This checklist covers everything so you don't have to think.</p>
+    </div>
+  </header>
+
+  <section class="gated-section">
+    <div class="container">
+      <div class="gated-layout">
+        <div class="preview-panel">
+          <h2>What's Inside</h2>
+          <div class="preview-list">
+            <div class="preview-category">
+              <h3>Essential Gear</h3>
+              <ul>
+                <li>Chess clock (with fresh batteries)</li>
+                <li>Tournament-legal chess set</li>
+                <li>Score sheets & notation pens</li>
+                <li>USCF/ECF membership card</li>
+              </ul>
+            </div>
+            <div class="preview-category">
+              <h3>Comfort & Focus</h3>
+              <ul>
+                <li>Water bottle & quiet snacks</li>
+                <li>Layers (tournament halls are unpredictable)</li>
+                <li>Fidget toy or stress ball</li>
+                <li>Book or puzzles for between rounds</li>
+              </ul>
+            </div>
+            <div class="preview-category">
+              <h3>Parent Survival Kit</h3>
+              <ul>
+                <li>Charger, headphones, a book</li>
+                <li>Cash for entry fees</li>
+                <li>Packed lunch (venue food is dire)</li>
+                <li>Directions & parking info</li>
+              </ul>
+            </div>
+          </div>
+          <p class="preview-note">The full PDF includes tick-boxes, a morning-of timeline, and a "forgot it?" emergency plan.</p>
+        </div>
+
+        <div class="download-panel">
+          <div class="download-card">
+            <div class="pdf-icon">
+              <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/><polyline points="10 9 9 9 8 9"/></svg>
+            </div>
+            <h3>Get the Free Printable PDF</h3>
+            <p>High-resolution, printer-friendly. Use it every tournament. We'll email it to you instantly.</p>
+            <form name="chess-packing-list" method="POST" data-netlify="true" action="/success" class="gated-form">
+              <input type="hidden" name="form-name" value="chess-packing-list" />
+              <input type="hidden" name="subject" value="Download: Chess Tournament Packing List" />
+              <input type="email" name="email" placeholder="your@email.com" required aria-label="Email address" />
+              <button type="submit" class="btn-primary">Send Me the PDF</button>
+            </form>
+            <p class="privacy-note">No spam. Unsubscribe anytime. We respect your inbox like we respect your data.</p>
+          </div>
+
+          <div class="app-promo">
+            <img src="/RankUpChess_logo.png" alt="RankUpChess" width="48" height="48" class="promo-logo" />
+            <div>
+              <h4>Built by the RankUpChess Team</h4>
+              <p>Our offline chess academy has 5,000+ puzzles, a 10-tier AI engine, and zero subscriptions.</p>
+              <a href="/rankupchess" class="btn-text">Explore RankUpChess &rarr;</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+</Layout>
+
+<style>
+  .tool-hero {
+    padding: 12rem 0 4rem;
+    background: var(--gradient-obsidian);
+  }
+
+  .breadcrumb {
+    margin-bottom: 1.5rem;
+    font-size: 0.9rem;
+  }
+
+  .breadcrumb a {
+    color: rgba(255, 255, 255, 0.5);
+    text-decoration: none;
+    transition: color 0.2s;
+  }
+
+  .breadcrumb a:hover { color: #ffffff; }
+  .breadcrumb span { color: rgba(255, 255, 255, 0.3); margin: 0 0.5rem; }
+  .breadcrumb span:last-child { color: rgba(255, 255, 255, 0.7); margin: 0; }
+
+  .tool-hero h1 {
+    font-size: 3rem;
+    color: #ffffff;
+    margin-bottom: 1rem;
+    max-width: 700px;
+  }
+
+  .tool-hero p {
+    font-size: 1.15rem;
+    color: rgba(255, 255, 255, 0.6);
+    max-width: 600px;
+    line-height: 1.6;
+  }
+
+  .gated-section {
+    padding: 4rem 0 8rem;
+  }
+
+  .gated-layout {
+    display: grid;
+    grid-template-columns: 1fr 400px;
+    gap: 4rem;
+    align-items: start;
+  }
+
+  .preview-panel h2 {
+    font-size: 1.75rem;
+    margin-bottom: 2rem;
+  }
+
+  .preview-category {
+    margin-bottom: 2rem;
+  }
+
+  .preview-category h3 {
+    font-size: 1.1rem;
+    color: var(--color-primary);
+    margin-bottom: 0.75rem;
+  }
+
+  .preview-category ul {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    padding-left: 0;
+  }
+
+  .preview-category li {
+    color: var(--color-text);
+    font-size: 0.95rem;
+    padding-left: 1.5rem;
+    position: relative;
+  }
+
+  .preview-category li::before {
+    content: '\2713';
+    position: absolute;
+    left: 0;
+    color: #059669;
+    font-weight: 700;
+  }
+
+  .preview-note {
+    color: var(--color-text-light);
+    font-size: 0.9rem;
+    font-style: italic;
+    border-top: 1px solid var(--color-border);
+    padding-top: 1.5rem;
+    margin-top: 1rem;
+  }
+
+  .download-panel {
+    position: sticky;
+    top: 120px;
+  }
+
+  .download-card {
+    background: #ffffff;
+    border: 2px solid rgba(245, 158, 11, 0.2);
+    border-radius: 20px;
+    padding: 2.5rem;
+    text-align: center;
+    box-shadow: var(--shadow-premium);
+  }
+
+  .pdf-icon {
+    color: var(--color-primary);
+    margin-bottom: 1.25rem;
+  }
+
+  .pdf-icon svg {
+    margin: 0 auto;
+  }
+
+  .download-card h3 {
+    font-size: 1.35rem;
+    margin-bottom: 0.75rem;
+  }
+
+  .download-card > p {
+    color: var(--color-text-light);
+    font-size: 0.9rem;
+    line-height: 1.5;
+    margin-bottom: 1.5rem;
+  }
+
+  .gated-form {
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+  }
+
+  .gated-form input[type="email"] {
+    padding: 0.85rem 1.25rem;
+    border: 1px solid var(--color-border);
+    border-radius: 100px;
+    font-size: 1rem;
+    font-family: var(--font-sans);
+    outline: none;
+    text-align: center;
+    transition: border-color 0.2s;
+  }
+
+  .gated-form input[type="email"]:focus {
+    border-color: var(--color-primary);
+  }
+
+  .gated-form .btn-primary {
+    width: 100%;
+    justify-content: center;
+  }
+
+  .privacy-note {
+    font-size: 0.75rem;
+    color: var(--color-text-light);
+    margin-top: 1rem;
+  }
+
+  .app-promo {
+    display: flex;
+    gap: 1rem;
+    align-items: flex-start;
+    background: var(--color-surface);
+    border-radius: 16px;
+    padding: 1.5rem;
+    margin-top: 1.5rem;
+  }
+
+  .promo-logo {
+    border-radius: 12px;
+    flex-shrink: 0;
+  }
+
+  .app-promo h4 {
+    font-size: 0.95rem;
+    margin-bottom: 0.35rem;
+  }
+
+  .app-promo p {
+    font-size: 0.8rem;
+    color: var(--color-text-light);
+    line-height: 1.4;
+    margin-bottom: 0.5rem;
+  }
+
+  @media (max-width: 900px) {
+    .gated-layout {
+      grid-template-columns: 1fr;
+    }
+    .download-panel {
+      position: static;
+    }
+  }
+
+  @media (max-width: 768px) {
+    .tool-hero h1 { font-size: 2.25rem; }
+    .download-card { padding: 1.75rem; }
+  }
+</style>

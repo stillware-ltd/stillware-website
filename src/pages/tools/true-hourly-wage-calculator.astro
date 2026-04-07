@@ -1,0 +1,364 @@
+---
+import Layout from '../../layouts/Layout.astro';
+---
+
+<Layout
+  title="True Hourly Wage Calculator — What Do You Really Earn? | Stillware Ltd"
+  description="Calculate your real hourly wage after commuting, overtime, work clothes, and hidden costs. Free instant calculator — no sign-up required."
+>
+  <header class="tool-hero">
+    <div class="container">
+      <nav class="breadcrumb" aria-label="Breadcrumb">
+        <a href="/tools">Tools</a> <span>/</span> <span>True Hourly Wage Calculator</span>
+      </nav>
+      <h1>True Hourly Wage Calculator</h1>
+      <p>Your payslip says one thing. Reality says another. Enter your real numbers and find out what you actually earn per hour.</p>
+    </div>
+  </header>
+
+  <section class="calculator-section">
+    <div class="container">
+      <div class="calculator-layout">
+        <form id="wage-form" class="calc-form">
+          <div class="form-group">
+            <label for="salary">Annual Salary (before tax)</label>
+            <div class="input-prefix">
+              <span class="prefix">&pound;</span>
+              <input type="number" id="salary" placeholder="35000" required min="0" step="100" />
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label for="hours">Official Hours per Week</label>
+            <input type="number" id="hours" placeholder="37.5" required min="0" step="0.5" />
+          </div>
+
+          <div class="form-group">
+            <label for="overtime">Unpaid Overtime (hours/week)</label>
+            <input type="number" id="overtime" placeholder="5" value="0" min="0" step="0.5" />
+          </div>
+
+          <div class="form-group">
+            <label for="commute-time">Daily Commute (total hours, round trip)</label>
+            <input type="number" id="commute-time" placeholder="1.5" value="0" min="0" step="0.25" />
+          </div>
+
+          <div class="form-group">
+            <label for="commute-cost">Monthly Commute Cost</label>
+            <div class="input-prefix">
+              <span class="prefix">&pound;</span>
+              <input type="number" id="commute-cost" placeholder="150" value="0" min="0" step="5" />
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label for="work-costs">Other Monthly Work Costs</label>
+            <p class="field-hint">Lunches, coffees, work clothes, childcare top-ups, etc.</p>
+            <div class="input-prefix">
+              <span class="prefix">&pound;</span>
+              <input type="number" id="work-costs" placeholder="100" value="0" min="0" step="5" />
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label for="weeks">Working Weeks per Year</label>
+            <input type="number" id="weeks" placeholder="47" value="47" min="1" max="52" />
+          </div>
+
+          <button type="submit" class="btn-primary calc-btn">Calculate My True Wage</button>
+        </form>
+
+        <div id="results" class="results-panel" style="display:none;">
+          <div class="result-card official">
+            <span class="result-label">Official Hourly Rate</span>
+            <span class="result-value" id="official-rate">&pound;0.00</span>
+          </div>
+          <div class="result-card true">
+            <span class="result-label">Your TRUE Hourly Rate</span>
+            <span class="result-value" id="true-rate">&pound;0.00</span>
+          </div>
+          <div class="result-card loss">
+            <span class="result-label">You're Losing</span>
+            <span class="result-value" id="loss-amount">&pound;0.00/hr</span>
+            <span class="result-sub" id="loss-percent"></span>
+          </div>
+
+          <div class="result-breakdown">
+            <h3>The Breakdown</h3>
+            <ul>
+              <li>Real hours worked per week: <strong id="real-hours">0</strong></li>
+              <li>Annual work-related costs: <strong id="annual-costs">&pound;0</strong></li>
+              <li>Effective annual pay (after costs): <strong id="effective-pay">&pound;0</strong></li>
+            </ul>
+          </div>
+
+          <div class="cta-banner">
+            <h3>Take Back Control of Your Money</h3>
+            <p>Now that you know your real wage, make every pound count. Zeroed is a zero-based budgeting app you buy once and own forever. No subscriptions eating into that hourly rate.</p>
+            <a href="/zeroed" class="btn-primary pulse">Get Zeroed — &pound;19.99 for Life</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+</Layout>
+
+<script>
+  document.getElementById('wage-form')!.addEventListener('submit', (e) => {
+    e.preventDefault();
+
+    const salary = parseFloat((document.getElementById('salary') as HTMLInputElement).value) || 0;
+    const hours = parseFloat((document.getElementById('hours') as HTMLInputElement).value) || 37.5;
+    const overtime = parseFloat((document.getElementById('overtime') as HTMLInputElement).value) || 0;
+    const commuteTime = parseFloat((document.getElementById('commute-time') as HTMLInputElement).value) || 0;
+    const commuteCost = parseFloat((document.getElementById('commute-cost') as HTMLInputElement).value) || 0;
+    const workCosts = parseFloat((document.getElementById('work-costs') as HTMLInputElement).value) || 0;
+    const weeks = parseFloat((document.getElementById('weeks') as HTMLInputElement).value) || 47;
+
+    const officialRate = salary / (hours * weeks);
+
+    // 5 commute days per week
+    const realHoursPerWeek = hours + overtime + (commuteTime * 5);
+    const annualCosts = (commuteCost + workCosts) * 12;
+    const effectivePay = salary - annualCosts;
+    const trueRate = effectivePay / (realHoursPerWeek * weeks);
+
+    const lossPerHour = officialRate - trueRate;
+    const lossPercent = ((lossPerHour / officialRate) * 100);
+
+    document.getElementById('official-rate')!.textContent = `£${officialRate.toFixed(2)}`;
+    document.getElementById('true-rate')!.textContent = `£${trueRate.toFixed(2)}`;
+    document.getElementById('loss-amount')!.textContent = `£${lossPerHour.toFixed(2)}/hr`;
+    document.getElementById('loss-percent')!.textContent = `That's ${lossPercent.toFixed(0)}% less than you think`;
+    document.getElementById('real-hours')!.textContent = realHoursPerWeek.toFixed(1);
+    document.getElementById('annual-costs')!.textContent = `£${annualCosts.toLocaleString()}`;
+    document.getElementById('effective-pay')!.textContent = `£${effectivePay.toLocaleString()}`;
+
+    document.getElementById('results')!.style.display = 'block';
+    document.getElementById('results')!.scrollIntoView({ behavior: 'smooth', block: 'start' });
+  });
+</script>
+
+<style>
+  .tool-hero {
+    padding: 12rem 0 4rem;
+    background: var(--gradient-obsidian);
+  }
+
+  .breadcrumb {
+    margin-bottom: 1.5rem;
+    font-size: 0.9rem;
+  }
+
+  .breadcrumb a {
+    color: rgba(255, 255, 255, 0.5);
+    text-decoration: none;
+    transition: color 0.2s;
+  }
+
+  .breadcrumb a:hover { color: #ffffff; }
+  .breadcrumb span { color: rgba(255, 255, 255, 0.3); margin: 0 0.5rem; }
+  .breadcrumb span:last-child { color: rgba(255, 255, 255, 0.7); margin: 0; }
+
+  .tool-hero h1 {
+    font-size: 3rem;
+    color: #ffffff;
+    margin-bottom: 1rem;
+    max-width: 700px;
+  }
+
+  .tool-hero p {
+    font-size: 1.15rem;
+    color: rgba(255, 255, 255, 0.6);
+    max-width: 600px;
+    line-height: 1.6;
+  }
+
+  .calculator-section {
+    padding: 4rem 0 8rem;
+  }
+
+  .calculator-layout {
+    max-width: 640px;
+    margin: 0 auto;
+  }
+
+  .calc-form {
+    background: #ffffff;
+    border: 1px solid var(--color-border);
+    border-radius: 20px;
+    padding: 2.5rem;
+    box-shadow: var(--shadow-premium);
+  }
+
+  .form-group {
+    margin-bottom: 1.5rem;
+  }
+
+  .form-group label {
+    display: block;
+    font-weight: 600;
+    font-size: 0.95rem;
+    color: var(--color-secondary);
+    margin-bottom: 0.5rem;
+  }
+
+  .field-hint {
+    font-size: 0.8rem;
+    color: var(--color-text-light);
+    margin-bottom: 0.5rem;
+  }
+
+  .input-prefix {
+    position: relative;
+  }
+
+  .input-prefix .prefix {
+    position: absolute;
+    left: 1rem;
+    top: 50%;
+    transform: translateY(-50%);
+    color: var(--color-text-light);
+    font-weight: 600;
+  }
+
+  .input-prefix input {
+    padding-left: 2.25rem !important;
+  }
+
+  input[type="number"] {
+    width: 100%;
+    padding: 0.85rem 1rem;
+    border: 1px solid var(--color-border);
+    border-radius: 12px;
+    font-size: 1rem;
+    font-family: var(--font-sans);
+    outline: none;
+    transition: border-color 0.2s;
+    background: var(--color-surface);
+  }
+
+  input[type="number"]:focus {
+    border-color: var(--color-primary);
+    background: #ffffff;
+  }
+
+  .calc-btn {
+    width: 100%;
+    justify-content: center;
+    margin-top: 0.5rem;
+  }
+
+  .results-panel {
+    margin-top: 3rem;
+  }
+
+  .result-card {
+    background: #ffffff;
+    border: 1px solid var(--color-border);
+    border-radius: 16px;
+    padding: 1.5rem 2rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 1rem;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+  }
+
+  .result-label {
+    font-weight: 600;
+    color: var(--color-text-light);
+    font-size: 0.95rem;
+  }
+
+  .result-value {
+    font-size: 1.75rem;
+    font-weight: 800;
+    color: var(--color-secondary);
+  }
+
+  .result-card.true {
+    border-color: rgba(37, 99, 235, 0.2);
+    background: rgba(37, 99, 235, 0.03);
+  }
+
+  .result-card.true .result-value {
+    color: var(--color-primary);
+  }
+
+  .result-card.loss {
+    border-color: rgba(220, 38, 38, 0.2);
+    background: rgba(220, 38, 38, 0.03);
+  }
+
+  .result-card.loss .result-value {
+    color: #DC2626;
+  }
+
+  .result-sub {
+    width: 100%;
+    text-align: right;
+    font-size: 0.85rem;
+    color: #DC2626;
+    font-weight: 500;
+  }
+
+  .result-breakdown {
+    background: var(--color-surface);
+    border-radius: 16px;
+    padding: 2rem;
+    margin-top: 2rem;
+  }
+
+  .result-breakdown h3 {
+    font-size: 1.1rem;
+    margin-bottom: 1rem;
+  }
+
+  .result-breakdown ul {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 0.65rem;
+  }
+
+  .result-breakdown li {
+    color: var(--color-text-light);
+    font-size: 0.95rem;
+  }
+
+  .result-breakdown strong {
+    color: var(--color-secondary);
+  }
+
+  .cta-banner {
+    margin-top: 3rem;
+    background: var(--gradient-obsidian);
+    border-radius: 20px;
+    padding: 3rem;
+    text-align: center;
+  }
+
+  .cta-banner h3 {
+    color: #ffffff;
+    font-size: 1.75rem;
+    margin-bottom: 1rem;
+  }
+
+  .cta-banner p {
+    color: rgba(255, 255, 255, 0.65);
+    max-width: 480px;
+    margin: 0 auto 2rem;
+    line-height: 1.6;
+  }
+
+  @media (max-width: 768px) {
+    .tool-hero h1 { font-size: 2.25rem; }
+    .calc-form { padding: 1.75rem; }
+    .result-card { flex-direction: column; align-items: flex-start; }
+    .result-sub { text-align: left; }
+    .cta-banner { padding: 2rem 1.5rem; }
+    .cta-banner h3 { font-size: 1.4rem; }
+  }
+</style>
