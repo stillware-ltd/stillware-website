@@ -1,0 +1,240 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 675" width="1200" height="675">
+  <style>
+    text { font-family: Inter, system-ui, -apple-system, sans-serif; }
+  </style>
+
+  <rect width="1200" height="675" fill="#fffbeb"/>
+
+  <!-- Background pattern (per-article variation) -->
+  <pattern id="dots" width="20" height="20" patternUnits="userSpaceOnUse"><circle cx="10" cy="10" r="1" fill="#059669" opacity="0.06"/></pattern><rect width="1200" height="675" fill="url(#dots)"/>
+
+  <!-- Subtle top accent bar -->
+  <rect width="1200" height="4" fill="#059669"/>
+
+  <!-- Title -->
+  <text x="600" y="50" text-anchor="middle" font-size="28" font-weight="700" fill="#1e293b">The data pipeline of a typical &#34;free&#34; kids app</text>
+
+  <!-- Boxes arranged in a grid (2 rows, up to 4 columns) -->
+  
+  
+  
+  
+  
+  
+  
+
+  <!-- Row group labels if 2 rows -->
+  
+  
+  
+  
+  
+  
+
+  <!-- Box accent colors: use theme accent for row 1, positive for row 2 -->
+  
+
+  
+  
+  
+  
+  
+  
+
+  <rect x="75" y="90" width="240" height="140" rx="18" fill="#fef3c7" stroke="#e2e8f0" stroke-width="1.5"/>
+  <rect x="75" y="90" width="240" height="4" rx="2" fill="#059669"/>
+  <text x="195" y="126" text-anchor="middle" font-size="15" font-weight="600" fill="#1e293b">Child&#39;s Device</text>
+
+  <foreignObject x="89" y="134" width="212" height="86">
+    <p xmlns="http://www.w3.org/1999/xhtml" style="font-family:Inter,system-ui,sans-serif;font-size:12px;color:#64748b;margin:0;line-height:1.35;text-align:center;">Taps</p>
+  </foreignObject>
+  
+  
+  
+  
+  
+  
+
+  <rect x="345" y="90" width="240" height="140" rx="18" fill="#fef3c7" stroke="#e2e8f0" stroke-width="1.5"/>
+  <rect x="345" y="90" width="240" height="4" rx="2" fill="#059669"/>
+  <text x="465" y="126" text-anchor="middle" font-size="15" font-weight="600" fill="#1e293b">drawings</text>
+
+  <foreignObject x="359" y="134" width="212" height="86">
+    <p xmlns="http://www.w3.org/1999/xhtml" style="font-family:Inter,system-ui,sans-serif;font-size:12px;color:#64748b;margin:0;line-height:1.35;text-align:center;"></p>
+  </foreignObject>
+  
+  
+  
+  
+  
+  
+
+  <rect x="615" y="90" width="240" height="140" rx="18" fill="#fef3c7" stroke="#e2e8f0" stroke-width="1.5"/>
+  <rect x="615" y="90" width="240" height="4" rx="2" fill="#059669"/>
+  <text x="735" y="126" text-anchor="middle" font-size="15" font-weight="600" fill="#1e293b">voice recordings</text>
+
+  <foreignObject x="629" y="134" width="212" height="86">
+    <p xmlns="http://www.w3.org/1999/xhtml" style="font-family:Inter,system-ui,sans-serif;font-size:12px;color:#64748b;margin:0;line-height:1.35;text-align:center;"></p>
+  </foreignObject>
+  
+  
+  
+  
+  
+  
+
+  <rect x="885" y="90" width="240" height="140" rx="18" fill="#fef3c7" stroke="#e2e8f0" stroke-width="1.5"/>
+  <rect x="885" y="90" width="240" height="4" rx="2" fill="#059669"/>
+  <text x="1005" y="126" text-anchor="middle" font-size="15" font-weight="600" fill="#1e293b">App Code</text>
+
+  <foreignObject x="899" y="134" width="212" height="86">
+    <p xmlns="http://www.w3.org/1999/xhtml" style="font-family:Inter,system-ui,sans-serif;font-size:12px;color:#64748b;margin:0;line-height:1.35;text-align:center;">Packages data with advertising ID</p>
+  </foreignObject>
+  
+  
+  
+  
+  
+  
+
+  <rect x="75" y="280" width="240" height="140" rx="18" fill="#fef3c7" stroke="#e2e8f0" stroke-width="1.5"/>
+  <rect x="75" y="280" width="240" height="4" rx="2" fill="#16a34a"/>
+  <text x="195" y="316" text-anchor="middle" font-size="15" font-weight="600" fill="#1e293b">Internet Connection</text>
+
+  <foreignObject x="89" y="324" width="212" height="86">
+    <p xmlns="http://www.w3.org/1999/xhtml" style="font-family:Inter,system-ui,sans-serif;font-size:12px;color:#64748b;margin:0;line-height:1.35;text-align:center;">Sends data bundle to remote server</p>
+  </foreignObject>
+  
+  
+  
+  
+  
+  
+
+  <rect x="345" y="280" width="240" height="140" rx="18" fill="#fef3c7" stroke="#e2e8f0" stroke-width="1.5"/>
+  <rect x="345" y="280" width="240" height="4" rx="2" fill="#16a34a"/>
+  <text x="465" y="316" text-anchor="middle" font-size="15" font-weight="600" fill="#1e293b">Company Server</text>
+
+  <foreignObject x="359" y="324" width="212" height="86">
+    <p xmlns="http://www.w3.org/1999/xhtml" style="font-family:Inter,system-ui,sans-serif;font-size:12px;color:#64748b;margin:0;line-height:1.35;text-align:center;">Stores data</p>
+  </foreignObject>
+  
+  
+  
+  
+  
+  
+
+  <rect x="615" y="280" width="240" height="140" rx="18" fill="#fef3c7" stroke="#e2e8f0" stroke-width="1.5"/>
+  <rect x="615" y="280" width="240" height="4" rx="2" fill="#16a34a"/>
+  <text x="735" y="316" text-anchor="middle" font-size="15" font-weight="600" fill="#1e293b">analyzes behavior</text>
+
+  <foreignObject x="629" y="324" width="212" height="86">
+    <p xmlns="http://www.w3.org/1999/xhtml" style="font-family:Inter,system-ui,sans-serif;font-size:12px;color:#64748b;margin:0;line-height:1.35;text-align:center;"></p>
+  </foreignObject>
+  
+  
+  
+  
+  
+  
+
+  <rect x="885" y="280" width="240" height="140" rx="18" fill="#fef3c7" stroke="#e2e8f0" stroke-width="1.5"/>
+  <rect x="885" y="280" width="240" height="4" rx="2" fill="#16a34a"/>
+  <text x="1005" y="316" text-anchor="middle" font-size="15" font-weight="600" fill="#1e293b">builds profile</text>
+
+  <foreignObject x="899" y="324" width="212" height="86">
+    <p xmlns="http://www.w3.org/1999/xhtml" style="font-family:Inter,system-ui,sans-serif;font-size:12px;color:#64748b;margin:0;line-height:1.35;text-align:center;"></p>
+  </foreignObject>
+  
+
+  <!-- Connections (dashed lines between box centers) -->
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  <line x1="195" y1="230" x2="465" y2="90" stroke="#64748b" stroke-width="1.5" stroke-dasharray="6,3" opacity="0.5"/>
+  <!-- Arrow head -->
+  <polygon points="461,88 465,90 469,88" fill="#64748b" opacity="0.5"/>
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  <line x1="465" y1="230" x2="735" y2="90" stroke="#64748b" stroke-width="1.5" stroke-dasharray="6,3" opacity="0.5"/>
+  <!-- Arrow head -->
+  <polygon points="731,88 735,90 739,88" fill="#64748b" opacity="0.5"/>
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  <line x1="735" y1="230" x2="1005" y2="90" stroke="#64748b" stroke-width="1.5" stroke-dasharray="6,3" opacity="0.5"/>
+  <!-- Arrow head -->
+  <polygon points="1001,88 1005,90 1009,88" fill="#64748b" opacity="0.5"/>
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  <line x1="195" y1="420" x2="465" y2="280" stroke="#64748b" stroke-width="1.5" stroke-dasharray="6,3" opacity="0.5"/>
+  <!-- Arrow head -->
+  <polygon points="461,278 465,280 469,278" fill="#64748b" opacity="0.5"/>
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  <line x1="465" y1="420" x2="735" y2="280" stroke="#64748b" stroke-width="1.5" stroke-dasharray="6,3" opacity="0.5"/>
+  <!-- Arrow head -->
+  <polygon points="731,278 735,280 739,278" fill="#64748b" opacity="0.5"/>
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  <line x1="735" y1="420" x2="1005" y2="280" stroke="#64748b" stroke-width="1.5" stroke-dasharray="6,3" opacity="0.5"/>
+  <!-- Arrow head -->
+  <polygon points="1001,278 1005,280 1009,278" fill="#64748b" opacity="0.5"/>
+  
+
+  <!-- Source attribution -->
+  <text x="1190" y="665" text-anchor="end" font-size="10" fill="#cbd5e1">stillwareltd.com</text>
+</svg>

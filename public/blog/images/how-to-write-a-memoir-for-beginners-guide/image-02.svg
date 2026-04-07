@@ -1,0 +1,200 @@
+
+
+
+
+
+
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 390" width="1200" height="390">
+  <style>
+    text { font-family: Inter, system-ui, -apple-system, sans-serif; }
+  </style>
+
+  <rect width="1200" height="390" fill="#f0fdf4"/>
+
+  <!-- Background pattern (per-article variation) -->
+  <rect width="1200" height="675" fill="#ecfdf5" opacity="0.4"/>
+
+  <!-- Subtle top accent bar -->
+  <rect width="1200" height="4" fill="#92400e"/>
+
+  <!-- Title -->
+  <text x="600" y="50" text-anchor="middle" font-size="28" font-weight="700" fill="#1e293b">The offline legacy creation workflow</text>
+
+  <!-- Step accent colors (theme-aware with alternation) -->
+  
+
+  
+  
+  
+  
+
+  <!-- Step circle -->
+  <circle cx="97" cy="125" r="28" fill="#92400e"/>
+  <circle cx="97" cy="125" r="28" fill="none" stroke="#92400e" stroke-width="3" opacity="0.25"/>
+  <text x="97" y="133" text-anchor="middle" font-size="18" font-weight="700" fill="#ffffff">1</text>
+
+  <!-- Connector line from circle to box -->
+  <line x1="97" y1="153" x2="97" y2="180" stroke="#92400e" stroke-width="2"/>
+
+  <!-- Step box -->
+  <rect x="15" y="180" width="165" height="155" rx="14" fill="#ecfdf5" stroke="#e2e8f0" stroke-width="1.5"/>
+  <rect x="15" y="180" width="165" height="4" rx="2" fill="#92400e"/>
+  <text x="97" y="216" text-anchor="middle" font-size="16" font-weight="600" fill="#1e293b">Capture Ideas</text>
+
+  <!-- Description -->
+  <foreignObject x="25" y="224" width="145" height="100">
+    <p xmlns="http://www.w3.org/1999/xhtml" style="font-family:Inter,system-ui,sans-serif;font-size:11.5px;color:#64748b;margin:0;line-height:1.4;text-align:center;">Jot down memory triggers as they strike in a simple notebook</p>
+  </foreignObject>
+
+  <!-- Arrow to next step -->
+  
+  
+  <line x1="184" y1="257" x2="208" y2="257" stroke="#cbd5e1" stroke-width="2"/>
+  <polygon points="208,252 217,257 208,262" fill="#cbd5e1"/>
+  
+  
+  
+  
+  
+
+  <!-- Step circle -->
+  <circle cx="298" cy="125" r="28" fill="#fb7185"/>
+  <circle cx="298" cy="125" r="28" fill="none" stroke="#fb7185" stroke-width="3" opacity="0.25"/>
+  <text x="298" y="133" text-anchor="middle" font-size="18" font-weight="700" fill="#ffffff">2</text>
+
+  <!-- Connector line from circle to box -->
+  <line x1="298" y1="153" x2="298" y2="180" stroke="#fb7185" stroke-width="2"/>
+
+  <!-- Step box -->
+  <rect x="216" y="180" width="165" height="155" rx="14" fill="#ecfdf5" stroke="#e2e8f0" stroke-width="1.5"/>
+  <rect x="216" y="180" width="165" height="4" rx="2" fill="#fb7185"/>
+  <text x="298" y="216" text-anchor="middle" font-size="16" font-weight="600" fill="#1e293b">Weekly Harvest</text>
+
+  <!-- Description -->
+  <foreignObject x="226" y="224" width="145" height="100">
+    <p xmlns="http://www.w3.org/1999/xhtml" style="font-family:Inter,system-ui,sans-serif;font-size:11.5px;color:#64748b;margin:0;line-height:1.4;text-align:center;">Pick one idea and record/write for 20 mins</p>
+  </foreignObject>
+
+  <!-- Arrow to next step -->
+  
+  
+  <line x1="385" y1="257" x2="409" y2="257" stroke="#cbd5e1" stroke-width="2"/>
+  <polygon points="409,252 418,257 409,262" fill="#cbd5e1"/>
+  
+  
+  
+  
+  
+
+  <!-- Step circle -->
+  <circle cx="499" cy="125" r="28" fill="#0891b2"/>
+  <circle cx="499" cy="125" r="28" fill="none" stroke="#0891b2" stroke-width="3" opacity="0.25"/>
+  <text x="499" y="133" text-anchor="middle" font-size="18" font-weight="700" fill="#ffffff">3</text>
+
+  <!-- Connector line from circle to box -->
+  <line x1="499" y1="153" x2="499" y2="180" stroke="#0891b2" stroke-width="2"/>
+
+  <!-- Step box -->
+  <rect x="417" y="180" width="165" height="155" rx="14" fill="#ecfdf5" stroke="#e2e8f0" stroke-width="1.5"/>
+  <rect x="417" y="180" width="165" height="4" rx="2" fill="#0891b2"/>
+  <text x="499" y="216" text-anchor="middle" font-size="16" font-weight="600" fill="#1e293b">no editing</text>
+
+  <!-- Description -->
+  <foreignObject x="427" y="224" width="145" height="100">
+    <p xmlns="http://www.w3.org/1999/xhtml" style="font-family:Inter,system-ui,sans-serif;font-size:11.5px;color:#64748b;margin:0;line-height:1.4;text-align:center;"></p>
+  </foreignObject>
+
+  <!-- Arrow to next step -->
+  
+  
+  <line x1="586" y1="257" x2="610" y2="257" stroke="#cbd5e1" stroke-width="2"/>
+  <polygon points="610,252 619,257 610,262" fill="#cbd5e1"/>
+  
+  
+  
+  
+  
+
+  <!-- Step circle -->
+  <circle cx="700" cy="125" r="28" fill="#92400e"/>
+  <circle cx="700" cy="125" r="28" fill="none" stroke="#92400e" stroke-width="3" opacity="0.25"/>
+  <text x="700" y="133" text-anchor="middle" font-size="18" font-weight="700" fill="#ffffff">4</text>
+
+  <!-- Connector line from circle to box -->
+  <line x1="700" y1="153" x2="700" y2="180" stroke="#92400e" stroke-width="2"/>
+
+  <!-- Step box -->
+  <rect x="618" y="180" width="165" height="155" rx="14" fill="#ecfdf5" stroke="#e2e8f0" stroke-width="1.5"/>
+  <rect x="618" y="180" width="165" height="4" rx="2" fill="#92400e"/>
+  <text x="700" y="216" text-anchor="middle" font-size="16" font-weight="600" fill="#1e293b">Local Storage</text>
+
+  <!-- Description -->
+  <foreignObject x="628" y="224" width="145" height="100">
+    <p xmlns="http://www.w3.org/1999/xhtml" style="font-family:Inter,system-ui,sans-serif;font-size:11.5px;color:#64748b;margin:0;line-height:1.4;text-align:center;">Save files to a dedicated folder on your computer or device</p>
+  </foreignObject>
+
+  <!-- Arrow to next step -->
+  
+  
+  <line x1="787" y1="257" x2="811" y2="257" stroke="#cbd5e1" stroke-width="2"/>
+  <polygon points="811,252 820,257 811,262" fill="#cbd5e1"/>
+  
+  
+  
+  
+  
+
+  <!-- Step circle -->
+  <circle cx="901" cy="125" r="28" fill="#fb7185"/>
+  <circle cx="901" cy="125" r="28" fill="none" stroke="#fb7185" stroke-width="3" opacity="0.25"/>
+  <text x="901" y="133" text-anchor="middle" font-size="18" font-weight="700" fill="#ffffff">5</text>
+
+  <!-- Connector line from circle to box -->
+  <line x1="901" y1="153" x2="901" y2="180" stroke="#fb7185" stroke-width="2"/>
+
+  <!-- Step box -->
+  <rect x="819" y="180" width="165" height="155" rx="14" fill="#ecfdf5" stroke="#e2e8f0" stroke-width="1.5"/>
+  <rect x="819" y="180" width="165" height="4" rx="2" fill="#fb7185"/>
+  <text x="901" y="216" text-anchor="middle" font-size="16" font-weight="600" fill="#1e293b">Physical Backup</text>
+
+  <!-- Description -->
+  <foreignObject x="829" y="224" width="145" height="100">
+    <p xmlns="http://www.w3.org/1999/xhtml" style="font-family:Inter,system-ui,sans-serif;font-size:11.5px;color:#64748b;margin:0;line-height:1.4;text-align:center;">Create printed copies or external drive backups</p>
+  </foreignObject>
+
+  <!-- Arrow to next step -->
+  
+  
+  <line x1="988" y1="257" x2="1012" y2="257" stroke="#cbd5e1" stroke-width="2"/>
+  <polygon points="1012,252 1021,257 1012,262" fill="#cbd5e1"/>
+  
+  
+  
+  
+  
+
+  <!-- Step circle -->
+  <circle cx="1102" cy="125" r="28" fill="#0891b2"/>
+  <circle cx="1102" cy="125" r="28" fill="none" stroke="#0891b2" stroke-width="3" opacity="0.25"/>
+  <text x="1102" y="133" text-anchor="middle" font-size="18" font-weight="700" fill="#ffffff">6</text>
+
+  <!-- Connector line from circle to box -->
+  <line x1="1102" y1="153" x2="1102" y2="180" stroke="#0891b2" stroke-width="2"/>
+
+  <!-- Step box -->
+  <rect x="1020" y="180" width="165" height="155" rx="14" fill="#ecfdf5" stroke="#e2e8f0" stroke-width="1.5"/>
+  <rect x="1020" y="180" width="165" height="4" rx="2" fill="#0891b2"/>
+  <text x="1102" y="216" text-anchor="middle" font-size="16" font-weight="600" fill="#1e293b">Share Selectively</text>
+
+  <!-- Description -->
+  <foreignObject x="1030" y="224" width="145" height="100">
+    <p xmlns="http://www.w3.org/1999/xhtml" style="font-family:Inter,system-ui,sans-serif;font-size:11.5px;color:#64748b;margin:0;line-height:1.4;text-align:center;">Share finished stories directly with family via USB or printed booklet</p>
+  </foreignObject>
+
+  <!-- Arrow to next step -->
+  
+  
+
+  <!-- Source attribution -->
+  <text x="1190" y="382" text-anchor="end" font-size="10" fill="#cbd5e1">stillwareltd.com</text>
+</svg>

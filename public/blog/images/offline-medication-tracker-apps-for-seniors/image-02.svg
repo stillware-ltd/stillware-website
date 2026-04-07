@@ -1,0 +1,181 @@
+
+
+
+
+
+
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 481" width="1200" height="481">
+  <style>
+    text { font-family: Inter, system-ui, -apple-system, sans-serif; }
+  </style>
+
+  <rect width="1200" height="481" fill="#ffffff"/>
+
+  <!-- Background pattern (per-article variation) -->
+  <rect width="1200" height="675" fill="#f8fafc" opacity="0.4"/>
+
+  <!-- Subtle top accent bar -->
+  <rect width="1200" height="4" fill="#0891b2"/>
+
+  <!-- Title -->
+  <text x="600" y="50" text-anchor="middle" font-size="26" font-weight="700" fill="#1e293b">Offline Capability Comparison of Medication Management Approaches</text>
+
+  <!-- Column header colors (theme-aware alternation) -->
+  
+  
+
+  <!-- Table -->
+  
+  
+  
+
+  <!-- Column header -->
+  <rect x="100" y="80" width="250" height="52" fill="#0891b2"/>
+  
+  <rect x="100" y="80" width="4" height="52" fill="#0891b2"/>
+  
+  <text x="225" y="112" text-anchor="middle" font-size="16" font-weight="600" fill="#ffffff">Feature</text>
+
+  <!-- Rows -->
+  
+  
+  <rect x="100" y="148" width="250" height="52" fill="#f8fafc" stroke="#e2e8f0" stroke-width="0.5"/>
+  <text x="116" y="170" font-size="13" font-weight="600" fill="#1e293b">Feature</text>
+  <text x="116" y="190" font-size="13" fill="#64748b">Primary Data Storage</text>
+  
+  
+  <rect x="100" y="206" width="250" height="52" fill="#ffffff" stroke="#e2e8f0" stroke-width="0.5"/>
+  <text x="116" y="228" font-size="13" font-weight="600" fill="#1e293b">Reminders Work Offline</text>
+  <text x="116" y="248" font-size="13" fill="#64748b">Reminders Work Offline</text>
+  
+  
+  <rect x="100" y="264" width="250" height="52" fill="#f8fafc" stroke="#e2e8f0" stroke-width="0.5"/>
+  <text x="116" y="286" font-size="13" font-weight="600" fill="#1e293b">Export PDF Without Internet</text>
+  <text x="116" y="306" font-size="13" fill="#64748b">Export PDF Without Internet</text>
+  
+  
+  <rect x="100" y="322" width="250" height="52" fill="#ffffff" stroke="#e2e8f0" stroke-width="0.5"/>
+  <text x="116" y="344" font-size="13" font-weight="600" fill="#1e293b">Required Sign-in</text>
+  <text x="116" y="364" font-size="13" fill="#64748b">Required Sign-in</text>
+  
+  
+  <rect x="100" y="380" width="250" height="52" fill="#f8fafc" stroke="#e2e8f0" stroke-width="0.5"/>
+  <text x="116" y="402" font-size="13" font-weight="600" fill="#1e293b">Data Privacy Model</text>
+  <text x="116" y="422" font-size="13" fill="#64748b">Data Privacy Model</text>
+  
+  
+  
+  
+
+  <!-- Column header -->
+  <rect x="350" y="80" width="250" height="52" fill="#34d399"/>
+  
+  <text x="475" y="112" text-anchor="middle" font-size="16" font-weight="600" fill="#ffffff">App Type (Cloud)</text>
+
+  <!-- Rows -->
+  
+  
+  <rect x="350" y="148" width="250" height="52" fill="#f8fafc" stroke="#e2e8f0" stroke-width="0.5"/>
+  <text x="366" y="170" font-size="13" font-weight="600" fill="#1e293b">App Type (Cloud)</text>
+  <text x="366" y="190" font-size="13" fill="#64748b">Company Servers</text>
+  
+  
+  <rect x="350" y="206" width="250" height="52" fill="#ffffff" stroke="#e2e8f0" stroke-width="0.5"/>
+  <text x="366" y="228" font-size="13" font-weight="600" fill="#1e293b">Usually No</text>
+  <text x="366" y="248" font-size="13" fill="#64748b">Usually No</text>
+  
+  
+  <rect x="350" y="264" width="250" height="52" fill="#f8fafc" stroke="#e2e8f0" stroke-width="0.5"/>
+  <text x="366" y="286" font-size="13" font-weight="600" fill="#1e293b">Rarely</text>
+  <text x="366" y="306" font-size="13" fill="#64748b">Rarely</text>
+  
+  
+  <rect x="350" y="322" width="250" height="52" fill="#ffffff" stroke="#e2e8f0" stroke-width="0.5"/>
+  <text x="366" y="344" font-size="13" font-weight="600" fill="#1e293b">Always Yes</text>
+  <text x="366" y="364" font-size="13" fill="#64748b">Always Yes</text>
+  
+  
+  <rect x="350" y="380" width="250" height="52" fill="#f8fafc" stroke="#e2e8f0" stroke-width="0.5"/>
+  <text x="366" y="402" font-size="13" font-weight="600" fill="#1e293b">Data is analyzed</text>
+  <text x="366" y="422" font-size="13" fill="#64748b">Data is analyzed</text>
+  
+  
+  
+  
+
+  <!-- Column header -->
+  <rect x="600" y="80" width="250" height="52" fill="#0891b2"/>
+  
+  <text x="725" y="112" text-anchor="middle" font-size="16" font-weight="600" fill="#ffffff">App Type (Local-First)</text>
+
+  <!-- Rows -->
+  
+  
+  <rect x="600" y="148" width="250" height="52" fill="#f8fafc" stroke="#e2e8f0" stroke-width="0.5"/>
+  <text x="616" y="170" font-size="13" font-weight="600" fill="#1e293b">App Type (Local-First)</text>
+  <text x="616" y="190" font-size="13" fill="#64748b">Your Device Only</text>
+  
+  
+  <rect x="600" y="206" width="250" height="52" fill="#ffffff" stroke="#e2e8f0" stroke-width="0.5"/>
+  <text x="616" y="228" font-size="13" font-weight="600" fill="#1e293b">Yes</text>
+  <text x="616" y="248" font-size="13" fill="#64748b">Yes</text>
+  
+  
+  <rect x="600" y="264" width="250" height="52" fill="#f8fafc" stroke="#e2e8f0" stroke-width="0.5"/>
+  <text x="616" y="286" font-size="13" font-weight="600" fill="#1e293b">Yes</text>
+  <text x="616" y="306" font-size="13" fill="#64748b">Yes</text>
+  
+  
+  <rect x="600" y="322" width="250" height="52" fill="#ffffff" stroke="#e2e8f0" stroke-width="0.5"/>
+  <text x="616" y="344" font-size="13" font-weight="600" fill="#1e293b">No</text>
+  <text x="616" y="364" font-size="13" fill="#64748b">No</text>
+  
+  
+  <rect x="600" y="380" width="250" height="52" fill="#f8fafc" stroke="#e2e8f0" stroke-width="0.5"/>
+  <text x="616" y="402" font-size="13" font-weight="600" fill="#1e293b">Encrypted on device</text>
+  <text x="616" y="422" font-size="13" fill="#64748b">Encrypted on device</text>
+  
+  
+  
+  
+
+  <!-- Column header -->
+  <rect x="850" y="80" width="250" height="52" fill="#34d399"/>
+  
+  <text x="975" y="112" text-anchor="middle" font-size="16" font-weight="600" fill="#ffffff">Paper Notebook</text>
+
+  <!-- Rows -->
+  
+  
+  <rect x="850" y="148" width="250" height="52" fill="#f8fafc" stroke="#e2e8f0" stroke-width="0.5"/>
+  <text x="866" y="170" font-size="13" font-weight="600" fill="#1e293b">Paper Notebook</text>
+  <text x="866" y="190" font-size="13" fill="#64748b">N/A</text>
+  
+  
+  <rect x="850" y="206" width="250" height="52" fill="#ffffff" stroke="#e2e8f0" stroke-width="0.5"/>
+  <text x="866" y="228" font-size="13" font-weight="600" fill="#1e293b">No</text>
+  <text x="866" y="248" font-size="13" fill="#64748b">No</text>
+  
+  
+  <rect x="850" y="264" width="250" height="52" fill="#f8fafc" stroke="#e2e8f0" stroke-width="0.5"/>
+  <text x="866" y="286" font-size="13" font-weight="600" fill="#1e293b">Yes (inherently)</text>
+  <text x="866" y="306" font-size="13" fill="#64748b">Yes (inherently)</text>
+  
+  
+  <rect x="850" y="322" width="250" height="52" fill="#ffffff" stroke="#e2e8f0" stroke-width="0.5"/>
+  <text x="866" y="344" font-size="13" font-weight="600" fill="#1e293b">No</text>
+  <text x="866" y="364" font-size="13" fill="#64748b">No</text>
+  
+  
+  <rect x="850" y="380" width="250" height="52" fill="#f8fafc" stroke="#e2e8f0" stroke-width="0.5"/>
+  <text x="866" y="402" font-size="13" font-weight="600" fill="#1e293b">Physical control</text>
+  <text x="866" y="422" font-size="13" fill="#64748b">Physical control</text>
+  
+  
+
+  <!-- Bottom border -->
+  <rect x="100" y="438" width="1000" height="3" fill="#0891b2"/>
+
+  <!-- Source attribution -->
+  <text x="1190" y="473" text-anchor="end" font-size="10" fill="#cbd5e1">stillwareltd.com</text>
+</svg>

@@ -1,0 +1,247 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 675" width="1200" height="675">
+  <style>
+    text { font-family: Inter, system-ui, -apple-system, sans-serif; }
+  </style>
+
+  <rect width="1200" height="675" fill="#ffffff"/>
+
+  <!-- Background pattern (per-article variation) -->
+  
+
+  <!-- Subtle top accent bar -->
+  <rect width="1200" height="4" fill="#059669"/>
+
+  <!-- Title -->
+  <text x="600" y="50" text-anchor="middle" font-size="26" font-weight="700" fill="#1e293b">The pillars of the buy-once philosophy</text>
+
+  <!-- Icon color palette (theme-aware) -->
+  
+
+  <!-- Grid: up to 4 columns, 2 rows -->
+  
+  
+  
+  
+  
+  
+  
+
+  
+  
+  
+  
+  
+  
+
+  <!-- Card background -->
+  <rect x="64" y="95" width="250" height="240" rx="12" fill="#f8fafc" stroke="#e2e8f0" stroke-width="1"/>
+
+  <!-- Icon circle with symbol -->
+  <circle cx="189" cy="137" r="28" fill="#059669" opacity="0.12"/>
+  <circle cx="189" cy="137" r="28" fill="none" stroke="#059669" stroke-width="2"/>
+
+  <!-- Icon symbol (SVG paths for common types, fallback to letter) -->
+  
+  <path d="179" transform="translate(179, 127)" fill="#059669">
+    <animate attributeName="d" values=""/>
+  </path>
+  <text x="189" y="144" text-anchor="middle" font-size="20" font-weight="700" fill="#059669">&#x1F6E1;</text>
+  
+
+  <!-- Label -->
+  <text x="189" y="190" text-anchor="middle" font-size="14" font-weight="600" fill="#1e293b">Data Ownership</text>
+
+  <!-- Description -->
+  <foreignObject x="78" y="199" width="222" height="100">
+    <p xmlns="http://www.w3.org/1999/xhtml" style="font-family:Inter,system-ui,sans-serif;font-size:12px;color:#64748b;margin:0;line-height:1.4;text-align:center;">Your files live with you</p>
+  </foreignObject>
+  
+  
+  
+  
+  
+  
+
+  <!-- Card background -->
+  <rect x="338" y="95" width="250" height="240" rx="12" fill="#f8fafc" stroke="#e2e8f0" stroke-width="1"/>
+
+  <!-- Icon circle with symbol -->
+  <circle cx="463" cy="137" r="28" fill="#60a5fa" opacity="0.12"/>
+  <circle cx="463" cy="137" r="28" fill="none" stroke="#60a5fa" stroke-width="2"/>
+
+  <!-- Icon symbol (SVG paths for common types, fallback to letter) -->
+  
+  <text x="463" y="144" text-anchor="middle" font-size="20" font-weight="700" fill="#60a5fa">I</text>
+  
+
+  <!-- Label -->
+  <text x="463" y="190" text-anchor="middle" font-size="14" font-weight="600" fill="#1e293b">not on a company server</text>
+
+  <!-- Description -->
+  <foreignObject x="352" y="199" width="222" height="100">
+    <p xmlns="http://www.w3.org/1999/xhtml" style="font-family:Inter,system-ui,sans-serif;font-size:12px;color:#64748b;margin:0;line-height:1.4;text-align:center;"></p>
+  </foreignObject>
+  
+  
+  
+  
+  
+  
+
+  <!-- Card background -->
+  <rect x="612" y="95" width="250" height="240" rx="12" fill="#f8fafc" stroke="#e2e8f0" stroke-width="1"/>
+
+  <!-- Icon circle with symbol -->
+  <circle cx="737" cy="137" r="28" fill="#0891b2" opacity="0.12"/>
+  <circle cx="737" cy="137" r="28" fill="none" stroke="#0891b2" stroke-width="2"/>
+
+  <!-- Icon symbol (SVG paths for common types, fallback to letter) -->
+  
+  <text x="737" y="144" text-anchor="middle" font-size="22" font-weight="700" fill="#0891b2">$</text>
+  
+
+  <!-- Label -->
+  <text x="737" y="190" text-anchor="middle" font-size="14" font-weight="600" fill="#1e293b">Cost Certainty</text>
+
+  <!-- Description -->
+  <foreignObject x="626" y="199" width="222" height="100">
+    <p xmlns="http://www.w3.org/1999/xhtml" style="font-family:Inter,system-ui,sans-serif;font-size:12px;color:#64748b;margin:0;line-height:1.4;text-align:center;">No surprise fees</p>
+  </foreignObject>
+  
+  
+  
+  
+  
+  
+
+  <!-- Card background -->
+  <rect x="886" y="95" width="250" height="240" rx="12" fill="#f8fafc" stroke="#e2e8f0" stroke-width="1"/>
+
+  <!-- Icon circle with symbol -->
+  <circle cx="1011" cy="137" r="28" fill="#dc2626" opacity="0.12"/>
+  <circle cx="1011" cy="137" r="28" fill="none" stroke="#dc2626" stroke-width="2"/>
+
+  <!-- Icon symbol (SVG paths for common types, fallback to letter) -->
+  
+  <text x="1011" y="144" text-anchor="middle" font-size="22" font-weight="700" fill="#dc2626">$</text>
+  
+
+  <!-- Label -->
+  <text x="1011" y="190" text-anchor="middle" font-size="14" font-weight="600" fill="#1e293b">predictable total cost</text>
+
+  <!-- Description -->
+  <foreignObject x="900" y="199" width="222" height="100">
+    <p xmlns="http://www.w3.org/1999/xhtml" style="font-family:Inter,system-ui,sans-serif;font-size:12px;color:#64748b;margin:0;line-height:1.4;text-align:center;"></p>
+  </foreignObject>
+  
+  
+  
+  
+  
+  
+
+  <!-- Card background -->
+  <rect x="64" y="363" width="250" height="240" rx="12" fill="#f8fafc" stroke="#e2e8f0" stroke-width="1"/>
+
+  <!-- Icon circle with symbol -->
+  <circle cx="189" cy="405" r="28" fill="#16a34a" opacity="0.12"/>
+  <circle cx="189" cy="405" r="28" fill="none" stroke="#16a34a" stroke-width="2"/>
+
+  <!-- Icon symbol (SVG paths for common types, fallback to letter) -->
+  
+  <text x="189" y="412" text-anchor="middle" font-size="20" font-weight="700" fill="#16a34a">&#x25A0;</text>
+  
+
+  <!-- Label -->
+  <text x="189" y="458" text-anchor="middle" font-size="14" font-weight="600" fill="#1e293b">Offline Reliable</text>
+
+  <!-- Description -->
+  <foreignObject x="78" y="467" width="222" height="100">
+    <p xmlns="http://www.w3.org/1999/xhtml" style="font-family:Inter,system-ui,sans-serif;font-size:12px;color:#64748b;margin:0;line-height:1.4;text-align:center;">Functionality never depends on a server connection</p>
+  </foreignObject>
+  
+  
+  
+  
+  
+  
+
+  <!-- Card background -->
+  <rect x="338" y="363" width="250" height="240" rx="12" fill="#f8fafc" stroke="#e2e8f0" stroke-width="1"/>
+
+  <!-- Icon circle with symbol -->
+  <circle cx="463" cy="405" r="28" fill="#f59e0b" opacity="0.12"/>
+  <circle cx="463" cy="405" r="28" fill="none" stroke="#f59e0b" stroke-width="2"/>
+
+  <!-- Icon symbol (SVG paths for common types, fallback to letter) -->
+  
+  <path d="453" transform="translate(453, 395)" fill="#f59e0b">
+    <animate attributeName="d" values=""/>
+  </path>
+  <text x="463" y="412" text-anchor="middle" font-size="20" font-weight="700" fill="#f59e0b">&#x1F6E1;</text>
+  
+
+  <!-- Label -->
+  <text x="463" y="458" text-anchor="middle" font-size="14" font-weight="600" fill="#1e293b">Privacy by Default</text>
+
+  <!-- Description -->
+  <foreignObject x="352" y="467" width="222" height="100">
+    <p xmlns="http://www.w3.org/1999/xhtml" style="font-family:Inter,system-ui,sans-serif;font-size:12px;color:#64748b;margin:0;line-height:1.4;text-align:center;">No usage telemetry or data harvesting</p>
+  </foreignObject>
+  
+  
+  
+  
+  
+  
+
+  <!-- Card background -->
+  <rect x="612" y="363" width="250" height="240" rx="12" fill="#f8fafc" stroke="#e2e8f0" stroke-width="1"/>
+
+  <!-- Icon circle with symbol -->
+  <circle cx="737" cy="405" r="28" fill="#ec4899" opacity="0.12"/>
+  <circle cx="737" cy="405" r="28" fill="none" stroke="#ec4899" stroke-width="2"/>
+
+  <!-- Icon symbol (SVG paths for common types, fallback to letter) -->
+  
+  <text x="737" y="412" text-anchor="middle" font-size="22" font-weight="700" fill="#ec4899">&#x2713;</text>
+  
+
+  <!-- Label -->
+  <text x="737" y="458" text-anchor="middle" font-size="14" font-weight="600" fill="#1e293b">Sustainable Model</text>
+
+  <!-- Description -->
+  <foreignObject x="626" y="467" width="222" height="100">
+    <p xmlns="http://www.w3.org/1999/xhtml" style="font-family:Inter,system-ui,sans-serif;font-size:12px;color:#64748b;margin:0;line-height:1.4;text-align:center;">Developers profit when you succeed</p>
+  </foreignObject>
+  
+  
+  
+  
+  
+  
+
+  <!-- Card background -->
+  <rect x="886" y="363" width="250" height="240" rx="12" fill="#f8fafc" stroke="#e2e8f0" stroke-width="1"/>
+
+  <!-- Icon circle with symbol -->
+  <circle cx="1011" cy="405" r="28" fill="#6366f1" opacity="0.12"/>
+  <circle cx="1011" cy="405" r="28" fill="none" stroke="#6366f1" stroke-width="2"/>
+
+  <!-- Icon symbol (SVG paths for common types, fallback to letter) -->
+  
+  <text x="1011" y="412" text-anchor="middle" font-size="20" font-weight="700" fill="#6366f1">I</text>
+  
+
+  <!-- Label -->
+  <text x="1011" y="458" text-anchor="middle" font-size="14" font-weight="600" fill="#1e293b">not just when you stay</text>
+
+  <!-- Description -->
+  <foreignObject x="900" y="467" width="222" height="100">
+    <p xmlns="http://www.w3.org/1999/xhtml" style="font-family:Inter,system-ui,sans-serif;font-size:12px;color:#64748b;margin:0;line-height:1.4;text-align:center;"></p>
+  </foreignObject>
+  
+
+  <!-- Source attribution -->
+  <text x="1190" y="665" text-anchor="end" font-size="10" fill="#cbd5e1">stillwareltd.com</text>
+</svg>
