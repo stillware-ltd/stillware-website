@@ -1,0 +1,226 @@
+
+
+
+
+
+
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 481" width="1200" height="481">
+  <style>
+    text { font-family: Inter, system-ui, -apple-system, sans-serif; }
+  </style>
+
+  <rect width="1200" height="481" fill="#f0fdf4"/>
+
+  <!-- Background pattern (per-article variation) -->
+  
+
+  <!-- Subtle top accent bar -->
+  <rect width="1200" height="4" fill="#7c3aed"/>
+
+  <!-- Title -->
+  <text x="600" y="50" text-anchor="middle" font-size="28" font-weight="700" fill="#1e293b">Offline password manager comparison for senior users</text>
+
+  <!-- Column header colors (theme-aware alternation) -->
+  
+  
+
+  <!-- Table -->
+  
+  
+  
+
+  <!-- Column header -->
+  <rect x="100" y="80" width="250" height="52" fill="#7c3aed"/>
+  
+  <rect x="100" y="80" width="4" height="52" fill="#7c3aed"/>
+  
+  <text x="225" y="112" text-anchor="middle" font-size="16" font-weight="600" fill="#ffffff">Feature</text>
+
+  <!-- Rows -->
+  
+  
+  <rect x="100" y="148" width="250" height="52" fill="#ecfdf5" stroke="#e2e8f0" stroke-width="0.5"/>
+  <text x="116" y="170" font-size="15" font-weight="600" fill="#1e293b">Feature</text>
+  <text x="116" y="190" font-size="15" fill="#64748b">Biometric Unlock</text>
+  
+  
+  <rect x="100" y="206" width="250" height="52" fill="#f0fdf4" stroke="#e2e8f0" stroke-width="0.5"/>
+  <text x="116" y="228" font-size="15" font-weight="600" fill="#1e293b">Setup Complexity</text>
+  <text x="116" y="248" font-size="15" fill="#64748b">Setup Complexity</text>
+  
+  
+  <rect x="100" y="264" width="250" height="52" fill="#ecfdf5" stroke="#e2e8f0" stroke-width="0.5"/>
+  <text x="116" y="286" font-size="15" font-weight="600" fill="#1e293b">Emergency Access</text>
+  <text x="116" y="306" font-size="15" fill="#64748b">Emergency Access</text>
+  
+  
+  <rect x="100" y="322" width="250" height="52" fill="#f0fdf4" stroke="#e2e8f0" stroke-width="0.5"/>
+  <text x="116" y="344" font-size="15" font-weight="600" fill="#1e293b">Document Storage</text>
+  <text x="116" y="364" font-size="15" fill="#64748b">Document Storage</text>
+  
+  
+  <rect x="100" y="380" width="250" height="52" fill="#ecfdf5" stroke="#e2e8f0" stroke-width="0.5"/>
+  <text x="116" y="402" font-size="15" font-weight="600" fill="#1e293b">Senior-Friendly UI</text>
+  <text x="116" y="422" font-size="15" fill="#64748b">Senior-Friendly UI</text>
+  
+  
+  
+  
+
+  <!-- Column header -->
+  <rect x="350" y="80" width="250" height="52" fill="#34d399"/>
+  
+  <text x="475" y="112" text-anchor="middle" font-size="16" font-weight="600" fill="#ffffff">KeePass</text>
+
+  <!-- Rows -->
+  
+  
+  <rect x="350" y="148" width="250" height="52" fill="#ecfdf5" stroke="#e2e8f0" stroke-width="0.5"/>
+  <text x="366" y="170" font-size="15" font-weight="600" fill="#1e293b">KeePass</text>
+  <text x="366" y="190" font-size="15" fill="#64748b">No (depends on plugin)</text>
+  
+  
+  <rect x="350" y="206" width="250" height="52" fill="#f0fdf4" stroke="#e2e8f0" stroke-width="0.5"/>
+  <text x="366" y="228" font-size="15" font-weight="600" fill="#1e293b">Very High</text>
+  <text x="366" y="248" font-size="15" fill="#64748b">Very High</text>
+  
+  
+  <rect x="350" y="264" width="250" height="52" fill="#ecfdf5" stroke="#e2e8f0" stroke-width="0.5"/>
+  <text x="366" y="286" font-size="15" font-weight="600" fill="#1e293b">Manual</text>
+  <text x="366" y="306" font-size="15" fill="#64748b">Manual</text>
+  
+  
+  <rect x="350" y="322" width="250" height="52" fill="#f0fdf4" stroke="#e2e8f0" stroke-width="0.5"/>
+  <text x="366" y="344" font-size="15" font-weight="600" fill="#1e293b">Complex</text>
+  <text x="366" y="364" font-size="15" fill="#64748b">Complex</text>
+  
+  
+  <rect x="350" y="380" width="250" height="52" fill="#ecfdf5" stroke="#e2e8f0" stroke-width="0.5"/>
+  <text x="366" y="402" font-size="15" font-weight="600" fill="#1e293b">Keyfile sharing</text>
+  <text x="366" y="422" font-size="15" fill="#64748b">Keyfile sharing</text>
+  
+  
+  <rect x="350" y="438" width="250" height="52" fill="#f0fdf4" stroke="#e2e8f0" stroke-width="0.5"/>
+  <text x="366" y="460" font-size="15" font-weight="600" fill="#1e293b">No</text>
+  <text x="366" y="480" font-size="15" fill="#64748b">No</text>
+  
+  
+  <rect x="350" y="496" width="250" height="52" fill="#ecfdf5" stroke="#e2e8f0" stroke-width="0.5"/>
+  <text x="366" y="518" font-size="15" font-weight="600" fill="#1e293b">Text only</text>
+  <text x="366" y="538" font-size="15" fill="#64748b">Text only</text>
+  
+  
+  <rect x="350" y="554" width="250" height="52" fill="#f0fdf4" stroke="#e2e8f0" stroke-width="0.5"/>
+  <text x="366" y="576" font-size="15" font-weight="600" fill="#1e293b">No</text>
+  <text x="366" y="596" font-size="15" fill="#64748b">No</text>
+  
+  
+  
+  
+
+  <!-- Column header -->
+  <rect x="600" y="80" width="250" height="52" fill="#7c3aed"/>
+  
+  <text x="725" y="112" text-anchor="middle" font-size="16" font-weight="600" fill="#ffffff">Enpass</text>
+
+  <!-- Rows -->
+  
+  
+  <rect x="600" y="148" width="250" height="52" fill="#ecfdf5" stroke="#e2e8f0" stroke-width="0.5"/>
+  <text x="616" y="170" font-size="15" font-weight="600" fill="#1e293b">Enpass</text>
+  <text x="616" y="190" font-size="15" fill="#64748b">Yes</text>
+  
+  
+  <rect x="600" y="206" width="250" height="52" fill="#f0fdf4" stroke="#e2e8f0" stroke-width="0.5"/>
+  <text x="616" y="228" font-size="15" font-weight="600" fill="#1e293b">Native</text>
+  <text x="616" y="248" font-size="15" fill="#64748b">Native</text>
+  
+  
+  <rect x="600" y="264" width="250" height="52" fill="#ecfdf5" stroke="#e2e8f0" stroke-width="0.5"/>
+  <text x="616" y="286" font-size="15" font-weight="600" fill="#1e293b">Medium</text>
+  <text x="616" y="306" font-size="15" fill="#64748b">Medium</text>
+  
+  
+  <rect x="600" y="322" width="250" height="52" fill="#f0fdf4" stroke="#e2e8f0" stroke-width="0.5"/>
+  <text x="616" y="344" font-size="15" font-weight="600" fill="#1e293b">Some configuration</text>
+  <text x="616" y="364" font-size="15" fill="#64748b">Some configuration</text>
+  
+  
+  <rect x="600" y="380" width="250" height="52" fill="#ecfdf5" stroke="#e2e8f0" stroke-width="0.5"/>
+  <text x="616" y="402" font-size="15" font-weight="600" fill="#1e293b">Manual</text>
+  <text x="616" y="422" font-size="15" fill="#64748b">Manual</text>
+  
+  
+  <rect x="600" y="438" width="250" height="52" fill="#f0fdf4" stroke="#e2e8f0" stroke-width="0.5"/>
+  <text x="616" y="460" font-size="15" font-weight="600" fill="#1e293b">Share vault file</text>
+  <text x="616" y="480" font-size="15" fill="#64748b">Share vault file</text>
+  
+  
+  <rect x="600" y="496" width="250" height="52" fill="#ecfdf5" stroke="#e2e8f0" stroke-width="0.5"/>
+  <text x="616" y="518" font-size="15" font-weight="600" fill="#1e293b">Yes</text>
+  <text x="616" y="538" font-size="15" fill="#64748b">Yes</text>
+  
+  
+  <rect x="600" y="554" width="250" height="52" fill="#f0fdf4" stroke="#e2e8f0" stroke-width="0.5"/>
+  <text x="616" y="576" font-size="15" font-weight="600" fill="#1e293b">With attachments</text>
+  <text x="616" y="596" font-size="15" fill="#64748b">With attachments</text>
+  
+  
+  
+  
+
+  <!-- Column header -->
+  <rect x="850" y="80" width="250" height="52" fill="#34d399"/>
+  
+  <text x="975" y="112" text-anchor="middle" font-size="16" font-weight="600" fill="#ffffff">1Password (Local)</text>
+
+  <!-- Rows -->
+  
+  
+  <rect x="850" y="148" width="250" height="52" fill="#ecfdf5" stroke="#e2e8f0" stroke-width="0.5"/>
+  <text x="866" y="170" font-size="15" font-weight="600" fill="#1e293b">1Password (Local)</text>
+  <text x="866" y="190" font-size="15" fill="#64748b">Yes</text>
+  
+  
+  <rect x="850" y="206" width="250" height="52" fill="#f0fdf4" stroke="#e2e8f0" stroke-width="0.5"/>
+  <text x="866" y="228" font-size="15" font-weight="600" fill="#1e293b">Native</text>
+  <text x="866" y="248" font-size="15" fill="#64748b">Native</text>
+  
+  
+  <rect x="850" y="264" width="250" height="52" fill="#ecfdf5" stroke="#e2e8f0" stroke-width="0.5"/>
+  <text x="866" y="286" font-size="15" font-weight="600" fill="#1e293b">Low</text>
+  <text x="866" y="306" font-size="15" fill="#64748b">Low</text>
+  
+  
+  <rect x="850" y="322" width="250" height="52" fill="#f0fdf4" stroke="#e2e8f0" stroke-width="0.5"/>
+  <text x="866" y="344" font-size="15" font-weight="600" fill="#1e293b">Guided setup</text>
+  <text x="866" y="364" font-size="15" fill="#64748b">Guided setup</text>
+  
+  
+  <rect x="850" y="380" width="250" height="52" fill="#ecfdf5" stroke="#e2e8f0" stroke-width="0.5"/>
+  <text x="866" y="402" font-size="15" font-weight="600" fill="#1e293b">Yes</text>
+  <text x="866" y="422" font-size="15" fill="#64748b">Yes</text>
+  
+  
+  <rect x="850" y="438" width="250" height="52" fill="#f0fdf4" stroke="#e2e8f0" stroke-width="0.5"/>
+  <text x="866" y="460" font-size="15" font-weight="600" fill="#1e293b">Emergency Kit</text>
+  <text x="866" y="480" font-size="15" fill="#64748b">Emergency Kit</text>
+  
+  
+  <rect x="850" y="496" width="250" height="52" fill="#ecfdf5" stroke="#e2e8f0" stroke-width="0.5"/>
+  <text x="866" y="518" font-size="15" font-weight="600" fill="#1e293b">Yes</text>
+  <text x="866" y="538" font-size="15" fill="#64748b">Yes</text>
+  
+  
+  <rect x="850" y="554" width="250" height="52" fill="#f0fdf4" stroke="#e2e8f0" stroke-width="0.5"/>
+  <text x="866" y="576" font-size="15" font-weight="600" fill="#1e293b">Secure Notes</text>
+  <text x="866" y="596" font-size="15" fill="#64748b">Secure Notes</text>
+  
+  
+
+  <!-- Bottom border -->
+  <rect x="100" y="438" width="1000" height="3" fill="#7c3aed"/>
+
+  <!-- Source attribution -->
+  <text x="1190" y="473" text-anchor="end" font-size="10" fill="#cbd5e1">stillwareltd.com</text>
+</svg>

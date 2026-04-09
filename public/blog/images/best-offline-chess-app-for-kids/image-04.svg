@@ -12,66 +12,144 @@
   <rect width="1200" height="4" fill="#2563eb"/>
 
   <!-- Title -->
-  <text x="600" y="55" text-anchor="middle" font-size="28" font-weight="700" fill="#1e293b">Five-year total cost comparison for kids&#39; chess education</text>
+  <text x="600" y="45" text-anchor="middle" font-size="28" font-weight="700" fill="#1e293b">How to choose a kids&#39; chess app</text>
 
-  <!-- Chart area -->
   
-  
-  
-  
-  
-  
-  
-
-  <!-- Y axis -->
-  <line x1="240" y1="85" x2="240" y2="610" stroke="#e2e8f0" stroke-width="1"/>
-
-  <!-- Gridlines -->
-  
-  
-  <line x1="396" y1="85" x2="396" y2="610" stroke="#f1f5f9" stroke-width="1"/>
-  
-  
-  <line x1="552" y1="85" x2="552" y2="610" stroke="#f1f5f9" stroke-width="1"/>
-  
-  
-  <line x1="708" y1="85" x2="708" y2="610" stroke="#f1f5f9" stroke-width="1"/>
-  
-  
-  <line x1="864" y1="85" x2="864" y2="610" stroke="#f1f5f9" stroke-width="1"/>
-  
-  
-  <line x1="1020" y1="85" x2="1020" y2="610" stroke="#f1f5f9" stroke-width="1"/>
   
 
   
   
   
+
+  <!-- Question node -->
+  
+  <rect x="450" y="72" width="300" height="76" rx="18" fill="#d1fae5" stroke="#2563eb" stroke-width="2"/>
+  <foreignObject x="464" y="80" width="272" height="60">
+    <p xmlns="http://www.w3.org/1999/xhtml" style="font-family:Inter,system-ui,sans-serif;font-size:13.5px;color:#1e293b;margin:0;line-height:1.35;text-align:center;font-weight:600;">Need it for travel/offline use</p>
+  </foreignObject>
+
+  <!-- Yes path (left) -->
+  
+  <line x1="450" y1="110" x2="550" y2="110" stroke="#16a34a" stroke-width="1.5"/>
+  <rect x="270" y="78" width="260" height="64" rx="10" fill="#16a34a" fill-opacity="0.1" stroke="#16a34a" stroke-width="1.5"/>
+  <text x="282" y="98" font-size="11" font-weight="700" fill="#16a34a">YES</text>
+  <foreignObject x="282" y="100" width="236" height="38">
+    <p xmlns="http://www.w3.org/1999/xhtml" style="font-family:Inter,system-ui,sans-serif;font-size:12px;color:#374151;margin:0;line-height:1.3;">Prioritize 100% offline functionality</p>
+  </foreignObject>
+
+  <!-- No path (right) -->
+  
+  <line x1="750" y1="110" x2="800" y2="110" stroke="#dc2626" stroke-width="1.5"/>
+  <rect x="780" y="78" width="260" height="64" rx="10" fill="#dc2626" fill-opacity="0.1" stroke="#dc2626" stroke-width="1.5"/>
+  <text x="792" y="98" font-size="11" font-weight="700" fill="#dc2626">NO</text>
+  <foreignObject x="792" y="100" width="236" height="38">
+    <p xmlns="http://www.w3.org/1999/xhtml" style="font-family:Inter,system-ui,sans-serif;font-size:12px;color:#374151;margin:0;line-height:1.3;">Consider online-only apps</p>
+  </foreignObject>
+
+  <!-- Vertical connector to next question -->
+  
+  <line x1="600" y1="148" x2="600" y2="222" stroke="#64748b" stroke-width="1.5"/>
+  <polygon points="596,218 600,222 604,218" fill="#64748b"/>
+  
+  
+  
   
 
-  <!-- Label -->
-  <text x="226" y="221" text-anchor="end" font-size="14" font-weight="500" fill="#1e293b">ChessKid Subscription</text>
+  <!-- Question node -->
+  
+  <rect x="450" y="222" width="300" height="76" rx="18" fill="#d1fae5" stroke="#2563eb" stroke-width="2"/>
+  <foreignObject x="464" y="230" width="272" height="60">
+    <p xmlns="http://www.w3.org/1999/xhtml" style="font-family:Inter,system-ui,sans-serif;font-size:13.5px;color:#1e293b;margin:0;line-height:1.35;text-align:center;font-weight:600;">Concerned about data privacy</p>
+  </foreignObject>
 
-  <!-- Bar with rounded right end -->
-  <rect x="245" y="93" width="780" height="246" rx="18" fill="#dc2626" opacity="0.85"/>
-  <rect x="245" y="93" width="780" height="246" rx="18" fill="#dc2626" opacity="0.12"/>
+  <!-- Yes path (left) -->
+  
+  <line x1="450" y1="260" x2="550" y2="260" stroke="#16a34a" stroke-width="1.5"/>
+  <rect x="270" y="228" width="260" height="64" rx="10" fill="#16a34a" fill-opacity="0.1" stroke="#16a34a" stroke-width="1.5"/>
+  <text x="282" y="248" font-size="11" font-weight="700" fill="#16a34a">YES</text>
+  <foreignObject x="282" y="250" width="236" height="38">
+    <p xmlns="http://www.w3.org/1999/xhtml" style="font-family:Inter,system-ui,sans-serif;font-size:12px;color:#374151;margin:0;line-height:1.3;">Choose COPPA-compliant</p>
+  </foreignObject>
 
-  <!-- Value label -->
-  <text x="1036" y="221" font-size="14" font-weight="700" fill="#dc2626">$599.40</text>
+  <!-- No path (right) -->
+  
+  <line x1="750" y1="260" x2="800" y2="260" stroke="#dc2626" stroke-width="1.5"/>
+  <rect x="780" y="228" width="260" height="64" rx="10" fill="#dc2626" fill-opacity="0.1" stroke="#dc2626" stroke-width="1.5"/>
+  <text x="792" y="248" font-size="11" font-weight="700" fill="#dc2626">NO</text>
+  <foreignObject x="792" y="250" width="236" height="38">
+    <p xmlns="http://www.w3.org/1999/xhtml" style="font-family:Inter,system-ui,sans-serif;font-size:12px;color:#374151;margin:0;line-height:1.3;"></p>
+  </foreignObject>
+
+  <!-- Vertical connector to next question -->
+  
+  <line x1="600" y1="298" x2="600" y2="372" stroke="#64748b" stroke-width="1.5"/>
+  <polygon points="596,368 600,372 604,368" fill="#64748b"/>
   
   
   
   
 
-  <!-- Label -->
-  <text x="226" y="483" text-anchor="end" font-size="14" font-weight="500" fill="#1e293b">Local-First App (One-Time)</text>
+  <!-- Question node -->
+  
+  <rect x="450" y="372" width="300" height="76" rx="18" fill="#d1fae5" stroke="#2563eb" stroke-width="2"/>
+  <foreignObject x="464" y="380" width="272" height="60">
+    <p xmlns="http://www.w3.org/1999/xhtml" style="font-family:Inter,system-ui,sans-serif;font-size:13.5px;color:#1e293b;margin:0;line-height:1.35;text-align:center;font-weight:600;">Want a structured learning path</p>
+  </foreignObject>
 
-  <!-- Bar with rounded right end -->
-  <rect x="245" y="355" width="52" height="246" rx="18" fill="#f59e0b" opacity="0.85"/>
-  <rect x="245" y="355" width="52" height="246" rx="18" fill="#f59e0b" opacity="0.12"/>
+  <!-- Yes path (left) -->
+  
+  <line x1="450" y1="410" x2="550" y2="410" stroke="#16a34a" stroke-width="1.5"/>
+  <rect x="270" y="378" width="260" height="64" rx="10" fill="#16a34a" fill-opacity="0.1" stroke="#16a34a" stroke-width="1.5"/>
+  <text x="282" y="398" font-size="11" font-weight="700" fill="#16a34a">YES</text>
+  <foreignObject x="282" y="400" width="236" height="38">
+    <p xmlns="http://www.w3.org/1999/xhtml" style="font-family:Inter,system-ui,sans-serif;font-size:12px;color:#374151;margin:0;line-height:1.3;">Look for curriculum chapters and progressive lesso</p>
+  </foreignObject>
 
-  <!-- Value label -->
-  <text x="308" y="483" font-size="14" font-weight="700" fill="#f59e0b">$39.99</text>
+  <!-- No path (right) -->
+  
+  <line x1="750" y1="410" x2="800" y2="410" stroke="#dc2626" stroke-width="1.5"/>
+  <rect x="780" y="378" width="260" height="64" rx="10" fill="#dc2626" fill-opacity="0.1" stroke="#dc2626" stroke-width="1.5"/>
+  <text x="792" y="398" font-size="11" font-weight="700" fill="#dc2626">NO</text>
+  <foreignObject x="792" y="400" width="236" height="38">
+    <p xmlns="http://www.w3.org/1999/xhtml" style="font-family:Inter,system-ui,sans-serif;font-size:12px;color:#374151;margin:0;line-height:1.3;">An app with just games/puzzles is less educational</p>
+  </foreignObject>
+
+  <!-- Vertical connector to next question -->
+  
+  <line x1="600" y1="448" x2="600" y2="522" stroke="#64748b" stroke-width="1.5"/>
+  <polygon points="596,518 600,522 604,518" fill="#64748b"/>
+  
+  
+  
+  
+
+  <!-- Question node -->
+  
+  <rect x="450" y="522" width="300" height="76" rx="18" fill="#d1fae5" stroke="#2563eb" stroke-width="2"/>
+  <foreignObject x="464" y="530" width="272" height="60">
+    <p xmlns="http://www.w3.org/1999/xhtml" style="font-family:Inter,system-ui,sans-serif;font-size:13.5px;color:#1e293b;margin:0;line-height:1.35;text-align:center;font-weight:600;">Budgeting long-term</p>
+  </foreignObject>
+
+  <!-- Yes path (left) -->
+  
+  <line x1="450" y1="560" x2="550" y2="560" stroke="#16a34a" stroke-width="1.5"/>
+  <rect x="270" y="528" width="260" height="64" rx="10" fill="#16a34a" fill-opacity="0.1" stroke="#16a34a" stroke-width="1.5"/>
+  <text x="282" y="548" font-size="11" font-weight="700" fill="#16a34a">YES</text>
+  <foreignObject x="282" y="550" width="236" height="38">
+    <p xmlns="http://www.w3.org/1999/xhtml" style="font-family:Inter,system-ui,sans-serif;font-size:12px;color:#374151;margin:0;line-height:1.3;">A one-time purchase saves hundreds vs. subscriptio</p>
+  </foreignObject>
+
+  <!-- No path (right) -->
+  
+  <line x1="750" y1="560" x2="800" y2="560" stroke="#dc2626" stroke-width="1.5"/>
+  <rect x="780" y="528" width="260" height="64" rx="10" fill="#dc2626" fill-opacity="0.1" stroke="#dc2626" stroke-width="1.5"/>
+  <text x="792" y="548" font-size="11" font-weight="700" fill="#dc2626">NO</text>
+  <foreignObject x="792" y="550" width="236" height="38">
+    <p xmlns="http://www.w3.org/1999/xhtml" style="font-family:Inter,system-ui,sans-serif;font-size:12px;color:#374151;margin:0;line-height:1.3;">Monthly fee may be acceptable for short-term use</p>
+  </foreignObject>
+
+  <!-- Vertical connector to next question -->
+  
   
 
   <!-- Source attribution -->

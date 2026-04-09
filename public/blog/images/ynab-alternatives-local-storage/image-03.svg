@@ -12,7 +12,7 @@
   <rect width="1200" height="4" fill="#059669"/>
 
   <!-- Title -->
-  <text x="600" y="55" text-anchor="middle" font-size="26" font-weight="700" fill="#1e293b">5-Year Total Cost of Ownership (2026-2031)</text>
+  <text x="600" y="55" text-anchor="middle" font-size="26" font-weight="700" fill="#1e293b">Five-Year Total Cost of Ownership for Budgeting Apps</text>
 
   <!-- Chart area -->
   
@@ -50,70 +50,70 @@
   
 
   <!-- Label -->
-  <text x="226" y="142" text-anchor="end" font-size="13" font-weight="500" fill="#1e293b">YNAB (Monthly)</text>
+  <text x="226" y="142" text-anchor="end" font-size="13" font-weight="500" fill="#1e293b">YNAB</text>
 
   <!-- Bar with rounded right end -->
   <rect x="245" y="93" width="780" height="89" rx="12" fill="#dc2626" opacity="0.85"/>
   <rect x="245" y="93" width="780" height="89" rx="12" fill="#dc2626" opacity="0.12"/>
 
   <!-- Value label -->
-  <text x="1036" y="142" font-size="13" font-weight="700" fill="#dc2626">$899.40</text>
+  <text x="1036" y="142" font-size="13" font-weight="700" fill="#dc2626">$900</text>
   
   
   
   
 
   <!-- Label -->
-  <text x="226" y="247" text-anchor="end" font-size="13" font-weight="500" fill="#1e293b">YNAB (Annual)</text>
+  <text x="226" y="247" text-anchor="end" font-size="13" font-weight="500" fill="#1e293b">EveryDollar</text>
 
   <!-- Bar with rounded right end -->
-  <rect x="245" y="198" width="429" height="89" rx="12" fill="#f59e0b" opacity="0.85"/>
-  <rect x="245" y="198" width="429" height="89" rx="12" fill="#f59e0b" opacity="0.12"/>
+  <rect x="245" y="198" width="346" height="89" rx="12" fill="#f59e0b" opacity="0.85"/>
+  <rect x="245" y="198" width="346" height="89" rx="12" fill="#f59e0b" opacity="0.12"/>
 
   <!-- Value label -->
-  <text x="685" y="247" font-size="13" font-weight="700" fill="#f59e0b">$495</text>
+  <text x="602" y="247" font-size="13" font-weight="700" fill="#f59e0b">$400</text>
   
   
   
   
 
   <!-- Label -->
-  <text x="226" y="352" text-anchor="end" font-size="13" font-weight="500" fill="#1e293b">Actual Budget (Hosted)</text>
+  <text x="226" y="352" text-anchor="end" font-size="13" font-weight="500" fill="#1e293b">Buckets</text>
 
   <!-- Bar with rounded right end -->
-  <rect x="245" y="303" width="208" height="89" rx="12" fill="#16a34a" opacity="0.85"/>
-  <rect x="245" y="303" width="208" height="89" rx="12" fill="#16a34a" opacity="0.12"/>
+  <rect x="245" y="303" width="52" height="89" rx="12" fill="#16a34a" opacity="0.85"/>
+  <rect x="245" y="303" width="52" height="89" rx="12" fill="#16a34a" opacity="0.12"/>
 
   <!-- Value label -->
-  <text x="464" y="352" font-size="13" font-weight="700" fill="#16a34a">$240</text>
+  <text x="308" y="352" font-size="13" font-weight="700" fill="#16a34a">$60</text>
   
   
   
   
 
   <!-- Label -->
-  <text x="226" y="457" text-anchor="end" font-size="13" font-weight="500" fill="#1e293b">Buckets (One-time)</text>
+  <text x="226" y="457" text-anchor="end" font-size="13" font-weight="500" fill="#1e293b">Zeroed</text>
 
   <!-- Bar with rounded right end -->
-  <rect x="245" y="408" width="42" height="89" rx="12" fill="#2563eb" opacity="0.85"/>
-  <rect x="245" y="408" width="42" height="89" rx="12" fill="#2563eb" opacity="0.12"/>
+  <rect x="245" y="408" width="34" height="89" rx="12" fill="#2563eb" opacity="0.85"/>
+  <rect x="245" y="408" width="34" height="89" rx="12" fill="#2563eb" opacity="0.12"/>
 
   <!-- Value label -->
-  <text x="298" y="457" font-size="13" font-weight="700" fill="#2563eb">$49</text>
+  <text x="290" y="457" font-size="13" font-weight="700" fill="#2563eb">$39.99</text>
   
   
   
   
 
   <!-- Label -->
-  <text x="226" y="562" text-anchor="end" font-size="13" font-weight="500" fill="#1e293b">Zeroed (One-time)</text>
+  <text x="226" y="562" text-anchor="end" font-size="13" font-weight="500" fill="#1e293b">Actual Budget</text>
 
   <!-- Bar with rounded right end -->
-  <rect x="245" y="513" width="34" height="89" rx="12" fill="#8b5cf6" opacity="0.85"/>
-  <rect x="245" y="513" width="34" height="89" rx="12" fill="#8b5cf6" opacity="0.12"/>
+  <rect x="245" y="513" width="0" height="89" rx="12" fill="#8b5cf6" opacity="0.85"/>
+  <rect x="245" y="513" width="0" height="89" rx="12" fill="#8b5cf6" opacity="0.12"/>
 
   <!-- Value label -->
-  <text x="290" y="562" font-size="13" font-weight="700" fill="#8b5cf6">$39.99</text>
+  <text x="256" y="562" font-size="13" font-weight="700" fill="#8b5cf6">$0</text>
   
 
   <!-- Source attribution -->

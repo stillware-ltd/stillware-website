@@ -1,0 +1,196 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 675" width="1200" height="675">
+  <style>
+    text { font-family: Inter, system-ui, -apple-system, sans-serif; }
+  </style>
+
+  <rect width="1200" height="675" fill="#fffbeb"/>
+
+  <!-- Background pattern (per-article variation) -->
+  
+
+  <!-- Subtle top accent bar -->
+  <rect width="1200" height="4" fill="#f59e0b"/>
+
+  <!-- Title -->
+  <text x="600" y="50" text-anchor="middle" font-size="28" font-weight="700" fill="#1e293b">The lifecycle of a chore habit vs. a subscription model</text>
+
+  
+  
+  
+  
+
+  <!-- Dot accent colors (theme-aware) -->
+  
+
+  <!-- Horizontal timeline line -->
+  <line x1="95" y1="330" x2="1105" y2="330" stroke="#e2e8f0" stroke-width="3" stroke-linecap="round"/>
+  <!-- Colored overlay on the line -->
+  <line x1="95" y1="330" x2="1105" y2="330" stroke="#f59e0b" stroke-width="3" stroke-linecap="round" opacity="0.25"/>
+
+  
+  
+  
+  
+
+  <!-- Dot -->
+  <circle cx="110" cy="330" r="10" fill="#fffbeb" stroke="#f59e0b" stroke-width="3"/>
+  <circle cx="110" cy="330" r="4" fill="#f59e0b"/>
+
+  <!-- Vertical connector -->
+  
+  <line x1="110" y1="320" x2="110" y2="280" stroke="#e2e8f0" stroke-width="1.5"/>
+  
+
+  <!-- Event card -->
+  
+  
+  
+
+  <rect x="30" y="120" width="160" height="155" rx="18" fill="#fef3c7" stroke="#e2e8f0" stroke-width="1"/>
+  <rect x="30" y="120" width="160" height="4" rx="2" fill="#f59e0b"/>
+  <text x="110" y="148" text-anchor="middle" font-size="12" font-weight="700" fill="#f59e0b">Month 1</text>
+  <text x="110" y="168" text-anchor="middle" font-size="14" font-weight="600" fill="#1e293b">Novelty</text>
+
+  <foreignObject x="40" y="176" width="140" height="85">
+    <p xmlns="http://www.w3.org/1999/xhtml" style="font-family:Inter,system-ui,sans-serif;font-size:11px;color:#64748b;margin:0;line-height:1.35;text-align:center;">High engagement</p>
+  </foreignObject>
+  
+  
+  
+  
+
+  <!-- Dot -->
+  <circle cx="306" cy="330" r="10" fill="#fffbeb" stroke="#34d399" stroke-width="3"/>
+  <circle cx="306" cy="330" r="4" fill="#34d399"/>
+
+  <!-- Vertical connector -->
+  
+  <line x1="306" y1="340" x2="306" y2="380" stroke="#e2e8f0" stroke-width="1.5"/>
+  
+
+  <!-- Event card -->
+  
+  
+  
+
+  <rect x="226" y="385" width="160" height="155" rx="18" fill="#fef3c7" stroke="#e2e8f0" stroke-width="1"/>
+  <rect x="226" y="385" width="160" height="4" rx="2" fill="#34d399"/>
+  <text x="306" y="413" text-anchor="middle" font-size="12" font-weight="700" fill="#34d399">Subscription Ac</text>
+  <text x="306" y="433" text-anchor="middle" font-size="14" font-weight="600" fill="#1e293b">Habit Forming</text>
+
+  <foreignObject x="236" y="441" width="140" height="85">
+    <p xmlns="http://www.w3.org/1999/xhtml" style="font-family:Inter,system-ui,sans-serif;font-size:11px;color:#64748b;margin:0;line-height:1.35;text-align:center;">Routine established</p>
+  </foreignObject>
+  
+  
+  
+  
+
+  <!-- Dot -->
+  <circle cx="502" cy="330" r="10" fill="#fffbeb" stroke="#0891b2" stroke-width="3"/>
+  <circle cx="502" cy="330" r="4" fill="#0891b2"/>
+
+  <!-- Vertical connector -->
+  
+  <line x1="502" y1="320" x2="502" y2="280" stroke="#e2e8f0" stroke-width="1.5"/>
+  
+
+  <!-- Event card -->
+  
+  
+  
+
+  <rect x="422" y="120" width="160" height="155" rx="18" fill="#fef3c7" stroke="#e2e8f0" stroke-width="1"/>
+  <rect x="422" y="120" width="160" height="4" rx="2" fill="#0891b2"/>
+  <text x="502" y="148" text-anchor="middle" font-size="12" font-weight="700" fill="#0891b2">Payment Autoren</text>
+  <text x="502" y="168" text-anchor="middle" font-size="14" font-weight="600" fill="#1e293b">Autonomy</text>
+
+  <foreignObject x="432" y="176" width="140" height="85">
+    <p xmlns="http://www.w3.org/1999/xhtml" style="font-family:Inter,system-ui,sans-serif;font-size:11px;color:#64748b;margin:0;line-height:1.35;text-align:center;">Gamification less needed</p>
+  </foreignObject>
+  
+  
+  
+  
+
+  <!-- Dot -->
+  <circle cx="698" cy="330" r="10" fill="#fffbeb" stroke="#dc2626" stroke-width="3"/>
+  <circle cx="698" cy="330" r="4" fill="#dc2626"/>
+
+  <!-- Vertical connector -->
+  
+  <line x1="698" y1="340" x2="698" y2="380" stroke="#e2e8f0" stroke-width="1.5"/>
+  
+
+  <!-- Event card -->
+  
+  
+  
+
+  <rect x="618" y="385" width="160" height="155" rx="18" fill="#fef3c7" stroke="#e2e8f0" stroke-width="1"/>
+  <rect x="618" y="385" width="160" height="4" rx="2" fill="#dc2626"/>
+  <text x="698" y="413" text-anchor="middle" font-size="12" font-weight="700" fill="#dc2626">But subscriptio</text>
+  <text x="698" y="433" text-anchor="middle" font-size="14" font-weight="600" fill="#1e293b">Outgrown</text>
+
+  <foreignObject x="628" y="441" width="140" height="85">
+    <p xmlns="http://www.w3.org/1999/xhtml" style="font-family:Inter,system-ui,sans-serif;font-size:11px;color:#64748b;margin:0;line-height:1.35;text-align:center;">Child matures past app</p>
+  </foreignObject>
+  
+  
+  
+  
+
+  <!-- Dot -->
+  <circle cx="894" cy="330" r="10" fill="#fffbeb" stroke="#16a34a" stroke-width="3"/>
+  <circle cx="894" cy="330" r="4" fill="#16a34a"/>
+
+  <!-- Vertical connector -->
+  
+  <line x1="894" y1="320" x2="894" y2="280" stroke="#e2e8f0" stroke-width="1.5"/>
+  
+
+  <!-- Event card -->
+  
+  
+  
+
+  <rect x="814" y="120" width="160" height="155" rx="18" fill="#fef3c7" stroke="#e2e8f0" stroke-width="1"/>
+  <rect x="814" y="120" width="160" height="4" rx="2" fill="#16a34a"/>
+  <text x="894" y="148" text-anchor="middle" font-size="12" font-weight="700" fill="#16a34a">Yet fees have t</text>
+  <text x="894" y="168" text-anchor="middle" font-size="14" font-weight="600" fill="#1e293b">Habit Forms</text>
+
+  <foreignObject x="824" y="176" width="140" height="85">
+    <p xmlns="http://www.w3.org/1999/xhtml" style="font-family:Inter,system-ui,sans-serif;font-size:11px;color:#64748b;margin:0;line-height:1.35;text-align:center;">Tool used intensively</p>
+  </foreignObject>
+  
+  
+  
+  
+
+  <!-- Dot -->
+  <circle cx="1090" cy="330" r="10" fill="#fffbeb" stroke="#f59e0b" stroke-width="3"/>
+  <circle cx="1090" cy="330" r="4" fill="#f59e0b"/>
+
+  <!-- Vertical connector -->
+  
+  <line x1="1090" y1="340" x2="1090" y2="380" stroke="#e2e8f0" stroke-width="1.5"/>
+  
+
+  <!-- Event card -->
+  
+  
+  
+
+  <rect x="1010" y="385" width="160" height="155" rx="18" fill="#fef3c7" stroke="#e2e8f0" stroke-width="1"/>
+  <rect x="1010" y="385" width="160" height="4" rx="2" fill="#f59e0b"/>
+  <text x="1090" y="413" text-anchor="middle" font-size="12" font-weight="700" fill="#f59e0b">One-time fee pa</text>
+  <text x="1090" y="433" text-anchor="middle" font-size="14" font-weight="600" fill="#1e293b">App becomes simple ledger</text>
+
+  <foreignObject x="1020" y="441" width="140" height="85">
+    <p xmlns="http://www.w3.org/1999/xhtml" style="font-family:Inter,system-ui,sans-serif;font-size:11px;color:#64748b;margin:0;line-height:1.35;text-align:center;"></p>
+  </foreignObject>
+  
+
+  <!-- Source attribution -->
+  <text x="1190" y="665" text-anchor="end" font-size="10" fill="#cbd5e1">stillwareltd.com</text>
+</svg>

@@ -1,0 +1,290 @@
+
+
+
+
+
+
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 423" width="1200" height="423">
+  <style>
+    text { font-family: Inter, system-ui, -apple-system, sans-serif; }
+  </style>
+
+  <rect width="1200" height="423" fill="#ffffff"/>
+
+  <!-- Background pattern (per-article variation) -->
+  <rect width="1200" height="6" fill="#059669"/><rect y="6" width="1200" height="2" fill="#34d399" opacity="0.4"/>
+
+  <!-- Subtle top accent bar -->
+  <rect width="1200" height="4" fill="#059669"/>
+
+  <!-- Title -->
+  <text x="600" y="50" text-anchor="middle" font-size="26" font-weight="700" fill="#1e293b">Top 7 No-Sync Envelope Budgeting Apps Compared</text>
+
+  <!-- Column header colors (theme-aware alternation) -->
+  
+  
+
+  <!-- Table -->
+  
+  
+  
+
+  <!-- Column header -->
+  <rect x="100" y="80" width="125" height="52" fill="#059669"/>
+  
+  <rect x="100" y="80" width="4" height="52" fill="#059669"/>
+  
+  <text x="162" y="112" text-anchor="middle" font-size="16" font-weight="600" fill="#ffffff">App Name</text>
+
+  <!-- Rows -->
+  
+  
+  <rect x="100" y="148" width="125" height="52" fill="#f8fafc" stroke="#e2e8f0" stroke-width="0.5"/>
+  <text x="116" y="170" font-size="13" font-weight="600" fill="#1e293b">App Name</text>
+  <text x="116" y="190" font-size="13" fill="#64748b">Price Model</text>
+  
+  
+  <rect x="100" y="206" width="125" height="52" fill="#ffffff" stroke="#e2e8f0" stroke-width="0.5"/>
+  <text x="116" y="228" font-size="13" font-weight="600" fill="#1e293b">Core Philosophy</text>
+  <text x="116" y="248" font-size="13" fill="#64748b">Core Philosophy</text>
+  
+  
+  <rect x="100" y="264" width="125" height="52" fill="#f8fafc" stroke="#e2e8f0" stroke-width="0.5"/>
+  <text x="116" y="286" font-size="13" font-weight="600" fill="#1e293b">Data Location</text>
+  <text x="116" y="306" font-size="13" fill="#64748b">Data Location</text>
+  
+  
+  <rect x="100" y="322" width="125" height="52" fill="#ffffff" stroke="#e2e8f0" stroke-width="0.5"/>
+  <text x="116" y="344" font-size="13" font-weight="600" fill="#1e293b">Best For</text>
+  <text x="116" y="364" font-size="13" fill="#64748b">Best For</text>
+  
+  
+  
+  
+
+  <!-- Column header -->
+  <rect x="225" y="80" width="125" height="52" fill="#34d399"/>
+  
+  <text x="287" y="112" text-anchor="middle" font-size="16" font-weight="600" fill="#ffffff">Zeroed</text>
+
+  <!-- Rows -->
+  
+  
+  <rect x="225" y="148" width="125" height="52" fill="#f8fafc" stroke="#e2e8f0" stroke-width="0.5"/>
+  <text x="241" y="170" font-size="13" font-weight="600" fill="#1e293b">Zeroed</text>
+  <text x="241" y="190" font-size="13" fill="#64748b">One-time purchase</text>
+  
+  
+  <rect x="225" y="206" width="125" height="52" fill="#ffffff" stroke="#e2e8f0" stroke-width="0.5"/>
+  <text x="241" y="228" font-size="13" font-weight="600" fill="#1e293b">Local-first</text>
+  <text x="241" y="248" font-size="13" fill="#64748b">Local-first</text>
+  
+  
+  <rect x="225" y="264" width="125" height="52" fill="#f8fafc" stroke="#e2e8f0" stroke-width="0.5"/>
+  <text x="241" y="286" font-size="13" font-weight="600" fill="#1e293b">manual ritual</text>
+  <text x="241" y="306" font-size="13" fill="#64748b">manual ritual</text>
+  
+  
+  <rect x="225" y="322" width="125" height="52" fill="#ffffff" stroke="#e2e8f0" stroke-width="0.5"/>
+  <text x="241" y="344" font-size="13" font-weight="600" fill="#1e293b">Your device only</text>
+  <text x="241" y="364" font-size="13" fill="#64748b">Your device only</text>
+  
+  
+  <rect x="225" y="380" width="125" height="52" fill="#f8fafc" stroke="#e2e8f0" stroke-width="0.5"/>
+  <text x="241" y="402" font-size="13" font-weight="600" fill="#1e293b">Privacy &amp; ownership</text>
+  <text x="241" y="422" font-size="13" fill="#64748b">Privacy &amp; ownership</text>
+  
+  
+  
+  
+
+  <!-- Column header -->
+  <rect x="350" y="80" width="125" height="52" fill="#059669"/>
+  
+  <text x="412" y="112" text-anchor="middle" font-size="16" font-weight="600" fill="#ffffff">Goodbudget</text>
+
+  <!-- Rows -->
+  
+  
+  <rect x="350" y="148" width="125" height="52" fill="#f8fafc" stroke="#e2e8f0" stroke-width="0.5"/>
+  <text x="366" y="170" font-size="13" font-weight="600" fill="#1e293b">Goodbudget</text>
+  <text x="366" y="190" font-size="13" fill="#64748b">Freemium/Subscription</text>
+  
+  
+  <rect x="350" y="206" width="125" height="52" fill="#ffffff" stroke="#e2e8f0" stroke-width="0.5"/>
+  <text x="366" y="228" font-size="13" font-weight="600" fill="#1e293b">Cloud-first envelopes</text>
+  <text x="366" y="248" font-size="13" fill="#64748b">Cloud-first envelopes</text>
+  
+  
+  <rect x="350" y="264" width="125" height="52" fill="#f8fafc" stroke="#e2e8f0" stroke-width="0.5"/>
+  <text x="366" y="286" font-size="13" font-weight="600" fill="#1e293b">Company servers</text>
+  <text x="366" y="306" font-size="13" fill="#64748b">Company servers</text>
+  
+  
+  <rect x="350" y="322" width="125" height="52" fill="#ffffff" stroke="#e2e8f0" stroke-width="0.5"/>
+  <text x="366" y="344" font-size="13" font-weight="600" fill="#1e293b">Basic envelope users</text>
+  <text x="366" y="364" font-size="13" fill="#64748b">Basic envelope users</text>
+  
+  
+  
+  
+
+  <!-- Column header -->
+  <rect x="475" y="80" width="125" height="52" fill="#34d399"/>
+  
+  <text x="537" y="112" text-anchor="middle" font-size="16" font-weight="600" fill="#ffffff">YNAB</text>
+
+  <!-- Rows -->
+  
+  
+  <rect x="475" y="148" width="125" height="52" fill="#f8fafc" stroke="#e2e8f0" stroke-width="0.5"/>
+  <text x="491" y="170" font-size="13" font-weight="600" fill="#1e293b">YNAB</text>
+  <text x="491" y="190" font-size="13" fill="#64748b">Subscription required</text>
+  
+  
+  <rect x="475" y="206" width="125" height="52" fill="#ffffff" stroke="#e2e8f0" stroke-width="0.5"/>
+  <text x="491" y="228" font-size="13" font-weight="600" fill="#1e293b">Bank-sync philosophy</text>
+  <text x="491" y="248" font-size="13" fill="#64748b">Bank-sync philosophy</text>
+  
+  
+  <rect x="475" y="264" width="125" height="52" fill="#f8fafc" stroke="#e2e8f0" stroke-width="0.5"/>
+  <text x="491" y="286" font-size="13" font-weight="600" fill="#1e293b">Company servers</text>
+  <text x="491" y="306" font-size="13" fill="#64748b">Company servers</text>
+  
+  
+  <rect x="475" y="322" width="125" height="52" fill="#ffffff" stroke="#e2e8f0" stroke-width="0.5"/>
+  <text x="491" y="344" font-size="13" font-weight="600" fill="#1e293b">Those who want automation</text>
+  <text x="491" y="364" font-size="13" fill="#64748b">Those who want automation</text>
+  
+  
+  
+  
+
+  <!-- Column header -->
+  <rect x="600" y="80" width="125" height="52" fill="#059669"/>
+  
+  <text x="662" y="112" text-anchor="middle" font-size="16" font-weight="600" fill="#ffffff">Budget with Buckets</text>
+
+  <!-- Rows -->
+  
+  
+  <rect x="600" y="148" width="125" height="52" fill="#f8fafc" stroke="#e2e8f0" stroke-width="0.5"/>
+  <text x="616" y="170" font-size="13" font-weight="600" fill="#1e293b">Budget with Buckets</text>
+  <text x="616" y="190" font-size="13" fill="#64748b">One-time purchase</text>
+  
+  
+  <rect x="600" y="206" width="125" height="52" fill="#ffffff" stroke="#e2e8f0" stroke-width="0.5"/>
+  <text x="616" y="228" font-size="13" font-weight="600" fill="#1e293b">Simple desktop envelopes</text>
+  <text x="616" y="248" font-size="13" fill="#64748b">Simple desktop envelopes</text>
+  
+  
+  <rect x="600" y="264" width="125" height="52" fill="#f8fafc" stroke="#e2e8f0" stroke-width="0.5"/>
+  <text x="616" y="286" font-size="13" font-weight="600" fill="#1e293b">Your computer only</text>
+  <text x="616" y="306" font-size="13" fill="#64748b">Your computer only</text>
+  
+  
+  <rect x="600" y="322" width="125" height="52" fill="#ffffff" stroke="#e2e8f0" stroke-width="0.5"/>
+  <text x="616" y="344" font-size="13" font-weight="600" fill="#1e293b">Desktop users</text>
+  <text x="616" y="364" font-size="13" fill="#64748b">Desktop users</text>
+  
+  
+  
+  
+
+  <!-- Column header -->
+  <rect x="725" y="80" width="125" height="52" fill="#34d399"/>
+  
+  <text x="787" y="112" text-anchor="middle" font-size="16" font-weight="600" fill="#ffffff">Actual Budget</text>
+
+  <!-- Rows -->
+  
+  
+  <rect x="725" y="148" width="125" height="52" fill="#f8fafc" stroke="#e2e8f0" stroke-width="0.5"/>
+  <text x="741" y="170" font-size="13" font-weight="600" fill="#1e293b">Actual Budget</text>
+  <text x="741" y="190" font-size="13" fill="#64748b">One-time purchase (open source)</text>
+  
+  
+  <rect x="725" y="206" width="125" height="52" fill="#ffffff" stroke="#e2e8f0" stroke-width="0.5"/>
+  <text x="741" y="228" font-size="13" font-weight="600" fill="#1e293b">Self-hosted option</text>
+  <text x="741" y="248" font-size="13" fill="#64748b">Self-hosted option</text>
+  
+  
+  <rect x="725" y="264" width="125" height="52" fill="#f8fafc" stroke="#e2e8f0" stroke-width="0.5"/>
+  <text x="741" y="286" font-size="13" font-weight="600" fill="#1e293b">Your server/device</text>
+  <text x="741" y="306" font-size="13" fill="#64748b">Your server/device</text>
+  
+  
+  <rect x="725" y="322" width="125" height="52" fill="#ffffff" stroke="#e2e8f0" stroke-width="0.5"/>
+  <text x="741" y="344" font-size="13" font-weight="600" fill="#1e293b">Tech-savvy users</text>
+  <text x="741" y="364" font-size="13" fill="#64748b">Tech-savvy users</text>
+  
+  
+  
+  
+
+  <!-- Column header -->
+  <rect x="850" y="80" width="125" height="52" fill="#059669"/>
+  
+  <text x="912" y="112" text-anchor="middle" font-size="16" font-weight="600" fill="#ffffff">GnuCash</text>
+
+  <!-- Rows -->
+  
+  
+  <rect x="850" y="148" width="125" height="52" fill="#f8fafc" stroke="#e2e8f0" stroke-width="0.5"/>
+  <text x="866" y="170" font-size="13" font-weight="600" fill="#1e293b">GnuCash</text>
+  <text x="866" y="190" font-size="13" fill="#64748b">Free (open source)</text>
+  
+  
+  <rect x="850" y="206" width="125" height="52" fill="#ffffff" stroke="#e2e8f0" stroke-width="0.5"/>
+  <text x="866" y="228" font-size="13" font-weight="600" fill="#1e293b">Double-entry accounting</text>
+  <text x="866" y="248" font-size="13" fill="#64748b">Double-entry accounting</text>
+  
+  
+  <rect x="850" y="264" width="125" height="52" fill="#f8fafc" stroke="#e2e8f0" stroke-width="0.5"/>
+  <text x="866" y="286" font-size="13" font-weight="600" fill="#1e293b">Your device only</text>
+  <text x="866" y="306" font-size="13" fill="#64748b">Your device only</text>
+  
+  
+  <rect x="850" y="322" width="125" height="52" fill="#ffffff" stroke="#e2e8f0" stroke-width="0.5"/>
+  <text x="866" y="344" font-size="13" font-weight="600" fill="#1e293b">Detailed accountants</text>
+  <text x="866" y="364" font-size="13" fill="#64748b">Detailed accountants</text>
+  
+  
+  
+  
+
+  <!-- Column header -->
+  <rect x="975" y="80" width="125" height="52" fill="#34d399"/>
+  
+  <text x="1037" y="112" text-anchor="middle" font-size="16" font-weight="600" fill="#ffffff">Spreadsheet</text>
+
+  <!-- Rows -->
+  
+  
+  <rect x="975" y="148" width="125" height="52" fill="#f8fafc" stroke="#e2e8f0" stroke-width="0.5"/>
+  <text x="991" y="170" font-size="13" font-weight="600" fill="#1e293b">Spreadsheet</text>
+  <text x="991" y="190" font-size="13" fill="#64748b">Free</text>
+  
+  
+  <rect x="975" y="206" width="125" height="52" fill="#ffffff" stroke="#e2e8f0" stroke-width="0.5"/>
+  <text x="991" y="228" font-size="13" font-weight="600" fill="#1e293b">Ultimate flexibility</text>
+  <text x="991" y="248" font-size="13" fill="#64748b">Ultimate flexibility</text>
+  
+  
+  <rect x="975" y="264" width="125" height="52" fill="#f8fafc" stroke="#e2e8f0" stroke-width="0.5"/>
+  <text x="991" y="286" font-size="13" font-weight="600" fill="#1e293b">Your device only</text>
+  <text x="991" y="306" font-size="13" fill="#64748b">Your device only</text>
+  
+  
+  <rect x="975" y="322" width="125" height="52" fill="#ffffff" stroke="#e2e8f0" stroke-width="0.5"/>
+  <text x="991" y="344" font-size="13" font-weight="600" fill="#1e293b">Total control seekers</text>
+  <text x="991" y="364" font-size="13" fill="#64748b">Total control seekers</text>
+  
+  
+
+  <!-- Bottom border -->
+  <rect x="100" y="380" width="1000" height="3" fill="#059669"/>
+
+  <!-- Source attribution -->
+  <text x="1190" y="415" text-anchor="end" font-size="10" fill="#cbd5e1">stillwareltd.com</text>
+</svg>
