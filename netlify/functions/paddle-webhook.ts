@@ -28,7 +28,8 @@ export default async function handler(req: Request, _context: Context) {
   // 2. Initialize SDK and Verify signature
   let eventData: any;
   const paddle = new Paddle(apiKey, {
-    environment: Environment.production, // (Change to Environment.sandbox if testing in sandbox)
+    // environment: Environment.production, // (Change to Environment.sandbox if testing in sandbox)
+    environment: Environment.sandbox,
   });
 
   try {
