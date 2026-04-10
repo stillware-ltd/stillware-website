@@ -5,6 +5,27 @@
 [context.production]
   environment = { NODE_VERSION = "20" }
 
+# License API — proxy clean URLs to Netlify Functions
+[[redirects]]
+  from = "/webhooks/paddle"
+  to = "/.netlify/functions/paddle-webhook"
+  status = 200
+
+[[redirects]]
+  from = "/api/licenses/activate"
+  to = "/.netlify/functions/license-activate"
+  status = 200
+
+[[redirects]]
+  from = "/api/licenses/deactivate"
+  to = "/.netlify/functions/license-deactivate"
+  status = 200
+
+[[redirects]]
+  from = "/api/licenses/validate"
+  to = "/.netlify/functions/license-validate"
+  status = 200
+
 # Legacy redirects for old /zeroed/ paths
 [[redirects]]
   from = "/zeroed/privacy"
