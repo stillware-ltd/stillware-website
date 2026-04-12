@@ -79,7 +79,7 @@ import Layout from '../layouts/Layout.astro';
                     <img src="/rankupchess-screens/RankUpChess_Screen_1.png" alt="RankUpChess — Home Screen" class="spotlight-image" width="600" height="400" loading="lazy" />
                 </div>
                 <div class="spotlight-text">
-                    <span class="spotlight-badge">Coming Soon</span>
+                    <span class="spotlight-badge spotlight-badge-live">Available Now</span>
                     <h2>RankUpChess:<br />The Offline Chess Academy for Kids.</h2>
                     <p>A premium, 100% offline chess academy. 5,000+ puzzles, a 10-tier AI engine, and interactive lessons — all without an internet connection. Pay once, own forever. No data harvesting.</p>
                     <a href="/rankupchess" class="btn-primary chess-btn">Explore RankUpChess</a>
@@ -609,6 +609,11 @@ import Layout from '../layouts/Layout.astro';
         margin-bottom: 1.25rem;
         background: rgba(245, 158, 11, 0.1);
         color: #B45309;
+    }
+
+    .spotlight-badge-live {
+        background: rgba(16, 185, 129, 0.1);
+        color: #059669;
     }
 
     .chess-btn {

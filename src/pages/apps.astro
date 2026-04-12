@@ -34,10 +34,10 @@ import Layout from '../layouts/Layout.astro';
                 </div>
             </div>
 
-            <!-- RankUpChess - Coming Soon -->
-            <div class="app-card featured-upcoming reveal">
+            <!-- RankUpChess — Live on Windows + Android -->
+            <div class="app-card featured-live reveal">
                 <div class="app-card-content">
-                    <span class="app-status soon-badge">Coming Soon</span>
+                    <span class="app-status live-badge">Available Now</span>
                     <div class="app-icon">
                         <img src="/RankUpChess_logo.png" alt="RankUpChess" width="64" height="64" />
                     </div>
@@ -46,8 +46,8 @@ import Layout from '../layouts/Layout.astro';
                     <p class="app-desc">A premium, 100% offline chess academy. 5,000+ puzzles, 10-tier AI engine, interactive lessons, and a parental gate system. No subscriptions, no data harvesting.</p>
                     <div class="app-platforms">
                         <span class="platform-tag">Windows</span>
+                        <span class="platform-tag">Android</span>
                         <span class="platform-tag muted">iOS — Soon</span>
-                        <span class="platform-tag muted">Android — Soon</span>
                     </div>
                     <a href="/rankupchess" class="btn-primary chess-cta">Explore RankUpChess</a>
                 </div>
@@ -247,7 +247,7 @@ import Layout from '../layouts/Layout.astro';
         border-color: var(--color-primary);
     }
 
-    .app-card.featured-upcoming {
+    .app-card.featured-live {
         background: linear-gradient(135deg, rgba(245, 158, 11, 0.04) 0%, rgba(245, 158, 11, 0.01) 100%);
         border: 2px solid rgba(245, 158, 11, 0.15);
         border-radius: 24px;
@@ -256,7 +256,7 @@ import Layout from '../layouts/Layout.astro';
         text-align: center;
     }
 
-    .app-card.featured-upcoming .app-icon img {
+    .app-card.featured-live .app-icon img {
         border-radius: 16px;
     }
 
@@ -273,6 +273,6 @@ import Layout from '../layouts/Layout.astro';
         .apps-hero h1 { font-size: 2.5rem; }
         .upcoming-grid { grid-template-columns: 1fr; }
         .app-card.live { padding: 2.5rem 1.5rem; }
-        .app-card.featured-upcoming { padding: 2.5rem 1.5rem; }
+        .app-card.featured-live { padding: 2.5rem 1.5rem; }
     }
 </style>
