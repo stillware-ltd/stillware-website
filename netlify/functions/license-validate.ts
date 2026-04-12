@@ -1,6 +1,10 @@
 import type { Context } from "@netlify/functions";
 import { getDb } from "./lib/db.js";
 import { hashLicenseKey } from "./lib/crypto.js";
+import {
+  DEFAULT_PRODUCT_FOR_LEGACY_CLIENTS,
+  isValidProduct,
+} from "./lib/products.js";
 
 export default async function handler(req: Request, _context: Context) {
   if (req.method !== "POST") {
@@ -14,18 +18,23 @@ export default async function handler(req: Request, _context: Context) {
     return jsonResponse({ valid: false, reason: "Invalid JSON" }, 400);
   }
 
-  const { license_key, instance_id } = body;
+  const { license_key, instance_id, product } = body;
   if (!license_key) {
     return jsonResponse({ valid: false, reason: "Missing license_key" }, 400);
   }
 
+  // `product` is optional for backward compat with the live Zeroed app.
+  const productSlug = isValidProduct(product)
+    ? product
+    : DEFAULT_PRODUCT_FOR_LEGACY_CLIENTS;
+
   const keyHash = hashLicenseKey(license_key);
   const db = getDb();
 
-  // 1. Check license exists and is not revoked
+  // 1. Check license exists for the requested product and is not revoked
   const license = await db.execute({
-    sql: "SELECT id, revoked FROM licenses WHERE key_hash = ?",
-    args: [keyHash],
+    sql: "SELECT id, revoked FROM licenses WHERE key_hash = ? AND product = ?",
+    args: [keyHash, productSlug],
   });
 
   if (license.rows.length === 0) {

@@ -1,4 +1,5 @@
 import { Resend } from "resend";
+import type { ProductConfig } from "./products.js";
 
 let resendClient: Resend | null = null;
 
@@ -13,14 +14,15 @@ function getResend(): Resend {
 
 export async function sendLicenseEmail(
   to: string,
-  licenseKey: string
+  licenseKey: string,
+  product: ProductConfig
 ): Promise<void> {
   const from = process.env.RESEND_FROM_EMAIL || "Stillware <noreply@stillwareltd.com>";
 
   await getResend().emails.send({
     from,
     to,
-    subject: "Your Zeroed License Key",
+    subject: `Your ${product.name} License Key`,
     html: `
 <!DOCTYPE html>
 <html>
@@ -44,26 +46,26 @@ export async function sendLicenseEmail(
 <body>
   <div class="container">
     <div class="header">
-      <h1>Zeroed — License Key</h1>
+      <h1>${product.name} — License Key</h1>
     </div>
     <div class="body">
-      <p>Thank you for purchasing Zeroed! Here is your lifetime license key:</p>
+      <p>Thank you for purchasing ${product.name}! Here is your lifetime license key:</p>
       <div class="key-box">
         <code>${licenseKey}</code>
       </div>
       <p><strong>To activate:</strong></p>
       <ul class="steps">
-        <li data-step="1.">Open Zeroed on your desktop</li>
+        <li data-step="1.">Open ${product.name} on your desktop</li>
         <li data-step="2.">Go to the Paywall or Settings screen</li>
         <li data-step="3.">Tap <strong>"I have a License Key"</strong></li>
         <li data-step="4.">Paste the key above and tap <strong>Activate</strong></li>
       </ul>
-      <p>You can activate this key on up to <strong>3 devices</strong>. If you need to move it to a new machine, deactivate an existing one first.</p>
+      <p>You can activate this key on up to <strong>${product.maxActivations} devices</strong>. If you need to move it to a new machine, deactivate an existing one first.</p>
       <p>Keep this email safe — it's your proof of purchase.</p>
     </div>
     <div class="footer">
       Questions? <a href="mailto:support@stillwareltd.com">support@stillwareltd.com</a><br>
-      Stillware Ltd &mdash; Zero stress. Total control.
+      Stillware Ltd &mdash; ${product.tagline}
     </div>
   </div>
 </body>

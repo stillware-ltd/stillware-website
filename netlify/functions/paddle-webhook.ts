@@ -3,6 +3,7 @@ import { Environment, Paddle, EventName } from "@paddle/paddle-node-sdk";
 import { getDb } from "./lib/db.js";
 import { generateLicenseKey, hashLicenseKey } from "./lib/crypto.js";
 import { sendLicenseEmail } from "./lib/email.js";
+import { PRODUCTS, productFromTransactionItems } from "./lib/products.js";
 
 export default async function handler(req: Request, _context: Context) {
   if (req.method !== "POST") {
@@ -56,7 +57,25 @@ export default async function handler(req: Request, _context: Context) {
     return new Response("Missing required fields", { status: 400 });
   }
 
-  // 4. Fetch the actual customer email from Paddle API
+  // 4. Determine which product this transaction belongs to from its line
+  // items. We refuse to fall back to a default — silent fall-through would
+  // mis-attribute revenue and let one product's keys unlock another.
+  const items = eventData.data?.items;
+  const productSlug = productFromTransactionItems(items);
+  if (!productSlug) {
+    const priceIds = (items ?? [])
+      .map((it: any) => it?.price?.id)
+      .filter(Boolean);
+    console.error(
+      `No known product for transaction ${transactionId}. Price IDs seen: ${JSON.stringify(priceIds)}. ` +
+      `Add the price ID to lib/products.ts.`
+    );
+    // 500 so Paddle retries — gives us time to deploy the mapping update.
+    return new Response("Unknown product price ID", { status: 500 });
+  }
+  const product = PRODUCTS[productSlug];
+
+  // 5. Fetch the actual customer email from Paddle API
   let customerEmail: string;
   try {
     const customer = await paddle.customers.get(customerId);
@@ -68,17 +87,23 @@ export default async function handler(req: Request, _context: Context) {
     return new Response("Failed to retrieve customer details", { status: 500 });
   }
 
-  // 5. Generate license key
+  // 6. Generate license key
   const licenseKey = generateLicenseKey();
   const keyHash = hashLicenseKey(licenseKey);
 
-  // 6. Store in database (idempotency via UNIQUE constraint)
+  // 7. Store in database (idempotency via UNIQUE constraint on paddle_txn_id)
   const db = getDb();
   try {
     await db.execute({
-      sql: `INSERT INTO licenses (key_hash, email, paddle_txn_id)
-            VALUES (?, ?, ?)`,
-      args: [keyHash, customerEmail, transactionId],
+      sql: `INSERT INTO licenses (key_hash, email, paddle_txn_id, product, max_activations)
+            VALUES (?, ?, ?, ?, ?)`,
+      args: [
+        keyHash,
+        customerEmail,
+        transactionId,
+        product.slug,
+        product.maxActivations,
+      ],
     });
   } catch (err: any) {
     if (
@@ -95,15 +120,18 @@ export default async function handler(req: Request, _context: Context) {
     return new Response("Database error", { status: 500 });
   }
 
-  // 7. Send license email
+  // 8. Send license email
   try {
-    await sendLicenseEmail(customerEmail, licenseKey);
+    await sendLicenseEmail(customerEmail, licenseKey, product);
   } catch (err) {
     console.error("Failed to send license email:", err);
   }
 
-  return new Response(JSON.stringify({ success: true }), {
-    status: 200,
-    headers: { "Content-Type": "application/json" },
-  });
+  return new Response(
+    JSON.stringify({ success: true, product: product.slug }),
+    {
+      status: 200,
+      headers: { "Content-Type": "application/json" },
+    }
+  );
 }

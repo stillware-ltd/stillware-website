@@ -1,6 +1,10 @@
 import type { Context } from "@netlify/functions";
 import { getDb } from "./lib/db.js";
 import { hashLicenseKey } from "./lib/crypto.js";
+import {
+  DEFAULT_PRODUCT_FOR_LEGACY_CLIENTS,
+  isValidProduct,
+} from "./lib/products.js";
 
 export default async function handler(req: Request, _context: Context) {
   if (req.method !== "POST") {
@@ -14,18 +18,25 @@ export default async function handler(req: Request, _context: Context) {
     return jsonResponse({ success: false, error: "Invalid JSON" }, 400);
   }
 
-  const { license_key, machine_id, machine_name } = body;
+  const { license_key, machine_id, machine_name, product } = body;
   if (!license_key || !machine_id) {
     return jsonResponse({ success: false, error: "Missing license_key or machine_id" }, 400);
   }
 
+  // `product` is optional for backward compat with the live Zeroed app, which
+  // pre-dates this multi-product change. New apps must always send it.
+  const productSlug = isValidProduct(product)
+    ? product
+    : DEFAULT_PRODUCT_FOR_LEGACY_CLIENTS;
+
   const keyHash = hashLicenseKey(license_key);
   const db = getDb();
 
-  // 1. Look up license
+  // 1. Look up license — scoped to the requested product so a Zeroed key
+  //    can never activate a RankUp Chess install (and vice versa).
   const license = await db.execute({
-    sql: "SELECT id, email, max_activations, revoked FROM licenses WHERE key_hash = ?",
-    args: [keyHash],
+    sql: "SELECT id, email, max_activations, revoked FROM licenses WHERE key_hash = ? AND product = ?",
+    args: [keyHash, productSlug],
   });
 
   if (license.rows.length === 0) {
@@ -80,7 +91,7 @@ export default async function handler(req: Request, _context: Context) {
   }
 
   // 4. Create new activation
-  const insertResult = await db.execute({
+  await db.execute({
     sql: `INSERT INTO activations (id, license_id, machine_id, machine_name)
           VALUES (lower(hex(randomblob(16))), ?, ?, ?)`,
     args: [licenseId, machine_id, machine_name || null],

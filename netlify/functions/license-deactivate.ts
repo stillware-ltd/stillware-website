@@ -1,6 +1,10 @@
 import type { Context } from "@netlify/functions";
 import { getDb } from "./lib/db.js";
 import { hashLicenseKey } from "./lib/crypto.js";
+import {
+  DEFAULT_PRODUCT_FOR_LEGACY_CLIENTS,
+  isValidProduct,
+} from "./lib/products.js";
 
 export default async function handler(req: Request, _context: Context) {
   if (req.method !== "POST") {
@@ -14,18 +18,22 @@ export default async function handler(req: Request, _context: Context) {
     return jsonResponse({ success: false, error: "Invalid JSON" }, 400);
   }
 
-  const { license_key, instance_id } = body;
+  const { license_key, instance_id, product } = body;
   if (!license_key || !instance_id) {
     return jsonResponse({ success: false, error: "Missing license_key or instance_id" }, 400);
   }
 
+  const productSlug = isValidProduct(product)
+    ? product
+    : DEFAULT_PRODUCT_FOR_LEGACY_CLIENTS;
+
   const keyHash = hashLicenseKey(license_key);
   const db = getDb();
 
-  // Verify the license exists
+  // Verify the license exists for the requested product
   const license = await db.execute({
-    sql: "SELECT id FROM licenses WHERE key_hash = ?",
-    args: [keyHash],
+    sql: "SELECT id FROM licenses WHERE key_hash = ? AND product = ?",
+    args: [keyHash, productSlug],
   });
 
   if (license.rows.length === 0) {
