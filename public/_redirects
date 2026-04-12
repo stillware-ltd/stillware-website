@@ -1,2 +1,1 @@
-# Redirect root to /zeroed
-/ /zeroed/ 301
+# (Intentionally empty — root serves the Stillware Ltd homepage from src/pages/index.astro)

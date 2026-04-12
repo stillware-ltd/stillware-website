@@ -42,11 +42,6 @@
   to = "/delete-account"
   status = 301
 
-[[redirects]]
-  from = "/zeroed/"
-  to = "/zeroed"
-  status = 301
-
 # Form notifications — sends all form submissions to support email
 # Configure in Netlify Dashboard: Site settings > Forms > Form notifications
 # Add "Email notification" for each form, recipient: support@stillwareltd.com
