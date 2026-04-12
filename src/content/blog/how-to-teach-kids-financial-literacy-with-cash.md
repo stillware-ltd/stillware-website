@@ -105,7 +105,13 @@ They will have internalized the most important rule: money is a limited tool you
 
 Our philosophy at Stillware is that the best financial education tool for a child works the same way cash does — it's tangible, it's finite, and it doesn't phone home. We build software that teaches ownership, not dependency. If a kid can learn to budget with three jars and a notebook, the app that replaces the notebook should be just as simple and just as private.
 
-Ready to move beyond abstract numbers and build real financial understanding? **The most powerful tool you can give your child is a system that makes value tangible and keeps their financial education private.** Start the conversation this week with three jars, some cash, and the commitment to log the journey together. Give it a try and see the difference a tactile system makes. For a deeper dive into choosing the right tools, check out our guide on [privacy-first budgeting philosophy](/blog/privacy-first-budgeting-philosophy/).
+Ready to move beyond abstract numbers and build real financial understanding? **The most powerful tool you can give your child is a system that makes value tangible and keeps their financial education private.** Start the conversation this week with three jars, some cash, and the commitment to log the journey together. When they're ready for a digital ledger, **[try Zeroed free for 34 days](/zeroed)**—a one-time purchase, offline-first budgeting app with no ads and no data collection. For a deeper dive into choosing the right tools, check out our guide on [privacy-first budgeting philosophy](/blog/privacy-first-budgeting-philosophy/).
+
+
+<div class="cta-box cta-inline">
+  <p>Try Zeroed Free — One-Time Purchase, No Subscription</p>
+  <a href="/zeroed" class="cta-button">Try Zeroed Free</a>
+</div>
 
 <!-- DATA_NEEDED: Statistics on the percentage of children's finance apps that share data with third-party advertisers -->
 <!-- DATA_NEEDED: Study comparing long-term savings habits of kids taught with cash systems vs. digital-only systems -->

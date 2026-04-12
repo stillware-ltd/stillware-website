@@ -90,4 +90,10 @@ Most finance apps share a troubling assumption: that your data is also their ass
 
 The path to financial confidence isn't found in a perfectly automated pipeline of your spending data. It's forged in the repeated, conscious act of acknowledging where your money goes. The friction is the fire that forges awareness.
 
-**Ready to build that awareness?** The first step is choosing tools that respect your attention as much as your money. Explore systems that treat your data as a private record, not a commodity, and watch how your relationship with money transforms. Try a manual approach for one month and see the difference for yourself.
+**Ready to build that awareness?** The first step is choosing tools that respect your attention as much as your money. **[Try Zeroed free for 34 days](/zeroed)**—a manual-entry, offline-first budgeting app built for exactly this kind of intentional tracking. One-time purchase, no subscription, no cloud dependency.
+
+
+<div class="cta-box cta-inline">
+  <p>Try Zeroed Free — Manual Budgeting That Builds Awareness</p>
+  <a href="/zeroed" class="cta-button">Try Zeroed Free</a>
+</div>

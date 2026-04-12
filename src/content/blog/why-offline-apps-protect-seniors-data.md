@@ -92,3 +92,11 @@ Ultimately, this is about more than bits and bytes. It's about dignity. Seniors 
 We designed every Stillware app for seniors with a simple test: can someone's grandparent use this without calling tech support? No account creation, no password to forget, no cloud terms to accept. Open the app, use the app. The security model should be invisible — baked into the architecture, not delegated to the user through complex settings screens.
 
 Choosing offline-first tools is a conscious act of protection. It is the digital equivalent of installing a sturdy lock on the front door, shredding personal documents, and being selective about who gets your phone number. In a world obsessed with connecting everything, the wisest choice for safeguarding a senior's digital life is often to thoughtfully disconnect. Start by evaluating one app today—the one that holds the most sensitive information—and seek out a simpler, local alternative. Your data, and your peace of mind, should belong to you alone.
+
+Looking for a budgeting app built with these principles? **[Try Zeroed free for 34 days](/zeroed)**—no account required, no cloud dependency, one-time purchase. Open the app, use the app.
+
+
+<div class="cta-box cta-inline">
+  <p>Try Zeroed Free — Simple, Private Budgeting</p>
+  <a href="/zeroed" class="cta-button">Try Zeroed Free</a>
+</div>

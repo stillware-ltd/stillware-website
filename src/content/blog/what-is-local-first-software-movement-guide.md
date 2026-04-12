@@ -78,4 +78,10 @@ The movement is growing because the costs of the cloud model are becoming unbear
 
 **The local-first software movement is the quiet rebellion of choosing ownership over convenience, resilience over fragility, and privacy over surveillance.** It’s choosing the filing cabinet in your home.
 
-Ready to see what software ownership feels like? **Try Zeroed free for 34 days.** It’s a one-time purchase, with no subscriptions, and it works entirely on your device. This is the core of our philosophy, which we detail in [Why We Don't Do Subscriptions](/blog/why-we-dont-do-subscriptions/). See how the other half lives—the half that owns their tools.
+Ready to see what software ownership feels like? **[Try Zeroed free for 34 days.](/zeroed)** It’s a one-time purchase, with no subscriptions, and it works entirely on your device. This is the core of our philosophy, which we detail in [Why We Don’t Do Subscriptions](/blog/why-we-dont-do-subscriptions/). See how the other half lives—the half that owns their tools.
+
+
+<div class="cta-box cta-inline">
+  <p>Try Zeroed — Own Your Budget, Don’t Rent It</p>
+  <a href="/zeroed" class="cta-button">Try Zeroed Free</a>
+</div>

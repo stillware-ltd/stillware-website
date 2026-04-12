@@ -89,4 +89,10 @@ Starting a side hustle as a teen is one of the most effective ways to learn real
 
 The goal is to build something that lasts, on a foundation you own. This means selecting tools that prioritize your autonomy, protect your data, and work as hard as you do—wherever you are. It's about professionalizing your operation from the first invoice, not with complex software, but with the right software.
 
-Ready to build your hustle on your own terms? **The first step is choosing tools that put you in control.** Start by auditing your current process. Are you using any "free" tools that might be selling your client list? Could you operate for a day without internet? Try it. You might discover that the best teen side hustle tools offline are the ones that give you back your independence, your data, and your focus. For more on building a resilient business, check out our guide on how to build a budget you actually own. Give it a try and see how a local-first approach transforms your side hustle from a casual job into a real business. If you're ready to ditch subscriptions, [explore tools built for ownership](/blog/).
+Ready to build your hustle on your own terms? **The first step is choosing tools that put you in control.** Start by auditing your current process. Are you using any "free" tools that might be selling your client list? Could you operate for a day without internet? Try it. You might discover that the best teen side hustle tools offline are the ones that give you back your independence, your data, and your focus. For more on building a resilient business, check out our guide on how to build a budget you actually own. Give it a try and see how a local-first approach transforms your side hustle from a casual job into a real business. If you're ready to ditch subscriptions, **[try Zeroed free for 34 days](/zeroed)**—a one-time purchase budgeting app that works entirely offline.
+
+
+<div class="cta-box cta-inline">
+  <p>Try Zeroed Free — Own Your Budget, No Subscription</p>
+  <a href="/zeroed" class="cta-button">Try Zeroed Free</a>
+</div>

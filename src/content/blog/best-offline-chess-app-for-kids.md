@@ -122,10 +122,10 @@ The focus cultivated over a chessboard translates. The patience to think three m
 
 **We built Rank Up Chess because every child deserves a world-class chess education that respects their privacy, their focus, and their family's budget.** It’s the app we wanted for our own families: comprehensive, permanent, and peaceful.
 
-Ready to see how an offline-first approach can transform your child's chess journey? **Get notified when Rank Up Chess launches**—it’s a one-time purchase with a 34-day free trial, no subscription required. Give it a try and see the difference for yourself.
+Ready to see how an offline-first approach can transform your child’s chess journey? **Try Rank Up Chess**—it’s a one-time purchase with a 34-day free trial, no subscription required. Give it a try and see the difference for yourself.
 
 
-<div class="cta-box cta-waitlist">
-  <p>Get notified when Rank Up Chess launches</p>
-  <a href="/apps" class="cta-button cta-waitlist-button">Notify Me</a>
+<div class="cta-box cta-inline">
+  <p>Try Rank Up Chess — Offline Chess Mastery for Kids</p>
+  <a href="/rankupchess" class="cta-button">Try Rank Up Chess</a>
 </div>

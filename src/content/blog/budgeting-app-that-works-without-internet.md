@@ -93,4 +93,10 @@ The search for a **budgeting app that works without the internet** is more than 
 
 You don’t have to accept that your financial software must phone home to function. The alternative is software designed for ownership, where you hold the keys—literally. This means faster performance, unwavering reliability, and the peace of mind that comes from knowing your sensitive financial data never travels over the internet to a company server.
 
-Ready to experience the difference? You can **try Zeroed free for 34 days**—with every feature unlocked—to see how a dedicated, offline-first envelope budgeting system works for you. It’s a one-time purchase, with no subscription, because your budget should be a permanent asset you control, not a service you rent. Give it a try and see for yourself.
+Ready to experience the difference? You can **[try Zeroed free for 34 days](/zeroed)**—with every feature unlocked—to see how a dedicated, offline-first envelope budgeting system works for you. It’s a one-time purchase, with no subscription, because your budget should be a permanent asset you control, not a service you rent. Give it a try and see for yourself.
+
+
+<div class="cta-box cta-inline">
+  <p>Try Zeroed Free — Own Your Budget Forever, No Subscription</p>
+  <a href="/zeroed" class="cta-button">Try Zeroed Free</a>
+</div>

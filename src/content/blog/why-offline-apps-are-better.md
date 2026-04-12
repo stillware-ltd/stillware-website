@@ -65,3 +65,11 @@ This mindset extends beyond budgeting. It applies to note-taking, photo editing,
 > The next time you evaluate software, look past the glossy marketing for the "seamless cloud experience." Ask instead: Does it need the internet to perform its core function? Where does my data live, really? What is the true 5-year cost?
 
 The answers will often lead you to a quieter, more powerful, and more permanent class of software—one that works for you, on your terms. Full disclosure: we built Zeroed to be a definitive example of this principle in action, proving that you can have a premium, private financial tool without renting your data or your budget.
+
+**[Try Zeroed free for 34 days](/zeroed)**—offline-first, one-time purchase, and every feature unlocked from day one. See the difference for yourself.
+
+
+<div class="cta-box cta-inline">
+  <p>Try Zeroed Free — Offline-First Budgeting You Own</p>
+  <a href="/zeroed" class="cta-button">Try Zeroed Free</a>
+</div>

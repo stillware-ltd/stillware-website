@@ -107,4 +107,10 @@ The 2026 landscape shows a clear divide. On one side, polished, cloud-dependent 
 
 **The shift to a YNAB alternative with no subscription is a vote for a different relationship with your software.** It’s the choice to be an owner in your own financial life.
 
-Ready to stop renting your budget? Discover how a one-time purchase can work. Learn more about [why we don't do subscriptions](/blog/why-we-dont-do-subscriptions/) or try Zeroed with a full 34-day free trial—no subscription, no credit card required. See if a one-time purchase and local-first control fit your financial workflow.
+Ready to stop renting your budget? Discover how a one-time purchase can work. Learn more about [why we don't do subscriptions](/blog/why-we-dont-do-subscriptions/) or [try Zeroed with a full 34-day free trial](/zeroed)—no subscription, no credit card required. See if a one-time purchase and local-first control fit your financial workflow.
+
+
+<div class="cta-box cta-inline">
+  <p>Try Zeroed Free — One-Time Purchase, No Subscription</p>
+  <a href="/zeroed" class="cta-button">Try Zeroed Free</a>
+</div>

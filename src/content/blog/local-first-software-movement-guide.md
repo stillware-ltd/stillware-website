@@ -50,4 +50,10 @@ You don't have to be a developer to benefit from local-first software. Start by 
 
 The answers will quickly tell you where an app's priorities lie. The movement is growing, with tools emerging for note-taking, project management, design, and of course, personal finance.
 
-Ready to experience software that you actually own? This philosophy is what we build into every aspect of Zeroed. It’s a hardcore, manual-entry budgeting app that keeps your financial data encrypted on your device, uses your Google Drive for sync only if you want it, and never charges you a subscription. **Try Zeroed free for 34 days** and see what it means to use a tool designed for ownership, not rental.
+Ready to experience software that you actually own? This philosophy is what we build into every aspect of Zeroed. It’s a hardcore, manual-entry budgeting app that keeps your financial data encrypted on your device, uses your Google Drive for sync only if you want it, and never charges you a subscription. **[Try Zeroed free for 34 days](/zeroed)** and see what it means to use a tool designed for ownership, not rental.
+
+
+<div class="cta-box cta-inline">
+  <p>Try Zeroed — Own Your Budget, Don’t Rent It</p>
+  <a href="/zeroed" class="cta-button">Try Zeroed Free</a>
+</div>

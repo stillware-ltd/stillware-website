@@ -121,10 +121,10 @@ Key benefits of this approach include:
 
 The next time you’re in a waiting room or planning a road trip, you have an alternative to mindless scrolling or ad-riddled games. You can provide a tool that turns that time into genuine cognitive development. The puzzles are challenging, the progress is tangible, and the privacy is absolute.
 
-Ready to see what dedicated, offline-first chess training looks like? **Get notified when Rank Up Chess launches**—it’s built from the ground up on the principles we’ve outlined: a one-time purchase, thousands of offline puzzles, a structured curriculum, and zero data collection. It’s chess mastery, on your terms. **Give it a try and see for yourself how offline chess puzzles for kids can transform learning.**
+Ready to see what dedicated, offline-first chess training looks like? **Try Rank Up Chess**—it’s built from the ground up on the principles we’ve outlined: a one-time purchase, thousands of offline puzzles, a structured curriculum, and zero data collection. It’s chess mastery, on your terms. **Give it a try and see for yourself how offline chess puzzles for kids can transform learning.**
 
 
-<div class="cta-box cta-waitlist">
-  <p>Get notified when Rank Up Chess launches</p>
-  <a href="/apps" class="cta-button cta-waitlist-button">Notify Me</a>
+<div class="cta-box cta-inline">
+  <p>Try Rank Up Chess — Offline Chess Mastery for Kids</p>
+  <a href="/rankupchess" class="cta-button">Try Rank Up Chess</a>
 </div>

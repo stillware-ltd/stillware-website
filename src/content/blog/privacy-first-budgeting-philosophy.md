@@ -84,3 +84,11 @@ This path is undeniably more intentional than clicking "Sign up with Google" on 
 **The philosophy of privacy-first budgeting concludes that true financial control is an illusion if you don't control the data that represents it.** It’s a call to move from being a user of services to being an owner of systems. The tools that support this philosophy are not just budgeting apps; they are statements of intent. They prove that you can have a world-class, modern financial interface without mortgaging your privacy to a server farm. The most powerful budget is the one that answers only to you.
 
 <!-- IMAGE: type=conclusion-visual | caption=The journey from data commodity to data sovereignty | data=Start:Data as Commodity (Cloud, Tracked, Rented) -> Process:Adopt Privacy-First Tools -> End:Data Sovereignty (Local, Private, Owned) -->
+
+Ready to put this philosophy into practice? **[Try Zeroed free for 34 days](/zeroed)**—a one-time purchase, privacy-first budgeting app that keeps your data encrypted on your device. No subscription, no server, no compromise.
+
+
+<div class="cta-box cta-inline">
+  <p>Try Zeroed Free — Privacy-First Budgeting You Own</p>
+  <a href="/zeroed" class="cta-button">Try Zeroed Free</a>
+</div>

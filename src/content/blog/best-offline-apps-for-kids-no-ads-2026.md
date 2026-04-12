@@ -72,9 +72,9 @@ This category is the most abused by the ad-supported model. We're looking for ap
 *   **Developer Insight:** After months of building Rank Up Chess, the biggest surprise was how much kids valued the "achievement" system over flashy animations. Beta testers told us the feature they valued most was the post-game analysis—understanding *why* they lost was more engaging than any cartoon reward. We built for mastery first.
 
 
-<div class="cta-box cta-waitlist">
-  <p>Get notified when Rank Up Chess launches</p>
-  <a href="/apps" class="cta-button cta-waitlist-button">Notify Me</a>
+<div class="cta-box cta-inline">
+  <p>Try Rank Up Chess — Offline Chess Mastery for Kids</p>
+  <a href="/rankupchess" class="cta-button">Try Rank Up Chess</a>
 </div>
 
 

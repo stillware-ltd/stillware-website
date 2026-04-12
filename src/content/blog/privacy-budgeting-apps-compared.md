@@ -94,3 +94,11 @@ Your choice depends on how you rank three core priorities: Privacy, Convenience,
 **The landscape of privacy budgeting apps is evolving from an afterthought to a primary feature.** The trend is moving toward user sovereignty—giving you the keys, letting you choose the storage, and being transparent about data flows. Your budget is a map of your life. You deserve to choose who else gets to see it.
 
 The investigation leads to a clear conclusion: for uncompromising privacy without sacrificing modern sync, a local-first app that leverages your existing cloud storage is the most robust architecture available today. It replaces trust in a corporation with trust in cryptography and your own chosen tools.
+
+Ready to see what private budgeting actually looks like? **[Try Zeroed free for 34 days](/zeroed)**—local-first, zero-knowledge encryption, one-time purchase. Your budget, your device, your keys.
+
+
+<div class="cta-box cta-inline">
+  <p>Try Zeroed Free — Private Budgeting, No Subscription</p>
+  <a href="/zeroed" class="cta-button">Try Zeroed Free</a>
+</div>

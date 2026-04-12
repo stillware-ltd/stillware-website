@@ -89,7 +89,7 @@ The landscape is improving. Developers are recognizing that a growing segment of
 Ready to move beyond the ad-supported default? Start by exploring one of the focused categories above. **The most powerful feature of any kids' app is the off button, and the best apps are those your child willingly turns off because they've been inspired to go do something else.** For parents interested in tools that respect this principle across all categories—from budgeting to education—the philosophy of one-time purchases and local-first design is worth your attention. Give one of the recommended apps a try and see the difference for yourself.
 
 
-<div class="cta-box cta-waitlist">
-  <p>Get notified when Rank Up Chess launches</p>
-  <a href="/apps" class="cta-button cta-waitlist-button">Notify Me</a>
+<div class="cta-box cta-inline">
+  <p>Try Rank Up Chess — Offline Chess Mastery for Kids</p>
+  <a href="/rankupchess" class="cta-button">Try Rank Up Chess</a>
 </div>
