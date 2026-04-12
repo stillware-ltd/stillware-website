@@ -1,5 +1,17 @@
 ---
 import Layout from '../layouts/Layout.astro';
+
+// Bump RANKUP_WINDOWS_VERSION each Windows release; the download URL
+// derives from it so hero/pricing/final CTAs stay in sync.
+const RANKUP_WINDOWS_VERSION = '0.1.6';
+const RANKUP_WINDOWS_DOWNLOAD =
+  `https://github.com/stillware-ltd/rankup-chess-releases/releases/download/v${RANKUP_WINDOWS_VERSION}/RankUpChess-Setup-${RANKUP_WINDOWS_VERSION}.exe`;
+
+// Mobile store links. iOS listing is not published yet; keep the
+// constant empty so the template can render a "Coming soon" badge.
+const RANKUP_PLAY_STORE_URL =
+  'https://play.google.com/store/apps/details?id=com.stillware.rankup_chess';
+const RANKUP_APP_STORE_URL = '';
 ---
 
 <Layout
@@ -15,8 +27,9 @@ import Layout from '../layouts/Layout.astro';
                 <h1 class="text-gradient-gold">Stop renting your kids' educational apps.</h1>
                 <p class="subheadline">Welcome to <strong>RankUpChess</strong>. A premium, 100% offline chess academy designed for kids. No monthly subscriptions, no internet required, and absolutely no data harvesting. Just pure chess.</p>
                 <div class="hero-cta">
-                    <a href="#pricing" class="btn-primary pulse">
+                    <a href={RANKUP_WINDOWS_DOWNLOAD} class="btn-primary pulse">
                         Download Free Trial
+                        <span class="btn-subtext">Windows &middot; v{RANKUP_WINDOWS_VERSION}</span>
                     </a>
                     <div class="platform-badges">
                         <span class="platform-badge">
@@ -27,10 +40,10 @@ import Layout from '../layouts/Layout.astro';
                             <svg viewBox="0 0 24 24" fill="currentColor" width="18" height="18"><path d="M17.05 20.28c-.98.95-2.05.8-3.08.35-1.09-.46-2.09-.48-3.24 0-1.44.62-2.2.44-3.06-.35C2.79 15.25 3.51 7.59 9.05 7.31c1.35.07 2.29.74 3.08.8 1.18-.24 2.31-.93 3.57-.84 1.51.12 2.65.72 3.4 1.8-3.12 1.87-2.38 5.98.48 7.13-.57 1.5-1.31 2.99-2.54 4.09zM12.03 7.25c-.15-2.23 1.66-4.07 3.74-4.25.29 2.58-2.34 4.5-3.74 4.25z" /></svg>
                             App Store — Soon
                         </span>
-                        <span class="platform-badge coming-soon">
+                        <a href={RANKUP_PLAY_STORE_URL} class="platform-badge platform-badge-link" target="_blank" rel="noopener">
                             <svg viewBox="0 0 24 24" fill="currentColor" width="18" height="18"><path d="M17.523 2.293l-1.59 2.755c-1.17-.678-2.53-1.048-3.933-1.048s-2.763.37-3.933 1.048L6.477 2.293a.578.578 0 00-.79.211.58.58 0 00.211.79l1.548 2.682A8.502 8.502 0 004 12.5h16a8.502 8.502 0 00-3.446-6.524l1.548-2.682a.58.58 0 00-.579-.79zM9 10.5a1 1 0 110-2 1 1 0 010 2zm6 0a1 1 0 110-2 1 1 0 010 2zM4 13.5v6a2.5 2.5 0 005 0v-6zm11 0v6a2.5 2.5 0 005 0v-6z" /></svg>
-                            Google Play — Soon
-                        </span>
+                            Google Play
+                        </a>
                     </div>
                 </div>
             </div>
@@ -96,7 +109,7 @@ import Layout from '../layouts/Layout.astro';
                         <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="7" width="20" height="14" rx="2" ry="2"/><path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"/></svg>
                     </div>
                     <h3>Pay Once, Own Forever</h3>
-                    <p>Stop paying endless monthly fees just to let your child play chess. RankUpChess offers a lifetime license for just $7.99. You own the software, forever.</p>
+                    <p>Stop paying endless monthly fees just to let your child play chess. RankUpChess is a lifetime license &mdash; one payment, no subscription, no renewal. You own the software, forever.</p>
                 </div>
                 <div class="feature-card reveal-up reveal-delay-2">
                     <div class="icon-box">
@@ -166,8 +179,30 @@ import Layout from '../layouts/Layout.astro';
                 <h3>Unlock Their Full Potential</h3>
                 <p class="pricing-desc">A single, one-time purchase unlocks the entire suite — 5,000+ puzzles, advanced AI, and deep analytics. We will never charge you a recurring subscription.</p>
                 <div class="price-container">
-                    <span class="price-amount">$7.99</span>
-                    <span class="price-label">One-time. Forever.</span>
+                    <div class="price-row">
+                        <span class="price-platform">
+                            <svg viewBox="0 0 24 24" fill="currentColor" width="16" height="16" aria-hidden="true"><path d="M0 3.449L9.75 2.1v9.451H0m10.949-9.602L24 0v11.4H10.949M0 12.6h9.75v9.451L0 20.699M10.949 12.6H24V24l-12.9-1.801" /></svg>
+                            Windows
+                        </span>
+                        <span class="price-amount-inline">$14.99</span>
+                        <span class="price-meta">one-time &middot; up to 3 devices</span>
+                    </div>
+                    <div class="price-row">
+                        <span class="price-platform">
+                            <svg viewBox="0 0 24 24" fill="currentColor" width="16" height="16" aria-hidden="true"><path d="M17.523 2.293l-1.59 2.755c-1.17-.678-2.53-1.048-3.933-1.048s-2.763.37-3.933 1.048L6.477 2.293a.578.578 0 00-.79.211.58.58 0 00.211.79l1.548 2.682A8.502 8.502 0 004 12.5h16a8.502 8.502 0 00-3.446-6.524l1.548-2.682a.58.58 0 00-.579-.79zM9 10.5a1 1 0 110-2 1 1 0 010 2zm6 0a1 1 0 110-2 1 1 0 010 2zM4 13.5v6a2.5 2.5 0 005 0v-6zm11 0v6a2.5 2.5 0 005 0v-6z" /></svg>
+                            Android
+                        </span>
+                        <span class="price-amount-inline">$7.99</span>
+                        <span class="price-meta">after 34-day free trial</span>
+                    </div>
+                    <div class="price-row price-row-muted">
+                        <span class="price-platform">
+                            <svg viewBox="0 0 24 24" fill="currentColor" width="16" height="16" aria-hidden="true"><path d="M17.05 20.28c-.98.95-2.05.8-3.08.35-1.09-.46-2.09-.48-3.24 0-1.44.62-2.2.44-3.06-.35C2.79 15.25 3.51 7.59 9.05 7.31c1.35.07 2.29.74 3.08.8 1.18-.24 2.31-.93 3.57-.84 1.51.12 2.65.72 3.4 1.8-3.12 1.87-2.38 5.98.48 7.13-.57 1.5-1.31 2.99-2.54 4.09zM12.03 7.25c-.15-2.23 1.66-4.07 3.74-4.25.29 2.58-2.34 4.5-3.74 4.25z" /></svg>
+                            iOS
+                        </span>
+                        <span class="price-amount-inline">$7.99</span>
+                        <span class="price-meta">App Store &mdash; coming soon</span>
+                    </div>
                 </div>
                 <ul class="features-list">
                     <li><span class="check-icon">&#10003;</span> 5,000+ Tactical Puzzles</li>
@@ -176,8 +211,11 @@ import Layout from '../layouts/Layout.astro';
                     <li><span class="check-icon">&#10003;</span> Advanced Coach's Dashboard</li>
                     <li><span class="check-icon">&#10003;</span> All Future Updates Included</li>
                 </ul>
-                <a href="#" class="btn-primary pulse pricing-cta">Start Your Chess Journey Today</a>
-                <p class="pricing-note">Free trial included. No credit card required.</p>
+                <div class="pricing-cta-group">
+                    <a href={RANKUP_WINDOWS_DOWNLOAD} class="btn-primary pulse pricing-cta">Download for Windows</a>
+                    <a href={RANKUP_PLAY_STORE_URL} class="btn-secondary pricing-cta-secondary" target="_blank" rel="noopener">Get it on Google Play</a>
+                </div>
+                <p class="pricing-note">Free trial included on every platform. No credit card required to start.</p>
             </div>
         </div>
     </section>
@@ -188,7 +226,10 @@ import Layout from '../layouts/Layout.astro';
             <img src="/RankUpChess_logo.png" alt="RankUpChess" class="final-logo" width="120" height="120" />
             <h2>The Chess Academy They Deserve.</h2>
             <p>No subscriptions. No data harvesting. No internet required. Just pure, premium chess education — owned by you, forever.</p>
-            <a href="#pricing" class="btn-primary pulse">Download RankUpChess</a>
+            <div class="final-cta-buttons">
+                <a href={RANKUP_WINDOWS_DOWNLOAD} class="btn-primary pulse">Download for Windows</a>
+                <a href={RANKUP_PLAY_STORE_URL} class="btn-secondary final-cta-secondary" target="_blank" rel="noopener">Get it on Google Play</a>
+            </div>
         </div>
     </section>
 </Layout>
@@ -345,10 +386,23 @@ import Layout from '../layouts/Layout.astro';
         align-self: flex-start;
         background: linear-gradient(135deg, #F59E0B 0%, #D97706 100%);
         border-color: transparent;
+        display: inline-flex;
+        flex-direction: column;
+        align-items: center;
+        line-height: 1.2;
     }
 
     .hero-cta .btn-primary:hover {
         background: linear-gradient(135deg, #FBBF24 0%, #F59E0B 100%);
+    }
+
+    .btn-subtext {
+        display: block;
+        margin-top: 0.25rem;
+        font-size: 0.75rem;
+        font-weight: 500;
+        letter-spacing: 0.03em;
+        opacity: 0.85;
     }
 
     .platform-badges {
@@ -701,6 +755,49 @@ import Layout from '../layouts/Layout.astro';
 
     .price-container {
         margin-bottom: 2rem;
+        display: flex;
+        flex-direction: column;
+        gap: 0.5rem;
+    }
+
+    .price-row {
+        display: grid;
+        grid-template-columns: auto 1fr auto;
+        align-items: baseline;
+        gap: 1rem;
+        padding: 0.85rem 1rem;
+        border-radius: 10px;
+        background: rgba(255, 255, 255, 0.04);
+        border: 1px solid rgba(255, 255, 255, 0.08);
+    }
+
+    .price-row-muted {
+        opacity: 0.55;
+    }
+
+    .price-platform {
+        display: inline-flex;
+        align-items: center;
+        gap: 0.5rem;
+        font-weight: 600;
+        color: rgba(255, 255, 255, 0.92);
+        font-size: 0.95rem;
+    }
+
+    .price-amount-inline {
+        font-size: 1.5rem;
+        font-weight: 800;
+        color: #10B981;
+        line-height: 1;
+        justify-self: end;
+    }
+
+    .price-meta {
+        font-size: 0.78rem;
+        color: rgba(255, 255, 255, 0.55);
+        grid-column: 1 / -1;
+        margin-top: 0.15rem;
+        line-height: 1.2;
     }
 
     .price-amount {
@@ -742,6 +839,12 @@ import Layout from '../layouts/Layout.astro';
         flex-shrink: 0;
     }
 
+    .pricing-cta-group {
+        display: flex;
+        flex-direction: column;
+        gap: 0.75rem;
+    }
+
     .pricing-cta {
         width: 100%;
         text-align: center;
@@ -752,6 +855,35 @@ import Layout from '../layouts/Layout.astro';
 
     .pricing-cta:hover {
         background: linear-gradient(135deg, #FBBF24 0%, #F59E0B 100%);
+    }
+
+    .pricing-cta-secondary {
+        width: 100%;
+        text-align: center;
+        display: block;
+        padding: 0.85rem 1.5rem;
+        border-radius: 100px;
+        font-weight: 600;
+        font-size: 0.95rem;
+        color: rgba(255, 255, 255, 0.92);
+        background: rgba(255, 255, 255, 0.06);
+        border: 1px solid rgba(255, 255, 255, 0.18);
+        text-decoration: none;
+        transition: all 0.25s ease;
+    }
+
+    .pricing-cta-secondary:hover {
+        background: rgba(255, 255, 255, 0.1);
+        border-color: rgba(255, 255, 255, 0.28);
+    }
+
+    .platform-badge-link {
+        cursor: pointer;
+    }
+
+    .platform-badge-link:hover {
+        background: rgba(255, 255, 255, 0.14);
+        border-color: rgba(255, 255, 255, 0.2);
     }
 
     .pricing-note {
@@ -803,6 +935,31 @@ import Layout from '../layouts/Layout.astro';
 
     .final-cta-content .btn-primary:hover {
         background: linear-gradient(135deg, #FBBF24 0%, #F59E0B 100%);
+    }
+
+    .final-cta-buttons {
+        display: flex;
+        gap: 1rem;
+        justify-content: center;
+        flex-wrap: wrap;
+    }
+
+    .final-cta-secondary {
+        display: inline-block;
+        padding: 0.85rem 1.75rem;
+        border-radius: 100px;
+        font-weight: 600;
+        font-size: 0.95rem;
+        color: rgba(255, 255, 255, 0.92);
+        background: rgba(255, 255, 255, 0.06);
+        border: 1px solid rgba(255, 255, 255, 0.18);
+        text-decoration: none;
+        transition: all 0.25s ease;
+    }
+
+    .final-cta-secondary:hover {
+        background: rgba(255, 255, 255, 0.12);
+        border-color: rgba(255, 255, 255, 0.3);
     }
 
     /* Responsive */
