@@ -1,0 +1,142 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import {
+  PADDLE_CLIENT_TOKEN,
+  PADDLE_PRODUCTS,
+  isComingSoon,
+  type ProductSlug,
+} from '../../config/paddle';
+
+export function getStaticPaths() {
+  return Object.keys(PADDLE_PRODUCTS).map((slug) => ({
+    params: { product: slug },
+  }));
+}
+
+const { product } = Astro.params;
+const config = PADDLE_PRODUCTS[product as ProductSlug];
+
+// `getStaticPaths` already restricts the routes, but be defensive.
+if (!config) {
+  return Astro.redirect('/');
+}
+
+const comingSoon = isComingSoon(config);
+---
+
+<Layout
+  title={`Buy ${config.name} — Stillware Ltd`}
+  description={`Complete your purchase of ${config.name}.`}
+>
+  <section class="checkout-page">
+    <div class="checkout-content">
+      <h1 id="checkout-heading">
+        {comingSoon ? `${config.name} — Coming Soon` : 'Loading checkout…'}
+      </h1>
+      <p class="checkout-status" id="checkout-status">
+        {comingSoon
+          ? `${config.name} is launching soon. We'll let you know the moment it's available.`
+          : `Opening secure payment window for ${config.name}.`}
+      </p>
+      <noscript>
+        <p class="checkout-error">
+          JavaScript is required to complete checkout. Please enable JavaScript
+          and reload this page.
+        </p>
+      </noscript>
+      <a href="/" class="btn-secondary">Back to Home</a>
+    </div>
+  </section>
+
+  {!comingSoon && (
+    <>
+      <script is:inline src="https://cdn.paddle.com/paddle/v2/paddle.js"></script>
+      <script
+        is:inline
+        define:vars={{
+          token: PADDLE_CLIENT_TOKEN,
+          priceId: config.priceId,
+          productName: config.name,
+        }}
+      >
+        (function () {
+          const status = document.getElementById('checkout-status');
+          const heading = document.getElementById('checkout-heading');
+
+          function showError(msg) {
+            heading.innerText = 'Checkout unavailable';
+            status.innerHTML =
+              msg +
+              '<br><br>Need help? Email <a href="mailto:support@stillwareltd.com">support@stillwareltd.com</a>.';
+          }
+
+          if (typeof Paddle === 'undefined') {
+            showError('Paddle failed to load. Check your internet connection and reload the page.');
+            return;
+          }
+
+          try {
+            Paddle.Initialize({ token: token });
+          } catch (e) {
+            showError('Failed to initialise Paddle: ' + (e && e.message ? e.message : e));
+            return;
+          }
+
+          // Optional discount code via ?discount_code=...
+          const params = new URLSearchParams(window.location.search);
+          const discountCode = params.get('discount_code') || undefined;
+
+          const checkoutOptions = {
+            items: [{ priceId: priceId, quantity: 1 }],
+            settings: {
+              successUrl: window.location.origin + '/buy/success',
+            },
+          };
+          if (discountCode) {
+            checkoutOptions.discountCode = discountCode;
+          }
+
+          try {
+            Paddle.Checkout.open(checkoutOptions);
+            heading.innerText = 'Complete your purchase';
+            status.innerText =
+              'If the checkout window did not open, your browser may have blocked the popup. Reload the page or check your popup blocker.';
+          } catch (e) {
+            showError('Could not open checkout: ' + (e && e.message ? e.message : e));
+          }
+        })();
+      </script>
+    </>
+  )}
+</Layout>
+
+<style>
+  .checkout-page {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 2rem;
+  }
+
+  .checkout-content {
+    text-align: center;
+    max-width: 520px;
+  }
+
+  .checkout-content h1 {
+    font-size: 2rem;
+    margin-bottom: 1rem;
+  }
+
+  .checkout-status {
+    color: var(--color-text-light);
+    line-height: 1.6;
+    margin-bottom: 2rem;
+  }
+
+  .checkout-error {
+    color: #b91c1c;
+    margin-bottom: 2rem;
+  }
+</style>

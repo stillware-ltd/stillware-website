@@ -45,8 +45,7 @@ export const PRICE_ID_TO_PRODUCT: Record<string, ProductSlug> = {
   // Zeroed — Standard lifetime
   pri_01knnyfj5zezrch30qqbzkc378: "zeroed",
   // RankUp Chess — Lifetime ($14.99)
-  // TODO: replace with the real price ID once the Paddle product is created.
-  pri_RANKUP_LIFETIME_PLACEHOLDER: "rankup",
+  pri_01knztpnwdqxx8ecnbrjt4zkzq: "rankup",
 };
 
 /**

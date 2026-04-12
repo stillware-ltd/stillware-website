@@ -1,0 +1,75 @@
+---
+import Layout from '../../layouts/Layout.astro';
+---
+
+<Layout
+  title="Thank you — Stillware Ltd"
+  description="Your purchase is complete. Check your email for your license key."
+>
+  <section class="purchase-success">
+    <div class="purchase-success-content">
+      <div class="purchase-success-icon">
+        <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+      </div>
+      <h1>Thank you for your purchase</h1>
+      <p>
+        Your payment is complete. We've sent your license key to the email
+        address you used at checkout.
+      </p>
+      <p class="muted">
+        Open the app, go to the upgrade screen, and paste in your license key
+        to unlock all features. Email may take a couple of minutes to arrive —
+        check your spam folder if you don't see it.
+      </p>
+      <p class="muted">
+        Trouble?
+        Email <a href="mailto:support@stillwareltd.com">support@stillwareltd.com</a>
+        with your purchase details and we'll resend the key.
+      </p>
+      <a href="/" class="btn-secondary">Back to Home</a>
+    </div>
+  </section>
+</Layout>
+
+<style>
+  .purchase-success {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 2rem;
+  }
+
+  .purchase-success-content {
+    text-align: center;
+    max-width: 520px;
+  }
+
+  .purchase-success-icon {
+    width: 80px;
+    height: 80px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: linear-gradient(135deg, #ECFDF5, #D1FAE5);
+    border-radius: 50%;
+    color: #059669;
+    margin: 0 auto 2rem;
+  }
+
+  .purchase-success-content h1 {
+    font-size: 2.5rem;
+    margin-bottom: 1rem;
+  }
+
+  .purchase-success-content p {
+    color: var(--color-text-light);
+    font-size: 1.05rem;
+    line-height: 1.7;
+    margin-bottom: 1.25rem;
+  }
+
+  .purchase-success-content .muted {
+    font-size: 0.95rem;
+  }
+</style>
