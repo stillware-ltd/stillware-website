@@ -1,12 +1,15 @@
 ---
 title: "What Is Local First Software Movement Guide"
 date: 2026-04-05
-description: ""
+description: "Local-first software puts your data back on your device for true ownership and access. This guide explains the movement that rejects cloud dependency for..."
 author: "Stillware Team"
 wordCount: 1482
 heroImage: "/blog/images/what-is-local-first-software-movement-guide/hero.webp"
+tags: ["Offline-First", "Guide", "Anti-SaaS"]
+pillar: "philosophy"
+appCluster: "general"
+relatedSlugs: ["local-first-software-movement-guide", "privacy-first-budgeting-philosophy", "what-is-local-first-software-movement"]
 ---
-
 # What Is the Local-First Software Movement? (The 2026 Guide)
 
 ## The Day My Budget Disappeared

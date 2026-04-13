@@ -1,12 +1,15 @@
 ---
 title: "How To Teach Kids Fractions Through Cooking"
 date: 2026-04-09
-description: ""
+description: "Transform your kitchen into a hands-on math lab. Use kid-tested recipes and everyday tools like measuring cups to make fractions tangible and memorable for..."
 author: "Stillware Team"
 wordCount: 1842
 heroImage: "/blog/images/how-to-teach-kids-fractions-through-cooking/hero.webp"
+tags: ["Kids & Tech", "Guide"]
+pillar: "problem-solution"
+appCluster: "heirloom"
+relatedSlugs: ["how-to-make-a-zine-for-kids-guide", "how-to-protect-kids-data-online-parent-guide", "how-to-start-a-rock-collection-for-kids"]
 ---
-
 ## Why Cooking Beats Worksheets for Teaching Fractions
 
 After reading this guide, you’ll be able to turn your kitchen into a math lab. You’ll have three specific, kid-tested recipes that make fractions tangible. More importantly, you’ll know **how to teach kids fractions through cooking** by guiding a child from seeing a half-cup as a mark on a measuring cup to understanding it as a relationship between numbers. The kitchen provides the only math classroom where the final exam is something you can eat.

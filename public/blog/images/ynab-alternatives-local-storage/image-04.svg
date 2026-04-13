@@ -12,86 +12,207 @@
   <rect width="1200" height="4" fill="#059669"/>
 
   <!-- Title -->
-  <text x="600" y="50" text-anchor="middle" font-size="26" font-weight="700" fill="#1e293b">The mindset shift: from passive cloud tracking to active local management</text>
+  <text x="600" y="50" text-anchor="middle" font-size="26" font-weight="700" fill="#1e293b">Core features of local-storage budgeting apps</text>
 
-  <!-- Divider -->
-  <line x1="600" y1="80" x2="600" y2="635" stroke="#059669" stroke-width="2" stroke-dasharray="8,4"/>
-
-  <!-- VS badge -->
-  <circle cx="600" cy="110" r="22" fill="#059669"/>
-  <text x="600" y="116" text-anchor="middle" font-size="13" font-weight="700" fill="#ffffff">VS</text>
-
-  <!-- Before panel -->
-  <rect x="40" y="80" width="520" height="555" rx="12" fill="#dc2626" opacity="0.06"/>
-  <rect x="40" y="80" width="520" height="555" rx="12" fill="none" stroke="#dc2626" stroke-width="1.5" opacity="0.4"/>
-  <text x="290" y="120" text-anchor="middle" font-size="20" font-weight="700" fill="#dc2626">Cloud-Based Passive Tracking</text>
-
-  
-  
-  <circle cx="78" cy="156" r="6" fill="#dc2626" opacity="0.6"/>
-  <foreignObject x="96" y="142" width="444" height="46">
-    <p xmlns="http://www.w3.org/1999/xhtml" style="font-family:Inter,system-ui,sans-serif;font-size:13px;color:#1e293b;margin:0;line-height:1.45;">Automatic bank imports</p>
-  </foreignObject>
-  
-  
-  <circle cx="78" cy="212" r="6" fill="#dc2626" opacity="0.6"/>
-  <foreignObject x="96" y="198" width="444" height="46">
-    <p xmlns="http://www.w3.org/1999/xhtml" style="font-family:Inter,system-ui,sans-serif;font-size:13px;color:#1e293b;margin:0;line-height:1.45;">Data lives on company servers</p>
-  </foreignObject>
-  
-  
-  <circle cx="78" cy="268" r="6" fill="#dc2626" opacity="0.6"/>
-  <foreignObject x="96" y="254" width="444" height="46">
-    <p xmlns="http://www.w3.org/1999/xhtml" style="font-family:Inter,system-ui,sans-serif;font-size:13px;color:#1e293b;margin:0;line-height:1.45;">Reactive: reviewing past spending</p>
-  </foreignObject>
-  
-  
-  <circle cx="78" cy="324" r="6" fill="#dc2626" opacity="0.6"/>
-  <foreignObject x="96" y="310" width="444" height="46">
-    <p xmlns="http://www.w3.org/1999/xhtml" style="font-family:Inter,system-ui,sans-serif;font-size:13px;color:#1e293b;margin:0;line-height:1.45;">Subscription fee for access</p>
-  </foreignObject>
-  
-  
-  <circle cx="78" cy="380" r="6" fill="#dc2626" opacity="0.6"/>
-  <foreignObject x="96" y="366" width="444" height="46">
-    <p xmlns="http://www.w3.org/1999/xhtml" style="font-family:Inter,system-ui,sans-serif;font-size:13px;color:#1e293b;margin:0;line-height:1.45;">Company owns the data pipeline</p>
-  </foreignObject>
+  <!-- Icon color palette (theme-aware) -->
   
 
-  <!-- After panel -->
-  <rect x="640" y="80" width="520" height="555" rx="12" fill="#16a34a" opacity="0.06"/>
-  <rect x="640" y="80" width="520" height="555" rx="12" fill="none" stroke="#16a34a" stroke-width="1.5" opacity="0.4"/>
-  <text x="900" y="120" text-anchor="middle" font-size="20" font-weight="700" fill="#16a34a">Local-First Active Management</text>
+  <!-- Grid: up to 4 columns, 2 rows -->
+  
+  
+  
+  
+  
+  
+  
 
   
   
-  <circle cx="678" cy="156" r="6" fill="#16a34a" opacity="0.6"/>
-  <foreignObject x="696" y="142" width="444" height="46">
-    <p xmlns="http://www.w3.org/1999/xhtml" style="font-family:Inter,system-ui,sans-serif;font-size:13px;color:#1e293b;margin:0;line-height:1.45;">Manual entry or file import</p>
+  
+  
+  
+  
+
+  <!-- Card background -->
+  <rect x="64" y="95" width="250" height="240" rx="12" fill="#f8fafc" stroke="#e2e8f0" stroke-width="1"/>
+
+  <!-- Icon circle with symbol -->
+  <circle cx="189" cy="137" r="28" fill="#059669" opacity="0.12"/>
+  <circle cx="189" cy="137" r="28" fill="none" stroke="#059669" stroke-width="2"/>
+
+  <!-- Icon symbol (SVG paths for common types, fallback to letter) -->
+  
+  <path d="179" transform="translate(179, 127)" fill="#059669">
+    <animate attributeName="d" values=""/>
+  </path>
+  <text x="189" y="144" text-anchor="middle" font-size="20" font-weight="700" fill="#059669">&#x1F6E1;</text>
+  
+
+  <!-- Label -->
+  <text x="189" y="190" text-anchor="middle" font-size="14" font-weight="600" fill="#1e293b">Your Data Local</text>
+
+  <!-- Description -->
+  <foreignObject x="78" y="199" width="222" height="100">
+    <p xmlns="http://www.w3.org/1999/xhtml" style="font-family:Inter,system-ui,sans-serif;font-size:12px;color:#64748b;margin:0;line-height:1.4;text-align:center;">No cloud servers hold your financial history</p>
   </foreignObject>
   
   
-  <circle cx="678" cy="212" r="6" fill="#16a34a" opacity="0.6"/>
-  <foreignObject x="696" y="198" width="444" height="46">
-    <p xmlns="http://www.w3.org/1999/xhtml" style="font-family:Inter,system-ui,sans-serif;font-size:13px;color:#1e293b;margin:0;line-height:1.45;">Data lives on your device</p>
+  
+  
+  
+  
+
+  <!-- Card background -->
+  <rect x="338" y="95" width="250" height="240" rx="12" fill="#f8fafc" stroke="#e2e8f0" stroke-width="1"/>
+
+  <!-- Icon circle with symbol -->
+  <circle cx="463" cy="137" r="28" fill="#60a5fa" opacity="0.12"/>
+  <circle cx="463" cy="137" r="28" fill="none" stroke="#60a5fa" stroke-width="2"/>
+
+  <!-- Icon symbol (SVG paths for common types, fallback to letter) -->
+  
+  <text x="463" y="144" text-anchor="middle" font-size="22" font-weight="700" fill="#60a5fa">$</text>
+  
+
+  <!-- Label -->
+  <text x="463" y="190" text-anchor="middle" font-size="14" font-weight="600" fill="#1e293b">One-Time Cost</text>
+
+  <!-- Description -->
+  <foreignObject x="352" y="199" width="222" height="100">
+    <p xmlns="http://www.w3.org/1999/xhtml" style="font-family:Inter,system-ui,sans-serif;font-size:12px;color:#64748b;margin:0;line-height:1.4;text-align:center;">Pay once and own the tool forever</p>
   </foreignObject>
   
   
-  <circle cx="678" cy="268" r="6" fill="#16a34a" opacity="0.6"/>
-  <foreignObject x="696" y="254" width="444" height="46">
-    <p xmlns="http://www.w3.org/1999/xhtml" style="font-family:Inter,system-ui,sans-serif;font-size:13px;color:#1e293b;margin:0;line-height:1.45;">Proactive: approving spending as it happens</p>
+  
+  
+  
+  
+
+  <!-- Card background -->
+  <rect x="612" y="95" width="250" height="240" rx="12" fill="#f8fafc" stroke="#e2e8f0" stroke-width="1"/>
+
+  <!-- Icon circle with symbol -->
+  <circle cx="737" cy="137" r="28" fill="#0891b2" opacity="0.12"/>
+  <circle cx="737" cy="137" r="28" fill="none" stroke="#0891b2" stroke-width="2"/>
+
+  <!-- Icon symbol (SVG paths for common types, fallback to letter) -->
+  
+  <text x="737" y="144" text-anchor="middle" font-size="20" font-weight="700" fill="#0891b2">&#x25A0;</text>
+  
+
+  <!-- Label -->
+  <text x="737" y="190" text-anchor="middle" font-size="14" font-weight="600" fill="#1e293b">Works Offline</text>
+
+  <!-- Description -->
+  <foreignObject x="626" y="199" width="222" height="100">
+    <p xmlns="http://www.w3.org/1999/xhtml" style="font-family:Inter,system-ui,sans-serif;font-size:12px;color:#64748b;margin:0;line-height:1.4;text-align:center;">Budget anywhere</p>
   </foreignObject>
   
   
-  <circle cx="678" cy="324" r="6" fill="#16a34a" opacity="0.6"/>
-  <foreignObject x="696" y="310" width="444" height="46">
-    <p xmlns="http://www.w3.org/1999/xhtml" style="font-family:Inter,system-ui,sans-serif;font-size:13px;color:#1e293b;margin:0;line-height:1.45;">One-time purchase for ownership</p>
+  
+  
+  
+  
+
+  <!-- Card background -->
+  <rect x="886" y="95" width="250" height="240" rx="12" fill="#f8fafc" stroke="#e2e8f0" stroke-width="1"/>
+
+  <!-- Icon circle with symbol -->
+  <circle cx="1011" cy="137" r="28" fill="#dc2626" opacity="0.12"/>
+  <circle cx="1011" cy="137" r="28" fill="none" stroke="#dc2626" stroke-width="2"/>
+
+  <!-- Icon symbol (SVG paths for common types, fallback to letter) -->
+  
+  <text x="1011" y="144" text-anchor="middle" font-size="20" font-weight="700" fill="#dc2626">I</text>
+  
+
+  <!-- Label -->
+  <text x="1011" y="190" text-anchor="middle" font-size="14" font-weight="600" fill="#1e293b">no internet required</text>
+
+  <!-- Description -->
+  <foreignObject x="900" y="199" width="222" height="100">
+    <p xmlns="http://www.w3.org/1999/xhtml" style="font-family:Inter,system-ui,sans-serif;font-size:12px;color:#64748b;margin:0;line-height:1.4;text-align:center;"></p>
   </foreignObject>
   
   
-  <circle cx="678" cy="380" r="6" fill="#16a34a" opacity="0.6"/>
-  <foreignObject x="696" y="366" width="444" height="46">
-    <p xmlns="http://www.w3.org/1999/xhtml" style="font-family:Inter,system-ui,sans-serif;font-size:13px;color:#1e293b;margin:0;line-height:1.45;">You control the entire data chain</p>
+  
+  
+  
+  
+
+  <!-- Card background -->
+  <rect x="64" y="363" width="250" height="240" rx="12" fill="#f8fafc" stroke="#e2e8f0" stroke-width="1"/>
+
+  <!-- Icon circle with symbol -->
+  <circle cx="189" cy="405" r="28" fill="#16a34a" opacity="0.12"/>
+  <circle cx="189" cy="405" r="28" fill="none" stroke="#16a34a" stroke-width="2"/>
+
+  <!-- Icon symbol (SVG paths for common types, fallback to letter) -->
+  
+  <path d="179" transform="translate(179, 395)" fill="#16a34a">
+    <animate attributeName="d" values=""/>
+  </path>
+  <text x="189" y="412" text-anchor="middle" font-size="20" font-weight="700" fill="#16a34a">&#x1F6E1;</text>
+  
+
+  <!-- Label -->
+  <text x="189" y="458" text-anchor="middle" font-size="14" font-weight="600" fill="#1e293b">Encrypted Export</text>
+
+  <!-- Description -->
+  <foreignObject x="78" y="467" width="222" height="100">
+    <p xmlns="http://www.w3.org/1999/xhtml" style="font-family:Inter,system-ui,sans-serif;font-size:12px;color:#64748b;margin:0;line-height:1.4;text-align:center;">Sync using your own encrypted files</p>
+  </foreignObject>
+  
+  
+  
+  
+  
+  
+
+  <!-- Card background -->
+  <rect x="338" y="363" width="250" height="240" rx="12" fill="#f8fafc" stroke="#e2e8f0" stroke-width="1"/>
+
+  <!-- Icon circle with symbol -->
+  <circle cx="463" cy="405" r="28" fill="#f59e0b" opacity="0.12"/>
+  <circle cx="463" cy="405" r="28" fill="none" stroke="#f59e0b" stroke-width="2"/>
+
+  <!-- Icon symbol (SVG paths for common types, fallback to letter) -->
+  
+  <text x="463" y="412" text-anchor="middle" font-size="20" font-weight="700" fill="#f59e0b">S</text>
+  
+
+  <!-- Label -->
+  <text x="463" y="458" text-anchor="middle" font-size="14" font-weight="600" fill="#1e293b">Manual Awareness</text>
+
+  <!-- Description -->
+  <foreignObject x="352" y="467" width="222" height="100">
+    <p xmlns="http://www.w3.org/1999/xhtml" style="font-family:Inter,system-ui,sans-serif;font-size:12px;color:#64748b;margin:0;line-height:1.4;text-align:center;">The process of entry builds financial mindfulness</p>
+  </foreignObject>
+  
+  
+  
+  
+  
+  
+
+  <!-- Card background -->
+  <rect x="612" y="363" width="250" height="240" rx="12" fill="#f8fafc" stroke="#e2e8f0" stroke-width="1"/>
+
+  <!-- Icon circle with symbol -->
+  <circle cx="737" cy="405" r="28" fill="#ec4899" opacity="0.12"/>
+  <circle cx="737" cy="405" r="28" fill="none" stroke="#ec4899" stroke-width="2"/>
+
+  <!-- Icon symbol (SVG paths for common types, fallback to letter) -->
+  
+  <text x="737" y="412" text-anchor="middle" font-size="22" font-weight="700" fill="#ec4899">&#x2713;</text>
+  
+
+  <!-- Label -->
+  <text x="737" y="458" text-anchor="middle" font-size="14" font-weight="600" fill="#1e293b">Data Portability</text>
+
+  <!-- Description -->
+  <foreignObject x="626" y="467" width="222" height="100">
+    <p xmlns="http://www.w3.org/1999/xhtml" style="font-family:Inter,system-ui,sans-serif;font-size:12px;color:#64748b;margin:0;line-height:1.4;text-align:center;">Your data is in accessible formats you can always open</p>
   </foreignObject>
   
 

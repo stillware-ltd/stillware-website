@@ -1,0 +1,288 @@
+
+
+
+
+
+
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 771" width="1200" height="771">
+  <style>
+    text { font-family: Inter, system-ui, -apple-system, sans-serif; }
+  </style>
+
+  <rect width="1200" height="771" fill="#faf5ff"/>
+
+  <!-- Background pattern (per-article variation) -->
+  <rect width="1200" height="675" fill="#f3e8ff" opacity="0.4"/>
+
+  <!-- Subtle top accent bar -->
+  <rect width="1200" height="4" fill="#2563eb"/>
+
+  <!-- Title -->
+  <text x="600" y="50" text-anchor="middle" font-size="26" font-weight="700" fill="#1e293b">Offline capability comparison of study apps</text>
+
+  <!-- Column header colors (theme-aware alternation) -->
+  
+  
+
+  <!-- Table -->
+  
+  
+  
+
+  <!-- Column header -->
+  <rect x="102" y="80" width="166" height="52" fill="#2563eb"/>
+  
+  <rect x="102" y="80" width="4" height="52" fill="#2563eb"/>
+  
+  <text x="185" y="112" text-anchor="middle" font-size="16" font-weight="600" fill="#ffffff">App</text>
+
+  <!-- Rows -->
+  
+  
+  <rect x="102" y="148" width="166" height="52" fill="#f3e8ff" stroke="#e2e8f0" stroke-width="0.5"/>
+  <text x="118" y="170" font-size="13" font-weight="600" fill="#1e293b">App</text>
+  <text x="118" y="190" font-size="13" fill="#64748b">Anki</text>
+  
+  
+  <rect x="102" y="206" width="166" height="52" fill="#faf5ff" stroke="#e2e8f0" stroke-width="0.5"/>
+  <text x="118" y="228" font-size="13" font-weight="600" fill="#1e293b">Offline Core</text>
+  <text x="118" y="248" font-size="13" fill="#64748b">Yes</text>
+  
+  
+  <rect x="102" y="264" width="166" height="52" fill="#f3e8ff" stroke="#e2e8f0" stroke-width="0.5"/>
+  <text x="118" y="286" font-size="13" font-weight="600" fill="#1e293b">Fully functional</text>
+  <text x="118" y="306" font-size="13" fill="#64748b">Fully functional</text>
+  
+  
+  <rect x="102" y="322" width="166" height="52" fill="#faf5ff" stroke="#e2e8f0" stroke-width="0.5"/>
+  <text x="118" y="344" font-size="13" font-weight="600" fill="#1e293b">primary design</text>
+  <text x="118" y="364" font-size="13" fill="#64748b">primary design</text>
+  
+  
+  <rect x="102" y="380" width="166" height="52" fill="#f3e8ff" stroke="#e2e8f0" stroke-width="0.5"/>
+  <text x="118" y="402" font-size="13" font-weight="600" fill="#1e293b">File Import</text>
+  <text x="118" y="422" font-size="13" fill="#64748b">Yes (via desktop)</text>
+  
+  
+  <rect x="102" y="438" width="166" height="52" fill="#faf5ff" stroke="#e2e8f0" stroke-width="0.5"/>
+  <text x="118" y="460" font-size="13" font-weight="600" fill="#1e293b">but mobile adding is clunky</text>
+  <text x="118" y="480" font-size="13" fill="#64748b">but mobile adding is clunky</text>
+  
+  
+  <rect x="102" y="496" width="166" height="52" fill="#f3e8ff" stroke="#e2e8f0" stroke-width="0.5"/>
+  <text x="118" y="518" font-size="13" font-weight="600" fill="#1e293b">Sync Method</text>
+  <text x="118" y="538" font-size="13" fill="#64748b">AnkiWeb (cloud) or manual</text>
+  
+  
+  <rect x="102" y="554" width="166" height="52" fill="#faf5ff" stroke="#e2e8f0" stroke-width="0.5"/>
+  <text x="118" y="576" font-size="13" font-weight="600" fill="#1e293b">Privacy</text>
+  <text x="118" y="596" font-size="13" fill="#64748b">Your data on AnkiWeb is not encrypted by default</text>
+  
+  
+  
+  
+
+  <!-- Column header -->
+  <rect x="268" y="80" width="166" height="52" fill="#60a5fa"/>
+  
+  <text x="351" y="112" text-anchor="middle" font-size="16" font-weight="600" fill="#ffffff">App</text>
+
+  <!-- Rows -->
+  
+  
+  <rect x="268" y="148" width="166" height="52" fill="#f3e8ff" stroke="#e2e8f0" stroke-width="0.5"/>
+  <text x="284" y="170" font-size="13" font-weight="600" fill="#1e293b">App</text>
+  <text x="284" y="190" font-size="13" fill="#64748b">Quizlet</text>
+  
+  
+  <rect x="268" y="206" width="166" height="52" fill="#faf5ff" stroke="#e2e8f0" stroke-width="0.5"/>
+  <text x="284" y="228" font-size="13" font-weight="600" fill="#1e293b">Offline Core</text>
+  <text x="284" y="248" font-size="13" fill="#64748b">No</text>
+  
+  
+  <rect x="268" y="264" width="166" height="52" fill="#f3e8ff" stroke="#e2e8f0" stroke-width="0.5"/>
+  <text x="284" y="286" font-size="13" font-weight="600" fill="#1e293b">Cloud-first</text>
+  <text x="284" y="306" font-size="13" fill="#64748b">Cloud-first</text>
+  
+  
+  <rect x="268" y="322" width="166" height="52" fill="#faf5ff" stroke="#e2e8f0" stroke-width="0.5"/>
+  <text x="284" y="344" font-size="13" font-weight="600" fill="#1e293b">offline is a limited cache</text>
+  <text x="284" y="364" font-size="13" fill="#64748b">offline is a limited cache</text>
+  
+  
+  <rect x="268" y="380" width="166" height="52" fill="#f3e8ff" stroke="#e2e8f0" stroke-width="0.5"/>
+  <text x="284" y="402" font-size="13" font-weight="600" fill="#1e293b">File Import</text>
+  <text x="284" y="422" font-size="13" fill="#64748b">Very limited</text>
+  
+  
+  <rect x="268" y="438" width="166" height="52" fill="#faf5ff" stroke="#e2e8f0" stroke-width="0.5"/>
+  <text x="284" y="460" font-size="13" font-weight="600" fill="#1e293b">mostly manual entry</text>
+  <text x="284" y="480" font-size="13" fill="#64748b">mostly manual entry</text>
+  
+  
+  <rect x="268" y="496" width="166" height="52" fill="#f3e8ff" stroke="#e2e8f0" stroke-width="0.5"/>
+  <text x="284" y="518" font-size="13" font-weight="600" fill="#1e293b">Sync Method</text>
+  <text x="284" y="538" font-size="13" fill="#64748b">Centralized cloud servers only</text>
+  
+  
+  <rect x="268" y="554" width="166" height="52" fill="#faf5ff" stroke="#e2e8f0" stroke-width="0.5"/>
+  <text x="284" y="576" font-size="13" font-weight="600" fill="#1e293b">Privacy</text>
+  <text x="284" y="596" font-size="13" fill="#64748b">Study sets are public by default</text>
+  
+  
+  
+  
+
+  <!-- Column header -->
+  <rect x="434" y="80" width="166" height="52" fill="#2563eb"/>
+  
+  <text x="517" y="112" text-anchor="middle" font-size="16" font-weight="600" fill="#ffffff">usage analytics collected</text>
+
+  <!-- Rows -->
+  
+  
+  <rect x="434" y="148" width="166" height="52" fill="#f3e8ff" stroke="#e2e8f0" stroke-width="0.5"/>
+  <text x="450" y="170" font-size="13" font-weight="600" fill="#1e293b">usage analytics collected</text>
+  <text x="450" y="190" font-size="13" fill="#64748b">usage analytics collected</text>
+  
+  
+  <rect x="434" y="206" width="166" height="52" fill="#faf5ff" stroke="#e2e8f0" stroke-width="0.5"/>
+  <text x="450" y="228" font-size="13" font-weight="600" fill="#1e293b">Cost</text>
+  <text x="450" y="248" font-size="13" fill="#64748b">Free tier</text>
+  
+  
+  <rect x="434" y="264" width="166" height="52" fill="#f3e8ff" stroke="#e2e8f0" stroke-width="0.5"/>
+  <text x="450" y="286" font-size="13" font-weight="600" fill="#1e293b">$35.99/year for Quizlet Plus</text>
+  <text x="450" y="306" font-size="13" fill="#64748b">$35.99/year for Quizlet Plus</text>
+  
+  
+  
+  
+
+  <!-- Column header -->
+  <rect x="600" y="80" width="166" height="52" fill="#60a5fa"/>
+  
+  <text x="683" y="112" text-anchor="middle" font-size="16" font-weight="600" fill="#ffffff">App</text>
+
+  <!-- Rows -->
+  
+  
+  <rect x="600" y="148" width="166" height="52" fill="#f3e8ff" stroke="#e2e8f0" stroke-width="0.5"/>
+  <text x="616" y="170" font-size="13" font-weight="600" fill="#1e293b">App</text>
+  <text x="616" y="190" font-size="13" fill="#64748b">Notion</text>
+  
+  
+  <rect x="600" y="206" width="166" height="52" fill="#faf5ff" stroke="#e2e8f0" stroke-width="0.5"/>
+  <text x="616" y="228" font-size="13" font-weight="600" fill="#1e293b">Offline Core</text>
+  <text x="616" y="248" font-size="13" fill="#64748b">No</text>
+  
+  
+  <rect x="600" y="264" width="166" height="52" fill="#f3e8ff" stroke="#e2e8f0" stroke-width="0.5"/>
+  <text x="616" y="286" font-size="13" font-weight="600" fill="#1e293b">Requires sync to view/edit</text>
+  <text x="616" y="306" font-size="13" fill="#64748b">Requires sync to view/edit</text>
+  
+  
+  <rect x="600" y="322" width="166" height="52" fill="#faf5ff" stroke="#e2e8f0" stroke-width="0.5"/>
+  <text x="616" y="344" font-size="13" font-weight="600" fill="#1e293b">File Import</text>
+  <text x="616" y="364" font-size="13" fill="#64748b">Yes</text>
+  
+  
+  <rect x="600" y="380" width="166" height="52" fill="#f3e8ff" stroke="#e2e8f0" stroke-width="0.5"/>
+  <text x="616" y="402" font-size="13" font-weight="600" fill="#1e293b">but files are stored on Notion servers</text>
+  <text x="616" y="422" font-size="13" fill="#64748b">but files are stored on Notion servers</text>
+  
+  
+  <rect x="600" y="438" width="166" height="52" fill="#faf5ff" stroke="#e2e8f0" stroke-width="0.5"/>
+  <text x="616" y="460" font-size="13" font-weight="600" fill="#1e293b">Sync Method</text>
+  <text x="616" y="480" font-size="13" fill="#64748b">Centralized cloud</text>
+  
+  
+  <rect x="600" y="496" width="166" height="52" fill="#f3e8ff" stroke="#e2e8f0" stroke-width="0.5"/>
+  <text x="616" y="518" font-size="13" font-weight="600" fill="#1e293b">Privacy</text>
+  <text x="616" y="538" font-size="13" fill="#64748b">Company can access your data</text>
+  
+  
+  
+  
+
+  <!-- Column header -->
+  <rect x="766" y="80" width="166" height="52" fill="#2563eb"/>
+  
+  <text x="849" y="112" text-anchor="middle" font-size="16" font-weight="600" fill="#ffffff">complex privacy policy</text>
+
+  <!-- Rows -->
+  
+  
+  <rect x="766" y="148" width="166" height="52" fill="#f3e8ff" stroke="#e2e8f0" stroke-width="0.5"/>
+  <text x="782" y="170" font-size="13" font-weight="600" fill="#1e293b">complex privacy policy</text>
+  <text x="782" y="190" font-size="13" fill="#64748b">complex privacy policy</text>
+  
+  
+  <rect x="766" y="206" width="166" height="52" fill="#faf5ff" stroke="#e2e8f0" stroke-width="0.5"/>
+  <text x="782" y="228" font-size="13" font-weight="600" fill="#1e293b">Cost</text>
+  <text x="782" y="248" font-size="13" fill="#64748b">Free tier</text>
+  
+  
+  <rect x="766" y="264" width="166" height="52" fill="#f3e8ff" stroke="#e2e8f0" stroke-width="0.5"/>
+  <text x="782" y="286" font-size="13" font-weight="600" fill="#1e293b">$8/user/month for Plus</text>
+  <text x="782" y="306" font-size="13" fill="#64748b">$8/user/month for Plus</text>
+  
+  
+  
+  
+
+  <!-- Column header -->
+  <rect x="932" y="80" width="166" height="52" fill="#60a5fa"/>
+  
+  <text x="1015" y="112" text-anchor="middle" font-size="16" font-weight="600" fill="#ffffff">App</text>
+
+  <!-- Rows -->
+  
+  
+  <rect x="932" y="148" width="166" height="52" fill="#f3e8ff" stroke="#e2e8f0" stroke-width="0.5"/>
+  <text x="948" y="170" font-size="13" font-weight="600" fill="#1e293b">App</text>
+  <text x="948" y="190" font-size="13" fill="#64748b">Ideal Local-First App</text>
+  
+  
+  <rect x="932" y="206" width="166" height="52" fill="#faf5ff" stroke="#e2e8f0" stroke-width="0.5"/>
+  <text x="948" y="228" font-size="13" font-weight="600" fill="#1e293b">Offline Core</text>
+  <text x="948" y="248" font-size="13" fill="#64748b">Yes</text>
+  
+  
+  <rect x="932" y="264" width="166" height="52" fill="#f3e8ff" stroke="#e2e8f0" stroke-width="0.5"/>
+  <text x="948" y="286" font-size="13" font-weight="600" fill="#1e293b">Built exclusively for offline</text>
+  <text x="948" y="306" font-size="13" fill="#64748b">Built exclusively for offline</text>
+  
+  
+  <rect x="932" y="322" width="166" height="52" fill="#faf5ff" stroke="#e2e8f0" stroke-width="0.5"/>
+  <text x="948" y="344" font-size="13" font-weight="600" fill="#1e293b">File Import</text>
+  <text x="948" y="364" font-size="13" fill="#64748b">Native PDF/text/image import with local OCR</text>
+  
+  
+  <rect x="932" y="380" width="166" height="52" fill="#f3e8ff" stroke="#e2e8f0" stroke-width="0.5"/>
+  <text x="948" y="402" font-size="13" font-weight="600" fill="#1e293b">Sync Method</text>
+  <text x="948" y="422" font-size="13" fill="#64748b">User-controlled (local network or personal drive)</text>
+  
+  
+  <rect x="932" y="438" width="166" height="52" fill="#faf5ff" stroke="#e2e8f0" stroke-width="0.5"/>
+  <text x="948" y="460" font-size="13" font-weight="600" fill="#1e293b">Privacy</text>
+  <text x="948" y="480" font-size="13" fill="#64748b">Zero accounts</text>
+  
+  
+  <rect x="932" y="496" width="166" height="52" fill="#f3e8ff" stroke="#e2e8f0" stroke-width="0.5"/>
+  <text x="948" y="518" font-size="13" font-weight="600" fill="#1e293b">zero telemetry</text>
+  <text x="948" y="538" font-size="13" fill="#64748b">zero telemetry</text>
+  
+  
+  <rect x="932" y="554" width="166" height="52" fill="#faf5ff" stroke="#e2e8f0" stroke-width="0.5"/>
+  <text x="948" y="576" font-size="13" font-weight="600" fill="#1e293b">data never leaves device</text>
+  <text x="948" y="596" font-size="13" fill="#64748b">data never leaves device</text>
+  
+  
+
+  <!-- Bottom border -->
+  <rect x="102" y="728" width="996" height="3" fill="#2563eb"/>
+
+  <!-- Source attribution -->
+  <text x="1190" y="763" text-anchor="end" font-size="10" fill="#cbd5e1">stillwareltd.com</text>
+</svg>

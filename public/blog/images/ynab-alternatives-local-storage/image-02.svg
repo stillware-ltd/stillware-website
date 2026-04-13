@@ -1,15 +1,9 @@
-
-
-
-
-
-
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 597" width="1200" height="597">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 675" width="1200" height="675">
   <style>
     text { font-family: Inter, system-ui, -apple-system, sans-serif; }
   </style>
 
-  <rect width="1200" height="597" fill="#ffffff"/>
+  <rect width="1200" height="675" fill="#ffffff"/>
 
   <!-- Background pattern (per-article variation) -->
   <rect width="1200" height="6" fill="#2563eb"/><rect y="6" width="1200" height="2" fill="#60a5fa" opacity="0.4"/>
@@ -18,255 +12,96 @@
   <rect width="1200" height="4" fill="#059669"/>
 
   <!-- Title -->
-  <text x="600" y="50" text-anchor="middle" font-size="26" font-weight="700" fill="#1e293b">Budgeting App Comparison: Architecture, Cost, and Data Control</text>
+  <text x="600" y="55" text-anchor="middle" font-size="26" font-weight="700" fill="#1e293b">5-Year Total Cost of Ownership Comparison</text>
 
-  <!-- Column header colors (theme-aware alternation) -->
-  
-  
-
-  <!-- Table -->
+  <!-- Chart area -->
   
   
   
-
-  <!-- Column header -->
-  <rect x="100" y="80" width="200" height="52" fill="#059669"/>
-  
-  <rect x="100" y="80" width="4" height="52" fill="#059669"/>
-  
-  <text x="200" y="112" text-anchor="middle" font-size="16" font-weight="600" fill="#ffffff">App</text>
-
-  <!-- Rows -->
-  
-  
-  <rect x="100" y="148" width="200" height="52" fill="#f8fafc" stroke="#e2e8f0" stroke-width="0.5"/>
-  <text x="116" y="170" font-size="13" font-weight="600" fill="#1e293b">App</text>
-  <text x="116" y="190" font-size="13" fill="#64748b">YNAB</text>
-  
-  
-  <rect x="100" y="206" width="200" height="52" fill="#ffffff" stroke="#e2e8f0" stroke-width="0.5"/>
-  <text x="116" y="228" font-size="13" font-weight="600" fill="#1e293b">Architecture</text>
-  <text x="116" y="248" font-size="13" fill="#64748b">Cloud-First</text>
-  
-  
-  <rect x="100" y="264" width="200" height="52" fill="#f8fafc" stroke="#e2e8f0" stroke-width="0.5"/>
-  <text x="116" y="286" font-size="13" font-weight="600" fill="#1e293b">Data Location</text>
-  <text x="116" y="306" font-size="13" fill="#64748b">Company Servers</text>
-  
-  
-  <rect x="100" y="322" width="200" height="52" fill="#ffffff" stroke="#e2e8f0" stroke-width="0.5"/>
-  <text x="116" y="344" font-size="13" font-weight="600" fill="#1e293b">Sync Method</text>
-  <text x="116" y="364" font-size="13" fill="#64748b">Plaid API + YNAB Servers</text>
-  
-  
-  <rect x="100" y="380" width="200" height="52" fill="#f8fafc" stroke="#e2e8f0" stroke-width="0.5"/>
-  <text x="116" y="402" font-size="13" font-weight="600" fill="#1e293b">Cost Model</text>
-  <text x="116" y="422" font-size="13" fill="#64748b">$14.99/month</text>
-  
-  
-  <rect x="100" y="438" width="200" height="52" fill="#ffffff" stroke="#e2e8f0" stroke-width="0.5"/>
-  <text x="116" y="460" font-size="13" font-weight="600" fill="#1e293b">5-Year TCO</text>
-  <text x="116" y="480" font-size="13" fill="#64748b">~$900</text>
-  
-  
-  <rect x="100" y="496" width="200" height="52" fill="#f8fafc" stroke="#e2e8f0" stroke-width="0.5"/>
-  <text x="116" y="518" font-size="13" font-weight="600" fill="#1e293b">Offline Use</text>
-  <text x="116" y="538" font-size="13" fill="#64748b">Partial</text>
   
   
   
   
 
-  <!-- Column header -->
-  <rect x="300" y="80" width="200" height="52" fill="#60a5fa"/>
-  
-  <text x="400" y="112" text-anchor="middle" font-size="16" font-weight="600" fill="#ffffff">App</text>
+  <!-- Y axis -->
+  <line x1="240" y1="85" x2="240" y2="610" stroke="#e2e8f0" stroke-width="1"/>
 
-  <!-- Rows -->
+  <!-- Gridlines -->
   
   
-  <rect x="300" y="148" width="200" height="52" fill="#f8fafc" stroke="#e2e8f0" stroke-width="0.5"/>
-  <text x="316" y="170" font-size="13" font-weight="600" fill="#1e293b">App</text>
-  <text x="316" y="190" font-size="13" fill="#64748b">EveryDollar</text>
+  <line x1="396" y1="85" x2="396" y2="610" stroke="#f1f5f9" stroke-width="1"/>
   
   
-  <rect x="300" y="206" width="200" height="52" fill="#ffffff" stroke="#e2e8f0" stroke-width="0.5"/>
-  <text x="316" y="228" font-size="13" font-weight="600" fill="#1e293b">Architecture</text>
-  <text x="316" y="248" font-size="13" fill="#64748b">Cloud-First</text>
+  <line x1="552" y1="85" x2="552" y2="610" stroke="#f1f5f9" stroke-width="1"/>
   
   
-  <rect x="300" y="264" width="200" height="52" fill="#f8fafc" stroke="#e2e8f0" stroke-width="0.5"/>
-  <text x="316" y="286" font-size="13" font-weight="600" fill="#1e293b">Data Location</text>
-  <text x="316" y="306" font-size="13" fill="#64748b">Company Servers</text>
+  <line x1="708" y1="85" x2="708" y2="610" stroke="#f1f5f9" stroke-width="1"/>
   
   
-  <rect x="300" y="322" width="200" height="52" fill="#ffffff" stroke="#e2e8f0" stroke-width="0.5"/>
-  <text x="316" y="344" font-size="13" font-weight="600" fill="#1e293b">Sync Method</text>
-  <text x="316" y="364" font-size="13" fill="#64748b">Plaid API (Paid Plan)</text>
+  <line x1="864" y1="85" x2="864" y2="610" stroke="#f1f5f9" stroke-width="1"/>
   
   
-  <rect x="300" y="380" width="200" height="52" fill="#f8fafc" stroke="#e2e8f0" stroke-width="0.5"/>
-  <text x="316" y="402" font-size="13" font-weight="600" fill="#1e293b">Cost Model</text>
-  <text x="316" y="422" font-size="13" fill="#64748b">$79.99/year</text>
+  <line x1="1020" y1="85" x2="1020" y2="610" stroke="#f1f5f9" stroke-width="1"/>
   
-  
-  <rect x="300" y="438" width="200" height="52" fill="#ffffff" stroke="#e2e8f0" stroke-width="0.5"/>
-  <text x="316" y="460" font-size="13" font-weight="600" fill="#1e293b">5-Year TCO</text>
-  <text x="316" y="480" font-size="13" fill="#64748b">~$400</text>
-  
-  
-  <rect x="300" y="496" width="200" height="52" fill="#f8fafc" stroke="#e2e8f0" stroke-width="0.5"/>
-  <text x="316" y="518" font-size="13" font-weight="600" fill="#1e293b">Offline Use</text>
-  <text x="316" y="538" font-size="13" fill="#64748b">Minimal</text>
+
   
   
   
   
 
-  <!-- Column header -->
-  <rect x="500" y="80" width="200" height="52" fill="#059669"/>
-  
-  <text x="600" y="112" text-anchor="middle" font-size="16" font-weight="600" fill="#ffffff">App</text>
+  <!-- Label -->
+  <text x="226" y="155" text-anchor="end" font-size="13" font-weight="500" fill="#1e293b">YNAB</text>
 
-  <!-- Rows -->
-  
-  
-  <rect x="500" y="148" width="200" height="52" fill="#f8fafc" stroke="#e2e8f0" stroke-width="0.5"/>
-  <text x="516" y="170" font-size="13" font-weight="600" fill="#1e293b">App</text>
-  <text x="516" y="190" font-size="13" fill="#64748b">Actual Budget</text>
-  
-  
-  <rect x="500" y="206" width="200" height="52" fill="#ffffff" stroke="#e2e8f0" stroke-width="0.5"/>
-  <text x="516" y="228" font-size="13" font-weight="600" fill="#1e293b">Architecture</text>
-  <text x="516" y="248" font-size="13" fill="#64748b">Local-First</text>
-  
-  
-  <rect x="500" y="264" width="200" height="52" fill="#f8fafc" stroke="#e2e8f0" stroke-width="0.5"/>
-  <text x="516" y="286" font-size="13" font-weight="600" fill="#1e293b">Data Location</text>
-  <text x="516" y="306" font-size="13" fill="#64748b">Your Device</text>
-  
-  
-  <rect x="500" y="322" width="200" height="52" fill="#ffffff" stroke="#e2e8f0" stroke-width="0.5"/>
-  <text x="516" y="344" font-size="13" font-weight="600" fill="#1e293b">Sync Method</text>
-  <text x="516" y="364" font-size="13" fill="#64748b">Your Own Cloud (Dropbox</text>
-  
-  
-  <rect x="500" y="380" width="200" height="52" fill="#f8fafc" stroke="#e2e8f0" stroke-width="0.5"/>
-  <text x="516" y="402" font-size="13" font-weight="600" fill="#1e293b">etc.)</text>
-  <text x="516" y="422" font-size="13" fill="#64748b">etc.)</text>
-  
-  
-  <rect x="500" y="438" width="200" height="52" fill="#ffffff" stroke="#e2e8f0" stroke-width="0.5"/>
-  <text x="516" y="460" font-size="13" font-weight="600" fill="#1e293b">Cost Model</text>
-  <text x="516" y="480" font-size="13" fill="#64748b">Free / Self-Hosted</text>
-  
-  
-  <rect x="500" y="496" width="200" height="52" fill="#f8fafc" stroke="#e2e8f0" stroke-width="0.5"/>
-  <text x="516" y="518" font-size="13" font-weight="600" fill="#1e293b">5-Year TCO</text>
-  <text x="516" y="538" font-size="13" fill="#64748b">$0</text>
-  
-  
-  <rect x="500" y="554" width="200" height="52" fill="#ffffff" stroke="#e2e8f0" stroke-width="0.5"/>
-  <text x="516" y="576" font-size="13" font-weight="600" fill="#1e293b">Offline Use</text>
-  <text x="516" y="596" font-size="13" fill="#64748b">Full</text>
+  <!-- Bar with rounded right end -->
+  <rect x="245" y="93" width="780" height="115" rx="12" fill="#dc2626" opacity="0.85"/>
+  <rect x="245" y="93" width="780" height="115" rx="12" fill="#dc2626" opacity="0.12"/>
+
+  <!-- Value label -->
+  <text x="1036" y="155" font-size="13" font-weight="700" fill="#dc2626">$495</text>
   
   
   
   
 
-  <!-- Column header -->
-  <rect x="700" y="80" width="200" height="52" fill="#60a5fa"/>
-  
-  <text x="800" y="112" text-anchor="middle" font-size="16" font-weight="600" fill="#ffffff">App</text>
+  <!-- Label -->
+  <text x="226" y="286" text-anchor="end" font-size="13" font-weight="500" fill="#1e293b">Actual Budget (Cloud)</text>
 
-  <!-- Rows -->
-  
-  
-  <rect x="700" y="148" width="200" height="52" fill="#f8fafc" stroke="#e2e8f0" stroke-width="0.5"/>
-  <text x="716" y="170" font-size="13" font-weight="600" fill="#1e293b">App</text>
-  <text x="716" y="190" font-size="13" fill="#64748b">Buckets</text>
-  
-  
-  <rect x="700" y="206" width="200" height="52" fill="#ffffff" stroke="#e2e8f0" stroke-width="0.5"/>
-  <text x="716" y="228" font-size="13" font-weight="600" fill="#1e293b">Architecture</text>
-  <text x="716" y="248" font-size="13" fill="#64748b">Local-First</text>
-  
-  
-  <rect x="700" y="264" width="200" height="52" fill="#f8fafc" stroke="#e2e8f0" stroke-width="0.5"/>
-  <text x="716" y="286" font-size="13" font-weight="600" fill="#1e293b">Data Location</text>
-  <text x="716" y="306" font-size="13" fill="#64748b">Your Device</text>
-  
-  
-  <rect x="700" y="322" width="200" height="52" fill="#ffffff" stroke="#e2e8f0" stroke-width="0.5"/>
-  <text x="716" y="344" font-size="13" font-weight="600" fill="#1e293b">Sync Method</text>
-  <text x="716" y="364" font-size="13" fill="#64748b">Manual File Sync</text>
-  
-  
-  <rect x="700" y="380" width="200" height="52" fill="#f8fafc" stroke="#e2e8f0" stroke-width="0.5"/>
-  <text x="716" y="402" font-size="13" font-weight="600" fill="#1e293b">Cost Model</text>
-  <text x="716" y="422" font-size="13" fill="#64748b">One-time Purchase (~$60)</text>
-  
-  
-  <rect x="700" y="438" width="200" height="52" fill="#ffffff" stroke="#e2e8f0" stroke-width="0.5"/>
-  <text x="716" y="460" font-size="13" font-weight="600" fill="#1e293b">5-Year TCO</text>
-  <text x="716" y="480" font-size="13" fill="#64748b">~$60</text>
-  
-  
-  <rect x="700" y="496" width="200" height="52" fill="#f8fafc" stroke="#e2e8f0" stroke-width="0.5"/>
-  <text x="716" y="518" font-size="13" font-weight="600" fill="#1e293b">Offline Use</text>
-  <text x="716" y="538" font-size="13" fill="#64748b">Full</text>
+  <!-- Bar with rounded right end -->
+  <rect x="245" y="224" width="157" height="115" rx="12" fill="#f59e0b" opacity="0.85"/>
+  <rect x="245" y="224" width="157" height="115" rx="12" fill="#f59e0b" opacity="0.12"/>
+
+  <!-- Value label -->
+  <text x="413" y="286" font-size="13" font-weight="700" fill="#f59e0b">$100</text>
   
   
   
   
 
-  <!-- Column header -->
-  <rect x="900" y="80" width="200" height="52" fill="#059669"/>
-  
-  <text x="1000" y="112" text-anchor="middle" font-size="16" font-weight="600" fill="#ffffff">App</text>
+  <!-- Label -->
+  <text x="226" y="417" text-anchor="end" font-size="13" font-weight="500" fill="#1e293b">Buckets</text>
 
-  <!-- Rows -->
+  <!-- Bar with rounded right end -->
+  <rect x="245" y="355" width="77" height="115" rx="12" fill="#16a34a" opacity="0.85"/>
+  <rect x="245" y="355" width="77" height="115" rx="12" fill="#16a34a" opacity="0.12"/>
+
+  <!-- Value label -->
+  <text x="333" y="417" font-size="13" font-weight="700" fill="#16a34a">$49</text>
   
   
-  <rect x="900" y="148" width="200" height="52" fill="#f8fafc" stroke="#e2e8f0" stroke-width="0.5"/>
-  <text x="916" y="170" font-size="13" font-weight="600" fill="#1e293b">App</text>
-  <text x="916" y="190" font-size="13" fill="#64748b">Zeroed</text>
-  
-  
-  <rect x="900" y="206" width="200" height="52" fill="#ffffff" stroke="#e2e8f0" stroke-width="0.5"/>
-  <text x="916" y="228" font-size="13" font-weight="600" fill="#1e293b">Architecture</text>
-  <text x="916" y="248" font-size="13" fill="#64748b">Local-First</text>
-  
-  
-  <rect x="900" y="264" width="200" height="52" fill="#f8fafc" stroke="#e2e8f0" stroke-width="0.5"/>
-  <text x="916" y="286" font-size="13" font-weight="600" fill="#1e293b">Data Location</text>
-  <text x="916" y="306" font-size="13" fill="#64748b">Your Device</text>
-  
-  
-  <rect x="900" y="322" width="200" height="52" fill="#ffffff" stroke="#e2e8f0" stroke-width="0.5"/>
-  <text x="916" y="344" font-size="13" font-weight="600" fill="#1e293b">Sync Method</text>
-  <text x="916" y="364" font-size="13" fill="#64748b">Encrypted Google Drive (Your Account)</text>
-  
-  
-  <rect x="900" y="380" width="200" height="52" fill="#f8fafc" stroke="#e2e8f0" stroke-width="0.5"/>
-  <text x="916" y="402" font-size="13" font-weight="600" fill="#1e293b">Cost Model</text>
-  <text x="916" y="422" font-size="13" fill="#64748b">One-time Purchase ($39.99)</text>
-  
-  
-  <rect x="900" y="438" width="200" height="52" fill="#ffffff" stroke="#e2e8f0" stroke-width="0.5"/>
-  <text x="916" y="460" font-size="13" font-weight="600" fill="#1e293b">5-Year TCO</text>
-  <text x="916" y="480" font-size="13" fill="#64748b">$39.99</text>
-  
-  
-  <rect x="900" y="496" width="200" height="52" fill="#f8fafc" stroke="#e2e8f0" stroke-width="0.5"/>
-  <text x="916" y="518" font-size="13" font-weight="600" fill="#1e293b">Offline Use</text>
-  <text x="916" y="538" font-size="13" fill="#64748b">Full</text>
   
   
 
-  <!-- Bottom border -->
-  <rect x="100" y="554" width="1000" height="3" fill="#059669"/>
+  <!-- Label -->
+  <text x="226" y="548" text-anchor="end" font-size="13" font-weight="500" fill="#1e293b">Zeroed</text>
+
+  <!-- Bar with rounded right end -->
+  <rect x="245" y="486" width="63" height="115" rx="12" fill="#2563eb" opacity="0.85"/>
+  <rect x="245" y="486" width="63" height="115" rx="12" fill="#2563eb" opacity="0.12"/>
+
+  <!-- Value label -->
+  <text x="319" y="548" font-size="13" font-weight="700" fill="#2563eb">$39.99</text>
+  
 
   <!-- Source attribution -->
-  <text x="1190" y="589" text-anchor="end" font-size="10" fill="#cbd5e1">stillwareltd.com</text>
+  <text x="1190" y="665" text-anchor="end" font-size="10" fill="#cbd5e1">stillwareltd.com</text>
 </svg>

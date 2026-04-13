@@ -1,0 +1,107 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 675" width="1200" height="675">
+  <style>
+    text { font-family: Inter, system-ui, -apple-system, sans-serif; }
+  </style>
+
+  <rect width="1200" height="675" fill="#faf5ff"/>
+
+  <!-- Background pattern (per-article variation) -->
+  <rect width="1200" height="675" fill="#f3e8ff" opacity="0.4"/>
+
+  <!-- Subtle top accent bar -->
+  <rect width="1200" height="4" fill="#2563eb"/>
+
+  <!-- Title -->
+  <text x="600" y="55" text-anchor="middle" font-size="26" font-weight="700" fill="#1e293b">Five-year total cost of study app subscriptions</text>
+
+  <!-- Chart area -->
+  
+  
+  
+  
+  
+  
+  
+
+  <!-- Y axis -->
+  <line x1="240" y1="85" x2="240" y2="610" stroke="#e2e8f0" stroke-width="1"/>
+
+  <!-- Gridlines -->
+  
+  
+  <line x1="396" y1="85" x2="396" y2="610" stroke="#f1f5f9" stroke-width="1"/>
+  
+  
+  <line x1="552" y1="85" x2="552" y2="610" stroke="#f1f5f9" stroke-width="1"/>
+  
+  
+  <line x1="708" y1="85" x2="708" y2="610" stroke="#f1f5f9" stroke-width="1"/>
+  
+  
+  <line x1="864" y1="85" x2="864" y2="610" stroke="#f1f5f9" stroke-width="1"/>
+  
+  
+  <line x1="1020" y1="85" x2="1020" y2="610" stroke="#f1f5f9" stroke-width="1"/>
+  
+
+  
+  
+  
+  
+
+  <!-- Label -->
+  <text x="226" y="155" text-anchor="end" font-size="13" font-weight="500" fill="#1e293b">Quizlet Plus</text>
+
+  <!-- Bar with rounded right end -->
+  <rect x="245" y="93" width="292" height="115" rx="10" fill="#dc2626" opacity="0.85"/>
+  <rect x="245" y="93" width="292" height="115" rx="10" fill="#dc2626" opacity="0.12"/>
+
+  <!-- Value label -->
+  <text x="548" y="155" font-size="13" font-weight="700" fill="#dc2626">$179.95</text>
+  
+  
+  
+  
+
+  <!-- Label -->
+  <text x="226" y="286" text-anchor="end" font-size="13" font-weight="500" fill="#1e293b">Notion Plus</text>
+
+  <!-- Bar with rounded right end -->
+  <rect x="245" y="224" width="780" height="115" rx="10" fill="#f59e0b" opacity="0.85"/>
+  <rect x="245" y="224" width="780" height="115" rx="10" fill="#f59e0b" opacity="0.12"/>
+
+  <!-- Value label -->
+  <text x="1036" y="286" font-size="13" font-weight="700" fill="#f59e0b">$480</text>
+  
+  
+  
+  
+
+  <!-- Label -->
+  <text x="226" y="417" text-anchor="end" font-size="13" font-weight="500" fill="#1e293b">Anki (iOS)</text>
+
+  <!-- Bar with rounded right end -->
+  <rect x="245" y="355" width="40" height="115" rx="10" fill="#16a34a" opacity="0.85"/>
+  <rect x="245" y="355" width="40" height="115" rx="10" fill="#16a34a" opacity="0.12"/>
+
+  <!-- Value label -->
+  <text x="296" y="417" font-size="13" font-weight="700" fill="#16a34a">$25</text>
+  
+  
+  
+  
+
+  <!-- Label -->
+  <text x="226" y="548" text-anchor="end" font-size="13" font-weight="500" fill="#1e293b">Ideal One-Time Purchase</text>
+
+  <!-- Bar with rounded right end -->
+  <rect x="245" y="486" width="64" height="115" rx="10" fill="#2563eb" opacity="0.85"/>
+  <rect x="245" y="486" width="64" height="115" rx="10" fill="#2563eb" opacity="0.12"/>
+
+  <!-- Value label -->
+  <text x="320" y="548" font-size="13" font-weight="700" fill="#2563eb">$39.99</text>
+  
+
+  <!-- Source attribution -->
+  <text x="1190" y="665" text-anchor="end" font-size="10" fill="#cbd5e1">stillwareltd.com</text>
+</svg>

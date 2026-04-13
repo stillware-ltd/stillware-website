@@ -12,7 +12,7 @@
   <rect width="1200" height="4" fill="#059669"/>
 
   <!-- Title -->
-  <text x="600" y="50" text-anchor="middle" font-size="26" font-weight="700" fill="#1e293b">Data flow architecture: Cloud-first vs. Local-first</text>
+  <text x="600" y="50" text-anchor="middle" font-size="26" font-weight="700" fill="#1e293b">Data flow architecture: Cloud tenant vs. Local owner</text>
 
   <!-- Boxes arranged in a grid (2 rows, up to 4 columns) -->
   
@@ -28,6 +28,10 @@
   
   
   
+  <text x="61" y="165" text-anchor="end" font-size="13" font-weight="700" fill="#dc2626" transform="rotate(-90 61 160)">Cloud-First App</text>
+  
+  
+  <text x="61" y="355" text-anchor="end" font-size="13" font-weight="700" fill="#16a34a" transform="rotate(-90 61 350)">Device-First App</text>
   
   
 
@@ -43,10 +47,10 @@
 
   <rect x="75" y="90" width="240" height="140" rx="12" fill="#f8fafc" stroke="#e2e8f0" stroke-width="1.5"/>
   <rect x="75" y="90" width="240" height="4" rx="2" fill="#059669"/>
-  <text x="195" y="126" text-anchor="middle" font-size="14" font-weight="600" fill="#1e293b">Cloud-First</text>
+  <text x="195" y="126" text-anchor="middle" font-size="14" font-weight="600" fill="#1e293b">Your data entry</text>
 
   <foreignObject x="89" y="134" width="212" height="86">
-    <p xmlns="http://www.w3.org/1999/xhtml" style="font-family:Inter,system-ui,sans-serif;font-size:12px;color:#64748b;margin:0;line-height:1.35;text-align:center;">Your bank</p>
+    <p xmlns="http://www.w3.org/1999/xhtml" style="font-family:Inter,system-ui,sans-serif;font-size:12px;color:#64748b;margin:0;line-height:1.35;text-align:center;"></p>
   </foreignObject>
   
   
@@ -57,10 +61,10 @@
 
   <rect x="345" y="90" width="240" height="140" rx="12" fill="#f8fafc" stroke="#e2e8f0" stroke-width="1.5"/>
   <rect x="345" y="90" width="240" height="4" rx="2" fill="#059669"/>
-  <text x="465" y="126" text-anchor="middle" font-size="14" font-weight="600" fill="#1e293b">Plaid API</text>
+  <text x="465" y="126" text-anchor="middle" font-size="14" font-weight="600" fill="#1e293b">Company Servers</text>
 
   <foreignObject x="359" y="134" width="212" height="86">
-    <p xmlns="http://www.w3.org/1999/xhtml" style="font-family:Inter,system-ui,sans-serif;font-size:12px;color:#64748b;margin:0;line-height:1.35;text-align:center;"></p>
+    <p xmlns="http://www.w3.org/1999/xhtml" style="font-family:Inter,system-ui,sans-serif;font-size:12px;color:#64748b;margin:0;line-height:1.35;text-align:center;">Encrypted storage &amp; processing</p>
   </foreignObject>
   
   
@@ -71,10 +75,10 @@
 
   <rect x="615" y="90" width="240" height="140" rx="12" fill="#f8fafc" stroke="#e2e8f0" stroke-width="1.5"/>
   <rect x="615" y="90" width="240" height="4" rx="2" fill="#059669"/>
-  <text x="735" y="126" text-anchor="middle" font-size="14" font-weight="600" fill="#1e293b">Company Server</text>
+  <text x="735" y="126" text-anchor="middle" font-size="14" font-weight="600" fill="#1e293b">Plaid API</text>
 
   <foreignObject x="629" y="134" width="212" height="86">
-    <p xmlns="http://www.w3.org/1999/xhtml" style="font-family:Inter,system-ui,sans-serif;font-size:12px;color:#64748b;margin:0;line-height:1.35;text-align:center;"></p>
+    <p xmlns="http://www.w3.org/1999/xhtml" style="font-family:Inter,system-ui,sans-serif;font-size:12px;color:#64748b;margin:0;line-height:1.35;text-align:center;">Bank data aggregation</p>
   </foreignObject>
   
   
@@ -85,10 +89,10 @@
 
   <rect x="885" y="90" width="240" height="140" rx="12" fill="#f8fafc" stroke="#e2e8f0" stroke-width="1.5"/>
   <rect x="885" y="90" width="240" height="4" rx="2" fill="#059669"/>
-  <text x="1005" y="126" text-anchor="middle" font-size="14" font-weight="600" fill="#1e293b">Your Device</text>
+  <text x="1005" y="126" text-anchor="middle" font-size="14" font-weight="600" fill="#1e293b">Your Other Devices</text>
 
   <foreignObject x="899" y="134" width="212" height="86">
-    <p xmlns="http://www.w3.org/1999/xhtml" style="font-family:Inter,system-ui,sans-serif;font-size:12px;color:#64748b;margin:0;line-height:1.35;text-align:center;"></p>
+    <p xmlns="http://www.w3.org/1999/xhtml" style="font-family:Inter,system-ui,sans-serif;font-size:12px;color:#64748b;margin:0;line-height:1.35;text-align:center;">Login to view data</p>
   </foreignObject>
   
   
@@ -99,10 +103,10 @@
 
   <rect x="75" y="280" width="240" height="140" rx="12" fill="#f8fafc" stroke="#e2e8f0" stroke-width="1.5"/>
   <rect x="75" y="280" width="240" height="4" rx="2" fill="#16a34a"/>
-  <text x="195" y="316" text-anchor="middle" font-size="14" font-weight="600" fill="#1e293b">Your data lives on and transit</text>
+  <text x="195" y="316" text-anchor="middle" font-size="14" font-weight="600" fill="#1e293b">Your Device</text>
 
   <foreignObject x="89" y="324" width="212" height="86">
-    <p xmlns="http://www.w3.org/1999/xhtml" style="font-family:Inter,system-ui,sans-serif;font-size:12px;color:#64748b;margin:0;line-height:1.35;text-align:center;"></p>
+    <p xmlns="http://www.w3.org/1999/xhtml" style="font-family:Inter,system-ui,sans-serif;font-size:12px;color:#64748b;margin:0;line-height:1.35;text-align:center;">Encrypted storage &amp; processing</p>
   </foreignObject>
   
   
@@ -113,10 +117,10 @@
 
   <rect x="345" y="280" width="240" height="140" rx="12" fill="#f8fafc" stroke="#e2e8f0" stroke-width="1.5"/>
   <rect x="345" y="280" width="240" height="4" rx="2" fill="#16a34a"/>
-  <text x="465" y="316" text-anchor="middle" font-size="14" font-weight="600" fill="#1e293b">Local-First</text>
+  <text x="465" y="316" text-anchor="middle" font-size="14" font-weight="600" fill="#1e293b">Your Manual Entry/CSV</text>
 
   <foreignObject x="359" y="324" width="212" height="86">
-    <p xmlns="http://www.w3.org/1999/xhtml" style="font-family:Inter,system-ui,sans-serif;font-size:12px;color:#64748b;margin:0;line-height:1.35;text-align:center;">Your bank statement (PDF/CSV)</p>
+    <p xmlns="http://www.w3.org/1999/xhtml" style="font-family:Inter,system-ui,sans-serif;font-size:12px;color:#64748b;margin:0;line-height:1.35;text-align:center;">Data input</p>
   </foreignObject>
   
   
@@ -127,24 +131,10 @@
 
   <rect x="615" y="280" width="240" height="140" rx="12" fill="#f8fafc" stroke="#e2e8f0" stroke-width="1.5"/>
   <rect x="615" y="280" width="240" height="4" rx="2" fill="#16a34a"/>
-  <text x="735" y="316" text-anchor="middle" font-size="14" font-weight="600" fill="#1e293b">Local Encrypted Database</text>
+  <text x="735" y="316" text-anchor="middle" font-size="14" font-weight="600" fill="#1e293b">Your Google Drive</text>
 
   <foreignObject x="629" y="324" width="212" height="86">
-    <p xmlns="http://www.w3.org/1999/xhtml" style="font-family:Inter,system-ui,sans-serif;font-size:12px;color:#64748b;margin:0;line-height:1.35;text-align:center;"></p>
-  </foreignObject>
-  
-  
-  
-  
-  
-  
-
-  <rect x="885" y="280" width="240" height="140" rx="12" fill="#f8fafc" stroke="#e2e8f0" stroke-width="1.5"/>
-  <rect x="885" y="280" width="240" height="4" rx="2" fill="#16a34a"/>
-  <text x="1005" y="316" text-anchor="middle" font-size="14" font-weight="600" fill="#1e293b">Your data is parsed and stored</text>
-
-  <foreignObject x="899" y="324" width="212" height="86">
-    <p xmlns="http://www.w3.org/1999/xhtml" style="font-family:Inter,system-ui,sans-serif;font-size:12px;color:#64748b;margin:0;line-height:1.35;text-align:center;"></p>
+    <p xmlns="http://www.w3.org/1999/xhtml" style="font-family:Inter,system-ui,sans-serif;font-size:12px;color:#64748b;margin:0;line-height:1.35;text-align:center;">Optional encrypted copy</p>
   </foreignObject>
   
 
@@ -219,20 +209,6 @@
   <line x1="465" y1="420" x2="735" y2="280" stroke="#64748b" stroke-width="1.5" stroke-dasharray="6,3" opacity="0.5"/>
   <!-- Arrow head -->
   <polygon points="731,278 735,280 739,278" fill="#64748b" opacity="0.5"/>
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  <line x1="735" y1="420" x2="1005" y2="280" stroke="#64748b" stroke-width="1.5" stroke-dasharray="6,3" opacity="0.5"/>
-  <!-- Arrow head -->
-  <polygon points="1001,278 1005,280 1009,278" fill="#64748b" opacity="0.5"/>
   
 
   <!-- Source attribution -->

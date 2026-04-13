@@ -38,6 +38,36 @@ const shareUrlEncoded = encodeURIComponent(shareUrl);
   description={post.data.description}
   ogImage={post.data.heroImage || post.data.ogImage}
 >
+    <!-- BlogPosting Structured Data -->
+    <script type="application/ld+json" set:html={JSON.stringify({
+        "@context": "https://schema.org",
+        "@type": "BlogPosting",
+        "headline": post.data.title,
+        "description": post.data.description || "",
+        "datePublished": post.data.date.toISOString(),
+        "author": {
+            "@type": "Person",
+            "name": post.data.author,
+            "url": "https://www.stillwareltd.com"
+        },
+        "publisher": {
+            "@type": "Organization",
+            "name": "Stillware Ltd",
+            "url": "https://www.stillwareltd.com",
+            "logo": {
+                "@type": "ImageObject",
+                "url": "https://www.stillwareltd.com/logo.png"
+            }
+        },
+        "mainEntityOfPage": {
+            "@type": "WebPage",
+            "@id": shareUrl
+        },
+        ...(post.data.heroImage ? { "image": new URL(post.data.heroImage, Astro.site).href } : {}),
+        ...(post.data.wordCount ? { "wordCount": post.data.wordCount } : {}),
+        ...(post.data.tags?.length ? { "keywords": post.data.tags.join(", ") } : {})
+    })} />
+
     <article class="blog-post">
         <header class="post-hero">
             <div class="post-hero-inner">
@@ -114,6 +144,31 @@ const shareUrlEncoded = encodeURIComponent(shareUrl);
                 </div>
             </div>
         </aside>
+
+        <!-- Newsletter Signup -->
+        <section class="newsletter-signup">
+            <div class="newsletter-inner">
+                <h2 class="newsletter-heading">Get more like this</h2>
+                <p class="newsletter-description">
+                    Privacy tips, app updates, and the occasional deep dive into local-first software.
+                    No spam. Unsubscribe anytime.
+                </p>
+                <form class="newsletter-form" name="newsletter-post" method="POST" data-netlify="true" action="/blog/">
+                    <input type="hidden" name="form-name" value="newsletter-post" />
+                    <input type="hidden" name="source" value={`/blog/${post.slug}/`} />
+                    <input
+                        type="email"
+                        name="email"
+                        placeholder="you@example.com"
+                        required
+                        autocomplete="email"
+                        class="newsletter-input"
+                    />
+                    <button type="submit" class="newsletter-btn">Subscribe</button>
+                </form>
+                <p class="newsletter-privacy">We'll never share your email. That's kind of our whole thing.</p>
+            </div>
+        </section>
 
         <!-- Related Articles -->
         {relatedPosts.length > 0 && (
@@ -639,6 +694,102 @@ const shareUrlEncoded = encodeURIComponent(shareUrl);
             flex-direction: column;
             align-items: center;
             text-align: center;
+        }
+    }
+
+    /* ── Newsletter Signup ── */
+
+    .newsletter-signup {
+        max-width: 740px;
+        margin: 0 auto;
+        padding: 2.5rem 2rem 0;
+    }
+
+    .newsletter-inner {
+        background: var(--gradient-obsidian);
+        border-radius: 16px;
+        padding: 2.5rem;
+        text-align: center;
+    }
+
+    .newsletter-heading {
+        font-size: 1.5rem;
+        font-weight: 700;
+        color: #ffffff;
+        margin: 0 0 0.5rem;
+    }
+
+    .newsletter-description {
+        font-size: 0.95rem;
+        color: rgba(255, 255, 255, 0.65);
+        line-height: 1.6;
+        margin: 0 0 1.5rem;
+        max-width: 480px;
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+    .newsletter-form {
+        display: flex;
+        gap: 0.5rem;
+        max-width: 440px;
+        margin: 0 auto;
+    }
+
+    .newsletter-input {
+        flex: 1;
+        padding: 0.75rem 1rem;
+        border: 1px solid rgba(255, 255, 255, 0.2);
+        border-radius: 10px;
+        background: rgba(255, 255, 255, 0.1);
+        color: #ffffff;
+        font-size: 0.95rem;
+        font-family: var(--font-sans);
+        outline: none;
+        transition: border-color 0.2s ease;
+    }
+
+    .newsletter-input::placeholder {
+        color: rgba(255, 255, 255, 0.4);
+    }
+
+    .newsletter-input:focus {
+        border-color: rgba(255, 255, 255, 0.5);
+    }
+
+    .newsletter-btn {
+        padding: 0.75rem 1.5rem;
+        border: none;
+        border-radius: 10px;
+        background: #ffffff;
+        color: var(--color-secondary);
+        font-size: 0.95rem;
+        font-weight: 600;
+        font-family: var(--font-sans);
+        cursor: pointer;
+        transition: all 0.2s ease;
+        white-space: nowrap;
+    }
+
+    .newsletter-btn:hover {
+        background: #f0f5ff;
+        color: var(--color-primary);
+        transform: translateY(-1px);
+    }
+
+    .newsletter-privacy {
+        font-size: 0.75rem;
+        color: rgba(255, 255, 255, 0.4);
+        margin: 0.75rem 0 0;
+    }
+
+    @media (max-width: 768px) {
+        .newsletter-form {
+            flex-direction: column;
+        }
+
+        .newsletter-btn {
+            width: 100%;
         }
     }
 

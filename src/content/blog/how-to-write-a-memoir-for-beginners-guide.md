@@ -5,7 +5,13 @@ description: "Learn how to write a memoir for beginners with practical prompts, 
 author: "Stillware Team"
 wordCount: 1638
 heroImage: "/blog/images/how-to-write-a-memoir-for-beginners-guide/hero.webp"
+tags: ["Seniors & Accessibility", "Guide", "Legacy & Stories"]
+pillar: "problem-solution"
+appCluster: "memoir-mic"
+relatedSlugs: ["essential-scam-prevention-tips-for-seniors", "how-to-spot-a-scam-for-seniors-guide", "first-car-maintenance-guide-for-teens"]
 ---
+
+
 
 ## The Mistake That Erases Your Story
 

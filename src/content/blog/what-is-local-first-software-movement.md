@@ -1,12 +1,15 @@
 ---
 title: "What Is Local First Software Movement"
 date: 2026-04-06
-description: ""
+description: "Explore the local-first software movement: a pragmatic shift to owning your data on your own devices, not corporate servers. Understand the flaws of the..."
 author: "Stillware Team"
 wordCount: 668
 heroImage: "/blog/images/what-is-local-first-software-movement/hero.webp"
+tags: ["Offline-First", "Anti-SaaS"]
+pillar: "philosophy"
+appCluster: "general"
+relatedSlugs: ["local-first-software-movement-guide", "privacy-first-budgeting-philosophy", "what-is-local-first-software-movement-guide"]
 ---
-
 ## What Is the Local-First Software Movement? (The 2026 Guide)
 
 You’ve been told that the cloud is progress. That syncing your data to a company’s server is a feature, not a risk. That paying monthly for access to your own information is just the cost of convenience.

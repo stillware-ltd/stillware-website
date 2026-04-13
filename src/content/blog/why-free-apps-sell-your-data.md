@@ -1,12 +1,15 @@
 ---
 title: "Why Free Apps Sell Your Data"
 date: 2026-04-05
-description: ""
+description: "Free apps monetize your personal data through advertising and data sales. Understand the true cost of \"free\" software and how to protect your privacy online."
 author: "Stillware Team"
 wordCount: 1356
 heroImage: "/blog/images/why-free-apps-sell-your-data/hero.webp"
+tags: ["Privacy"]
+pillar: "philosophy"
+appCluster: "general"
+relatedSlugs: ["privacy-first-budgeting-philosophy", "why-kids-deserve-digital-privacy", "why-offline-apps-are-better"]
 ---
-
 # Why Free Apps Sell Your Data: The $12/Year Truth
 
 What if the most expensive app on your phone is the one that costs nothing?

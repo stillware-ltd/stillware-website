@@ -1,12 +1,15 @@
 ---
 title: "Teaching Kids Coding Without Screen Time"
 date: 2026-04-02
-description: ""
+description: "Build foundational coding skills offline with hands-on activities using household items. Our guide offers practical games that teach sequencing, logic, and..."
 author: "Stillware Team"
 wordCount: 2031
 heroImage: "/blog/images/teaching-kids-coding-without-screen-time/hero.webp"
+tags: ["Kids & Tech", "Education"]
+pillar: "problem-solution"
+appCluster: "logic-blocks"
+relatedSlugs: ["how-to-learn-coding-on-phone-offline", "how-to-make-a-zine-for-kids-guide", "how-to-teach-kids-coding-logic-without-syntax"]
 ---
-
 ## Teaching Kids Coding Without Screen Time: The Unplugged Path
 
 You’ll finish this article with a toolkit of concrete, screen-free activities that build the same logical muscles as writing code. We’re not talking about abstract theory. You’ll have games to play this afternoon, using paper, toys, and board games you already own, that teach sequencing, conditional logic, and debugging—the core of programming. This approach turns your living room into a classroom where the output isn't a line of code, but a tangible, deeper understanding of how to solve problems. This is the essence of **teaching kids coding without screen time**.

@@ -64,6 +64,19 @@ const ogImageURL = ogImage || new URL('/StillwareLtd_logo.png', Astro.site).href
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
 
     <title>{title}</title>
+
+    <!-- Organization Schema -->
+    <script type="application/ld+json" set:html={JSON.stringify({
+        "@context": "https://schema.org",
+        "@type": "Organization",
+        "name": "Stillware Ltd",
+        "url": "https://www.stillwareltd.com",
+        "logo": "https://www.stillwareltd.com/logo.png",
+        "description": "Privacy-first, local-first software you own forever. No subscriptions, no cloud dependency, no data harvesting.",
+        "sameAs": [
+            "https://dev.to/stillwareltd"
+        ]
+    })} />
 </head>
 <body>
     <Header currentPath={Astro.url.pathname} />

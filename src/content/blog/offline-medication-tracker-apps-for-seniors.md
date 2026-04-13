@@ -5,7 +5,13 @@ description: "Find the best offline medication tracker apps for seniors in 2026.
 author: "Stillware Team"
 wordCount: 1616
 heroImage: "/blog/images/offline-medication-tracker-apps-for-seniors/hero.webp"
+tags: ["Offline-First", "Seniors & Accessibility", "Health & Wellness"]
+pillar: "problem-solution"
+appCluster: "senseclear"
+relatedSlugs: ["offline-medication-tracker-app-for-seniors", "best-offline-medication-tracker-apps-for-seniors", "how-to-track-chronic-illness-symptoms-effectively"]
 ---
+
+
 
 # 7 Offline Medication Tracker Apps for Seniors (2026 Tested)
 

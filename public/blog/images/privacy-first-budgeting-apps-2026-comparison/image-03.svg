@@ -1,0 +1,135 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 675" width="1200" height="675">
+  <style>
+    text { font-family: Inter, system-ui, -apple-system, sans-serif; }
+  </style>
+
+  <rect width="1200" height="675" fill="#ffffff"/>
+
+  <!-- Background pattern (per-article variation) -->
+  <rect width="1200" height="6" fill="#2563eb"/><rect y="6" width="1200" height="2" fill="#60a5fa" opacity="0.4"/>
+
+  <!-- Subtle top accent bar -->
+  <rect width="1200" height="4" fill="#059669"/>
+
+  <!-- Title -->
+  <text x="600" y="55" text-anchor="middle" font-size="26" font-weight="700" fill="#1e293b">Five-Year Total Cost of Ownership (2026-2031)</text>
+
+  <!-- Chart area -->
+  
+  
+  
+  
+  
+  
+  
+
+  <!-- Y axis -->
+  <line x1="240" y1="85" x2="240" y2="610" stroke="#e2e8f0" stroke-width="1"/>
+
+  <!-- Gridlines -->
+  
+  
+  <line x1="396" y1="85" x2="396" y2="610" stroke="#f1f5f9" stroke-width="1"/>
+  
+  
+  <line x1="552" y1="85" x2="552" y2="610" stroke="#f1f5f9" stroke-width="1"/>
+  
+  
+  <line x1="708" y1="85" x2="708" y2="610" stroke="#f1f5f9" stroke-width="1"/>
+  
+  
+  <line x1="864" y1="85" x2="864" y2="610" stroke="#f1f5f9" stroke-width="1"/>
+  
+  
+  <line x1="1020" y1="85" x2="1020" y2="610" stroke="#f1f5f9" stroke-width="1"/>
+  
+
+  
+  
+  
+  
+
+  <!-- Label -->
+  <text x="226" y="133" text-anchor="end" font-size="13" font-weight="500" fill="#1e293b">Zeroed</text>
+
+  <!-- Bar with rounded right end -->
+  <rect x="245" y="93" width="52" height="71" rx="12" fill="#dc2626" opacity="0.85"/>
+  <rect x="245" y="93" width="52" height="71" rx="12" fill="#dc2626" opacity="0.12"/>
+
+  <!-- Value label -->
+  <text x="308" y="133" font-size="13" font-weight="700" fill="#dc2626">$39.99</text>
+  
+  
+  
+  
+
+  <!-- Label -->
+  <text x="226" y="220" text-anchor="end" font-size="13" font-weight="500" fill="#1e293b">Goodbudget Plus</text>
+
+  <!-- Bar with rounded right end -->
+  <rect x="245" y="180" width="520" height="71" rx="12" fill="#f59e0b" opacity="0.85"/>
+  <rect x="245" y="180" width="520" height="71" rx="12" fill="#f59e0b" opacity="0.12"/>
+
+  <!-- Value label -->
+  <text x="776" y="220" font-size="13" font-weight="700" fill="#f59e0b">$400</text>
+  
+  
+  
+  
+
+  <!-- Label -->
+  <text x="226" y="307" text-anchor="end" font-size="13" font-weight="500" fill="#1e293b">EveryDollar</text>
+
+  <!-- Bar with rounded right end -->
+  <rect x="245" y="267" width="520" height="71" rx="12" fill="#16a34a" opacity="0.85"/>
+  <rect x="245" y="267" width="520" height="71" rx="12" fill="#16a34a" opacity="0.12"/>
+
+  <!-- Value label -->
+  <text x="776" y="307" font-size="13" font-weight="700" fill="#16a34a">$399.95</text>
+  
+  
+  
+  
+
+  <!-- Label -->
+  <text x="226" y="394" text-anchor="end" font-size="13" font-weight="500" fill="#1e293b">Monarch Money</text>
+
+  <!-- Bar with rounded right end -->
+  <rect x="245" y="354" width="650" height="71" rx="12" fill="#2563eb" opacity="0.85"/>
+  <rect x="245" y="354" width="650" height="71" rx="12" fill="#2563eb" opacity="0.12"/>
+
+  <!-- Value label -->
+  <text x="906" y="394" font-size="13" font-weight="700" fill="#2563eb">$499.95</text>
+  
+  
+  
+  
+
+  <!-- Label -->
+  <text x="226" y="481" text-anchor="end" font-size="13" font-weight="500" fill="#1e293b">YNAB</text>
+
+  <!-- Bar with rounded right end -->
+  <rect x="245" y="441" width="709" height="71" rx="12" fill="#8b5cf6" opacity="0.85"/>
+  <rect x="245" y="441" width="709" height="71" rx="12" fill="#8b5cf6" opacity="0.12"/>
+
+  <!-- Value label -->
+  <text x="965" y="481" font-size="13" font-weight="700" fill="#8b5cf6">$545</text>
+  
+  
+  
+  
+
+  <!-- Label -->
+  <text x="226" y="568" text-anchor="end" font-size="13" font-weight="500" fill="#1e293b">Copilot</text>
+
+  <!-- Bar with rounded right end -->
+  <rect x="245" y="528" width="780" height="71" rx="12" fill="#06b6d4" opacity="0.85"/>
+  <rect x="245" y="528" width="780" height="71" rx="12" fill="#06b6d4" opacity="0.12"/>
+
+  <!-- Value label -->
+  <text x="1036" y="568" font-size="13" font-weight="700" fill="#06b6d4">$599.40</text>
+  
+
+  <!-- Source attribution -->
+  <text x="1190" y="665" text-anchor="end" font-size="10" fill="#cbd5e1">stillwareltd.com</text>
+</svg>
