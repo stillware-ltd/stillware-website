@@ -1,0 +1,88 @@
+
+
+
+
+
+
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 829" width="1200" height="829">
+  <style>
+    text { font-family: Inter, system-ui, -apple-system, sans-serif; }
+  </style>
+
+  <rect width="1200" height="829" fill="#fffbeb"/>
+
+  <!-- Background pattern (per-article variation) -->
+  <rect width="1200" height="675" fill="#fef3c7" opacity="0.4"/>
+
+  <!-- Subtle top accent bar -->
+  <rect width="1200" height="4" fill="#2563eb"/>
+
+  <!-- Title -->
+  <text x="600" y="50" text-anchor="middle" font-size="28" font-weight="700" fill="#1e293b">The real cost of &#34;free&#34; vs. paid kids apps</text>
+
+  <!-- Column header colors (theme-aware alternation) -->
+  
+  
+
+  <!-- Table -->
+  
+  
+  
+
+  <!-- Column header -->
+  <rect x="100" y="80" width="1000" height="52" fill="#2563eb"/>
+  
+  <rect x="100" y="80" width="4" height="52" fill="#2563eb"/>
+  
+  <text x="600" y="112" text-anchor="middle" font-size="16" font-weight="600" fill="#ffffff">Free App</text>
+
+  <!-- Rows -->
+  
+  
+  <rect x="100" y="148" width="1000" height="52" fill="#fef3c7" stroke="#e2e8f0" stroke-width="0.5"/>
+  <text x="116" y="170" font-size="14" font-weight="600" fill="#1e293b">Free App</text>
+  <text x="116" y="190" font-size="14" fill="#64748b">Business Model:Sell attention &amp; data</text>
+  
+  
+  <rect x="100" y="206" width="1000" height="52" fill="#fffbeb" stroke="#e2e8f0" stroke-width="0.5"/>
+  <text x="116" y="228" font-size="14" font-weight="600" fill="#1e293b">Data Flow</text>
+  <text x="116" y="248" font-size="14" fill="#64748b">To ad networks &amp; analytics</text>
+  
+  
+  <rect x="100" y="264" width="1000" height="52" fill="#fef3c7" stroke="#e2e8f0" stroke-width="0.5"/>
+  <text x="116" y="286" font-size="14" font-weight="600" fill="#1e293b">Design Goal</text>
+  <text x="116" y="306" font-size="14" fill="#64748b">Maximize engagement time</text>
+  
+  
+  <rect x="100" y="322" width="1000" height="52" fill="#fffbeb" stroke="#e2e8f0" stroke-width="0.5"/>
+  <text x="116" y="344" font-size="14" font-weight="600" fill="#1e293b">Updates</text>
+  <text x="116" y="364" font-size="14" fill="#64748b">Driven by monetization features</text>
+  
+  
+  <rect x="100" y="380" width="1000" height="52" fill="#fef3c7" stroke="#e2e8f0" stroke-width="0.5"/>
+  <text x="116" y="402" font-size="14" font-weight="600" fill="#1e293b">Long-term Cost</text>
+  <text x="116" y="422" font-size="14" fill="#64748b">Data profile</text>
+  
+  
+  <rect x="100" y="438" width="1000" height="52" fill="#fffbeb" stroke="#e2e8f0" stroke-width="0.5"/>
+  <text x="116" y="460" font-size="14" font-weight="600" fill="#1e293b">attention span</text>
+  <text x="116" y="480" font-size="14" fill="#64748b">attention span</text>
+  
+  
+  <rect x="100" y="496" width="1000" height="52" fill="#fef3c7" stroke="#e2e8f0" stroke-width="0.5"/>
+  <text x="116" y="518" font-size="14" font-weight="600" fill="#1e293b">potential IAP bills|Paid App</text>
+  <text x="116" y="538" font-size="14" fill="#64748b">Business Model:Sell software</text>
+  
+  
+  <rect x="100" y="554" width="1000" height="52" fill="#fffbeb" stroke="#e2e8f0" stroke-width="0.5"/>
+  <text x="116" y="576" font-size="14" font-weight="600" fill="#1e293b">Data Flow</text>
+  <text x="116" y="596" font-size="14" fill="#64748b">Nowhere. Stays on device.</text>
+  
+  
+
+  <!-- Bottom border -->
+  <rect x="100" y="786" width="1000" height="3" fill="#2563eb"/>
+
+  <!-- Source attribution -->
+  <text x="1190" y="821" text-anchor="end" font-size="10" fill="#cbd5e1">stillwareltd.com</text>
+</svg>

@@ -1,0 +1,200 @@
+
+
+
+
+
+
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 390" width="1200" height="390">
+  <style>
+    text { font-family: Inter, system-ui, -apple-system, sans-serif; }
+  </style>
+
+  <rect width="1200" height="390" fill="#ffffff"/>
+
+  <!-- Background pattern (per-article variation) -->
+  <pattern id="dots" width="20" height="20" patternUnits="userSpaceOnUse"><circle cx="10" cy="10" r="1" fill="#059669" opacity="0.06"/></pattern><rect width="1200" height="675" fill="url(#dots)"/>
+
+  <!-- Subtle top accent bar -->
+  <rect width="1200" height="4" fill="#ca8a04"/>
+
+  <!-- Title -->
+  <text x="600" y="50" text-anchor="middle" font-size="26" font-weight="700" fill="#1e293b">The bulletproof inventory creation workflow</text>
+
+  <!-- Step accent colors (theme-aware with alternation) -->
+  
+
+  
+  
+  
+  
+
+  <!-- Step circle -->
+  <circle cx="97" cy="125" r="28" fill="#ca8a04"/>
+  <circle cx="97" cy="125" r="28" fill="none" stroke="#ca8a04" stroke-width="3" opacity="0.25"/>
+  <text x="97" y="133" text-anchor="middle" font-size="18" font-weight="700" fill="#ffffff">1</text>
+
+  <!-- Connector line from circle to box -->
+  <line x1="97" y1="153" x2="97" y2="180" stroke="#ca8a04" stroke-width="2"/>
+
+  <!-- Step box -->
+  <rect x="15" y="180" width="165" height="155" rx="12" fill="#f8fafc" stroke="#e2e8f0" stroke-width="1.5"/>
+  <rect x="15" y="180" width="165" height="4" rx="2" fill="#ca8a04"/>
+  <text x="97" y="216" text-anchor="middle" font-size="14" font-weight="600" fill="#1e293b">Start One Room</text>
+
+  <!-- Description -->
+  <foreignObject x="25" y="224" width="145" height="100">
+    <p xmlns="http://www.w3.org/1999/xhtml" style="font-family:Inter,system-ui,sans-serif;font-size:11.5px;color:#64748b;margin:0;line-height:1.4;text-align:center;">Gather receipts &amp; manuals for that space</p>
+  </foreignObject>
+
+  <!-- Arrow to next step -->
+  
+  
+  <line x1="184" y1="257" x2="208" y2="257" stroke="#cbd5e1" stroke-width="2"/>
+  <polygon points="208,252 217,257 208,262" fill="#cbd5e1"/>
+  
+  
+  
+  
+  
+
+  <!-- Step circle -->
+  <circle cx="298" cy="125" r="28" fill="#34d399"/>
+  <circle cx="298" cy="125" r="28" fill="none" stroke="#34d399" stroke-width="3" opacity="0.25"/>
+  <text x="298" y="133" text-anchor="middle" font-size="18" font-weight="700" fill="#ffffff">2</text>
+
+  <!-- Connector line from circle to box -->
+  <line x1="298" y1="153" x2="298" y2="180" stroke="#34d399" stroke-width="2"/>
+
+  <!-- Step box -->
+  <rect x="216" y="180" width="165" height="155" rx="12" fill="#f8fafc" stroke="#e2e8f0" stroke-width="1.5"/>
+  <rect x="216" y="180" width="165" height="4" rx="2" fill="#34d399"/>
+  <text x="298" y="216" text-anchor="middle" font-size="14" font-weight="600" fill="#1e293b">Document Each Item</text>
+
+  <!-- Description -->
+  <foreignObject x="226" y="224" width="145" height="100">
+    <p xmlns="http://www.w3.org/1999/xhtml" style="font-family:Inter,system-ui,sans-serif;font-size:11.5px;color:#64748b;margin:0;line-height:1.4;text-align:center;">Photo</p>
+  </foreignObject>
+
+  <!-- Arrow to next step -->
+  
+  
+  <line x1="385" y1="257" x2="409" y2="257" stroke="#cbd5e1" stroke-width="2"/>
+  <polygon points="409,252 418,257 409,262" fill="#cbd5e1"/>
+  
+  
+  
+  
+  
+
+  <!-- Step circle -->
+  <circle cx="499" cy="125" r="28" fill="#0891b2"/>
+  <circle cx="499" cy="125" r="28" fill="none" stroke="#0891b2" stroke-width="3" opacity="0.25"/>
+  <text x="499" y="133" text-anchor="middle" font-size="18" font-weight="700" fill="#ffffff">3</text>
+
+  <!-- Connector line from circle to box -->
+  <line x1="499" y1="153" x2="499" y2="180" stroke="#0891b2" stroke-width="2"/>
+
+  <!-- Step box -->
+  <rect x="417" y="180" width="165" height="155" rx="12" fill="#f8fafc" stroke="#e2e8f0" stroke-width="1.5"/>
+  <rect x="417" y="180" width="165" height="4" rx="2" fill="#0891b2"/>
+  <text x="499" y="216" text-anchor="middle" font-size="14" font-weight="600" fill="#1e293b">serial #</text>
+
+  <!-- Description -->
+  <foreignObject x="427" y="224" width="145" height="100">
+    <p xmlns="http://www.w3.org/1999/xhtml" style="font-family:Inter,system-ui,sans-serif;font-size:11.5px;color:#64748b;margin:0;line-height:1.4;text-align:center;"></p>
+  </foreignObject>
+
+  <!-- Arrow to next step -->
+  
+  
+  <line x1="586" y1="257" x2="610" y2="257" stroke="#cbd5e1" stroke-width="2"/>
+  <polygon points="610,252 619,257 610,262" fill="#cbd5e1"/>
+  
+  
+  
+  
+  
+
+  <!-- Step circle -->
+  <circle cx="700" cy="125" r="28" fill="#ca8a04"/>
+  <circle cx="700" cy="125" r="28" fill="none" stroke="#ca8a04" stroke-width="3" opacity="0.25"/>
+  <text x="700" y="133" text-anchor="middle" font-size="18" font-weight="700" fill="#ffffff">4</text>
+
+  <!-- Connector line from circle to box -->
+  <line x1="700" y1="153" x2="700" y2="180" stroke="#ca8a04" stroke-width="2"/>
+
+  <!-- Step box -->
+  <rect x="618" y="180" width="165" height="155" rx="12" fill="#f8fafc" stroke="#e2e8f0" stroke-width="1.5"/>
+  <rect x="618" y="180" width="165" height="4" rx="2" fill="#ca8a04"/>
+  <text x="700" y="216" text-anchor="middle" font-size="14" font-weight="600" fill="#1e293b">receipt</text>
+
+  <!-- Description -->
+  <foreignObject x="628" y="224" width="145" height="100">
+    <p xmlns="http://www.w3.org/1999/xhtml" style="font-family:Inter,system-ui,sans-serif;font-size:11.5px;color:#64748b;margin:0;line-height:1.4;text-align:center;"></p>
+  </foreignObject>
+
+  <!-- Arrow to next step -->
+  
+  
+  <line x1="787" y1="257" x2="811" y2="257" stroke="#cbd5e1" stroke-width="2"/>
+  <polygon points="811,252 820,257 811,262" fill="#cbd5e1"/>
+  
+  
+  
+  
+  
+
+  <!-- Step circle -->
+  <circle cx="901" cy="125" r="28" fill="#34d399"/>
+  <circle cx="901" cy="125" r="28" fill="none" stroke="#34d399" stroke-width="3" opacity="0.25"/>
+  <text x="901" y="133" text-anchor="middle" font-size="18" font-weight="700" fill="#ffffff">5</text>
+
+  <!-- Connector line from circle to box -->
+  <line x1="901" y1="153" x2="901" y2="180" stroke="#34d399" stroke-width="2"/>
+
+  <!-- Step box -->
+  <rect x="819" y="180" width="165" height="155" rx="12" fill="#f8fafc" stroke="#e2e8f0" stroke-width="1.5"/>
+  <rect x="819" y="180" width="165" height="4" rx="2" fill="#34d399"/>
+  <text x="901" y="216" text-anchor="middle" font-size="14" font-weight="600" fill="#1e293b">model data</text>
+
+  <!-- Description -->
+  <foreignObject x="829" y="224" width="145" height="100">
+    <p xmlns="http://www.w3.org/1999/xhtml" style="font-family:Inter,system-ui,sans-serif;font-size:11.5px;color:#64748b;margin:0;line-height:1.4;text-align:center;"></p>
+  </foreignObject>
+
+  <!-- Arrow to next step -->
+  
+  
+  <line x1="988" y1="257" x2="1012" y2="257" stroke="#cbd5e1" stroke-width="2"/>
+  <polygon points="1012,252 1021,257 1012,262" fill="#cbd5e1"/>
+  
+  
+  
+  
+  
+
+  <!-- Step circle -->
+  <circle cx="1102" cy="125" r="28" fill="#0891b2"/>
+  <circle cx="1102" cy="125" r="28" fill="none" stroke="#0891b2" stroke-width="3" opacity="0.25"/>
+  <text x="1102" y="133" text-anchor="middle" font-size="18" font-weight="700" fill="#ffffff">6</text>
+
+  <!-- Connector line from circle to box -->
+  <line x1="1102" y1="153" x2="1102" y2="180" stroke="#0891b2" stroke-width="2"/>
+
+  <!-- Step box -->
+  <rect x="1020" y="180" width="165" height="155" rx="12" fill="#f8fafc" stroke="#e2e8f0" stroke-width="1.5"/>
+  <rect x="1020" y="180" width="165" height="4" rx="2" fill="#0891b2"/>
+  <text x="1102" y="216" text-anchor="middle" font-size="14" font-weight="600" fill="#1e293b">Input Structured Data</text>
+
+  <!-- Description -->
+  <foreignObject x="1030" y="224" width="145" height="100">
+    <p xmlns="http://www.w3.org/1999/xhtml" style="font-family:Inter,system-ui,sans-serif;font-size:11.5px;color:#64748b;margin:0;line-height:1.4;text-align:center;">Fill all critical fields for proof</p>
+  </foreignObject>
+
+  <!-- Arrow to next step -->
+  
+  
+
+  <!-- Source attribution -->
+  <text x="1190" y="382" text-anchor="end" font-size="10" fill="#cbd5e1">stillwareltd.com</text>
+</svg>
