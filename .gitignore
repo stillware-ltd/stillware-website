@@ -4,3 +4,4 @@ dist
 *.bak
 .env
 init-db.mjs
+.claude/settings.local.json
