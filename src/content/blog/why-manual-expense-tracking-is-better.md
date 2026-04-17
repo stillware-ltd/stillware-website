@@ -7,7 +7,7 @@ wordCount: 1163
 tags: ["Personal Finance", "Offline-First", "Guide"]
 pillar: "philosophy"
 appCluster: "zeroed"
-relatedSlugs: ["privacy-first-budgeting-philosophy", "true-cost-of-ynab", "privacy-budgeting-apps-compared"]
+relatedSlugs: ["privacy-first-budgeting-philosophy", "true-cost-of-ynab", "privacy-first-budgeting-apps-compared-2026"]
 ogImage: "/blog/images/why-manual-expense-tracking-is-better/og-card.svg"
 heroImage: "/blog/images/why-manual-expense-tracking-is-better/hero.webp"
 ---

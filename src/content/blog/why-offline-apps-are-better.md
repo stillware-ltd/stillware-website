@@ -7,7 +7,7 @@ wordCount: 1104
 tags: ["Offline-First", "Anti-SaaS", "Privacy"]
 pillar: "philosophy"
 appCluster: "general"
-relatedSlugs: ["why-we-dont-do-subscriptions", "privacy-first-budgeting-philosophy", "why-offline-apps-protect-seniors-data"]
+relatedSlugs: ["why-we-dont-do-subscriptions", "privacy-first-budgeting-philosophy", "what-is-local-first-software-movement-guide-2026"]
 ogImage: "/blog/images/why-offline-apps-are-better/og-card.svg"
 heroImage: "/blog/images/why-offline-apps-are-better/hero.webp"
 ---

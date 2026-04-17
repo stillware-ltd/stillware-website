@@ -8,7 +8,7 @@ heroImage: "/blog/images/zero-based-budgeting-explained-simply/hero.webp"
 tags: ["Personal Finance", "Guide"]
 pillar: "problem-solution"
 appCluster: "zeroed"
-relatedSlugs: ["how-to-teach-kids-financial-literacy-with-cash", "why-manual-expense-tracking-is-better", "best-offline-budget-app-for-windows"]
+relatedSlugs: ["envelope-budgeting-app-no-bank-sync", "why-manual-expense-tracking-is-better", "best-offline-budget-app-for-windows"]
 ---
 ## What If Your Budget Isn't Actually a Budget?
 

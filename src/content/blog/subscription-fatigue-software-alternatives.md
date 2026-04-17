@@ -8,7 +8,7 @@ heroImage: "/blog/images/subscription-fatigue-software-alternatives/hero.webp"
 tags: ["Personal Finance", "Comparison", "Anti-SaaS"]
 pillar: "comparison"
 appCluster: "general"
-relatedSlugs: ["true-cost-of-ynab", "best-one-time-purchase-apps-2026", "privacy-budgeting-apps-compared"]
+relatedSlugs: ["true-cost-of-ynab", "why-we-dont-do-subscriptions", "privacy-first-budgeting-apps-compared-2026"]
 ---
 # 5 Signs of Subscription Fatigue (And How to Escape It)
 

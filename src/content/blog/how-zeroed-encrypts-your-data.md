@@ -8,7 +8,7 @@ wordCount: 407
 tags: ["Technical", "Privacy", "Offline-First"]
 pillar: "technical"
 appCluster: "zeroed"
-relatedSlugs: ["privacy-first-budgeting-philosophy", "privacy-budgeting-apps-compared", "why-offline-apps-are-better"]
+relatedSlugs: ["privacy-first-budgeting-philosophy", "privacy-first-budgeting-apps-compared-2026", "why-offline-apps-are-better"]
 ogImage: "/blog/images/how-zeroed-encrypts-your-data/og-card.svg"
 ---
 

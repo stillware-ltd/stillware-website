@@ -7,7 +7,7 @@ wordCount: 1497
 tags: ["Kids & Tech", "Privacy", "Education"]
 pillar: "philosophy"
 appCluster: "general"
-relatedSlugs: ["how-to-teach-kids-financial-literacy-with-cash", "best-offline-chess-app-for-kids", "why-offline-apps-protect-seniors-data"]
+relatedSlugs: ["how-to-protect-kids-data-online-parent-guide", "best-offline-chess-app-for-kids", "why-offline-apps-are-better"]
 ogImage: "/blog/images/why-kids-deserve-digital-privacy/og-card.svg"
 heroImage: "/blog/images/why-kids-deserve-digital-privacy/hero.webp"
 ---

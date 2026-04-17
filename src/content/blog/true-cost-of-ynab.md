@@ -7,7 +7,7 @@ wordCount: 291
 tags: ["Comparison", "Personal Finance", "Anti-SaaS"]
 pillar: "comparison"
 appCluster: "zeroed"
-relatedSlugs: ["why-we-dont-do-subscriptions", "privacy-budgeting-apps-compared", "why-manual-expense-tracking-is-better"]
+relatedSlugs: ["why-we-dont-do-subscriptions", "ynab-price-increase-alternatives-2026", "why-manual-expense-tracking-is-better"]
 ogImage: "/blog/images/true-cost-of-ynab/og-card.svg"
 heroImage: "/blog/images/true-cost-of-ynab/hero.webp"
 ---

@@ -8,7 +8,7 @@ heroImage: "/blog/images/ynab-alternative-no-subscription-ultimate-comparison/he
 tags: ["Personal Finance", "Offline-First", "Comparison"]
 pillar: "comparison"
 appCluster: "zeroed"
-relatedSlugs: ["privacy-budgeting-apps-compared", "ynab-alternative-no-subscription", "best-offline-budget-app-for-windows"]
+relatedSlugs: ["privacy-first-budgeting-apps-compared-2026", "ynab-price-increase-alternatives-2026", "best-offline-budget-app-for-windows"]
 ---
 # YNAB Alternative With No Subscription: 2026 Ultimate Comparison
 

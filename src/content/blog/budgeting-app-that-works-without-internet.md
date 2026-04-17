@@ -8,7 +8,7 @@ heroImage: "/blog/images/budgeting-app-that-works-without-internet/hero.webp"
 tags: ["Personal Finance", "Offline-First"]
 pillar: "comparison"
 appCluster: "zeroed"
-relatedSlugs: ["best-offline-budget-app-for-windows", "best-one-time-purchase-apps-2026", "privacy-budgeting-apps-compared"]
+relatedSlugs: ["best-offline-budget-app-for-windows", "envelope-budgeting-app-no-bank-sync", "privacy-first-budgeting-apps-compared-2026"]
 ---
 
 

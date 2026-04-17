@@ -8,7 +8,7 @@ heroImage: "/blog/images/best-offline-budget-app-for-windows/hero.webp"
 tags: ["Personal Finance", "Offline-First"]
 pillar: "comparison"
 appCluster: "zeroed"
-relatedSlugs: ["best-one-time-purchase-apps-2026", "budgeting-app-that-works-without-internet", "privacy-budgeting-apps-compared"]
+relatedSlugs: ["budgeting-app-that-works-without-internet", "privacy-first-budgeting-apps-compared-2026", "true-cost-of-ynab"]
 ---
 ## Myth vs. Reality: Finding a Budget App for Windows
 

@@ -8,7 +8,7 @@ heroImage: "/blog/images/envelope-budgeting-app-no-bank-sync/hero.webp"
 tags: ["Personal Finance"]
 pillar: "comparison"
 appCluster: "zeroed"
-relatedSlugs: ["best-offline-budget-app-for-windows", "best-one-time-purchase-apps-2026", "budgeting-app-that-works-without-internet"]
+relatedSlugs: ["best-offline-budget-app-for-windows", "budgeting-app-that-works-without-internet", "zero-based-budgeting-explained-simply"]
 ---
 # 7 Envelope Budgeting Apps That Don't Sync Your Bank (2026 Tested)
 

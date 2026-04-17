@@ -8,7 +8,7 @@ heroImage: "/blog/images/best-offline-chess-puzzles-for-kids/hero.webp"
 tags: ["Offline-First", "Kids & Tech", "Education"]
 pillar: "comparison"
 appCluster: "rankup-chess"
-relatedSlugs: ["best-offline-chess-app-for-kids", "best-offline-chess-app-for-kids-2026", "how-to-teach-kids-coding-logic-without-syntax"]
+relatedSlugs: ["best-offline-chess-app-for-kids", "why-kids-deserve-digital-privacy", "how-to-protect-kids-data-online-parent-guide"]
 ---
 ## What You'll Learn About Offline Chess Puzzles for Kids
 
