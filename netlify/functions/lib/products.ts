@@ -24,7 +24,7 @@ export const PRODUCTS: Record<ProductSlug, ProductConfig> = {
     slug: "zeroed",
     name: "Zeroed",
     tagline: "Zero stress. Total control.",
-    maxActivations: 3,
+    maxActivations: 5,
   },
   rankup: {
     slug: "rankup",
