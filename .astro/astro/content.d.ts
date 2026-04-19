@@ -141,6 +141,27 @@ declare module 'astro:content' {
 
 	type ContentEntryMap = {
 		"blog": {
+"best-apps-for-seniors-easy-to-use-2026.md": {
+	id: "best-apps-for-seniors-easy-to-use-2026.md";
+  slug: "best-apps-for-seniors-easy-to-use-2026";
+  body: string;
+  collection: "blog";
+  data: InferEntrySchema<"blog">
+} & { render(): Render[".md"] };
+"best-creative-apps-kids-screen-time-alternatives.md": {
+	id: "best-creative-apps-kids-screen-time-alternatives.md";
+  slug: "best-creative-apps-kids-screen-time-alternatives";
+  body: string;
+  collection: "blog";
+  data: InferEntrySchema<"blog">
+} & { render(): Render[".md"] };
+"best-gamified-chore-tracker-for-kids-no-subscription.md": {
+	id: "best-gamified-chore-tracker-for-kids-no-subscription.md";
+  slug: "best-gamified-chore-tracker-for-kids-no-subscription";
+  body: string;
+  collection: "blog";
+  data: InferEntrySchema<"blog">
+} & { render(): Render[".md"] };
 "best-offline-budget-app-for-windows.md": {
 	id: "best-offline-budget-app-for-windows.md";
   slug: "best-offline-budget-app-for-windows";
@@ -162,6 +183,13 @@ declare module 'astro:content' {
   collection: "blog";
   data: InferEntrySchema<"blog">
 } & { render(): Render[".md"] };
+"best-offline-hiking-journal-apps.md": {
+	id: "best-offline-hiking-journal-apps.md";
+  slug: "best-offline-hiking-journal-apps";
+  body: string;
+  collection: "blog";
+  data: InferEntrySchema<"blog">
+} & { render(): Render[".md"] };
 "budgeting-app-that-works-without-internet.md": {
 	id: "budgeting-app-that-works-without-internet.md";
   slug: "budgeting-app-that-works-without-internet";
@@ -176,6 +204,13 @@ declare module 'astro:content' {
   collection: "blog";
   data: InferEntrySchema<"blog">
 } & { render(): Render[".md"] };
+"hidden-costs-cloud-home-maintenance-log-offline-alternative.md": {
+	id: "hidden-costs-cloud-home-maintenance-log-offline-alternative.md";
+  slug: "hidden-costs-cloud-home-maintenance-log-offline-alternative";
+  body: string;
+  collection: "blog";
+  data: InferEntrySchema<"blog">
+} & { render(): Render[".md"] };
 "how-to-protect-kids-data-online-parent-guide.md": {
 	id: "how-to-protect-kids-data-online-parent-guide.md";
   slug: "how-to-protect-kids-data-online-parent-guide";
@@ -183,9 +218,23 @@ declare module 'astro:content' {
   collection: "blog";
   data: InferEntrySchema<"blog">
 } & { render(): Render[".md"] };
+"how-to-start-a-rock-collection-for-kids-simple-steps.md": {
+	id: "how-to-start-a-rock-collection-for-kids-simple-steps.md";
+  slug: "how-to-start-a-rock-collection-for-kids-simple-steps";
+  body: string;
+  collection: "blog";
+  data: InferEntrySchema<"blog">
+} & { render(): Render[".md"] };
 "how-zeroed-encrypts-your-data.md": {
 	id: "how-zeroed-encrypts-your-data.md";
   slug: "how-zeroed-encrypts-your-data";
+  body: string;
+  collection: "blog";
+  data: InferEntrySchema<"blog">
+} & { render(): Render[".md"] };
+"manual-expense-tracking-2026-mindset-shift.md": {
+	id: "manual-expense-tracking-2026-mindset-shift.md";
+  slug: "manual-expense-tracking-2026-mindset-shift";
   body: string;
   collection: "blog";
   data: InferEntrySchema<"blog">
