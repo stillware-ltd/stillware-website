@@ -1,0 +1,494 @@
+---
+import Layout from '../../layouts/Layout.astro';
+---
+
+<Layout
+  title="NeverMiss AI Dispatcher — Terms of Service"
+  description="Terms of Service for the NeverMiss AI Dispatcher service operated by Stillware Ltd."
+>
+    <article class="legal-page">
+        <header class="legal-hero">
+            <div class="container">
+                <span class="legal-eyebrow">NeverMiss AI Dispatcher</span>
+                <h1>Terms of Service</h1>
+            </div>
+        </header>
+        <div class="legal-body">
+            <div class="container">
+                <p><strong>Effective Date:</strong> 25 April 2026</p>
+                <p><strong>Last Updated:</strong> 25 April 2026</p>
+
+                <p>These Terms of Service (&ldquo;<strong>Terms</strong>&rdquo;) govern the provision of the NeverMiss AI Dispatcher service (&ldquo;<strong>Service</strong>&rdquo;) provided by <strong>Stillware Ltd</strong>, a company registered in England and Wales under company number <strong>16927952</strong> with its registered office at <strong>155 Dugdale Hill Lane, Potters Bar, EN6 2DF</strong> (&ldquo;<strong>Stillware</strong>&rdquo;, &ldquo;<strong>we</strong>&rdquo;, &ldquo;<strong>us</strong>&rdquo;, or &ldquo;<strong>our</strong>&rdquo;), to you, the client (&ldquo;<strong>you</strong>&rdquo; or &ldquo;<strong>Client</strong>&rdquo;).</p>
+
+                <p>By ticking the acceptance checkbox at checkout, paying the setup fee, or using the Service, you confirm that:</p>
+                <ol type="a">
+                    <li>you have read and agree to these Terms;</li>
+                    <li>you are entering into this agreement on behalf of a business and have the authority to bind that business; and</li>
+                    <li>the individual accepting these Terms is at least 18 years old.</li>
+                </ol>
+                <p>If you do not agree to these Terms, do not pay the setup fee or use the Service.</p>
+
+                <h2>1. Definitions</h2>
+                <ul>
+                    <li><strong>&ldquo;Business Number&rdquo;</strong> &mdash; the telephone number you operate (e.g., your landline or mobile) from which calls are forwarded to our infrastructure.</li>
+                    <li><strong>&ldquo;Dedicated Number&rdquo;</strong> &mdash; the telecom number we provision on Twilio specifically for your account.</li>
+                    <li><strong>&ldquo;Caller Data&rdquo;</strong> &mdash; information collected from your callers during a missed-call interaction, including phone numbers, names, addresses, postcodes, problem descriptions, and SMS content.</li>
+                    <li><strong>&ldquo;CCF&rdquo;</strong> &mdash; conditional call forwarding configured on your Business Number by your telecom carrier.</li>
+                    <li><strong>&ldquo;Sub-processor&rdquo;</strong> &mdash; has the meaning set out in section 4.3.</li>
+                    <li><strong>&ldquo;Working Day&rdquo;</strong> &mdash; Monday to Friday, excluding public holidays in England and Wales.</li>
+                </ul>
+
+                <h2>2. The Service</h2>
+
+                <h3>2.1 Service description</h3>
+                <p>NeverMiss is an automated, AI-driven service that handles missed calls to your Business Number by:</p>
+                <ol type="a">
+                    <li>routing missed calls to a Dedicated Number we configure on your behalf;</li>
+                    <li>sending an automated SMS to the caller to capture their request;</li>
+                    <li>running an AI conversation flow over SMS to qualify the lead (problem, location, urgency);</li>
+                    <li>delivering the qualified lead to a Google Sheet you control; and</li>
+                    <li>optionally sending an alert SMS and/or email to your nominated number(s) and address(es).</li>
+                </ol>
+
+                <h3>2.2 Setup</h3>
+                <p>On receipt of the setup fee and the information we reasonably require from you, we will:</p>
+                <ol type="a">
+                    <li>provision a Dedicated Number on Twilio;</li>
+                    <li>configure webhooks, conversation logic, and Google Sheet integration; and</li>
+                    <li>provide you with instructions to enable CCF on your Business Number.</li>
+                </ol>
+                <p>We will use reasonable endeavours to complete setup within <strong>five (5) Working Days</strong> of receipt of the setup fee and the information we require (Business Number, postcode, business type, Google account, lead-receiver phone numbers).</p>
+
+                <h3>2.3 Service commencement</h3>
+                <p>The Service commences on the date the Dedicated Number is provisioned and configured (the &ldquo;<strong>Service Start Date</strong>&rdquo;). The first monthly subscription period runs from the Service Start Date.</p>
+
+                <h3>2.4 Third-party dependencies</h3>
+                <p>You acknowledge that the Service relies on third-party infrastructure outside our direct control, including:</p>
+                <ol type="a">
+                    <li><strong>Twilio Inc.</strong> &mdash; telecom routing and SMS delivery;</li>
+                    <li><strong>Google LLC</strong> &mdash; Google Sheets and email delivery;</li>
+                    <li><strong>DeepSeek, OpenAI,</strong> or comparable providers &mdash; AI/LLM inference;</li>
+                    <li><strong>Resend</strong> &mdash; transactional email delivery; and</li>
+                    <li>cloud hosting platforms used by us (currently <strong>Railway</strong>).</li>
+                </ol>
+                <p>Performance, availability, and pricing of these providers may affect the Service.</p>
+
+                <h2>3. Fees, Payment &amp; Cancellation</h2>
+
+                <h3>3.1 Fees</h3>
+                <p>The Service requires:</p>
+                <ol type="a">
+                    <li>a one-time <strong>setup fee</strong>; and</li>
+                    <li>a recurring <strong>monthly subscription fee</strong>.</li>
+                </ol>
+                <p>The amounts of these fees are set out on the NeverMiss product page at <a href="/services/nevermiss">stillwareltd.com/services/nevermiss</a> and confirmed at Stripe checkout at the time of your purchase. The fees displayed at checkout, and accepted by you at that point, govern your subscription. All fees are in GBP and exclusive of VAT, which we will charge at the prevailing rate where applicable.</p>
+
+                <h3>3.2 Setup fee &mdash; non-refundable</h3>
+                <p>The setup fee is <strong>non-refundable</strong> once we have provisioned the Dedicated Number, regardless of whether you proceed to enable CCF on your Business Number. This reflects the irrecoverable cost of telecom number procurement and configuration time.</p>
+
+                <h3>3.3 Subscription billing</h3>
+                <p>Subscription fees are billed monthly in advance via <strong>Stripe</strong> on the calendar date corresponding to the Service Start Date. You authorise us to charge your nominated payment method automatically.</p>
+
+                <h3>3.4 Failed payments</h3>
+                <p>If a subscription payment fails, we will retry collection per Stripe&rsquo;s standard retry schedule. If payment remains outstanding for <strong>seven (7) days</strong> after the original due date, we may suspend the Service. If payment remains outstanding for <strong>fourteen (14) days</strong>, we may terminate the Service and deprovision the Dedicated Number.</p>
+
+                <h3>3.5 Cancellation</h3>
+                <p>You may cancel at any time by emailing <a href="mailto:support@stillwareltd.com">support@stillwareltd.com</a> with the subject line &ldquo;Cancel NeverMiss&rdquo; from the email address associated with your account. Cancellation takes effect at the <strong>end of the then-current monthly billing cycle</strong>. No partial refunds are issued for unused portions of a billing cycle.</p>
+
+                <h3>3.6 Price changes</h3>
+                <p>We may change the subscription fee. We will give you at least <strong>30 days&rsquo; written notice</strong> by email before any price increase takes effect. If you do not agree, you may cancel under section 3.5; the new price will not apply until your next billing cycle after the notice period.</p>
+
+                <h3>3.7 Refund policy</h3>
+                <p>Subject to section 3.2, monthly subscription fees are <strong>non-refundable</strong> once a billing cycle has commenced. This does not affect any statutory rights you may have under English law that cannot be excluded.</p>
+
+                <h2>4. Data Protection (UK GDPR &amp; Data Protection Act 2018)</h2>
+
+                <h3>4.1 Roles</h3>
+                <p>For all Caller Data processed under this agreement:</p>
+                <ol type="a">
+                    <li><strong>you</strong> are the <strong>Data Controller</strong>; and</li>
+                    <li><strong>Stillware</strong> is the <strong>Data Processor</strong>, acting on your documented instructions.</li>
+                </ol>
+
+                <h3>4.2 Processing scope</h3>
+                <p>We will process Caller Data only to:</p>
+                <ol type="a">
+                    <li>operate the Service as described in section 2;</li>
+                    <li>deliver qualified lead transcripts to you;</li>
+                    <li>maintain audit logs and operational records as required for security, billing, and legal compliance; and</li>
+                    <li>improve the reliability of the Service in <strong>aggregated, anonymised</strong> form only.</li>
+                </ol>
+                <p>We will <strong>not</strong> sell, share, or use Caller Data for marketing, and we will not provide identifiable Caller Data to AI providers for model training.</p>
+
+                <h3>4.3 Sub-processors</h3>
+                <p>You authorise us to engage the following sub-processors:</p>
+                <div class="table-wrap">
+                    <table class="legal-table">
+                        <thead>
+                            <tr><th>Sub-processor</th><th>Purpose</th><th>Location</th></tr>
+                        </thead>
+                        <tbody>
+                            <tr><td>Twilio Inc.</td><td>Telecom routing, SMS delivery</td><td>USA (UK transfer mechanism: SCCs / IDTA)</td></tr>
+                            <tr><td>Google LLC</td><td>Google Sheets, email delivery</td><td>USA (UK adequacy / SCCs)</td></tr>
+                            <tr><td>DeepSeek / OpenAI (or equivalent)</td><td>AI text generation</td><td>USA / China (see section 4.4)</td></tr>
+                            <tr><td>Resend</td><td>Transactional email</td><td>USA (UK GDPR SCCs)</td></tr>
+                            <tr><td>Railway Corp.</td><td>Application hosting</td><td>USA (UK GDPR SCCs)</td></tr>
+                        </tbody>
+                    </table>
+                </div>
+                <p>We will give you at least <strong>30 days&rsquo; notice</strong> before adding or replacing a sub-processor. If you reasonably object, your sole remedy is to cancel under section 3.5.</p>
+
+                <h3>4.4 International transfers</h3>
+                <p>Where Caller Data is transferred outside the UK, we rely on:</p>
+                <ol type="a">
+                    <li><strong>UK adequacy decisions</strong> (where available);</li>
+                    <li>the <strong>UK International Data Transfer Agreement (IDTA)</strong> or <strong>UK Addendum to the EU SCCs</strong>; or</li>
+                    <li>other transfer mechanisms recognised under UK GDPR.</li>
+                </ol>
+                <p>If you require AI inference to be limited to providers operating only within the UK or EU adequacy-listed regions, you must notify us in writing <strong>before</strong> the Service Start Date; we may not be able to accommodate this and reserve the right to decline service on that basis.</p>
+
+                <h3>4.5 Security</h3>
+                <p>We implement appropriate technical and organisational measures, including:</p>
+                <ol type="a">
+                    <li>TLS encryption in transit for all webhook and API traffic;</li>
+                    <li>signature verification of inbound webhooks (Twilio request validation);</li>
+                    <li>access controls limiting database access to authorised personnel;</li>
+                    <li>audit logging of administrative actions; and</li>
+                    <li>timely patching of dependencies.</li>
+                </ol>
+
+                <h3>4.6 Personal data breach</h3>
+                <p>We will notify you without undue delay (and in any event within <strong>48 hours</strong>) of becoming aware of a personal data breach affecting your Caller Data, providing such information as you reasonably require to comply with your notification obligations under UK GDPR.</p>
+
+                <h3>4.7 Data retention</h3>
+                <p>We retain Caller Data only as long as necessary to operate the Service. On termination, we will:</p>
+                <ol type="a">
+                    <li>delete Caller Data from our systems within <strong>30 days</strong>, except where retention is required by law or for ongoing dispute resolution; and</li>
+                    <li>confirm deletion in writing on request.</li>
+                </ol>
+                <p>The Google Sheet containing your lead transcripts remains under your control (it is created in or shared to your Google account) and is unaffected by our deletion.</p>
+
+                <h3>4.8 Data subject rights</h3>
+                <p>If you receive a request from a caller exercising rights under UK GDPR (access, rectification, erasure, portability, objection), we will provide reasonable assistance to enable you to respond, on your written instruction. We may charge a reasonable fee for assistance that goes beyond standard reporting.</p>
+
+                <h3>4.9 Audit</h3>
+                <p>On reasonable written request (no more than once per year), we will provide a summary of our security and data-handling practices sufficient to demonstrate compliance with UK GDPR Article 28. On-site audits are not provided.</p>
+
+                <h2>5. Client Responsibilities</h2>
+
+                <h3>5.1 Authorisation</h3>
+                <p>You confirm that:</p>
+                <ol type="a">
+                    <li>you own or are authorised to operate the Business Number;</li>
+                    <li>you have the legal right to forward calls from the Business Number to the Dedicated Number; and</li>
+                    <li>where the Business Number is provided by a third-party carrier, you have verified that conditional call forwarding is permitted under your carrier&rsquo;s terms and any business-line contract.</li>
+                </ol>
+
+                <h3>5.2 Acceptable use</h3>
+                <p>You must not use the Service to:</p>
+                <ol type="a">
+                    <li>send spam, unsolicited marketing, or commercial messages outside the scope of responding to inbound enquiries;</li>
+                    <li>send unlawful, threatening, defamatory, obscene, or harassing content;</li>
+                    <li>impersonate another person or business;</li>
+                    <li>violate the <strong>Privacy and Electronic Communications Regulations 2003 (PECR)</strong>, the <strong>Communications Act 2003</strong>, <strong>Ofcom</strong> rules, or any other applicable UK law;</li>
+                    <li>violate <strong>Twilio&rsquo;s Acceptable Use Policy</strong> or <strong>Messaging Policy</strong>; or</li>
+                    <li>reverse-engineer, scrape, or interfere with the Service or its underlying systems.</li>
+                </ol>
+
+                <h3>5.3 SMS consent and PECR</h3>
+                <p>The Service operates on the basis that callers have initiated contact with your business by phone, which constitutes a reasonable basis for an SMS reply qualifying their enquiry. You are responsible for ensuring your <strong>subsequent</strong> marketing or follow-up communications to leads generated through the Service comply with PECR (which fall outside the scope of the Service).</p>
+
+                <h3>5.4 Industry restrictions</h3>
+                <p>You confirm that your business is <strong>not</strong> primarily engaged in any of the following sectors, for which we do not provide the Service:</p>
+                <ul>
+                    <li>Adult content or services</li>
+                    <li>Gambling, betting, or lotteries</li>
+                    <li>Cryptocurrency, NFT, or speculative financial products</li>
+                    <li>Multi-level marketing</li>
+                    <li>Debt collection</li>
+                    <li>Telemarketing as a primary activity</li>
+                    <li>Any business prohibited by Twilio&rsquo;s Acceptable Use Policy</li>
+                </ul>
+
+                <h3>5.5 Information accuracy</h3>
+                <p>You must provide accurate information during onboarding (business name, Business Number, postcode, business type, lead-receiver phone numbers) and notify us promptly of any material changes.</p>
+
+                <h3>5.6 Lead monitoring</h3>
+                <p>The Service surfaces leads to your Google Sheet and (optionally) by SMS/email alert. You are responsible for monitoring incoming leads and responding to callers in a timely manner. The Service does not contact callers further on your behalf beyond the qualification flow.</p>
+
+                <h2>6. AI Limitations &amp; Disclaimer of Warranties</h2>
+
+                <h3>6.1 AI behaviour</h3>
+                <p>The NeverMiss AI is a probabilistic system. It can:</p>
+                <ol type="a">
+                    <li>misinterpret caller messages, postcodes, or urgency signals;</li>
+                    <li>occasionally generate inaccurate or &ldquo;hallucinated&rdquo; content;</li>
+                    <li>fail to respond to ambiguous or non-standard inputs; and</li>
+                    <li>be unavailable during third-party API outages.</li>
+                </ol>
+
+                <h3>6.2 Not professional advice</h3>
+                <p>The Service is a <strong>lead-qualification tool only</strong>. It does not, and is not intended to, provide professional, technical, medical, legal, or emergency advice to your callers. You are solely responsible for technical assessment of and response to leads generated by the Service.</p>
+
+                <h3>6.3 Emergency calls</h3>
+                <div class="highlight">
+                    <p>The Service is <strong>not suitable for emergency call handling</strong>. You must not represent the Service as an emergency response service. If a caller indicates an emergency (gas leak, flood, fire, medical, etc.), the Service may flag urgency but cannot dispatch emergency services. You remain responsible for monitoring leads and contacting emergency services where appropriate.</p>
+                </div>
+
+                <h3>6.4 &ldquo;As Is&rdquo; service</h3>
+                <p>To the maximum extent permitted by law, the Service is provided <strong>&ldquo;as is&rdquo;</strong> and <strong>&ldquo;as available&rdquo;</strong>. We make no warranties, express or implied, including any implied warranties of merchantability, fitness for a particular purpose, or non-infringement. We do not warrant that the Service will be uninterrupted, error-free, or that it will capture every missed call or every lead.</p>
+
+                <h3>6.5 No service-level agreement</h3>
+                <p>We do not provide a formal service-level agreement (SLA) or uptime guarantee. We will use reasonable endeavours to monitor the Service and respond to operational issues during UK business hours (Monday&ndash;Friday, 9:00&ndash;17:00 UK time, excluding public holidays).</p>
+
+                <h2>7. Limitation of Liability</h2>
+
+                <h3>7.1 Excluded losses</h3>
+                <p>To the maximum extent permitted by law, Stillware Ltd shall not be liable for any:</p>
+                <ol type="a">
+                    <li>indirect, incidental, special, or consequential damages;</li>
+                    <li>loss of profits, revenue, business, or anticipated savings;</li>
+                    <li>loss of business opportunity, goodwill, or reputation;</li>
+                    <li>loss of leads, customers, or contracts; or</li>
+                    <li>damages arising from third-party service failures (Twilio, Google, AI providers, carrier networks, hosting providers),</li>
+                </ol>
+                <p>arising out of or related to the Service or these Terms, whether in contract, tort (including negligence), breach of statutory duty, or otherwise.</p>
+
+                <h3>7.2 Liability cap</h3>
+                <p>Our total aggregate liability to you for all claims arising out of or related to the Service or these Terms shall not exceed the <strong>total amount you have paid to us in the twelve (12) months preceding the event giving rise to the claim</strong>.</p>
+
+                <h3>7.3 Statutory rights</h3>
+                <p>Nothing in these Terms excludes or limits liability for:</p>
+                <ol type="a">
+                    <li>death or personal injury caused by our negligence;</li>
+                    <li>fraud or fraudulent misrepresentation; or</li>
+                    <li>any other liability that cannot be excluded under English law.</li>
+                </ol>
+
+                <h2>8. Termination &amp; Suspension</h2>
+
+                <h3>8.1 Termination by you</h3>
+                <p>You may terminate the Service for convenience under section 3.5 (cancellation).</p>
+
+                <h3>8.2 Termination by us</h3>
+                <p>We may terminate the Service immediately by written notice if:</p>
+                <ol type="a">
+                    <li>you fail to pay any fee within 14 days of the due date;</li>
+                    <li>you materially breach these Terms and (where the breach is capable of remedy) fail to remedy it within 14 days of our notice;</li>
+                    <li>you breach section 5.2 (acceptable use) or section 5.4 (industry restrictions);</li>
+                    <li>Twilio, Google, or another sub-processor terminates our ability to provide the Service to you; or</li>
+                    <li>continuing to provide the Service would violate applicable law or regulation.</li>
+                </ol>
+
+                <h3>8.3 Suspension</h3>
+                <p>We may suspend the Service immediately and without prior notice if we reasonably believe:</p>
+                <ol type="a">
+                    <li>the Service is being misused in a way that may harm Twilio&rsquo;s network reputation, our infrastructure, or other users;</li>
+                    <li>you have breached section 5.2; or</li>
+                    <li>suspension is required to comply with law enforcement or regulatory requests.</li>
+                </ol>
+
+                <h3>8.4 Effect of termination</h3>
+                <p>On termination:</p>
+                <ol type="a">
+                    <li>your access to the Service ends;</li>
+                    <li>we will deprovision the Dedicated Number (subject to section 8.5);</li>
+                    <li>we will retain or delete Caller Data per section 4.7; and</li>
+                    <li>any accrued payment obligations remain due.</li>
+                </ol>
+
+                <h3>8.5 Dedicated Number ownership</h3>
+                <p>The Dedicated Number is registered to <strong>our</strong> Twilio account and is <strong>not portable</strong> to your account or to a third-party carrier. As callers contact your Business Number (not the Dedicated Number directly), deprovisioning has no caller-facing impact provided you also disable CCF on your Business Number. If you require a number registered to your own Twilio account, you must notify us before onboarding; we may decline to support that configuration or may charge an additional fee.</p>
+
+                <h3>8.6 Survival</h3>
+                <p>Sections 4 (Data Protection), 7 (Limitation of Liability), 9 (Intellectual Property), 10 (Confidentiality), 11 (Indemnity), and 13 (General) survive termination.</p>
+
+                <h2>9. Intellectual Property</h2>
+                <p>All software, prompts, configurations, infrastructure, and documentation comprising the Service remain the exclusive property of Stillware Ltd. Nothing in these Terms transfers any intellectual property rights to you. You retain all rights in Caller Data and any data you provide to us.</p>
+                <p>You grant us a limited, non-exclusive, royalty-free licence to use Caller Data and your business information solely to the extent necessary to provide the Service.</p>
+
+                <h2>10. Confidentiality</h2>
+                <p>Each party will keep confidential any non-public information disclosed by the other party in connection with the Service and use it only for the purpose of performing this agreement. This obligation does not apply to information that:</p>
+                <ol type="a">
+                    <li>is or becomes publicly known through no breach of this section;</li>
+                    <li>was already known to the receiving party without obligation of confidence;</li>
+                    <li>is independently developed without reference to the disclosing party&rsquo;s information; or</li>
+                    <li>is required to be disclosed by law or regulator, provided the receiving party gives prompt notice (where lawful) to allow the disclosing party to seek a protective order.</li>
+                </ol>
+
+                <h2>11. Indemnity</h2>
+                <p>You will indemnify and hold us harmless from any third-party claims, losses, or expenses (including reasonable legal fees) arising from:</p>
+                <ol type="a">
+                    <li>your breach of section 5 (Client Responsibilities);</li>
+                    <li>your use of the Service for content or purposes outside its intended scope; or</li>
+                    <li>any claim by a caller or other data subject that processing of their personal data violated UK GDPR, where the cause was your instructions, your overall data-handling practices, or your follow-up communications.</li>
+                </ol>
+
+                <h2>12. Force Majeure</h2>
+                <p>Neither party is liable for failure or delay in performance caused by events outside its reasonable control, including acts of God, war, terrorism, riots, embargoes, strikes, telecommunications failures, internet outages, third-party API outages, pandemic, or government action. The affected party must notify the other promptly and use reasonable endeavours to resume performance. If the event continues for more than <strong>30 consecutive days</strong>, either party may terminate by written notice.</p>
+
+                <h2>13. General</h2>
+
+                <h3>13.1 Modifications to Terms</h3>
+                <p>We may update these Terms from time to time. For <strong>material changes</strong>, we will give you at least <strong>30 days&rsquo; written notice</strong> by email. Continued use of the Service after the effective date of an update constitutes acceptance. If you do not agree, you may cancel under section 3.5.</p>
+
+                <h3>13.2 Modifications to Service</h3>
+                <p>We may modify the Service from time to time, including adding, changing, or removing features. We will not make changes that materially degrade the core functionality without notice.</p>
+
+                <h3>13.3 Notices</h3>
+                <p>Notices to us must be sent to <a href="mailto:support@stillwareltd.com">support@stillwareltd.com</a>. Notices to you will be sent to the email address you provided at signup. Email notices are deemed received on the next Working Day after sending.</p>
+
+                <h3>13.4 Assignment</h3>
+                <p>You may not assign or transfer these Terms without our prior written consent. We may assign these Terms to any successor in connection with a merger, acquisition, or sale of substantially all of our assets, on notice to you.</p>
+
+                <h3>13.5 No partnership</h3>
+                <p>Nothing in these Terms creates a partnership, joint venture, agency, or employment relationship between the parties.</p>
+
+                <h3>13.6 Third-party rights</h3>
+                <p>A person who is not a party to these Terms has no rights under the <strong>Contracts (Rights of Third Parties) Act 1999</strong> to enforce any term of these Terms.</p>
+
+                <h3>13.7 Severability</h3>
+                <p>If any provision of these Terms is held unenforceable, the remaining provisions remain in full force, and the unenforceable provision shall be modified to the minimum extent necessary to make it enforceable.</p>
+
+                <h3>13.8 Waiver</h3>
+                <p>A failure or delay by us in exercising any right under these Terms is not a waiver of that right.</p>
+
+                <h3>13.9 Entire agreement</h3>
+                <p>These Terms (together with any order form or invoice incorporating these Terms) constitute the entire agreement between the parties regarding the Service and supersede any prior representations or agreements relating to its subject matter.</p>
+
+                <h3>13.10 Governing law and jurisdiction</h3>
+                <p>These Terms are governed by the laws of <strong>England and Wales</strong>. The courts of England and Wales have exclusive jurisdiction over any dispute arising out of or related to these Terms or the Service.</p>
+
+                <h2>14. Contact</h2>
+                <div class="highlight">
+                    <p><strong>Stillware Ltd</strong><br />
+                    155 Dugdale Hill Lane<br />
+                    Potters Bar<br />
+                    EN6 2DF<br />
+                    Company number: <strong>16927952</strong><br />
+                    Email: <a href="mailto:support@stillwareltd.com">support@stillwareltd.com</a></p>
+                </div>
+            </div>
+        </div>
+    </article>
+</Layout>
+
+<style>
+    .legal-hero {
+        padding: 12rem 0 3rem;
+        background: var(--gradient-obsidian);
+        text-align: center;
+    }
+
+    .legal-eyebrow {
+        display: inline-block;
+        padding: 0.3rem 1rem;
+        border-radius: 100px;
+        font-size: 0.78rem;
+        font-weight: 600;
+        text-transform: uppercase;
+        letter-spacing: 0.1em;
+        background: rgba(37, 99, 235, 0.18);
+        color: #93C5FD;
+        margin-bottom: 1.25rem;
+    }
+
+    .legal-hero h1 {
+        color: #ffffff;
+        font-size: 3rem;
+    }
+
+    .legal-body {
+        padding: 3rem 0 6rem;
+        max-width: 820px;
+        margin: 0 auto;
+    }
+
+    .legal-body h2 {
+        margin-top: 3rem;
+        font-size: 1.6rem;
+        margin-bottom: 1rem;
+    }
+
+    .legal-body h3 {
+        margin-top: 2rem;
+        font-size: 1.15rem;
+        margin-bottom: 0.6rem;
+        color: var(--color-secondary);
+    }
+
+    .legal-body p {
+        margin-bottom: 1rem;
+        line-height: 1.75;
+    }
+
+    .legal-body ul,
+    .legal-body ol {
+        margin: 1rem 0;
+        padding-left: 1.75rem;
+    }
+
+    .legal-body li {
+        margin-bottom: 0.5rem;
+        line-height: 1.7;
+    }
+
+    .legal-body a {
+        color: var(--color-primary);
+        text-decoration: underline;
+    }
+
+    .highlight {
+        background: rgba(37, 99, 235, 0.04);
+        padding: 1.25rem 1.5rem;
+        border-left: 4px solid var(--color-primary);
+        border-radius: 0 8px 8px 0;
+        margin: 1.5rem 0;
+    }
+
+    .highlight p {
+        margin-bottom: 0;
+    }
+
+    .table-wrap {
+        overflow-x: auto;
+        margin: 1.25rem 0;
+    }
+
+    .legal-table {
+        width: 100%;
+        border-collapse: collapse;
+        font-size: 0.95rem;
+        border: 1px solid var(--color-border);
+        border-radius: 10px;
+        overflow: hidden;
+    }
+
+    .legal-table th,
+    .legal-table td {
+        padding: 0.85rem 1rem;
+        text-align: left;
+        border-bottom: 1px solid var(--color-border);
+        line-height: 1.5;
+    }
+
+    .legal-table th {
+        background: var(--color-surface);
+        font-weight: 700;
+        color: var(--color-secondary);
+        font-size: 0.88rem;
+        text-transform: uppercase;
+        letter-spacing: 0.04em;
+    }
+
+    .legal-table tr:last-child td {
+        border-bottom: none;
+    }
+
+    @media (max-width: 640px) {
+        .legal-hero { padding: 10rem 0 2.5rem; }
+        .legal-hero h1 { font-size: 2rem; }
+        .legal-body { padding: 2rem 0 4rem; }
+        .legal-body h2 { font-size: 1.35rem; }
+    }
+</style>

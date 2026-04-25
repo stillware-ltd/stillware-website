@@ -1,0 +1,923 @@
+---
+import Layout from '../../layouts/Layout.astro';
+
+// TODO: Replace with the live Stripe Checkout / Payment Link URL once created.
+// The Stripe product should be configured to enforce Terms acceptance and link to /services/terms.
+const STRIPE_CHECKOUT_URL = 'https://buy.stripe.com/3cIaEX0773m4dNd0hMbEA00';
+---
+
+<Layout
+  title="NeverMiss AI Dispatcher — Never lose another job to a missed call"
+  description="An AI dispatcher for UK trades. When you can't pick up, NeverMiss texts the caller, qualifies the job, and drops a ready-to-quote lead into your sheet. Operated by Stillware Ltd."
+>
+    <!-- Hero -->
+    <header class="nm-hero">
+        <div class="hero-ambient" aria-hidden="true"></div>
+        <div class="hero-content">
+            <span class="hero-label">NeverMiss · AI Dispatcher</span>
+            <h1>Every missed call<br />is a job you didn't win.</h1>
+            <p class="hero-sub">When you're under a sink or up a ladder, customers don't leave voicemails — they call the next plumber on the list. NeverMiss is an AI dispatcher that texts the caller within seconds, qualifies the job over SMS, and drops a ready-to-quote lead into your sheet. So you stop losing work to whoever picked up faster.</p>
+            <div class="hero-cta">
+                <a href={STRIPE_CHECKOUT_URL} class="btn-primary pulse">Get Started — £149 setup</a>
+                <a href="#how" class="btn-text">See how it works</a>
+            </div>
+            <p class="hero-foot">£99/mo after setup · Cancel anytime · Built for UK trades</p>
+        </div>
+    </header>
+
+    <!-- The Problem -->
+    <section class="problem-section reveal">
+        <div class="container">
+            <div class="problem-grid">
+                <div class="problem-text">
+                    <span class="eyebrow">The Problem</span>
+                    <h2>You can't be on the phone and on the job at the same time.</h2>
+                    <p>Most trades businesses miss <strong>20–40% of inbound calls</strong> — not because they don't care, but because they're working. By the time you call back, the customer has already booked someone else.</p>
+                    <p>Voicemail doesn't fix this. Most callers won't leave one. An answering service costs more than the jobs it saves and reads from a script that doesn't understand a faulty boiler from a blocked drain. A receptionist costs £20k+ a year and goes home at 5pm.</p>
+                    <p>NeverMiss is the small, focused alternative: a 24/7 AI that handles the first sixty seconds for you, so the lead lands in your inbox instead of your competitor's.</p>
+                </div>
+                <div class="problem-figure" aria-hidden="true">
+                    <div class="figure-card">
+                        <div class="figure-stat">
+                            <span class="stat-num">£300</span>
+                            <span class="stat-label">avg. value of a callout job</span>
+                        </div>
+                        <div class="figure-stat">
+                            <span class="stat-num">~30s</span>
+                            <span class="stat-label">how long a caller waits before trying the next number</span>
+                        </div>
+                        <div class="figure-stat">
+                            <span class="stat-num">1</span>
+                            <span class="stat-label">recovered job per month covers the subscription</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- How It Works -->
+    <section class="how-section reveal" id="how">
+        <div class="container">
+            <div class="section-header center-text">
+                <span class="eyebrow">How It Works</span>
+                <h2>Set up once. Runs while you work.</h2>
+                <p class="section-sub">No new phone, no new app, no new number for your customers to remember. Your existing business number stays the same — we just catch the calls you can't.</p>
+            </div>
+            <div class="how-steps">
+                <div class="how-step reveal-up reveal-delay-1">
+                    <div class="step-marker">1</div>
+                    <h3>Customer calls your usual number</h3>
+                    <p>Same number on your van, your invoices, your Google profile. Nothing changes for the caller.</p>
+                </div>
+                <div class="how-step reveal-up reveal-delay-2">
+                    <div class="step-marker">2</div>
+                    <h3>You don't pick up within 20 seconds</h3>
+                    <p>Your network operator forwards the call to a dedicated number we provision for you on Twilio.</p>
+                </div>
+                <div class="how-step reveal-up reveal-delay-3">
+                    <div class="step-marker">3</div>
+                    <h3>NeverMiss texts the caller</h3>
+                    <p>"Hi, this is [your business] — sorry I missed your call. What's the issue and your postcode?" The AI then asks a few smart follow-ups to qualify the job.</p>
+                </div>
+                <div class="how-step reveal-up reveal-delay-4">
+                    <div class="step-marker">4</div>
+                    <h3>You get a ready-to-quote lead</h3>
+                    <p>Problem, postcode, urgency, and full transcript drop straight into your Google Sheet. Optional alert SMS to your phone the moment a qualified lead lands.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- What's Included -->
+    <section class="features-section reveal">
+        <div class="container">
+            <div class="section-header center-text">
+                <span class="eyebrow">What's Included</span>
+                <h2>Everything wired up. Nothing left for you to figure out.</h2>
+            </div>
+            <div class="features-grid">
+                <div class="feature-card reveal-up reveal-delay-1">
+                    <div class="feature-icon">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+                    </div>
+                    <h3>Dedicated UK number</h3>
+                    <p>We provision and configure a Twilio number for your business and route the call forwarding so missed calls reach the AI in under a second.</p>
+                </div>
+                <div class="feature-card reveal-up reveal-delay-2">
+                    <div class="feature-icon">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
+                    </div>
+                    <h3>Trade-specific AI conversation</h3>
+                    <p>Tuned for plumbing, HVAC, and electrical callouts. Captures problem, postcode, urgency, and access details — then stops. No upsell scripts, no marketing fluff.</p>
+                </div>
+                <div class="feature-card reveal-up reveal-delay-3">
+                    <div class="feature-icon">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18"/><path d="M9 21V9"/></svg>
+                    </div>
+                    <h3>Leads in your Google Sheet</h3>
+                    <p>One row per lead, in your account, owned by you. Filter by urgency, sort by postcode, export to your CRM. We can also push to a webhook if you have one.</p>
+                </div>
+                <div class="feature-card reveal-up reveal-delay-4">
+                    <div class="feature-icon">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 8a6 6 0 0 0-12 0c0 7-3 9-3 9h18s-3-2-3-9"/><path d="M13.73 21a2 2 0 0 1-3.46 0"/></svg>
+                    </div>
+                    <h3>Instant alert to your phone</h3>
+                    <p>The moment a qualified lead lands, we text your mobile with a summary so you can call back while the customer is still warm.</p>
+                </div>
+                <div class="feature-card reveal-up reveal-delay-5">
+                    <div class="feature-icon">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+                    </div>
+                    <h3>UK GDPR by default</h3>
+                    <p>Stillware acts as your data processor. Caller data is encrypted in transit, retained only as long as needed, and never used to train AI models. Full DPA available.</p>
+                </div>
+                <div class="feature-card reveal-up reveal-delay-6">
+                    <div class="feature-icon">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 7h-9"/><path d="M14 17H5"/><circle cx="17" cy="17" r="3"/><circle cx="7" cy="7" r="3"/></svg>
+                    </div>
+                    <h3>Founder-led setup</h3>
+                    <p>You're not getting a ticket queue. You're talking directly to the engineer who built it. Setup takes about 24 hours from payment to live.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Honesty box -->
+    <section class="honesty-section reveal">
+        <div class="container">
+            <div class="honesty-card">
+                <span class="eyebrow">Honest disclosure</span>
+                <h2>Yes, this is a subscription. Here's why.</h2>
+                <p>Stillware's other products are one-time purchases you own forever. NeverMiss is different. The £99/month covers what's actually running every day on your behalf — a Twilio number, SMS delivery costs, AI inference for every message, and the infrastructure that keeps the dispatcher available 24/7.</p>
+                <p>If you stop paying, the running costs stop. That's the trade. We won't pretend otherwise.</p>
+                <p>What you still own: the leads themselves (in your Google Sheet, your account), and your business number (which is yours, not ours). Cancel anytime — no contract, no exit fee, no held-hostage data.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Pricing -->
+    <section class="pricing-section reveal" id="pricing">
+        <div class="container">
+            <div class="section-header center-text">
+                <span class="eyebrow">Pricing</span>
+                <h2>One setup fee. One monthly subscription. No tiers.</h2>
+                <p class="section-sub">No "Pro" plan, no "Enterprise" upsell, no per-seat charges. The trades don't need it, so we don't sell it.</p>
+            </div>
+            <div class="pricing-card">
+                <div class="pricing-header">
+                    <h3>NeverMiss AI Dispatcher</h3>
+                    <p>Single business, single number, unlimited missed-call handling.</p>
+                </div>
+                <div class="pricing-amounts">
+                    <div class="pricing-amount">
+                        <span class="amount-value">£149</span>
+                        <span class="amount-label">one-time setup</span>
+                        <span class="amount-note">covers number provisioning, configuration, and onboarding</span>
+                    </div>
+                    <div class="pricing-amount-divider">+</div>
+                    <div class="pricing-amount">
+                        <span class="amount-value">£99<span class="amount-period">/mo</span></span>
+                        <span class="amount-label">running cost</span>
+                        <span class="amount-note">covers Twilio, AI inference, and ongoing operation</span>
+                    </div>
+                </div>
+                <ul class="pricing-features">
+                    <li>Dedicated UK Twilio number</li>
+                    <li>Unlimited inbound missed calls</li>
+                    <li>AI-qualified SMS conversations</li>
+                    <li>Google Sheet lead delivery</li>
+                    <li>Instant alert SMS to your mobile</li>
+                    <li>Cancel anytime — no contract</li>
+                </ul>
+                <a href={STRIPE_CHECKOUT_URL} class="btn-primary pulse pricing-cta">Get Started — Pay £149 Setup</a>
+                <p class="pricing-fineprint">
+                    By proceeding, you agree to our <a href="/services/terms">Terms of Service</a>.
+                    Prices exclude VAT where applicable. Subscription begins on the day your number goes live.
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQ -->
+    <section class="faq-section reveal">
+        <div class="container">
+            <div class="section-header center-text">
+                <span class="eyebrow">Questions</span>
+                <h2>The things every trade asks before signing up.</h2>
+            </div>
+            <div class="faq-list">
+                <details class="faq-item">
+                    <summary>Do my customers have to know they're texting an AI?</summary>
+                    <p>The opening SMS is upfront — it identifies as an automated assistant from your business and explains that a real person will follow up. We don't trick callers; that backfires the moment they realise. In our experience, customers respond fine to a clear "we'll get a real engineer to call you back" message, especially when the alternative is voicemail.</p>
+                </details>
+                <details class="faq-item">
+                    <summary>Will it work with my landline / BT business line / VoIP system?</summary>
+                    <p>Yes. NeverMiss uses standard conditional call forwarding (CFNA — "forward when no answer"), which every UK carrier supports. We give you the exact code or PBX setting to enable for your specific provider — BT, Sky, Virgin, 3CX, RingCentral, BT Cloud Voice, and most others. If you have an unusual setup, we'll figure it out during onboarding.</p>
+                </details>
+                <details class="faq-item">
+                    <summary>What happens if the AI gets confused or a customer is angry?</summary>
+                    <p>The AI is built to fail gracefully. If a caller is hostile, off-topic, or the conversation goes off the rails, it stops asking questions, captures whatever it has, and flags the lead as <em>needs human follow-up</em> in your sheet. It will not argue, apologise repeatedly, or invent answers it doesn't know.</p>
+                </details>
+                <details class="faq-item">
+                    <summary>Can the AI book jobs or quote prices?</summary>
+                    <p>No — and that's deliberate. NeverMiss is a <strong>qualifier</strong>, not a booker. It captures the problem, postcode, and urgency, then hands the lead to you. Quoting and booking stay with you, where the liability and judgement belong.</p>
+                </details>
+                <details class="faq-item">
+                    <summary>What if Twilio goes down? Or the AI provider has an outage?</summary>
+                    <p>If Twilio is down, the call still rings on your business number — NeverMiss only kicks in <em>after</em> you don't pick up. The worst case during an outage is the same as not having NeverMiss at all: the caller gets voicemail or rings off. We monitor status and will notify you of any extended outage. We don't offer a formal SLA — see our Terms.</p>
+                </details>
+                <details class="faq-item">
+                    <summary>Is my data safe? GDPR?</summary>
+                    <p>Yes. Stillware Ltd is the data processor; you remain the data controller. Caller data is encrypted in transit, retained only as long as needed for the service, and never used to train AI models. Full sub-processor list and transfer mechanisms are in our <a href="/services/terms">Terms</a>.</p>
+                </details>
+                <details class="faq-item">
+                    <summary>How fast is setup?</summary>
+                    <p>Typically live within one working day of payment. The bottleneck is usually you enabling the call-forwarding code on your line — once that's done, we test together over a couple of calls and you're running.</p>
+                </details>
+                <details class="faq-item">
+                    <summary>Why no annual discount or contract?</summary>
+                    <p>Because we don't want to lock you in if it's not working. If you're getting value, you'll keep paying. If you're not, we'd rather you cancel and tell us why than feel trapped. We'll add an annual plan if enough customers ask for it — not before.</p>
+                </details>
+                <details class="faq-item">
+                    <summary>Who's behind this?</summary>
+                    <p>Stillware Ltd, a UK-registered software company. NeverMiss is built and operated directly by the founder. You'll have a real human on email — usually replying same day. See our <a href="/manifesto">Manifesto</a> for the philosophy behind how we build.</p>
+                </details>
+            </div>
+        </div>
+    </section>
+
+    <!-- Final CTA / Inquiry -->
+    <section class="final-section" id="contact">
+        <div class="container">
+            <div class="final-grid">
+                <div class="final-text">
+                    <h2>Ready to stop losing jobs to voicemail?</h2>
+                    <p>If you've read this far, you already know the cost of a missed call. Get set up in a day, or get in touch first if you want to talk it through.</p>
+                    <div class="final-cta-row">
+                        <a href={STRIPE_CHECKOUT_URL} class="btn-primary">Get Started — £149 Setup</a>
+                        <a href="#inquiry" class="btn-text light">Or send a question first</a>
+                    </div>
+                    <p class="final-email">Direct line: <a href="mailto:support@stillwareltd.com">support@stillwareltd.com</a></p>
+                </div>
+                <div class="final-form-wrap" id="inquiry">
+                    <form name="nevermiss-inquiry" method="POST" data-netlify="true" action="/success" class="contact-form">
+                        <input type="hidden" name="form-name" value="nevermiss-inquiry" />
+                        <input type="hidden" name="subject" value="NeverMiss Inquiry" />
+                        <div class="form-group">
+                            <label for="nm-name">Your Name</label>
+                            <input type="text" id="nm-name" name="name" required />
+                        </div>
+                        <div class="form-group">
+                            <label for="nm-business">Business Name</label>
+                            <input type="text" id="nm-business" name="business" />
+                        </div>
+                        <div class="form-group">
+                            <label for="nm-email">Email</label>
+                            <input type="email" id="nm-email" name="email" required />
+                        </div>
+                        <div class="form-group">
+                            <label for="nm-phone">Mobile (optional)</label>
+                            <input type="tel" id="nm-phone" name="phone" />
+                        </div>
+                        <div class="form-group">
+                            <label for="nm-message">What do you want to know?</label>
+                            <textarea id="nm-message" name="message" rows="3" required></textarea>
+                        </div>
+                        <button type="submit" class="btn-primary">Send Question</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+</Layout>
+
+<style>
+    /* Shared utility */
+    .eyebrow {
+        display: inline-block;
+        font-size: 0.78rem;
+        font-weight: 700;
+        text-transform: uppercase;
+        letter-spacing: 0.12em;
+        color: var(--color-primary);
+        margin-bottom: 1rem;
+    }
+
+    /* Hero */
+    .nm-hero {
+        position: relative;
+        overflow: hidden;
+        padding: 12rem 0 6rem;
+        text-align: center;
+        background:
+            radial-gradient(ellipse 900px 700px at 50% 40%, rgba(37, 99, 235, 0.08) 0%, transparent 70%),
+            var(--gradient-obsidian);
+    }
+
+    .hero-ambient {
+        position: absolute;
+        inset: 0;
+        overflow: hidden;
+        pointer-events: none;
+        z-index: 0;
+    }
+
+    .hero-content {
+        position: relative;
+        z-index: 1;
+        max-width: 820px;
+        margin: 0 auto;
+        padding: 0 2rem;
+    }
+
+    .nm-hero .hero-label {
+        display: inline-block;
+        padding: 0.3rem 1rem;
+        border-radius: 100px;
+        font-size: 0.8rem;
+        font-weight: 600;
+        text-transform: uppercase;
+        letter-spacing: 0.08em;
+        background: rgba(37, 99, 235, 0.18);
+        color: #93C5FD;
+        margin-bottom: 1.5rem;
+    }
+
+    .hero-content h1 {
+        font-size: 4rem;
+        font-weight: 800;
+        color: #ffffff;
+        margin-bottom: 1.5rem;
+        letter-spacing: -0.04em;
+        line-height: 1.05;
+    }
+
+    .hero-sub {
+        font-size: 1.2rem;
+        color: rgba(255, 255, 255, 0.72);
+        margin-bottom: 2.5rem;
+        max-width: 680px;
+        margin-left: auto;
+        margin-right: auto;
+        line-height: 1.7;
+    }
+
+    .hero-cta {
+        display: flex;
+        gap: 1.5rem;
+        justify-content: center;
+        align-items: center;
+        flex-wrap: wrap;
+    }
+
+    .hero-cta .btn-text {
+        color: rgba(255, 255, 255, 0.8);
+        text-decoration-color: rgba(255, 255, 255, 0.3);
+    }
+
+    .hero-cta .btn-text:hover {
+        color: #ffffff;
+        text-decoration-color: #ffffff;
+    }
+
+    .hero-foot {
+        margin-top: 1.75rem;
+        font-size: 0.9rem;
+        color: rgba(255, 255, 255, 0.55);
+        letter-spacing: 0.02em;
+    }
+
+    /* Problem */
+    .problem-section { padding: 6rem 0; }
+
+    .problem-grid {
+        display: grid;
+        grid-template-columns: 1.2fr 1fr;
+        gap: 4rem;
+        align-items: center;
+    }
+
+    .problem-text h2 {
+        font-size: 2.25rem;
+        margin-bottom: 1.5rem;
+        line-height: 1.15;
+    }
+
+    .problem-text p {
+        font-size: 1.05rem;
+        color: var(--color-text-light);
+        line-height: 1.75;
+        margin-bottom: 1rem;
+    }
+
+    .problem-text strong {
+        color: var(--color-secondary);
+        font-weight: 700;
+    }
+
+    .figure-card {
+        background: linear-gradient(135deg, var(--color-surface) 0%, #ffffff 100%);
+        border: 1px solid var(--color-border);
+        border-radius: 20px;
+        padding: 2.5rem;
+        display: flex;
+        flex-direction: column;
+        gap: 2rem;
+        box-shadow: var(--shadow-premium);
+    }
+
+    .figure-stat {
+        display: flex;
+        flex-direction: column;
+        gap: 0.25rem;
+        padding-bottom: 1.5rem;
+        border-bottom: 1px solid var(--color-border);
+    }
+
+    .figure-stat:last-child {
+        padding-bottom: 0;
+        border-bottom: none;
+    }
+
+    .stat-num {
+        font-size: 2.5rem;
+        font-weight: 800;
+        color: var(--color-primary);
+        letter-spacing: -0.03em;
+        line-height: 1;
+    }
+
+    .stat-label {
+        font-size: 0.95rem;
+        color: var(--color-text-light);
+        font-weight: 500;
+    }
+
+    /* How */
+    .how-section {
+        padding: 6rem 0;
+        background: var(--color-surface);
+    }
+
+    .section-sub {
+        color: var(--color-text-light);
+        font-size: 1.1rem;
+        margin-top: 1rem;
+        max-width: 620px;
+        margin-left: auto;
+        margin-right: auto;
+        line-height: 1.7;
+    }
+
+    .how-steps {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        gap: 1.5rem;
+        margin-top: 3.5rem;
+    }
+
+    .how-step {
+        background: #ffffff;
+        border: 1px solid var(--color-border);
+        border-radius: 16px;
+        padding: 2rem;
+        text-align: left;
+        transition: all 0.4s var(--transition-premium);
+    }
+
+    .how-step:hover {
+        transform: translateY(-4px);
+        border-color: rgba(37, 99, 235, 0.2);
+        box-shadow: 0 8px 24px rgba(37, 99, 235, 0.06);
+    }
+
+    .step-marker {
+        width: 40px;
+        height: 40px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background: var(--color-primary);
+        color: #ffffff;
+        font-weight: 700;
+        font-size: 1rem;
+        border-radius: 50%;
+        margin-bottom: 1.25rem;
+    }
+
+    .how-step h3 {
+        font-size: 1.05rem;
+        margin-bottom: 0.5rem;
+        line-height: 1.3;
+    }
+
+    .how-step p {
+        font-size: 0.92rem;
+        color: var(--color-text-light);
+        line-height: 1.65;
+    }
+
+    /* Features */
+    .features-section { padding: 6rem 0; }
+
+    .features-grid {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 2rem;
+        margin-top: 3.5rem;
+    }
+
+    .feature-card {
+        background: #ffffff;
+        padding: 2rem;
+        border-radius: 18px;
+        border: 1px solid var(--color-border);
+        transition: all 0.4s var(--transition-premium);
+    }
+
+    .feature-card:hover {
+        transform: translateY(-4px);
+        border-color: rgba(37, 99, 235, 0.18);
+        box-shadow: 0 8px 24px rgba(37, 99, 235, 0.06);
+    }
+
+    .feature-icon {
+        width: 48px;
+        height: 48px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background: linear-gradient(135deg, #EFF6FF, #DBEAFE);
+        border-radius: 12px;
+        color: var(--color-primary);
+        margin-bottom: 1.25rem;
+    }
+
+    .feature-card h3 {
+        font-size: 1.1rem;
+        margin-bottom: 0.6rem;
+    }
+
+    .feature-card p {
+        font-size: 0.95rem;
+        color: var(--color-text-light);
+        line-height: 1.65;
+    }
+
+    /* Honesty */
+    .honesty-section {
+        padding: 5rem 0;
+        background: var(--color-surface);
+    }
+
+    .honesty-card {
+        max-width: 760px;
+        margin: 0 auto;
+        background: #ffffff;
+        border: 1px solid var(--color-border);
+        border-left: 4px solid var(--color-primary);
+        border-radius: 0 16px 16px 0;
+        padding: 2.5rem 3rem;
+        box-shadow: var(--shadow-premium);
+    }
+
+    .honesty-card h2 {
+        font-size: 1.75rem;
+        margin-bottom: 1.25rem;
+    }
+
+    .honesty-card p {
+        font-size: 1rem;
+        color: var(--color-text-light);
+        line-height: 1.75;
+        margin-bottom: 0.85rem;
+    }
+
+    .honesty-card p:last-child { margin-bottom: 0; }
+
+    /* Pricing */
+    .pricing-section { padding: 6rem 0; }
+
+    .pricing-card {
+        max-width: 720px;
+        margin: 3rem auto 0;
+        background: #ffffff;
+        border: 1px solid var(--color-border);
+        border-radius: 24px;
+        padding: 3rem;
+        box-shadow: var(--shadow-premium);
+        text-align: center;
+    }
+
+    .pricing-header h3 {
+        font-size: 1.5rem;
+        margin-bottom: 0.5rem;
+    }
+
+    .pricing-header p {
+        color: var(--color-text-light);
+        font-size: 1rem;
+        margin-bottom: 2.5rem;
+    }
+
+    .pricing-amounts {
+        display: flex;
+        gap: 1.5rem;
+        align-items: stretch;
+        justify-content: center;
+        margin-bottom: 2.5rem;
+    }
+
+    .pricing-amount {
+        flex: 1;
+        background: var(--color-surface);
+        border: 1px solid var(--color-border);
+        border-radius: 14px;
+        padding: 1.75rem;
+        display: flex;
+        flex-direction: column;
+        gap: 0.5rem;
+    }
+
+    .amount-value {
+        font-size: 2.5rem;
+        font-weight: 800;
+        color: var(--color-secondary);
+        letter-spacing: -0.03em;
+        line-height: 1;
+    }
+
+    .amount-period {
+        font-size: 1rem;
+        font-weight: 600;
+        color: var(--color-text-light);
+        letter-spacing: 0;
+    }
+
+    .amount-label {
+        font-size: 0.95rem;
+        font-weight: 600;
+        color: var(--color-secondary);
+    }
+
+    .amount-note {
+        font-size: 0.85rem;
+        color: var(--color-text-light);
+        line-height: 1.5;
+        margin-top: 0.25rem;
+    }
+
+    .pricing-amount-divider {
+        display: flex;
+        align-items: center;
+        font-size: 1.5rem;
+        font-weight: 700;
+        color: var(--color-text-light);
+    }
+
+    .pricing-features {
+        list-style: none;
+        padding: 0;
+        margin: 0 0 2rem;
+        text-align: left;
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 0.75rem 1.5rem;
+        max-width: 540px;
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+    .pricing-features li {
+        font-size: 0.95rem;
+        color: var(--color-text);
+        padding-left: 1.6rem;
+        position: relative;
+        line-height: 1.5;
+    }
+
+    .pricing-features li::before {
+        content: '';
+        position: absolute;
+        left: 0;
+        top: 0.4rem;
+        width: 1rem;
+        height: 1rem;
+        background: var(--color-primary);
+        -webkit-mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='3' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='20 6 9 17 4 12'/%3E%3C/svg%3E") center / contain no-repeat;
+        mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='3' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='20 6 9 17 4 12'/%3E%3C/svg%3E") center / contain no-repeat;
+    }
+
+    .pricing-cta {
+        display: inline-block;
+        margin-bottom: 1.25rem;
+    }
+
+    .pricing-fineprint {
+        font-size: 0.85rem;
+        color: var(--color-text-light);
+        line-height: 1.6;
+        max-width: 520px;
+        margin: 0 auto;
+    }
+
+    .pricing-fineprint a {
+        color: var(--color-primary);
+        text-decoration: underline;
+    }
+
+    /* FAQ */
+    .faq-section {
+        padding: 6rem 0;
+        background: var(--color-surface);
+    }
+
+    .faq-list {
+        max-width: 760px;
+        margin: 3rem auto 0;
+        display: flex;
+        flex-direction: column;
+        gap: 0.75rem;
+    }
+
+    .faq-item {
+        background: #ffffff;
+        border: 1px solid var(--color-border);
+        border-radius: 14px;
+        padding: 1.25rem 1.5rem;
+        transition: all 0.3s ease;
+    }
+
+    .faq-item[open] {
+        border-color: rgba(37, 99, 235, 0.25);
+        box-shadow: 0 4px 16px rgba(37, 99, 235, 0.05);
+    }
+
+    .faq-item summary {
+        font-size: 1.05rem;
+        font-weight: 600;
+        color: var(--color-secondary);
+        cursor: pointer;
+        list-style: none;
+        position: relative;
+        padding-right: 2rem;
+        line-height: 1.4;
+    }
+
+    .faq-item summary::-webkit-details-marker { display: none; }
+
+    .faq-item summary::after {
+        content: '+';
+        position: absolute;
+        right: 0;
+        top: 50%;
+        transform: translateY(-50%);
+        font-size: 1.5rem;
+        font-weight: 400;
+        color: var(--color-primary);
+        line-height: 1;
+        transition: transform 0.2s ease;
+    }
+
+    .faq-item[open] summary::after {
+        content: '−';
+    }
+
+    .faq-item p {
+        margin-top: 1rem;
+        font-size: 0.97rem;
+        color: var(--color-text-light);
+        line-height: 1.7;
+    }
+
+    .faq-item p a {
+        color: var(--color-primary);
+        text-decoration: underline;
+    }
+
+    /* Final */
+    .final-section {
+        padding: 6rem 0;
+        background: linear-gradient(135deg, #0F172A 0%, #1E293B 50%, #0F172A 100%);
+    }
+
+    .final-grid {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 4rem;
+        align-items: start;
+        max-width: 1000px;
+        margin: 0 auto;
+    }
+
+    .final-text h2 {
+        font-size: 2.5rem;
+        color: #ffffff;
+        margin-bottom: 1rem;
+        line-height: 1.15;
+    }
+
+    .final-text p {
+        color: rgba(255, 255, 255, 0.7);
+        font-size: 1.05rem;
+        line-height: 1.7;
+        margin-bottom: 2rem;
+    }
+
+    .final-cta-row {
+        display: flex;
+        gap: 1.5rem;
+        align-items: center;
+        flex-wrap: wrap;
+        margin-bottom: 2rem;
+    }
+
+    .final-cta-row .btn-text.light {
+        color: rgba(255, 255, 255, 0.8);
+        text-decoration-color: rgba(255, 255, 255, 0.3);
+    }
+
+    .final-cta-row .btn-text.light:hover {
+        color: #ffffff;
+        text-decoration-color: #ffffff;
+    }
+
+    .final-email {
+        font-size: 0.95rem;
+        color: rgba(255, 255, 255, 0.55) !important;
+    }
+
+    .final-email a {
+        color: #93C5FD;
+        text-decoration: underline;
+    }
+
+    .final-form-wrap .contact-form {
+        display: flex;
+        flex-direction: column;
+        gap: 1rem;
+    }
+
+    .final-form-wrap .form-group {
+        display: flex;
+        flex-direction: column;
+        gap: 0.4rem;
+    }
+
+    .final-form-wrap label {
+        font-size: 0.85rem;
+        font-weight: 600;
+        color: rgba(255, 255, 255, 0.7);
+    }
+
+    .final-form-wrap input,
+    .final-form-wrap textarea {
+        padding: 0.75rem 1rem;
+        border: 1px solid rgba(255, 255, 255, 0.15);
+        border-radius: 10px;
+        background: rgba(255, 255, 255, 0.08);
+        color: #ffffff;
+        font-size: 0.95rem;
+        font-family: var(--font-sans);
+        outline: none;
+        transition: border-color 0.2s ease;
+    }
+
+    .final-form-wrap input:focus,
+    .final-form-wrap textarea:focus {
+        border-color: rgba(255, 255, 255, 0.4);
+    }
+
+    .final-form-wrap textarea {
+        resize: vertical;
+        min-height: 80px;
+    }
+
+    .final-form-wrap .btn-primary {
+        align-self: flex-start;
+    }
+
+    /* Responsive */
+    @media (max-width: 968px) {
+        .problem-grid { grid-template-columns: 1fr; gap: 3rem; }
+        .how-steps { grid-template-columns: repeat(2, 1fr); }
+        .features-grid { grid-template-columns: repeat(2, 1fr); }
+        .final-grid { grid-template-columns: 1fr; gap: 3rem; }
+    }
+
+    @media (max-width: 640px) {
+        .nm-hero { padding: 10rem 0 5rem; }
+        .hero-content h1 { font-size: 2.5rem; }
+        .hero-sub { font-size: 1.05rem; }
+        .problem-text h2 { font-size: 1.75rem; }
+        .how-steps { grid-template-columns: 1fr; }
+        .features-grid { grid-template-columns: 1fr; }
+        .pricing-card { padding: 2rem 1.5rem; }
+        .pricing-amounts { flex-direction: column; gap: 1rem; }
+        .pricing-amount-divider { transform: rotate(90deg); }
+        .pricing-features { grid-template-columns: 1fr; }
+        .honesty-card { padding: 2rem 1.5rem; }
+        .final-text h2 { font-size: 2rem; }
+    }
+</style>
