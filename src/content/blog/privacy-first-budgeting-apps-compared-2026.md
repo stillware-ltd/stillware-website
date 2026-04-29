@@ -98,7 +98,7 @@ We've seen this story before: Mint, BillGuard, Level Money. A popular finance ap
 *   **Cloud & Hybrid Models:** You are at the mercy of the company. If they shut down, your access to the app and your data vanishes.
 *   **Local-First Model:** The app on your device continues to function indefinitely. Your data is already there. The company could disappear tomorrow, and your budgeting process would be unaffected.
 
-When we built Zeroed, we tested this scenario. We turned off the simulated "license server" and blocked all internet access. The app, with all its data and features, continued to work perfectly. That's resilience. Your financial system shouldn't be a SaaS product; it should be a tool in your drawer. This philosophy is core to our business, as explained in [Why We Don't Do Subscriptions](/blog/why-we-dont-do-subscriptions/).
+When we built Zeroed, we tested this scenario. We turned off the simulated "license server" and blocked all internet access. The app, with all its data and features, continued to work perfectly. That's resilience. Your financial system shouldn't be a SaaS product; it should be a tool in your drawer. That's why Zeroed is pay-once, not rented — see [why we don't do subscriptions for software that runs on your device](/blog/why-we-dont-do-subscriptions/).
 
 **Adopting a local-first app isn't just a privacy choice; it's a hedge against corporate failure and a guarantee that your financial system can outlive the company that created it.**
 

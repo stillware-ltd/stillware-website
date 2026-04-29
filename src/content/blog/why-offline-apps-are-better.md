@@ -52,7 +52,7 @@ The subscription model is the economic engine of cloud-dependent software. You a
 | **Long-Term Value** | You stop paying, you lose access. | You own a working tool indefinitely. |
 | **Vendor Incentive** | Retain you at all costs; often via data lock-in. | Deliver a quality product that stands the test of time. |
 
-The financial upside is staggering. As we explored in our analysis of [the true cost of YNAB over 5 years](/blog/true-cost-of-ynab/), subscription costs compound into a significant sum. A one-time purchase isn't just cheaper; it's a capital investment in a tool, not an operational expense for a service. This philosophy is so central to our ethos that we dedicated an entire article to [why we don't do subscriptions](/blog/why-we-dont-do-subscriptions/).
+The financial upside is staggering. As we explored in our analysis of [the true cost of YNAB over 5 years](/blog/true-cost-of-ynab/), subscription costs compound into a significant sum. A one-time purchase isn't just cheaper; it's a capital investment in a tool, not an operational expense for a service. We've written more about where we draw this line — [why we don't do subscriptions for software that runs on your device](/blog/why-we-dont-do-subscriptions/).
 
 ![Five-year total cost of ownership comparison for budgeting software](/blog/images/why-offline-apps-are-better/image-02.svg)
 

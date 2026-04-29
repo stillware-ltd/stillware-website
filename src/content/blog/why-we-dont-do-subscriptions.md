@@ -1,9 +1,9 @@
 ---
-title: "Why We Don't Do Subscriptions"
-date: 2026-03-10
-description: "The subscription model is broken for personal software. Here's why Stillware chose a different path — and why it matters for your wallet and your data."
+title: "Why We Don't Do Subscriptions (For Software That Runs On Your Device)"
+date: 2026-04-29
+description: "We charge once for software that lives on your device, and monthly for services we operate. Here's the line we draw — and why the distinction matters for your wallet."
 author: "Stillware Team"
-wordCount: 378
+wordCount: 440
 tags: ["Anti-SaaS", "Privacy", "Personal Finance"]
 featured: true
 pillar: "philosophy"
@@ -17,29 +17,42 @@ heroImage: "/blog/images/why-we-dont-do-subscriptions/hero.webp"
 
 The average person now pays for dozens of software subscriptions. Streaming, storage, productivity, notes, passwords, VPNs, budgeting. Each one is "just $5/month" — until you add them up.
 
-When we decided to build Zeroed, the first question every developer friend asked was: "So what's your MRR model?" Monthly recurring revenue. That's the metric the industry worships. Our answer — "there isn't one" — was met with genuine confusion. But we'd done the math from the user's side, and it told a very different story.
+Some of those are honest. Streaming pays for licenses and bandwidth. Cloud storage pays for disks someone has to keep spinning. Real ongoing cost, real ongoing service.
 
-For a budgeting app specifically, the irony is hard to ignore. You're paying a recurring fee to a tool whose entire purpose is to help you *spend less money*. That's not a business model. That's a contradiction.
+But for a budgeting app — software that lives on your device, stores data on your device, and depends on no remote infrastructure to function — charging you forever is a different beast entirely. You're not paying for ongoing work. You're paying so they don't take it away.
 
-## What You're Really Paying For
+For a personal finance tool whose entire purpose is to help you *spend less money*, that contradiction is hard to ignore. So when we built Zeroed, we wrote a different rule: **we don't charge subscriptions for software that runs on your device.**
 
-When a company charges you monthly, they're not charging for the software. The software was written once. What you're paying for is:
+## The Test
+
+The line is simple. If you stop paying, what actually stops working?
+
+If the answer is "a tool sitting on my hard drive" — that's rent extraction. That's the model we refuse.
+
+If the answer is "the servers, the phone numbers, the AI models, and the people running them on my behalf" — that's a service. Services have real ongoing cost, and pretending otherwise is dishonest pricing.
+
+That's why Stillware is two things, side by side:
+
+- **Stillware Apps** — Zeroed, RankUpChess, and others — are pay-once. They run on your device. They don't need us to keep working. No recurring fees, ever.
+- **Stillware Services** — like NeverMiss, our AI dispatcher for UK trades — are monthly, cancel-anytime. We operate the infrastructure: phone numbers, AI inference, orchestration, on-call response. Cancel anytime, full data export.
+
+Same ethic, two pricing models. We charge for what we actually do — never for software sitting on your hard drive.
+
+## What You're Really Paying For (When It's Wrong)
+
+When a personal-software company charges you monthly for an app that runs on your hardware, here's what your money is buying:
 
 - **Server infrastructure** to hold your data hostage
 - **Growth metrics** to satisfy investors
 - **Retention tactics** to make it painful to leave
 
-Your monthly payment isn't buying you features. It's buying the company permission to keep your data on their servers — data they could monetize, lose in a breach, or hold hostage if you try to cancel.
+Your monthly payment isn't buying features. It's buying the company permission to keep your data on their servers — data they could monetize, lose in a breach, or hold hostage if you try to cancel.
 
-## The Stillware Alternative
-
-We charge once. You own the software. Your data lives on your device, encrypted and synced through your own Google Drive.
-
-If we go out of business tomorrow, your app keeps working. Your data stays accessible. Nothing changes for you. That's the way software should work.
+That's the model we won't ship. Not for Zeroed. Not for any app where the software lives on your hardware.
 
 ## The Math
 
-Let's compare a typical subscription budgeting app at $99/year versus Zeroed's one-time Founder's License:
+Let's compare a typical subscription budgeting app at $99/year versus Zeroed's one-time license:
 
 | Time Period | Subscription | Zeroed |
 |-------------|-------------|--------|
@@ -54,4 +67,4 @@ The subscription app costs nearly $1,000 over a decade. Zeroed costs nothing for
 
 Zeroed is available now on Windows and Android, with iOS coming soon. The first 500 users get lifetime access for free in exchange for honest feedback.
 
-[Explore Zeroed](/zeroed)
+[Explore Zeroed](/zeroed) · [Read the Manifesto](/manifesto) · [See our operated services](/services)

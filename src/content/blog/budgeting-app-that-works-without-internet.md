@@ -92,7 +92,7 @@ Choosing an offline budgeting app delivers immediate, practical advantages that 
 *   **No Data Leaks:** Even with encryption, data transmitted over the internet has a point of vulnerability. Data that never leaves your device has zero network vulnerability.
 *   **Clear Cost Certainty:** A one-time purchase means no surprise renewals, no price hikes you have to accept, and no wondering if you’ll still afford the tool next year.
 
-**The shift to offline-first is a reclaiming of efficiency and certainty in your financial tools.** It removes the middleman—the server—from the most important relationship: the one between you and your money. This philosophy of ownership over rental extends to how we think about all software, which is why we’ve written about [why we don't do subscriptions](/blog/why-we-dont-do-subscriptions/) as a company.
+**The shift to offline-first is a reclaiming of efficiency and certainty in your financial tools.** It removes the middleman—the server—from the most important relationship: the one between you and your money. This is exactly why Zeroed is pay-once — see [why we don't do subscriptions for software that runs on your device](/blog/why-we-dont-do-subscriptions/).
 
 ## Your Next Step: Try Truly Owning Your Budget
 
