@@ -90,6 +90,19 @@ import Layout from '../layouts/Layout.astro';
         </div>
     </section>
 
+    <!-- Why subscription -->
+    <section class="why-sub-section reveal">
+        <div class="container">
+            <div class="why-sub-card">
+                <span class="eyebrow">If you've read our Manifesto</span>
+                <h2>Yes — Stillware ships subscriptions. Here's the line we draw.</h2>
+                <p>For software that lives on your hard drive, charging you forever is rent extraction. So our consumer apps — Zeroed, RankUpChess — are pay-once, no recurring fees, ever.</p>
+                <p>Services are different. NeverMiss runs on Twilio numbers, AI inference, LangGraph orchestration, and 24/7 monitoring. Real infrastructure with real ongoing cost. We charge monthly because that's the honest price of what we actually do — and you can cancel anytime, with a full data export.</p>
+                <a href="/manifesto" class="btn-text">Read the Manifesto &rarr;</a>
+            </div>
+        </div>
+    </section>
+
     <!-- How we work -->
     <section class="difference-section reveal">
         <div class="container">
@@ -483,6 +496,47 @@ import Layout from '../layouts/Layout.astro';
         font-weight: 500;
     }
 
+    /* Why subscription */
+    .why-sub-section { padding: 4rem 0; }
+
+    .why-sub-card {
+        max-width: 820px;
+        margin: 0 auto;
+        background: linear-gradient(135deg, #ffffff 0%, rgba(37, 99, 235, 0.025) 100%);
+        border: 1px solid rgba(37, 99, 235, 0.18);
+        border-radius: 20px;
+        padding: 2.75rem 3rem;
+        box-shadow: var(--shadow-premium);
+    }
+
+    .why-sub-card h2 {
+        font-size: 1.7rem;
+        line-height: 1.25;
+        margin-bottom: 1.25rem;
+        color: var(--color-secondary);
+    }
+
+    .why-sub-card p {
+        font-size: 1.02rem;
+        color: var(--color-text-light);
+        line-height: 1.75;
+        margin-bottom: 1rem;
+    }
+
+    .why-sub-card .btn-text {
+        display: inline-block;
+        margin-top: 0.5rem;
+        color: var(--color-primary);
+        font-weight: 600;
+        text-decoration: underline;
+        text-decoration-color: rgba(37, 99, 235, 0.3);
+        text-underline-offset: 4px;
+    }
+
+    .why-sub-card .btn-text:hover {
+        text-decoration-color: var(--color-primary);
+    }
+
     /* How we work */
     .difference-section { padding: 6rem 0; background: var(--color-surface); }
 
@@ -738,5 +792,7 @@ import Layout from '../layouts/Layout.astro';
         .problem-content h2 { font-size: 1.5rem; }
         .featured-text h2 { font-size: 1.75rem; }
         .contact-text h2 { font-size: 1.85rem; }
+        .why-sub-card { padding: 2rem 1.5rem; }
+        .why-sub-card h2 { font-size: 1.4rem; }
     }
 </style>

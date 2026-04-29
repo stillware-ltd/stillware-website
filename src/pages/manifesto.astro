@@ -4,13 +4,13 @@ import Layout from '../layouts/Layout.astro';
 
 <Layout
   title="The Manifesto — Stillware Ltd"
-  description="Our pledge: if Stillware goes out of business tomorrow, every app you bought from us will continue to work perfectly on your device."
+  description="Two pricing models, one ethic. We charge for what we actually do — never for sitting on your hard drive."
 >
     <article class="manifesto">
         <header class="manifesto-hero">
             <div class="manifesto-hero-inner">
                 <h1>The Stillware<br />Manifesto</h1>
-                <p class="lead">A pledge to the people who use our software.</p>
+                <p class="lead">Two pricing models. One ethic.</p>
             </div>
         </header>
 
@@ -25,8 +25,10 @@ import Layout from '../layouts/Layout.astro';
 
             <!-- Chapter 2 -->
             <section class="chapter reveal">
-                <h2>Subscription Fatigue</h2>
-                <p>Add up every subscription you pay for. Go ahead. Streaming services, cloud storage, productivity tools, budgeting apps, note-taking apps, password managers, email providers, VPNs. The average household now spends hundreds of dollars a month on software they will never own.</p>
+                <h2>Where Subscriptions Went Wrong</h2>
+                <p>Add up every subscription you pay for. Streaming services, cloud storage, productivity tools, budgeting apps, note-taking apps, password managers, email providers, VPNs.</p>
+                <p>Some of those are honest. Streaming pays for licenses and bandwidth. Cloud storage pays for disks someone has to keep spinning. Real ongoing cost, real ongoing service, real ongoing fee. Fair enough.</p>
+                <p>But a budgeting app? A note-taking app? A password manager? Software that lives on your device, stores data on your device, and depends on no remote infrastructure to function? Charging you forever for that isn't a service fee. It's rent extraction. You're not paying for ongoing work. You're paying so they don't take it away.</p>
                 <blockquote class="pull-quote reveal-up">
                     "You are not a customer. You are a recurring revenue metric on someone else's growth chart."
                 </blockquote>
@@ -35,63 +37,81 @@ import Layout from '../layouts/Layout.astro';
 
             <!-- Chapter 3 -->
             <section class="chapter reveal">
+                <h2>When Subscriptions Are Honest</h2>
+                <p>We don't pretend every subscription is theft. The test is simple: <em>if you stop paying, what actually stops working?</em></p>
+                <p>If the answer is "a tool sitting on my hard drive" — that's rent extraction.</p>
+                <p>If the answer is "the servers, the phone numbers, the AI models, and the people running them on my behalf" — that's a service. Services cost money to run, every month, forever, and pretending otherwise is dishonest pricing.</p>
+                <p>So Stillware is two things, side by side:</p>
+                <p><strong>Stillware Apps</strong> are pay-once. They run on your device. They store data on your device. They don't need us to keep working. Zeroed. RankUpChess. Estate Keep. Fort Knox Diary.</p>
+                <p><strong>Stillware Services</strong> are monthly, cancel-anytime. We operate the infrastructure — phone numbers, inference, orchestration, and the on-call when something breaks at 6pm on a Tuesday. NeverMiss is the first one. More are coming.</p>
+                <p>Same ethic, two pricing models. We charge for what we actually do — never for sitting on your hard drive.</p>
+            </section>
+
+            <!-- Chapter 4 -->
+            <section class="chapter reveal">
                 <h2>The Data Trust Problem</h2>
-                <p>Every time you hand your financial data to a cloud-based budgeting app, you are trusting that:</p>
+                <p>Every time you hand your financial data, your home inventory, or your private journal to a cloud-based app, you are trusting that:</p>
                 <ul>
                     <li>Their servers won't be breached.</li>
                     <li>Their employees won't misuse your information.</li>
                     <li>Their investors won't pressure them to monetize your data.</li>
                     <li>The company itself won't go bankrupt and leave your data in limbo.</li>
                 </ul>
-                <p>That's a lot of trust to place in a startup. We decided to eliminate the need for it entirely. When your data never leaves your device, there is nothing to breach, nothing to sell, and nothing to lose.</p>
-            </section>
-
-            <!-- Chapter 4 -->
-            <section class="chapter reveal">
-                <blockquote class="pledge reveal-up">
-                    <p>"If Stillware Ltd goes out of business tomorrow, every app you bought from us will continue to work perfectly on your device."</p>
-                </blockquote>
-                <h2>The Stillware Pledge</h2>
-                <p>This is not a marketing slogan. It is a direct consequence of how we build software. Our apps are local-first. They run on your device. They store data on your device. They sync through your own cloud storage — Google Drive, iCloud — not through our servers.</p>
-                <p>We have no database of your information. We have no server infrastructure that, if shut down, would render your purchase useless. Your license lives in your own cloud storage as a verification file. Your data lives in your own encrypted database.</p>
-                <p>If we vanish, your software keeps running. That's the way it should be.</p>
+                <p>That's a lot of trust to place in a startup. For our <strong>Apps</strong>, we eliminated the need for it entirely. When your data never leaves your device, there is nothing to breach, nothing to sell, and nothing to lose.</p>
+                <p>For our <strong>Services</strong>, where we operate infrastructure on your behalf, we minimise what we hold and how long we hold it. We do not sell, share, or train models on your operational data. You can export everything at any time. If you cancel, we wind down within 30 days.</p>
             </section>
 
             <!-- Chapter 5 -->
+            <section class="chapter reveal">
+                <h2>The Stillware Pledges</h2>
+                <p class="pledge-label">For our Apps:</p>
+                <blockquote class="pledge reveal-up">
+                    <p>"If Stillware Ltd goes out of business tomorrow, every app you bought from us will continue to work perfectly on your device."</p>
+                </blockquote>
+                <p>This is not a marketing slogan. It is a direct consequence of how we build software. Our apps are local-first. They run on your device. They store data on your device. They sync through your own cloud storage — Google Drive, iCloud — not through our servers.</p>
+                <p>We have no database of your information. We have no server infrastructure that, if shut down, would render your purchase useless. Your license lives in your own cloud storage as a verification file. Your data lives in your own encrypted database. If we vanish, your software keeps running.</p>
+
+                <p class="pledge-label">For our Services:</p>
+                <blockquote class="pledge reveal-up">
+                    <p>"If we ever shut down a service, you get 90 days' notice, a full data export, and a list of comparable alternatives."</p>
+                </blockquote>
+                <p>Operating infrastructure means we are responsible for uptime, security, and continuity. We take that seriously. No surprise terminations. No hostage data. No "we're shutting down on December 31st, sorry." If a service goes away, you get out cleanly.</p>
+            </section>
+
+            <!-- Chapter 6 -->
             <section class="chapter reveal">
                 <h2>The Four Rules of Stillware</h2>
                 <div class="rules-grid">
                     <div class="rule-item">
                         <span class="rule-number">01</span>
-                        <h3>Pay Once, Own Forever</h3>
-                        <p>No recurring fees. No "annual plans." One payment, permanent access. Major version upgrades may be paid, but you always keep what you bought.</p>
+                        <h3>Honest Pricing</h3>
+                        <p>Apps are pay-once. No recurring fees, ever. Services are monthly with no contract — cancel anytime. We charge for what we actually run, never for sitting on your hard drive.</p>
                     </div>
                     <div class="rule-item">
                         <span class="rule-number">02</span>
-                        <h3>Zero Telemetry</h3>
-                        <p>We do not collect analytics. We do not track usage patterns. We do not phone home. Your device, your data, your business.</p>
+                        <h3>Zero Surveillance</h3>
+                        <p>No analytics. No usage tracking. No phoning home. We do not sell, share, or train models on your data — apps or services, ever.</p>
                     </div>
                     <div class="rule-item">
                         <span class="rule-number">03</span>
-                        <h3>Local-First Native</h3>
-                        <p>Every Stillware app works offline. Not "degraded mode." Full functionality. An internet connection is optional, not required.</p>
+                        <h3>Local-First Where Possible</h3>
+                        <p>Apps run entirely on your device. Internet optional, not required. Services use only the infrastructure they actually need — and nothing more.</p>
                     </div>
                     <div class="rule-item">
                         <span class="rule-number">04</span>
-                        <h3>Your Cloud, Your Rules</h3>
-                        <p>Cross-device sync happens through your own cloud storage. We never see, touch, or store your data on our infrastructure.</p>
+                        <h3>Your Data, Your Exit</h3>
+                        <p>Apps store data on your device and sync through your own cloud. Services hold operational data only as long as needed, exportable anytime, deleted on request.</p>
                     </div>
                 </div>
             </section>
 
-            <!-- Chapter 6 -->
+            <!-- Chapter 7 -->
             <section class="chapter cta-chapter reveal">
                 <h2>Join Us</h2>
-                <p>We are building a small, focused portfolio of buy-once, own-forever tools. Software that respects your wallet, your privacy, and your intelligence.</p>
-                <p>Start with Zeroed. See what software ownership feels like.</p>
+                <p>We are building a small, focused portfolio of tools that respect your wallet, your privacy, and your intelligence. Some you buy once and own. Some you subscribe to because we run them for you. The ethic is the same.</p>
                 <div class="manifesto-cta">
-                    <a href="/zeroed" class="btn-primary">Try Zeroed Free</a>
-                    <a href="/apps" class="btn-text">View All Apps</a>
+                    <a href="/apps" class="btn-primary">Explore Our Apps</a>
+                    <a href="/services" class="btn-text">Explore Our Services</a>
                 </div>
             </section>
 
@@ -175,6 +195,18 @@ import Layout from '../layouts/Layout.astro';
         font-weight: 600;
         line-height: 1.5;
     }
+
+    .pledge-label {
+        font-size: 0.85rem !important;
+        font-weight: 700;
+        text-transform: uppercase;
+        letter-spacing: 0.1em;
+        color: var(--color-primary);
+        margin-top: 2.5rem;
+        margin-bottom: 1rem !important;
+    }
+
+    .pledge-label:first-child { margin-top: 0; }
 
     .pledge {
         background: var(--gradient-obsidian);

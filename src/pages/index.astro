@@ -3,17 +3,18 @@ import Layout from '../layouts/Layout.astro';
 ---
 
 <Layout
-  title="Stillware Ltd — Software You Own"
-  description="Stillware builds premium, offline-first applications. No subscriptions. No data mining. Just incredibly fast, native tools that belong entirely to you."
+  title="Stillware Ltd — Apps You Own. Services That Earn Their Keep."
+  description="Stillware ships two kinds of products. Pay-once apps that run on your device, plus operated AI services for businesses. Honest pricing on both sides — never rent for software sitting on your hard drive."
 >
     <!-- Hero -->
     <header class="hero-section">
         <div class="hero-ambient" aria-hidden="true"></div>
         <div class="hero-content">
-            <h1>Software you own.<br />Not software you rent.</h1>
-            <p class="hero-sub">Stillware builds premium, offline-first applications. No subscriptions. No data mining. Just incredibly fast, native tools that belong entirely to you.</p>
+            <h1>Apps you own.<br />Services that earn their keep.</h1>
+            <p class="hero-sub">Stillware ships two kinds of products. Pay-once apps that run on your device, and operated AI services for businesses. We charge for what we actually do — never for software sitting on your hard drive.</p>
             <div class="hero-cta">
                 <a href="/apps" class="btn-secondary">View Our Apps</a>
+                <a href="/services" class="btn-secondary">View Our Services</a>
                 <a href="/manifesto" class="btn-text">Read The Manifesto</a>
             </div>
         </div>
@@ -27,29 +28,29 @@ import Layout from '../layouts/Layout.astro';
                     <div class="pillar-icon">
                         <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="7" width="20" height="14" rx="2" ry="2"/><path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"/></svg>
                     </div>
-                    <h3>Pay Once, Own Forever.</h3>
-                    <p>No recurring fees. Ever.</p>
+                    <h3>Honest Pricing.</h3>
+                    <p>Buy-once apps. Month-to-month services. Cancel anytime.</p>
                 </div>
                 <div class="pillar-card reveal-up reveal-delay-2">
                     <div class="pillar-icon">
                         <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 20V6a2 2 0 0 0-2-2H8a2 2 0 0 0-2 2v14"/><path d="M2 20h20"/><path d="M14 12v.01"/></svg>
                     </div>
-                    <h3>Zero Telemetry.</h3>
-                    <p>We literally cannot see your data. It lives on your device.</p>
+                    <h3>Zero Surveillance.</h3>
+                    <p>No tracking, no data mining. We never sell or train models on your data.</p>
                 </div>
                 <div class="pillar-card reveal-up reveal-delay-3">
                     <div class="pillar-icon">
                         <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="4" width="16" height="16" rx="2" ry="2"/><rect x="9" y="9" width="6" height="6"/><path d="M15 2v2"/><path d="M15 20v2"/><path d="M2 15h2"/><path d="M2 9h2"/><path d="M20 15h2"/><path d="M20 9h2"/><path d="M9 2v2"/><path d="M9 20v2"/></svg>
                     </div>
-                    <h3>Local-First Native.</h3>
-                    <p>Lightning fast. Works flawlessly in a concrete bunker without Wi-Fi.</p>
+                    <h3>Local-First by Default.</h3>
+                    <p>Apps run flawlessly without Wi-Fi. Services use only the infrastructure they need.</p>
                 </div>
                 <div class="pillar-card reveal-up reveal-delay-4">
                     <div class="pillar-icon">
                         <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17.5 19H9a7 7 0 1 1 6.71-9h1.79a4.5 4.5 0 1 1 0 9Z"/></svg>
                     </div>
-                    <h3>Your Cloud, Your Rules.</h3>
-                    <p>Sync between devices using your Google Drive or iCloud, not ours.</p>
+                    <h3>Your Data, Your Exit.</h3>
+                    <p>Apps stay on your device. Services export anytime, delete on request.</p>
                 </div>
             </div>
         </div>
@@ -83,6 +84,28 @@ import Layout from '../layouts/Layout.astro';
                     <h2>RankUpChess:<br />The Offline Chess Academy for Kids.</h2>
                     <p>A premium, 100% offline chess academy. 5,000+ puzzles, a 10-tier AI engine, and interactive lessons — all without an internet connection. Pay once, own forever. No data harvesting.</p>
                     <a href="/rankupchess" class="btn-primary chess-btn">Explore RankUpChess</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- NeverMiss Spotlight -->
+    <section class="spotlight-section nevermiss-spotlight reveal">
+        <div class="container">
+            <div class="spotlight-grid">
+                <div class="spotlight-text">
+                    <span class="spotlight-badge spotlight-badge-live">Live in Production · Service</span>
+                    <h2>NeverMiss:<br />The AI Dispatcher for UK Trades.</h2>
+                    <p>When a plumber, electrician, or HVAC engineer can't pick up the phone, NeverMiss texts the caller in seconds, qualifies the job over SMS, and drops a ready-to-quote lead in their Google Sheet. Operated service. Cancel anytime, full data export.</p>
+                    <a href="/services/nevermiss" class="btn-primary">See NeverMiss</a>
+                </div>
+                <div class="spotlight-visual">
+                    <div class="graphic-stack">
+                        <div class="graphic-msg in">📞 Missed call</div>
+                        <div class="graphic-msg out">💬 "Hi, what's the issue and your postcode?"</div>
+                        <div class="graphic-msg in">"Boiler leaking, EN6 2DF, urgent"</div>
+                        <div class="graphic-msg sheet">📊 → lead in your Google Sheet</div>
+                    </div>
                 </div>
             </div>
         </div>
@@ -160,9 +183,12 @@ import Layout from '../layouts/Layout.astro';
     <!-- Final CTA -->
     <section class="final-cta-section">
         <div class="final-cta-content">
-            <h2>Own Your Software.</h2>
-            <p>Join the movement against subscription fatigue. Start with Zeroed — the budgeting app you pay for once and keep forever. Founder's Seat: $19 for the first 100 customers.</p>
-            <a href="/zeroed" class="btn-primary pulse">Explore Zeroed</a>
+            <h2>Honest Software.</h2>
+            <p>Apps you own — for the things that should run on your hard drive. Services we operate — for the things that need real infrastructure. Pick the one that fits.</p>
+            <div class="final-cta-buttons">
+                <a href="/apps" class="btn-primary pulse">Explore Apps</a>
+                <a href="/services" class="btn-text">Explore Services</a>
+            </div>
         </div>
     </section>
 </Layout>
@@ -588,6 +614,80 @@ import Layout from '../layouts/Layout.astro';
     /* Chess Spotlight */
     .chess-spotlight {
         background: var(--color-surface);
+    }
+
+    /* NeverMiss Spotlight */
+    .nevermiss-spotlight {
+        background: linear-gradient(135deg, #0F172A 0%, #1E293B 100%);
+        color: #ffffff;
+    }
+
+    .nevermiss-spotlight .spotlight-text h2 {
+        color: #ffffff;
+    }
+
+    .nevermiss-spotlight .spotlight-text p {
+        color: rgba(255, 255, 255, 0.78);
+    }
+
+    .nevermiss-spotlight .spotlight-badge-live {
+        background: rgba(96, 165, 250, 0.18);
+        color: #93C5FD;
+    }
+
+    .nevermiss-spotlight .graphic-stack {
+        display: flex;
+        flex-direction: column;
+        gap: 0.75rem;
+        max-width: 460px;
+    }
+
+    .nevermiss-spotlight .graphic-msg {
+        padding: 0.85rem 1.25rem;
+        border-radius: 16px;
+        font-size: 0.95rem;
+        line-height: 1.5;
+        max-width: 85%;
+    }
+
+    .nevermiss-spotlight .graphic-msg.in {
+        background: rgba(255, 255, 255, 0.08);
+        color: rgba(255, 255, 255, 0.85);
+        border: 1px solid rgba(255, 255, 255, 0.1);
+        align-self: flex-start;
+    }
+
+    .nevermiss-spotlight .graphic-msg.out {
+        background: var(--color-primary);
+        color: #ffffff;
+        align-self: flex-end;
+    }
+
+    .nevermiss-spotlight .graphic-msg.sheet {
+        background: rgba(96, 165, 250, 0.12);
+        color: #93C5FD;
+        border: 1px dashed rgba(147, 197, 253, 0.4);
+        align-self: flex-start;
+        font-weight: 500;
+    }
+
+    /* Final CTA buttons */
+    .final-cta-buttons {
+        display: flex;
+        gap: 1.25rem;
+        justify-content: center;
+        align-items: center;
+        flex-wrap: wrap;
+    }
+
+    .final-cta-buttons .btn-text {
+        color: rgba(255, 255, 255, 0.8);
+        text-decoration-color: rgba(255, 255, 255, 0.3);
+    }
+
+    .final-cta-buttons .btn-text:hover {
+        color: #ffffff;
+        text-decoration-color: #ffffff;
     }
 
     .spotlight-grid.reverse {
