@@ -1,0 +1,88 @@
+
+
+
+
+
+
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 1699" width="1200" height="1699">
+  <style>
+    text { font-family: Inter, system-ui, -apple-system, sans-serif; }
+  </style>
+
+  <rect width="1200" height="1699" fill="#ffffff"/>
+
+  <!-- Background pattern (per-article variation) -->
+  <rect width="1200" height="675" fill="#f8fafc" opacity="0.4"/>
+
+  <!-- Subtle top accent bar -->
+  <rect width="1200" height="4" fill="#ca8a04"/>
+
+  <!-- Title -->
+  <text x="600" y="50" text-anchor="middle" font-size="26" font-weight="700" fill="#1e293b">Home inventory app feature comparison</text>
+
+  <!-- Column header colors (theme-aware alternation) -->
+  
+  
+
+  <!-- Table -->
+  
+  
+  
+
+  <!-- Column header -->
+  <rect x="100" y="80" width="1000" height="52" fill="#ca8a04"/>
+  
+  <rect x="100" y="80" width="4" height="52" fill="#ca8a04"/>
+  
+  <text x="600" y="112" text-anchor="middle" font-size="16" font-weight="600" fill="#ffffff">Feature</text>
+
+  <!-- Rows -->
+  
+  
+  <rect x="100" y="148" width="1000" height="52" fill="#f8fafc" stroke="#e2e8f0" stroke-width="0.5"/>
+  <text x="116" y="170" font-size="13" font-weight="600" fill="#1e293b">Feature</text>
+  <text x="116" y="190" font-size="13" fill="#64748b">Offline Access</text>
+  
+  
+  <rect x="100" y="206" width="1000" height="52" fill="#ffffff" stroke="#e2e8f0" stroke-width="0.5"/>
+  <text x="116" y="228" font-size="13" font-weight="600" fill="#1e293b">Serial Number Scanning</text>
+  <text x="116" y="248" font-size="13" fill="#64748b">Serial Number Scanning</text>
+  
+  
+  <rect x="100" y="264" width="1000" height="52" fill="#f8fafc" stroke="#e2e8f0" stroke-width="0.5"/>
+  <text x="116" y="286" font-size="13" font-weight="600" fill="#1e293b">PDF Export</text>
+  <text x="116" y="306" font-size="13" fill="#64748b">PDF Export</text>
+  
+  
+  <rect x="100" y="322" width="1000" height="52" fill="#ffffff" stroke="#e2e8f0" stroke-width="0.5"/>
+  <text x="116" y="344" font-size="13" font-weight="600" fill="#1e293b">One-Time Purchase</text>
+  <text x="116" y="364" font-size="13" fill="#64748b">One-Time Purchase</text>
+  
+  
+  <rect x="100" y="380" width="1000" height="52" fill="#f8fafc" stroke="#e2e8f0" stroke-width="0.5"/>
+  <text x="116" y="402" font-size="13" font-weight="600" fill="#1e293b">Privacy</text>
+  <text x="116" y="422" font-size="13" fill="#64748b">Privacy</text>
+  
+  
+  <rect x="100" y="438" width="1000" height="52" fill="#ffffff" stroke="#e2e8f0" stroke-width="0.5"/>
+  <text x="116" y="460" font-size="13" font-weight="600" fill="#1e293b">Envelope Budgeting|Local-First App</text>
+  <text x="116" y="480" font-size="13" fill="#64748b">Yes</text>
+  
+  
+  <rect x="100" y="496" width="1000" height="52" fill="#f8fafc" stroke="#e2e8f0" stroke-width="0.5"/>
+  <text x="116" y="518" font-size="13" font-weight="600" fill="#1e293b">Yes</text>
+  <text x="116" y="538" font-size="13" fill="#64748b">Yes</text>
+  
+  
+  <rect x="100" y="554" width="1000" height="52" fill="#ffffff" stroke="#e2e8f0" stroke-width="0.5"/>
+  <text x="116" y="576" font-size="13" font-weight="600" fill="#1e293b">Yes</text>
+  <text x="116" y="596" font-size="13" fill="#64748b">Yes</text>
+  
+  
+
+  <!-- Bottom border -->
+  <rect x="100" y="1656" width="1000" height="3" fill="#ca8a04"/>
+
+  <!-- Source attribution -->
+  <text x="1190" y="1691" text-anchor="end" font-size="10" fill="#cbd5e1">stillwareltd.com</text>
+</svg>
