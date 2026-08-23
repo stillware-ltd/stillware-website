@@ -5,3 +5,4 @@ dist
 .env
 init-db.mjs
 .claude/settings.local.json
+netlify-creds.json
