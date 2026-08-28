@@ -31,12 +31,12 @@ If the answer is "a tool sitting on my hard drive" — that's rent extraction. T
 
 If the answer is "the servers, the phone numbers, the AI models, and the people running them on my behalf" — that's a service. Services have real ongoing cost, and pretending otherwise is dishonest pricing.
 
-That's why Stillware is two things, side by side:
+That's why the Stillware rule is simple:
 
-- **Stillware Apps** — Zeroed, RankUpChess, and others — are pay-once. They run on your device. They don't need us to keep working. No recurring fees, ever.
-- **Stillware Services** — like NeverMiss, our AI dispatcher for UK trades — are monthly, cancel-anytime. We operate the infrastructure: phone numbers, AI inference, orchestration, on-call response. Cancel anytime, full data export.
+- **Stillware apps** — Zeroed and RankUpChess — are pay-once. They run on your device. They don't need us to keep working. No recurring fees, ever.
+- If we ever ship something with real ongoing cost — servers, AI inference, infrastructure we run for you — it will be an optional, monthly, cancel-anytime service with full data export. And the app you bought will always work fully without it.
 
-Same ethic, two pricing models. We charge for what we actually do — never for software sitting on your hard drive.
+We charge for what we actually do — never for software sitting on your hard drive.
 
 ## What You're Really Paying For (When It's Wrong)
 
@@ -56,15 +56,15 @@ Let's compare a typical subscription budgeting app at $99/year versus Zeroed's o
 
 | Time Period | Subscription | Zeroed |
 |-------------|-------------|--------|
-| Year 1 | $99 | $0 (Founder's) |
-| Year 3 | $297 | $0 |
-| Year 5 | $495 | $0 |
-| Year 10 | $990 | $0 |
+| Year 1 | $99 | $19.99, once |
+| Year 3 | $297 | $19.99 |
+| Year 5 | $495 | $19.99 |
+| Year 10 | $990 | $19.99 |
 
-The subscription app costs nearly $1,000 over a decade. Zeroed costs nothing for Founder's Edition users — and will cost a one-time $79.99 for everyone else.
+The subscription app costs nearly $1,000 over a decade. Zeroed costs $19.99 at the founder price (available until 14 February 2027, then $39.99) — once.
 
 ## Try It
 
-Zeroed is available now on Windows and Android, with iOS coming soon. The first 500 users get lifetime access for free in exchange for honest feedback.
+Zeroed is available now on Windows and Android, with iOS coming soon. Every install starts with a fully unlocked 34-day free trial — no credit card required.
 
-[Explore Zeroed](/zeroed) · [Read the Manifesto](/manifesto) · [See our operated services](/services)
+[Explore Zeroed](/zeroed) · [Read the Manifesto](/manifesto)

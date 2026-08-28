@@ -36,6 +36,17 @@
   to = "/.netlify/functions/trial-status"
   status = 200
 
+# Services line retired 2026-08 — redirect old URLs home
+[[redirects]]
+  from = "/services"
+  to = "/"
+  status = 301
+
+[[redirects]]
+  from = "/services/*"
+  to = "/"
+  status = 301
+
 # Legacy redirects for old /zeroed/ paths
 [[redirects]]
   from = "/zeroed/privacy"
