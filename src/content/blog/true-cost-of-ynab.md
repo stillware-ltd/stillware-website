@@ -20,17 +20,17 @@ But YNAB costs $99 per year. And that price has increased — it was $84/year be
 
 ## The Five-Year Math
 
-| | YNAB | Zeroed (Founder's) | Zeroed (Retail) |
-|--|------|-------------------|-----------------|
-| Year 1 | $99 | $0 | $79.99 |
-| Year 2 | $198 | $0 | $79.99 |
-| Year 3 | $297 | $0 | $79.99 |
-| Year 4 | $396 | $0 | $79.99 |
-| Year 5 | $495 | $0 | $79.99 |
+| | YNAB | Zeroed (Founder Price) | Zeroed (Retail) |
+|--|------|------------------------|-----------------|
+| Year 1 | $99 | $19.99 | $39.99 |
+| Year 2 | $198 | $19.99 | $39.99 |
+| Year 3 | $297 | $19.99 | $39.99 |
+| Year 4 | $396 | $19.99 | $39.99 |
+| Year 5 | $495 | $19.99 | $39.99 |
 
-Over five years, YNAB costs **$495**. Zeroed's retail price is a one-time **$79.99**. Founder's Edition users pay **$0**.
+Over five years, YNAB costs **$495**. Zeroed is a one-time **$19.99** at the founder price (available until 14 February 2027), or **$39.99** after that.
 
-That's a savings of $415 even at retail — and $495 for Founders.
+That's a savings of $455 even at retail — and $475 at the founder price.
 
 ## What Else Changes?
 
