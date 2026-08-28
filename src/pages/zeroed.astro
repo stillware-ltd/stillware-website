@@ -214,7 +214,7 @@ const RELEASE_PAGE = `https://github.com/stillware-ltd/zeroed-releases/releases/
         <div class="container">
             <div class="section-header center-text">
                 <h2>Prefer a Direct Install?</h2>
-                <p class="direct-downloads-intro">No app store account, no Play Services, no telemetry. Signed binaries hosted on GitHub — verify with SHA256 and install when you're ready.</p>
+                <p class="direct-downloads-intro">One-click install from the Microsoft Store, or app-store-free binaries hosted on GitHub — checksummed, so you can verify with SHA256 before installing.</p>
             </div>
             <div class="direct-downloads-grid">
                 <a href={`${RELEASE_BASE}/Zeroed-${LATEST_VERSION}.dmg`} class="direct-download-card">
@@ -225,13 +225,13 @@ const RELEASE_PAGE = `https://github.com/stillware-ltd/zeroed-releases/releases/
                     <p>Notarized <code>.dmg</code> — open and drag Zeroed into Applications. Apple Silicon &amp; Intel.</p>
                     <span class="download-meta">52 MB &middot; v{LATEST_VERSION}</span>
                 </a>
-                <a href={`${RELEASE_BASE}/Zeroed-${LATEST_VERSION}.msix`} class="direct-download-card">
+                <a href="https://apps.microsoft.com/detail/9NCHJ67Q98C5" target="_blank" rel="noopener" class="direct-download-card">
                     <div class="download-icon">
                         <svg viewBox="0 0 24 24" fill="currentColor" width="20" height="20"><path d="M0 3.449L9.75 2.1v9.451H0m10.949-9.602L24 0v11.4H10.949M0 12.6h9.75v9.451L0 20.699M10.949 12.6H24V24l-12.9-1.801" /></svg>
                     </div>
-                    <h3>Windows</h3>
-                    <p>Self-installing <code>.msix</code> — double-click and launch from the Start menu.</p>
-                    <span class="download-meta">27 MB &middot; v{LATEST_VERSION}</span>
+                    <h3>Windows (Microsoft Store)</h3>
+                    <p>One-click install, signed by Microsoft, with automatic updates.</p>
+                    <span class="download-meta">Microsoft Store &middot; v{LATEST_VERSION}</span>
                 </a>
                 <a href={`${RELEASE_BASE}/Zeroed-Windows-${LATEST_VERSION}.zip`} class="direct-download-card">
                     <div class="download-icon">
