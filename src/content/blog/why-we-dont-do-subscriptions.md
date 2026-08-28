@@ -33,7 +33,7 @@ If the answer is "the servers, the phone numbers, the AI models, and the people 
 
 That's why the Stillware rule is simple:
 
-- **Stillware apps** — Zeroed and RankUpChess — are pay-once. They run on your device. They don't need us to keep working. No recurring fees, ever.
+- **Stillware apps** — Zeroed and RankUp Chess — are pay-once. They run on your device. They don't need us to keep working. No recurring fees, ever.
 - If we ever ship something with real ongoing cost — servers, AI inference, infrastructure we run for you — it will be an optional, monthly, cancel-anytime service with full data export. And the app you bought will always work fully without it.
 
 We charge for what we actually do — never for software sitting on your hard drive.
