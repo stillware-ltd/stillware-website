@@ -2,15 +2,9 @@
 import Layout from '../layouts/Layout.astro';
 
 // Latest Zeroed release — bump this single constant when a new version ships.
-const LATEST_VERSION = '1.0.10';
+const LATEST_VERSION = '1.3.0';
 const RELEASE_BASE = `https://github.com/stillware-ltd/zeroed-releases/releases/download/v${LATEST_VERSION}`;
 const RELEASE_PAGE = `https://github.com/stillware-ltd/zeroed-releases/releases/tag/v${LATEST_VERSION}`;
-
-// macOS ships ahead of the other platforms this cycle (1.3.0, Realm schema
-// v14 wave). When 1.3.0 Windows/Android assets land on the release, bump
-// LATEST_VERSION and fold these two constants away.
-const MAC_VERSION = '1.3.0';
-const MAC_RELEASE_BASE = `https://github.com/stillware-ltd/zeroed-releases/releases/download/v${MAC_VERSION}`;
 ---
 
 <Layout
@@ -223,13 +217,13 @@ const MAC_RELEASE_BASE = `https://github.com/stillware-ltd/zeroed-releases/relea
                 <p class="direct-downloads-intro">No app store account, no Play Services, no telemetry. Signed binaries hosted on GitHub — verify with SHA256 and install when you're ready.</p>
             </div>
             <div class="direct-downloads-grid">
-                <a href={`${MAC_RELEASE_BASE}/Zeroed-${MAC_VERSION}.dmg`} class="direct-download-card">
+                <a href={`${RELEASE_BASE}/Zeroed-${LATEST_VERSION}.dmg`} class="direct-download-card">
                     <div class="download-icon">
                         <svg viewBox="0 0 24 24" fill="currentColor" width="20" height="20"><path d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.81-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83M13 3.5c.73-.83 1.94-1.46 2.94-1.5.13 1.17-.34 2.35-1.04 3.19-.69.85-1.83 1.51-2.95 1.42-.15-1.15.41-2.35 1.05-3.11z"/></svg>
                     </div>
                     <h3>macOS</h3>
                     <p>Notarized <code>.dmg</code> — open and drag Zeroed into Applications. Apple Silicon &amp; Intel.</p>
-                    <span class="download-meta">52 MB &middot; v{MAC_VERSION}</span>
+                    <span class="download-meta">52 MB &middot; v{LATEST_VERSION}</span>
                 </a>
                 <a href={`${RELEASE_BASE}/Zeroed-${LATEST_VERSION}.msix`} class="direct-download-card">
                     <div class="download-icon">
@@ -237,7 +231,7 @@ const MAC_RELEASE_BASE = `https://github.com/stillware-ltd/zeroed-releases/relea
                     </div>
                     <h3>Windows</h3>
                     <p>Self-installing <code>.msix</code> — double-click and launch from the Start menu.</p>
-                    <span class="download-meta">28 MB &middot; v{LATEST_VERSION}</span>
+                    <span class="download-meta">27 MB &middot; v{LATEST_VERSION}</span>
                 </a>
                 <a href={`${RELEASE_BASE}/Zeroed-Windows-${LATEST_VERSION}.zip`} class="direct-download-card">
                     <div class="download-icon">
@@ -245,7 +239,7 @@ const MAC_RELEASE_BASE = `https://github.com/stillware-ltd/zeroed-releases/relea
                     </div>
                     <h3>Windows (Portable)</h3>
                     <p>Extract anywhere and run <code>zeroed.exe</code> — no install, no admin rights.</p>
-                    <span class="download-meta">22 MB &middot; v{LATEST_VERSION}</span>
+                    <span class="download-meta">21 MB &middot; v{LATEST_VERSION}</span>
                 </a>
                 <a href={`${RELEASE_BASE}/Zeroed-${LATEST_VERSION}.apk`} class="direct-download-card">
                     <div class="download-icon">
@@ -253,7 +247,7 @@ const MAC_RELEASE_BASE = `https://github.com/stillware-ltd/zeroed-releases/relea
                     </div>
                     <h3>Android (Sideload)</h3>
                     <p>Install the <code>.apk</code> directly — no Google account or Play Services required.</p>
-                    <span class="download-meta">147 MB &middot; v{LATEST_VERSION}</span>
+                    <span class="download-meta">150 MB &middot; v{LATEST_VERSION}</span>
                 </a>
             </div>
             <p class="direct-downloads-meta">
