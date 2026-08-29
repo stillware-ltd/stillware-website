@@ -105,6 +105,8 @@ The benchmark is clear. Over five years, the subscription tax is substantial. Th
 
 Ready to stop renting your budget? Your search for YNAB price increase alternatives can end with a single purchase. [Try Zeroed free for 34 days](/zeroed)—experience a fully-featured, local-first budgeting app with no credit card required. See if owning your financial data, forever, changes how you think about your money.
 
+For a deeper feature-by-feature breakdown, read our honest [Zeroed vs YNAB comparison](/blog/zeroed-vs-ynab-2026), or browse the full list of [budgeting apps without a subscription](/blog/best-budgeting-apps-without-subscription-2026).
+
 
 <div class="cta-box cta-inline">
   <p>Try Zeroed Free — Own your budget with a one-time purchase</p>
