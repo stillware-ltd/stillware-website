@@ -65,4 +65,4 @@ An honest comparison has to start here.
 
 **Choose Zeroed if** you want your budget to be private, offline, and permanently yours — and you'd rather pay once than rent. Especially if you've watched YNAB's price climb and thought: *a budgeting app should not be a recurring line in my budget.*
 
-**Switching is deliberately easy:** export your YNAB data as CSV, import it into Zeroed's universal parser, and your history comes with you. The [34-day free trial](/zeroed) is fully unlocked with no credit card, so you can run both side by side for a month and decide with your own data.
+**Switching is deliberately easy:** export your YNAB data as CSV, import it into Zeroed's universal parser, and your history comes with you — here's the [step-by-step migration guide](/blog/switch-from-ynab-to-zeroed). The [34-day free trial](/zeroed) is fully unlocked with no credit card, so you can run both side by side for a month and decide with your own data.
