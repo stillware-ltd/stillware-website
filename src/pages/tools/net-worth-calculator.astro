@@ -1,0 +1,198 @@
+---
+import ToolLayout from '../../layouts/ToolLayout.astro';
+
+const faqs = [
+  {
+    q: 'What is net worth?',
+    a: 'Everything you own (assets: cash, savings, investments, pensions, property, vehicles) minus everything you owe (liabilities: mortgage, loans, credit cards, overdrafts). It is the single most honest one-number summary of your financial position.',
+  },
+  {
+    q: 'Is a negative net worth bad?',
+    a: 'It is common, especially early in adult life — a student loan or a new mortgage easily outweighs early savings. The number that matters is the direction: tracked quarterly, a rising net worth means your decisions are working, whatever the absolute figure says today.',
+  },
+  {
+    q: 'Should I include my pension and my home?',
+    a: 'Most people include both: pension pots at current value, the home at a realistic sale price with the outstanding mortgage as a liability. Some prefer a separate "liquid net worth" that excludes them. Either is fine — just be consistent between check-ins.',
+  },
+  {
+    q: 'Is my financial information stored anywhere?',
+    a: 'No. Everything is calculated in your browser on this page and disappears when you close the tab. Nothing is uploaded to any server.',
+  },
+];
+
+const related = [
+  { slug: 'debt-payoff-calculator', title: 'Debt Payoff Calculator' },
+  { slug: 'compound-interest-calculator', title: 'Compound Interest Calculator' },
+  { slug: 'emergency-fund-calculator', title: 'Emergency Fund Calculator' },
+];
+---
+
+<ToolLayout
+  title="Net Worth Calculator — Free, Private, No Sign-Up | Stillware Ltd"
+  description="Calculate your net worth in two minutes: list what you own and what you owe, get the honest number. Runs entirely in your browser — your financial details are never uploaded."
+  heroTitle="Net Worth Calculator"
+  heroTagline="What you own minus what you owe. Two minutes to the most honest number in personal finance — calculated in your browser, uploaded nowhere."
+  breadcrumbLabel="Net Worth Calculator"
+  faqs={faqs}
+  related={related}
+  ctaTitle="Track the trend, not just today's number"
+  ctaText="Net worth only becomes powerful when you watch it move. Zeroed tracks your net worth continuously from the accounts you already budget with — on your device, no cloud, no account."
+>
+  <form id="nw-form" class="calc-form">
+    <div class="form-group currency-group">
+      <label for="currency">Currency</label>
+      <select id="currency">
+        <option value="$" selected>$ USD</option>
+        <option value="£">£ GBP</option>
+        <option value="€">€ EUR</option>
+      </select>
+    </div>
+
+    <div class="form-group">
+      <label>What you own (assets)</label>
+      <p class="field-hint">Current accounts, savings, investments, pension pots, property value, vehicles, anything sellable of real value.</p>
+      <div id="asset-rows" class="row-list"></div>
+      <button type="button" id="add-asset" class="row-add">+ Add asset</button>
+    </div>
+
+    <div class="form-group">
+      <label>What you owe (liabilities)</label>
+      <p class="field-hint">Mortgage balance, loans, credit cards, overdrafts, money owed to family.</p>
+      <div id="debt-rows" class="row-list"></div>
+      <button type="button" id="add-debt" class="row-add">+ Add liability</button>
+    </div>
+
+    <button type="submit" class="btn-primary calc-btn">Calculate My Net Worth</button>
+  </form>
+
+  <div id="results" class="results-panel" style="display:none;">
+    <div class="result-card">
+      <span class="result-label">Total assets</span>
+      <span class="result-value" id="r-assets"></span>
+    </div>
+    <div class="result-card">
+      <span class="result-label">Total liabilities</span>
+      <span class="result-value" id="r-debts"></span>
+    </div>
+    <div class="result-card" id="nw-card">
+      <span class="result-label">Your net worth</span>
+      <span class="result-value" id="r-networth"></span>
+      <span class="result-sub" id="r-note"></span>
+    </div>
+    <div class="result-breakdown">
+      <h3>Worth knowing</h3>
+      <ul>
+        <li>Debt-to-asset ratio: <strong id="r-ratio"></strong></li>
+        <li>Write today's number down. Recheck in 3 months — <strong>the direction is the metric.</strong></li>
+      </ul>
+    </div>
+  </div>
+
+  <Fragment slot="article">
+    <h2>Why one number beats ten apps</h2>
+    <p>
+      Income feels like progress, but plenty of high earners are broke in slow motion. Net worth cuts through:
+      it captures saving, debt, and asset growth in a single figure that either rises or doesn't. Checked
+      quarterly, it is the feedback loop that tells you whether the year's financial decisions actually worked.
+    </p>
+    <h2>Moving the number</h2>
+    <p>
+      Only three things move net worth: <strong>spend less than you earn</strong> (the gap becomes assets),
+      <strong>pay down debt</strong> (especially expensive debt — see the
+      <a href="/tools/debt-payoff-calculator">debt payoff calculator</a> for the cheapest route), and
+      <strong>let assets compound</strong> (the
+      <a href="/tools/compound-interest-calculator">compound interest calculator</a> shows what patience is worth).
+      The first one funds the other two, and it is a budgeting problem — which is where a
+      <a href="/tools/zero-based-budget-calculator">zero-based budget</a> comes in.
+    </p>
+    <p>
+      One habit worth stealing: track net worth <em>and</em> celebrate the boring milestones — first time positive,
+      first time above a year's salary. The number compounds slowly and then all at once, exactly like the
+      interest table.
+    </p>
+  </Fragment>
+</ToolLayout>
+
+<script>
+  function makeRows(containerId: string, addBtnId: string, defaults: Array<[string, string]>, placeholder: string) {
+    const rowsEl = document.getElementById(containerId)!;
+    function addRow(name = '', amount = '') {
+      const div = document.createElement('div');
+      div.className = 'row-item nw-row';
+      div.innerHTML = `
+        <input type="text" class="n-name" placeholder="${placeholder}" value="${name}" />
+        <input type="number" class="n-amount" placeholder="Amount" value="${amount}" min="0" step="100" />
+        <button type="button" class="row-remove" aria-label="Remove row">&times;</button>
+      `;
+      div.querySelector('.row-remove')!.addEventListener('click', () => div.remove());
+      rowsEl.appendChild(div);
+    }
+    defaults.forEach(([n, a]) => addRow(n, a));
+    document.getElementById(addBtnId)!.addEventListener('click', () => addRow());
+  }
+
+  makeRows(
+    'asset-rows',
+    'add-asset',
+    [
+      ['Current account', ''],
+      ['Savings', ''],
+      ['Pension / investments', ''],
+    ],
+    'Asset (e.g. Savings account)'
+  );
+  makeRows(
+    'debt-rows',
+    'add-debt',
+    [
+      ['Credit card', ''],
+      ['Loan', ''],
+    ],
+    'Liability (e.g. Car loan)'
+  );
+
+  const curEl = document.getElementById('currency') as HTMLSelectElement;
+  const sym = () => curEl.value;
+  const fmt0 = (n: number) => sym() + Math.round(Math.abs(n)).toLocaleString();
+
+  function sum(containerId: string): number {
+    let total = 0;
+    document.querySelectorAll(`#${containerId} .n-amount`).forEach((el) => {
+      total += parseFloat((el as HTMLInputElement).value) || 0;
+    });
+    return total;
+  }
+
+  document.getElementById('nw-form')!.addEventListener('submit', (e) => {
+    e.preventDefault();
+
+    const assets = sum('asset-rows');
+    const debts = sum('debt-rows');
+    const nw = assets - debts;
+
+    document.getElementById('r-assets')!.textContent = fmt0(assets);
+    document.getElementById('r-debts')!.textContent = fmt0(debts);
+    document.getElementById('r-networth')!.textContent = (nw < 0 ? '−' : '') + fmt0(nw);
+
+    const card = document.getElementById('nw-card')!;
+    card.classList.remove('good', 'bad', 'highlight');
+    card.classList.add(nw >= 0 ? 'good' : 'bad');
+    document.getElementById('r-note')!.textContent =
+      nw >= 0
+        ? 'Positive — you own more than you owe. Now watch the trend.'
+        : 'Negative is common early on (student loans, new mortgages). Direction over the next year matters more than today’s figure.';
+
+    document.getElementById('r-ratio')!.textContent =
+      assets > 0 ? `${((debts / assets) * 100).toFixed(0)}% of your assets are financed by debt` : '—';
+
+    const results = document.getElementById('results')!;
+    results.style.display = 'block';
+    results.scrollIntoView({ behavior: 'smooth', block: 'start' });
+  });
+</script>
+
+<style>
+  .nw-row {
+    grid-template-columns: 1.6fr 1fr auto;
+  }
+</style>

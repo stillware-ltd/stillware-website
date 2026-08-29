@@ -3,6 +3,62 @@ import Layout from '../../layouts/Layout.astro';
 
 const frictionlessTools = [
   {
+    title: 'Zero-Based Budget Calculator',
+    slug: 'zero-based-budget-calculator',
+    description: 'Give every unit of income a job and get "left to assign" to exactly zero. The whole envelope method, live in your browser.',
+    icon: '&#127919;',
+    tag: 'Calculator',
+  },
+  {
+    title: 'Debt Payoff Calculator',
+    slug: 'debt-payoff-calculator',
+    description: 'Snowball vs avalanche with your real debts: months to debt-free, total interest, and which order saves you the most.',
+    icon: '&#9975;',
+    tag: 'Calculator',
+  },
+  {
+    title: 'Subscription Cost Calculator',
+    slug: 'subscription-cost-calculator',
+    description: 'List everything you subscribe to and see the monthly bleed, the 10-year total, and what that money could become instead.',
+    icon: '&#128184;',
+    tag: 'Calculator',
+  },
+  {
+    title: '50/30/20 Budget Calculator',
+    slug: '50-30-20-budget-calculator',
+    description: 'Enter your take-home pay and get your needs, wants, and savings targets instantly — or set your own split.',
+    icon: '&#128202;',
+    tag: 'Calculator',
+  },
+  {
+    title: 'Emergency Fund Calculator',
+    slug: 'emergency-fund-calculator',
+    description: 'Your real safety-net number — months of essential expenses, not salary — plus a realistic date for having it.',
+    icon: '&#128737;',
+    tag: 'Calculator',
+  },
+  {
+    title: 'Savings Goal Calculator',
+    slug: 'savings-goal-calculator',
+    description: 'A deposit, a holiday, a cushion: enter the target and monthly amount, get the date you’ll hit it.',
+    icon: '&#127937;',
+    tag: 'Calculator',
+  },
+  {
+    title: 'Compound Interest Calculator',
+    slug: 'compound-interest-calculator',
+    description: 'Year-by-year growth with monthly contributions — and the moment the interest starts out-earning you.',
+    icon: '&#128200;',
+    tag: 'Calculator',
+  },
+  {
+    title: 'Net Worth Calculator',
+    slug: 'net-worth-calculator',
+    description: 'What you own minus what you owe. Two minutes to the most honest number in personal finance — uploaded nowhere.',
+    icon: '&#9878;',
+    tag: 'Calculator',
+  },
+  {
     title: 'True Hourly Wage Calculator',
     slug: 'true-hourly-wage-calculator',
     description: 'Find out what you really earn per hour after commuting, overtime, and hidden work costs. The number might surprise you.',
@@ -13,7 +69,7 @@ const frictionlessTools = [
     title: 'SaaS vs. Ownership Simulator',
     slug: 'saas-vs-ownership-simulator',
     description: 'See exactly how much you spend renting software over 1, 3, and 5 years versus buying it once.',
-    icon: '&#128200;',
+    icon: '&#128179;',
     tag: 'Simulator',
   },
 ];
@@ -45,7 +101,7 @@ const gatedTools = [
 
 <Layout
   title="Free Tools & Resources — Stillware Ltd"
-  description="Free calculators, simulators, and printable resources for budgeting, chess parents, and anyone tired of renting software."
+  description="Free financial calculators, no sign-up: debt payoff (snowball vs avalanche), zero-based budgeting, 50/30/20, emergency fund, savings goals, compound interest, net worth, subscription costs — plus printable resources."
 >
   <header class="tools-hero">
     <div class="container">
@@ -60,7 +116,7 @@ const gatedTools = [
         <h2>Instant Calculators</h2>
         <p class="section-subtitle">Use them right now. No email. No sign-up. Just results.</p>
       </div>
-      <div class="tools-grid">
+      <div class="tools-grid three-col">
         {frictionlessTools.map(tool => (
           <a href={`/tools/${tool.slug}`} class="tool-card reveal">
             <span class="tool-tag">{tool.tag}</span>

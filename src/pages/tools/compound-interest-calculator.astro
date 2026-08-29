@@ -1,0 +1,191 @@
+---
+import ToolLayout from '../../layouts/ToolLayout.astro';
+
+const faqs = [
+  {
+    q: 'How does compound interest work?',
+    a: 'Interest is calculated not just on your original money but on the interest it has already earned. Early on the effect looks unimpressive; over decades it dominates — which is why the year-by-year table above typically shows interest overtaking your own contributions somewhere in the second decade.',
+  },
+  {
+    q: 'What does "compounded monthly" mean in this calculator?',
+    a: 'The annual rate is divided by 12 and applied every month, and your monthly contribution is added at the end of each month. Different accounts compound at different frequencies; monthly is a common and slightly conservative assumption for illustrations.',
+  },
+  {
+    q: 'What rate of return should I assume?',
+    a: 'For cash savings, use your account APY. For long-term investing illustrations, people commonly test 4–7% to stay conservative relative to historical stock-market averages. No rate is guaranteed — this calculator is an illustration, not advice or a prediction.',
+  },
+  {
+    q: 'Does this account for inflation?',
+    a: 'No — the results are in nominal terms. A rough way to think in today’s money: subtract expected inflation from your growth rate (e.g. 6% growth minus 2.5% inflation ≈ 3.5% real) and run the calculator with that.',
+  },
+];
+
+const related = [
+  { slug: 'savings-goal-calculator', title: 'Savings Goal Calculator' },
+  { slug: 'subscription-cost-calculator', title: 'Subscription Cost Calculator' },
+  { slug: 'net-worth-calculator', title: 'Net Worth Calculator' },
+];
+---
+
+<ToolLayout
+  title="Compound Interest Calculator — With Monthly Contributions | Stillware Ltd"
+  description="Free compound interest calculator with monthly contributions: see your balance grow year by year, and when interest overtakes what you put in. No sign-up, runs in your browser."
+  heroTitle="Compound Interest Calculator"
+  heroTagline="Start with what you have, add a bit monthly, give it time. See the year-by-year growth — and the moment the interest starts out-earning you."
+  breadcrumbLabel="Compound Interest Calculator"
+  faqs={faqs}
+  related={related}
+  ctaTitle="Compounding needs fuel: a monthly surplus"
+  ctaText="The monthly contribution is the input that matters most — and it comes from spending less than you earn, on purpose. Zeroed's envelope budget is how you make that surplus happen every month."
+>
+  <form id="ci-form" class="calc-form">
+    <div class="form-group currency-group">
+      <label for="currency">Currency</label>
+      <select id="currency">
+        <option value="$" selected>$ USD</option>
+        <option value="£">£ GBP</option>
+        <option value="€">€ EUR</option>
+      </select>
+    </div>
+
+    <div class="form-row">
+      <div class="form-group">
+        <label for="principal">Starting amount</label>
+        <div class="input-prefix">
+          <span class="prefix">$</span>
+          <input type="number" id="principal" placeholder="1000" value="1000" min="0" step="100" />
+        </div>
+      </div>
+      <div class="form-group">
+        <label for="monthly">Monthly contribution</label>
+        <div class="input-prefix">
+          <span class="prefix">$</span>
+          <input type="number" id="monthly" placeholder="200" value="200" min="0" step="10" />
+        </div>
+      </div>
+    </div>
+
+    <div class="form-row">
+      <div class="form-group">
+        <label for="rate">Annual growth rate (%)</label>
+        <input type="number" id="rate" placeholder="5" value="5" min="0" max="50" step="0.1" required />
+      </div>
+      <div class="form-group">
+        <label for="years">Years</label>
+        <input type="number" id="years" placeholder="20" value="20" min="1" max="60" step="1" required />
+      </div>
+    </div>
+
+    <button type="submit" class="btn-primary calc-btn">Show Me the Growth</button>
+  </form>
+
+  <div id="results" class="results-panel" style="display:none;">
+    <div class="result-card highlight">
+      <span class="result-label">Final balance</span>
+      <span class="result-value" id="r-final"></span>
+      <span class="result-sub" id="r-final-sub"></span>
+    </div>
+    <div class="result-card">
+      <span class="result-label">You contributed</span>
+      <span class="result-value" id="r-contrib"></span>
+    </div>
+    <div class="result-card good">
+      <span class="result-label">Compound growth earned</span>
+      <span class="result-value" id="r-interest"></span>
+      <span class="result-sub" id="r-crossover"></span>
+    </div>
+
+    <div class="result-table-wrap">
+      <table class="result-table" id="r-table">
+        <thead>
+          <tr><th>Year</th><th>Contributed (total)</th><th>Growth (total)</th><th>Balance</th></tr>
+        </thead>
+        <tbody></tbody>
+      </table>
+    </div>
+  </div>
+
+  <Fragment slot="article">
+    <h2>The three things this calculator teaches</h2>
+    <p>
+      <strong>Time beats rate.</strong> Ten extra years at a modest rate usually beats a slightly better rate over a
+      shorter period. The earlier the start, the more of the final balance is growth rather than sacrifice.
+    </p>
+    <p>
+      <strong>The boring middle is normal.</strong> For the first several years the balance is mostly your own
+      contributions and the growth looks like a rounding error. The table above exists to show the shape: flat-ish,
+      then curved, then steep. Most people quit in the flat part.
+    </p>
+    <p>
+      <strong>The contribution is the controllable input.</strong> You can't control markets or rates; you can
+      control the monthly amount. Even small increases compound dramatically — try re-running with 10% more. Where
+      does the extra come from? Usually from spending that wasn't deliberate: run the
+      <a href="/tools/subscription-cost-calculator">subscription cost calculator</a> or set up a
+      <a href="/tools/zero-based-budget-calculator">zero-based budget</a> and redirect what you find.
+    </p>
+    <p>
+      A note on honesty, since it's our thing: the smooth curve in any compound interest calculator is a
+      mathematical illustration. Real investment returns arrive lumpy — up years, down years — and cash rates
+      change. Use this to understand the mechanism and set contribution habits, not to predict a number.
+    </p>
+  </Fragment>
+</ToolLayout>
+
+<script>
+  const curEl = document.getElementById('currency') as HTMLSelectElement;
+  const sym = () => curEl.value;
+  curEl.addEventListener('change', () => {
+    document.querySelectorAll('.prefix').forEach((el) => (el.textContent = sym()));
+  });
+  const fmt0 = (n: number) => sym() + Math.round(n).toLocaleString();
+
+  document.getElementById('ci-form')!.addEventListener('submit', (e) => {
+    e.preventDefault();
+
+    const principal = parseFloat((document.getElementById('principal') as HTMLInputElement).value) || 0;
+    const monthly = parseFloat((document.getElementById('monthly') as HTMLInputElement).value) || 0;
+    const rate = parseFloat((document.getElementById('rate') as HTMLInputElement).value) || 0;
+    const years = Math.min(60, Math.max(1, parseInt((document.getElementById('years') as HTMLInputElement).value, 10) || 1));
+
+    const r = rate / 100 / 12;
+    let bal = principal;
+    let contributed = principal;
+    let crossoverYear: number | null = null;
+
+    const tbody = document.querySelector('#r-table tbody')!;
+    tbody.innerHTML = '';
+
+    for (let y = 1; y <= years; y++) {
+      for (let m = 0; m < 12; m++) {
+        bal = bal * (1 + r) + monthly;
+        contributed += monthly;
+      }
+      const growth = bal - contributed;
+      if (crossoverYear === null && growth > contributed) crossoverYear = y;
+
+      const tr = document.createElement('tr');
+      const td = (t: string) => {
+        const el = document.createElement('td');
+        el.textContent = t;
+        return el;
+      };
+      tr.append(td(String(y)), td(fmt0(contributed)), td(fmt0(growth)), td(fmt0(bal)));
+      tbody.appendChild(tr);
+    }
+
+    const growthTotal = bal - contributed;
+    document.getElementById('r-final')!.textContent = fmt0(bal);
+    document.getElementById('r-final-sub')!.textContent = `After ${years} years at ${rate}%/yr, compounded monthly.`;
+    document.getElementById('r-contrib')!.textContent = fmt0(contributed);
+    document.getElementById('r-interest')!.textContent = fmt0(growthTotal);
+    document.getElementById('r-crossover')!.textContent = crossoverYear
+      ? `From year ${crossoverYear}, total growth exceeds everything you put in.`
+      : growthTotal > 0
+        ? 'Growth hasn’t overtaken contributions yet — give it more years and watch.'
+        : '';
+
+    const results = document.getElementById('results')!;
+    results.style.display = 'block';
+    results.scrollIntoView({ behavior: 'smooth', block: 'start' });
+  });
+</script>

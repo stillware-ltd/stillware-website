@@ -1,0 +1,188 @@
+---
+import ToolLayout from '../../layouts/ToolLayout.astro';
+
+const faqs = [
+  {
+    q: 'How big should my emergency fund be?',
+    a: 'The common guidance is 3–6 months of essential expenses: 3 months if your income is stable and you have a second earner in the household, 6 or more if you are self-employed, on variable income, or the sole earner. Note it is months of essential expenses — rent, food, utilities, transport, insurance, minimum debt payments — not months of salary.',
+  },
+  {
+    q: 'Where should I keep my emergency fund?',
+    a: 'Somewhere boring and instantly reachable: an easy-access savings account, ideally at a different bank from your current account so it is not one tap away. Not investments (they can be down exactly when you need them) and not cash under the mattress. This is general information, not financial advice.',
+  },
+  {
+    q: 'Should I build an emergency fund before paying off debt?',
+    a: 'A common approach: build a small starter fund first (around one month of essentials or $1,000) so a surprise doesn’t become new debt, then attack high-interest debt hard, then return and build the full 3–6 months. High-interest credit card debt usually costs more than savings earn.',
+  },
+  {
+    q: 'What counts as an emergency?',
+    a: 'Unexpected, necessary, urgent — job loss, a boiler failure, an emergency vet bill, essential travel. A sale is never an emergency. Naming the account "Emergencies only" genuinely helps.',
+  },
+];
+
+const related = [
+  { slug: 'savings-goal-calculator', title: 'Savings Goal Calculator' },
+  { slug: '50-30-20-budget-calculator', title: '50/30/20 Budget Calculator' },
+  { slug: 'debt-payoff-calculator', title: 'Debt Payoff Calculator' },
+];
+---
+
+<ToolLayout
+  title="Emergency Fund Calculator — How Much Do You Need? | Stillware Ltd"
+  description="Free emergency fund calculator: enter your essential monthly expenses and get your 3–6 month target, your current gap, and how long it will take to fill it. No sign-up, runs in your browser."
+  heroTitle="Emergency Fund Calculator"
+  heroTagline="Work out your real safety-net number — months of essential expenses, not salary — and a realistic date for having it."
+  breadcrumbLabel="Emergency Fund Calculator"
+  faqs={faqs}
+  related={related}
+  ctaTitle="Know your essentials number without guessing"
+  ctaText="The hard part of this calculator is knowing your true essential spend. Zeroed's envelope budget tracks it automatically — so your emergency fund target is based on data, not a hopeful estimate."
+>
+  <form id="ef-form" class="calc-form">
+    <div class="form-group currency-group">
+      <label for="currency">Currency</label>
+      <select id="currency">
+        <option value="$" selected>$ USD</option>
+        <option value="£">£ GBP</option>
+        <option value="€">€ EUR</option>
+      </select>
+    </div>
+
+    <div class="form-group">
+      <label for="essentials">Essential monthly expenses</label>
+      <p class="field-hint">Rent/mortgage, utilities, groceries, transport, insurance, minimum debt payments. Not restaurants, not subscriptions you'd cancel.</p>
+      <div class="input-prefix">
+        <span class="prefix">$</span>
+        <input type="number" id="essentials" placeholder="1800" required min="0" step="50" />
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label for="months">Months of cover</label>
+      <select id="months">
+        <option value="3">3 months — stable job, dual income</option>
+        <option value="6" selected>6 months — the standard target</option>
+        <option value="9">9 months — variable income / sole earner</option>
+        <option value="12">12 months — self-employed / high risk</option>
+      </select>
+    </div>
+
+    <div class="form-group">
+      <label for="saved">Already set aside</label>
+      <div class="input-prefix">
+        <span class="prefix">$</span>
+        <input type="number" id="saved" placeholder="500" value="0" min="0" step="50" />
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label for="monthly">You can save per month</label>
+      <div class="input-prefix">
+        <span class="prefix">$</span>
+        <input type="number" id="monthly" placeholder="150" value="0" min="0" step="10" />
+      </div>
+    </div>
+
+    <button type="submit" class="btn-primary calc-btn">Calculate My Safety Net</button>
+  </form>
+
+  <div id="results" class="results-panel" style="display:none;">
+    <div class="result-card highlight">
+      <span class="result-label">Your emergency fund target</span>
+      <span class="result-value" id="r-target"></span>
+      <span class="result-sub" id="r-target-sub"></span>
+    </div>
+    <div class="result-card" id="gap-card">
+      <span class="result-label">Still to save</span>
+      <span class="result-value" id="r-gap"></span>
+      <span class="result-sub" id="r-progress"></span>
+    </div>
+    <div class="result-card good">
+      <span class="result-label">Fully funded in</span>
+      <span class="result-value" id="r-time"></span>
+      <span class="result-sub" id="r-date"></span>
+    </div>
+    <div class="result-breakdown">
+      <h3>Milestones on the way</h3>
+      <ul>
+        <li>Starter fund (1 month of essentials): <strong id="r-m1"></strong></li>
+        <li>Halfway: <strong id="r-half"></strong></li>
+      </ul>
+    </div>
+  </div>
+
+  <Fragment slot="article">
+    <h2>Why "months of expenses", not "months of salary"</h2>
+    <p>
+      An emergency fund exists to keep the essential machinery running — housing, food, heat, transport — while
+      income is interrupted or a large surprise lands. In an actual emergency you'd cut the extras immediately, so
+      sizing the fund on your full salary over-shoots the target and makes it feel impossibly far away. Sizing it on
+      <strong>essential spend</strong> gives you a smaller, honest, reachable number.
+    </p>
+    <h2>Build it in stages</h2>
+    <ol>
+      <li><strong>One month of essentials, fast.</strong> This alone converts most surprises from "new credit card debt" into "annoying".</li>
+      <li><strong>Then balance against expensive debt.</strong> If you carry high-interest debt, split your spare money — see the <a href="/tools/debt-payoff-calculator">debt payoff calculator</a> for what that debt truly costs.</li>
+      <li><strong>Then fill to your full target</strong> at whatever monthly pace survives real life. Automate it on payday.</li>
+    </ol>
+    <p>
+      If the "you can save per month" box was hard to answer, that's the budget talking — a
+      <a href="/tools/zero-based-budget-calculator">zero-based budget</a> will find the number, and the
+      <a href="/tools/subscription-cost-calculator">subscription audit</a> usually funds the first milestone by itself.
+    </p>
+  </Fragment>
+</ToolLayout>
+
+<script>
+  const curEl = document.getElementById('currency') as HTMLSelectElement;
+  const sym = () => curEl.value;
+  curEl.addEventListener('change', () => {
+    document.querySelectorAll('.prefix').forEach((el) => (el.textContent = sym()));
+  });
+  const fmt0 = (n: number) => sym() + Math.round(n).toLocaleString();
+
+  document.getElementById('ef-form')!.addEventListener('submit', (e) => {
+    e.preventDefault();
+
+    const essentials = parseFloat((document.getElementById('essentials') as HTMLInputElement).value) || 0;
+    const months = parseInt((document.getElementById('months') as HTMLSelectElement).value, 10);
+    const saved = parseFloat((document.getElementById('saved') as HTMLInputElement).value) || 0;
+    const monthly = parseFloat((document.getElementById('monthly') as HTMLInputElement).value) || 0;
+    if (essentials <= 0) return;
+
+    const target = essentials * months;
+    const gap = Math.max(0, target - saved);
+    const pct = Math.min(100, (saved / target) * 100);
+
+    document.getElementById('r-target')!.textContent = fmt0(target);
+    document.getElementById('r-target-sub')!.textContent = `${months} months × ${fmt0(essentials)} essential spend.`;
+    document.getElementById('r-gap')!.textContent = gap > 0 ? fmt0(gap) : 'Fully funded 🎉';
+    document.getElementById('r-progress')!.textContent =
+      gap > 0 ? `You're ${pct.toFixed(0)}% of the way there.` : 'Your safety net is complete — point new savings at the next goal.';
+
+    const timeEl = document.getElementById('r-time')!;
+    const dateEl = document.getElementById('r-date')!;
+    if (gap <= 0) {
+      timeEl.textContent = 'Done';
+      dateEl.textContent = '';
+    } else if (monthly <= 0) {
+      timeEl.textContent = '—';
+      dateEl.textContent = 'Enter a monthly saving amount to get a date.';
+    } else {
+      const m = Math.ceil(gap / monthly);
+      timeEl.textContent = m >= 12 ? `${Math.floor(m / 12)}y ${m % 12}m` : `${m} month${m === 1 ? '' : 's'}`;
+      const d = new Date();
+      d.setMonth(d.getMonth() + m);
+      dateEl.textContent = `Around ${d.toLocaleDateString(undefined, { month: 'long', year: 'numeric' })} at ${fmt0(monthly)}/month.`;
+    }
+
+    document.getElementById('r-m1')!.textContent =
+      saved >= essentials ? 'Reached ✓' : `${fmt0(Math.max(0, essentials - saved))} to go`;
+    document.getElementById('r-half')!.textContent =
+      saved >= target / 2 ? 'Reached ✓' : `${fmt0(Math.max(0, target / 2 - saved))} to go`;
+
+    const results = document.getElementById('results')!;
+    results.style.display = 'block';
+    results.scrollIntoView({ behavior: 'smooth', block: 'start' });
+  });
+</script>
