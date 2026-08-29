@@ -47,11 +47,11 @@ Let’s talk numbers. The monthly fee feels small, but it’s a financial leak t
 | Copilot Money | $14.99 | $119.88 | **$599.40** | Subscription |
 | Goodbudget Plus | $10.00 | $80.00 | **$400.00** | Subscription |
 | EveryDollar Premium | $17.99 | $79.99 | **$399.95** | Subscription |
-| **Zeroed** | **$0.00** | **$0.00** | **$39.99** | One-Time Purchase |
+| **Zeroed** | **$0.00** | **$0.00** | **$19.99 once** (founder price until 14 Feb 2027, then $39.99) | One-Time Purchase |
 
 > The average subscriber paying for YNAB will spend over $500 in half a decade for a budgeting app. That’s enough to fully fund an emergency fund envelope, invest in a Roth IRA, or simply keep in your pocket.
 
-The math is brutal for subscriptions. Zeroed’s one-time price of $39.99 isn’t just cheaper; it’s in a different universe of value. After year one, you’re saving roughly $100 annually. After five years, you’ve saved enough to cover a significant car repair or a nice weekend getaway. This is the core financial argument against renting software: the recurring cost directly undermines the very financial progress the tool is meant to enable.
+The math is brutal for subscriptions. Zeroed’s one-time price — $19.99 at the founder price until 14 February 2027, then $39.99 — isn’t just cheaper; it’s in a different universe of value. After year one, you’re saving roughly $100 annually. After five years, you’ve saved enough to cover a significant car repair or a nice weekend getaway. This is the core financial argument against renting software: the recurring cost directly undermines the very financial progress the tool is meant to enable.
 
 **Choosing a subscription budgeting app in 2026 means you are voluntarily adding a permanent, inflation-adjusted line item to your own budget.** That’s the reality the monthly pricing model obscures.
 
@@ -93,7 +93,7 @@ Let’s match people to tools based on real scenarios.
 *   **For the Dave Ramsey Follower:** **EveryDollar** is the obvious choice, and its annual fee is competitive. It’s a purpose-built tool for that specific system.
 *   **For the Apple Ecosystem User Who Wants Polish:** **Copilot Money** is gorgeous and Mac/iOS native, though it’s among the most expensive.
 
-The landscape of [best one time purchase apps 2026](/blog/best-one-time-purchase-apps-2026/) is sparse, especially in finance. Finding a capable tool without a recurring fee is increasingly rare, which makes the existing options worth serious consideration.
+The landscape of [budgeting apps without a subscription](/blog/best-budgeting-apps-without-subscription-2026/) is sparse, especially in finance. Finding a capable tool without a recurring fee is increasingly rare, which makes the existing options worth serious consideration.
 
 ## Your Data, Your Choice, Your Money
 

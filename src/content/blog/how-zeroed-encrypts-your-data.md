@@ -45,7 +45,7 @@ Your encrypted database is uploaded to this folder. Any other device running Zer
 
 ## The Universal Cloud Key
 
-Your Zeroed license also lives in Google Drive as a secure verification file. When you earn your Founder's License (or purchase one), the key is placed in your `ZeroedData` folder. Any device that connects to that Drive sees the key and unlocks Premium features automatically.
+Your Zeroed license also lives in Google Drive as a secure verification file. When you purchase your license, the key is placed in your `ZeroedData` folder. Any device that connects to that Drive sees the key and unlocks the full app automatically.
 
 No license servers. No activation limits. No "you've used too many devices" errors.
 

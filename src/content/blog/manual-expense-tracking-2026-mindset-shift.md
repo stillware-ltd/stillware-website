@@ -73,7 +73,7 @@ A manual-entry system flips this model. The architecture is simple: your device,
 *   **True Data Portability:** Your financial history isn't locked behind an API. It's a file on your machine. You can back it up, analyze it with other tools, or simply keep it safe.
 *   **Offline Reliability:** Budgeting on the subway, checking your envelope balances at a cash-only market, reviewing spending while camping. Financial awareness shouldn't require a data connection.
 
-This approach, often called the [local-first software movement](/blog/local-first-software-movement-guide/), argues that software should prioritize user ownership and offline functionality. Applying this to personal finance isn't a technical limitation; it's an ethical choice.
+This approach, often called the [local-first software movement](/blog/what-is-local-first-software-movement-guide-2026/), argues that software should prioritize user ownership and offline functionality. Applying this to personal finance isn't a technical limitation; it's an ethical choice.
 
 ### Your 4-Step Manual Tracking Starter Plan
 
