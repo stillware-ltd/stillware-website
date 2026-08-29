@@ -48,7 +48,7 @@ The subscription model is the economic engine of cloud-dependent software. You a
 | :--- | :--- | :--- |
 | **Primary Cost Model** | Recurring fee (monthly/yearly) | Single, upfront payment |
 | **What You're Funding** | Code + Continuous server/storage costs | Code + Lifetime of updates |
-| **5-Year Cost (Example)** | $10/month = **$600** | One payment of **$39.99** |
+| **5-Year Cost (Example)** | $10/month = **$600** | One payment of **$19.99** (founder price; $39.99 after 14 Feb 2027) |
 | **Long-Term Value** | You stop paying, you lose access. | You own a working tool indefinitely. |
 | **Vendor Incentive** | Retain you at all costs; often via data lock-in. | Deliver a quality product that stands the test of time. |
 

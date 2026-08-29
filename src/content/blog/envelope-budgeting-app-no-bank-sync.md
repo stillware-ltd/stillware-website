@@ -74,9 +74,9 @@ Let's move from philosophy to hard numbers. The subscription model trains us to 
 
 -   **Subscription App (e.g., YNAB at $14.99/month):** `$14.99 x 60 months = $899.40`
 -   **Freemium App (Goodbudget Plus at $9/month):** `$9 x 60 months = $540`
--   **One-Time Purchase (Zeroed at $39.99):** `$39.99`
+-   **One-Time Purchase (Zeroed at the $19.99 founder price):** `$19.99` (rises to $39.99 on 14 February 2027)
 
-The math is unforgiving. The subscription app costs **22 times more** over five years. For the price of two years of YNAB, you could buy a lifetime license for a local-first app *and* still have hundreds of dollars left to actually fund your budgeting envelopes. This isn't just about saving money; it's about aligning your financial tool with a frugal mindset. How can an app teach you to be intentional with money while itself being a recurring drain on your finances?
+The math is unforgiving. The subscription app costs **45 times more** over five years. For the price of two years of YNAB, you could buy a lifetime license for a local-first app *and* still have hundreds of dollars left to actually fund your budgeting envelopes. This isn't just about saving money; it's about aligning your financial tool with a frugal mindset. How can an app teach you to be intentional with money while itself being a recurring drain on your finances?
 
 ![Five-Year Total Cost of Ownership for Budgeting Apps](/blog/images/envelope-budgeting-app-no-bank-sync/image-04.svg)
 

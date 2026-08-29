@@ -54,7 +54,7 @@ Let's apply this framework to the current landscape. We're looking past marketin
 | **YNAB (You Need A Budget)** | Hybrid (Cloud Sync) | Data encrypted on YNAB servers; they hold the keys. | $600 |
 | **Actual Budget** | Local-First | Requires self-managed sync via Dropbox/Google Drive. | Donation-based |
 | **Spreadsheets (Local File)** | Local-First | Total control, but zero automation or guardrails. | $0 (Excel) |
-| **Zeroed** | Local-First (Strict) | No cloud sync; manual entry or local file import only. | $39.99 |
+| **Zeroed** | Local-First (Strict) | No cloud sync; manual entry or local file import only. | $19.99 once (founder price; $39.99 after 14 Feb 2027) |
 
 *   **Monarch Money & Copilot** sit firmly in the **Full-Cloud Model**. Their value proposition is sleek automation via Plaid. Your transaction data is their asset. Their privacy policies, while better than some, explicitly state they collect and use transaction data to operate and improve their service. Your privacy is inherently limited by their business model.
 *   **YNAB (You Need A Budget)** operates a **Hybrid Model**. You can enter transactions manually, but for full functionality and multi-device access, your budget must sync to YNAB's servers. They use encryption, but they manage the keys. Their system requires an internet connection to sync changes. While they have a strong reputation, your data still resides on their infrastructure, creating a single point of failure and access. Learn more about the long-term implications in our breakdown of [The True Cost of YNAB Over 5 Years](/blog/true-cost-of-ynab/).

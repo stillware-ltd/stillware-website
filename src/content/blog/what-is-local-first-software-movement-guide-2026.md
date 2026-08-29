@@ -49,7 +49,7 @@ Think about the software you use daily. Where do you fall on this spectrum?
 
 Being a tenant is convenient until the landlord changes the locks. **The local-first software movement argues that for personal, critical data—your finances, your journals, your creative work—you shouldn't be a tenant.** Owning your software means its utility isn't contingent on a distant company's business model or survival.
 
-We benchmarked Zeroed against popular subscription alternatives. The five-year cost difference isn't a small discount; it's the difference between paying over $500 to rent access to your own financial data versus a single $39.99 payment to own the tool outright. The math makes the philosophy concrete.
+We benchmarked Zeroed against popular subscription alternatives. The five-year cost difference isn't a small discount; it's the difference between paying over $500 to rent access to your own financial data versus a single one-time payment — $19.99 at the founder price until 14 February 2027, then $39.99 — to own the tool outright. The math makes the philosophy concrete.
 
 ![Five-year total cost of ownership for budgeting apps](/blog/images/what-is-local-first-software-movement-guide-2026/image-02.svg)
 
@@ -100,4 +100,4 @@ Ready to experience the difference? The best way to understand local-first is to
 </div>
 
 
-Want to go deeper? Explore our guide to the [best one-time purchase apps](/blog/best-one-time-purchase-apps-2026/) or see how a budgeting app that works without internet handles real-world scenarios.
+Want to go deeper? Explore our guide to the [best budgeting apps without a subscription](/blog/best-budgeting-apps-without-subscription-2026/) or see how a [budgeting app that works without internet](/blog/budgeting-app-that-works-without-internet/) handles real-world scenarios.

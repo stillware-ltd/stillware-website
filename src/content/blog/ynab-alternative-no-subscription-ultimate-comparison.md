@@ -28,7 +28,7 @@ Let's run the numbers with a five-year horizon, a reasonable lifespan for a budg
 
 YNAB’s $99 annual fee totals $495 over five years. EveryDollar Plus, at $8/month, hits $480. Even Goodbudget’s “free” tier pushes you to its $7/month Plus plan, tallying $420. **The subscription model quietly turns a simple tool into one of your more expensive software relationships.**
 
-When we built Zeroed, we benchmarked it against these alternatives. The math wasn't close. A one-time purchase of $39.99 isn't just cheaper; it decouples the cost of the tool from the passage of time. Your investment is fixed.
+When we built Zeroed, we benchmarked it against these alternatives. The math wasn't close. A one-time purchase — $19.99 at the founder price until 14 February 2027, then $39.99 — isn't just cheaper; it decouples the cost of the tool from the passage of time. Your investment is fixed.
 
 > The average user switching from a $99/year budgeting app to a one-time purchase saves over $450 in half a decade—enough to fully fund several budget categories.
 
