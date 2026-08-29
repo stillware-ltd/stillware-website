@@ -1,0 +1,192 @@
+---
+import ToolLayout from '../../layouts/ToolLayout.astro';
+
+const faqs = [
+  {
+    q: 'What is the 50/30/20 rule?',
+    a: 'A simple budgeting guideline popularised by Senator Elizabeth Warren: put 50% of your after-tax income toward needs (housing, groceries, utilities, transport, minimum debt payments), 30% toward wants (dining out, streaming, hobbies, travel), and 20% toward savings and extra debt repayment.',
+  },
+  {
+    q: 'Is the 50/30/20 rule based on gross or net income?',
+    a: 'Net (after-tax, take-home) income. Use what actually lands in your bank account each month, including any regular side income.',
+  },
+  {
+    q: 'What if my needs are more than 50% of my income?',
+    a: 'Very common, especially in high-rent cities. The rule is a compass, not a law: if needs run 60–65%, shrink the wants share first and protect at least some savings rate. The custom-split option in this calculator lets you model your real ratio — and a full zero-based budget gives you line-item control the rule can’t.',
+  },
+  {
+    q: 'Is 50/30/20 better than zero-based budgeting?',
+    a: 'They solve different problems. 50/30/20 is a 30-second sanity check that needs no tracking. Zero-based budgeting assigns every unit of income a specific job before the month starts, which is far more precise and is what actually changes behaviour. Many people start with 50/30/20 and graduate to zero-based once they want real control.',
+  },
+];
+
+const related = [
+  { slug: 'zero-based-budget-calculator', title: 'Zero-Based Budget Calculator' },
+  { slug: 'emergency-fund-calculator', title: 'Emergency Fund Calculator' },
+  { slug: 'savings-goal-calculator', title: 'Savings Goal Calculator' },
+];
+---
+
+<ToolLayout
+  title="50/30/20 Budget Calculator — Free, Instant, No Sign-Up | Stillware Ltd"
+  description="Free 50/30/20 rule calculator: enter your monthly after-tax income and get your needs, wants, and savings amounts instantly. Custom splits supported. No sign-up, runs in your browser."
+  heroTitle="50/30/20 Budget Calculator"
+  heroTagline="Enter your monthly take-home pay. Get your needs, wants, and savings targets in one click — or set your own split."
+  breadcrumbLabel="50/30/20 Budget Calculator"
+  faqs={faqs}
+  related={related}
+  ctaTitle="Ready for more precision than three buckets?"
+  ctaText="The 50/30/20 rule is a great start. When you want every pound or dollar to have an actual job, Zeroed gives you full envelope budgeting — bought once, on your device, no account."
+>
+  <form id="split-form" class="calc-form">
+    <div class="form-group currency-group">
+      <label for="currency">Currency</label>
+      <select id="currency">
+        <option value="$" selected>$ USD</option>
+        <option value="£">£ GBP</option>
+        <option value="€">€ EUR</option>
+      </select>
+    </div>
+
+    <div class="form-group">
+      <label for="income">Monthly after-tax income</label>
+      <p class="field-hint">Your take-home pay, plus any regular side income.</p>
+      <div class="input-prefix">
+        <span class="prefix">$</span>
+        <input type="number" id="income" placeholder="3200" required min="0" step="50" />
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label>Split</label>
+      <div class="form-row split-row">
+        <div>
+          <p class="field-hint">Needs %</p>
+          <input type="number" id="p-needs" value="50" min="0" max="100" step="1" />
+        </div>
+        <div>
+          <p class="field-hint">Wants %</p>
+          <input type="number" id="p-wants" value="30" min="0" max="100" step="1" />
+        </div>
+        <div>
+          <p class="field-hint">Savings %</p>
+          <input type="number" id="p-save" value="20" min="0" max="100" step="1" />
+        </div>
+      </div>
+      <p class="field-hint" id="split-warning" style="display:none; color:#DC2626;">Your percentages don't add up to 100.</p>
+    </div>
+
+    <button type="submit" class="btn-primary calc-btn">Calculate My Budget</button>
+  </form>
+
+  <div id="results" class="results-panel" style="display:none;">
+    <div class="result-card">
+      <span class="result-label" id="l-needs">Needs (50%)</span>
+      <span class="result-value" id="r-needs"></span>
+      <span class="result-sub">Housing, groceries, utilities, transport, insurance, minimum debt payments.</span>
+    </div>
+    <div class="result-card">
+      <span class="result-label" id="l-wants">Wants (30%)</span>
+      <span class="result-value" id="r-wants"></span>
+      <span class="result-sub">Dining out, subscriptions, hobbies, travel, upgrades — the nice-to-haves.</span>
+    </div>
+    <div class="result-card good">
+      <span class="result-label" id="l-save">Savings &amp; extra debt (20%)</span>
+      <span class="result-value" id="r-save"></span>
+      <span class="result-sub">Emergency fund, investing, overpaying debts beyond the minimums.</span>
+    </div>
+    <div class="result-breakdown">
+      <h3>Per year, that savings rate is</h3>
+      <ul>
+        <li>Saved in 12 months: <strong id="r-save-year"></strong></li>
+        <li>Saved in 5 years (before any growth): <strong id="r-save-five"></strong></li>
+      </ul>
+    </div>
+  </div>
+
+  <Fragment slot="article">
+    <h2>How to use the 50/30/20 rule well</h2>
+    <p>
+      The rule's power is its bluntness: three buckets you can check against your bank statement in a minute.
+      <strong>Needs</strong> are things with real consequences if unpaid — rent or mortgage, utilities, groceries,
+      commuting, insurance, minimum debt payments. <strong>Wants</strong> are everything you'd genuinely miss but
+      could live without. <strong>Savings</strong> covers your emergency fund, investments, and any debt repayment
+      beyond the minimums.
+    </p>
+    <p>
+      The most common mistake is classifying wants as needs — the premium phone plan, the car that's more than
+      transport, the grocery basket that's half treats. Be ruthless in the sorting; the buckets only mean something
+      if the sorting is honest.
+    </p>
+    <h2>When the rule stops being enough</h2>
+    <p>
+      50/30/20 tells you <em>roughly where</em> your money should go. It can't tell you that the wants bucket
+      disappeared by the 14th, or that three forgotten subscriptions are quietly eating your savings share (run the
+      <a href="/tools/subscription-cost-calculator">subscription cost calculator</a> if you suspect that one).
+      When you're ready for the precise version, that's zero-based budgeting — every unit of income assigned a job
+      before the month begins. Try the <a href="/tools/zero-based-budget-calculator">zero-based budget calculator</a>
+      to build your first plan in five minutes.
+    </p>
+  </Fragment>
+</ToolLayout>
+
+<script>
+  const curEl = document.getElementById('currency') as HTMLSelectElement;
+  const sym = () => curEl.value;
+  curEl.addEventListener('change', () => {
+    document.querySelectorAll('.prefix').forEach((el) => (el.textContent = sym()));
+  });
+  const fmt = (n: number) =>
+    sym() + n.toLocaleString(undefined, { minimumFractionDigits: 2, maximumFractionDigits: 2 });
+  const fmt0 = (n: number) => sym() + Math.round(n).toLocaleString();
+
+  document.getElementById('split-form')!.addEventListener('submit', (e) => {
+    e.preventDefault();
+
+    const income = parseFloat((document.getElementById('income') as HTMLInputElement).value) || 0;
+    const pn = parseFloat((document.getElementById('p-needs') as HTMLInputElement).value) || 0;
+    const pw = parseFloat((document.getElementById('p-wants') as HTMLInputElement).value) || 0;
+    const ps = parseFloat((document.getElementById('p-save') as HTMLInputElement).value) || 0;
+
+    const warning = document.getElementById('split-warning')!;
+    if (Math.abs(pn + pw + ps - 100) > 0.01) {
+      warning.style.display = 'block';
+      return;
+    }
+    warning.style.display = 'none';
+
+    const needs = (income * pn) / 100;
+    const wants = (income * pw) / 100;
+    const save = (income * ps) / 100;
+
+    document.getElementById('l-needs')!.textContent = `Needs (${pn}%)`;
+    document.getElementById('l-wants')!.textContent = `Wants (${pw}%)`;
+    document.getElementById('l-save')!.textContent = `Savings & extra debt (${ps}%)`;
+    document.getElementById('r-needs')!.textContent = fmt(needs);
+    document.getElementById('r-wants')!.textContent = fmt(wants);
+    document.getElementById('r-save')!.textContent = fmt(save);
+    document.getElementById('r-save-year')!.textContent = fmt0(save * 12);
+    document.getElementById('r-save-five')!.textContent = fmt0(save * 60);
+
+    const results = document.getElementById('results')!;
+    results.style.display = 'block';
+    results.scrollIntoView({ behavior: 'smooth', block: 'start' });
+  });
+</script>
+
+<style>
+  .split-row {
+    grid-template-columns: 1fr 1fr 1fr;
+  }
+
+  .split-row .field-hint {
+    margin-bottom: 0.35rem;
+  }
+
+  @media (max-width: 640px) {
+    .split-row {
+      grid-template-columns: 1fr 1fr 1fr;
+      gap: 0.5rem;
+    }
+  }
+</style>

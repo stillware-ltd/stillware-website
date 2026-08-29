@@ -1,0 +1,550 @@
+---
+import Layout from './Layout.astro';
+
+interface FAQ {
+  q: string;
+  a: string;
+}
+
+interface RelatedTool {
+  slug: string;
+  title: string;
+}
+
+interface Props {
+  title: string;
+  description: string;
+  heroTitle: string;
+  heroTagline: string;
+  breadcrumbLabel: string;
+  faqs?: FAQ[];
+  related?: RelatedTool[];
+  ctaTitle?: string;
+  ctaText?: string;
+  ctaLabel?: string;
+}
+
+const {
+  title,
+  description,
+  heroTitle,
+  heroTagline,
+  breadcrumbLabel,
+  faqs = [],
+  related = [],
+  ctaTitle = 'Budgeting that runs on your device, not a server',
+  ctaText = 'Zeroed is a zero-based budgeting app you buy once and own forever. Private, offline, no account — and no subscription eating the money you just calculated.',
+  ctaLabel = 'Try Zeroed Free for 34 Days',
+} = Astro.props;
+
+const faqSchema = faqs.length
+  ? {
+      '@context': 'https://schema.org',
+      '@type': 'FAQPage',
+      mainEntity: faqs.map((f) => ({
+        '@type': 'Question',
+        name: f.q,
+        acceptedAnswer: { '@type': 'Answer', text: f.a },
+      })),
+    }
+  : null;
+---
+
+<Layout title={title} description={description}>
+  {faqSchema && <script type="application/ld+json" set:html={JSON.stringify(faqSchema)} />}
+
+  <header class="tool-hero">
+    <div class="container">
+      <nav class="breadcrumb" aria-label="Breadcrumb">
+        <a href="/tools">Tools</a> <span>/</span> <span>{breadcrumbLabel}</span>
+      </nav>
+      <h1>{heroTitle}</h1>
+      <p>{heroTagline}</p>
+    </div>
+  </header>
+
+  <section class="calculator-section">
+    <div class="container">
+      <div class="calculator-layout">
+        <slot />
+      </div>
+    </div>
+  </section>
+
+  <section class="tool-article-section">
+    <div class="container">
+      <div class="tool-article">
+        <slot name="article" />
+      </div>
+    </div>
+  </section>
+
+  <section class="tool-cta-section">
+    <div class="container">
+      <div class="cta-banner">
+        <h3>{ctaTitle}</h3>
+        <p>{ctaText}</p>
+        <a href="/zeroed" class="btn-primary pulse">{ctaLabel}</a>
+        <span class="cta-price-note">$19.99 once at the founder price (until 14 Feb 2027, then $39.99). No card needed for the trial.</span>
+      </div>
+    </div>
+  </section>
+
+  {faqs.length > 0 && (
+    <section class="tool-faq-section">
+      <div class="container">
+        <div class="tool-article">
+          <h2>Frequently asked questions</h2>
+          {faqs.map((f) => (
+            <div class="faq-item">
+              <h3>{f.q}</h3>
+              <p>{f.a}</p>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+  )}
+
+  {related.length > 0 && (
+    <section class="related-section">
+      <div class="container">
+        <div class="tool-article">
+          <h2>Related free tools</h2>
+          <ul class="related-list">
+            {related.map((r) => (
+              <li><a href={`/tools/${r.slug}`}>{r.title}</a></li>
+            ))}
+          </ul>
+        </div>
+      </div>
+    </section>
+  )}
+</Layout>
+
+<style is:global>
+  .tool-hero {
+    padding: 12rem 0 4rem;
+    background: var(--gradient-obsidian);
+  }
+
+  .breadcrumb {
+    margin-bottom: 1.5rem;
+    font-size: 0.9rem;
+  }
+
+  .breadcrumb a {
+    color: rgba(255, 255, 255, 0.5);
+    text-decoration: none;
+    transition: color 0.2s;
+  }
+
+  .breadcrumb a:hover { color: #ffffff; }
+  .breadcrumb span { color: rgba(255, 255, 255, 0.3); margin: 0 0.5rem; }
+  .breadcrumb span:last-child { color: rgba(255, 255, 255, 0.7); margin: 0; }
+
+  .tool-hero h1 {
+    font-size: 3rem;
+    color: #ffffff;
+    margin-bottom: 1rem;
+    max-width: 700px;
+  }
+
+  .tool-hero p {
+    font-size: 1.15rem;
+    color: rgba(255, 255, 255, 0.6);
+    max-width: 620px;
+    line-height: 1.6;
+  }
+
+  .calculator-section {
+    padding: 4rem 0 2rem;
+  }
+
+  .calculator-layout {
+    max-width: 680px;
+    margin: 0 auto;
+  }
+
+  .calc-form {
+    background: #ffffff;
+    border: 1px solid var(--color-border);
+    border-radius: 20px;
+    padding: 2.5rem;
+    box-shadow: var(--shadow-premium);
+  }
+
+  .form-group {
+    margin-bottom: 1.5rem;
+  }
+
+  .form-group label {
+    display: block;
+    font-weight: 600;
+    font-size: 0.95rem;
+    color: var(--color-secondary);
+    margin-bottom: 0.5rem;
+  }
+
+  .field-hint {
+    font-size: 0.8rem;
+    color: var(--color-text-light);
+    margin-bottom: 0.5rem;
+  }
+
+  .form-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1rem;
+  }
+
+  .input-prefix {
+    position: relative;
+  }
+
+  .input-prefix .prefix {
+    position: absolute;
+    left: 1rem;
+    top: 50%;
+    transform: translateY(-50%);
+    color: var(--color-text-light);
+    font-weight: 600;
+  }
+
+  .input-prefix input {
+    padding-left: 2.25rem !important;
+  }
+
+  .calc-form input[type="number"],
+  .calc-form input[type="text"],
+  .calc-form select {
+    width: 100%;
+    padding: 0.85rem 1rem;
+    border: 1px solid var(--color-border);
+    border-radius: 12px;
+    font-size: 1rem;
+    font-family: var(--font-sans);
+    outline: none;
+    transition: border-color 0.2s;
+    background: var(--color-surface);
+  }
+
+  .calc-form input:focus,
+  .calc-form select:focus {
+    border-color: var(--color-primary);
+    background: #ffffff;
+  }
+
+  .currency-group {
+    max-width: 160px;
+  }
+
+  .calc-btn {
+    width: 100%;
+    justify-content: center;
+    margin-top: 0.5rem;
+  }
+
+  /* Dynamic row lists (debts, subscriptions, assets…) */
+  .row-list {
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+    margin-bottom: 1rem;
+  }
+
+  .row-item {
+    display: grid;
+    gap: 0.5rem;
+    align-items: center;
+  }
+
+  .row-remove {
+    background: none;
+    border: 1px solid var(--color-border);
+    border-radius: 10px;
+    color: var(--color-text-light);
+    font-size: 1rem;
+    cursor: pointer;
+    padding: 0.6rem 0.8rem;
+    line-height: 1;
+    transition: all 0.2s;
+  }
+
+  .row-remove:hover {
+    border-color: #DC2626;
+    color: #DC2626;
+  }
+
+  .row-add {
+    background: none;
+    border: 1px dashed var(--color-border);
+    border-radius: 12px;
+    color: var(--color-primary);
+    font-weight: 600;
+    font-size: 0.9rem;
+    cursor: pointer;
+    padding: 0.75rem 1rem;
+    width: 100%;
+    transition: all 0.2s;
+    margin-bottom: 1.5rem;
+  }
+
+  .row-add:hover {
+    border-color: var(--color-primary);
+    background: rgba(37, 99, 235, 0.03);
+  }
+
+  /* Results */
+  .results-panel {
+    margin-top: 3rem;
+  }
+
+  .result-card {
+    background: #ffffff;
+    border: 1px solid var(--color-border);
+    border-radius: 16px;
+    padding: 1.5rem 2rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 1rem;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+  }
+
+  .result-label {
+    font-weight: 600;
+    color: var(--color-text-light);
+    font-size: 0.95rem;
+  }
+
+  .result-value {
+    font-size: 1.75rem;
+    font-weight: 800;
+    color: var(--color-secondary);
+  }
+
+  .result-card.highlight {
+    border-color: rgba(37, 99, 235, 0.2);
+    background: rgba(37, 99, 235, 0.03);
+  }
+
+  .result-card.highlight .result-value {
+    color: var(--color-primary);
+  }
+
+  .result-card.good {
+    border-color: rgba(5, 150, 105, 0.25);
+    background: rgba(5, 150, 105, 0.04);
+  }
+
+  .result-card.good .result-value {
+    color: #059669;
+  }
+
+  .result-card.bad {
+    border-color: rgba(220, 38, 38, 0.2);
+    background: rgba(220, 38, 38, 0.03);
+  }
+
+  .result-card.bad .result-value {
+    color: #DC2626;
+  }
+
+  .result-sub {
+    width: 100%;
+    font-size: 0.85rem;
+    color: var(--color-text-light);
+    font-weight: 500;
+  }
+
+  .result-breakdown {
+    background: var(--color-surface);
+    border-radius: 16px;
+    padding: 2rem;
+    margin-top: 2rem;
+  }
+
+  .result-breakdown h3 {
+    font-size: 1.1rem;
+    margin-bottom: 1rem;
+  }
+
+  .result-breakdown ul {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 0.65rem;
+    padding: 0;
+  }
+
+  .result-breakdown li {
+    color: var(--color-text-light);
+    font-size: 0.95rem;
+  }
+
+  .result-breakdown strong {
+    color: var(--color-secondary);
+  }
+
+  .result-table-wrap {
+    overflow-x: auto;
+    margin-top: 2rem;
+  }
+
+  .result-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 0.9rem;
+    background: #ffffff;
+    border: 1px solid var(--color-border);
+    border-radius: 12px;
+  }
+
+  .result-table th,
+  .result-table td {
+    text-align: right;
+    padding: 0.65rem 1rem;
+    border-bottom: 1px solid var(--color-border);
+    color: var(--color-text-light);
+  }
+
+  .result-table th:first-child,
+  .result-table td:first-child {
+    text-align: left;
+  }
+
+  .result-table th {
+    color: var(--color-secondary);
+    font-weight: 600;
+    background: var(--color-surface);
+  }
+
+  .result-table tr:last-child td {
+    border-bottom: none;
+  }
+
+  /* Article / SEO prose */
+  .tool-article-section {
+    padding: 2rem 0;
+  }
+
+  .tool-faq-section {
+    padding: 2rem 0 3rem;
+  }
+
+  .tool-article {
+    max-width: 680px;
+    margin: 0 auto;
+  }
+
+  .tool-article h2 {
+    font-size: 1.6rem;
+    margin: 2.5rem 0 1rem;
+    color: var(--color-secondary);
+  }
+
+  .tool-article h3 {
+    font-size: 1.15rem;
+    margin: 1.75rem 0 0.5rem;
+    color: var(--color-secondary);
+  }
+
+  .tool-article p,
+  .tool-article li {
+    color: var(--color-text-light);
+    line-height: 1.7;
+    font-size: 1rem;
+  }
+
+  .tool-article p {
+    margin-bottom: 1rem;
+  }
+
+  .tool-article ul,
+  .tool-article ol {
+    margin: 0 0 1rem 1.25rem;
+  }
+
+  .tool-article a {
+    color: var(--color-primary);
+    text-decoration: none;
+    font-weight: 500;
+  }
+
+  .tool-article a:hover {
+    text-decoration: underline;
+  }
+
+  .faq-item {
+    margin-bottom: 0.5rem;
+  }
+
+  /* CTA */
+  .tool-cta-section {
+    padding: 2rem 0;
+  }
+
+  .cta-banner {
+    max-width: 680px;
+    margin: 0 auto;
+    background: var(--gradient-obsidian);
+    border-radius: 20px;
+    padding: 3rem;
+    text-align: center;
+  }
+
+  .cta-banner h3 {
+    color: #ffffff;
+    font-size: 1.75rem;
+    margin-bottom: 1rem;
+  }
+
+  .cta-banner p {
+    color: rgba(255, 255, 255, 0.65);
+    max-width: 500px;
+    margin: 0 auto 2rem;
+    line-height: 1.6;
+  }
+
+  .cta-price-note {
+    display: block;
+    margin-top: 1.25rem;
+    font-size: 0.85rem;
+    color: rgba(255, 255, 255, 0.45);
+  }
+
+  /* Related */
+  .related-section {
+    padding: 1rem 0 6rem;
+  }
+
+  .related-list {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 0.6rem;
+  }
+
+  .related-list a {
+    color: var(--color-primary);
+    text-decoration: none;
+    font-weight: 500;
+  }
+
+  .related-list a:hover {
+    text-decoration: underline;
+  }
+
+  @media (max-width: 768px) {
+    .tool-hero h1 { font-size: 2.25rem; }
+    .calc-form { padding: 1.75rem; }
+    .form-row { grid-template-columns: 1fr; }
+    .result-card { flex-direction: column; align-items: flex-start; }
+    .cta-banner { padding: 2rem 1.5rem; }
+    .cta-banner h3 { font-size: 1.4rem; }
+  }
+</style>

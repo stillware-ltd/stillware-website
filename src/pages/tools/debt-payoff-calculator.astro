@@ -1,0 +1,275 @@
+---
+import ToolLayout from '../../layouts/ToolLayout.astro';
+
+const faqs = [
+  {
+    q: 'What is the debt snowball method?',
+    a: 'With the snowball method you pay minimums on every debt, then put all extra money toward the smallest balance first. When it is paid off, its payment rolls into the next smallest. It usually costs slightly more in interest than the avalanche method, but the quick early wins help many people stay motivated.',
+  },
+  {
+    q: 'What is the debt avalanche method?',
+    a: 'With the avalanche method you pay minimums on every debt, then put all extra money toward the debt with the highest interest rate first. Mathematically this is the cheapest and fastest way out of debt — it minimises the total interest you pay.',
+  },
+  {
+    q: 'Snowball or avalanche — which should I choose?',
+    a: 'Avalanche saves the most money; snowball gives faster psychological wins. This calculator shows you the real difference in pounds/dollars and months for your actual debts. If the difference is small, pick snowball for the motivation. If it is large, the avalanche is worth the patience.',
+  },
+  {
+    q: 'Does this calculator store my debt information?',
+    a: 'No. Everything is calculated in your browser on this page. Nothing is sent to any server, and nothing is stored after you close the tab.',
+  },
+];
+
+const related = [
+  { slug: 'zero-based-budget-calculator', title: 'Zero-Based Budget Calculator' },
+  { slug: 'emergency-fund-calculator', title: 'Emergency Fund Calculator' },
+  { slug: 'subscription-cost-calculator', title: 'Subscription Cost Calculator' },
+];
+---
+
+<ToolLayout
+  title="Debt Payoff Calculator — Snowball vs Avalanche (Free, No Sign-Up) | Stillware Ltd"
+  description="Free debt payoff calculator. Compare the snowball and avalanche methods with your real debts: months to debt-free, total interest, and payoff order. Runs in your browser — nothing is uploaded."
+  heroTitle="Debt Payoff Calculator"
+  heroTagline="Enter your debts and one extra monthly payment. See exactly when you'll be debt-free with the snowball vs the avalanche method — and what each one costs in interest."
+  breadcrumbLabel="Debt Payoff Calculator"
+  faqs={faqs}
+  related={related}
+  ctaTitle="Track the payoff, not just the plan"
+  ctaText="Zeroed has a built-in debt payoff planner (snowball and avalanche), plus the envelope budget that frees up your extra payment in the first place. On your device, no account, no subscription."
+>
+  <form id="debt-form" class="calc-form">
+    <div class="form-group currency-group">
+      <label for="currency">Currency</label>
+      <select id="currency">
+        <option value="$" selected>$ USD</option>
+        <option value="£">£ GBP</option>
+        <option value="€">€ EUR</option>
+      </select>
+    </div>
+
+    <div class="form-group">
+      <label>Your debts</label>
+      <p class="field-hint">Balance, APR (annual interest %), and the minimum monthly payment for each.</p>
+      <div id="debt-rows" class="row-list"></div>
+      <button type="button" id="add-debt" class="row-add">+ Add another debt</button>
+    </div>
+
+    <div class="form-group">
+      <label for="extra">Extra payment per month</label>
+      <p class="field-hint">Money beyond the minimums that you can throw at debt each month.</p>
+      <div class="input-prefix">
+        <span class="prefix">$</span>
+        <input type="number" id="extra" placeholder="200" value="200" min="0" step="10" />
+      </div>
+    </div>
+
+    <button type="submit" class="btn-primary calc-btn">Compare Snowball vs Avalanche</button>
+  </form>
+
+  <div id="results" class="results-panel" style="display:none;">
+    <div class="result-card highlight">
+      <span class="result-label">Debt-free (avalanche)</span>
+      <span class="result-value" id="ava-months"></span>
+      <span class="result-sub" id="ava-detail"></span>
+    </div>
+    <div class="result-card">
+      <span class="result-label">Debt-free (snowball)</span>
+      <span class="result-value" id="snow-months"></span>
+      <span class="result-sub" id="snow-detail"></span>
+    </div>
+    <div class="result-card good">
+      <span class="result-label">Avalanche saves you</span>
+      <span class="result-value" id="savings"></span>
+      <span class="result-sub" id="savings-detail"></span>
+    </div>
+
+    <div class="result-breakdown">
+      <h3>Payoff order</h3>
+      <ul>
+        <li>Avalanche (highest rate first): <strong id="ava-order"></strong></li>
+        <li>Snowball (smallest balance first): <strong id="snow-order"></strong></li>
+      </ul>
+    </div>
+
+    <p class="field-hint" id="warning" style="display:none; margin-top:1rem; color:#DC2626;"></p>
+  </div>
+
+  <Fragment slot="article">
+    <h2>How this debt payoff calculator works</h2>
+    <p>
+      The calculator runs a month-by-month simulation of your actual debts. Each month it applies interest
+      (APR ÷ 12), pays every minimum, then directs your entire extra payment at one target debt — the highest-rate
+    debt for the <strong>avalanche</strong>, the smallest balance for the <strong>snowball</strong>. When a debt is
+      cleared, its minimum payment rolls into the attack budget (that's the "snowball" effect, and it applies to
+      both methods). The result is the honest number most debt calculators hide: the same debts, the same money,
+      two different orders — and the real difference in months and interest.
+    </p>
+    <h2>Why the order you pay debts matters</h2>
+    <p>
+      Interest compounds on whatever you leave for last. Clearing a 24% APR credit card before a 6% loan can save
+      hundreds or thousands over the payoff — that's the avalanche's edge. But behaviour matters as much as maths:
+      research on debt repayment consistently finds people are more likely to stick with a plan that produces early
+      wins. If the avalanche only saves you a small amount, the snowball's momentum may be worth more than the maths.
+    </p>
+    <p>
+      Whichever you choose, the real engine is the <em>extra payment</em> — and that comes from your budget. A
+      zero-based budget, where every unit of income gets a job before the month starts, is how most people find the
+      extra money in the first place. Try our <a href="/tools/zero-based-budget-calculator">zero-based budget calculator</a>
+      to see where yours could come from.
+    </p>
+  </Fragment>
+</ToolLayout>
+
+<script>
+  const rowsEl = document.getElementById('debt-rows')!;
+  let rowId = 0;
+
+  function addRow(name = '', balance = '', apr = '', min = '') {
+    rowId++;
+    const div = document.createElement('div');
+    div.className = 'row-item debt-row';
+    div.innerHTML = `
+      <input type="text" class="d-name" placeholder="Debt name (e.g. Credit card)" value="${name}" />
+      <input type="number" class="d-balance" placeholder="Balance" value="${balance}" min="0" step="10" />
+      <input type="number" class="d-apr" placeholder="APR %" value="${apr}" min="0" max="200" step="0.1" />
+      <input type="number" class="d-min" placeholder="Min/mo" value="${min}" min="0" step="1" />
+      <button type="button" class="row-remove" aria-label="Remove debt">&times;</button>
+    `;
+    div.querySelector('.row-remove')!.addEventListener('click', () => div.remove());
+    rowsEl.appendChild(div);
+  }
+
+  addRow('Credit card', '3500', '22.9', '90');
+  addRow('Car loan', '8000', '7.5', '180');
+  document.getElementById('add-debt')!.addEventListener('click', () => addRow());
+
+  const curEl = document.getElementById('currency') as HTMLSelectElement;
+  const sym = () => curEl.value;
+  curEl.addEventListener('change', () => {
+    document.querySelectorAll('.prefix').forEach((el) => (el.textContent = sym()));
+  });
+  const fmt = (n: number) => sym() + Math.round(n).toLocaleString();
+
+  type Debt = { name: string; balance: number; apr: number; min: number };
+
+  function simulate(debts: Debt[], extra: number, mode: 'snowball' | 'avalanche') {
+    const ds = debts.map((d) => ({ ...d }));
+    let months = 0;
+    let totalInterest = 0;
+    const order: string[] = [];
+
+    while (ds.some((d) => d.balance > 0.005)) {
+      months++;
+      if (months > 1200) return null; // payments don't cover interest
+
+      // interest first
+      for (const d of ds) {
+        if (d.balance <= 0) continue;
+        const i = d.balance * (d.apr / 100 / 12);
+        d.balance += i;
+        totalInterest += i;
+      }
+
+      // total monthly budget stays constant: every original minimum + extra.
+      // Minimums freed by cleared debts roll into the attack payment below.
+      let budget = extra + ds.reduce((s, d) => s + d.min, 0);
+
+      // pay minimums
+      for (const d of ds) {
+        if (d.balance <= 0) continue;
+        const pay = Math.min(d.min, d.balance, budget);
+        d.balance -= pay;
+        budget -= pay;
+      }
+
+      // attack target(s) with the rest
+      while (budget > 0.005) {
+        const open = ds.filter((d) => d.balance > 0.005);
+        if (!open.length) break;
+        open.sort((a, b) =>
+          mode === 'avalanche' ? b.apr - a.apr || a.balance - b.balance : a.balance - b.balance || b.apr - a.apr
+        );
+        const target = open[0];
+        const pay = Math.min(budget, target.balance);
+        target.balance -= pay;
+        budget -= pay;
+      }
+
+      for (const d of ds) {
+        if (d.balance <= 0.005 && !order.includes(d.name)) order.push(d.name);
+      }
+    }
+    return { months, totalInterest, order };
+  }
+
+  document.getElementById('debt-form')!.addEventListener('submit', (e) => {
+    e.preventDefault();
+
+    const debts: Debt[] = [];
+    document.querySelectorAll('.debt-row').forEach((row, i) => {
+      const name = (row.querySelector('.d-name') as HTMLInputElement).value.trim() || `Debt ${i + 1}`;
+      const balance = parseFloat((row.querySelector('.d-balance') as HTMLInputElement).value) || 0;
+      const apr = parseFloat((row.querySelector('.d-apr') as HTMLInputElement).value) || 0;
+      const min = parseFloat((row.querySelector('.d-min') as HTMLInputElement).value) || 0;
+      if (balance > 0) debts.push({ name, balance, apr, min });
+    });
+    if (!debts.length) return;
+
+    const extra = parseFloat((document.getElementById('extra') as HTMLInputElement).value) || 0;
+
+    const ava = simulate(debts, extra, 'avalanche');
+    const snow = simulate(debts, extra, 'snowball');
+
+    const results = document.getElementById('results')!;
+    const warning = document.getElementById('warning')!;
+    results.style.display = 'block';
+
+    if (!ava || !snow) {
+      warning.style.display = 'block';
+      warning.textContent =
+        'Your payments never clear these debts — the interest outpaces what you pay in. Increase the minimums or the extra payment.';
+      ['ava-months', 'snow-months', 'savings'].forEach((id) => (document.getElementById(id)!.textContent = '—'));
+      ['ava-detail', 'snow-detail', 'savings-detail', 'ava-order', 'snow-order'].forEach(
+        (id) => (document.getElementById(id)!.textContent = '')
+      );
+      results.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      return;
+    }
+    warning.style.display = 'none';
+
+    const yrs = (m: number) => (m >= 12 ? `${Math.floor(m / 12)}y ${m % 12}m` : `${m} months`);
+    document.getElementById('ava-months')!.textContent = yrs(ava.months);
+    document.getElementById('ava-detail')!.textContent = `Total interest paid: ${fmt(ava.totalInterest)}`;
+    document.getElementById('snow-months')!.textContent = yrs(snow.months);
+    document.getElementById('snow-detail')!.textContent = `Total interest paid: ${fmt(snow.totalInterest)}`;
+
+    const saved = snow.totalInterest - ava.totalInterest;
+    const monthsDiff = snow.months - ava.months;
+    document.getElementById('savings')!.textContent = fmt(Math.max(0, saved));
+    document.getElementById('savings-detail')!.textContent =
+      saved <= 0.5
+        ? 'The two methods cost about the same for your debts — pick snowball for the motivation.'
+        : `…and gets you debt-free ${monthsDiff > 0 ? `${monthsDiff} month${monthsDiff === 1 ? '' : 's'} sooner` : 'in the same number of months'}. If that number feels small, snowball's quick wins may serve you better.`;
+
+    document.getElementById('ava-order')!.textContent = ava.order.join(' → ');
+    document.getElementById('snow-order')!.textContent = snow.order.join(' → ');
+
+    results.scrollIntoView({ behavior: 'smooth', block: 'start' });
+  });
+</script>
+
+<style>
+  .debt-row {
+    grid-template-columns: 1.4fr 1fr 0.8fr 0.8fr auto;
+  }
+
+  @media (max-width: 640px) {
+    .debt-row {
+      grid-template-columns: 1fr 1fr;
+    }
+    .debt-row .d-name {
+      grid-column: 1 / -1;
+    }
+  }
+</style>

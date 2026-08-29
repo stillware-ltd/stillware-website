@@ -1,0 +1,206 @@
+---
+import ToolLayout from '../../layouts/ToolLayout.astro';
+
+const faqs = [
+  {
+    q: 'How much does the average person spend on subscriptions?',
+    a: 'Surveys repeatedly find people underestimate their subscription spend by 2–3×. Most people who list everything — streaming, music, cloud storage, apps, gym, delivery memberships, software — land somewhere between $50 and $250 per month. The 10-year figure is usually the shock: $100/month is $12,000 a decade, before any price rises.',
+  },
+  {
+    q: 'What does "opportunity cost" mean in the results?',
+    a: 'It is what the same money could have grown to if invested instead — this calculator assumes a 5% average annual return, compounded monthly. It is an illustration of scale, not financial advice or a prediction.',
+  },
+  {
+    q: 'Which subscriptions should I cancel first?',
+    a: 'Sort by the yearly figure, not the monthly one — $12.99/month reads as trivial until you see $155.88/year. Then ask of each: did I use this in the last 30 days, and would I sign up again today at this price? Anything that fails both is a cancel.',
+  },
+  {
+    q: 'Is my subscription list stored anywhere?',
+    a: 'No. The list is processed entirely in your browser and disappears when you close the page. Nothing is uploaded.',
+  },
+];
+
+const related = [
+  { slug: 'saas-vs-ownership-simulator', title: 'SaaS vs. Ownership Simulator' },
+  { slug: 'compound-interest-calculator', title: 'Compound Interest Calculator' },
+  { slug: '50-30-20-budget-calculator', title: '50/30/20 Budget Calculator' },
+];
+---
+
+<ToolLayout
+  title="Subscription Cost Calculator — What Do Your Subscriptions Really Cost? | Stillware Ltd"
+  description="Add up every subscription you pay for and see the true monthly, yearly, 5-year and 10-year cost — plus what that money could grow to if invested. Free, no sign-up, runs in your browser."
+  heroTitle="Subscription Cost Calculator"
+  heroTagline="List everything you're subscribed to. We'll show you the monthly bleed, the 10-year total, and what that money could have become instead."
+  breadcrumbLabel="Subscription Cost Calculator"
+  faqs={faqs}
+  related={related}
+  ctaTitle="One subscription you can cancel: your budgeting app's"
+  ctaText="It takes a special irony to pay $109/year for software that tells you to spend less. Zeroed is envelope budgeting you buy once — it will happily track the subscriptions you keep, without being one."
+>
+  <form id="sub-form" class="calc-form">
+    <div class="form-group currency-group">
+      <label for="currency">Currency</label>
+      <select id="currency">
+        <option value="$" selected>$ USD</option>
+        <option value="£">£ GBP</option>
+        <option value="€">€ EUR</option>
+      </select>
+    </div>
+
+    <div class="form-group">
+      <label>Your subscriptions</label>
+      <p class="field-hint">Streaming, music, cloud storage, apps, gym, deliveries, software — all of them. Enter the price and how it's billed.</p>
+      <div id="sub-rows" class="row-list"></div>
+      <button type="button" id="add-sub" class="row-add">+ Add another subscription</button>
+    </div>
+
+    <button type="submit" class="btn-primary calc-btn">Show Me the Damage</button>
+  </form>
+
+  <div id="results" class="results-panel" style="display:none;">
+    <div class="result-card">
+      <span class="result-label">Per month</span>
+      <span class="result-value" id="r-month"></span>
+    </div>
+    <div class="result-card highlight">
+      <span class="result-label">Per year</span>
+      <span class="result-value" id="r-year"></span>
+    </div>
+    <div class="result-card bad">
+      <span class="result-label">Over 10 years</span>
+      <span class="result-value" id="r-ten"></span>
+      <span class="result-sub">Assuming prices never rise (they will).</span>
+    </div>
+    <div class="result-card">
+      <span class="result-label">Invested at 5% instead, 10 years</span>
+      <span class="result-value" id="r-invested"></span>
+      <span class="result-sub">Illustration only — not financial advice.</span>
+    </div>
+
+    <div class="result-table-wrap">
+      <table class="result-table" id="r-table">
+        <thead>
+          <tr><th>Subscription</th><th>Monthly</th><th>Yearly</th><th>10 years</th></tr>
+        </thead>
+        <tbody></tbody>
+      </table>
+    </div>
+  </div>
+
+  <Fragment slot="article">
+    <h2>Why subscriptions feel cheap and cost a fortune</h2>
+    <p>
+      Subscription pricing is engineered to be evaluated monthly and forgotten. $8.99 here, $12.99 there — each
+      one is a coffee. But subscriptions don't behave like coffees: they recur silently, they creep upward
+      (streaming services have raised prices almost yearly), and they stack. The honest unit for a subscription
+      is not its monthly price but its <strong>decade price</strong> — and this calculator shows you that number
+      for your real list.
+    </p>
+    <h2>The audit that actually works</h2>
+    <ol>
+      <li><strong>List from your bank statement, not memory.</strong> Scan the last two months of transactions — the forgotten ones are the point.</li>
+      <li><strong>Sort by yearly cost.</strong> The table above does this — the biggest line is rarely the one people guess.</li>
+      <li><strong>Apply the re-subscribe test.</strong> If it vanished today, would you sign up again at full price? No = cancel.</li>
+      <li><strong>Put the freed money to work.</strong> Redirect it at a <a href="/tools/debt-payoff-calculator">debt</a>, a <a href="/tools/savings-goal-calculator">savings goal</a>, or your <a href="/tools/emergency-fund-calculator">emergency fund</a> — otherwise it just evaporates into general spending.</li>
+    </ol>
+    <p>
+      For the software you keep: there's a growing category of apps you can simply buy once — see our
+      <a href="/tools/saas-vs-ownership-simulator">SaaS vs. ownership simulator</a> for what renting software costs
+      against owning it, and <a href="/blog/why-we-dont-do-subscriptions">why we don't do subscriptions</a> for the philosophy.
+    </p>
+  </Fragment>
+</ToolLayout>
+
+<script>
+  const rowsEl = document.getElementById('sub-rows')!;
+
+  function addRow(name = '', price = '', period = 'month') {
+    const div = document.createElement('div');
+    div.className = 'row-item sub-row';
+    div.innerHTML = `
+      <input type="text" class="s-name" placeholder="Name (e.g. Netflix)" value="${name}" />
+      <input type="number" class="s-price" placeholder="Price" value="${price}" min="0" step="0.01" />
+      <select class="s-period">
+        <option value="month"${period === 'month' ? ' selected' : ''}>/month</option>
+        <option value="year"${period === 'year' ? ' selected' : ''}>/year</option>
+        <option value="week"${period === 'week' ? ' selected' : ''}>/week</option>
+      </select>
+      <button type="button" class="row-remove" aria-label="Remove subscription">&times;</button>
+    `;
+    div.querySelector('.row-remove')!.addEventListener('click', () => div.remove());
+    rowsEl.appendChild(div);
+  }
+
+  addRow('Streaming', '15.49');
+  addRow('Music', '11.99');
+  addRow('Cloud storage', '2.99');
+  addRow('Budgeting app', '9.08');
+  document.getElementById('add-sub')!.addEventListener('click', () => addRow());
+
+  const curEl = document.getElementById('currency') as HTMLSelectElement;
+  const sym = () => curEl.value;
+  const fmt = (n: number) =>
+    sym() + n.toLocaleString(undefined, { minimumFractionDigits: 2, maximumFractionDigits: 2 });
+  const fmt0 = (n: number) => sym() + Math.round(n).toLocaleString();
+
+  document.getElementById('sub-form')!.addEventListener('submit', (e) => {
+    e.preventDefault();
+
+    type Sub = { name: string; monthly: number };
+    const subs: Sub[] = [];
+    document.querySelectorAll('.sub-row').forEach((row, i) => {
+      const name = (row.querySelector('.s-name') as HTMLInputElement).value.trim() || `Subscription ${i + 1}`;
+      const price = parseFloat((row.querySelector('.s-price') as HTMLInputElement).value) || 0;
+      const period = (row.querySelector('.s-period') as HTMLSelectElement).value;
+      const monthly = period === 'year' ? price / 12 : period === 'week' ? (price * 52) / 12 : price;
+      if (monthly > 0) subs.push({ name, monthly });
+    });
+    if (!subs.length) return;
+
+    subs.sort((a, b) => b.monthly - a.monthly);
+    const monthly = subs.reduce((s, x) => s + x.monthly, 0);
+
+    // future value of a monthly contribution at 5%/yr, compounded monthly, 10 years
+    const r = 0.05 / 12;
+    const n = 120;
+    const invested = monthly * ((Math.pow(1 + r, n) - 1) / r);
+
+    document.getElementById('r-month')!.textContent = fmt(monthly);
+    document.getElementById('r-year')!.textContent = fmt(monthly * 12);
+    document.getElementById('r-ten')!.textContent = fmt0(monthly * 120);
+    document.getElementById('r-invested')!.textContent = fmt0(invested);
+
+    const tbody = document.querySelector('#r-table tbody')!;
+    tbody.innerHTML = '';
+    for (const s of subs) {
+      const tr = document.createElement('tr');
+      const td = (t: string) => {
+        const el = document.createElement('td');
+        el.textContent = t;
+        return el;
+      };
+      tr.append(td(s.name), td(fmt(s.monthly)), td(fmt(s.monthly * 12)), td(fmt0(s.monthly * 120)));
+      tbody.appendChild(tr);
+    }
+
+    const results = document.getElementById('results')!;
+    results.style.display = 'block';
+    results.scrollIntoView({ behavior: 'smooth', block: 'start' });
+  });
+</script>
+
+<style>
+  .sub-row {
+    grid-template-columns: 1.6fr 1fr 1fr auto;
+  }
+
+  @media (max-width: 640px) {
+    .sub-row {
+      grid-template-columns: 1fr 1fr auto;
+    }
+    .sub-row .s-name {
+      grid-column: 1 / -1;
+    }
+  }
+</style>

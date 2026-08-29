@@ -1,0 +1,217 @@
+---
+import ToolLayout from '../../layouts/ToolLayout.astro';
+
+const faqs = [
+  {
+    q: 'What is zero-based budgeting?',
+    a: 'A method where you give every unit of your income a job before the month begins — bills, groceries, savings, fun — until income minus assignments equals exactly zero. Nothing is left "unbudgeted", which is where money usually leaks. It is the method behind envelope budgeting and apps like Zeroed and YNAB.',
+  },
+  {
+    q: 'Does "zero-based" mean I spend everything?',
+    a: 'No — it means every unit is assigned, and savings is one of the jobs. A zero-based budget with 20% assigned to savings spends nothing extra; it just decides on purpose instead of by accident.',
+  },
+  {
+    q: 'What categories should a beginner start with?',
+    a: 'Start with 8–12 broad ones: housing, utilities, groceries, transport, insurance, debt payments, savings, fun money, and a buffer for surprises. Too many categories early on is the most common reason people quit — you can always split later.',
+  },
+  {
+    q: 'What happens when I overspend a category?',
+    a: 'You move money from another category to cover it — deliberately. That single act (choosing what to take it from) is the behaviour change that makes zero-based budgeting work where tracking alone fails.',
+  },
+];
+
+const related = [
+  { slug: '50-30-20-budget-calculator', title: '50/30/20 Budget Calculator' },
+  { slug: 'debt-payoff-calculator', title: 'Debt Payoff Calculator' },
+  { slug: 'emergency-fund-calculator', title: 'Emergency Fund Calculator' },
+];
+---
+
+<ToolLayout
+  title="Zero-Based Budget Calculator — Give Every Dollar a Job | Stillware Ltd"
+  description="Build your first zero-based (envelope) budget in five minutes: enter income, assign it to categories, and get to exactly zero. Free, no sign-up, runs in your browser."
+  heroTitle="Zero-Based Budget Calculator"
+  heroTagline="Enter your monthly income, assign it to categories, and get the 'left to assign' number to exactly zero. This is the whole method — live, in your browser."
+  breadcrumbLabel="Zero-Based Budget Calculator"
+  faqs={faqs}
+  related={related}
+  ctaTitle="This page, as an app you own"
+  ctaText="Zeroed is this exact method with the boring parts automated: envelopes that persist, statement imports, rollover, goals, and a Today view that says what's safe to spend. Bought once, on your device, no account."
+>
+  <form id="zb-form" class="calc-form">
+    <div class="form-group currency-group">
+      <label for="currency">Currency</label>
+      <select id="currency">
+        <option value="$" selected>$ USD</option>
+        <option value="£">£ GBP</option>
+        <option value="€">€ EUR</option>
+      </select>
+    </div>
+
+    <div class="form-group">
+      <label for="income">Monthly income (after tax)</label>
+      <div class="input-prefix">
+        <span class="prefix">$</span>
+        <input type="number" id="income" placeholder="3200" min="0" step="50" />
+      </div>
+    </div>
+
+    <div class="assign-banner" id="assign-banner">
+      <span class="assign-label">Left to assign</span>
+      <span class="assign-value" id="left-value">$0.00</span>
+      <span class="assign-hint" id="assign-hint">Enter your income, then give every unit a job below.</span>
+    </div>
+
+    <div class="form-group">
+      <label>Your categories</label>
+      <div id="cat-rows" class="row-list"></div>
+      <button type="button" id="add-cat" class="row-add">+ Add category</button>
+    </div>
+  </form>
+
+  <Fragment slot="article">
+    <h2>How to do your first zero-based budget</h2>
+    <ol>
+      <li><strong>Start from real income</strong> — what actually arrives in your account this month, not your salary on paper.</li>
+      <li><strong>Fund the four walls first:</strong> housing, utilities, food, transport. These get money before anything else does.</li>
+      <li><strong>Then obligations:</strong> insurance, minimum debt payments, anything contractual.</li>
+      <li><strong>Then the future:</strong> savings and extra debt repayment — as line items with amounts, not leftovers. (Not sure how much? The <a href="/tools/50-30-20-budget-calculator">50/30/20 calculator</a> gives a starting ratio, and the <a href="/tools/emergency-fund-calculator">emergency fund calculator</a> sizes the safety net.)</li>
+      <li><strong>Then life:</strong> fun money, gifts, the small buffer for surprises. Yes, fun money is a category — budgets without it fail.</li>
+      <li><strong>Get "left to assign" to exactly zero.</strong> Not close to zero — zero. Unassigned money is pre-spent money; it disappears into whatever week you're having.</li>
+    </ol>
+    <h2>Why this beats tracking apps</h2>
+    <p>
+      Expense trackers tell you what happened — an autopsy. Zero-based budgeting decides what will happen — a plan.
+      The psychological shift is subtle but decisive: when the takeaway money is gone, the question isn't "can I
+      afford this?" (the answer always feels like yes) but "which envelope pays for this?" — a question with an
+      honest answer. It's the same reason the cash-envelope system worked for our grandparents; this is that system
+      with better maths.
+    </p>
+  </Fragment>
+</ToolLayout>
+
+<script>
+  const curEl = document.getElementById('currency') as HTMLSelectElement;
+  const sym = () => curEl.value;
+  const fmt = (n: number) =>
+    sym() + Math.abs(n).toLocaleString(undefined, { minimumFractionDigits: 2, maximumFractionDigits: 2 });
+
+  const rowsEl = document.getElementById('cat-rows')!;
+
+  function recalc() {
+    const income = parseFloat((document.getElementById('income') as HTMLInputElement).value) || 0;
+    let assigned = 0;
+    document.querySelectorAll('.c-amount').forEach((el) => {
+      assigned += parseFloat((el as HTMLInputElement).value) || 0;
+    });
+    const left = income - assigned;
+
+    const banner = document.getElementById('assign-banner')!;
+    const value = document.getElementById('left-value')!;
+    const hint = document.getElementById('assign-hint')!;
+
+    value.textContent = (left < 0 ? '−' : '') + fmt(left);
+    banner.classList.remove('zeroed', 'over');
+    if (income <= 0) {
+      hint.textContent = 'Enter your income, then give every unit a job below.';
+    } else if (Math.abs(left) < 0.005) {
+      banner.classList.add('zeroed');
+      hint.textContent = 'Zeroed. Every unit has a job — this is the whole method. 🎯';
+    } else if (left < 0) {
+      banner.classList.add('over');
+      hint.textContent = 'Over-assigned — you’ve given out more than you earn. Trim a category.';
+    } else {
+      hint.textContent = `Still unassigned. Give it a job — savings counts as a job.`;
+    }
+  }
+
+  function addRow(name = '', amount = '') {
+    const div = document.createElement('div');
+    div.className = 'row-item cat-row';
+    div.innerHTML = `
+      <input type="text" class="c-name" placeholder="Category" value="${name}" />
+      <input type="number" class="c-amount" placeholder="Amount" value="${amount}" min="0" step="5" />
+      <button type="button" class="row-remove" aria-label="Remove category">&times;</button>
+    `;
+    div.querySelector('.row-remove')!.addEventListener('click', () => {
+      div.remove();
+      recalc();
+    });
+    div.querySelector('.c-amount')!.addEventListener('input', recalc);
+    rowsEl.appendChild(div);
+  }
+
+  [
+    'Rent / mortgage',
+    'Utilities',
+    'Groceries',
+    'Transport',
+    'Insurance',
+    'Debt payments',
+    'Savings',
+    'Fun money',
+    'Buffer',
+  ].forEach((n) => addRow(n));
+
+  document.getElementById('add-cat')!.addEventListener('click', () => addRow());
+  document.getElementById('income')!.addEventListener('input', recalc);
+  curEl.addEventListener('change', () => {
+    document.querySelectorAll('.prefix').forEach((el) => (el.textContent = sym()));
+    recalc();
+  });
+  document.getElementById('zb-form')!.addEventListener('submit', (e) => e.preventDefault());
+  recalc();
+</script>
+
+<style>
+  .cat-row {
+    grid-template-columns: 1.6fr 1fr auto;
+  }
+
+  .assign-banner {
+    position: sticky;
+    top: 80px;
+    z-index: 10;
+    background: var(--gradient-obsidian);
+    border-radius: 16px;
+    padding: 1.25rem 1.75rem;
+    margin-bottom: 1.75rem;
+    display: flex;
+    align-items: baseline;
+    gap: 1rem;
+    flex-wrap: wrap;
+    transition: box-shadow 0.3s;
+  }
+
+  .assign-label {
+    color: rgba(255, 255, 255, 0.6);
+    font-weight: 600;
+    font-size: 0.9rem;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+  }
+
+  .assign-value {
+    color: #ffffff;
+    font-size: 1.75rem;
+    font-weight: 800;
+  }
+
+  .assign-hint {
+    width: 100%;
+    color: rgba(255, 255, 255, 0.55);
+    font-size: 0.85rem;
+  }
+
+  .assign-banner.zeroed {
+    box-shadow: 0 0 0 2px rgba(5, 150, 105, 0.6);
+  }
+
+  .assign-banner.zeroed .assign-value {
+    color: #34D399;
+  }
+
+  .assign-banner.over .assign-value {
+    color: #F87171;
+  }
+</style>

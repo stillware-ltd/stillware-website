@@ -1,0 +1,194 @@
+---
+import ToolLayout from '../../layouts/ToolLayout.astro';
+
+const faqs = [
+  {
+    q: 'How is the time to reach my goal calculated?',
+    a: 'The calculator simulates month by month: your current savings earn interest at the rate you set (compounded monthly), your monthly contribution is added, and it counts the months until the balance crosses the goal. With a 0% rate it is simply the gap divided by your monthly contribution.',
+  },
+  {
+    q: 'Should I include interest when planning a short-term goal?',
+    a: 'For goals under ~2 years, interest barely moves the date — set the rate to your savings account APY, or 0 to be conservative. Interest matters much more over 5+ year horizons, where compounding does real work.',
+  },
+  {
+    q: 'Where should savings goal money live?',
+    a: 'Money you need within a few years generally belongs in cash savings (easy-access or fixed-term accounts), not investments — a market dip the month before you need it is the risk. This is general information, not financial advice.',
+  },
+];
+
+const related = [
+  { slug: 'compound-interest-calculator', title: 'Compound Interest Calculator' },
+  { slug: 'emergency-fund-calculator', title: 'Emergency Fund Calculator' },
+  { slug: 'zero-based-budget-calculator', title: 'Zero-Based Budget Calculator' },
+];
+---
+
+<ToolLayout
+  title="Savings Goal Calculator — When Will You Get There? | Stillware Ltd"
+  description="Free savings goal calculator: enter your target, current savings, and monthly contribution to see exactly when you'll reach your goal — with or without interest. No sign-up, runs in your browser."
+  heroTitle="Savings Goal Calculator"
+  heroTagline="A holiday, a deposit, a car, a cushion. Enter the target and what you can put away each month — get the date you'll hit it."
+  breadcrumbLabel="Savings Goal Calculator"
+  faqs={faqs}
+  related={related}
+  ctaTitle="Set the goal once. Watch it fill itself."
+  ctaText="Zeroed has savings goals built into the envelope budget — assign money to a goal each month and the progress bar does the motivating. Bought once, on your device, no account."
+>
+  <form id="goal-form" class="calc-form">
+    <div class="form-group currency-group">
+      <label for="currency">Currency</label>
+      <select id="currency">
+        <option value="$" selected>$ USD</option>
+        <option value="£">£ GBP</option>
+        <option value="€">€ EUR</option>
+      </select>
+    </div>
+
+    <div class="form-group">
+      <label for="goal">Savings goal</label>
+      <div class="input-prefix">
+        <span class="prefix">$</span>
+        <input type="number" id="goal" placeholder="10000" required min="1" step="100" />
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label for="current">Already saved</label>
+      <div class="input-prefix">
+        <span class="prefix">$</span>
+        <input type="number" id="current" placeholder="1500" value="0" min="0" step="50" />
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label for="monthly">Monthly contribution</label>
+      <div class="input-prefix">
+        <span class="prefix">$</span>
+        <input type="number" id="monthly" placeholder="300" required min="0" step="10" />
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label for="rate">Interest rate (annual %, optional)</label>
+      <p class="field-hint">Your savings account APY. Leave at 0 to plan conservatively.</p>
+      <input type="number" id="rate" placeholder="4.0" value="0" min="0" max="50" step="0.1" />
+    </div>
+
+    <button type="submit" class="btn-primary calc-btn">Calculate My Date</button>
+  </form>
+
+  <div id="results" class="results-panel" style="display:none;">
+    <div class="result-card highlight">
+      <span class="result-label">You'll reach your goal in</span>
+      <span class="result-value" id="r-time"></span>
+      <span class="result-sub" id="r-date"></span>
+    </div>
+    <div class="result-card">
+      <span class="result-label">Total you'll contribute</span>
+      <span class="result-value" id="r-contrib"></span>
+    </div>
+    <div class="result-card good">
+      <span class="result-label">Interest does the rest</span>
+      <span class="result-value" id="r-interest"></span>
+    </div>
+    <div class="result-breakdown">
+      <h3>Want it sooner?</h3>
+      <ul>
+        <li>Add 25% to the monthly amount: <strong id="r-faster25"></strong></li>
+        <li>Add 50% to the monthly amount: <strong id="r-faster50"></strong></li>
+      </ul>
+    </div>
+    <p class="field-hint" id="warning" style="display:none; margin-top:1rem; color:#DC2626;"></p>
+  </div>
+
+  <Fragment slot="article">
+    <h2>The three levers of any savings goal</h2>
+    <p>
+      Every savings goal is governed by the same three levers: the <strong>target</strong>, the
+      <strong>monthly contribution</strong>, and <strong>time</strong>. Interest helps at longer horizons, but for
+      most goals the contribution is the lever that matters — which is why the results above show what a 25% or 50%
+      bump does to your date. Finding that bump is a budgeting problem, not a willpower problem: run the
+      <a href="/tools/subscription-cost-calculator">subscription audit</a> or build a
+      <a href="/tools/zero-based-budget-calculator">zero-based budget</a> and the extra contribution usually
+      reveals itself.
+    </p>
+    <h2>Make the goal survive contact with real life</h2>
+    <ul>
+      <li><strong>Name the account after the goal.</strong> "Japan 2027" is harder to raid than "Savings".</li>
+      <li><strong>Automate the transfer on payday.</strong> Saving what's left at month-end is how goals die; pay the goal first.</li>
+      <li><strong>Separate it from your emergency fund.</strong> A car repair shouldn't push back your house deposit — check the <a href="/tools/emergency-fund-calculator">emergency fund calculator</a> if the two are currently one pot.</li>
+      <li><strong>Recalculate when life changes.</strong> A raise, a rent increase — come back and get a new date rather than quietly falling behind.</li>
+    </ul>
+  </Fragment>
+</ToolLayout>
+
+<script>
+  const curEl = document.getElementById('currency') as HTMLSelectElement;
+  const sym = () => curEl.value;
+  curEl.addEventListener('change', () => {
+    document.querySelectorAll('.prefix').forEach((el) => (el.textContent = sym()));
+  });
+  const fmt0 = (n: number) => sym() + Math.round(n).toLocaleString();
+
+  function monthsToGoal(goal: number, current: number, monthly: number, annualRate: number): number | null {
+    if (current >= goal) return 0;
+    const r = annualRate / 100 / 12;
+    let bal = current;
+    let m = 0;
+    while (bal < goal) {
+      m++;
+      if (m > 1200) return null;
+      bal = bal * (1 + r) + monthly;
+      if (monthly <= 0 && r <= 0) return null;
+    }
+    return m;
+  }
+
+  const yrs = (m: number) =>
+    m === 0 ? 'Already there!' : m >= 12 ? `${Math.floor(m / 12)}y ${m % 12}m` : `${m} month${m === 1 ? '' : 's'}`;
+
+  document.getElementById('goal-form')!.addEventListener('submit', (e) => {
+    e.preventDefault();
+
+    const goal = parseFloat((document.getElementById('goal') as HTMLInputElement).value) || 0;
+    const current = parseFloat((document.getElementById('current') as HTMLInputElement).value) || 0;
+    const monthly = parseFloat((document.getElementById('monthly') as HTMLInputElement).value) || 0;
+    const rate = parseFloat((document.getElementById('rate') as HTMLInputElement).value) || 0;
+    if (goal <= 0) return;
+
+    const results = document.getElementById('results')!;
+    const warning = document.getElementById('warning')!;
+    results.style.display = 'block';
+
+    const m = monthsToGoal(goal, current, monthly, rate);
+    if (m === null) {
+      warning.style.display = 'block';
+      warning.textContent = 'At this contribution you never reach the goal within 100 years — increase the monthly amount.';
+      ['r-time', 'r-contrib', 'r-interest', 'r-faster25', 'r-faster50'].forEach(
+        (id) => (document.getElementById(id)!.textContent = '—')
+      );
+      document.getElementById('r-date')!.textContent = '';
+      results.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      return;
+    }
+    warning.style.display = 'none';
+
+    const target = new Date();
+    target.setMonth(target.getMonth() + m);
+    const contrib = monthly * m;
+    const interest = Math.max(0, goal - current - contrib);
+
+    document.getElementById('r-time')!.textContent = yrs(m);
+    document.getElementById('r-date')!.textContent =
+      m > 0 ? `Around ${target.toLocaleDateString(undefined, { month: 'long', year: 'numeric' })}.` : '';
+    document.getElementById('r-contrib')!.textContent = fmt0(contrib);
+    document.getElementById('r-interest')!.textContent = interest > 0.5 ? `~${fmt0(interest)}` : fmt0(0);
+
+    const m25 = monthsToGoal(goal, current, monthly * 1.25, rate);
+    const m50 = monthsToGoal(goal, current, monthly * 1.5, rate);
+    document.getElementById('r-faster25')!.textContent = m25 !== null ? yrs(m25) : '—';
+    document.getElementById('r-faster50')!.textContent = m50 !== null ? yrs(m50) : '—';
+
+    results.scrollIntoView({ behavior: 'smooth', block: 'start' });
+  });
+</script>
