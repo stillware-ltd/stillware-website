@@ -4,7 +4,7 @@ import {
   PADDLE_CLIENT_TOKEN,
   PADDLE_PRODUCTS,
   isComingSoon,
-  type ProductSlug,
+  type CheckoutSlug,
 } from '../../config/paddle';
 
 export function getStaticPaths() {
@@ -14,7 +14,7 @@ export function getStaticPaths() {
 }
 
 const { product } = Astro.params;
-const config = PADDLE_PRODUCTS[product as ProductSlug];
+const config = PADDLE_PRODUCTS[product as CheckoutSlug];
 
 // `getStaticPaths` already restricts the routes, but be defensive.
 if (!config) {

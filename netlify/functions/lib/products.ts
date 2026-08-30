@@ -44,8 +44,11 @@ export const PRODUCTS: Record<ProductSlug, ProductConfig> = {
 export const PRICE_ID_TO_PRODUCT: Record<string, ProductSlug> = {
   // Zeroed — Standard lifetime
   pri_01knnyfj5zezrch30qqbzkc378: "zeroed",
-  // RankUp Chess — Lifetime ($14.99)
+  // RankUp Chess — Lifetime, Windows/Linux ($14.99)
   pri_01knztpnwdqxx8ecnbrjt4zkzq: "rankup",
+  // RankUp Chess — Lifetime, macOS ($19.99). A separate price, but the same
+  // licence product: keys are scoped to `rankup`, not to a platform.
+  pri_01m194cc17phxmgqdqs737mw2p: "rankup",
 };
 
 /**
