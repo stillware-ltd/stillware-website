@@ -1,9 +1,12 @@
 ---
 import Layout from '../layouts/Layout.astro';
 
-// Desktop versions are tracked per platform because they genuinely differ.
-// Each download URL derives from its own constant, so bumping one can never
-// point the other at a release asset that was never built.
+// The product version, shown wherever the page states which release this is.
+const RANKUP_VERSION = '0.6.0';
+
+// Download URLs derive from their own per-platform constants, which track the
+// release asset that actually exists rather than the product version. Windows
+// has no 0.6.0 installer yet, and pointing its button at one would 404.
 const RANKUP_WINDOWS_VERSION = '0.5.0';
 const RANKUP_WINDOWS_DOWNLOAD =
   `https://github.com/stillware-ltd/rankup-chess-releases/releases/download/v${RANKUP_WINDOWS_VERSION}/RankUpChess-Setup-${RANKUP_WINDOWS_VERSION}.exe`;
@@ -42,6 +45,7 @@ const RANKUP_APP_STORE_URL = '';
                         Download for macOS
                         <span class="btn-subtext">macOS &middot; v{RANKUP_MACOS_VERSION} &middot; free forever</span>
                     </a>
+                    <p class="version-line">Current release <strong>v{RANKUP_VERSION}</strong> &middot; macOS and mobile. Windows is on v{RANKUP_WINDOWS_VERSION}.</p>
                     <div class="platform-badges">
                         <span class="platform-badge">
                             <svg viewBox="0 0 24 24" fill="currentColor" width="18" height="18"><path d="M0 3.449L9.75 2.1v9.451H0m10.949-9.602L24 0v11.4H10.949M0 12.6h9.75v9.451L0 20.699M10.949 12.6H24V24l-12.9-1.801" /></svg>
@@ -454,6 +458,12 @@ const RANKUP_APP_STORE_URL = '';
     .hero-cta-secondary:hover {
         background: rgba(245, 158, 11, 0.12);
         border-color: rgba(245, 158, 11, 0.85);
+    }
+
+    .version-line {
+        margin: 0;
+        font-size: 0.9rem;
+        color: rgba(255, 255, 255, 0.6);
     }
 
     .platform-badges {
