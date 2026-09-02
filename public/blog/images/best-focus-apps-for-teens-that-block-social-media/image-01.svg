@@ -1,0 +1,198 @@
+
+
+
+
+
+
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 423" width="1200" height="423">
+  <style>
+    text { font-family: Inter, system-ui, -apple-system, sans-serif; }
+  </style>
+
+  <rect width="1200" height="423" fill="#faf5ff"/>
+
+  <!-- Background pattern (per-article variation) -->
+  <rect width="1200" height="675" fill="#f3e8ff" opacity="0.4"/>
+
+  <!-- Subtle top accent bar -->
+  <rect width="1200" height="4" fill="#f59e0b"/>
+
+  <!-- Title -->
+  <text x="600" y="50" text-anchor="middle" font-size="26" font-weight="700" fill="#1e293b">Privacy comparison of popular focus apps for teens</text>
+
+  <!-- Column header colors (theme-aware alternation) -->
+  
+  
+
+  <!-- Table -->
+  
+  
+  
+
+  <!-- Column header -->
+  <rect x="102" y="80" width="166" height="52" fill="#f59e0b"/>
+  
+  <rect x="102" y="80" width="4" height="52" fill="#f59e0b"/>
+  
+  <text x="185" y="112" text-anchor="middle" font-size="16" font-weight="600" fill="#ffffff">Feature</text>
+
+  <!-- Rows -->
+  
+  
+  <rect x="102" y="148" width="166" height="52" fill="#f3e8ff" stroke="#e2e8f0" stroke-width="0.5"/>
+  <text x="118" y="170" font-size="13" font-weight="600" fill="#1e293b">Feature</text>
+  <text x="118" y="190" font-size="13" fill="#64748b">Data Storage</text>
+  
+  
+  <rect x="102" y="206" width="166" height="52" fill="#faf5ff" stroke="#e2e8f0" stroke-width="0.5"/>
+  <text x="118" y="228" font-size="13" font-weight="600" fill="#1e293b">Forest</text>
+  <text x="118" y="248" font-size="13" fill="#64748b">Cloud Sync</text>
+  
+  
+  <rect x="102" y="264" width="166" height="52" fill="#f3e8ff" stroke="#e2e8f0" stroke-width="0.5"/>
+  <text x="118" y="286" font-size="13" font-weight="600" fill="#1e293b">Freedom</text>
+  <text x="118" y="306" font-size="13" fill="#64748b">Cloud Servers</text>
+  
+  
+  <rect x="102" y="322" width="166" height="52" fill="#faf5ff" stroke="#e2e8f0" stroke-width="0.5"/>
+  <text x="118" y="344" font-size="13" font-weight="600" fill="#1e293b">Screen Time</text>
+  <text x="118" y="364" font-size="13" fill="#64748b">On Device</text>
+  
+  
+  
+  
+
+  <!-- Column header -->
+  <rect x="268" y="80" width="166" height="52" fill="#60a5fa"/>
+  
+  <text x="351" y="112" text-anchor="middle" font-size="16" font-weight="600" fill="#ffffff">Encryption</text>
+
+  <!-- Rows -->
+  
+  
+  <rect x="268" y="148" width="166" height="52" fill="#f3e8ff" stroke="#e2e8f0" stroke-width="0.5"/>
+  <text x="284" y="170" font-size="13" font-weight="600" fill="#1e293b">Encryption</text>
+  <text x="284" y="190" font-size="13" fill="#64748b">Forest:None specified</text>
+  
+  
+  <rect x="268" y="206" width="166" height="52" fill="#faf5ff" stroke="#e2e8f0" stroke-width="0.5"/>
+  <text x="284" y="228" font-size="13" font-weight="600" fill="#1e293b">Freedom</text>
+  <text x="284" y="248" font-size="13" fill="#64748b">Standard SSL</text>
+  
+  
+  <rect x="268" y="264" width="166" height="52" fill="#f3e8ff" stroke="#e2e8f0" stroke-width="0.5"/>
+  <text x="284" y="286" font-size="13" font-weight="600" fill="#1e293b">Screen Time</text>
+  <text x="284" y="306" font-size="13" fill="#64748b">Apple Encrypted</text>
+  
+  
+  
+  
+
+  <!-- Column header -->
+  <rect x="434" y="80" width="166" height="52" fill="#f59e0b"/>
+  
+  <text x="517" y="112" text-anchor="middle" font-size="16" font-weight="600" fill="#ffffff">Account Required</text>
+
+  <!-- Rows -->
+  
+  
+  <rect x="434" y="148" width="166" height="52" fill="#f3e8ff" stroke="#e2e8f0" stroke-width="0.5"/>
+  <text x="450" y="170" font-size="13" font-weight="600" fill="#1e293b">Account Required</text>
+  <text x="450" y="190" font-size="13" fill="#64748b">Forest:Yes</text>
+  
+  
+  <rect x="434" y="206" width="166" height="52" fill="#faf5ff" stroke="#e2e8f0" stroke-width="0.5"/>
+  <text x="450" y="228" font-size="13" font-weight="600" fill="#1e293b">Freedom</text>
+  <text x="450" y="248" font-size="13" fill="#64748b">Yes</text>
+  
+  
+  <rect x="434" y="264" width="166" height="52" fill="#f3e8ff" stroke="#e2e8f0" stroke-width="0.5"/>
+  <text x="450" y="286" font-size="13" font-weight="600" fill="#1e293b">Screen Time</text>
+  <text x="450" y="306" font-size="13" fill="#64748b">No</text>
+  
+  
+  
+  
+
+  <!-- Column header -->
+  <rect x="600" y="80" width="166" height="52" fill="#60a5fa"/>
+  
+  <text x="683" y="112" text-anchor="middle" font-size="16" font-weight="600" fill="#ffffff">Offline Mode</text>
+
+  <!-- Rows -->
+  
+  
+  <rect x="600" y="148" width="166" height="52" fill="#f3e8ff" stroke="#e2e8f0" stroke-width="0.5"/>
+  <text x="616" y="170" font-size="13" font-weight="600" fill="#1e293b">Offline Mode</text>
+  <text x="616" y="190" font-size="13" fill="#64748b">Forest:Partial</text>
+  
+  
+  <rect x="600" y="206" width="166" height="52" fill="#faf5ff" stroke="#e2e8f0" stroke-width="0.5"/>
+  <text x="616" y="228" font-size="13" font-weight="600" fill="#1e293b">Freedom</text>
+  <text x="616" y="248" font-size="13" fill="#64748b">Yes</text>
+  
+  
+  <rect x="600" y="264" width="166" height="52" fill="#f3e8ff" stroke="#e2e8f0" stroke-width="0.5"/>
+  <text x="616" y="286" font-size="13" font-weight="600" fill="#1e293b">Screen Time</text>
+  <text x="616" y="306" font-size="13" fill="#64748b">Yes</text>
+  
+  
+  
+  
+
+  <!-- Column header -->
+  <rect x="766" y="80" width="166" height="52" fill="#f59e0b"/>
+  
+  <text x="849" y="112" text-anchor="middle" font-size="16" font-weight="600" fill="#ffffff">Cost Model</text>
+
+  <!-- Rows -->
+  
+  
+  <rect x="766" y="148" width="166" height="52" fill="#f3e8ff" stroke="#e2e8f0" stroke-width="0.5"/>
+  <text x="782" y="170" font-size="13" font-weight="600" fill="#1e293b">Cost Model</text>
+  <text x="782" y="190" font-size="13" fill="#64748b">Forest:$3.99 One-Time</text>
+  
+  
+  <rect x="766" y="206" width="166" height="52" fill="#faf5ff" stroke="#e2e8f0" stroke-width="0.5"/>
+  <text x="782" y="228" font-size="13" font-weight="600" fill="#1e293b">Freedom</text>
+  <text x="782" y="248" font-size="13" fill="#64748b">$8.99/Month</text>
+  
+  
+  <rect x="766" y="264" width="166" height="52" fill="#f3e8ff" stroke="#e2e8f0" stroke-width="0.5"/>
+  <text x="782" y="286" font-size="13" font-weight="600" fill="#1e293b">Screen Time</text>
+  <text x="782" y="306" font-size="13" fill="#64748b">Free</text>
+  
+  
+  
+  
+
+  <!-- Column header -->
+  <rect x="932" y="80" width="166" height="52" fill="#60a5fa"/>
+  
+  <text x="1015" y="112" text-anchor="middle" font-size="16" font-weight="600" fill="#ffffff">Behavioral Tracking</text>
+
+  <!-- Rows -->
+  
+  
+  <rect x="932" y="148" width="166" height="52" fill="#f3e8ff" stroke="#e2e8f0" stroke-width="0.5"/>
+  <text x="948" y="170" font-size="13" font-weight="600" fill="#1e293b">Behavioral Tracking</text>
+  <text x="948" y="190" font-size="13" fill="#64748b">Forest:Yes</text>
+  
+  
+  <rect x="932" y="206" width="166" height="52" fill="#faf5ff" stroke="#e2e8f0" stroke-width="0.5"/>
+  <text x="948" y="228" font-size="13" font-weight="600" fill="#1e293b">Freedom</text>
+  <text x="948" y="248" font-size="13" fill="#64748b">Yes</text>
+  
+  
+  <rect x="932" y="264" width="166" height="52" fill="#f3e8ff" stroke="#e2e8f0" stroke-width="0.5"/>
+  <text x="948" y="286" font-size="13" font-weight="600" fill="#1e293b">Screen Time</text>
+  <text x="948" y="306" font-size="13" fill="#64748b">Limited</text>
+  
+  
+
+  <!-- Bottom border -->
+  <rect x="102" y="380" width="996" height="3" fill="#f59e0b"/>
+
+  <!-- Source attribution -->
+  <text x="1190" y="415" text-anchor="end" font-size="10" fill="#cbd5e1">stillwareltd.com</text>
+</svg>
