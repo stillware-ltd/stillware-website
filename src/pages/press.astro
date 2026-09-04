@@ -1,0 +1,109 @@
+---
+import Layout from '../layouts/Layout.astro';
+
+const screenshots = [
+  { src: '/Zeroed_Desktop_Today.png', alt: 'Zeroed Today view on desktop: safe-to-spend, upcoming bills, goals' },
+  { src: '/Zeroed_Desktop_Budget.png', alt: 'Zeroed Budget view on desktop: envelope categories with available balances' },
+  { src: '/Zeroed_Desktop_Reports.png', alt: 'Zeroed Reports view on desktop: spending and net worth' },
+  { src: '/mobile-slides/1.png', alt: 'Zeroed on a phone: Today view' },
+  { src: '/mobile-slides/2.png', alt: 'Zeroed on a phone: Budget view' },
+  { src: '/mobile-slides/3.png', alt: 'Zeroed on a phone: Accounts and transactions' },
+];
+---
+
+<Layout
+  title="Press Kit — Zeroed by Stillware Ltd"
+  description="Facts, screenshots, logo and boilerplate for writing about Zeroed, the pay-once offline envelope budgeting app from Stillware Ltd."
+>
+  <header class="press-hero">
+    <div class="container">
+      <p class="eyebrow">Press kit</p>
+      <h1>Writing about Zeroed?</h1>
+      <p class="lead">Everything below is free to use. If you need a review key, a quote, or a screenshot we have not published, email <a href="mailto:support@stillwareltd.com">support@stillwareltd.com</a>. Critical coverage is welcome; we would rather be reviewed honestly than not at all.</p>
+    </div>
+  </header>
+
+  <section class="press-section">
+    <div class="container">
+      <h2>Fact sheet</h2>
+      <div class="facts">
+        <div class="fact"><span>Product</span><strong>Zeroed, a zero-based (envelope) budgeting app</strong></div>
+        <div class="fact"><span>Price</span><strong>$19.99 one-time. Founder price until 14 February 2027, then $39.99. All 1.x updates included. No subscription.</strong></div>
+        <div class="fact"><span>Trial</span><strong>34 days, fully unlocked, no card and no account. After the trial, unpaid copies become read-only: data stays viewable and exportable forever.</strong></div>
+        <div class="fact"><span>Privacy</span><strong>Fully offline. No account, no servers, no tracking. Data is AES-256 encrypted on the device. Optional sync goes through the user's own Google Drive, encrypted before upload.</strong></div>
+        <div class="fact"><span>Bank data</span><strong>No bank linking, by design. Imports CSV, PDF, OFX, QFX and QIF statements from any bank, with duplicate detection and an OCR receipt scanner.</strong></div>
+        <div class="fact"><span>Features</span><strong>Today view (safe to spend), bills calendar, goals, debt payoff planner (snowball and avalanche), net worth, reconciliation, reports.</strong></div>
+        <div class="fact"><span>Platforms</span><strong>Windows (Microsoft Store), Android (Google Play), macOS (notarized DMG). iOS in App Store review.</strong></div>
+        <div class="fact"><span>Known gaps</span><strong>No bank sync. No web app. No shared budgets yet.</strong></div>
+        <div class="fact"><span>Company</span><strong>Stillware Ltd, United Kingdom. Independent, self-funded, no investors.</strong></div>
+        <div class="fact"><span>Links</span><strong><a href="/zeroed/">Product page</a> · <a href="https://apps.microsoft.com/detail/9NCHJ67Q98C5" rel="noopener">Microsoft Store</a> · <a href="https://play.google.com/store/apps/details?id=com.stillwareltd.zeroed" rel="noopener">Google Play</a> · <a href="https://www.youtube.com/@Zeroed-Official" rel="noopener">YouTube</a> · <a href="https://alternativeto.net/software/zeroed/" rel="noopener">AlternativeTo</a></strong></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="press-section alt">
+    <div class="container">
+      <h2>Boilerplate</h2>
+      <p class="boiler"><strong>Short.</strong> Zeroed is a pay-once envelope budgeting app that works fully offline and keeps your financial data on your device. $19.99 once, no subscription. Windows, Android and macOS, from Stillware Ltd (UK).</p>
+      <p class="boiler"><strong>Long.</strong> Zeroed is a zero-based budgeting app you buy once and own. Instead of linking a bank account, it imports statements from any bank and keeps every transaction encrypted on the user's own device, with optional sync through their own Google Drive. It follows the classic envelope method, giving every pound or dollar a job, and adds a Today view for safe-to-spend, bills, goals, debt payoff planning and net worth. Zeroed is $19.99 at founder pricing until 14 February 2027, then $39.99, with all 1.x updates included and a 34-day fully unlocked trial that never asks for a card. Stillware Ltd is an independent UK studio that publishes only pay-once software.</p>
+    </div>
+  </section>
+
+  <section class="press-section">
+    <div class="container">
+      <h2>Logo</h2>
+      <div class="logos">
+        <figure><img src="/logo.png" alt="Zeroed app icon" width="160" height="160" /><figcaption><a href="/logo.png" download>logo.png</a> · app icon, PNG</figcaption></figure>
+        <figure><img src="/StillwareLtd_logo.png" alt="Stillware Ltd logo" width="160" height="160" /><figcaption><a href="/StillwareLtd_logo.png" download>StillwareLtd_logo.png</a> · company logo</figcaption></figure>
+      </div>
+      <p class="note">Please do not recolour, stretch or add effects to the icon. Dark backgrounds: use as is. Light backgrounds: use as is.</p>
+    </div>
+  </section>
+
+  <section class="press-section alt">
+    <div class="container">
+      <h2>Screenshots</h2>
+      <p class="note">Version 1.3.0. Click any image for the full-size file. More sizes and platforms on request.</p>
+      <div class="shots">
+        {screenshots.map((s) => (
+          <a href={s.src} target="_blank" rel="noopener"><img src={s.src} alt={s.alt} loading="lazy" /></a>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="press-section">
+    <div class="container">
+      <h2>Ground rules</h2>
+      <ul class="rules">
+        <li>Review keys are free and carry no conditions. Say "key provided" if your outlet requires disclosure; we never ask for a positive review.</li>
+        <li>We do not pay for coverage and do not run affiliate programmes.</li>
+        <li>Quotes: anything on this page may be quoted. For a comment on a specific topic, email us and expect a reply within two working days.</li>
+      </ul>
+    </div>
+  </section>
+</Layout>
+
+<style>
+  .press-hero { padding: 5rem 0 3rem; }
+  .eyebrow { text-transform: uppercase; letter-spacing: 0.12em; font-size: 0.8rem; opacity: 0.7; margin: 0 0 0.5rem; }
+  .press-hero h1 { font-size: clamp(2rem, 5vw, 3rem); margin: 0 0 1rem; }
+  .lead { max-width: 60ch; font-size: 1.1rem; line-height: 1.6; }
+  .press-section { padding: 3rem 0; }
+  .press-section.alt { background: rgba(127,127,127,0.06); }
+  .press-section h2 { margin: 0 0 1.5rem; font-size: 1.6rem; }
+  .facts { display: grid; gap: 0.75rem; }
+  .fact { display: grid; grid-template-columns: 9rem 1fr; gap: 1rem; padding: 0.9rem 0; border-bottom: 1px solid rgba(127,127,127,0.25); }
+  .fact span { text-transform: uppercase; font-size: 0.75rem; letter-spacing: 0.08em; opacity: 0.7; padding-top: 0.2rem; }
+  .fact strong { font-weight: 500; line-height: 1.55; }
+  .boiler { max-width: 75ch; line-height: 1.65; margin: 0 0 1.25rem; }
+  .logos { display: flex; gap: 2.5rem; flex-wrap: wrap; }
+  .logos figure { margin: 0; text-align: center; }
+  .logos img { display: block; margin: 0 auto 0.5rem; }
+  .logos figcaption { font-size: 0.85rem; opacity: 0.8; }
+  .shots { display: grid; grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); gap: 1rem; }
+  .shots img { width: 100%; height: auto; border-radius: 8px; border: 1px solid rgba(127,127,127,0.25); }
+  .note { opacity: 0.8; font-size: 0.95rem; }
+  .rules { line-height: 1.6; max-width: 75ch; padding-left: 1.2rem; }
+  @media (max-width: 600px) { .fact { grid-template-columns: 1fr; gap: 0.25rem; } }
+</style>

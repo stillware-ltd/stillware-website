@@ -16,7 +16,15 @@ interface Props {
 }
 
 const { title, description, canonical, ogImage, noindex = false } = Astro.props;
-const canonicalURL = canonical || new URL(Astro.url.pathname, Astro.site).href;
+// Netlify serves pretty URLs with a trailing slash and 301s the slash-less
+// form, and the sitemap lists slash URLs. Normalise every canonical to the
+// slash form so it never points at a redirecting URL (fixes /zeroed).
+function withTrailingSlash(href: string): string {
+  const u = new URL(href);
+  if (!u.pathname.endsWith('/') && !/\.[a-z0-9]+$/i.test(u.pathname)) u.pathname += '/';
+  return u.href;
+}
+const canonicalURL = withTrailingSlash(canonical || new URL(Astro.url.pathname, Astro.site).href);
 const ogImageURL = ogImage || new URL('/StillwareLtd_logo.png', Astro.site).href;
 ---
 
@@ -84,6 +92,32 @@ const ogImageURL = ogImage || new URL('/StillwareLtd_logo.png', Astro.site).href
     <Header currentPath={Astro.url.pathname} />
     <slot />
     <Footer />
+
+    <script is:inline>
+        // Store-click attribution: one GA4 event per click on any link that
+        // leads to a store listing or a direct download. Lets the scorecard
+        // tie YouTube / blog / Reddit sessions (?ref=...) to install intent.
+        document.addEventListener('click', function (ev) {
+            var a = ev.target && ev.target.closest ? ev.target.closest('a[href]') : null;
+            if (!a || typeof window.gtag !== 'function') return;
+            var href = a.href || '';
+            var store =
+                /play\.google\.com/.test(href) ? 'google_play' :
+                /apps\.microsoft\.com|microsoft\.com\/store/.test(href) ? 'microsoft_store' :
+                /apps\.apple\.com/.test(href) ? 'app_store' :
+                /\.dmg(\?|$)/.test(href) ? 'macos_dmg' :
+                /\.apk(\?|$)/.test(href) ? 'android_apk' :
+                /\/buy\//.test(href) ? 'buy_page' : null;
+            if (!store) return;
+            var ref = new URLSearchParams(location.search).get('ref') || '';
+            window.gtag('event', 'store_click', {
+                store: store,
+                link_url: href,
+                page_path: location.pathname,
+                ref: ref
+            });
+        }, true);
+    </script>
 
     <script>
         // Scroll Reveal
