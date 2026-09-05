@@ -97,6 +97,16 @@
     Content-Type = "image/svg+xml"
     Cache-Control = "public, max-age=2592000"
 
+# Dashboard moved under /dashboard/zeroed (2026-09-05)
+[[redirects]]
+  from = "/dashboard"
+  to = "/dashboard/zeroed/"
+  status = 301
+[[redirects]]
+  from = "/dashboard/"
+  to = "/dashboard/zeroed/"
+  status = 301
+
 # Private marketing dashboard (encrypted client-side; keep out of search)
 [[headers]]
   for = "/dashboard/*"
