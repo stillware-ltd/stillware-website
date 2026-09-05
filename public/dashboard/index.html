@@ -1,0 +1,162 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow, noarchive">
+<title>Zeroed Marketing Board</title>
+<style>
+  :root { --bg:#0f1115; --panel:#171a21; --line:#262b36; --fg:#e6e8ee; --mute:#8b93a7; --teal:#2dd4bf; --amber:#f5b942; --red:#f26d6d; --green:#5bd39a; }
+  * { box-sizing:border-box }
+  [hidden] { display:none !important }
+  body { margin:0; background:var(--bg); color:var(--fg); font:14px/1.45 Inter, system-ui, -apple-system, Segoe UI, Roboto, sans-serif; }
+  header { padding:18px 22px; border-bottom:1px solid var(--line); display:flex; gap:16px; align-items:baseline; flex-wrap:wrap }
+  header h1 { margin:0; font-size:18px; letter-spacing:.2px }
+  header .gen { color:var(--mute); font-size:12px }
+  main { padding:18px 22px; display:grid; gap:18px; grid-template-columns:repeat(auto-fit,minmax(340px,1fr)); }
+  section { background:var(--panel); border:1px solid var(--line); border-radius:10px; padding:14px 16px; min-width:0 }
+  section.wide { grid-column:1/-1 }
+  h2 { margin:0 0 10px; font-size:13px; text-transform:uppercase; letter-spacing:.12em; color:var(--mute) }
+  table { width:100%; border-collapse:collapse; font-size:13px }
+  th, td { text-align:left; padding:6px 8px; border-bottom:1px solid var(--line); vertical-align:top }
+  th { color:var(--mute); font-weight:600; font-size:11px; text-transform:uppercase; letter-spacing:.08em }
+  td.num { text-align:right; font-variant-numeric:tabular-nums }
+  .scroll { overflow-x:auto }
+  .pill { display:inline-block; padding:1px 8px; border-radius:999px; font-size:11px; font-weight:600; border:1px solid var(--line); color:var(--mute) }
+  .pill.live, .pill.active, .pill.done { color:var(--green); border-color:var(--green) }
+  .pill.scheduled, .pill.pending, .pill.open { color:var(--amber); border-color:var(--amber) }
+  .pill.blocked, .pill.warn, .pill.act { color:var(--red); border-color:var(--red) }
+  .pill.info { color:var(--teal); border-color:var(--teal) }
+  .rec { padding:8px 10px; border-left:3px solid var(--line); margin:6px 0; background:#12151b; border-radius:0 6px 6px 0 }
+  .rec.act { border-color:var(--red) } .rec.warn { border-color:var(--amber) } .rec.info { border-color:var(--teal) }
+  .rec small { color:var(--mute); margin-right:8px; text-transform:uppercase; letter-spacing:.08em; font-size:10px }
+  .kpis { display:grid; grid-template-columns:repeat(auto-fit,minmax(130px,1fr)); gap:10px }
+  .kpi { background:#12151b; border:1px solid var(--line); border-radius:8px; padding:10px 12px }
+  .kpi .l { color:var(--mute); font-size:11px; text-transform:uppercase; letter-spacing:.08em }
+  .kpi .v { font-size:22px; font-weight:700; margin-top:2px; font-variant-numeric:tabular-nums }
+  .kpi .d { color:var(--mute); font-size:11px }
+  .kpi .d.up { color:var(--green) } .kpi .d.down { color:var(--red) }
+  svg.spark { width:100%; height:28px; display:block; margin-top:4px }
+  a { color:var(--teal); text-decoration:none } a:hover { text-decoration:underline }
+  #gate { position:fixed; inset:0; background:var(--bg); display:flex; align-items:center; justify-content:center; flex-direction:column; gap:12px }
+  #gate input { font-size:16px; padding:10px 12px; border-radius:8px; border:1px solid var(--line); background:var(--panel); color:var(--fg); width:280px }
+  #gate button { font-size:14px; padding:10px 16px; border-radius:8px; border:0; background:var(--teal); color:#062a26; font-weight:700; cursor:pointer }
+  #gate .err { color:var(--red); min-height:18px; font-size:13px }
+  .mute { color:var(--mute) }
+  .tiny { font-size:11px; color:var(--mute) }
+</style>
+</head>
+<body>
+<div id="gate">
+  <div style="font-weight:700;font-size:16px">Zeroed Marketing Board</div>
+  <form id="gf" style="display:contents" autocomplete="on"><input id="pp" type="password" placeholder="passphrase" autocomplete="current-password" autofocus>
+  <button id="go" type="submit">Open</button></form>
+  <div class="err" id="err"></div>
+</div>
+<header hidden id="hdr"><h1>Zeroed Marketing Board</h1><span class="gen" id="gen"></span><span class="gen"><a href="#" id="lock">lock</a></span></header>
+<main hidden id="main"></main>
+<script>
+(async function () {
+  const $ = (s) => document.querySelector(s);
+  const b64 = (s) => Uint8Array.from(atob(s), (c) => c.charCodeAt(0));
+  async function decrypt(pass, blob) {
+    const km = await crypto.subtle.importKey("raw", new TextEncoder().encode(pass), "PBKDF2", false, ["deriveKey"]);
+    const key = await crypto.subtle.deriveKey({ name: "PBKDF2", salt: b64(blob.salt), iterations: 250000, hash: "SHA-256" }, km, { name: "AES-GCM", length: 256 }, false, ["decrypt"]);
+    const pt = await crypto.subtle.decrypt({ name: "AES-GCM", iv: b64(blob.iv) }, key, b64(blob.ct));
+    return JSON.parse(new TextDecoder().decode(pt));
+  }
+  let blob;
+  try { blob = await (await fetch("data.enc?ts=" + Date.now(), { cache: "no-store" })).json(); } catch (e) { $("#err").textContent = "data.enc missing"; return; }
+  async function tryOpen(pass, remember) {
+    try {
+      const data = await decrypt(pass, blob);
+      if (remember) { try { sessionStorage.setItem("zb_pp", pass); } catch (e) {} }
+      render(data);
+    } catch (e) { $("#err").textContent = "wrong passphrase"; }
+  }
+  $("#gf").onsubmit = (e) => { e.preventDefault(); tryOpen($("#pp").value, true); };
+  $("#pp").addEventListener("keydown", (e) => { if (e.key === "Enter") { e.preventDefault(); tryOpen($("#pp").value, true); } });
+  $("#lock").onclick = (e) => { e.preventDefault(); try { sessionStorage.removeItem("zb_pp"); } catch (x) {} location.reload(); };
+  let saved = null; try { saved = sessionStorage.getItem("zb_pp"); } catch (e) {}
+  if (saved) tryOpen(saved, false);
+
+  const esc = (s) => String(s ?? "").replace(/[&<>"]/g, (c) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" }[c]));
+  const pill = (s) => `<span class="pill ${esc(String(s || "").toLowerCase())}">${esc(s || "")}</span>`;
+  const fmt = (v) => typeof v === "number" ? v.toLocaleString("en-GB", { maximumFractionDigits: 2 }) : esc(v);
+  const day = (iso) => (iso || "").slice(0, 10);
+  const when = (iso) => (iso || "").replace("T", " ").slice(0, 16);
+
+  function spark(vals) {
+    if (vals.length < 2) return "";
+    const w = 100, h = 28, mn = Math.min(...vals), mx = Math.max(...vals);
+    const pts = vals.map((v, i) => `${(i / (vals.length - 1)) * w},${h - 2 - ((v - mn) / (mx - mn || 1)) * (h - 4)}`).join(" ");
+    return `<svg class="spark" viewBox="0 0 ${w} ${h}" preserveAspectRatio="none"><polyline fill="none" stroke="#2dd4bf" stroke-width="1.5" points="${pts}"/></svg>`;
+  }
+
+  function render(d) {
+    $("#gate").hidden = true; $("#hdr").hidden = false; $("#main").hidden = false;
+    $("#gen").textContent = "data " + when(d.generated) + " UK";
+    const m = d.metrics || [];
+    const series = (ch, met, ref, period) => m.filter((x) => x.channel === ch && x.metric === met && (ref === undefined || x.ref === ref) && (period === undefined || x.period === period));
+    const last = (ch, met, ref, period) => { const s = series(ch, met, ref, period); return s.length ? s[s.length - 1] : null; };
+    const kpi = (label, ch, met, ref, period, unit = "") => {
+      const s = series(ch, met, ref, period); const l = s[s.length - 1]; const p = s[s.length - 2];
+      let delta = "";
+      if (l && p && typeof l.value === "number" && typeof p.value === "number") { const dv = l.value - p.value; delta = `<div class="d ${dv > 0 ? "up" : dv < 0 ? "down" : ""}">${dv > 0 ? "+" : ""}${fmt(dv)} since ${day(p.ts)}</div>`; }
+      return `<div class="kpi"><div class="l">${esc(label)}</div><div class="v">${l ? fmt(l.value) + unit : "<span class=mute>—</span>"}</div>${delta}${l ? `<div class="tiny">${day(l.ts)}</div>` : ""}${spark(s.map((x) => x.value).filter((v) => typeof v === "number"))}</div>`;
+    };
+
+    const recs = (d.recommendations?.items || []);
+    const order = { act: 0, warn: 1, info: 2 };
+    const recHtml = recs.slice().sort((a, b) => order[a.level] - order[b.level]).map((r) => `<div class="rec ${esc(r.level)}"><small>${esc(r.channel)}</small>${esc(r.text)}</div>`).join("") || "<div class=mute>no recommendations</div>";
+
+    const rev = `<div class="kpis">
+      ${kpi("Net £ MTD", "revenue", "net_gbp_mtd", undefined, undefined)}
+      ${kpi("Sales MTD", "revenue", "sales_mtd")}
+      ${kpi("Trials active", "revenuecat", "active_trials")}
+      ${kpi("Trial→paid %", "revenuecat", "trial_conversion_pct", undefined, undefined, "%")}
+      ${kpi("Paddle sales (all)", "paddle", "transactions_total")}
+      ${kpi("Play installs 28d", "play", "installs", undefined, "28d")}
+      ${kpi("MS installs 28d", "microsoft", "installs", undefined, "28d")}
+      ${kpi("Subscribers", "youtube", "subscribers")}
+    </div>`;
+
+    const chans = (d.channels || []).map((c) => {
+      const lastM = m.filter((x) => x.channel === c.id).slice(-1)[0];
+      return `<tr><td><a href="${esc(c.url)}" target="_blank" rel="noopener">${esc(c.name)}</a><div class="tiny">${esc(c.cadence || "")}</div></td><td>${pill(c.status)}</td><td>${esc(c.owner)}</td><td>${esc(c.next || "")}</td><td class="tiny">${lastM ? day(lastM.ts) : "—"}</td></tr>`;
+    }).join("");
+
+    const vids = (d.videos || []).slice().sort((a, b) => (b.published || "").localeCompare(a.published || "")).map((v) => {
+      const cell = (met, period, unit = "") => { const l = last("youtube", met, v.id, period); return l ? fmt(l.value) + unit : "—"; };
+      const url = v.type === "short" ? `https://youtube.com/shorts/${v.id}` : `https://youtu.be/${v.id}`;
+      return `<tr><td>${pill(v.type)}</td><td><a href="${url}" target="_blank" rel="noopener">${esc(v.title)}</a><div class="tiny">${esc(v.id)} · ${esc(v.thumb || "")}</div></td><td>${pill(v.status)}<div class="tiny">${when(v.published)}</div></td>
+        <td class="num">${cell("views", "24h")}</td><td class="num">${cell("views", "7d")}</td><td class="num">${cell("views", "28d")}</td><td class="num">${cell("ctr_pct", "7d", "%")}</td><td class="num">${cell("avd_pct", "7d", "%")}</td><td class="num">${v.type === "short" ? cell("viewed_vs_swiped_pct", undefined, "%") : cell("store_clicks")}</td><td class="num">${cell("related_clicks")}</td><td>${v.qc_clean === true ? pill("done") : v.qc_clean === false ? pill("blocked") : "—"}</td></tr>`;
+    }).join("");
+
+    const nowIso = new Date().toISOString();
+    const sched = (d.schedule || []).filter((e) => e.status === "scheduled").sort((a, b) => a.when.localeCompare(b.when)).map((e) => `<tr><td class="tiny">${when(e.when)}</td><td>${esc(e.what)}</td><td>${esc(e.channel)}</td><td>${e.when < nowIso ? pill("warn") : pill("scheduled")}</td></tr>`).join("");
+    const done = (d.schedule || []).filter((e) => e.status !== "scheduled").sort((a, b) => (b.closed || "").localeCompare(a.closed || "")).slice(0, 15).map((e) => `<tr><td class="tiny">${when(e.when)}</td><td>${esc(e.what)}</td><td>${esc(e.channel)}</td><td>${pill(e.status)}</td></tr>`).join("");
+    const tasks = (d.tasks || []).filter((t) => t.status === "open").sort((a, b) => (a.due || "9").localeCompare(b.due || "9")).map((t) => `<tr><td class="tiny">${esc(t.due || "")}</td><td>${esc(t.title)}</td><td>${esc(t.channel)}</td><td>${esc(t.owner)}</td><td>${pill(t.kind === "blocked" ? "blocked" : "open")}</td></tr>`).join("");
+    const doneTasks = (d.tasks || []).filter((t) => t.status === "done").sort((a, b) => (b.done || "").localeCompare(a.done || "")).slice(0, 15).map((t) => `<tr><td class="tiny">${day(t.done)}</td><td>${esc(t.title)}</td><td>${esc(t.channel)}</td><td>${esc(t.owner)}</td><td>${pill("done")}</td></tr>`).join("");
+    const decisions = (d.decisions || []).slice().reverse().map((x) => `<div class="rec"><small>${day(x.ts)} · ${esc(x.by)}</small>${esc(x.text)}</div>`).join("");
+
+    const byChannel = {};
+    for (const x of m) { const k = x.channel + "|" + x.metric + "|" + (x.ref || "") + "|" + (x.period || ""); byChannel[k] = x; }
+    const metricRows = Object.values(byChannel).sort((a, b) => (a.channel + a.metric).localeCompare(b.channel + b.metric)).map((x) => `<tr><td>${esc(x.channel)}</td><td>${esc(x.metric)}</td><td class="tiny">${esc(x.ref || "")}</td><td class="tiny">${esc(x.period || "")}</td><td class="num">${fmt(x.value)}</td><td class="tiny">${when(x.ts)}</td><td class="tiny">${esc(x.note || "")}</td></tr>`).join("");
+
+    $("#main").innerHTML = `
+      <section class="wide"><h2>Recommendations</h2>${recHtml}</section>
+      <section class="wide"><h2>Revenue and funnel</h2>${rev}</section>
+      <section class="wide"><h2>Channels</h2><div class="scroll"><table><thead><tr><th>Channel</th><th>Status</th><th>Owner</th><th>Next action</th><th>Last read</th></tr></thead><tbody>${chans}</tbody></table></div></section>
+      <section class="wide"><h2>YouTube videos and Shorts</h2><div class="scroll"><table><thead><tr><th></th><th>Title</th><th>State</th><th>24h</th><th>7d</th><th>28d</th><th>CTR 7d</th><th>AVD 7d</th><th>Clicks / swipe</th><th>Related</th><th>QC</th></tr></thead><tbody>${vids || "<tr><td colspan=11 class=mute>none</td></tr>"}</tbody></table></div></section>
+      <section><h2>Upcoming scheduled</h2><div class="scroll"><table><thead><tr><th>When (UK)</th><th>What</th><th>Channel</th><th></th></tr></thead><tbody>${sched || "<tr><td colspan=4 class=mute>nothing scheduled</td></tr>"}</tbody></table></div></section>
+      <section><h2>Open tasks</h2><div class="scroll"><table><thead><tr><th>Due</th><th>Task</th><th>Channel</th><th>Owner</th><th></th></tr></thead><tbody>${tasks || "<tr><td colspan=5 class=mute>none</td></tr>"}</tbody></table></div></section>
+      <section><h2>Completed events</h2><div class="scroll"><table><thead><tr><th>When</th><th>What</th><th>Channel</th><th></th></tr></thead><tbody>${done || "<tr><td colspan=4 class=mute>none yet</td></tr>"}</tbody></table></div></section>
+      <section><h2>Completed tasks</h2><div class="scroll"><table><thead><tr><th>Done</th><th>Task</th><th>Channel</th><th>Owner</th><th></th></tr></thead><tbody>${doneTasks || "<tr><td colspan=5 class=mute>none yet</td></tr>"}</tbody></table></div></section>
+      <section class="wide"><h2>Decision log</h2>${decisions || "<div class=mute>empty</div>"}</section>
+      <section class="wide"><h2>All latest metrics</h2><div class="scroll"><table><thead><tr><th>Channel</th><th>Metric</th><th>Ref</th><th>Period</th><th>Value</th><th>Read at</th><th>Note</th></tr></thead><tbody>${metricRows}</tbody></table></div></section>`;
+  }
+})();
+</script>
+</body>
+</html>

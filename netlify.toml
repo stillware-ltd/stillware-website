@@ -96,3 +96,10 @@
   [headers.values]
     Content-Type = "image/svg+xml"
     Cache-Control = "public, max-age=2592000"
+
+# Private marketing dashboard (encrypted client-side; keep out of search)
+[[headers]]
+  for = "/dashboard/*"
+  [headers.values]
+    X-Robots-Tag = "noindex, nofollow, noarchive"
+    Cache-Control = "no-store"
