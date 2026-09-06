@@ -106,6 +106,7 @@ const ogImageURL = ogImage || new URL('/StillwareLtd_logo.png', Astro.site).href
                 /apps\.microsoft\.com|microsoft\.com\/store/.test(href) ? 'microsoft_store' :
                 /apps\.apple\.com/.test(href) ? 'app_store' :
                 /\.dmg(\?|$)/.test(href) ? 'macos_dmg' :
+                /\.exe(\?|$)/.test(href) ? 'windows_exe' :
                 /\.apk(\?|$)/.test(href) ? 'android_apk' :
                 /\/buy\//.test(href) ? 'buy_page' : null;
             if (!store) return;
