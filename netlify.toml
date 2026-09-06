@@ -36,6 +36,11 @@
   to = "/.netlify/functions/trial-status"
   status = 200
 
+[[redirects]]
+  from = "/api/dashboard/ops"
+  to = "/.netlify/functions/dashboard-ops"
+  status = 200
+
 # Services line retired 2026-08 — redirect old URLs home
 [[redirects]]
   from = "/services"
