@@ -29,7 +29,7 @@
   .pill.info { color:var(--teal); border-color:var(--teal) }
   .rec { padding:8px 10px; border-left:3px solid var(--line); margin:6px 0; background:#12151b; border-radius:0 6px 6px 0 }
   .rec.act { border-color:var(--red) } .rec.warn { border-color:var(--amber) } .rec.info { border-color:var(--teal) }
-  .rec small { color:var(--mute); margin-right:8px; text-transform:uppercase; letter-spacing:.08em; font-size:10px }
+  .rec { display:flex; align-items:baseline; gap:10px; flex-wrap:wrap } .rec small { color:var(--mute); flex:0 0 auto; min-width:86px; text-transform:uppercase; letter-spacing:.08em; font-size:10px }
   .kpis { display:grid; grid-template-columns:repeat(auto-fit,minmax(130px,1fr)); gap:10px }
   .kpi { background:#12151b; border:1px solid var(--line); border-radius:8px; padding:10px 12px }
   .kpi .l { color:var(--mute); font-size:11px; text-transform:uppercase; letter-spacing:.08em }
@@ -108,7 +108,7 @@
 
     const recs = (d.recommendations?.items || []);
     const order = { act: 0, warn: 1, info: 2 };
-    const recHtml = recs.slice().sort((a, b) => order[a.level] - order[b.level]).map((r) => `<div class="rec ${esc(r.level)}"><small>${esc(r.channel)}</small>${esc(r.text)}</div>`).join("") || "<div class=mute>no recommendations</div>";
+    const recHtml = recs.slice().sort((a, b) => order[a.level] - order[b.level]).map((r) => `<div class="rec ${esc(r.level)}"><small>${esc(r.channel)}</small><span>${esc(r.text)}</span></div>`).join("") || "<div class=mute>no recommendations</div>";
 
     const rev = `<div class="kpis">
       ${kpi("Net £ MTD", "revenue", "net_gbp_mtd", undefined, undefined)}
