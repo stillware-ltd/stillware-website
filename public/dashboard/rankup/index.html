@@ -1,0 +1,652 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow, noarchive">
+<title>RankUp Chess Marketing Board</title>
+<style>
+  :root { --bg:#0f1115; --panel:#171a21; --panel2:#12151b; --line:#262b36; --line2:#323848; --fg:#e6e8ee; --mute:#8b93a7; --teal:#2dd4bf; --amber:#f5b942; --red:#f26d6d; --green:#5bd39a; --blue:#7aa2f7; --purple:#c099ff; }
+  * { box-sizing:border-box }
+  [hidden] { display:none !important }
+  html { scroll-behavior:smooth }
+  body { margin:0; background:var(--bg); color:var(--fg); font:14px/1.45 Inter, system-ui, -apple-system, Segoe UI, Roboto, sans-serif; }
+  header { position:sticky; top:0; z-index:20; background:rgba(15,17,21,.92); backdrop-filter:blur(8px); padding:12px 22px; border-bottom:1px solid var(--line); display:flex; gap:14px; align-items:center; flex-wrap:wrap }
+  header h1 { margin:0; font-size:17px; letter-spacing:.2px; white-space:nowrap }
+  header .gen { color:var(--mute); font-size:12px }
+  header nav { display:flex; gap:2px; flex-wrap:wrap; margin-left:auto }
+  header nav a { color:var(--mute); padding:4px 9px; border-radius:6px; font-size:12px; font-weight:600 }
+  header nav a:hover { color:var(--fg); background:var(--panel2); text-decoration:none }
+  main { padding:18px 22px; display:grid; gap:18px; grid-template-columns:repeat(auto-fit,minmax(340px,1fr)); }
+  section { background:var(--panel); border:1px solid var(--line); border-radius:10px; padding:14px 16px; min-width:0; scroll-margin-top:64px }
+  section.wide { grid-column:1/-1 }
+  h2 { margin:0 0 10px; font-size:13px; text-transform:uppercase; letter-spacing:.12em; color:var(--mute); display:flex; align-items:center; gap:10px; flex-wrap:wrap }
+  h2 .cnt { font-weight:500; color:var(--mute); opacity:.8 }
+  h2 .tools { margin-left:auto; display:flex; gap:6px; align-items:center; text-transform:none; letter-spacing:0; font-size:12px; flex-wrap:wrap }
+  table { width:100%; border-collapse:collapse; font-size:13px }
+  th, td { text-align:left; padding:6px 8px; border-bottom:1px solid var(--line); vertical-align:top }
+  th { color:var(--mute); font-weight:600; font-size:11px; text-transform:uppercase; letter-spacing:.08em; white-space:nowrap }
+  th.sortable { cursor:pointer; user-select:none } th.sortable:hover { color:var(--fg) }
+  th.sortable::after { content:"↕"; opacity:.35; margin-left:4px; font-size:10px } th.sortable.asc::after { content:"↑"; opacity:1 } th.sortable.desc::after { content:"↓"; opacity:1 }
+  td.num { text-align:right; font-variant-numeric:tabular-nums }
+  tr.row { cursor:pointer } tr.row:hover td { background:#1b1f28 }
+  tr.detail td { background:#0e1116; padding:10px 14px }
+  .scroll { overflow-x:auto }
+  .pill { display:inline-block; padding:1px 8px; border-radius:999px; font-size:11px; font-weight:600; border:1px solid var(--line); color:var(--mute); white-space:nowrap }
+  .pill.live, .pill.active, .pill.done { color:var(--green); border-color:var(--green) }
+  .pill.scheduled, .pill.pending, .pill.open, .pill.unlisted { color:var(--amber); border-color:var(--amber) }
+  .pill.blocked, .pill.warn, .pill.act, .pill.missed { color:var(--red); border-color:var(--red) }
+  .pill.info, .pill.long, .pill.short, .pill.trailer { color:var(--teal); border-color:var(--teal) }
+  .pill.retired { opacity:.6 }
+  .rec { padding:8px 10px; border-left:3px solid var(--line); margin:6px 0; background:var(--panel2); border-radius:0 6px 6px 0; display:flex; align-items:baseline; gap:10px; flex-wrap:wrap }
+  .rec.act { border-color:var(--red) } .rec.warn { border-color:var(--amber) } .rec.info { border-color:var(--teal) }
+  .rec small { color:var(--mute); flex:0 0 auto; min-width:86px; text-transform:uppercase; letter-spacing:.08em; font-size:10px }
+  .rec small.link { cursor:pointer } .rec small.link:hover { color:var(--teal) }
+  .rec .x { margin-left:auto; color:var(--mute); cursor:pointer; font-size:12px; opacity:0; transition:opacity .15s } .rec:hover .x { opacity:1 } .rec .x:hover { color:var(--fg) }
+  .rec.snoozed { opacity:.45 }
+  .kpis { display:grid; grid-template-columns:repeat(auto-fit,minmax(140px,1fr)); gap:10px }
+  .kpi { background:var(--panel2); border:1px solid var(--line); border-radius:8px; padding:10px 12px; cursor:pointer; transition:border-color .15s, transform .15s; position:relative }
+  .kpi:hover { border-color:var(--teal); transform:translateY(-1px) }
+  .kpi .l { color:var(--mute); font-size:11px; text-transform:uppercase; letter-spacing:.08em }
+  .kpi .v { font-size:22px; font-weight:700; margin-top:2px; font-variant-numeric:tabular-nums }
+  .kpi .d { color:var(--mute); font-size:11px } .kpi .d.up { color:var(--green) } .kpi .d.down { color:var(--red) }
+  svg.spark { width:100%; height:28px; display:block; margin-top:4px; overflow:visible }
+  a { color:var(--teal); text-decoration:none } a:hover { text-decoration:underline }
+  .mute { color:var(--mute) } .tiny { font-size:11px; color:var(--mute) } .mono { font-family:ui-monospace, SFMono-Regular, Menlo, Consolas, monospace; font-size:11px }
+  button, .btn { font:inherit; font-size:12px; font-weight:600; padding:5px 10px; border-radius:6px; border:1px solid var(--line2); background:var(--panel2); color:var(--fg); cursor:pointer; white-space:nowrap }
+  button:hover, .btn:hover { border-color:var(--teal); text-decoration:none }
+  button.primary { background:var(--teal); color:#062a26; border-color:var(--teal) } button.primary:hover { filter:brightness(1.08) }
+  button.danger:hover { border-color:var(--red); color:var(--red) }
+  button.sm { padding:2px 8px; font-size:11px }
+  input, select, textarea { font:inherit; font-size:13px; padding:6px 9px; border-radius:6px; border:1px solid var(--line2); background:var(--panel2); color:var(--fg); outline:none }
+  input:focus, select:focus, textarea:focus { border-color:var(--teal) }
+  input::placeholder { color:#5d6577 }
+  .chips { display:inline-flex; gap:4px; flex-wrap:wrap }
+  .chip { padding:3px 9px; border-radius:999px; border:1px solid var(--line2); color:var(--mute); font-size:11px; font-weight:600; cursor:pointer; user-select:none; background:transparent }
+  .chip:hover { color:var(--fg) } .chip.on { color:#062a26; background:var(--teal); border-color:var(--teal) }
+  /* board */
+  .toolbar { display:flex; gap:8px; align-items:center; flex-wrap:wrap; margin-bottom:12px }
+  .toolbar input[type=search] { min-width:200px }
+  .board { display:grid; grid-template-columns:repeat(5, minmax(220px, 1fr)); gap:10px; overflow-x:auto; padding-bottom:6px; align-items:start }
+  .col { background:var(--panel2); border:1px solid var(--line); border-radius:8px; min-height:120px; display:flex; flex-direction:column; transition:border-color .15s, background .15s }
+  .col.over { border-color:var(--teal); background:#12201e }
+  .col h3 { margin:0; padding:9px 10px 7px; font-size:11px; text-transform:uppercase; letter-spacing:.1em; color:var(--mute); display:flex; align-items:center; gap:6px; border-bottom:1px solid var(--line) }
+  .col h3 .n { background:var(--panel); border:1px solid var(--line); border-radius:999px; padding:0 7px; font-size:10px; color:var(--mute) }
+  .col h3 .dot { width:8px; height:8px; border-radius:50%; background:var(--mute) }
+  .col[data-stage=inprogress] h3 .dot { background:var(--blue) } .col[data-stage=blocked] h3 .dot { background:var(--red) } .col[data-stage=done] h3 .dot { background:var(--green) } .col[data-stage=todo] h3 .dot { background:var(--amber) }
+  .col .cards { padding:8px; display:flex; flex-direction:column; gap:8px; min-height:60px; flex:1 }
+  .card { background:var(--panel); border:1px solid var(--line); border-radius:7px; padding:8px 10px; cursor:grab; user-select:none; transition:border-color .12s, box-shadow .12s, opacity .12s; position:relative }
+  .card:hover { border-color:var(--line2); box-shadow:0 2px 10px rgba(0,0,0,.35) }
+  .card.dragging { opacity:.35 } .card.sel { border-color:var(--teal); box-shadow:0 0 0 1px var(--teal) inset }
+  .card .t { font-size:13px; line-height:1.35; margin-bottom:6px; display:-webkit-box; -webkit-line-clamp:3; -webkit-box-orient:vertical; overflow:hidden }
+  .col[data-stage=done] .card .t { color:var(--mute); text-decoration:line-through; text-decoration-color:#3a4150 }
+  .col[data-stage=blocked] .card { border-left:3px solid var(--red) }
+  .card .m { display:flex; align-items:center; gap:6px; flex-wrap:wrap; font-size:11px; color:var(--mute) }
+  .card .key { font-family:ui-monospace, Menlo, Consolas, monospace; font-size:10px; color:var(--mute); margin-left:auto }
+  .tag { padding:1px 7px; border-radius:4px; font-size:10px; font-weight:700; letter-spacing:.02em; background:var(--tagbg, #23283a); color:var(--tagfg, var(--mute)) }
+  .av { width:18px; height:18px; border-radius:50%; display:inline-flex; align-items:center; justify-content:center; font-size:10px; font-weight:700; color:#0b0d12 }
+  .av.claude { background:var(--teal) } .av.user { background:var(--amber) }
+  .due { font-variant-numeric:tabular-nums } .due.over { color:var(--red); font-weight:600 } .due.today { color:var(--amber); font-weight:600 } .due.soon { color:var(--amber) }
+  .prio { font-weight:800; font-size:12px; width:12px; display:inline-block; text-align:center } .prio.high { color:var(--red) } .prio.medium { color:var(--amber) } .prio.low { color:var(--blue) }
+  .ph { height:6px; border-radius:3px; background:var(--teal); opacity:.7; margin:-2px 0 }
+  .add { margin:0 8px 8px; padding:6px 8px; border-radius:6px; color:var(--mute); font-size:12px; cursor:pointer; border:1px dashed transparent }
+  .add:hover { background:var(--panel); color:var(--fg); border-color:var(--line2) }
+  .add input { width:100%; font-size:12px }
+  .empty { color:#4c5364; font-size:12px; text-align:center; padding:14px 6px; border:1px dashed var(--line); border-radius:6px }
+  /* drawer */
+  #drawer { position:fixed; top:0; right:0; bottom:0; width:min(460px, 100vw); background:var(--panel); border-left:1px solid var(--line); z-index:40; transform:translateX(100%); transition:transform .18s ease; display:flex; flex-direction:column; box-shadow:-12px 0 40px rgba(0,0,0,.4) }
+  #drawer.open { transform:none }
+  #drawer .dh { padding:12px 16px; border-bottom:1px solid var(--line); display:flex; align-items:center; gap:10px }
+  #drawer .dh .key { font-family:ui-monospace, Menlo, Consolas, monospace; font-size:11px; color:var(--mute) }
+  #drawer .db { padding:14px 16px; overflow:auto; flex:1; display:flex; flex-direction:column; gap:12px }
+  #drawer .df { padding:10px 16px; border-top:1px solid var(--line); display:flex; gap:8px; align-items:center }
+  #drawer label { display:block; font-size:10px; text-transform:uppercase; letter-spacing:.08em; color:var(--mute); margin-bottom:4px }
+  #drawer textarea { width:100%; resize:vertical; min-height:70px }
+  #drawer input, #drawer select { width:100% }
+  #drawer .title { font-size:16px; font-weight:600; line-height:1.3; padding:6px 8px }
+  .grid2 { display:grid; grid-template-columns:1fr 1fr; gap:10px }
+  .act { font-size:11px; color:var(--mute); line-height:1.6 }
+  /* modal */
+  #modal { position:fixed; inset:0; background:rgba(0,0,0,.6); z-index:50; display:flex; align-items:center; justify-content:center; padding:20px }
+  #modal .box { background:var(--panel); border:1px solid var(--line); border-radius:10px; width:min(760px, 100%); max-height:90vh; overflow:auto; padding:16px 18px }
+  #modal h3 { margin:0 0 6px; font-size:15px }
+  svg.chart { width:100%; height:220px; display:block; margin:8px 0 }
+  .tip { position:fixed; z-index:60; background:#0b0d12; border:1px solid var(--line2); color:var(--fg); font-size:11px; padding:4px 8px; border-radius:6px; pointer-events:none; white-space:nowrap }
+  /* toast */
+  #toast { position:fixed; left:50%; bottom:22px; transform:translateX(-50%); background:#0b0d12; border:1px solid var(--line2); color:var(--fg); padding:9px 14px; border-radius:8px; z-index:70; display:flex; gap:12px; align-items:center; font-size:13px; box-shadow:0 8px 30px rgba(0,0,0,.5) }
+  #toast button { padding:3px 9px }
+  .sync { font-size:11px; padding:3px 9px; border-radius:999px; border:1px solid var(--line2); color:var(--mute); display:inline-flex; gap:6px; align-items:center; cursor:default }
+  .sync i { width:7px; height:7px; border-radius:50%; background:var(--mute); display:inline-block }
+  .sync.ok i { background:var(--green) } .sync.queued i { background:var(--amber) } .sync.err i { background:var(--red) }
+  .rel { font-variant-numeric:tabular-nums } .rel.over { color:var(--red) } .rel.soon { color:var(--amber) }
+  #gate { position:fixed; inset:0; background:var(--bg); display:flex; align-items:center; justify-content:center; flex-direction:column; gap:12px; z-index:100 }
+  #gate input { font-size:16px; padding:10px 12px; border-radius:8px; border:1px solid var(--line); background:var(--panel); color:var(--fg); width:280px }
+  #gate button { font-size:14px; padding:10px 16px; border-radius:8px; border:0; background:var(--teal); color:#062a26; font-weight:700; cursor:pointer }
+  #gate .err { color:var(--red); min-height:18px; font-size:13px }
+  kbd { font:11px ui-monospace, Menlo, Consolas, monospace; background:var(--panel2); border:1px solid var(--line2); border-bottom-width:2px; border-radius:4px; padding:0 5px; color:var(--mute) }
+  .dec { padding:8px 10px; border-left:3px solid var(--line); margin:6px 0; background:var(--panel2); border-radius:0 6px 6px 0 }
+  .dec small { display:block; color:var(--mute); font-size:10px; text-transform:uppercase; letter-spacing:.08em; margin-bottom:2px }
+  .dec.user { border-color:var(--amber) } .dec.claude { border-color:var(--teal) }
+  .dec.new { border-style:dashed }
+  mark { background:#3b3517; color:var(--fg); border-radius:2px; padding:0 1px }
+  @media (max-width: 900px) { .board { grid-template-columns:repeat(5, 240px) } }
+</style>
+</head>
+<body>
+<div id="gate">
+  <div style="font-weight:700;font-size:16px">RankUp Chess Marketing Board</div>
+  <form id="gf" style="display:contents" autocomplete="on"><input id="pp" type="password" placeholder="passphrase" autocomplete="current-password" autofocus>
+  <button id="go" type="submit">Open</button></form>
+  <div class="err" id="err"></div>
+</div>
+<header hidden id="hdr">
+  <h1>RankUp Chess Marketing Board</h1>
+  <span class="gen" id="gen"></span>
+  <span class="sync" id="sync" title=""><i></i><span>connecting</span></span>
+  <nav>
+    <a href="#recs">Recs</a><a href="#kpis">Funnel</a><a href="#board">Board</a><a href="#sched">Schedule</a><a href="#channels">Channels</a><a href="#videos">Videos</a><a href="#decisions">Decisions</a><a href="#metrics">Metrics</a>
+    <a href="#" id="lock" title="forget passphrase">lock</a>
+  </nav>
+</header>
+<main hidden id="main"></main>
+<aside id="drawer" aria-hidden="true"></aside>
+<div id="modal" hidden></div>
+<div id="toast" hidden></div>
+<script>
+(async function () {
+  "use strict";
+  const $ = (s, r = document) => r.querySelector(s);
+  const $$ = (s, r = document) => Array.from(r.querySelectorAll(s));
+  const b64 = (s) => Uint8Array.from(atob(s), (c) => c.charCodeAt(0));
+  const API = (window.ZB_API || "/api/dashboard/ops") + "?b=rankup&";
+  const STAGES = [["backlog", "Backlog"], ["todo", "To do"], ["inprogress", "In progress"], ["blocked", "Blocked"], ["done", "Done"]];
+  const PRIOS = ["high", "medium", "low"];
+
+  // ------------------------------------------------------------------ crypto / gate
+  async function decrypt(pass, blob) {
+    const km = await crypto.subtle.importKey("raw", new TextEncoder().encode(pass), "PBKDF2", false, ["deriveKey"]);
+    const key = await crypto.subtle.deriveKey({ name: "PBKDF2", salt: b64(blob.salt), iterations: 250000, hash: "SHA-256" }, km, { name: "AES-GCM", length: 256 }, false, ["decrypt"]);
+    const pt = await crypto.subtle.decrypt({ name: "AES-GCM", iv: b64(blob.iv) }, key, b64(blob.ct));
+    return JSON.parse(new TextDecoder().decode(pt));
+  }
+  async function sha256(s) {
+    const h = await crypto.subtle.digest("SHA-256", new TextEncoder().encode(s));
+    return Array.from(new Uint8Array(h)).map((b) => b.toString(16).padStart(2, "0")).join("");
+  }
+  let blob;
+  try { blob = await (await fetch("data.enc?ts=" + Date.now(), { cache: "no-store" })).json(); } catch (e) { $("#err").textContent = "data.enc missing"; return; }
+  async function tryOpen(pass, remember) {
+    try {
+      const data = await decrypt(pass, blob);
+      if (remember) { try { sessionStorage.setItem("zb_pp", pass); } catch (e) {} }
+      S.token = await sha256("zb-api|" + pass);
+      boot(data);
+    } catch (e) { $("#err").textContent = "wrong passphrase"; }
+  }
+  $("#gf").onsubmit = (e) => { e.preventDefault(); tryOpen($("#pp").value, true); };
+  $("#pp").addEventListener("keydown", (e) => { if (e.key === "Enter" || e.keyCode === 13) { e.preventDefault(); tryOpen($("#pp").value, true); } });
+  $("#lock").onclick = (e) => { e.preventDefault(); try { sessionStorage.removeItem("zb_pp"); } catch (x) {} location.reload(); };
+  let saved = null; try { saved = sessionStorage.getItem("zb_pp"); } catch (e) {}
+  if (saved) tryOpen(saved, false);
+
+  // ------------------------------------------------------------------ helpers
+  const esc = (s) => String(s ?? "").replace(/[&<>"]/g, (c) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" }[c]));
+  const pill = (s) => `<span class="pill ${esc(String(s || "").toLowerCase())}">${esc(s || "")}</span>`;
+  const fmt = (v) => typeof v === "number" ? v.toLocaleString("en-GB", { maximumFractionDigits: 2 }) : esc(v);
+  const day = (iso) => (iso || "").slice(0, 10);
+  const when = (iso) => (iso || "").replace("T", " ").slice(0, 16);
+  const uid = () => (crypto.randomUUID ? crypto.randomUUID().replace(/-/g, "").slice(0, 12) : Math.random().toString(36).slice(2, 14));
+  function nowIso() { // UK-local ISO with offset, to match dash.py stamps
+    const d = new Date(); const off = -d.getTimezoneOffset(); const sgn = off >= 0 ? "+" : "-"; const p = (n) => String(Math.abs(n)).padStart(2, "0");
+    const local = new Date(d.getTime() + off * 60000).toISOString().slice(0, 23);
+    return `${local}${sgn}${p(Math.floor(Math.abs(off) / 60))}:${p(Math.abs(off) % 60)}`;
+  }
+  const todayStr = () => nowIso().slice(0, 10);
+  function rel(iso) {
+    if (!iso) return "";
+    const ms = new Date(iso).getTime() - Date.now(); if (isNaN(ms)) return "";
+    const a = Math.abs(ms), m = Math.round(a / 60000), h = Math.round(a / 3600000), d = Math.round(a / 86400000);
+    const s = m < 60 ? `${m} min` : h < 48 ? `${h} h` : `${d} d`;
+    return ms < 0 ? `${s} ago` : `in ${s}`;
+  }
+  function dueCls(due, stage) {
+    if (!due || stage === "done") return "";
+    const t = todayStr(); if (due < t) return "over"; if (due === t) return "today";
+    const diff = (new Date(due) - new Date(t)) / 864e5; return diff <= 2 ? "soon" : "";
+  }
+  function hue(s) { let h = 0; for (const c of String(s)) h = (h * 31 + c.charCodeAt(0)) % 360; return h; }
+  const tag = (ch) => `<span class="tag" style="--tagbg:hsl(${hue(ch)} 35% 18%);--tagfg:hsl(${hue(ch)} 70% 72%)">${esc(ch)}</span>`;
+  const av = (o) => `<span class="av ${esc(o)}" title="${esc(o)}">${esc((o || "?")[0].toUpperCase())}</span>`;
+  const prio = (p) => `<span class="prio ${esc(p)}" title="${esc(p)} priority">${p === "high" ? "↑" : p === "low" ? "↓" : "="}</span>`;
+  const hl = (s, q) => { s = esc(s); if (!q) return s; const re = new RegExp(q.replace(/[.*+?^${}()|[\]\\]/g, "\\$&"), "ig"); return s.replace(re, (m) => `<mark>${m}</mark>`); };
+  let prefs = {}; try { prefs = JSON.parse(localStorage.getItem("rb_prefs") || "{}"); } catch (e) {}
+  const savePrefs = () => { try { localStorage.setItem("rb_prefs", JSON.stringify(prefs)); } catch (e) {} };
+
+  function spark(vals, opts = {}) {
+    if (vals.length < 2) return "";
+    const w = 100, h = 28, mn = Math.min(...vals), mx = Math.max(...vals);
+    const pts = vals.map((v, i) => [(i / (vals.length - 1)) * w, h - 2 - ((v - mn) / (mx - mn || 1)) * (h - 4)]);
+    const line = pts.map((p) => p.join(",")).join(" ");
+    const dots = opts.dots === false ? "" : pts.map((p, i) => `<circle cx="${p[0]}" cy="${p[1]}" r="3" fill="transparent" data-i="${i}"><title>${fmt(vals[i])}</title></circle>`).join("");
+    return `<svg class="spark" viewBox="0 0 ${w} ${h}" preserveAspectRatio="none"><polyline fill="none" stroke="#2dd4bf" stroke-width="1.5" points="${line}"/><circle cx="${pts[pts.length - 1][0]}" cy="${pts[pts.length - 1][1]}" r="1.8" fill="#2dd4bf"/>${dots}</svg>`;
+  }
+  function chart(series) { // [{ts, value}] -> svg with axes + hover
+    const vals = series.map((x) => x.value); if (vals.length < 1) return "<div class=mute>no readings</div>";
+    const W = 700, H = 220, L = 46, R = 12, T = 12, B = 28, mn = Math.min(...vals), mx = Math.max(...vals);
+    const x = (i) => vals.length === 1 ? (L + W - R) / 2 : L + (i / (vals.length - 1)) * (W - L - R);
+    const y = (v) => T + (1 - (v - mn) / (mx - mn || 1)) * (H - T - B);
+    const pts = vals.map((v, i) => `${x(i)},${y(v)}`).join(" ");
+    const area = `M${x(0)},${H - B} L${pts.replace(/ /g, " L")} L${x(vals.length - 1)},${H - B} Z`;
+    const grid = (mx === mn ? [0.5] : [0, .5, 1]).map((f) => { const v = mn + (mx - mn) * f; return `<line x1="${L}" x2="${W - R}" y1="${y(v)}" y2="${y(v)}" stroke="#262b36"/><text x="${L - 6}" y="${y(v) + 4}" fill="#8b93a7" font-size="10" text-anchor="end">${fmt(Math.round(v * 100) / 100)}</text>`; }).join("");
+    const xl = `<text x="${L}" y="${H - 8}" fill="#8b93a7" font-size="10">${day(series[0].ts)}</text><text x="${W - R}" y="${H - 8}" fill="#8b93a7" font-size="10" text-anchor="end">${day(series[series.length - 1].ts)}</text>`;
+    const dots = series.map((s, i) => `<circle cx="${x(i)}" cy="${y(s.value)}" r="3.5" fill="#2dd4bf" data-tip="${esc(when(s.ts))} · ${fmt(s.value)}${s.note ? " · " + esc(s.note) : ""}"/>`).join("");
+    return `<svg class="chart" viewBox="0 0 ${W} ${H}">${grid}<path d="${area}" fill="#2dd4bf" opacity=".08"/><polyline fill="none" stroke="#2dd4bf" stroke-width="2" points="${pts}"/>${dots}${xl}</svg>`;
+  }
+
+  // ------------------------------------------------------------------ state + ops (mirrors dash.py apply_ops)
+  const S = { base: null, view: null, serverOps: [], localOps: [], token: null, syncState: "connecting", syncMsg: "", drawer: null, dragId: null, filters: Object.assign({ q: "", channel: "", owner: "", prio: "", doneAll: false }, prefs.filters || {}) };
+  try { S.localOps = JSON.parse(localStorage.getItem("rb_ops_queue") || "[]"); } catch (e) {}
+  const saveQueue = () => { try { localStorage.setItem("rb_ops_queue", JSON.stringify(S.localOps)); } catch (e) {} };
+
+  function normTask(t, ts) {
+    let stage = t.stage; if (!STAGES.some(([k]) => k === stage)) stage = t.status === "done" ? "done" : t.kind === "blocked" ? "blocked" : "todo";
+    t.stage = stage;
+    if (t.status !== "archived") t.status = stage === "done" ? "done" : "open";
+    t.kind = stage === "blocked" ? "blocked" : "todo";
+    if (stage === "done") { if (!t.done) t.done = ts || nowIso(); } else delete t.done;
+    if (!PRIOS.includes(t.priority)) t.priority = "medium";
+    return t;
+  }
+  function applyOps(d, ops) {
+    const FIELDS = ["title", "channel", "due", "owner", "priority", "notes", "stage", "order"];
+    for (const o of ops.slice().sort((a, b) => a.ts.localeCompare(b.ts))) { // stable: server order kept for equal ts
+      const x = o.data || {}; const ts = o.ts;
+      if (o.op === "task.upsert") {
+        let t = d.tasks.find((t) => t.id === x.id);
+        if (!t) { if (!x.id || !x.title) continue; t = { id: x.id, title: "", channel: "general", due: null, owner: "user", status: "open", stage: "todo", priority: "medium", notes: "", created: ts }; d.tasks.push(t); }
+        for (const k of FIELDS) if (k in x) t[k] = x[k];
+        if (t.status === "archived" && x.stage) { t.status = "open"; delete t.archived; }
+        t.updated = ts; normTask(t, ts);
+      } else if (o.op === "task.delete") {
+        const t = d.tasks.find((t) => t.id === x.id); if (t) { t.status = "archived"; t.archived = ts; }
+      } else if (o.op === "task.reorder") {
+        (x.ids || []).forEach((id, i) => { const t = d.tasks.find((t) => t.id === id); if (t) t.order = i; });
+      } else if (o.op === "sched.status") {
+        const e = d.schedule.find((e) => e.id === x.id); if (e && ["done", "missed", "scheduled"].includes(x.status)) { e.status = x.status; if (x.status === "scheduled") delete e.closed; else e.closed = ts; }
+      } else if (o.op === "decision.add") {
+        if (String(x.text || "").trim()) d.decisions.push({ ts, by: x.by || "user", text: String(x.text).trim(), pending: true });
+      }
+    }
+    return d;
+  }
+  function rebuild() {
+    const d = JSON.parse(JSON.stringify(S.base));
+    d.tasks = (d.tasks || []).map((t) => normTask(t));
+    d.schedule = d.schedule || []; d.decisions = d.decisions || [];
+    const seen = new Set(); const ops = [];
+    for (const o of [...S.serverOps, ...S.localOps]) if (!seen.has(o.id)) { seen.add(o.id); ops.push(o); }
+    S.view = applyOps(d, ops);
+  }
+  function emit(op, data) {
+    const o = { id: uid(), ts: nowIso(), op, data };
+    S.localOps.push(o); saveQueue(); rebuild(); renderAll(); flush();
+    return o;
+  }
+  function undoOp(o) { S.localOps = S.localOps.filter((x) => x.id !== o.id); saveQueue(); if (S.serverOps.some((x) => x.id === o.id)) return false; rebuild(); renderAll(); return true; }
+
+  // ------------------------------------------------------------------ sync with the Netlify function
+  const hdrs = () => ({ "Content-Type": "application/json", Authorization: "Bearer " + S.token });
+  function setSync(state, msg, title) { S.syncState = state; S.syncMsg = msg; const el = $("#sync"); el.className = "sync " + state; el.title = title || ""; $("span", el).textContent = msg; }
+  let flushing = false, flushAgain = false;
+  async function flush() {
+    if (flushing) { flushAgain = true; return; } flushing = true;
+    try {
+      if (S.localOps.length) {
+        const r = await fetch(API + "a=push", { method: "POST", headers: hdrs(), body: JSON.stringify({ ops: S.localOps }) });
+        if (r.status === 401) { setSync("err", "unauthorised", "API token rejected. Run `dash.py sync init` (or the passphrase changed)."); return; }
+        if (r.status === 503) { const j = await r.json().catch(() => ({})); setSync("err", "not configured", j.error || "Run `dash.py sync init` once."); return; }
+        if (!r.ok) throw new Error("push " + r.status);
+        const j = await r.json();
+        const acc = new Set(j.accepted || []);
+        const moved = S.localOps.filter((o) => acc.has(o.id));
+        S.serverOps.push(...moved); S.localOps = S.localOps.filter((o) => !acc.has(o.id)); saveQueue();
+        if (j.rejected && j.rejected.length) { console.warn("rejected ops", j.rejected); S.localOps = S.localOps.filter((o) => !j.rejected.some((x) => x.id === o.id)); saveQueue(); }
+      }
+      const n = S.serverOps.length + S.localOps.length;
+      setSync("ok", n ? `synced · ${n} edit${n > 1 ? "s" : ""} await next build` : "synced", "Board edits are queued on the server and folded into the data files by `dash.py build`.");
+    } catch (e) {
+      const n = S.localOps.length;
+      setSync(n ? "queued" : "err", n ? `offline · ${n} queued` : "offline", "Site unreachable; edits are kept in this browser and pushed when it is back. " + e.message);
+    } finally { flushing = false; if (flushAgain) { flushAgain = false; flush(); } }
+  }
+  async function loadPending() {
+    try {
+      const r = await fetch(API + "a=pending", { headers: hdrs() });
+      if (r.status === 401) { setSync("err", "unauthorised", "API token rejected. Run `dash.py sync init` (or the passphrase changed)."); return; }
+      if (r.status === 503) { const j = await r.json().catch(() => ({})); setSync("err", "not configured", j.error || "Run `dash.py sync init` once."); return; }
+      if (!r.ok) throw new Error("pending " + r.status);
+      const j = await r.json(); S.serverOps = j.ops || [];
+      setSync("ok", "synced");
+    } catch (e) { setSync(S.localOps.length ? "queued" : "err", S.localOps.length ? `offline · ${S.localOps.length} queued` : "offline", e.message); }
+  }
+
+  // ------------------------------------------------------------------ boot
+  async function boot(data) {
+    S.base = data;
+    $("#gate").hidden = true; $("#hdr").hidden = false; $("#main").hidden = false;
+    $("#gen").textContent = "data " + when(data.generated) + " UK";
+    rebuild(); renderAll();
+    await loadPending(); rebuild(); renderAll(); flush();
+    setInterval(() => { $$(".rel[data-ts]").forEach((el) => { el.textContent = rel(el.dataset.ts); }); }, 60000);
+    window.addEventListener("online", flush);
+  }
+
+  // ------------------------------------------------------------------ render
+  let snooze = {}; try { snooze = JSON.parse(localStorage.getItem("rb_snooze") || "{}"); } catch (e) {}
+  const saveSnooze = () => { try { localStorage.setItem("rb_snooze", JSON.stringify(snooze)); } catch (e) {} };
+  const recKey = (r) => r.channel + "|" + r.text;
+
+  function renderAll() {
+    const d = S.view; const m = d.metrics || [];
+    if (!$("#main").children.length) {
+      $("#main").innerHTML = `
+        <section class="wide" id="recs"></section>
+        <section class="wide" id="kpis"></section>
+        <section class="wide" id="board"></section>
+        <section id="sched"></section>
+        <section id="channels"></section>
+        <section class="wide" id="videos"></section>
+        <section class="wide" id="decisions"></section>
+        <section class="wide" id="metrics"></section>`;
+    }
+    renderRecs(d); renderKpis(d, m); renderBoard(d); renderSched(d); renderChannels(d, m); renderVideos(d, m); renderDecisions(d); renderMetrics(m);
+    if (S.drawer) renderDrawer();
+  }
+
+  // --- recommendations
+  function renderRecs(d) {
+    const recs = d.recommendations?.items || []; const order = { act: 0, warn: 1, info: 2 };
+    const lvl = prefs.recLevel || "all"; const showSn = !!prefs.showSnoozed;
+    const now = Date.now(); for (const k in snooze) if (snooze[k] < now) delete snooze[k];
+    const list = recs.slice().sort((a, b) => order[a.level] - order[b.level]).filter((r) => lvl === "all" || r.level === lvl).filter((r) => showSn || !snooze[recKey(r)]);
+    const nSn = recs.filter((r) => snooze[recKey(r)]).length;
+    $("#recs").innerHTML = `<h2>Recommendations <span class="cnt">${recs.length}</span>
+      <span class="tools"><span class="chips">${["all", "act", "warn", "info"].map((l) => `<span class="chip ${lvl === l ? "on" : ""}" data-lvl="${l}">${l}</span>`).join("")}</span>
+      ${nSn ? `<span class="chip ${showSn ? "on" : ""}" id="showsn">${nSn} snoozed</span>` : ""}<span class="tiny">generated ${when(d.recommendations?.generated)}</span></span></h2>
+      ${list.map((r) => `<div class="rec ${esc(r.level)} ${snooze[recKey(r)] ? "snoozed" : ""}"><small class="link" data-ch="${esc(r.channel)}" title="filter board by channel">${esc(r.channel)}</small><span>${esc(r.text)}</span><span class="x" data-k="${esc(recKey(r))}" title="${snooze[recKey(r)] ? "unsnooze" : "snooze for 24 h (this browser)"}">${snooze[recKey(r)] ? "↺" : "✕"}</span></div>`).join("") || "<div class=mute>nothing to show</div>"}`;
+    $$("#recs .chip[data-lvl]").forEach((c) => c.onclick = () => { prefs.recLevel = c.dataset.lvl; savePrefs(); renderRecs(d); });
+    const sn = $("#showsn"); if (sn) sn.onclick = () => { prefs.showSnoozed = !showSn; savePrefs(); renderRecs(d); };
+    $$("#recs .x").forEach((x) => x.onclick = () => { const k = x.dataset.k; if (snooze[k]) delete snooze[k]; else snooze[k] = Date.now() + 864e5; saveSnooze(); renderRecs(d); });
+    $$("#recs small.link").forEach((s) => s.onclick = () => { S.filters.channel = s.dataset.ch; savePrefs(); renderBoard(S.view); $("#board").scrollIntoView({ behavior: "smooth" }); });
+  }
+
+  // --- KPIs
+  const KPIS = [["Net £ MTD", "revenue", "net_gbp_mtd"], ["Sales MTD", "revenue", "sales_mtd"], ["Trials active", "revenuecat", "active_trials"], ["Trial→paid %", "revenuecat", "trial_conversion_pct", undefined, undefined, "%"], ["Paddle sales (all)", "paddle", "transactions_total"], ["Play installs 28d", "play", "installs", undefined, "28d"], ["MS installs 28d", "microsoft", "installs", undefined, "28d"], ["Subscribers", "youtube", "subscribers"], ["Site users 7d", "website", "active_users", undefined, "7d"], ["Store clicks 7d", "website", "store_clicks", undefined, "7d"], ["GSC clicks 28d", "gsc", "clicks", undefined, "28d"], ["Reddit members", "reddit", "members"]];
+  const series = (m, ch, met, ref, period) => m.filter((x) => x.channel === ch && x.metric === met && (ref === undefined || x.ref === ref) && (period === undefined || x.period === period));
+  function renderKpis(d, m) {
+    const cards = KPIS.map(([label, ch, met, ref, period, unit = ""], i) => {
+      const s = series(m, ch, met, ref, period); const l = s[s.length - 1]; const p = s[s.length - 2];
+      let delta = "";
+      if (l && p && typeof l.value === "number" && typeof p.value === "number") { const dv = l.value - p.value; delta = `<div class="d ${dv > 0 ? "up" : dv < 0 ? "down" : ""}">${dv > 0 ? "+" : ""}${fmt(dv)} since ${day(p.ts)}</div>`; }
+      return `<div class="kpi" data-i="${i}" title="click for history"><div class="l">${esc(label)}</div><div class="v">${l ? fmt(l.value) + unit : "<span class=mute>—</span>"}</div>${delta}${l ? `<div class="tiny">${day(l.ts)}${l.note ? " · " + esc(l.note) : ""}</div>` : `<div class="tiny">no reading yet</div>`}${spark(s.map((x) => x.value).filter((v) => typeof v === "number"))}</div>`;
+    }).join("");
+    $("#kpis").innerHTML = `<h2>Revenue and funnel <span class="tools tiny">click a card for its history</span></h2><div class="kpis">${cards}</div>`;
+    $$("#kpis .kpi").forEach((k) => k.onclick = () => { const [label, ch, met, ref, period, unit = ""] = KPIS[+k.dataset.i]; openHistory(label, series(m, ch, met, ref, period), unit); });
+  }
+  function openHistory(title, s, unit = "") {
+    const rows = s.slice().reverse().map((x) => `<tr><td class="tiny">${when(x.ts)}</td><td class="num">${fmt(x.value)}${unit}</td><td class="tiny">${esc(x.period || "")}</td><td class="tiny">${esc(x.source || "")}</td><td class="tiny">${esc(x.note || "")}</td></tr>`).join("");
+    openModal(`<h3>${esc(title)}</h3><div class="tiny">${s.length} reading${s.length === 1 ? "" : "s"}${s.length ? " · " + day(s[0].ts) + " → " + day(s[s.length - 1].ts) : ""}</div>${chart(s.filter((x) => typeof x.value === "number"))}<div class="scroll" style="max-height:260px;overflow:auto"><table><thead><tr><th>Read at</th><th style="text-align:right">Value</th><th>Period</th><th>Source</th><th>Note</th></tr></thead><tbody>${rows || "<tr><td colspan=5 class=mute>no readings</td></tr>"}</tbody></table></div>`);
+  }
+  function openModal(html) {
+    const mo = $("#modal"); mo.innerHTML = `<div class="box">${html}<div style="text-align:right;margin-top:10px"><button id="mclose">Close <kbd>Esc</kbd></button></div></div>`; mo.hidden = false;
+    $("#mclose").onclick = closeModal; mo.onclick = (e) => { if (e.target === mo) closeModal(); };
+    let tip;
+    $$("[data-tip]", mo).forEach((el) => { el.onmouseenter = (e) => { tip = document.createElement("div"); tip.className = "tip"; tip.textContent = el.dataset.tip; document.body.appendChild(tip); }; el.onmousemove = (e) => { if (tip) { tip.style.left = e.clientX + 12 + "px"; tip.style.top = e.clientY - 28 + "px"; } }; el.onmouseleave = () => { if (tip) tip.remove(); tip = null; }; });
+  }
+  function closeModal() { $("#modal").hidden = true; $$(".tip").forEach((t) => t.remove()); }
+
+  // --- board
+  const activeTasks = (d) => d.tasks.filter((t) => t.status !== "archived");
+  function taskMatches(t) {
+    const f = S.filters; const q = f.q.trim().toLowerCase();
+    if (q && !(t.title + " " + (t.notes || "") + " " + t.channel + " " + t.id).toLowerCase().includes(q)) return false;
+    if (f.channel && t.channel !== f.channel) return false;
+    if (f.owner && t.owner !== f.owner) return false;
+    if (f.prio && t.priority !== f.prio) return false;
+    return true;
+  }
+  const byOrder = (a, b) => ((a.order ?? 1e9) - (b.order ?? 1e9)) || String(a.due || "9").localeCompare(String(b.due || "9")) || String(a.created || "").localeCompare(String(b.created || ""));
+  function colTasks(d, stage) {
+    let list = activeTasks(d).filter((t) => t.stage === stage);
+    if (stage === "done") { list = list.sort((a, b) => String(b.done || "").localeCompare(String(a.done || ""))); if (!S.filters.doneAll) { const cut = new Date(Date.now() - 14 * 864e5).toISOString().slice(0, 10); list = list.filter((t) => day(t.done) >= cut); } return list; }
+    return list.sort(byOrder);
+  }
+  function card(t) {
+    const q = S.filters.q.trim();
+    return `<div class="card ${S.drawer === t.id ? "sel" : ""}" draggable="true" data-id="${esc(t.id)}" tabindex="0" role="button" aria-label="${esc(t.title)}">
+      <div class="t">${hl(t.title, q)}</div>
+      <div class="m">${prio(t.priority)}${tag(t.channel)}${t.due ? `<span class="due ${dueCls(t.due, t.stage)}" title="due ${esc(t.due)}">${t.stage === "done" ? "✓ " + day(t.done) : t.due.slice(5)}</span>` : t.stage === "done" ? `<span class="due">✓ ${day(t.done)}</span>` : ""}${t.notes ? `<span title="has notes">≡</span>` : ""}${av(t.owner)}<span class="key">${esc(t.id.slice(0, 6))}</span></div></div>`;
+  }
+  function renderBoard(d) {
+    const f = S.filters; const all = activeTasks(d);
+    const channels = Array.from(new Set([...all.map((t) => t.channel), ...(d.channels || []).map((c) => c.id)])).sort();
+    const open = all.filter((t) => t.stage !== "done"); const overdue = open.filter((t) => t.due && t.due < todayStr()).length;
+    const cols = STAGES.map(([k, label]) => {
+      const list = colTasks(d, k); const shown = list.filter(taskMatches); const total = all.filter((t) => t.stage === k).length;
+      return `<div class="col" data-stage="${k}"><h3><span class="dot"></span>${label}<span class="n" title="${shown.length} shown of ${total}">${shown.length}${shown.length !== total ? "/" + total : ""}</span>${k === "done" ? `<span class="chip" id="doneall" style="margin-left:auto">${f.doneAll ? "all" : "14 d"}</span>` : ""}</h3>
+        <div class="cards">${shown.map(card).join("") || `<div class="empty">${list.length ? "filtered out" : "empty"}</div>`}</div>
+        <div class="add" data-stage="${k}">+ Create</div></div>`;
+    }).join("");
+    $("#board").innerHTML = `<h2>Tasks board <span class="cnt">${open.length} open${overdue ? ` · <span style="color:var(--red)">${overdue} overdue</span>` : ""}</span>
+      <span class="tools"><span class="tiny"><kbd>n</kbd> new · <kbd>/</kbd> search · drag cards between columns</span></span></h2>
+      <div class="toolbar">
+        <button class="primary" id="newtask">+ Create</button>
+        <input type="search" id="q" placeholder="Search tasks…" value="${esc(f.q)}">
+        <select id="fch"><option value="">all channels</option>${channels.map((c) => `<option ${f.channel === c ? "selected" : ""}>${esc(c)}</option>`).join("")}</select>
+        <span class="chips">${[["", "everyone"], ["user", "me"], ["claude", "claude"]].map(([v, l]) => `<span class="chip ${f.owner === v ? "on" : ""}" data-owner="${v}">${l}</span>`).join("")}</span>
+        <span class="chips">${[["", "any priority"], ["high", "↑ high"], ["medium", "= medium"], ["low", "↓ low"]].map(([v, l]) => `<span class="chip ${f.prio === v ? "on" : ""}" data-prio="${v}">${l}</span>`).join("")}</span>
+        ${f.q || f.channel || f.owner || f.prio ? `<button class="sm" id="clearf">clear filters</button>` : ""}
+      </div>
+      <div class="board">${cols}</div>`;
+    // toolbar
+    const q = $("#q"); q.oninput = () => { f.q = q.value; prefs.filters = f; savePrefs(); const pos = q.selectionStart; renderBoard(S.view); const nq = $("#q"); nq.focus(); nq.setSelectionRange(pos, pos); };
+    $("#fch").onchange = (e) => { f.channel = e.target.value; prefs.filters = f; savePrefs(); renderBoard(S.view); };
+    $$("#board .chip[data-owner]").forEach((c) => c.onclick = () => { f.owner = c.dataset.owner; prefs.filters = f; savePrefs(); renderBoard(S.view); });
+    $$("#board .chip[data-prio]").forEach((c) => c.onclick = () => { f.prio = c.dataset.prio; prefs.filters = f; savePrefs(); renderBoard(S.view); });
+    const cf = $("#clearf"); if (cf) cf.onclick = () => { Object.assign(f, { q: "", channel: "", owner: "", prio: "" }); prefs.filters = f; savePrefs(); renderBoard(S.view); };
+    const da = $("#doneall"); if (da) da.onclick = () => { f.doneAll = !f.doneAll; prefs.filters = f; savePrefs(); renderBoard(S.view); };
+    $("#newtask").onclick = () => quickAdd($('#board .add[data-stage="todo"]'));
+    $$("#board .add").forEach((a) => a.onclick = () => quickAdd(a));
+    // cards
+    $$("#board .card").forEach((c) => {
+      c.onclick = () => openDrawer(c.dataset.id);
+      c.onkeydown = (e) => { if (e.key === "Enter" || e.key === " ") { e.preventDefault(); openDrawer(c.dataset.id); } };
+      c.ondragstart = (e) => { S.dragId = c.dataset.id; c.classList.add("dragging"); e.dataTransfer.effectAllowed = "move"; e.dataTransfer.setData("text/plain", c.dataset.id); };
+      c.ondragend = () => { S.dragId = null; c.classList.remove("dragging"); $$(".ph").forEach((p) => p.remove()); $$(".col.over").forEach((x) => x.classList.remove("over")); };
+    });
+    $$("#board .col").forEach((col) => {
+      const cards = $(".cards", col);
+      col.ondragover = (e) => { if (!S.dragId) return; e.preventDefault(); e.dataTransfer.dropEffect = "move"; col.classList.add("over"); placePh(cards, e.clientY); };
+      col.ondragleave = (e) => { if (!col.contains(e.relatedTarget)) { col.classList.remove("over"); $$(".ph", col).forEach((p) => p.remove()); } };
+      col.ondrop = (e) => { e.preventDefault(); const id = S.dragId || e.dataTransfer.getData("text/plain"); const ph = $(".ph", cards); const after = ph ? Array.from(cards.children).filter((x) => x.classList.contains("card") && x.dataset.id !== id && x.compareDocumentPosition(ph) & Node.DOCUMENT_POSITION_FOLLOWING).map((x) => x.dataset.id) : Array.from(cards.children).filter((x) => x.classList.contains("card") && x.dataset.id !== id).map((x) => x.dataset.id); moveTask(id, col.dataset.stage, after.length); };
+    });
+  }
+  function placePh(cards, y) {
+    let ph = $(".ph", cards); if (!ph) { ph = document.createElement("div"); ph.className = "ph"; }
+    const others = Array.from(cards.children).filter((x) => x.classList.contains("card") && !x.classList.contains("dragging"));
+    let before = null; for (const o of others) { const r = o.getBoundingClientRect(); if (y < r.top + r.height / 2) { before = o; break; } }
+    if (before) cards.insertBefore(ph, before); else cards.appendChild(ph);
+  }
+  function moveTask(id, stage, index) {
+    const t = S.view.tasks.find((t) => t.id === id); if (!t) return;
+    const from = t.stage;
+    const ids = colTasks(S.view, stage).map((x) => x.id).filter((x) => x !== id); ids.splice(Math.min(index, ids.length), 0, id);
+    if (from !== stage) emit("task.upsert", { id, stage });
+    if (stage !== "done") emit("task.reorder", { stage, ids });
+    if (from !== stage) toast(`Moved to ${STAGES.find(([k]) => k === stage)[1]}`, () => { emit("task.upsert", { id, stage: from }); });
+  }
+  function quickAdd(anchor) {
+    if ($("input", anchor)) return;
+    const stage = anchor.dataset.stage; anchor.innerHTML = `<input placeholder="What needs doing? (Enter to add, Esc to cancel)" maxlength="300">`;
+    const inp = $("input", anchor); inp.focus(); inp.onclick = (e) => e.stopPropagation();
+    const cancel = () => { anchor.innerHTML = "+ Create"; };
+    inp.onkeydown = (e) => {
+      if (e.key === "Escape") { cancel(); }
+      if (e.key === "Enter" || e.keyCode === 13) { const title = inp.value.trim(); if (!title) return cancel(); const id = uid().slice(0, 8); emit("task.upsert", { id, title, stage, channel: S.filters.channel || "general", owner: S.filters.owner || "user", priority: S.filters.prio || "medium", due: null, notes: "" }); openDrawer(id); }
+    };
+    inp.onblur = () => setTimeout(() => { if (document.activeElement !== inp) cancel(); }, 150);
+  }
+
+  // --- drawer (task detail, Jira-style)
+  function openDrawer(id) { S.drawer = id; renderDrawer(); $("#drawer").classList.add("open"); $("#drawer").setAttribute("aria-hidden", "false"); $$("#board .card").forEach((c) => c.classList.toggle("sel", c.dataset.id === id)); }
+  function closeDrawer() { S.drawer = null; $("#drawer").classList.remove("open"); $("#drawer").setAttribute("aria-hidden", "true"); $$("#board .card.sel").forEach((c) => c.classList.remove("sel")); }
+  function renderDrawer() {
+    const t = S.view.tasks.find((t) => t.id === S.drawer); const dr = $("#drawer");
+    if (!t) { closeDrawer(); return; }
+    const channels = Array.from(new Set([...activeTasks(S.view).map((x) => x.channel), ...(S.view.channels || []).map((c) => c.id), "general"])).sort();
+    dr.innerHTML = `<div class="dh"><span class="key">${esc(t.id)}</span>${pill(t.stage === "done" ? "done" : t.stage === "blocked" ? "blocked" : "open")}${t.updated ? `<span class="tiny">updated ${when(t.updated)}</span>` : ""}<button class="sm" id="dclose" style="margin-left:auto">Close <kbd>Esc</kbd></button></div>
+      <div class="db">
+        <div><label>Title</label><input class="title" id="dtitle" value="${esc(t.title)}" maxlength="300"></div>
+        <div class="grid2">
+          <div><label>Status</label><select id="dstage">${STAGES.map(([k, l]) => `<option value="${k}" ${t.stage === k ? "selected" : ""}>${l}</option>`).join("")}</select></div>
+          <div><label>Priority</label><select id="dprio">${PRIOS.map((p) => `<option ${t.priority === p ? "selected" : ""}>${p}</option>`).join("")}</select></div>
+          <div><label>Owner</label><select id="downer">${["user", "claude"].map((o) => `<option ${t.owner === o ? "selected" : ""}>${o}</option>`).join("")}</select></div>
+          <div><label>Due</label><input type="date" id="ddue" value="${esc(t.due || "")}"></div>
+          <div><label>Channel</label><select id="dch">${channels.map((c) => `<option ${t.channel === c ? "selected" : ""}>${esc(c)}</option>`).join("")}</select></div>
+          <div><label>Due in</label><div style="padding:6px 0" class="due ${dueCls(t.due, t.stage)}">${t.due ? rel(t.due + "T23:59") : "—"}</div></div>
+        </div>
+        <div><label>Notes</label><textarea id="dnotes" placeholder="Context, links, what done looks like…">${esc(t.notes || "")}</textarea></div>
+        <div class="act"><label>Activity</label>created ${when(t.created)}${t.updated ? `<br>updated ${when(t.updated)}` : ""}${t.done ? `<br>done ${when(t.done)}` : ""}${t.archived ? `<br>archived ${when(t.archived)}` : ""}<br><span class="tiny">Edits save as you type and reach the data files on the next dashboard build (${S.syncMsg}).</span></div>
+      </div>
+      <div class="df"><span class="chips">${STAGES.filter(([k]) => k !== t.stage).map(([k, l]) => `<span class="chip" data-mv="${k}">→ ${l}</span>`).join("")}</span><button class="danger sm" id="ddel" style="margin-left:auto">Delete</button></div>`;
+    $("#dclose").onclick = closeDrawer;
+    const patch = (data) => emit("task.upsert", Object.assign({ id: t.id }, data));
+    let deb; const debounced = (fn) => { clearTimeout(deb); deb = setTimeout(fn, 500); };
+    $("#dtitle").oninput = (e) => debounced(() => { const v = e.target.value.trim(); if (v && v !== t.title) patch({ title: v }); });
+    $("#dnotes").oninput = (e) => debounced(() => { if (e.target.value !== (t.notes || "")) patch({ notes: e.target.value }); });
+    $("#dstage").onchange = (e) => patch({ stage: e.target.value });
+    $("#dprio").onchange = (e) => patch({ priority: e.target.value });
+    $("#downer").onchange = (e) => patch({ owner: e.target.value });
+    $("#dch").onchange = (e) => patch({ channel: e.target.value });
+    $("#ddue").onchange = (e) => patch({ due: e.target.value || null });
+    $$("#drawer .chip[data-mv]").forEach((c) => c.onclick = () => patch({ stage: c.dataset.mv }));
+    $("#ddel").onclick = () => { const o = emit("task.delete", { id: t.id }); closeDrawer(); toast(`Deleted "${t.title.slice(0, 40)}"`, () => { if (!undoOp(o)) emit("task.upsert", { id: t.id, stage: t.stage }); }); };
+  }
+
+  // --- schedule
+  function renderSched(d) {
+    const nowI = nowIso(); const showDone = !!prefs.schedDone;
+    const up = d.schedule.filter((e) => e.status === "scheduled").sort((a, b) => a.when.localeCompare(b.when));
+    const done = d.schedule.filter((e) => e.status !== "scheduled").sort((a, b) => (b.closed || "").localeCompare(a.closed || "")).slice(0, 20);
+    const row = (e) => `<tr><td class="tiny" style="white-space:nowrap">${when(e.when)}<br><span class="rel ${e.when < nowI ? "over" : (new Date(e.when) - Date.now()) < 864e5 ? "soon" : ""}" data-ts="${esc(e.when)}">${rel(e.when)}</span></td><td>${esc(e.what)}${e.ref ? `<div class="tiny mono">${esc(e.ref)}</div>` : ""}</td><td>${tag(e.channel)}</td><td style="white-space:nowrap">${e.when < nowI ? pill("warn") : pill("scheduled")}<div style="margin-top:4px;display:flex;gap:4px"><button class="sm" data-done="${esc(e.id)}">Done</button><button class="sm danger" data-missed="${esc(e.id)}">Missed</button></div></td></tr>`;
+    const drow = (e) => `<tr><td class="tiny">${when(e.when)}</td><td>${esc(e.what)}</td><td>${tag(e.channel)}</td><td>${pill(e.status)}<button class="sm" data-reopen="${esc(e.id)}" style="margin-left:6px" title="back to scheduled">↺</button></td></tr>`;
+    $("#sched").innerHTML = `<h2>Schedule <span class="cnt">${up.length} upcoming</span><span class="tools"><span class="chip ${showDone ? "on" : ""}" id="schedtog">completed (${d.schedule.length - up.length})</span></span></h2>
+      <div class="scroll"><table><thead><tr><th>When (UK)</th><th>What</th><th>Channel</th><th></th></tr></thead><tbody>${up.map(row).join("") || "<tr><td colspan=4 class=mute>nothing scheduled</td></tr>"}</tbody></table></div>
+      <div ${showDone ? "" : "hidden"} style="margin-top:10px"><div class="tiny" style="margin-bottom:4px">Completed events</div><div class="scroll"><table><tbody>${done.map(drow).join("") || "<tr><td class=mute>none yet</td></tr>"}</tbody></table></div></div>`;
+    $("#schedtog").onclick = () => { prefs.schedDone = !showDone; savePrefs(); renderSched(S.view); };
+    const close = (id, status) => { const e = d.schedule.find((x) => x.id === id); emit("sched.status", { id, status }); toast(`${e.what.slice(0, 40)} → ${status}`, () => emit("sched.status", { id, status: "scheduled" })); };
+    $$("#sched [data-done]").forEach((b) => b.onclick = () => close(b.dataset.done, "done"));
+    $$("#sched [data-missed]").forEach((b) => b.onclick = () => close(b.dataset.missed, "missed"));
+    $$("#sched [data-reopen]").forEach((b) => b.onclick = () => emit("sched.status", { id: b.dataset.reopen, status: "scheduled" }));
+  }
+
+  // --- channels (sortable, expandable)
+  function renderChannels(d, m) {
+    const rows = (d.channels || []).map((c) => {
+      const mine = m.filter((x) => x.channel === c.id); const lastM = mine[mine.length - 1];
+      const open = activeTasks(d).filter((t) => t.channel === c.id && t.stage !== "done").length;
+      const latest = {}; for (const x of mine) latest[x.metric + "|" + (x.ref || "") + "|" + (x.period || "")] = x;
+      const detail = Object.values(latest).slice(0, 12).map((x) => `<div><span class="mono">${esc(x.metric)}${x.period ? " " + esc(x.period) : ""}${x.ref ? " · " + esc(x.ref) : ""}</span> <b>${fmt(x.value)}</b> <span class="tiny">${day(x.ts)}</span></div>`).join("");
+      return `<tr class="row" data-id="${esc(c.id)}"><td data-v="${esc(c.name)}"><a href="${esc(c.url)}" target="_blank" rel="noopener" onclick="event.stopPropagation()">${esc(c.name)}</a><div class="tiny">${esc(c.cadence || "")}</div></td><td data-v="${esc(c.status)}">${pill(c.status)}</td><td data-v="${esc(c.owner)}">${av(c.owner)}</td><td>${esc(c.next || "")}</td><td class="num" data-v="${open}">${open ? `<a href="#board" onclick="event.stopPropagation()" data-chf="${esc(c.id)}">${open}</a>` : "<span class=mute>0</span>"}</td><td class="tiny" data-v="${lastM ? esc(lastM.ts) : ""}">${lastM ? day(lastM.ts) : "—"}${lastM ? `<div class="rel" data-ts="${esc(lastM.ts)}">${rel(lastM.ts)}</div>` : ""}</td></tr>
+        <tr class="detail" hidden data-for="${esc(c.id)}"><td colspan="6">${detail || "<span class=mute>no metrics recorded yet</span>"}<div class="tiny" style="margin-top:6px">${esc(c.id)} · stale after ${c.stale_days ?? "—"} d · collect ${c.collect === false ? "off" : "on"}</div></td></tr>`;
+    }).join("");
+    $("#channels").innerHTML = `<h2>Channels <span class="cnt">${(d.channels || []).length}</span><span class="tools tiny">click a row for its latest readings</span></h2><div class="scroll"><table id="chtab"><thead><tr><th class="sortable">Channel</th><th class="sortable">Status</th><th class="sortable">Owner</th><th>Next action</th><th class="sortable" style="text-align:right">Open</th><th class="sortable">Last read</th></tr></thead><tbody>${rows}</tbody></table></div>`;
+    $$("#channels tr.row").forEach((r) => r.onclick = () => { const dt = $(`#channels tr.detail[data-for="${CSS.escape(r.dataset.id)}"]`); dt.hidden = !dt.hidden; });
+    $$("#channels [data-chf]").forEach((a) => a.onclick = (e) => { e.stopPropagation(); S.filters.channel = a.dataset.chf; prefs.filters = S.filters; savePrefs(); renderBoard(S.view); });
+    sortable($("#chtab"));
+  }
+
+  // --- videos
+  function renderVideos(d, m) {
+    const last = (met, ref, period) => { const s = series(m, "youtube", met, ref, period); return s.length ? s[s.length - 1] : null; };
+    const vids = (d.videos || []).slice().sort((a, b) => (b.published || "").localeCompare(a.published || ""));
+    const rows = vids.map((v) => {
+      const cell = (met, period, unit = "") => { const l = last(met, v.id, period); return l ? `<span title="${esc(when(l.ts))}">${fmt(l.value)}${unit}</span>` : "—"; };
+      const val = (met, period) => { const l = last(met, v.id, period); return l ? l.value : -1; };
+      const url = v.type === "short" ? `https://youtube.com/shorts/${v.id}` : `https://youtu.be/${v.id}`;
+      const mine = m.filter((x) => x.channel === "youtube" && x.ref === v.id);
+      const groups = {}; for (const x of mine) (groups[x.metric + (x.period ? " " + x.period : "")] ||= []).push(x);
+      const detail = Object.entries(groups).map(([k, s]) => `<div style="display:inline-block;min-width:150px;margin:4px 12px 4px 0"><div class="tiny mono">${esc(k)}</div><b>${fmt(s[s.length - 1].value)}</b> <span class="tiny">${day(s[s.length - 1].ts)}</span>${spark(s.map((x) => x.value).filter((n) => typeof n === "number"))}</div>`).join("");
+      return `<tr class="row" data-id="${esc(v.id)}"><td data-v="${esc(v.type)}">${pill(v.type)}</td><td data-v="${esc(v.title)}"><a href="${url}" target="_blank" rel="noopener" onclick="event.stopPropagation()">${esc(v.title)}</a><div class="tiny">${esc(v.id)}${v.thumb ? " · " + esc(v.thumb) : ""}${v.plan ? " · " + esc(v.plan) : ""}${v.length ? " · " + esc(v.length) : ""}</div></td><td data-v="${esc(v.published || "")}">${pill(v.status)}<div class="tiny">${when(v.published)}</div></td>
+        <td class="num" data-v="${val("views", "24h")}">${cell("views", "24h")}</td><td class="num" data-v="${val("views", "7d")}">${cell("views", "7d")}</td><td class="num" data-v="${val("views", "28d")}">${cell("views", "28d")}</td><td class="num" data-v="${val("ctr_pct", "7d")}">${cell("ctr_pct", "7d", "%")}</td><td class="num" data-v="${val("avd_pct", "7d")}">${cell("avd_pct", "7d", "%")}</td><td class="num">${v.type === "short" ? cell("viewed_vs_swiped_pct", undefined, "%") : cell("store_clicks")}</td><td class="num">${cell("related_clicks")}</td><td>${v.qc_clean === true ? pill("done") : v.qc_clean === false ? pill("blocked") : "—"}</td></tr>
+        <tr class="detail" hidden data-for="${esc(v.id)}"><td colspan="11">${detail || "<span class=mute>no reads yet for this video</span>"}${mine.length ? `<div class="tiny" style="margin-top:4px">${mine.length} readings · <a href="#" data-hist="${esc(v.id)}">open history</a></div>` : ""}</td></tr>`;
+    }).join("");
+    $("#videos").innerHTML = `<h2>YouTube videos and Shorts <span class="cnt">${vids.length}</span><span class="tools tiny">click a row for every read; headers sort</span></h2><div class="scroll"><table id="vtab"><thead><tr><th class="sortable"></th><th class="sortable">Title</th><th class="sortable">State</th><th class="sortable" style="text-align:right">24h</th><th class="sortable" style="text-align:right">7d</th><th class="sortable" style="text-align:right">28d</th><th class="sortable" style="text-align:right">CTR 7d</th><th class="sortable" style="text-align:right">AVD 7d</th><th style="text-align:right">Clicks / swipe</th><th style="text-align:right">Related</th><th>QC</th></tr></thead><tbody>${rows || "<tr><td colspan=11 class=mute>none</td></tr>"}</tbody></table></div>`;
+    $$("#videos tr.row").forEach((r) => r.onclick = () => { const dt = $(`#videos tr.detail[data-for="${CSS.escape(r.dataset.id)}"]`); dt.hidden = !dt.hidden; });
+    $$("#videos [data-hist]").forEach((a) => a.onclick = (e) => { e.preventDefault(); e.stopPropagation(); const v = vids.find((x) => x.id === a.dataset.hist); openHistory(v.title, m.filter((x) => x.channel === "youtube" && x.ref === v.id && x.metric === "views")); });
+    sortable($("#vtab"));
+  }
+
+  // --- decisions
+  function renderDecisions(d) {
+    const q = (prefs.decQ || "").trim().toLowerCase();
+    const list = d.decisions.slice().reverse().filter((x) => !q || (x.text + " " + x.by).toLowerCase().includes(q));
+    $("#decisions").innerHTML = `<h2>Decision log <span class="cnt">${d.decisions.length}</span><span class="tools"><input type="search" id="decq" placeholder="Search decisions…" value="${esc(prefs.decQ || "")}"><button class="sm" id="decadd">+ Add decision</button></span></h2>
+      <div id="decform" hidden style="margin:6px 0 10px;display:flex;gap:8px;align-items:flex-start"><textarea id="dectext" placeholder="What was decided, and why. Logged as you, timestamped now." style="flex:1;min-height:60px"></textarea><div style="display:flex;flex-direction:column;gap:6px"><button class="primary" id="decsave">Log it</button><button class="sm" id="deccancel">Cancel</button></div></div>
+      ${list.map((x) => `<div class="dec ${esc(x.by)} ${x.pending ? "new" : ""}"><small>${day(x.ts)} ${(x.ts || "").slice(11, 16)} · ${esc(x.by)}${x.pending ? " · awaiting build" : ""}</small>${hl(x.text, q)}</div>`).join("") || "<div class=mute>empty</div>"}`;
+    const dq = $("#decq"); dq.oninput = () => { prefs.decQ = dq.value; savePrefs(); const p = dq.selectionStart; renderDecisions(S.view); const n = $("#decq"); n.focus(); n.setSelectionRange(p, p); };
+    $("#decadd").onclick = () => { $("#decform").hidden = false; $("#dectext").focus(); };
+    $("#deccancel").onclick = () => { $("#decform").hidden = true; };
+    $("#decsave").onclick = () => { const text = $("#dectext").value.trim(); if (!text) return; emit("decision.add", { text, by: "user" }); toast("Decision logged"); };
+    $("#dectext").onkeydown = (e) => { if (e.key === "Enter" && (e.ctrlKey || e.metaKey)) $("#decsave").click(); };
+  }
+
+  // --- metrics
+  function renderMetrics(m) {
+    const q = (prefs.metQ || "").trim().toLowerCase();
+    const latest = {}; const hist = {};
+    for (const x of m) { const k = x.channel + "|" + x.metric + "|" + (x.ref || "") + "|" + (x.period || ""); latest[k] = x; (hist[k] ||= []).push(x); }
+    const rows = Object.entries(latest).sort(([, a], [, b]) => (a.channel + a.metric).localeCompare(b.channel + b.metric)).filter(([, x]) => !q || (x.channel + " " + x.metric + " " + (x.ref || "") + " " + (x.note || "")).toLowerCase().includes(q))
+      .map(([k, x]) => `<tr class="row" data-k="${esc(k)}"><td data-v="${esc(x.channel)}">${tag(x.channel)}</td><td data-v="${esc(x.metric)}" class="mono">${hl(x.metric, q)}</td><td class="tiny">${esc(x.ref || "")}</td><td class="tiny">${esc(x.period || "")}</td><td class="num" data-v="${typeof x.value === "number" ? x.value : ""}">${fmt(x.value)}</td><td class="tiny" data-v="${esc(x.ts)}">${when(x.ts)}</td><td class="tiny">${esc(x.note || "")}</td><td class="num tiny">${hist[k].length}</td></tr>`).join("");
+    $("#metrics").innerHTML = `<h2>All latest metrics <span class="cnt">${Object.keys(latest).length} series · ${m.length} readings</span><span class="tools"><input type="search" id="metq" placeholder="Filter channel / metric / note…" value="${esc(prefs.metQ || "")}"></span></h2>
+      <div class="scroll"><table id="mtab"><thead><tr><th class="sortable">Channel</th><th class="sortable">Metric</th><th>Ref</th><th>Period</th><th class="sortable" style="text-align:right">Value</th><th class="sortable">Read at</th><th>Note</th><th style="text-align:right">Reads</th></tr></thead><tbody>${rows || "<tr><td colspan=8 class=mute>nothing matches</td></tr>"}</tbody></table></div>`;
+    const mq = $("#metq"); mq.oninput = () => { prefs.metQ = mq.value; savePrefs(); const p = mq.selectionStart; renderMetrics(S.view.metrics || []); const n = $("#metq"); n.focus(); n.setSelectionRange(p, p); };
+    $$("#metrics tr.row").forEach((r) => r.onclick = () => { const x = latest[r.dataset.k]; openHistory(`${x.channel} · ${x.metric}${x.period ? " " + x.period : ""}${x.ref ? " · " + x.ref : ""}`, hist[r.dataset.k]); });
+    sortable($("#mtab"));
+  }
+
+  // --- generic sortable table (keeps detail rows attached to their parent row)
+  function sortable(table) {
+    $$("th.sortable", table).forEach((th, i) => {
+      const idx = Array.from(th.parentNode.children).indexOf(th);
+      th.onclick = () => {
+        const dir = th.classList.contains("asc") ? "desc" : "asc";
+        $$("th.sortable", table).forEach((x) => x.classList.remove("asc", "desc")); th.classList.add(dir);
+        const tb = $("tbody", table); const rows = $$("tr.row", tb).length ? $$("tr.row", tb) : Array.from(tb.children);
+        const key = (r) => { const c = r.children[idx]; const v = c?.dataset.v ?? c?.textContent ?? ""; const n = parseFloat(v); return isNaN(n) || v === "" ? [1, String(v).toLowerCase()] : [0, n]; };
+        rows.sort((a, b) => { const [ta, va] = key(a), [tb2, vb] = key(b); const r = ta !== tb2 ? ta - tb2 : typeof va === "number" ? va - vb : va.localeCompare(vb); return dir === "asc" ? r : -r; });
+        for (const r of rows) { tb.appendChild(r); const dt = r.dataset.id ? $(`tr.detail[data-for="${CSS.escape(r.dataset.id)}"]`, tb) : null; if (dt) tb.appendChild(dt); }
+      };
+    });
+  }
+
+  // --- toast with undo
+  let toastT;
+  function toast(msg, undo) {
+    const el = $("#toast"); el.innerHTML = `<span>${esc(msg)}</span>${undo ? `<button id="undo">Undo</button>` : ""}`; el.hidden = false;
+    if (undo) $("#undo").onclick = () => { undo(); el.hidden = true; };
+    clearTimeout(toastT); toastT = setTimeout(() => { el.hidden = true; }, undo ? 6000 : 2500);
+  }
+
+  // --- keyboard
+  document.addEventListener("keydown", (e) => {
+    const typing = /^(INPUT|TEXTAREA|SELECT)$/.test(document.activeElement?.tagName || "");
+    if (e.key === "Escape") { if (!$("#modal").hidden) return closeModal(); if (S.drawer) return closeDrawer(); if (typing) document.activeElement.blur(); return; }
+    if (typing || !S.view) return;
+    if (e.key === "/") { e.preventDefault(); $("#q")?.focus(); $("#q")?.select(); }
+    if (e.key === "n") { e.preventDefault(); $("#board")?.scrollIntoView({ block: "start" }); quickAdd($('#board .add[data-stage="todo"]')); }
+  });
+})();
+</script>
+</body>
+</html>
