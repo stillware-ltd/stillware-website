@@ -144,7 +144,7 @@
   <span class="gen" id="gen"></span>
   <span class="sync" id="sync" title=""><i></i><span>connecting</span></span>
   <nav>
-    <a href="#recs">Recs</a><a href="#kpis">Funnel</a><a href="#board">Board</a><a href="#sched">Schedule</a><a href="#channels">Channels</a><a href="#videos">Videos</a><a href="#decisions">Decisions</a><a href="#metrics">Metrics</a>
+    <a href="#recs">Recs</a><a href="#runs">Routines</a><a href="#kpis">Funnel</a><a href="#board">Board</a><a href="#sched">Schedule</a><a href="#channels">Channels</a><a href="#videos">Videos</a><a href="#decisions">Decisions</a><a href="#metrics">Metrics</a>
     <a href="#" id="lock" title="forget passphrase">lock</a>
   </nav>
 </header>
@@ -351,6 +351,7 @@
     if (!$("#main").children.length) {
       $("#main").innerHTML = `
         <section class="wide" id="recs"></section>
+        <section class="wide" id="runs"></section>
         <section class="wide" id="kpis"></section>
         <section class="wide" id="board"></section>
         <section id="sched"></section>
@@ -359,8 +360,34 @@
         <section class="wide" id="decisions"></section>
         <section class="wide" id="metrics"></section>`;
     }
-    renderRecs(d); renderKpis(d, m); renderBoard(d); renderSched(d); renderChannels(d, m); renderVideos(d, m); renderDecisions(d); renderMetrics(m);
+    renderRecs(d); renderRuns(d); renderKpis(d, m); renderBoard(d); renderSched(d); renderChannels(d, m); renderVideos(d, m); renderDecisions(d); renderMetrics(m);
     if (S.drawer) renderDrawer();
+  }
+
+
+  // --- routines (scheduled-task heartbeats written by `dash.py run start|end`)
+  function renderRuns(d) {
+    const runs = d.runs || {}; const t = Date.now();
+    const cfg = { "zeroed-daily-produce": [24, 9], "zeroed-noon-digest": [24, 2], "zeroed-metrics-sweep": [24, 4], "rankup-metrics-sweep": [168, 4] };
+    const keys = Object.keys(cfg).concat(Object.keys(runs).filter((k) => !cfg[k]));
+    const mins = (a, b) => Math.round((new Date(b) - new Date(a)) / 60000);
+    const fmt = (m) => m == null ? "" : m >= 60 ? `${Math.floor(m / 60)} h ${m % 60} m` : `${m} m`;
+    let bad = 0;
+    const rows = keys.map((k) => {
+      const r = runs[k]; const [every, max] = cfg[k] || [24, 6];
+      if (!r || !r.started) return `<tr><td>${esc(k)}</td><td class="tiny">${esc((cfg[k] && r && r.at) || "")}</td><td class="mute" colspan=3>no heartbeat yet</td><td></td></tr>`;
+      let state = r.status, label = r.status, cls = { ok: "done", running: "scheduled", partial: "warn", blocked: "blocked" }[r.status] || "warn", extra = "";
+      const ranFor = r.ended ? mins(r.started, r.ended) : mins(r.started, t);
+      if (r.status === "running" && ranFor > max * 60) { label = "stuck?"; cls = "blocked"; bad++; extra = ` <span class="tiny" style="color:var(--red)">running ${fmt(ranFor)}, limit ${max} h</span>`; }
+      else if (r.status !== "running" && mins(r.started, t) > (every + 6) * 60) { label = "missed"; cls = "blocked"; bad++; extra = ` <span class="tiny" style="color:var(--red)">no run for ${fmt(mins(r.started, t))}</span>`; }
+      const hist = (r.history || []).slice(0, 5).map((h) => `<span class="pill ${ { ok: "done", partial: "warn", blocked: "blocked", abandoned: "blocked" }[h.status] || ""}" title="${esc(h.started)} · ${esc(h.note || "")}">${esc(h.started.slice(5, 10))} ${esc(h.status)}${h.duration_min != null ? " " + fmt(h.duration_min) : ""}</span>`).join(" ");
+      return `<tr><td><b>${esc(r.label || k)}</b><div class="tiny mono">${esc(k)}</div></td><td class="tiny">${esc(r.at || "")}</td>
+        <td class="tiny" style="white-space:nowrap">${when(r.started)}${r.delay_min != null ? `<div class="${r.delay_min > 30 ? "over" : ""}">+${fmt(r.delay_min)} after slot</div>` : ""}</td>
+        <td class="tiny" style="white-space:nowrap">${r.ended ? when(r.ended) + `<div>${fmt(ranFor)}</div>` : `<span class="rel" data-ts="${esc(r.started)}">${rel(r.started)}</span>`}</td>
+        <td><span class="pill ${cls}">${esc(label)}</span>${extra}</td><td class="tiny">${esc(r.note || "")}<div style="margin-top:4px;display:flex;gap:4px;flex-wrap:wrap">${hist}</div></td></tr>`;
+    });
+    $("#runs").innerHTML = `<h2>Routines <span class="cnt">${bad ? `<span style="color:var(--red)">${bad} need attention</span>` : "all on time"}</span><span class="tools tiny">heartbeats from each scheduled task's first and last command</span></h2>
+      <div class="scroll"><table><thead><tr><th>Routine</th><th>Slot (UK)</th><th>Last start</th><th>Ended / ran for</th><th>State</th><th>Note · recent runs</th></tr></thead><tbody>${rows.join("")}</tbody></table></div>`;
   }
 
   // --- recommendations
