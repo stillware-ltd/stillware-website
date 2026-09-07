@@ -52,6 +52,12 @@
   to = "/"
   status = 301
 
+# Conventional sitemap path -> the Astro sitemap index (GSC/crawlers probe /sitemap.xml; it 404'd until 2026-09-07)
+[[redirects]]
+  from = "/sitemap.xml"
+  to = "/sitemap-index.xml"
+  status = 301
+
 # Legacy redirects for old /zeroed/ paths
 [[redirects]]
   from = "/zeroed/privacy"

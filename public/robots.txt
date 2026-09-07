@@ -3,3 +3,5 @@ Disallow: /admin/
 Disallow: /private/
 Disallow: /buy/
 Allow: /
+
+Sitemap: https://www.stillwareltd.com/sitemap-index.xml
