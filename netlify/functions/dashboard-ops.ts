@@ -2,8 +2,11 @@ import type { Context } from "@netlify/functions";
 import crypto from "node:crypto";
 import { getDb } from "./lib/db.js";
 
-// Private marketing board: an append-only queue of board edits ("ops") made in the
-// browser at /dashboard/zeroed/. The page pushes ops here; `dash.py sync pull`
+// Private marketing boards: an append-only queue of board edits ("ops") made in the
+// browser at /dashboard/<board>/ (zeroed, rankup, ...). Every request carries `b=<board>`
+// (default zeroed, so the original Zeroed page and dash.py keep working unchanged); each
+// board has its own token hash (`token_hash` for zeroed, `token_hash:<board>` otherwise)
+// and only ever sees its own ops. The page pushes ops here; `dash.py sync pull`
 // (Marketing/Zeroed/Dashboard) drains them into the JSON files (the source of truth)
 // and acks them before every build, so the next encrypted bundle already carries them.
 //
@@ -34,6 +37,12 @@ async function ensureTables() {
     );
     CREATE INDEX IF NOT EXISTS idx_dashboard_ops_applied ON dashboard_ops(applied, ts);
   `);
+  // Added 2026-09-06 for the second board; SQLite has no ADD COLUMN IF NOT EXISTS.
+  try {
+    await db.execute("ALTER TABLE dashboard_ops ADD COLUMN board TEXT NOT NULL DEFAULT 'zeroed'");
+  } catch {
+    /* column already exists */
+  }
   ready = true;
 }
 
@@ -41,8 +50,15 @@ const sha = (s: string) => crypto.createHash("sha256").update(s).digest("hex");
 const same = (a: string, b: string) =>
   a.length === b.length && crypto.timingSafeEqual(Buffer.from(a), Buffer.from(b));
 
-async function storedHash(): Promise<string | null> {
-  const r = await getDb().execute({ sql: "SELECT v FROM dashboard_kv WHERE k = 'token_hash'", args: [] });
+const BOARD_RE = /^[a-z][a-z0-9-]{1,23}$/;
+function boardOf(url: URL): string {
+  const b = url.searchParams.get("b") || "zeroed";
+  return BOARD_RE.test(b) ? b : "zeroed";
+}
+const kvKey = (board: string) => (board === "zeroed" ? "token_hash" : `token_hash:${board}`);
+
+async function storedHash(board: string): Promise<string | null> {
+  const r = await getDb().execute({ sql: "SELECT v FROM dashboard_kv WHERE k = ?", args: [kvKey(board)] });
   return r.rows.length ? String(r.rows[0].v) : null;
 }
 
@@ -55,6 +71,7 @@ function bearer(req: Request): string | null {
 export default async function handler(req: Request, _context: Context) {
   const url = new URL(req.url);
   const action = url.searchParams.get("a") || "";
+  const board = boardOf(url);
   try {
     await ensureTables();
   } catch (e: any) {
@@ -62,15 +79,15 @@ export default async function handler(req: Request, _context: Context) {
   }
 
   if (req.method === "GET" && action === "status") {
-    const hash = await storedHash();
+    const hash = await storedHash(board);
     const tok = bearer(req);
     const authed = !!(hash && tok && same(sha(tok), hash));
     let pending = 0;
     if (authed) {
-      const r = await getDb().execute({ sql: "SELECT COUNT(*) AS n FROM dashboard_ops WHERE applied = 0", args: [] });
+      const r = await getDb().execute({ sql: "SELECT COUNT(*) AS n FROM dashboard_ops WHERE applied = 0 AND board = ?", args: [board] });
       pending = Number(r.rows[0].n);
     }
-    return json({ configured: !!hash, authed, pending });
+    return json({ board, configured: !!hash, authed, pending });
   }
 
   if (req.method === "POST" && action === "init") {
@@ -78,28 +95,28 @@ export default async function handler(req: Request, _context: Context) {
     if (!body) return json({ error: "Invalid JSON" }, 400);
     const token = typeof body.token === "string" ? body.token : "";
     if (!/^[a-f0-9]{64}$/.test(token)) return json({ error: "token must be a 64-hex sha256" }, 400);
-    const hash = await storedHash();
+    const hash = await storedHash(board);
     if (hash) {
       const prev = typeof body.previous === "string" ? body.previous : "";
       if (!prev || !same(sha(prev), hash)) return json({ error: "already configured; send previous token to rotate" }, 409);
     }
     await getDb().execute({
-      sql: "INSERT INTO dashboard_kv (k, v) VALUES ('token_hash', ?) ON CONFLICT(k) DO UPDATE SET v = excluded.v",
-      args: [sha(token)],
+      sql: "INSERT INTO dashboard_kv (k, v) VALUES (?, ?) ON CONFLICT(k) DO UPDATE SET v = excluded.v",
+      args: [kvKey(board), sha(token)],
     });
     return json({ ok: true, rotated: !!hash });
   }
 
-  // Everything below needs a valid token.
-  const hash = await storedHash();
+  // Everything below needs a valid token for this board.
+  const hash = await storedHash(board);
   const tok = bearer(req);
   if (!hash) return json({ error: "not configured (run dash.py sync init)" }, 503);
   if (!tok || !same(sha(tok), hash)) return json({ error: "unauthorized" }, 401);
 
   if (req.method === "GET" && action === "pending") {
     const r = await getDb().execute({
-      sql: "SELECT id, ts, op, data FROM dashboard_ops WHERE applied = 0 ORDER BY ts, received LIMIT 500",
-      args: [],
+      sql: "SELECT id, ts, op, data FROM dashboard_ops WHERE applied = 0 AND board = ? ORDER BY ts, received LIMIT 500",
+      args: [board],
     });
     const ops = r.rows.map((x) => ({ id: String(x.id), ts: String(x.ts), op: String(x.op), data: safeParse(String(x.data)) }));
     return json({ ops, server_ts: new Date().toISOString() });
@@ -117,8 +134,8 @@ export default async function handler(req: Request, _context: Context) {
       const why = validate(o);
       if (why) { rejected.push({ id: o?.id, why }); continue; }
       stmts.push({
-        sql: "INSERT OR IGNORE INTO dashboard_ops (id, ts, op, data, applied, received) VALUES (?, ?, ?, ?, 0, ?)",
-        args: [o.id, o.ts, o.op, JSON.stringify(o.data), received],
+        sql: "INSERT OR IGNORE INTO dashboard_ops (id, ts, op, data, applied, received, board) VALUES (?, ?, ?, ?, 0, ?, ?)",
+        args: [o.id, o.ts, o.op, JSON.stringify(o.data), received, board],
       });
       accepted.push(o.id);
     }
@@ -133,8 +150,8 @@ export default async function handler(req: Request, _context: Context) {
     if (!ids.length) return json({ acked: 0 });
     const placeholders = ids.map(() => "?").join(",");
     const r = await getDb().execute({
-      sql: `UPDATE dashboard_ops SET applied = 1 WHERE applied = 0 AND id IN (${placeholders})`,
-      args: ids,
+      sql: `UPDATE dashboard_ops SET applied = 1 WHERE applied = 0 AND board = ? AND id IN (${placeholders})`,
+      args: [board, ...ids],
     });
     // Keep the table small: applied ops older than 30 days are of no further use.
     await getDb().execute({
