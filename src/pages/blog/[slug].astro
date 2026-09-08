@@ -36,6 +36,20 @@ const shareUrlEncoded = encodeURIComponent(shareUrl);
 const appCluster = post.data.appCluster || '';
 const isZeroed = appCluster === 'zeroed' || post.data.tags?.some((t: string) => ['Personal Finance', 'Anti-SaaS', 'Comparison'].includes(t));
 const isChess = appCluster === 'rankupchess' || post.data.tags?.some((t: string) => t.toLowerCase().includes('chess'));
+
+// Companion video (youtube-article skill): the post embeds the long video click-to-play and declares it as VideoObject.
+const videoId = post.data.video;
+const videoSchema = videoId ? {
+    "@context": "https://schema.org",
+    "@type": "VideoObject",
+    "name": post.data.videoTitle || post.data.title,
+    "description": post.data.description || "",
+    "thumbnailUrl": [`https://i.ytimg.com/vi/${videoId}/maxresdefault.jpg`, `https://i.ytimg.com/vi/${videoId}/hqdefault.jpg`],
+    "uploadDate": post.data.date.toISOString(),
+    "embedUrl": `https://www.youtube-nocookie.com/embed/${videoId}`,
+    "contentUrl": `https://www.youtube.com/watch?v=${videoId}`,
+    "publisher": { "@type": "Organization", "name": "Stillware Ltd", "url": "https://www.stillwareltd.com" }
+} : null;
 ---
 
 <Layout
@@ -72,6 +86,8 @@ const isChess = appCluster === 'rankupchess' || post.data.tags?.some((t: string)
         ...(post.data.wordCount ? { "wordCount": post.data.wordCount } : {}),
         ...(post.data.tags?.length ? { "keywords": post.data.tags.join(", ") } : {})
     })} />
+
+    {videoSchema && <script type="application/ld+json" set:html={JSON.stringify(videoSchema)} />}
 
     <article class="blog-post">
         <header class="post-hero">
@@ -233,6 +249,35 @@ const isChess = appCluster === 'rankupchess' || post.data.tags?.some((t: string)
 </Layout>
 
 <script>
+    // Companion-video facade: nothing from YouTube loads until the reader presses play (privacy page promise).
+    // Markdown carries `<div class="yt-embed" data-id="..." data-title="..."><a href=...>Watch</a></div>`.
+    document.querySelectorAll<HTMLElement>('.yt-embed[data-id]').forEach((box) => {
+        const id = box.dataset.id || '';
+        const title = box.dataset.title || 'Watch the video';
+        if (!id) return;
+        const btn = document.createElement('button');
+        btn.type = 'button';
+        btn.className = 'yt-facade';
+        btn.setAttribute('aria-label', `Play: ${title}`);
+        btn.innerHTML = `<img src="https://i.ytimg.com/vi/${id}/hqdefault.jpg" alt="" loading="lazy" width="480" height="360" /><span class="yt-play" aria-hidden="true"></span>`;
+        const cap = document.createElement('p');
+        cap.className = 'yt-caption';
+        cap.textContent = title;
+        box.replaceChildren(btn, cap);
+        btn.addEventListener('click', () => {
+            const frame = document.createElement('iframe');
+            frame.src = `https://www.youtube-nocookie.com/embed/${id}?autoplay=1&rel=0&modestbranding=1`;
+            frame.title = title;
+            frame.allow = 'accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share';
+            frame.setAttribute('allowfullscreen', '');
+            frame.setAttribute('referrerpolicy', 'strict-origin-when-cross-origin');
+            frame.className = 'yt-frame';
+            btn.replaceWith(frame);
+            const w = window as any;
+            if (typeof w.gtag === 'function') w.gtag('event', 'video_play', { video_id: id, page_path: location.pathname });
+        });
+    });
+
     document.querySelectorAll('.copy-url-btn').forEach(btn => {
         btn.addEventListener('click', async () => {
             const url = btn.getAttribute('data-url');
@@ -246,6 +291,17 @@ const isChess = appCluster === 'rankupchess' || post.data.tags?.some((t: string)
 </script>
 
 <style>
+    /* companion-video embed (click-to-play) */
+    .post-body :global(.yt-embed) { margin: 2rem 0; }
+    .post-body :global(.yt-facade), .post-body :global(.yt-frame) { display: block; width: 100%; aspect-ratio: 16 / 9; border: 1px solid rgba(127,127,127,0.25); border-radius: 12px; overflow: hidden; background: #000; padding: 0; position: relative; cursor: pointer; }
+    .post-body :global(.yt-facade img) { width: 100%; height: 100%; object-fit: cover; display: block; transition: transform .25s ease; }
+    .post-body :global(.yt-facade:hover img) { transform: scale(1.03); }
+    .post-body :global(.yt-play) { position: absolute; inset: 0; margin: auto; width: 68px; height: 48px; border-radius: 12px; background: rgba(0,0,0,0.65); }
+    .post-body :global(.yt-play::after) { content: ''; position: absolute; left: 27px; top: 13px; border-style: solid; border-width: 11px 0 11px 20px; border-color: transparent transparent transparent #fff; }
+    .post-body :global(.yt-facade:hover .yt-play) { background: #e62117; }
+    .post-body :global(.yt-frame) { border: 0; }
+    .post-body :global(.yt-caption) { font-size: 0.9rem; opacity: 0.75; margin: 0.5rem 0 0; text-align: center; }
+
     .post-hero {
         padding: 12rem 2rem 4rem;
         text-align: center;

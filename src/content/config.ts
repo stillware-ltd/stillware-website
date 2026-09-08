@@ -17,6 +17,8 @@ const blog = defineCollection({
     primaryKeyword: z.string().optional(),
     qualityScore: z.number().optional(),
     heroImage: z.string().optional(),
+    video: z.string().optional(),        // YouTube id of the companion long video (embed + VideoObject schema)
+    videoTitle: z.string().optional(),
   }),
 });
 
