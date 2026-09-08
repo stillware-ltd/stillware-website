@@ -144,7 +144,7 @@
   <span class="gen" id="gen"></span>
   <span class="sync" id="sync" title=""><i></i><span>connecting</span></span>
   <nav>
-    <a href="#recs">Recs</a><a href="#runs">Routines</a><a href="#kpis">Funnel</a><a href="#board">Board</a><a href="#sched">Schedule</a><a href="#channels">Channels</a><a href="#videos">Videos</a><a href="#decisions">Decisions</a><a href="#metrics">Metrics</a>
+    <a href="#recs">Recs</a><a href="#runs">Routines</a><a href="#days">Day contract</a><a href="#kpis">Funnel</a><a href="#board">Board</a><a href="#sched">Schedule</a><a href="#channels">Channels</a><a href="#videos">Videos</a><a href="#decisions">Decisions</a><a href="#metrics">Metrics</a>
     <a href="#" id="lock" title="forget passphrase">lock</a>
   </nav>
 </header>
@@ -352,6 +352,7 @@
       $("#main").innerHTML = `
         <section class="wide" id="recs"></section>
         <section class="wide" id="runs"></section>
+        <section class="wide" id="days"></section>
         <section class="wide" id="kpis"></section>
         <section class="wide" id="board"></section>
         <section id="sched"></section>
@@ -360,7 +361,7 @@
         <section class="wide" id="decisions"></section>
         <section class="wide" id="metrics"></section>`;
     }
-    renderRecs(d); renderRuns(d); renderKpis(d, m); renderBoard(d); renderSched(d); renderChannels(d, m); renderVideos(d, m); renderDecisions(d); renderMetrics(m);
+    renderRecs(d); renderRuns(d); renderDays(d); renderKpis(d, m); renderBoard(d); renderSched(d); renderChannels(d, m); renderVideos(d, m); renderDecisions(d); renderMetrics(m);
     if (S.drawer) renderDrawer();
   }
 
@@ -388,6 +389,31 @@
     });
     $("#runs").innerHTML = `<h2>Routines <span class="cnt">${bad ? `<span style="color:var(--red)">${bad} need attention</span>` : "all on time"}</span><span class="tools tiny">heartbeats from each scheduled task's first and last command</span></h2>
       <div class="scroll"><table><thead><tr><th>Routine</th><th>Slot (UK)</th><th>Last start</th><th>Ended / ran for</th><th>State</th><th>Note · recent runs</th></tr></thead><tbody>${rows.join("")}</tbody></table></div>`;
+  }
+
+  // --- the day contract (user rule 2026-09-08: 1 long + 2 Shorts + article + wiring + GSC + search check + retention, every day)
+  function renderDays(d) {
+    const days = d.days || {}; const items = d.day_items || [];
+    if (!items.length) { $("#days").innerHTML = ""; return; }
+    const today = new Date(); const dates = [];
+    for (let i = 6; i >= 0; i--) { const x = new Date(today); x.setDate(today.getDate() - i); dates.push(x.toISOString().slice(0, 10)); }
+    const deadline = (date, off, hm) => new Date(`${date}T${hm}:00+01:00`).getTime() + off * 86400000;
+    let overdue = 0;
+    const rows = dates.map((date) => {
+      const rec = days[date] || { items: {} };
+      if (rec.off) return `<tr><td class="tiny mono">${esc(date)}</td><td colspan="${items.length + 1}" class="mute">no-upload day: ${esc(rec.off)}</td></tr>`;
+      let done = 0;
+      const cells = items.map(([k, label, off, hm, who]) => {
+        const it = (rec.items || {})[k];
+        if (it && it.ok) { done++; return `<td title="${esc(label)}\n${esc(it.ts || "")} ${esc(it.evidence || "")}"><span class="pill done">${esc(k)}</span></td>`; }
+        const late = deadline(date, off, hm) < Date.now();
+        if (late) overdue++;
+        return `<td title="${esc(label)} · deadline ${off ? "+" + off + " d " : ""}${hm} · ${esc(who)}"><span class="pill ${late ? "blocked" : ""}">${esc(k)}</span></td>`;
+      });
+      return `<tr><td class="tiny mono">${esc(date)}${rec.topic ? `<div class="tiny">${esc(rec.topic)}</div>` : ""}</td>${cells.join("")}<td class="num">${done}/${items.length}</td></tr>`;
+    });
+    $("#days").innerHTML = `<h2>Day contract <span class="cnt">${overdue ? `<span style="color:var(--red)">${overdue} overdue</span>` : "on track"}</span><span class="tools tiny">every day: 1 long + 2 Shorts + companion article + wiring + GSC request + search check + 24 h retention read</span></h2>
+      <div class="scroll"><table><thead><tr><th>Day</th>${items.map(([k]) => `<th class="tiny">${esc(k)}</th>`).join("")}<th>Done</th></tr></thead><tbody>${rows.join("")}</tbody></table></div>`;
   }
 
   // --- recommendations
