@@ -144,7 +144,7 @@
   <span class="gen" id="gen"></span>
   <span class="sync" id="sync" title=""><i></i><span>connecting</span></span>
   <nav>
-    <a href="#recs">Recs</a><a href="#runs">Routines</a><a href="#days">Day contract</a><a href="#kpis">Funnel</a><a href="#board">Board</a><a href="#sched">Schedule</a><a href="#channels">Channels</a><a href="#videos">Videos</a><a href="#decisions">Decisions</a><a href="#metrics">Metrics</a>
+    <a href="#recs">Recs</a><a href="#runs">Routines</a><a href="#days">Day contract</a><a href="#growth">Growth</a><a href="#kpis">Funnel</a><a href="#board">Board</a><a href="#sched">Schedule</a><a href="#channels">Channels</a><a href="#videos">Videos</a><a href="#decisions">Decisions</a><a href="#metrics">Metrics</a>
     <a href="#" id="lock" title="forget passphrase">lock</a>
   </nav>
 </header>
@@ -353,6 +353,7 @@
         <section class="wide" id="recs"></section>
         <section class="wide" id="runs"></section>
         <section class="wide" id="days"></section>
+        <section class="wide" id="growth"></section>
         <section class="wide" id="kpis"></section>
         <section class="wide" id="board"></section>
         <section id="sched"></section>
@@ -361,7 +362,7 @@
         <section class="wide" id="decisions"></section>
         <section class="wide" id="metrics"></section>`;
     }
-    renderRecs(d); renderRuns(d); renderDays(d); renderKpis(d, m); renderBoard(d); renderSched(d); renderChannels(d, m); renderVideos(d, m); renderDecisions(d); renderMetrics(m);
+    renderRecs(d); renderRuns(d); renderDays(d); renderGrowth(d); renderKpis(d, m); renderBoard(d); renderSched(d); renderChannels(d, m); renderVideos(d, m); renderDecisions(d); renderMetrics(m);
     if (S.drawer) renderDrawer();
   }
 
@@ -414,6 +415,33 @@
     });
     $("#days").innerHTML = `<h2>Day contract <span class="cnt">${overdue ? `<span style="color:var(--red)">${overdue} overdue</span>` : "on track"}</span><span class="tools tiny">every day: 1 long + 2 Shorts + companion article + wiring + GSC request + search check + 24 h retention read</span></h2>
       <div class="scroll"><table><thead><tr><th>Day</th>${items.map(([k]) => `<th class="tiny">${esc(k)}</th>`).join("")}<th>Done</th></tr></thead><tbody>${rows.join("")}</tbody></table></div>`;
+  }
+
+
+  // --- the growth loop (user 2026-09-11): +10 % week on week on the leading composite, one measured improvement a day
+  function renderGrowth(d) {
+    const g = d.growth || {}; const scores = g.scores || {}; const imps = g.improvements || []; const weeks = g.weeks || {};
+    const keys = Object.keys(scores).sort(); const sc = keys.length ? scores[keys[keys.length - 1]] : null;
+    if (!sc && !imps.length) { $("#growth").innerHTML = ""; return; }
+    const pct = (x) => x == null ? "n/a" : `${x >= 0 ? "+" : ""}${(x * 100).toFixed(1)} %`;
+    const fv = (v) => v == null ? "—" : (Number.isInteger(v) ? String(v) : Number(v).toFixed(2));
+    const cls = (x) => x == null ? "mute" : (x >= 0.10 ? "" : (x < 0 ? "over" : "mute"));
+    const today = new Date().toISOString().slice(0, 10);
+    const byDate = {}; imps.forEach((i) => { if (i.status === "done" || i.status === "kept") byDate[i.date] = 1; });
+    let streak = 0, cur = new Date(today); if (!byDate[today]) cur.setDate(cur.getDate() - 1);
+    while (byDate[cur.toISOString().slice(0, 10)]) { streak++; cur.setDate(cur.getDate() - 1); }
+    const rows = (sc ? sc.items : []).map((it) => `<tr><td>${esc(it.label)}<div class="tiny">${esc(it.playbook || "")}</div></td>
+      <td class="num">${fv(it.value)}${it.stale ? ` <span class="tiny" style="color:var(--red)">stale ${esc(it.read || "")}</span>` : ""}</td>
+      <td class="num mute">${fv(it.prev)}</td><td class="num ${cls(it.wow)}">${pct(it.wow)}</td>
+      <td class="num">${it.target ? `${fv(it.target)} <span class="tiny">(${it.vs_target != null ? (it.vs_target * 100).toFixed(0) + " %" : ""})</span>` : "<span class=mute>trend</span>"}</td></tr>`);
+    const last = imps.slice(-10).reverse().map((i) => `<tr><td class="tiny mono">${esc(i.date)}</td><td>${esc(i.label)}<div class="tiny">${esc(i.change || ("moves: " + (i.playbook || "")))}</div>${i.hypothesis ? `<div class="tiny">if: ${esc(i.hypothesis)} · wrong when: ${esc(i.falsifier || "")}</div>` : ""}</td>
+      <td><span class="pill ${i.status === "kept" || i.status === "done" ? "done" : (i.status === "reverted" || i.status === "skipped" ? "blocked" : "open")}">${esc(i.status)}</span></td><td class="tiny">${esc(i.evidence || "")}</td></tr>`);
+    const wk = Object.keys(weeks).sort().slice(-4).reverse().map((k) => { const w = weeks[k]; return `<tr><td class="tiny mono">${esc(w.week_start)} → ${esc(k)}</td><td class="num ${cls(w.composite_wow)}">${pct(w.composite_wow)}</td><td><span class="pill ${w.verdict === "pass" ? "done" : (w.verdict === "behind" ? "blocked" : "")}">${esc(w.verdict)}</span></td><td class="tiny">kept ${w.kept} · reverted ${w.reverted} · unjudged ${w.unjudged} · missed ${w.missed}</td></tr>`; });
+    $("#growth").innerHTML = `<h2>Growth loop <span class="cnt ${cls(sc && sc.composite_wow)}">${sc ? pct(sc.composite_wow) + " wk/wk" : ""}</span><span class="tools tiny">target +10 % week on week on the leading composite (${sc ? sc.n : 0} indicators with a 7-day pair) · one measured improvement a day · streak ${streak}</span></h2>
+      <div class="scroll"><table><thead><tr><th>Indicator</th><th>Now</th><th>7 d ago</th><th>wk/wk</th><th>Target</th></tr></thead><tbody>${rows.join("")}</tbody></table></div>
+      <h3 class="tiny" style="margin:10px 0 4px">Improvements (one a day; picked by the sweep, made by the produce run, judged on the falsifier)</h3>
+      <div class="scroll"><table><thead><tr><th>Day</th><th>Change</th><th>State</th><th>Evidence</th></tr></thead><tbody>${last.join("") || `<tr><td colspan=4 class="mute">none yet</td></tr>`}</tbody></table></div>
+      ${wk.length ? `<h3 class="tiny" style="margin:10px 0 4px">Weekly retro (Sunday sweep)</h3><div class="scroll"><table><thead><tr><th>Week</th><th>Composite</th><th>Verdict</th><th></th></tr></thead><tbody>${wk.join("")}</tbody></table></div>` : ""}`;
   }
 
   // --- recommendations
