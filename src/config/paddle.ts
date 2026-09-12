@@ -39,6 +39,10 @@ export interface PaddleProductConfig {
    * hasn't been created yet, so the deploy can go out before the price ID
    * is known. */
   comingSoon?: boolean;
+  /** App Store listing, shown on the buy page so iPhone/iPad users buy
+   * inside the app (Apple requires in-app purchase there; a Paddle licence
+   * does not unlock the iOS build). */
+  appStoreUrl?: string;
 }
 
 export const PADDLE_PRODUCTS: Record<CheckoutSlug, PaddleProductConfig> = {
@@ -47,6 +51,7 @@ export const PADDLE_PRODUCTS: Record<CheckoutSlug, PaddleProductConfig> = {
     name: "Zeroed",
     tagline: "Software you own.",
     priceId: "pri_01knnyfj5zezrch30qqbzkc378",
+    appStoreUrl: "https://apps.apple.com/app/id6804301133",
   },
   // RankUp Chess — Windows/Linux, $14.99.
   rankup: {
