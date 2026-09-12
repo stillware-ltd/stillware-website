@@ -1,0 +1,109 @@
+---
+import Layout from '../../layouts/Layout.astro';
+
+// Zeroed press kit. Facts below are the ones on the App Store listing for
+// 1.3.0 — keep them in step with store_assets/ios/metadata in the app repo.
+const VERSION = '1.3.0';
+const APPLE_APP_ID = '6804301133';
+const APP_STORE_URL = `https://apps.apple.com/app/zeroed-offline-budget-planner/id${APPLE_APP_ID}`;
+const PLAY_STORE_URL = 'https://play.google.com/store/apps/details?id=com.stillwareltd.zeroed';
+const MS_STORE_URL = 'https://apps.microsoft.com/detail/9NCHJ67Q98C5';
+const RELEASE_PAGE = `https://github.com/stillware-ltd/zeroed-releases/releases/tag/v${VERSION}`;
+
+const screenshots = [
+  { file: 'iphone_01_today.png', alt: 'Zeroed Today screen with safe-to-spend and upcoming bills' },
+  { file: 'iphone_02_budget.png', alt: 'Zeroed Budget screen with envelopes and money to assign' },
+  { file: 'iphone_03_bills.png', alt: 'Zeroed Bills screen with scheduled transactions' },
+  { file: 'iphone_04_goals.png', alt: 'Zeroed Goals screen with savings targets' },
+  { file: 'iphone_05_net_worth.png', alt: 'Zeroed Net Worth screen' },
+  { file: 'iphone_06_reports.png', alt: 'Zeroed Reports screen with spending charts' },
+];
+---
+
+<Layout
+  title="Zeroed Press Kit — Stillware Ltd"
+  description="Press kit for Zeroed, the privacy-first zero-based budgeting app you buy once: facts, descriptions, screenshots, icon and contact."
+  canonical="https://www.stillwareltd.com/zeroed/press"
+  ogImage="https://www.stillwareltd.com/zeroed/press/zeroed-feature-graphic.png"
+>
+  <section class="press">
+    <div class="container">
+      <p class="eyebrow">Press kit</p>
+      <h1>Zeroed</h1>
+      <p class="lede">The privacy-first, zero-based budgeting app you pay for once. No servers, no subscription, no account. Your budget stays encrypted on your own device.</p>
+      <p class="actions">
+        <a class="btn-primary" href="/zeroed/press/zeroed-press-kit.zip">Download all assets (2.9 MB zip)</a>
+        <a class="btn-text" href="mailto:support@stillwareltd.com?subject=Zeroed%20press%20enquiry">Press contact &rarr;</a>
+      </p>
+
+      <h2>Fast facts</h2>
+      <table class="facts">
+        <tbody>
+          <tr><th>Developer</th><td>Stillware Ltd, United Kingdom</td></tr>
+          <tr><th>Current version</th><td>{VERSION}</td></tr>
+          <tr><th>Platforms</th><td>iPhone and iPad (<a href={APP_STORE_URL}>App Store</a>, also on Apple Silicon Macs), macOS (<a href={RELEASE_PAGE}>notarized DMG</a>), Windows (<a href={MS_STORE_URL}>Microsoft Store</a>), Android (<a href={PLAY_STORE_URL}>Google Play</a>)</td></tr>
+          <tr><th>Price</th><td>Free for 34 days, then one lifetime purchase. Founder price $19.99 until 14 February 2027, then $39.99. No subscription, no ads, no tracking.</td></tr>
+          <tr><th>After the trial</th><td>Without a purchase the app switches to read-only. Data stays readable and exportable; it is never held hostage.</td></tr>
+          <tr><th>Languages</th><td>English, Spanish, German</td></tr>
+          <tr><th>Privacy</th><td>Local-first. The budget file is encrypted on device with AES-256 using a password only the user knows. Optional sync goes through the user's own Google Drive; Stillware never sees a transaction. Receipt scanning runs on-device.</td></tr>
+          <tr><th>Method</th><td>Zero-based (envelope) budgeting: every unit of money is assigned a job.</td></tr>
+          <tr><th>Category</th><td>Finance</td></tr>
+          <tr><th>Website</th><td><a href="/zeroed">stillwareltd.com/zeroed</a></td></tr>
+          <tr><th>Support</th><td><a href="/zeroed/support">stillwareltd.com/zeroed/support</a> &middot; support@stillwareltd.com</td></tr>
+        </tbody>
+      </table>
+
+      <h2>Descriptions</h2>
+      <h3>One line</h3>
+      <p class="copy">Zeroed is a privacy-first, zero-based budgeting app you buy once: no servers, no subscription, no account, and your budget stays encrypted on your own device.</p>
+
+      <h3>Short (about 60 words)</h3>
+      <p class="copy">Zeroed brings envelope budgeting to iPhone, iPad, Mac, Windows and Android without a subscription or a cloud account. Give every unit of money a job, track bills, goals and net worth, scan receipts and import bank statements. Your budget is encrypted on your device with a password only you know, and syncs through your own Google Drive if you want it to.</p>
+
+      <h3>Long (about 150 words)</h3>
+      <p class="copy">Most budgeting apps rent you your own numbers: a monthly fee, an account on someone else's server, and a bank connection that reads every transaction. Zeroed takes the opposite approach. It is a zero-based budgeting app that keeps the budget file on the user's device, encrypted with AES-256 under a password only they know. There is no account to create and nothing for the developer to see.</p>
+      <p class="copy">Zeroed covers the whole method: envelopes with money to assign, multiple current, savings and credit-card accounts, scheduled bills, savings goals, net worth, reports and home-screen widgets. Transactions come in by hand, by scanning a receipt on-device, or by importing CSV and PDF bank statements. Optional sync uses the user's own Google Drive.</p>
+      <p class="copy">Every feature is free for 34 days. After that a single lifetime purchase unlocks the app forever; anyone who decides not to buy keeps read-only access and can export everything. Zeroed is made by Stillware Ltd in the United Kingdom and is available in English, Spanish and German.</p>
+
+      <h2>Screenshots</h2>
+      <p>iPhone, 1284 &times; 2778, English. The zip also includes the Spanish and German sets on request.</p>
+      <div class="shots">
+        {screenshots.map((s) => (
+          <a href={`/zeroed/press/${s.file}`}><img src={`/zeroed/press/${s.file}`} alt={s.alt} width="1284" height="2778" loading="lazy" /></a>
+        ))}
+      </div>
+
+      <h2>Icon and artwork</h2>
+      <div class="art">
+        <a href="/zeroed/press/zeroed-icon-512.png"><img src="/zeroed/press/zeroed-icon-512.png" alt="Zeroed app icon" width="512" height="512" loading="lazy" /><span>App icon, 512 px</span></a>
+        <a href="/zeroed/press/zeroed-feature-graphic.png"><img src="/zeroed/press/zeroed-feature-graphic.png" alt="Zeroed feature graphic" width="1024" height="500" loading="lazy" /><span>Feature graphic, 1024 &times; 500</span></a>
+      </div>
+
+      <h2>Usage</h2>
+      <p>Assets on this page may be used in articles, reviews and videos about Zeroed. Please do not alter the icon or present the screenshots as a different product. Promo codes for the App Store are available to reviewers on request.</p>
+    </div>
+  </section>
+</Layout>
+
+<style>
+  .press { padding: 4rem 0 5rem; }
+  .press .container { max-width: 900px; }
+  .eyebrow { text-transform: uppercase; letter-spacing: 0.12em; font-size: 0.8rem; opacity: 0.7; margin: 0 0 0.5rem; }
+  .press h1 { font-size: 3rem; margin: 0 0 1rem; }
+  .lede { font-size: 1.25rem; line-height: 1.6; max-width: 46rem; }
+  .actions { display: flex; gap: 1.5rem; align-items: center; flex-wrap: wrap; margin: 1.5rem 0 3rem; }
+  .press h2 { margin: 3rem 0 1rem; }
+  .press h3 { margin: 1.5rem 0 0.5rem; font-size: 1.05rem; opacity: 0.85; }
+  .facts { width: 100%; border-collapse: collapse; }
+  .facts th, .facts td { text-align: left; vertical-align: top; padding: 0.6rem 0.75rem; border-bottom: 1px solid rgba(128,128,128,0.25); }
+  .facts th { width: 11rem; font-weight: 600; white-space: nowrap; }
+  .copy { line-height: 1.7; max-width: 46rem; }
+  .shots { display: grid; grid-template-columns: repeat(auto-fill, minmax(140px, 1fr)); gap: 1rem; }
+  .shots img { width: 100%; height: auto; border-radius: 12px; }
+  .art { display: flex; gap: 2rem; flex-wrap: wrap; align-items: flex-end; }
+  .art a { display: flex; flex-direction: column; gap: 0.5rem; font-size: 0.9rem; }
+  .art img { max-width: 100%; height: auto; border-radius: 12px; }
+  .art img[width="512"] { width: 160px; }
+  .art img[width="1024"] { width: 400px; }
+  @media (max-width: 600px) { .press h1 { font-size: 2.2rem; } .facts th { width: auto; white-space: normal; } }
+</style>
