@@ -3,7 +3,8 @@ import Layout from '../layouts/Layout.astro';
 
 // Latest Zeroed release — bump this single constant when a new version ships.
 const LATEST_VERSION = '1.3.0';
-const APP_STORE_URL = 'https://apps.apple.com/app/id6804301133';
+const APPLE_APP_ID = '6804301133';
+const APP_STORE_URL = `https://apps.apple.com/app/id${APPLE_APP_ID}`;
 const RELEASE_BASE = `https://github.com/stillware-ltd/zeroed-releases/releases/download/v${LATEST_VERSION}`;
 const RELEASE_PAGE = `https://github.com/stillware-ltd/zeroed-releases/releases/tag/v${LATEST_VERSION}`;
 import zeroedVideos from '../data/zeroed-videos.json';
@@ -15,6 +16,7 @@ const latestLong = (zeroedVideos as { id: string; type: string; title: string; p
   description="The privacy-first, zero-based budgeting app you pay for once. No servers. No subscriptions. Encrypted on your device."
   canonical="https://www.stillwareltd.com/zeroed/"
   ogImage="https://www.stillwareltd.com/Zeroed_Desktop_Today.png"
+  appleAppId={APPLE_APP_ID}
 >
     <!-- Hero -->
     <header class="zeroed-hero">

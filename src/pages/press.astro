@@ -9,6 +9,16 @@ const screenshots = [
   { src: '/mobile-slides/2.png', alt: 'Zeroed on a phone: Budget view' },
   { src: '/mobile-slides/3.png', alt: 'Zeroed on a phone: Accounts and transactions' },
 ];
+
+// Framed iPhone captures from the App Store listing (1284 × 2778, English).
+const iphoneShots = [
+  { src: '/press/zeroed/iphone_01_today.png', alt: 'Zeroed on iPhone: Today view with safe-to-spend and upcoming bills' },
+  { src: '/press/zeroed/iphone_02_budget.png', alt: 'Zeroed on iPhone: Budget view with envelopes and money to assign' },
+  { src: '/press/zeroed/iphone_03_bills.png', alt: 'Zeroed on iPhone: Bills view with scheduled transactions' },
+  { src: '/press/zeroed/iphone_04_goals.png', alt: 'Zeroed on iPhone: Goals view with savings targets' },
+  { src: '/press/zeroed/iphone_05_net_worth.png', alt: 'Zeroed on iPhone: Net worth view' },
+  { src: '/press/zeroed/iphone_06_reports.png', alt: 'Zeroed on iPhone: Reports view with spending charts' },
+];
 ---
 
 <Layout
@@ -63,10 +73,16 @@ const screenshots = [
   <section class="press-section alt">
     <div class="container">
       <h2>Screenshots</h2>
-      <p class="note">Version 1.3.0. Click any image for the full-size file. More sizes and platforms on request.</p>
+      <p class="note">Version 1.3.0. Click any image for the full-size file. More sizes and platforms on request. <a href="/press/zeroed/zeroed-press-kit.zip" download>Download the iPhone set, icon and feature graphic as one zip (2.9 MB)</a>.</p>
       <div class="shots">
         {screenshots.map((s) => (
           <a href={s.src} target="_blank" rel="noopener"><img src={s.src} alt={s.alt} loading="lazy" /></a>
+        ))}
+      </div>
+      <h3>iPhone (App Store listing)</h3>
+      <div class="shots phones">
+        {iphoneShots.map((s) => (
+          <a href={s.src} target="_blank" rel="noopener"><img src={s.src} alt={s.alt} width="1284" height="2778" loading="lazy" /></a>
         ))}
       </div>
     </div>
@@ -102,6 +118,8 @@ const screenshots = [
   .logos img { display: block; margin: 0 auto 0.5rem; }
   .logos figcaption { font-size: 0.85rem; opacity: 0.8; }
   .shots { display: grid; grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); gap: 1rem; }
+  .shots.phones { grid-template-columns: repeat(auto-fill, minmax(150px, 1fr)); margin-top: 0.5rem; }
+  .press-section h3 { margin: 2rem 0 0.5rem; font-size: 1.05rem; }
   .shots img { width: 100%; height: auto; border-radius: 8px; border: 1px solid rgba(127,127,127,0.25); }
   .note { opacity: 0.8; font-size: 0.95rem; }
   .rules { line-height: 1.6; max-width: 75ch; padding-left: 1.2rem; }
