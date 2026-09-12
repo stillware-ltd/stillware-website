@@ -1277,6 +1277,19 @@ const latestIsFeatured = !!(latestLong && latestLong.featured);
 <script>
     // Latest-video facade on /zeroed/: the YouTube player loads only after the click.
     document.querySelectorAll<HTMLButtonElement>('.latest-video-player').forEach((btn) => {
+        // Denominator for video_play — see the note in blog/[slug].astro. (2026-09-13)
+        const seen = new IntersectionObserver((entries) => {
+            entries.forEach((e) => {
+                if (!e.isIntersecting) return;
+                seen.disconnect();
+                const w = window as any;
+                if (typeof w.gtag === 'function') {
+                    w.gtag('event', 'video_impression', { video_id: btn.dataset.id || '', page_path: location.pathname });
+                }
+            });
+        }, { threshold: 0.5 });
+        seen.observe(btn);
+
         btn.addEventListener('click', () => {
             const id = btn.dataset.id;
             if (!id) return;
