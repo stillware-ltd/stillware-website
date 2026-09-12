@@ -1,5 +1,6 @@
 ---
 import Layout from '../../layouts/Layout.astro';
+import StoreLinks from '../../components/StoreLinks.astro';
 import { getCollection } from 'astro:content';
 
 export async function getStaticPaths() {
@@ -132,6 +133,7 @@ const videoSchema = videoId ? {
                         <a href="/zeroed" class="btn-primary">Explore Zeroed</a>
                         <span class="product-cta-price">Founder price: $19.99 until 14 Feb 2027</span>
                     </div>
+                    <StoreLinks />
                 </div>
             </div>
         )}

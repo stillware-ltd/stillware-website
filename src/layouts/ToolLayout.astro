@@ -1,5 +1,6 @@
 ---
 import Layout from './Layout.astro';
+import StoreLinks from '../components/StoreLinks.astro';
 
 interface FAQ {
   q: string;
@@ -86,6 +87,8 @@ const faqSchema = faqs.length
         <p>{ctaText}</p>
         <a href="/zeroed" class="btn-primary pulse">{ctaLabel}</a>
         <span class="cta-price-note">$19.99 once at the founder price (until 14 Feb 2027, then $39.99). No card needed for the trial.</span>
+        <StoreLinks />
+
       </div>
     </div>
   </section>
