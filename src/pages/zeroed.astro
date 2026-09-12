@@ -6,7 +6,11 @@ const LATEST_VERSION = '1.3.0';
 const RELEASE_BASE = `https://github.com/stillware-ltd/zeroed-releases/releases/download/v${LATEST_VERSION}`;
 const RELEASE_PAGE = `https://github.com/stillware-ltd/zeroed-releases/releases/tag/v${LATEST_VERSION}`;
 import zeroedVideos from '../data/zeroed-videos.json';
-const latestLong = (zeroedVideos as { id: string; type: string; title: string; published: string }[]).find((v) => v.type === 'long') || null;
+type ZVideo = { id: string; type: string; title: string; published: string; featured?: boolean; blurb?: string };
+const zLongs = (zeroedVideos as ZVideo[]).filter((v) => v.type === 'long');
+// The featured long (dash.py videos.json `featured`) is the one viewers search for; it stays up until a better one earns the slot. Falls back to the newest.
+const latestLong = zLongs.find((v) => v.featured) || zLongs[0] || null;
+const latestIsFeatured = !!(latestLong && latestLong.featured);
 ---
 
 <Layout
@@ -139,7 +143,7 @@ const latestLong = (zeroedVideos as { id: string; type: string; title: string; p
             <div class="container">
                 <div class="section-header center-text">
                     <h2 class="text-gradient">Watch the method, not a sales pitch.</h2>
-                    <p class="latest-video-sub">The newest video from the Zeroed channel: a budgeting move taught first on paper, then shown inside the app.</p>
+                    <p class="latest-video-sub">{latestIsFeatured ? (latestLong.blurb || "Start here: the Zeroed channel video people search for most, a budgeting move taught first on paper, then shown inside the app.") : "The newest video from the Zeroed channel: a budgeting move taught first on paper, then shown inside the app."}</p>
                 </div>
                 <div class="latest-video-wrap reveal-up reveal-delay-1">
                     <button class="latest-video-player" type="button" data-id={latestLong.id} aria-label={`Play: ${latestLong.title}`}>
