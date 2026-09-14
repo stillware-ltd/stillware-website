@@ -46,6 +46,12 @@ const comingSoon = isComingSoon(config);
         </p>
       </noscript>
       <a href="/" class="btn-secondary">Back to Home</a>
+      {config.appStoreUrl && (
+        <p class="checkout-alt">
+          On iPhone or iPad? Buy inside the app from the
+          <a href={config.appStoreUrl} rel="noopener">App Store</a> instead.
+        </p>
+      )}
     </div>
   </section>
 
@@ -123,6 +129,12 @@ const comingSoon = isComingSoon(config);
   .checkout-content {
     text-align: center;
     max-width: 520px;
+  }
+
+  .checkout-alt {
+    margin-top: 1.5rem;
+    font-size: 0.9rem;
+    color: var(--color-text-muted, #64748b);
   }
 
   .checkout-content h1 {
