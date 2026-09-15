@@ -2,10 +2,12 @@
 import Layout from '../layouts/Layout.astro';
 
 // Latest Zeroed release — bump this single constant when a new version ships.
-// Per-asset versions: the 1.3.1 wave shipped the macOS DMG first (2026-09-15);
-// the Windows zip and Android APK stay on 1.3.0 until their 1.3.1 builds land
-// on zeroed-releases. Bump each line as its asset is published.
-const DMG_VERSION = '1.3.1';
+// Per-asset versions. The macOS 1.3.1 DMG is published but HELD at 1.3.0 here
+// until iOS 1.3.1 clears App Review: 1.3.1 uses budget-file schema v16 and a
+// 1.3.1 Mac syncing with a 1.3.0 iPhone locks the iPhone out. Flip DMG_VERSION
+// to '1.3.1' the moment the App Store update is live. Windows zip and Android
+// APK stay on 1.3.0 until their 1.3.1 builds land on zeroed-releases.
+const DMG_VERSION = '1.3.0';
 const WINDOWS_VERSION = '1.3.0';
 const APK_VERSION = '1.3.0';
 const IOS_VERSION = '1.3.0'; // App Store; 1.3.1 (28) is in review as of 2026-09-15
@@ -260,7 +262,7 @@ const latestIsFeatured = !!(latestLong && latestLong.featured);
                     </div>
                     <h3>macOS</h3>
                     <p>Notarized <code>.dmg</code> — open and drag Zeroed into Applications. Apple Silicon &amp; Intel.</p>
-                    <span class="download-meta">53 MB &middot; v{DMG_VERSION}</span>
+                    <span class="download-meta">52 MB &middot; v{DMG_VERSION}</span>
                 </a>
                 <a href={APP_STORE_URL} target="_blank" rel="noopener" class="direct-download-card">
                     <div class="download-icon">
