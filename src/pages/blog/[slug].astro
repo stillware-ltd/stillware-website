@@ -266,6 +266,23 @@ const videoSchema = videoId ? {
         cap.className = 'yt-caption';
         cap.textContent = title;
         box.replaceChildren(btn, cap);
+
+        // Denominator for video_play. Without this, "video_play 0" cannot be read: it means
+        // either "the embed was never seen" or "it was seen and ignored", and those call for
+        // opposite fixes. One video_impression per page view, fired when the facade actually
+        // enters the viewport, makes the zero interpretable. (2026-09-13)
+        const seen = new IntersectionObserver((entries) => {
+            entries.forEach((e) => {
+                if (!e.isIntersecting) return;
+                seen.disconnect();
+                const w = window as any;
+                if (typeof w.gtag === 'function') {
+                    w.gtag('event', 'video_impression', { video_id: id, page_path: location.pathname });
+                }
+            });
+        }, { threshold: 0.5 });
+        seen.observe(btn);
+
         btn.addEventListener('click', () => {
             const frame = document.createElement('iframe');
             frame.src = `https://www.youtube-nocookie.com/embed/${id}?autoplay=1&rel=0&modestbranding=1`;
