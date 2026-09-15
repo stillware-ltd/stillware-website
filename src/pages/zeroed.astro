@@ -2,10 +2,17 @@
 import Layout from '../layouts/Layout.astro';
 
 // Latest Zeroed release — bump this single constant when a new version ships.
-const LATEST_VERSION = '1.3.0';
+// Per-asset versions: the 1.3.1 wave shipped the macOS DMG first (2026-09-15);
+// the Windows zip and Android APK stay on 1.3.0 until their 1.3.1 builds land
+// on zeroed-releases. Bump each line as its asset is published.
+const DMG_VERSION = '1.3.1';
+const WINDOWS_VERSION = '1.3.0';
+const APK_VERSION = '1.3.0';
+const IOS_VERSION = '1.3.0'; // App Store; 1.3.1 (28) is in review as of 2026-09-15
+const LATEST_VERSION = DMG_VERSION;
 const APPLE_APP_ID = '6804301133';
 const APP_STORE_URL = `https://apps.apple.com/app/id${APPLE_APP_ID}`;
-const RELEASE_BASE = `https://github.com/stillware-ltd/zeroed-releases/releases/download/v${LATEST_VERSION}`;
+const releaseBase = (v: string) => `https://github.com/stillware-ltd/zeroed-releases/releases/download/v${v}`;
 const RELEASE_PAGE = `https://github.com/stillware-ltd/zeroed-releases/releases/tag/v${LATEST_VERSION}`;
 import zeroedVideos from '../data/zeroed-videos.json';
 type ZVideo = { id: string; type: string; title: string; published: string; featured?: boolean; blurb?: string };
@@ -247,13 +254,13 @@ const latestIsFeatured = !!(latestLong && latestLong.featured);
                 <p class="direct-downloads-intro">One-click install from the App Store or Microsoft Store, or app-store-free binaries hosted on GitHub — checksummed, so you can verify with SHA256 before installing.</p>
             </div>
             <div class="direct-downloads-grid">
-                <a href={`${RELEASE_BASE}/Zeroed-${LATEST_VERSION}.dmg`} class="direct-download-card">
+                <a href={`${releaseBase(DMG_VERSION)}/Zeroed-${DMG_VERSION}.dmg`} class="direct-download-card">
                     <div class="download-icon">
                         <svg viewBox="0 0 24 24" fill="currentColor" width="20" height="20"><path d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.81-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83M13 3.5c.73-.83 1.94-1.46 2.94-1.5.13 1.17-.34 2.35-1.04 3.19-.69.85-1.83 1.51-2.95 1.42-.15-1.15.41-2.35 1.05-3.11z"/></svg>
                     </div>
                     <h3>macOS</h3>
                     <p>Notarized <code>.dmg</code> — open and drag Zeroed into Applications. Apple Silicon &amp; Intel.</p>
-                    <span class="download-meta">52 MB &middot; v{LATEST_VERSION}</span>
+                    <span class="download-meta">53 MB &middot; v{DMG_VERSION}</span>
                 </a>
                 <a href={APP_STORE_URL} target="_blank" rel="noopener" class="direct-download-card">
                     <div class="download-icon">
@@ -261,7 +268,7 @@ const latestIsFeatured = !!(latestLong && latestLong.featured);
                     </div>
                     <h3>iPhone &amp; iPad (App Store)</h3>
                     <p>Install from the App Store. Same 34-day trial; buy inside the app and sync to desktop through your own Google Drive.</p>
-                    <span class="download-meta">App Store &middot; v{LATEST_VERSION}</span>
+                    <span class="download-meta">App Store &middot; v{IOS_VERSION}</span>
                 </a>
                 <a href="https://apps.microsoft.com/detail/9NCHJ67Q98C5" target="_blank" rel="noopener" class="direct-download-card">
                     <div class="download-icon">
@@ -269,23 +276,23 @@ const latestIsFeatured = !!(latestLong && latestLong.featured);
                     </div>
                     <h3>Windows (Microsoft Store)</h3>
                     <p>One-click install, signed by Microsoft, with automatic updates.</p>
-                    <span class="download-meta">Microsoft Store &middot; v{LATEST_VERSION}</span>
+                    <span class="download-meta">Microsoft Store &middot; v{WINDOWS_VERSION}</span>
                 </a>
-                <a href={`${RELEASE_BASE}/Zeroed-Windows-${LATEST_VERSION}.zip`} class="direct-download-card">
+                <a href={`${releaseBase(WINDOWS_VERSION)}/Zeroed-Windows-${WINDOWS_VERSION}.zip`} class="direct-download-card">
                     <div class="download-icon">
                         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" width="20" height="20"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
                     </div>
                     <h3>Windows (Portable)</h3>
                     <p>Extract anywhere and run <code>zeroed.exe</code> — no install, no admin rights.</p>
-                    <span class="download-meta">21 MB &middot; v{LATEST_VERSION}</span>
+                    <span class="download-meta">21 MB &middot; v{WINDOWS_VERSION}</span>
                 </a>
-                <a href={`${RELEASE_BASE}/Zeroed-${LATEST_VERSION}.apk`} class="direct-download-card">
+                <a href={`${releaseBase(APK_VERSION)}/Zeroed-${APK_VERSION}.apk`} class="direct-download-card">
                     <div class="download-icon">
                         <svg viewBox="0 0 24 24" fill="currentColor" width="20" height="20"><path d="M17.523 2.293l-1.59 2.755c-1.17-.678-2.53-1.048-3.933-1.048s-2.763.37-3.933 1.048L6.477 2.293a.578.578 0 00-.79.211.58.58 0 00.211.79l1.548 2.682A8.502 8.502 0 004 12.5h16a8.502 8.502 0 00-3.446-6.524l1.548-2.682a.58.58 0 00-.579-.79zM9 10.5a1 1 0 110-2 1 1 0 010 2zm6 0a1 1 0 110-2 1 1 0 010 2zM4 13.5v6a2.5 2.5 0 005 0v-6zm11 0v6a2.5 2.5 0 005 0v-6z" /></svg>
                     </div>
                     <h3>Android (Sideload)</h3>
                     <p>Install the <code>.apk</code> directly — no Google account or Play Services required.</p>
-                    <span class="download-meta">150 MB &middot; v{LATEST_VERSION}</span>
+                    <span class="download-meta">150 MB &middot; v{APK_VERSION}</span>
                 </a>
             </div>
             <p class="direct-downloads-meta">
