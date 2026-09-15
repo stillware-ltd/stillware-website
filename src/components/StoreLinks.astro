@@ -11,9 +11,10 @@
 //
 // Link hrefs are matched by the store_click handler in Layout.astro — keep the .apk and
 // .dmg extensions in the URL, or the click stops being counted.
-// Per-asset versions, same as src/pages/zeroed.astro: the DMG moved to 1.3.1 on
-// 2026-09-15; the APK stays on 1.3.0 until its 1.3.1 build is published.
-const DMG_VERSION = '1.3.1';
+// Per-asset versions, same as src/pages/zeroed.astro: the DMG is HELD at 1.3.0
+// until iOS 1.3.1 is live (schema v16 lockout); the APK stays on 1.3.0 until its
+// 1.3.1 build is published.
+const DMG_VERSION = '1.3.0';
 const APK_VERSION = '1.3.0';
 const releaseBase = (v: string) => `https://github.com/stillware-ltd/zeroed-releases/releases/download/v${v}`;
 
