@@ -20,6 +20,7 @@ interface Props {
   breadcrumbLabel: string;
   faqs?: FAQ[];
   related?: RelatedTool[];
+  companion?: RelatedTool[];   // companion articles (slug under /blog/) rendered above the CTA — the tools pages carry the search impressions
   ctaTitle?: string;
   ctaText?: string;
   ctaLabel?: string;
@@ -33,6 +34,7 @@ const {
   breadcrumbLabel,
   faqs = [],
   related = [],
+  companion = [],
   ctaTitle = 'Budgeting that runs on your device, not a server',
   ctaText = 'Zeroed is a zero-based budgeting app you buy once and own forever. Private, offline, no account — and no subscription eating the money you just calculated.',
   ctaLabel = 'Try Zeroed Free for 34 Days',
@@ -79,6 +81,22 @@ const faqSchema = faqs.length
       </div>
     </div>
   </section>
+
+  {companion.length > 0 && (
+    <section class="related-section companion-section">
+      <div class="container">
+        <div class="tool-article">
+          <h2>Worked examples behind this calculator</h2>
+          <p>Each one is a full write-up on one UK household, with the video that walks through the same numbers.</p>
+          <ul class="related-list">
+            {companion.map((c) => (
+              <li><a href={`/blog/${c.slug}/`}>{c.title}</a></li>
+            ))}
+          </ul>
+        </div>
+      </div>
+    </section>
+  )}
 
   <section class="tool-cta-section">
     <div class="container">

@@ -14,7 +14,7 @@ video: "60OOTEImPus"
 videoTitle: "Budgeting on a Low Income UK: One Envelope Takes the Gap"
 ---
 
-**The short answer: fund the month in a fixed order and let the last envelope absorb the shortfall.** When £1,280 lands and the month costs £1,315, the instinct is to shave £3.50 off ten envelopes. Don't. Fund roof and power first, then food and getting to work, then anything with a date this month — and whatever sits at the bottom of that list takes the whole £35. One envelope is short by £35 and nine are correct, instead of ten envelopes being quietly wrong.
+**The short answer: to budget on a low income, fund the month in a fixed order and let the last envelope absorb the shortfall.** When £1,280 lands and the month costs £1,315, the instinct is to shave £3.50 off ten envelopes. Don't. Fund roof and power first, then food and getting to work, then anything with a date this month — and whatever sits at the bottom of that list takes the whole £35. One envelope is short by £35 and nine are correct, instead of ten envelopes being quietly wrong.
 
 <div class="yt-embed" data-id="60OOTEImPus" data-title="Budgeting on a Low Income UK: One Envelope Takes the Gap — 5 minutes">
   <a href="https://www.youtube.com/watch?v=60OOTEImPus">Watch: Budgeting on a Low Income UK: One Envelope Takes the Gap</a>

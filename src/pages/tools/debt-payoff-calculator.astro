@@ -25,6 +25,12 @@ const related = [
   { slug: 'emergency-fund-calculator', title: 'Emergency Fund Calculator' },
   { slug: 'subscription-cost-calculator', title: 'Subscription Cost Calculator' },
 ];
+
+// Companion articles (each embeds its long video) — rendered above the CTA by ToolLayout.
+const companion = [
+  { slug: 'what-your-minimum-payment-actually-pays-off', title: 'What your credit card minimum payment actually pays off (UK)' },
+  { slug: 'emergency-fund-vs-paying-off-debt', title: 'Emergency fund vs paying off debt: what doing both costs' },
+];
 ---
 
 <ToolLayout
@@ -35,6 +41,7 @@ const related = [
   breadcrumbLabel="Debt Payoff Calculator"
   faqs={faqs}
   related={related}
+  companion={companion}
   ctaTitle="Track the payoff, not just the plan"
   ctaText="Zeroed has a built-in debt payoff planner (snowball and avalanche), plus the envelope budget that frees up your extra payment in the first place. On your device, no account, no subscription."
 >

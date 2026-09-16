@@ -82,7 +82,7 @@ You do not need software for this.
 5. Assign the split on the day the money lands, not at the end of the month.
 6. When the buffer is full, send the whole amount back to the debt.
 
-Two envelopes and one split rule. That is the entire method, and it works on paper exactly as it works in an app.
+Two envelopes and one split rule. That is the entire method, and it works on paper exactly as it works in an app. The [debt payoff calculator](/tools/debt-payoff-calculator/) will run the £150-a-month route on your own balance and rate, free, in the browser.
 
 ## Doing it in Zeroed
 

@@ -8,7 +8,7 @@ pillar: "problem-solution"
 appCluster: "zeroed"
 primaryKeyword: "bill calendar"
 relatedSlugs: ["budgeting-with-multiple-bank-accounts", "how-to-budget-when-you-get-paid-weekly"]
-wordCount: 1290
+wordCount: 1374
 heroImage: "/blog/images/bill-calendar-what-it-does-not-tell-you/hero.webp"
 video: "BEasfxLU5L8"
 videoTitle: "Bill Calendar: 21 Days Between Payday and the Last Bill"
@@ -127,6 +127,27 @@ We build [Zeroed](https://stillwareltd.com/zeroed?ref=blog-t018), an envelope bu
 once. It runs offline, it never asks for your bank login, and holding a dated bill's money from the
 day it lands is the thing it exists to do. That is our bias, stated plainly — and the method above
 works exactly as well on a sheet of paper with one extra column, which is why the column is the point
-of this article rather than the app.
+of this article rather than the app. If you want the month's totals before you draw the grid, the
+[zero-based budget calculator](/tools/zero-based-budget-calculator/) adds the dated bills up in a browser, free.
+
+## Frequently asked
+
+**What is a bill calendar?**
+A grid with a row per bill and a column per month, ticked when each one clears. It answers "when does
+this leave?" and nothing else. The column it lacks is whether the money is still there on that date.
+
+**How do I make a bill calendar that actually works?**
+Write every dated bill down with its day and amount, mark the one that leaves on payday, total the rest
+(£267 here), count the days to the last one (21) and the card payments in between (12), then hold each
+amount from the day the money arrives. A printable template gives you the dates; the second column is
+the part you add.
+
+**Is a bill calendar app better than a template?**
+Only if it holds the money as well as the date. A template or spreadsheet with one extra column does the
+job; an envelope budgeting app does the holding automatically, which is the one thing a date grid cannot.
+
+**Can I move my bill dates closer to payday?**
+Most direct debits will move if you ring and ask. Council tax can be spread over 12 months instead of
+10 (£105 becomes £87.50 here), but that is a trade, not a saving: February and March stop being free.
 
 *This is education about a budgeting method, not financial advice.*

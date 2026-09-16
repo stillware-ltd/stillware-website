@@ -25,6 +25,15 @@ const related = [
   { slug: 'debt-payoff-calculator', title: 'Debt Payoff Calculator' },
   { slug: 'emergency-fund-calculator', title: 'Emergency Fund Calculator' },
 ];
+
+// Companion articles (each embeds its long video) — rendered above the CTA by ToolLayout.
+const companion = [
+  { slug: 'how-to-budget-on-a-low-income-uk', title: 'How to budget on a low income (UK): one envelope takes the gap' },
+  { slug: 'how-to-budget-when-you-get-paid-monthly', title: 'How to budget when you get paid monthly: one subtraction' },
+  { slug: 'how-to-budget-when-you-get-paid-weekly', title: 'How to budget when you get paid weekly (UK): the rent week' },
+  { slug: 'why-cash-stuffing-stops-working-week-6', title: 'Cash stuffing vs digital envelopes: why it breaks at week 6' },
+  { slug: 'bill-calendar-what-it-does-not-tell-you', title: 'Bill calendar: what it tells you, and what it does not' },
+];
 ---
 
 <ToolLayout
@@ -35,6 +44,7 @@ const related = [
   breadcrumbLabel="Zero-Based Budget Calculator"
   faqs={faqs}
   related={related}
+  companion={companion}
   ctaTitle="This page, as an app you own"
   ctaText="Zeroed is this exact method with the boring parts automated: envelopes that persist, statement imports, rollover, goals, and a Today view that says what's safe to spend. Bought once, on your device, no account."
 >

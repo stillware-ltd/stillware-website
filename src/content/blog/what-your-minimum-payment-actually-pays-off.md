@@ -1,5 +1,5 @@
 ---
-title: "What Your Minimum Payment Actually Pays Off (UK, With the Sums)"
+title: "What Your Credit Card Minimum Payment Actually Pays Off (UK)"
 date: 2026-09-12
 description: "On a £1,450 card at 24.9% APR the minimum is £44.59 — and £14.50 of it reaches the balance. Here is the whole year, and what it takes to clear the card in 20 months instead of 22 years."
 author: "Stillware Team"
@@ -8,13 +8,13 @@ pillar: "problem-solution"
 appCluster: "zeroed"
 primaryKeyword: "minimum payment credit card uk"
 relatedSlugs: ["how-to-budget-when-you-get-paid-monthly", "how-to-budget-on-a-low-income-uk"]
-wordCount: 1320
+wordCount: 1168
 heroImage: "/blog/images/what-your-minimum-payment-actually-pays-off/hero.webp"
 video: "iWswn7FQkwE"
 videoTitle: "How to Get Out of Debt on a Low Income (UK): 20 Months"
 ---
 
-A minimum payment is not a small repayment. It is the interest, plus about one per cent of what you owe. On a **£1,450** balance at **24.9% APR** the minimum comes to **£44.59** a month — and of that, **£14.50** reaches the balance. The other £30.09 is rent on money you have already spent.
+A credit card minimum payment is not a small repayment. It is the interest, plus about one per cent of what you owe. On a **£1,450** balance at **24.9% APR** the minimum comes to **£44.59** a month — and of that, **£14.50** reaches the balance. The other £30.09 is rent on money you have already spent.
 
 > **If you are behind on rent or council tax, deal with that first.** Free, independent help: [StepChange](https://www.stepchange.org/), [Citizens Advice](https://www.citizensadvice.org.uk/debt-and-money/), [National Debtline](https://nationaldebtline.org/). Nothing on this page is financial advice, and nothing here routes you to a debt product.
 
@@ -112,10 +112,24 @@ Same card, same wage. The difference is which number leaves the account on payda
 5. Get the month to zero first, with the card minimum counted **inside** the plan.
 6. Then double the card payment and hold it there — funded on payday like a bill, not paid out of whatever is left at the end.
 
-The method works on paper, in a spreadsheet, or in any envelope app. The arithmetic is what matters, not where you keep it.
+The method works on paper, in a spreadsheet, or in any envelope app. The arithmetic is what matters, not where you keep it. The [debt payoff calculator](/tools/debt-payoff-calculator/) runs the minimum-only and the doubled route on your own balance and APR, free, in the browser.
 
 ## The one rule
 
 **The card payment is an envelope you fund on payday, not whatever is left at the end of the month.**
+
+## Frequently asked
+
+**How is a credit card minimum payment calculated in the UK?**
+Typically the month's interest plus about 1% of the balance, with a £5 floor. On £1,450 at 24.9% APR that is £30.09 of interest plus £14.50 of balance: £44.59.
+
+**Is the minimum payment just interest?**
+Almost. Of the £44.59 above, £30.09 is interest and £14.50 reaches the balance. A year of minimums pays £506.58 and takes £164.74 off the debt.
+
+**What happens if I only ever pay the minimum?**
+The payment shrinks as the balance shrinks, so it never finishes quickly: 273 months (over 22 years) and about £4,232 in total on this £1,450 balance.
+
+**Should I pay more than the minimum before my budget balances?**
+Get the month to zero with the minimum counted inside it first. An extra payment on an unbalanced month is funded by the same shortfall it is meant to fix. Then double the payment and fund it on payday like a bill: 20 months and £1,783 here.
 
 This is education about a budgeting method, not financial advice. If the rent or the council tax are already behind, ring StepChange or Citizens Advice before any of this.

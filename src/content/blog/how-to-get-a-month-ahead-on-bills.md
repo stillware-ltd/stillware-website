@@ -133,7 +133,7 @@ Write your dated bills down, smallest at the top. That list is the method, and i
 
 I built [Zeroed](https://www.stillwareltd.com/zeroed?ref=blog-how-to-get-a-month-ahead-on-bills) for budgets like this one, because envelope balances carry forward: when the water row reads £64.00 against a £32.00 bill, the app is showing you that you are a month ahead on that line, in one number, without a spreadsheet. One payment, no subscription, works offline, no bank connection. You can also do the whole thing with a notebook and five envelopes — the order is what matters, not the tool.
 
-If you want to check the arithmetic on your own month first, the [budget calculators](/tools/) will do the totals.
+If you want to check the arithmetic on your own month first, the [savings goal calculator](/tools/savings-goal-calculator/) will tell you how many months one bill takes to get ahead of at the amount you can spare.
 
 This is education about a budgeting method, not financial advice.
 

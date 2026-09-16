@@ -14,7 +14,7 @@ video: "XngbiEDKp4o"
 videoTitle: "Get Paid Monthly? Week 3 Was Broke on Day One"
 ---
 
-If you are paid once a month, do one subtraction on payday: take everything with a date on it between now and the next payday — rent, council tax, energy, water, phone, and the dated one-offs — and take it off the money that just landed. **What is left is what the month is actually worth.** Divide that by the weeks until you are paid again, and that weekly figure, not your balance, is the number to spend from. On the household below, £1,280 lands and only **£290** of it is ever available: **£72.50 a week**.
+If you are paid monthly, the whole budget is one subtraction on payday: take everything with a date on it between now and the next payday — rent, council tax, energy, water, phone, and the dated one-offs — and take it off the money that just landed. **What is left is what the month is actually worth.** Divide that by the weeks until you are paid again, and that weekly figure, not your balance, is the number to spend from. On the household below, £1,280 lands and only **£290** of it is ever available: **£72.50 a week**.
 
 <div class="yt-embed" data-id="XngbiEDKp4o" data-title="Get Paid Monthly? Week 3 Was Broke on Day One">
   <a href="https://www.youtube.com/watch?v=XngbiEDKp4o">Watch: Get Paid Monthly — Week 3 Was Broke on Day One (5 min)</a>
@@ -84,7 +84,7 @@ I built [Zeroed](https://stillwareltd.com/zeroed?ref=blog-how-to-budget-when-you
 
 You give each envelope its amount on payday, and the header at the top of the budget shows what is left to assign. On this household it reads **−£35.00** on the first — before anything is spent — which is the whole point: the shortfall arrives as a number on payday instead of as a declined card in week three. The two envelopes that actually get spent week to week, groceries and travel, are the only ones the weekly figure has to cover; everything else is dated and already counted.
 
-One payment, no subscription, works offline, and it never asks for your bank login. The method above works without it — the arithmetic is what matters, not where you keep it.
+One payment, no subscription, works offline, and it never asks for your bank login. The method above works without it — the arithmetic is what matters, not where you keep it. The [zero-based budget calculator](/tools/zero-based-budget-calculator/) does the same subtraction on your own figures, free, in the browser.
 
 ## If the gap is bigger than £35
 

@@ -1,5 +1,5 @@
 ---
-title: "Why Cash Stuffing Stops Working at Week 6 (and the Two-Envelope Fix)"
+title: "Cash Stuffing vs Digital Envelopes: Why It Breaks at Week 6"
 date: 2026-09-08
 description: "Cash stuffing works for five weeks, then rent leaves by bank transfer, shopping goes online and the change pile wins. Keep two envelopes in cash, run the rest from a statement."
 author: "Tejaswi Dhulipala"

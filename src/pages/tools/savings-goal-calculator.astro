@@ -21,6 +21,12 @@ const related = [
   { slug: 'emergency-fund-calculator', title: 'Emergency Fund Calculator' },
   { slug: 'zero-based-budget-calculator', title: 'Zero-Based Budget Calculator' },
 ];
+
+// Companion articles (each embeds its long video) — rendered above the CTA by ToolLayout.
+const companion = [
+  { slug: 'sinking-funds-uk-total', title: 'Sinking funds UK: what the whole list actually costs a month' },
+  { slug: 'how-to-get-a-month-ahead-on-bills', title: 'How to get a month ahead on bills (when nothing is spare)' },
+];
 ---
 
 <ToolLayout
@@ -31,6 +37,7 @@ const related = [
   breadcrumbLabel="Savings Goal Calculator"
   faqs={faqs}
   related={related}
+  companion={companion}
   ctaTitle="Set the goal once. Watch it fill itself."
   ctaText="Zeroed has savings goals built into the envelope budget — assign money to a goal each month and the progress bar does the motivating. Bought once, on your device, no account."
 >

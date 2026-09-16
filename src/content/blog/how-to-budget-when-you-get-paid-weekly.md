@@ -1,5 +1,5 @@
 ---
-title: "How to Budget When You Get Paid Weekly (UK): The Week the Rent Lands"
+title: "How to Budget When You Get Paid Weekly (UK): The Rent Week"
 date: 2026-09-15
 description: "Paid weekly, one week a month is asked for more than twice its own pay. On a £1,280 household that week is £324.62 short — and the fix is a £228.46 set-aside from every other packet."
 author: "Stillware Team"
@@ -8,7 +8,7 @@ pillar: "problem-solution"
 appCluster: "zeroed"
 primaryKeyword: "how to budget when you get paid weekly"
 relatedSlugs: ["how-to-budget-when-you-get-paid-monthly", "how-much-emergency-fund-uk"]
-wordCount: 1490
+wordCount: 1703
 heroImage: "/blog/images/how-to-budget-when-you-get-paid-weekly/hero.webp"
 video: "YKaYIBNCMMc"
 videoTitle: "Paid Weekly? The Rent Week Is £324 Short"
@@ -132,6 +132,30 @@ The set-aside does not need a second bank account. It needs to be a figure you s
 
 I built [Zeroed](/zeroed) for exactly this: one payment, no subscription, works offline, and it never asks for your bank login. You assign each weekly packet the day it arrives, the dated envelopes take their share first, and what the header stops at is the week.
 
-The method works on paper and in a spreadsheet too. The arithmetic above is the same either way.
+The method works on paper and in a spreadsheet too. The arithmetic above is the same either way, and the
+[zero-based budget calculator](/tools/zero-based-budget-calculator/) will total your own dated bills in a
+browser, free, before you divide them by 52.
+
+## Frequently asked
+
+**How do I budget monthly bills when I get paid weekly?**
+Add up everything with a date on it for the month (£990 here), multiply by 12 and divide by 52, and set
+that share (£228.46) aside from every packet the day it lands. The rent week stops being a cliff because
+no single week is asked to pay the rent on its own.
+
+**What is the best way to budget when you get paid weekly?**
+Fund the month's dated bills by the share above, then budget only what is left (£66.92 a week here) for
+groceries and transport. If that is short, you have found the month's real shortfall at its smallest
+(£8.08 a week here) and can answer it where it is small.
+
+**Does this work if I am paid every two weeks?**
+Yes, with 26 packets instead of 52: monthly dated bills × 12 ÷ 26 is the share each fortnightly packet
+owes. The rent-week gap is smaller because each packet is bigger, but it is still there in any month
+where the rent lands.
+
+**What should I do with the fifth pay day in a five-week month?**
+Treat it as the balancing item, not a bonus. The weekly share is sized for 52 packets, so the four
+five-packet months are what pay for the eight four-packet months. Spend one and the other months come
+up short again.
 
 *This is education about a budgeting method, not financial advice.*

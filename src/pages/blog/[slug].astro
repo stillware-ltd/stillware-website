@@ -51,6 +51,35 @@ const videoSchema = videoId ? {
     "contentUrl": `https://www.youtube.com/watch?v=${videoId}`,
     "publisher": { "@type": "Organization", "name": "Stillware Ltd", "url": "https://www.stillwareltd.com" }
 } : null;
+
+// FAQPage schema from the article's own "Frequently asked" section (quality strategy Phase 3, 2026-09-16):
+// bold `**Question?**` lines and the answer text that follows each, until the next H2 or a rule.
+// The markdown stays the single source; the audit (Youtube/scripts/article_audit.py) counts the same lines.
+function faqFromBody(body: string): { q: string; a: string }[] {
+    const out: { q: string; a: string }[] = [];
+    let inside = false;
+    let q: string | null = null;
+    let a: string[] = [];
+    const clean = (s: string) => s.replace(/\[([^\]]+)\]\([^)]+\)/g, '$1').replace(/[*_`]/g, '').replace(/\s+/g, ' ').trim();
+    const flush = () => { if (q && a.length) out.push({ q: clean(q), a: clean(a.join(' ')) }); q = null; a = []; };
+    for (const raw of body.split('\n')) {
+        const line = raw.trim();
+        if (line.startsWith('## ')) { flush(); inside = /faq|frequently asked|questions/i.test(line); continue; }
+        if (!inside) continue;
+        if (line === '---') { flush(); break; }
+        const m = line.match(/^\*\*(.+?\?)\*\*\s*(.*)$/);
+        if (m) { flush(); q = m[1]; if (m[2]) a.push(m[2]); continue; }
+        if (line && q) a.push(line);
+    }
+    flush();
+    return out;
+}
+const faqItems = faqFromBody(post.body || '');
+const faqSchema = faqItems.length >= 2 ? {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": faqItems.map(f => ({ "@type": "Question", "name": f.q, "acceptedAnswer": { "@type": "Answer", "text": f.a } }))
+} : null;
 ---
 
 <Layout
@@ -89,6 +118,7 @@ const videoSchema = videoId ? {
     })} />
 
     {videoSchema && <script type="application/ld+json" set:html={JSON.stringify(videoSchema)} />}
+    {faqSchema && <script type="application/ld+json" set:html={JSON.stringify(faqSchema)} />}
 
     <article class="blog-post">
         <header class="post-hero">

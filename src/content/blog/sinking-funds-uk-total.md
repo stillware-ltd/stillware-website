@@ -8,7 +8,7 @@ pillar: "problem-solution"
 appCluster: "zeroed"
 primaryKeyword: "sinking funds uk"
 relatedSlugs: ["how-to-get-a-month-ahead-on-bills", "how-to-budget-on-a-low-income-uk"]
-wordCount: 1420
+wordCount: 1524
 heroImage: "/blog/images/sinking-funds-uk-total/hero.webp"
 video: "jgs-lfDULOA"
 videoTitle: "Sinking Funds UK: The Total Nobody Says Out Loud"
@@ -108,8 +108,22 @@ This is education about a budgeting method, not financial advice.
 
 I built [Zeroed](/zeroed) for budgets like this one. Every category's balance carries over month to month, which is the whole sinking-fund mechanism: money you put in a row stays in that row until you spend it, so the car insurance envelope really is holding £420 by the twelfth month. Categories can also carry a target with a date, and the app works out what that target needs each month.
 
-One payment, no subscription, works offline, and your data never leaves your device. But the arithmetic above is the point, and it works wherever you do it.
+One payment, no subscription, works offline, and your data never leaves your device. But the arithmetic above is the point, and it works wherever you do it. The [savings goal calculator](/tools/savings-goal-calculator/) does one fund's division on your own target and date, free, in the browser.
 
 ## What to do tonight
 
 Write your funds down with a cost and a date beside each one. Divide. Add the answers up. Then look at the total before you name a single fund — because that total, not the list, is what you are actually deciding.
+
+## Frequently asked
+
+**What is a sinking fund, in plain terms?**
+Money put aside monthly for a cost with a known date: the target divided by the months until you need it. Car insurance at £420 a year is £35 a month, and the row keeps its balance until the renewal instead of emptying at the end of the month.
+
+**What sinking funds should I have in the UK?**
+Only the ones with a real date and a real cost: car insurance, the MOT, Christmas, a birthday, the car tax. Add the monthlies up before you start a single one. On the budget above four ordinary funds came to £160 a month, and the list only fits once the targets are cut to what is genuinely spare.
+
+**Where should I keep sinking fund money?**
+Anywhere you can name the row and see its balance: a notebook column, a spreadsheet, a savings pot or a category in an envelope app. The account matters far less than the division, and this article does not recommend accounts.
+
+**Is a sinking fund the same as an emergency fund?**
+No. A sinking fund has a date and a target; an emergency fund covers the costs you cannot date. Keeping the MOT inside the emergency fund is how that pot gets emptied in March, exactly as planned.

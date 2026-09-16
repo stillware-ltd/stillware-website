@@ -92,7 +92,7 @@ I built [Zeroed](/zeroed/) because step 5 is where this falls over. "Save what i
 
 Zeroed is envelope budgeting on your own device: you name the envelopes, you fund them on payday, and the emergency fund is a row with a target you can see — separate from the dated ones, which is the whole point of this article. It works offline, there is no bank login, and it is [one payment rather than a subscription](https://www.stillwareltd.com/buy/zeroed?ref=blog-how-much-emergency-fund-uk). If you would rather use a notebook, the method above is the same method.
 
-Working out your own number first? The [budget calculators](/tools/) will do the totals.
+Working out your own number first? The [emergency fund calculator](/tools/emergency-fund-calculator/) prices one, three and six months of your own essentials in a minute.
 
 ## Questions people actually ask
 

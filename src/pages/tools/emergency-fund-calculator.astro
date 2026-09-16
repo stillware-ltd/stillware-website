@@ -25,6 +25,13 @@ const related = [
   { slug: '50-30-20-budget-calculator', title: '50/30/20 Budget Calculator' },
   { slug: 'debt-payoff-calculator', title: 'Debt Payoff Calculator' },
 ];
+
+// Companion articles (each embeds its long video) — rendered above the CTA by ToolLayout.
+const companion = [
+  { slug: 'how-much-emergency-fund-uk', title: 'How much emergency fund do I need? Four answers, priced (UK)' },
+  { slug: 'emergency-fund-vs-paying-off-debt', title: 'Emergency fund vs paying off debt: what doing both costs' },
+  { slug: 'how-to-budget-on-an-irregular-income', title: "How to budget on an irregular income: spend last month's money" },
+];
 ---
 
 <ToolLayout
@@ -35,6 +42,7 @@ const related = [
   breadcrumbLabel="Emergency Fund Calculator"
   faqs={faqs}
   related={related}
+  companion={companion}
   ctaTitle="Know your essentials number without guessing"
   ctaText="The hard part of this calculator is knowing your true essential spend. Zeroed's envelope budget tracks it automatically — so your emergency fund target is based on data, not a hopeful estimate."
 >

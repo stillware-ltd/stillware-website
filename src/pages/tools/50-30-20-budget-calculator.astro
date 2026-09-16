@@ -25,6 +25,11 @@ const related = [
   { slug: 'emergency-fund-calculator', title: 'Emergency Fund Calculator' },
   { slug: 'savings-goal-calculator', title: 'Savings Goal Calculator' },
 ];
+
+// Companion articles (each embeds its long video) — rendered above the CTA by ToolLayout.
+const companion = [
+  { slug: 'budgeting-with-multiple-bank-accounts', title: 'Budgeting with multiple bank accounts: what it costs to run' },
+];
 ---
 
 <ToolLayout
@@ -35,6 +40,7 @@ const related = [
   breadcrumbLabel="50/30/20 Budget Calculator"
   faqs={faqs}
   related={related}
+  companion={companion}
   ctaTitle="Ready for more precision than three buckets?"
   ctaText="The 50/30/20 rule is a great start. When you want every pound or dollar to have an actual job, Zeroed gives you full envelope budgeting — bought once, on your device, no account."
 >
