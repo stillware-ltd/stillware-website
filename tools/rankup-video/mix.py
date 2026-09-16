@@ -309,9 +309,9 @@ def main():
     v_chain.append(f"[vc][{hook_idx}]overlay=60:230:enable='lt(t,{D - 0.2:.2f})'[vh0]")
     wm_png = work / "watermark.png"; render_watermark(wm_png)
     wm_idx = idx; idx += 1
-    # Watermark appears once the hook is gone: the hook already names the app
-    # and the two would crowd each other on the same line.
-    v_chain.append(f"[vh0][{wm_idx}]overlay=W-w-40:436:enable='gte(t,{D - 0.2:.2f})'[vh]")
+    # Watermark shows between the hook and the solved moment: the hook already
+    # names the app, and the end card carries its own brand row.
+    v_chain.append(f"[vh0][{wm_idx}]overlay=W-w-40:436:enable='between(t,{D - 0.2:.2f},{solved - shift:.2f})'[vh]")
     # Burned-in narration captions above the board for muted viewers. A caption
     # for a question stays up through the countdown that follows it.
     timers = [e["at"] - shift for e in short_events if e["type"] == "timer"]
