@@ -69,10 +69,10 @@ def wrap(text: str, width: int = 34) -> str:
     return "\n".join(lines)
 
 
-def render_caption(text, out, width=1000, font_size=46):
+def render_caption(text, out, width=1000, font_size=46, wrap_at=38):
     from PIL import Image, ImageDraw, ImageFont
     font = ImageFont.truetype(FONT, font_size)
-    lines = wrap(text, 38).split("\n"); line_h = int(font_size * 1.35)
+    lines = wrap(text, wrap_at).split("\n"); line_h = int(font_size * 1.35)
     img = Image.new("RGBA", (width, line_h * len(lines) + 20), (0, 0, 0, 0)); d = ImageDraw.Draw(img)
     for i, line in enumerate(lines):
         d.text((0, 10 + i * line_h), line, font=font, fill=(255, 255, 255, 255))
@@ -134,14 +134,37 @@ def render_final_board(fen, last_uci, flipped, out, size=1000):
     img = Image.alpha_composite(img, layer); img.save(out)
 
 
-def render_end_card(sel, out, board_png, size=(1080, 1920), board_top=330):
+def hook_lines(sel):
+    side = "WHITE TO PLAY" if sel["solver"] == "white" else "BLACK TO PLAY"
+    task = next((f"MATE IN {t[6:]}" for t in sel.get("themes", []) if t.startswith("mateIn")), "FIND THE BEST MOVE")
+    return side, task, f"{sel['tier']} · rated {sel['rating']}"
+
+
+def render_hook(sel, out):
+    from PIL import Image, ImageDraw, ImageFont
+    side, task, sub = hook_lines(sel)
+    img = Image.new("RGBA", (960, 300), (0, 0, 0, 0)); d = ImageDraw.Draw(img)
+    big = ImageFont.truetype(FONT, 92); small = ImageFont.truetype(FONT_REG, 44)
+    for text, font, y, col in ((side, big, 0, (255, 255, 255, 255)), (task, big, 105, (245, 197, 24, 255)), (sub, small, 225, (255, 255, 255, 210))):
+        w = d.textlength(text, font=font); d.text(((960 - w) / 2, y), text, font=font, fill=col)
+    img.save(out)
+
+
+def caption_chunks(text, wrap_at=33, max_lines=3):
+    lines = wrap(text, wrap_at).split("\n")
+    return ["\n".join(lines[i:i + max_lines]) for i in range(0, len(lines), max_lines)]
+
+
+def render_end_card(sel, out, board_png, size=(1080, 1920), board_top=520, board_w=None):
     """Card the size of the frame (Short) or of the phone capture (landscape):
-    the final board where the app's board sits, pattern name below."""
+    the final board where the app's board sits, pattern name below. In the
+    Short the board is smaller and lower so the caption band above it stays
+    clear and the pattern name lands above the Shorts UI zone."""
     from PIL import Image, ImageDraw, ImageFont
     W, H = size
     img = Image.new("RGBA", (W, H), (0x1A, 0x1A, 0x2E, 255)); d = ImageDraw.Draw(img)
-    bw = W - 80
-    board = Image.open(board_png).convert("RGBA").resize((bw, bw)); img.paste(board, (40, board_top))
+    bw = board_w or (W - 80)
+    board = Image.open(board_png).convert("RGBA").resize((bw, bw)); img.paste(board, ((W - bw) // 2, board_top))
     scale = W / 1080
     t1 = ImageFont.truetype(FONT, int(66 * scale)); t2 = ImageFont.truetype(FONT_REG, int(44 * scale))
     move = sel["san"][-1]; pattern = sel.get("pattern", "")
@@ -228,30 +251,56 @@ def main():
     solved = next((e["at"] for e in events if e["type"] == "sfx" and e["name"] == "puzzle_correct"), None)
 
     # ---------- Short ----------
-    long_intro = root / "audio/narration/00_intro.mp3"
-    short_intro = root / "audio/narration/00_intro_short.mp3"
-    shift = duration(long_intro) - duration(short_intro) if short_intro.exists() else 0.0
-    variants = {"00_intro": short_intro} if short_intro.exists() else {}
-    short_events = []
-    for ev in events:
-        ev = dict(ev)
-        if ev["type"] == "narration" and (root / "audio/narration" / f"{ev['tag']}_short.mp3").exists():
-            variants[ev["tag"]] = root / "audio/narration" / f"{ev['tag']}_short.mp3"; ev["align_end"] = True
-        short_events.append(ev)
+    # Open on the puzzle, not the home screen: freeze the board frame from just
+    # before the opponent's setup move, hold it under the fixed Shorts intro and
+    # the one-line puzzle intro with a large hook caption, then let the capture
+    # run with every later event shifted onto the new clock.
+    setup_sfx = next(e["at"] for e in events if e["type"] == "sfx")
+    T = setup_sfx - 0.3                      # raw time of the frozen frame
+    intro_a = root / "audio/narration/00_intro_short.mp3"
+    intro_b = root / "audio/narration" / f"p{n}_intro_short.mp3"
+    D = 0.5 + duration(intro_a) + 0.4 + duration(intro_b) + 0.6   # hold length
+    shift = T - D                            # new_t = old_t - shift
+    short_events = [
+        {"type": "narration", "tag": "00_intro_short", "at": 0.5 + shift},
+        {"type": "narration", "tag": f"p{n}_intro_short", "at": 0.5 + duration(intro_a) + 0.4 + shift},
+    ] + [e for e in events if e["at"] >= T and not (e["type"] == "narration" and e["tag"] in ("00_intro", f"p{n}_intro"))]
     s_end = end - shift
-    a_in, a_f, _, idx = build_audio(root, short_events, shift, variants, 1, s_end)
+    a_in, a_f, captions, idx = build_audio(root, short_events, shift, {}, 1, s_end)
     board_png = work / "final_board.png"; card_png = work / "end_card.png"
     render_final_board(sel["fens"][-1], sel["uci"][-1], sel["solver"] == "black", board_png)
-    render_end_card(sel, card_png, board_png)
-    v_chain = [f"[0:v]scale=1080:-2,crop=1080:1920:0:(ih-1920)/2,setsar=1[vb]"]
+    render_end_card(sel, card_png, board_png, board_top=520, board_w=820)
+    hook_png = work / "hook.png"; render_hook(sel, hook_png)
+    v_chain = [f"[0:v]scale=1080:-2,crop=1080:1920:0:(ih-1920)/2,setsar=1,tpad=start_duration={D:.2f}:start_mode=clone[vb]"]
     card_idx = idx; idx += 1
     v_chain.append(f"[vb][{card_idx}]overlay=0:0:enable='gte(t,{solved - shift:.2f})'[vc]")
+    hook_idx = idx; idx += 1
+    v_chain.append(f"[vc][{hook_idx}]overlay=60:230:enable='lt(t,{D - 0.2:.2f})'[vh]")
+    # Burned-in narration captions above the board for muted viewers. A caption
+    # for a question stays up through the countdown that follows it.
+    timers = [e["at"] - shift for e in short_events if e["type"] == "timer"]
+    cap_inputs, prev = [], "[vh]"
+    for k, (c_start, c_stop, tag) in enumerate(captions):
+        if tag.endswith("_short") or tag not in texts:
+            continue
+        for t_at in timers:
+            if 0 <= t_at - c_stop < 1.0:
+                c_stop = t_at + 5.3
+        chunks = caption_chunks(texts[tag])
+        span = (c_stop - c_start) / len(chunks)
+        for j, chunk in enumerate(chunks):
+            png = work / f"vcap_{tag}_{j}.png"; render_caption(chunk, png, width=760, font_size=42, wrap_at=33)
+            cap_inputs += ["-loop", "1", "-i", str(png)]
+            out = f"[vk{k}_{j}]"
+            v_chain.append(f"{prev}[{idx}]overlay=260:230:enable='between(t,{c_start + j * span:.2f},{c_start + (j + 1) * span:.2f})'{out}")
+            prev = out; idx += 1
     shifted = [dict(e, at=e["at"] - shift) for e in short_events]
-    t_chain, _ = timer_overlays(shifted, idx, "[vc]", "[vout]", 60, 150)
+    t_chain, _ = timer_overlays(shifted, idx, prev, "[vout]", 60, 230)
     if not t_chain:
-        v_chain[-1] = v_chain[-1].replace("[vc]", "[vout]")
-    run(["ffmpeg", "-y", "-v", "error", "-ss", f"{offset + shift:.3f}", "-t", f"{s_end:.2f}", "-i", str(raw), *a_in,
-         "-loop", "1", "-i", str(card_png), *timer_inputs, "-filter_complex", ";".join(a_f + v_chain + t_chain),
+        v_chain[-1] = v_chain[-1].replace(prev, "[vout]")
+    run(["ffmpeg", "-y", "-v", "error", "-ss", f"{offset + T:.3f}", "-t", f"{s_end - D:.2f}", "-i", str(raw), *a_in,
+         "-loop", "1", "-i", str(card_png), "-loop", "1", "-i", str(hook_png), *cap_inputs, *timer_inputs,
+         "-filter_complex", ";".join(a_f + v_chain + t_chain),
          "-map", "[vout]", "-map", "[aout]", *ENC, str(final / f"p{n}_vertical.mp4")])
 
     # ---------- Landscape ----------
@@ -259,7 +308,7 @@ def main():
     # The phone capture is 1206×2622; a card of the same size replaces it from
     # the solved moment so the explanation runs over the final position.
     phone_card = work / "end_card_phone.png"
-    render_end_card(sel, phone_card, board_png, size=(1206, 2622), board_top=640)
+    render_end_card(sel, phone_card, board_png, size=(1206, 2622), board_top=640, board_w=1126)
     card_idx = idx; idx += 1
     l_chain = [f"color=c={BG}:s=1920x1080:r=60[bg];[0:v]scale=-2:1000[ph];[bg][ph]overlay=120:40[b0];"
                f"[{card_idx}]scale=-2:1000[pc];[b0][pc]overlay=120:40:enable='gte(t,{solved:.2f})'[base]"]
