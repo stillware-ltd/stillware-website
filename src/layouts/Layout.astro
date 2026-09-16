@@ -115,11 +115,16 @@ const ogImageURL = ogImage || new URL('/StillwareLtd_logo.png', Astro.site).href
                 /\/buy\//.test(href) ? 'buy_page' : null;
             if (!store) return;
             var ref = new URLSearchParams(location.search).get('ref') || '';
+            // Which CTA on the page was clicked (2026-09-16): the article template now
+            // carries an early strip and an end-of-page banner, and the whole point of
+            // the change is to tell their click rates apart.
+            var slot = a.closest ? a.closest('[data-cta-slot]') : null;
             window.gtag('event', 'store_click', {
                 store: store,
                 link_url: href,
                 page_path: location.pathname,
-                ref: ref
+                ref: ref,
+                position: slot ? slot.getAttribute('data-cta-slot') : 'other'
             });
         }, true);
     </script>

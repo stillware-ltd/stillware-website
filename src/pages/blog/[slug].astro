@@ -123,9 +123,29 @@ const videoSchema = videoId ? {
             <Content />
         </div>
 
+        <!-- Early store CTA (growth improvement b312d933, 2026-09-16).
+             Measured field rule: of the five app-funnel articles measured for
+             research/store-clicks/site-store-clicks-2026-09-16.md, the three whose
+             product is an APP put their first conversion link at 0.089 / 0.177 / 0.299
+             of the page; the two at 0.73+ are subscription web products whose signup is
+             not a store click at all. Ours sat at 0.825-0.838 - the last element on the
+             page - so a reader who did not finish the article never saw a store link.
+             This node is moved after the first H2 by the script below and carries
+             data-cta-slot so GA4 can separate early clicks from end-of-page clicks. -->
+        {isZeroed && (
+            <div class="article-early-cta" data-cta-slot="article-early" hidden>
+                <p><strong>Zeroed</strong> does this on your own device - offline, encrypted, yours to keep.</p>
+                <div class="early-cta-links">
+                    <a href="https://apps.microsoft.com/detail/9NCHJ67Q98C5" target="_blank" rel="noopener">Microsoft Store</a>
+                    <a href="https://play.google.com/store/apps/details?id=com.stillwareltd.zeroed" target="_blank" rel="noopener">Google Play</a>
+                    <a href="/zeroed" class="early-cta-plain">What it is</a>
+                </div>
+            </div>
+        )}
+
         <!-- Product CTA -->
         {isZeroed && (
-            <div class="product-cta-banner">
+            <div class="product-cta-banner" data-cta-slot="article-end">
                 <div class="product-cta-inner">
                     <h3>Try Zeroed — The Budget App You Actually Own</h3>
                     <p>No servers. No subscriptions. Your data stays on your device, encrypted with AES-256. Try every feature free for 34 days.</p>
@@ -249,6 +269,24 @@ const videoSchema = videoId ? {
         </footer>
     </article>
 </Layout>
+
+<script>
+    // Early store CTA: put it where the field puts it - after the opening section,
+    // not after the whole article. Moved client-side because <Content /> renders the
+    // markdown as one blob. If the article has no H2 (short posts), fall back to the
+    // third paragraph; if there is neither, the node stays hidden and nothing moves.
+    (() => {
+        const cta = document.querySelector<HTMLElement>('.article-early-cta');
+        const body = document.querySelector<HTMLElement>('.post-body');
+        if (!cta || !body) return;
+        const h2 = body.querySelector('h2');
+        const paras = body.querySelectorAll('p');
+        const after = h2 ?? (paras.length >= 3 ? paras[2] : null);
+        if (!after || !after.parentElement) return;
+        after.parentElement.insertBefore(cta, after.nextSibling);
+        cta.hidden = false;
+    })();
+</script>
 
 <script>
     // Companion-video facade: nothing from YouTube loads until the reader presses play (privacy page promise).
@@ -664,6 +702,48 @@ const videoSchema = videoId ? {
     .post-body :global(.cta-waitlist .cta-button:hover) {
         background-color: #f0f5ff;
         color: var(--color-primary);
+    }
+
+    /* ── Early store CTA (after the first H2) ── */
+
+    .article-early-cta {
+        max-width: 720px;
+        margin: 2rem auto;
+        padding: 1rem 1.15rem;
+        border: 1px solid rgba(127, 127, 127, 0.28);
+        border-left: 3px solid var(--accent, #2f8f83);
+        border-radius: 8px;
+        background: rgba(127, 127, 127, 0.05);
+    }
+
+    .article-early-cta p {
+        margin: 0 0 0.6rem;
+        font-size: 0.95rem;
+        line-height: 1.5;
+    }
+
+    .early-cta-links {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 0.5rem;
+    }
+
+    .early-cta-links a {
+        display: inline-block;
+        padding: 0.35rem 0.8rem;
+        border: 1px solid currentColor;
+        border-radius: 999px;
+        font-size: 0.85rem;
+        text-decoration: none;
+        color: inherit;
+        opacity: 0.9;
+    }
+
+    .early-cta-links a:hover { opacity: 1; }
+
+    .early-cta-links .early-cta-plain {
+        border-style: dashed;
+        opacity: 0.7;
     }
 
     /* ── Product CTA Banner ── */
