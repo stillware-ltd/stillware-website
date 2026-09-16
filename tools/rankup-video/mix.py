@@ -28,6 +28,7 @@ from pathlib import Path
 HERE = Path(__file__).resolve().parent
 FONT = str(HERE / "assets/fonts/Nunito-Bold.ttf")
 FONT_REG = str(HERE / "assets/fonts/Nunito-Regular.ttf")
+LOGO = str(HERE / "../../public/RankUpChess_logo.png")
 PIECE_FONT = "/System/Library/Fonts/Apple Symbols.ttf"
 BG = "0x1A1A2E"
 MUSIC_DB = -14  # bed mean ≈ -24 dB, narration ≈ -21 dB → ~16 dB under the voice
@@ -166,12 +167,42 @@ def render_end_card(sel, out, board_png, size=(1080, 1920), board_top=520, board
     bw = board_w or (W - 80)
     board = Image.open(board_png).convert("RGBA").resize((bw, bw)); img.paste(board, ((W - bw) // 2, board_top))
     scale = W / 1080
-    t1 = ImageFont.truetype(FONT, int(66 * scale)); t2 = ImageFont.truetype(FONT_REG, int(44 * scale))
+    t1 = ImageFont.truetype(FONT, int(66 * scale)); t2 = ImageFont.truetype(FONT_REG, int(40 * scale))
     move = sel["san"][-1]; pattern = sel.get("pattern", "")
-    y = board_top + bw + int(40 * scale)
+    y = board_top + bw + int(30 * scale)
     w = d.textlength(pattern, font=t1); d.text(((W - w) / 2, y), pattern, font=t1, fill=(245, 197, 24, 255))
     sub = f"{move} · {sel['tier']} · rated {sel['rating']}"
-    w = d.textlength(sub, font=t2); d.text(((W - w) / 2, y + int(90 * scale)), sub, font=t2, fill=(255, 255, 255, 220))
+    w = d.textlength(sub, font=t2); d.text(((W - w) / 2, y + int(84 * scale)), sub, font=t2, fill=(255, 255, 255, 200))
+    # Brand row: logo, wordmark, URL — the frame people screenshot and share.
+    brand_row(img, W, int(y + 150 * scale), scale)
+    img.save(out)
+
+
+def brand_row(img, W, y, scale=1.0, logo_px=None):
+    """Logo + 'RankUp Chess' + URL, centred at y. Used on the end card."""
+    from PIL import Image, ImageDraw, ImageFont
+    d = ImageDraw.Draw(img)
+    lp = logo_px or int(84 * scale)
+    logo = Image.open(LOGO).convert("RGBA").resize((lp, lp))
+    f1 = ImageFont.truetype(FONT, int(44 * scale)); f2 = ImageFont.truetype(FONT_REG, int(30 * scale))
+    name, url = "RankUp Chess", "stillwareltd.com/rankupchess"
+    tw = max(d.textlength(name, font=f1), d.textlength(url, font=f2))
+    total = lp + int(22 * scale) + tw
+    x = int((W - total) / 2)
+    img.paste(logo, (x, y), logo)
+    tx = x + lp + int(22 * scale)
+    d.text((tx, y - int(2 * scale)), name, font=f1, fill=(255, 255, 255, 255))
+    d.text((tx, y + int(50 * scale)), url, font=f2, fill=(245, 197, 24, 230))
+
+
+def render_watermark(out, logo_px=64):
+    """Small logo + wordmark for the top-right corner, kept subtle."""
+    from PIL import Image, ImageDraw, ImageFont
+    f = ImageFont.truetype(FONT, 30)
+    logo = Image.open(LOGO).convert("RGBA").resize((logo_px, logo_px))
+    img = Image.new("RGBA", (logo_px + 14 + 200, logo_px), (0, 0, 0, 0)); d = ImageDraw.Draw(img)
+    img.paste(logo, (0, 0), logo)
+    d.text((logo_px + 14, (logo_px - 36) / 2), "RankUp Chess", font=f, fill=(255, 255, 255, 205))
     img.save(out)
 
 
@@ -269,13 +300,18 @@ def main():
     a_in, a_f, captions, idx = build_audio(root, short_events, shift, {}, 1, s_end)
     board_png = work / "final_board.png"; card_png = work / "end_card.png"
     render_final_board(sel["fens"][-1], sel["uci"][-1], sel["solver"] == "black", board_png)
-    render_end_card(sel, card_png, board_png, board_top=520, board_w=820)
+    render_end_card(sel, card_png, board_png, board_top=500, board_w=780)
     hook_png = work / "hook.png"; render_hook(sel, hook_png)
     v_chain = [f"[0:v]scale=1080:-2,crop=1080:1920:0:(ih-1920)/2,setsar=1,tpad=start_duration={D:.2f}:start_mode=clone[vb]"]
     card_idx = idx; idx += 1
     v_chain.append(f"[vb][{card_idx}]overlay=0:0:enable='gte(t,{solved - shift:.2f})'[vc]")
     hook_idx = idx; idx += 1
-    v_chain.append(f"[vc][{hook_idx}]overlay=60:230:enable='lt(t,{D - 0.2:.2f})'[vh]")
+    v_chain.append(f"[vc][{hook_idx}]overlay=60:230:enable='lt(t,{D - 0.2:.2f})'[vh0]")
+    wm_png = work / "watermark.png"; render_watermark(wm_png)
+    wm_idx = idx; idx += 1
+    # Watermark appears once the hook is gone: the hook already names the app
+    # and the two would crowd each other on the same line.
+    v_chain.append(f"[vh0][{wm_idx}]overlay=W-w-40:436:enable='gte(t,{D - 0.2:.2f})'[vh]")
     # Burned-in narration captions above the board for muted viewers. A caption
     # for a question stays up through the countdown that follows it.
     timers = [e["at"] - shift for e in short_events if e["type"] == "timer"]
@@ -299,7 +335,7 @@ def main():
     if not t_chain:
         v_chain[-1] = v_chain[-1].replace(prev, "[vout]")
     run(["ffmpeg", "-y", "-v", "error", "-ss", f"{offset + T:.3f}", "-t", f"{s_end - D:.2f}", "-i", str(raw), *a_in,
-         "-loop", "1", "-i", str(card_png), "-loop", "1", "-i", str(hook_png), *cap_inputs, *timer_inputs,
+         "-loop", "1", "-i", str(card_png), "-loop", "1", "-i", str(hook_png), "-loop", "1", "-i", str(wm_png), *cap_inputs, *timer_inputs,
          "-filter_complex", ";".join(a_f + v_chain + t_chain),
          "-map", "[vout]", "-map", "[aout]", *ENC, str(final / f"p{n}_vertical.mp4")])
 
