@@ -88,4 +88,4 @@ Each puzzle is also a 60-second Short if you want to try one on the phone:
 
 ## Sources and disclosure
 
-Puzzles 00H8a, 000Pw, 00Pms from the [Lichess open puzzle database](https://database.lichess.org/#puzzles) (CC0), solutions verified with Stockfish. The video narration is a synthetic voice (ElevenLabs), disclosed on YouTube. New puzzles every day on the [RankUp Chess channel](https://www.youtube.com/@RankUpChess) and on [our videos page](/videos/rankupchess/).
+Puzzles 00H8a, 000Pw, 00Pms from the [Lichess open puzzle database](https://database.lichess.org/#puzzles) (CC0), solutions verified with Stockfish. New puzzles every day on the [RankUp Chess channel](https://www.youtube.com/@RankUpChess) and on [our videos page](/videos/rankupchess/).
