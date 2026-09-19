@@ -7,11 +7,25 @@
   "length": "1:18"
  },
  {
+  "id": "YstfVPmpQfw",
+  "type": "short",
+  "title": "The obvious move fails: Double check",
+  "published": "2026-09-19T07:45:00+01:00",
+  "length": "1:29"
+ },
+ {
   "id": "MCMdqJPGAhg",
   "type": "short",
   "title": "Discovered attack that 1700s miss",
   "published": "2026-09-19T07:40:00+01:00",
   "length": "1:10"
+ },
+ {
+  "id": "OyiAqbfE0N0",
+  "type": "short",
+  "title": "The obvious move fails: Deflection",
+  "published": "2026-09-19T07:30:00+01:00",
+  "length": "1:02"
  },
  {
   "id": "kFRZGXDOryQ",
@@ -21,12 +35,27 @@
   "length": "1:07"
  },
  {
+  "id": "8_bw6WWRr44",
+  "type": "short",
+  "title": "The obvious move fails: Back-rank mate",
+  "published": "2026-09-19T07:15:00+01:00",
+  "length": "1:04"
+ },
+ {
   "id": "pcILUsbBC8k",
   "type": "long",
   "title": "Mate in two that 1000s miss · Daily Puzzle #3",
   "published": "2026-09-19T07:00:00+01:00",
   "length": "3:35",
   "blurb": "Three chess puzzles from beginner to advanced — mate in two, discovered attack and knight fork — explained move by move. The mate in two is the one most players miss."
+ },
+ {
+  "id": "sbaLUXL_LrU",
+  "type": "long",
+  "title": "Why the obvious move fails: Deflection · Daily Puzzle #4",
+  "published": "2026-09-19T07:00:00+01:00",
+  "length": "3:34",
+  "blurb": "Three chess puzzles from beginner to advanced — back-rank mate, deflection and double check — explained move by move. The deflection is the one most players miss."
  },
  {
   "id": "0HVqyZEzjWI",
