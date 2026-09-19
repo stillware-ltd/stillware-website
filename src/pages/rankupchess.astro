@@ -8,9 +8,10 @@ const RANKUP_ANDROID_VERSION = '0.6.0';
 // Download URLs derive from their own per-platform constants, which track the
 // release asset that actually exists rather than the product version.
 // Windows: the earlier installers (0.5.0 and older) were withdrawn with the
-// 0.7.0 release; the 0.7.0 installer was published on 2026-09-19. Set this to
-// null to show "coming soon" on the Windows buttons if no installer is live.
-const RANKUP_WINDOWS_VERSION: string | null = '0.7.0';
+// 0.7.0 release; 0.7.0 was published on 2026-09-19 and 0.7.1 the same evening.
+// Set this to null to show "coming soon" on the Windows buttons if no
+// installer is live.
+const RANKUP_WINDOWS_VERSION: string | null = '0.7.1';
 const RANKUP_WINDOWS_DOWNLOAD = RANKUP_WINDOWS_VERSION
   ? `https://github.com/stillware-ltd/rankup-chess-releases/releases/download/v${RANKUP_WINDOWS_VERSION}/RankUpChess-Setup-${RANKUP_WINDOWS_VERSION}.exe`
   : null;
