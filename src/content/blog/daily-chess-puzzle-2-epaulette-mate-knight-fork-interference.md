@@ -86,4 +86,4 @@ Each puzzle is also a 60-second Short if you want to try one on the phone:
 
 ## Sources and disclosure
 
-Puzzles 020XG, 01U4x, 00Yuf from the [Lichess open puzzle database](https://database.lichess.org/#puzzles) (CC0), solutions verified with Stockfish. New puzzles every day on the [RankUp Chess channel](https://www.youtube.com/channel/UC7r19r2thTxTgzxzFu3aNpQ) and on [our videos page](/videos/rankupchess/).
+Puzzles 020XG, 01U4x, 00Yuf from the [Lichess open puzzle database](https://database.lichess.org/#puzzles) (CC0), solutions verified with Stockfish. New puzzles every day on the [Stillware Family Apps channel](https://www.youtube.com/channel/UCEvncfxFpbDNXkHbeucU75A) and on [our videos page](/videos/rankupchess/).
