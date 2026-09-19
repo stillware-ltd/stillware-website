@@ -10,14 +10,14 @@ primaryKeyword: "arabian mate chess puzzle"
 relatedSlugs: ["best-offline-chess-puzzles-for-kids", "best-offline-chess-app-for-kids"]
 wordCount: 694
 heroImage: "/blog/images/daily-chess-puzzle-1-arabian-mate-royal-fork-discovered-attack/hero.webp"
-video: "rTv0Of1yr_Y"
+video: "0JJAAlm_-h0"
 videoTitle: "Discovered attack that 2200s miss · Daily Puzzle #1"
 ---
 
 Three puzzles, three patterns: the **arabian mate**, the **royal fork** and the **discovered attack**. Each position below comes from a real game in the open Lichess database and is engine-verified. Set the position up, give yourself the same five seconds the video does, and only then read the solution. Best for players rated about 800 to 2200.
 
-<div class="yt-embed" data-id="rTv0Of1yr_Y" data-title="Discovered attack that 2200s miss · Daily Puzzle #1">
-  <a href="https://www.youtube.com/watch?v=rTv0Of1yr_Y">Watch: Discovered attack that 2200s miss · Daily Puzzle #1 (3:49)</a>
+<div class="yt-embed" data-id="0JJAAlm_-h0" data-title="Discovered attack that 2200s miss · Daily Puzzle #1">
+  <a href="https://www.youtube.com/watch?v=0JJAAlm_-h0">Watch: Discovered attack that 2200s miss · Daily Puzzle #1 (3:49)</a>
 </div>
 
 ## Puzzle 1: Arabian mate (beginner, rated 805)
@@ -82,9 +82,9 @@ Queen takes on f8, check! We give up the queen for a rook. Black has to take it.
 
 Each puzzle is also a 60-second Short if you want to try one on the phone:
 
-- [Arabian mate that 800s miss](https://www.youtube.com/shorts/i-68vQyu7q8)
-- [Royal fork that 1500s miss](https://www.youtube.com/shorts/qyGYFnEtb5I)
-- [Discovered attack that 2200s miss](https://www.youtube.com/shorts/YnMpybPnL0o)
+- [Arabian mate that 800s miss](https://www.youtube.com/shorts/2qrThZ0BGdU)
+- [Royal fork that 1500s miss](https://www.youtube.com/shorts/k2eCbYAAVKw)
+- [Discovered attack that 2200s miss](https://www.youtube.com/shorts/X0hybMZZ5RA)
 
 ## Sources and disclosure
 

@@ -10,14 +10,14 @@ primaryKeyword: "epaulette mate chess puzzle"
 relatedSlugs: ["best-offline-chess-puzzles-for-kids", "best-offline-chess-app-for-kids"]
 wordCount: 606
 heroImage: "/blog/images/daily-chess-puzzle-2-epaulette-mate-knight-fork-interference/hero.webp"
-video: "T6H7-8LVOr8"
+video: "24E9poz52BE"
 videoTitle: "Knight fork that 1300s miss · Daily Puzzle #2"
 ---
 
 Three puzzles, three patterns: the **epaulette mate**, the **knight fork** and the **interference**. Each position below comes from a real game in the open Lichess database and is engine-verified. Set the position up, give yourself the same five seconds the video does, and only then read the solution. Best for players rated about 1000 to 2000.
 
-<div class="yt-embed" data-id="T6H7-8LVOr8" data-title="Knight fork that 1300s miss · Daily Puzzle #2">
-  <a href="https://www.youtube.com/watch?v=T6H7-8LVOr8">Watch: Knight fork that 1300s miss · Daily Puzzle #2 (3:19)</a>
+<div class="yt-embed" data-id="24E9poz52BE" data-title="Knight fork that 1300s miss · Daily Puzzle #2">
+  <a href="https://www.youtube.com/watch?v=24E9poz52BE">Watch: Knight fork that 1300s miss · Daily Puzzle #2 (3:19)</a>
 </div>
 
 ## Puzzle 1: Epaulette mate (beginner, rated 1037)
@@ -80,9 +80,9 @@ Bishop to c2. The bishop attacks the queen on d1 and the knight on a4 at the sam
 
 Each puzzle is also a 60-second Short if you want to try one on the phone:
 
-- [Epaulette mate that 1000s miss](https://www.youtube.com/shorts/1wB2yLwYL5U)
-- [Knight fork that 1300s miss](https://www.youtube.com/shorts/CHQwF7PZbF8)
-- [Interference that 1900s miss](https://www.youtube.com/shorts/Lzz6z0QuVGA)
+- [Epaulette mate that 1000s miss](https://www.youtube.com/shorts/d8L4jBzdAKk)
+- [Knight fork that 1300s miss](https://www.youtube.com/shorts/2wmX-uhdXus)
+- [Interference that 1900s miss](https://www.youtube.com/shorts/0HVqyZEzjWI)
 
 ## Sources and disclosure
 
