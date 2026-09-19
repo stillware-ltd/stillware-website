@@ -64,7 +64,7 @@ Random puzzles are fun, but mastery requires a path. A quality app will have cha
 6.  **Advanced Analysis:** Learning from your own games.
 
 **A Truly Adaptable AI Opponent**
-The computer shouldn't just be strong or weak; it should learn and teach. Look for an AI with multiple, well-defined difficulty levels that mimic human playing styles. The best ones, like the Stockfish 16 engine we integrated into Rank Up Chess, offer post-game analysis to explain critical mistakes and show better moves.
+The computer shouldn't just be strong or weak; it should learn and teach. Look for an AI with multiple, well-defined difficulty levels that mimic human playing styles. The best ones, like the chess engine built into Rank Up Chess, offer post-game analysis to explain critical mistakes and show better moves.
 
 **A Vast, Offline Puzzle Library**
 Tactical pattern recognition is the core of chess improvement. An app needs thousands of puzzles, categorized by theme (mate in 1, forks, endgames) and difficulty, all stored on-device.

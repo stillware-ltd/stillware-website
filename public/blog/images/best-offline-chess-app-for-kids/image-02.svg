@@ -76,7 +76,7 @@
 
   <!-- Description -->
   <foreignObject x="352" y="199" width="222" height="100">
-    <p xmlns="http://www.w3.org/1999/xhtml" style="font-family:Inter,system-ui,sans-serif;font-size:12px;color:#64748b;margin:0;line-height:1.4;text-align:center;">10 difficulty levels with post-game analysis from Stockfish 16</p>
+    <p xmlns="http://www.w3.org/1999/xhtml" style="font-family:Inter,system-ui,sans-serif;font-size:12px;color:#64748b;margin:0;line-height:1.4;text-align:center;">10 difficulty levels with post-game analysis</p>
   </foreignObject>
   
   
