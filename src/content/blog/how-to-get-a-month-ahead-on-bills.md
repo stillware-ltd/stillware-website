@@ -10,15 +10,9 @@ primaryKeyword: "how to get a month ahead on bills"
 relatedSlugs: ["how-to-budget-on-a-low-income-uk", "zero-based-budgeting-explained-simply"]
 wordCount: 1391
 heroImage: "/blog/images/how-to-get-a-month-ahead-on-bills/hero.webp"
-video: "_Vh3bpU7vvA"
-videoTitle: "Get a Month Ahead on Bills on a Low Income: One Bill First"
 ---
 
 Getting a month ahead on your bills does not mean saving a month of expenses. It means getting ahead of **one bill at a time, smallest first**, until each one is paid from money that arrived before the month started. On the budget below — £1,280 in, £1,315 of plan — the first step costs **£32**, and £30 of that is already sitting in the plan. The real distance is two pounds.
-
-<div class="yt-embed" data-id="_Vh3bpU7vvA" data-title="Get a Month Ahead on Bills on a Low Income: One Bill First">
-  <a href="https://www.youtube.com/watch?v=_Vh3bpU7vvA">Watch: Get a Month Ahead on Bills on a Low Income (6 min)</a>
-</div>
 
 ## Why the usual answer does not work
 
@@ -82,10 +76,6 @@ Right now the water envelope holds £32 and the water bill is £32. That is **le
 A month ahead is the same row holding **£64** — two bills' worth. The bill goes out, the row does not empty: it drops back to £32, which is next month's, already there before next month starts.
 
 One number, on one row. That is the whole move, and every other article is asking you to make it for every row at once.
-
-<div class="yt-embed" data-id="_Vh3bpU7vvA" data-title="The crossing, in the app">
-  <a href="https://www.youtube.com/watch?v=_Vh3bpU7vvA&t=225">Watch the crossing happen (from 3:45)</a>
-</div>
 
 ## Where the £32 comes from
 

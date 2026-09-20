@@ -10,17 +10,11 @@ primaryKeyword: "minimum payment credit card uk"
 relatedSlugs: ["how-to-budget-when-you-get-paid-monthly", "how-to-budget-on-a-low-income-uk"]
 wordCount: 1168
 heroImage: "/blog/images/what-your-minimum-payment-actually-pays-off/hero.webp"
-video: "iWswn7FQkwE"
-videoTitle: "How to Get Out of Debt on a Low Income (UK): 20 Months"
 ---
 
 A credit card minimum payment is not a small repayment. It is the interest, plus about one per cent of what you owe. On a **£1,450** balance at **24.9% APR** the minimum comes to **£44.59** a month — and of that, **£14.50** reaches the balance. The other £30.09 is rent on money you have already spent.
 
 > **If you are behind on rent or council tax, deal with that first.** Free, independent help: [StepChange](https://www.stepchange.org/), [Citizens Advice](https://www.citizensadvice.org.uk/debt-and-money/), [National Debtline](https://nationaldebtline.org/). Nothing on this page is financial advice, and nothing here routes you to a debt product.
-
-<div class="yt-embed" data-id="iWswn7FQkwE" data-title="How to Get Out of Debt on a Low Income (UK): 20 Months">
-  <a href="https://www.youtube.com/watch?v=iWswn7FQkwE">Watch: How to Get Out of Debt on a Low Income — 20 Months (5 min)</a>
-</div>
 
 ## The minimum payment, opened up
 

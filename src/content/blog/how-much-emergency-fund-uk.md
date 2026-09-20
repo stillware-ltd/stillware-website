@@ -10,15 +10,9 @@ primaryKeyword: "how much emergency fund uk"
 relatedSlugs: ["sinking-funds-uk-total", "emergency-fund-vs-paying-off-debt"]
 wordCount: 1511
 heroImage: "/blog/images/how-much-emergency-fund-uk/hero.webp"
-video: "UlfYoedNWTc"
-videoTitle: "How Much Emergency Fund? (UK) I Priced All Four Answers"
 ---
 
 **The short answer: on a £2,400-a-month household, "how much emergency fund" has four honest answers — £1,130, £1,500, £4,500 and £9,000 — and the one you should aim at first is the smallest.** Every guide gives you the rule: three to six months of essential expenses. None of them gives you the second number, which is how long its own answer takes you to save. On this budget those four targets are two months, two months, six months and twelve months away. That gap is why people quit.
-
-<div class="yt-embed" data-id="UlfYoedNWTc" data-title="How Much Emergency Fund? (UK) I Priced All Four Answers">
-  <a href="https://www.youtube.com/watch?v=UlfYoedNWTc">Watch: How Much Emergency Fund? (UK) — I Priced All Four Answers (5 min)</a>
-</div>
 
 ## The rule is right. It is just unpriced
 
