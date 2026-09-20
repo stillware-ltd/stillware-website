@@ -10,15 +10,9 @@ primaryKeyword: "how to budget when you get paid weekly"
 relatedSlugs: ["how-to-budget-when-you-get-paid-monthly", "how-much-emergency-fund-uk"]
 wordCount: 1703
 heroImage: "/blog/images/how-to-budget-when-you-get-paid-weekly/hero.webp"
-video: "YKaYIBNCMMc"
-videoTitle: "Paid Weekly? The Rent Week Is £324 Short"
 ---
 
 **The short answer: if you are paid weekly, one week in every month is asked for more than twice what it pays. On a household taking home £1,280 a month, the week the rent leaves is £324.62 short — and nothing you do inside that week can fix it. The money has to come from the other three, £228.46 at a time.**
-
-<div class="yt-embed" data-id="YKaYIBNCMMc" data-title="Paid Weekly? The Rent Week Is £324 Short">
-  <a href="https://www.youtube.com/watch?v=YKaYIBNCMMc">Watch: Paid Weekly? The Rent Week Is £324 Short (6 min)</a>
-</div>
 
 ## The standard advice is right, and it is not the problem
 

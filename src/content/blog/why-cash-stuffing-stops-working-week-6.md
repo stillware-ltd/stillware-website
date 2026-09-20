@@ -10,15 +10,9 @@ primaryKeyword: "cash stuffing vs digital envelopes"
 relatedSlugs: ["envelope-budgeting-app-no-bank-sync", "zero-based-budgeting-explained-simply", "why-manual-expense-tracking-is-better"]
 wordCount: 1287
 heroImage: "/blog/images/why-cash-stuffing-stops-working-week-6/hero.webp"
-video: "IhkiOxB3Ok8"
-videoTitle: "Cash Stuffing Stops Working at Week 6 (Here's the Fix) | Cash Envelope System"
 ---
 
 Cash stuffing usually fails around week six, and it is not a discipline problem. Rent leaves by bank transfer, the shopping moves online, and a drawer of uncounted change makes the envelopes untrustworthy. The fix is a split: keep the one or two envelopes where handing over notes actually stops you in cash, and run everything else from last month's bank statement, with every pound assigned before the month starts. One evening to set up, ten minutes a month to keep.
-
-<div class="yt-embed" data-id="IhkiOxB3Ok8" data-title="Cash Stuffing Stops Working at Week 6 (Here's the Fix) — 7 minutes">
-  <a href="https://www.youtube.com/watch?v=IhkiOxB3Ok8">Watch: Cash Stuffing Stops Working at Week 6 (Here's the Fix)</a>
-</div>
 
 The video walks the whole month with a real statement. This page is the reference version: the numbers, the steps and the questions people ask afterwards.
 

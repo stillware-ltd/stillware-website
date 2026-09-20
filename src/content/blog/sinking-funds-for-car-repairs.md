@@ -10,14 +10,9 @@ primaryKeyword: "sinking funds for car repairs"
 relatedSlugs: ["sinking-funds-uk-total", "bill-calendar-what-it-does-not-tell-you"]
 wordCount: 1093
 heroImage: "/blog/images/sinking-funds-for-car-repairs/hero.webp"
-video: "eHfplm7VKto"
 ---
 
 Sinking funds for car repairs work out at **£57.74 a month** for the household in this write-up — **£692.80 for the year**, made of four bills and not one of them a surprise: the MOT at £54.85, a full service from £271.95, £200 of vehicle tax, and £166 of tyres. Three of those four have a date printed on them already. Only the fourth is a guess, and last year's invoice is the best guess anyone has.
-
-<div class="yt-embed" data-id="eHfplm7VKto" data-title="Sinking Funds for Car Repairs: The Year Nobody Adds Up">
-  <a href="https://www.youtube.com/watch?v=eHfplm7VKto">Watch: Sinking Funds for Car Repairs (5 min)</a>
-</div>
 
 ## The four bills, priced
 

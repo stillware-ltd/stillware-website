@@ -10,15 +10,9 @@ primaryKeyword: "emergency fund vs paying off debt"
 relatedSlugs: ["zero-based-budgeting-explained-simply", "how-to-budget-on-an-irregular-income", "why-cash-stuffing-stops-working-week-6"]
 wordCount: 1290
 heroImage: "/blog/images/emergency-fund-vs-paying-off-debt/hero.webp"
-video: "LDz-Yir55hg"
-videoTitle: "Emergency Fund vs Paying Off Debt: Do Both, Here's the Cost"
 ---
 
 **The short answer: do both, and it costs less than you think.** On a £3,000 credit card at 24.7% APR with £200 a month spare, putting £50 into a buffer and £150 at the card — instead of all £200 at the card — leaves you **£28.35 worse off after a year**. That is the whole price of having an emergency fund while you clear a debt. And it is not a fixed price: it falls as your savings rate rises, and at about 4.5% it disappears entirely.
-
-<div class="yt-embed" data-id="LDz-Yir55hg" data-title="Emergency Fund vs Paying Off Debt: Do Both, Here's the Cost — 7 minutes">
-  <a href="https://www.youtube.com/watch?v=LDz-Yir55hg">Watch: Emergency Fund vs Paying Off Debt: Do Both, Here's the Cost</a>
-</div>
 
 ## Why the usual advice is unsatisfying
 

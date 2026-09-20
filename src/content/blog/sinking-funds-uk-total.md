@@ -10,15 +10,9 @@ primaryKeyword: "sinking funds uk"
 relatedSlugs: ["how-to-get-a-month-ahead-on-bills", "how-to-budget-on-a-low-income-uk"]
 wordCount: 1524
 heroImage: "/blog/images/sinking-funds-uk-total/hero.webp"
-video: "jgs-lfDULOA"
-videoTitle: "Sinking Funds UK: The Total Nobody Says Out Loud"
 ---
 
 A sinking fund is a division: what the thing will cost, divided by the months until you need it. Every guide on this subject tells you that, and it is right. Almost none of them tell you the next number — **what all of your funds cost per month once you add the divisions together**. On the budget below, £1,280 in and £1,315 of plan, four completely ordinary sinking funds come to **£160 a month**, and £90 of it does not exist.
-
-<div class="yt-embed" data-id="jgs-lfDULOA" data-title="Sinking Funds UK: The Total Nobody Says Out Loud">
-  <a href="https://www.youtube.com/watch?v=jgs-lfDULOA">Watch: Sinking Funds UK — The Total Nobody Says Out Loud (5 min)</a>
-</div>
 
 ## The division everyone teaches
 

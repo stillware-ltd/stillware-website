@@ -10,8 +10,6 @@ primaryKeyword: "bill calendar"
 relatedSlugs: ["budgeting-with-multiple-bank-accounts", "how-to-budget-when-you-get-paid-weekly"]
 wordCount: 1374
 heroImage: "/blog/images/bill-calendar-what-it-does-not-tell-you/hero.webp"
-video: "BEasfxLU5L8"
-videoTitle: "Bill Calendar: 21 Days Between Payday and the Last Bill"
 ---
 
 **A bill calendar tells you when each bill leaves. It never tells you whether the money is still
@@ -19,10 +17,6 @@ there when the date arrives — and that is the half that actually decides wheth
 In the household below, **£267** of the month's bills leave *after* payday, the last of them
 **21 days** later, with **twelve** ordinary card payments in between. Every free template on the
 internet will draw you the dates. None of them has a column for the gap.
-
-<div class="yt-embed" data-id="BEasfxLU5L8" data-title="Bill Calendar: 21 Days Between Payday and the Last Bill">
-  <a href="https://www.youtube.com/watch?v=BEasfxLU5L8">Watch: Bill Calendar — 21 Days Between Payday and the Last Bill (5 min)</a>
-</div>
 
 Worth saying before the arithmetic: the videos and spreadsheets ranking above this page are good at
 what they do. We looked at the top results for "bill calendar" and every one of them builds you a

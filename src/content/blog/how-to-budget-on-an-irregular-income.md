@@ -10,15 +10,9 @@ primaryKeyword: "how to budget irregular income"
 relatedSlugs: ["zero-based-budgeting-explained-simply", "why-cash-stuffing-stops-working-week-6", "budgeting-app-that-works-without-internet"]
 wordCount: 1341
 heroImage: "/blog/images/how-to-budget-on-an-irregular-income/hero.webp"
-video: "KMQt4a8CvTQ"
-videoTitle: "How to Budget on an Irregular Income | Self-Employed"
 ---
 
 If your income is irregular, stop forecasting it. Budget the money you were actually paid last month: everything that landed in August funds September, so you are never spending money that has not arrived. It takes one evening to set up and ten minutes a month to keep, and it needs one thing first, which most guides never name: one month of your essential bills sitting in the account, untouched.
-
-<div class="yt-embed" data-id="KMQt4a8CvTQ" data-title="How to Budget on an Irregular Income | Self-Employed — 8 minutes">
-  <a href="https://www.youtube.com/watch?v=KMQt4a8CvTQ">Watch: How to Budget on an Irregular Income | Self-Employed</a>
-</div>
 
 The video shows the whole thing inside a budget, month by month. This page is the reference: the arithmetic, the two methods everyone else recommends and where they break, the buffer number, and the UK-specific bits.
 

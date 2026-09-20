@@ -10,8 +10,6 @@ primaryKeyword: "budgeting with multiple bank accounts"
 relatedSlugs: ["envelope-budgeting-app-no-bank-sync", "zero-based-budgeting-explained-simply"]
 wordCount: 1273
 heroImage: "/blog/images/budgeting-with-multiple-bank-accounts/hero.webp"
-video: "iJBYK6Sp0WI"
-videoTitle: "Multiple Bank Accounts for Budgeting: 260 Transfers a Year"
 ---
 
 **How many bank accounts do you need to budget? Fewer than the internet says — and the number that
@@ -20,10 +18,6 @@ six-account method costs **260 transfers a year** on a weekly payday, because yo
 of the six and you feed the other five every time. And six accounts still cannot keep this
 household's **ten** committed bills apart, so four of them end up sharing a balance anyway — which
 is the one thing separate accounts were supposed to prevent.
-
-<div class="yt-embed" data-id="iJBYK6Sp0WI" data-title="Multiple Bank Accounts for Budgeting: 260 Transfers a Year">
-  <a href="https://www.youtube.com/watch?v=iJBYK6Sp0WI">Watch: Multiple Bank Accounts for Budgeting (5 min)</a>
-</div>
 
 One thing worth saying before the arithmetic: almost everything ranking above this page on that
 question is published by a company that would open the account for you — a lender, a fintech, a

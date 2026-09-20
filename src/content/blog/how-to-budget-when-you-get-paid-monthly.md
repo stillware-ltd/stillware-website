@@ -10,15 +10,9 @@ primaryKeyword: "how to budget when you get paid monthly"
 relatedSlugs: ["sinking-funds-uk-total", "how-to-get-a-month-ahead-on-bills"]
 wordCount: 1293
 heroImage: "/blog/images/how-to-budget-when-you-get-paid-monthly/hero.webp"
-video: "XngbiEDKp4o"
-videoTitle: "Get Paid Monthly? Week 3 Was Broke on Day One"
 ---
 
 If you are paid monthly, the whole budget is one subtraction on payday: take everything with a date on it between now and the next payday — rent, council tax, energy, water, phone, and the dated one-offs — and take it off the money that just landed. **What is left is what the month is actually worth.** Divide that by the weeks until you are paid again, and that weekly figure, not your balance, is the number to spend from. On the household below, £1,280 lands and only **£290** of it is ever available: **£72.50 a week**.
-
-<div class="yt-embed" data-id="XngbiEDKp4o" data-title="Get Paid Monthly? Week 3 Was Broke on Day One">
-  <a href="https://www.youtube.com/watch?v=XngbiEDKp4o">Watch: Get Paid Monthly — Week 3 Was Broke on Day One (5 min)</a>
-</div>
 
 ## Why week three is the week it goes wrong
 
