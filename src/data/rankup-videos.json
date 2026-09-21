@@ -1,5 +1,27 @@
 [
  {
+  "id": "Oj9eXtuoPfs",
+  "type": "short",
+  "title": "Hanging piece that 2100s miss",
+  "published": "2026-09-21T19:00:00+01:00",
+  "length": "1:19"
+ },
+ {
+  "id": "74c0aK6Jc48",
+  "type": "short",
+  "title": "Zugzwang that 1400s miss",
+  "published": "2026-09-21T18:45:00+01:00",
+  "length": "1:11"
+ },
+ {
+  "id": "kFVgOBn5LmI",
+  "type": "short",
+  "title": "Opera mate that 1000s miss",
+  "published": "2026-09-21T18:30:00+01:00",
+  "length": "1:20",
+  "blurb": "Opera mate — beginner puzzle, rated 996. Find the move before the countdown ends."
+ },
+ {
   "id": "1FVMGCrSzSM",
   "type": "short",
   "title": "Exposed king that 2100s miss",
