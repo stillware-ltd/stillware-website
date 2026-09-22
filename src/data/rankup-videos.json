@@ -1,5 +1,34 @@
 [
  {
+  "id": "Njne3FJYlu4",
+  "type": "short",
+  "title": "Sacrifice that 2500s miss",
+  "published": "2026-09-23T00:00:00+01:00",
+  "length": "1:25"
+ },
+ {
+  "id": "k0o7_UdwYT0",
+  "type": "short",
+  "title": "Quiet move that 2300s miss",
+  "published": "2026-09-22T18:00:00+01:00",
+  "length": "1:20"
+ },
+ {
+  "id": "nW4WGU7uqC4",
+  "type": "short",
+  "title": "Discovered check that 1500s miss",
+  "published": "2026-09-22T12:00:00+01:00",
+  "length": "1:36"
+ },
+ {
+  "id": "af3yN-YRF98",
+  "type": "short",
+  "title": "Mate in three that 900s miss",
+  "published": "2026-09-22T06:00:00+01:00",
+  "length": "1:26",
+  "blurb": "Mate in three — beginner puzzle, rated 892. Find the move before the countdown ends."
+ },
+ {
   "id": "Oj9eXtuoPfs",
   "type": "short",
   "title": "Hanging piece that 2100s miss",
