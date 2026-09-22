@@ -111,7 +111,6 @@ const ogImageURL = ogImage || new URL('/StillwareLtd_logo.png', Astro.site).href
                 /apps\.apple\.com/.test(href) ? 'app_store' :
                 /\.dmg(\?|$)/.test(href) ? 'macos_dmg' :
                 /\.exe(\?|$)/.test(href) ? 'windows_exe' :
-                /\.apk(\?|$)/.test(href) ? 'android_apk' :
                 /\/buy\//.test(href) ? 'buy_page' : null;
             if (!store) return;
             var ref = new URLSearchParams(location.search).get('ref') || '';
