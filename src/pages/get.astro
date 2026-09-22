@@ -1,0 +1,120 @@
+---
+import Layout from '../layouts/Layout.astro';
+
+// One link that serves every device: it sends each visitor straight to the
+// store for their platform, and anyone it cannot place to the downloads on the
+// landing page.
+//
+// Why it exists (2026-09-22): links in YouTube Shorts comments and Shorts
+// descriptions cannot be clicked, so the channel's profile links are the only
+// place a Shorts viewer can tap through — and the channel header shows one
+// link up front. That one link has to be the right store for whoever taps it,
+// without a detour through a page that asks them again.
+//
+// The store URLs match src/pages/zeroed.astro; change them in both places.
+const APP_STORE = 'https://apps.apple.com/app/id6804301133';
+const PLAY = 'https://play.google.com/store/apps/details?id=com.stillwareltd.zeroed';
+const MS_STORE = 'https://apps.microsoft.com/detail/9NCHJ67Q98C5';
+---
+
+<Layout
+  title="Get Zeroed — Stillware Ltd"
+  description="Zeroed: Offline Budget Planner for iPhone, iPad, Android, Windows and Mac. Pay once, no subscription."
+  noindex
+>
+  <section class="get-page">
+    <div class="get-content">
+      <h1>Get Zeroed</h1>
+      <p class="get-lead" id="get-status">Taking you to the store for your device…</p>
+      <ul class="get-stores">
+        <li><a href={APP_STORE} class="btn-secondary">App Store <span>iPhone and iPad</span></a></li>
+        <li><a href={PLAY} class="btn-secondary">Google Play <span>Android</span></a></li>
+        <li><a href={MS_STORE} class="btn-secondary">Microsoft Store <span>Windows</span></a></li>
+        <li><a href="/zeroed/#downloads" class="btn-secondary">Mac <span>download from our site</span></a></li>
+      </ul>
+      <p class="get-more"><a href="/zeroed/">What is Zeroed?</a> Pay once. No subscription, no account, no bank login.</p>
+    </div>
+  </section>
+</Layout>
+
+<script is:inline define:vars={{ APP_STORE, PLAY, MS_STORE }}>
+  (function () {
+    var ua = navigator.userAgent || '';
+    // iPadOS 13+ asks for the desktop site and reports itself as a Mac; the
+    // touch points are what give it away.
+    var touchMac = /Macintosh/.test(ua) && navigator.maxTouchPoints > 1;
+    var store =
+      /iPhone|iPad|iPod/.test(ua) || touchMac ? 'ios' :
+      /Android/.test(ua) ? 'android' :
+      /Windows/.test(ua) ? 'windows' :
+      /Macintosh|Mac OS X/.test(ua) ? 'mac' : 'other';
+    // Carry ?ref= and utm_* through, so the website and Play Console can both
+    // answer "did YouTube send this install?".
+    var qs = location.search;
+    var dest = {
+      ios: APP_STORE,
+      android: PLAY + (qs ? '&referrer=' + encodeURIComponent(qs.slice(1)) : ''),
+      windows: MS_STORE,
+      mac: '/zeroed/' + qs + '#downloads',
+      other: '/zeroed/' + qs,
+    }[store];
+    var gone = false;
+    function go() {
+      if (gone) return;
+      gone = true;
+      location.replace(dest);          // replace, so Back does not bounce here again
+    }
+    // Record which store each tap went to before leaving, but never let
+    // analytics hold the visitor up: whichever comes first wins.
+    if (typeof gtag === 'function') {
+      gtag('event', 'get_redirect', { store: store, event_callback: go, transport_type: 'beacon' });
+    }
+    setTimeout(go, 600);
+    if (store === 'other') {
+      document.getElementById('get-status').textContent = 'Choose your device:';
+    }
+  })();
+</script>
+
+<style>
+  .get-page {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 2rem;
+  }
+  .get-content {
+    text-align: center;
+    max-width: 480px;
+  }
+  .get-content h1 {
+    font-size: 2.5rem;
+    margin-bottom: 1rem;
+  }
+  .get-lead {
+    color: var(--color-text-light);
+    font-size: 1.15rem;
+    margin-bottom: 1.5rem;
+  }
+  .get-stores {
+    list-style: none;
+    padding: 0;
+    margin: 0 0 1.5rem;
+    display: grid;
+    gap: 0.75rem;
+  }
+  .get-stores a {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+  }
+  .get-stores span {
+    color: var(--color-text-light);
+    font-weight: normal;
+  }
+  .get-more {
+    color: var(--color-text-light);
+    font-size: 0.95rem;
+  }
+</style>
