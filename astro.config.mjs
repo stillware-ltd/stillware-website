@@ -7,7 +7,8 @@ export default defineConfig({
     sitemap({
       // Transactional pages should not be discoverable via the sitemap.
       // They also carry `<meta name="robots" content="noindex, nofollow">`.
-      filter: (page) => !page.includes('/buy/'),
+      // /get/ is a redirect to the right app store, not a page to rank.
+      filter: (page) => !page.includes('/buy/') && !page.endsWith('/get/'),
     }),
   ],
   output: 'static',
