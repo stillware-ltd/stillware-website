@@ -2,13 +2,14 @@
 import Layout from '../layouts/Layout.astro';
 
 // The product version, shown wherever the page states which release this is.
-const RANKUP_VERSION = '0.7.1';
+const RANKUP_VERSION = '0.8.0';
 const RANKUP_ANDROID_VERSION = '0.6.0';
 
 // Download URLs derive from their own per-platform constants, which track the
 // release asset that actually exists rather than the product version.
 // Windows: the earlier installers (0.5.0 and older) were withdrawn with the
-// 0.7.0 release; 0.7.0 was published on 2026-09-19 and 0.7.1 the same evening.
+// 0.7.0 release; 0.7.0 was published on 2026-09-19 and 0.7.1 the same evening;
+// 0.8.0 for Windows is still to be built.
 // Set this to null to show "coming soon" on the Windows buttons if no
 // installer is live.
 const RANKUP_WINDOWS_VERSION: string | null = '0.7.1';
@@ -18,18 +19,20 @@ const RANKUP_WINDOWS_DOWNLOAD = RANKUP_WINDOWS_VERSION
 const RANKUP_WINDOWS_CURRENT = RANKUP_WINDOWS_VERSION === RANKUP_VERSION;
 
 // macOS ships Developer ID signed and notarised, so it installs without a
-// Gatekeeper warning. Universal binary, macOS 10.15+.
-const RANKUP_MACOS_VERSION = '0.7.1';
+// Gatekeeper warning. Universal binary, macOS 10.15+. 0.8.0 (board themes)
+// was published on 2026-09-25.
+const RANKUP_MACOS_VERSION = '0.8.0';
 const RANKUP_MACOS_DOWNLOAD =
   `https://github.com/stillware-ltd/rankup-chess-releases/releases/download/v${RANKUP_MACOS_VERSION}-macos/RankUpChess-${RANKUP_MACOS_VERSION}-macOS.dmg`;
 
 // Mobile store links. The iOS app went live on the App Store on 2026-09-16
 // (iPhone and iPad, iOS 15+); the link is country-neutral so Apple picks the
-// visitor's storefront. 0.7.0 went live on 2026-09-19.
+// visitor's storefront. 0.7.0 went live on 2026-09-19 and 0.7.1 on 2026-09-22;
+// 0.8.0 is in review since 2026-09-25.
 const RANKUP_PLAY_STORE_URL =
   'https://play.google.com/store/apps/details?id=com.stillware.rankup_chess';
 const RANKUP_APP_STORE_URL = 'https://apps.apple.com/app/id6806675796';
-const RANKUP_IOS_VERSION = '0.7.0';
+const RANKUP_IOS_VERSION = '0.7.1';
 ---
 
 <Layout
