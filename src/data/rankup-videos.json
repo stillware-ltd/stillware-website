@@ -1,5 +1,34 @@
 [
  {
+  "id": "hTsSkwvyTNk",
+  "type": "short",
+  "title": "Discovered attack that 2500s miss",
+  "published": "2026-09-25T00:00:00+01:00",
+  "length": "1:31"
+ },
+ {
+  "id": "1kwLfLhrdOM",
+  "type": "short",
+  "title": "Attack on f7 that 2000s miss",
+  "published": "2026-09-24T18:00:00+01:00",
+  "length": "1:18"
+ },
+ {
+  "id": "of4jpVktnP4",
+  "type": "short",
+  "title": "Sacrifice that 1400s miss",
+  "published": "2026-09-24T12:00:00+01:00",
+  "length": "1:33"
+ },
+ {
+  "id": "SGqe7wLuOvA",
+  "type": "short",
+  "title": "Anastasia's mate that 1000s miss",
+  "published": "2026-09-24T06:00:00+01:00",
+  "length": "1:17",
+  "blurb": "Anastasia's mate — beginner puzzle, rated 1019. Find the move before the countdown ends."
+ },
+ {
   "id": "h6qpap5m6AU",
   "type": "short",
   "title": "Queen fork that 2700s miss",
