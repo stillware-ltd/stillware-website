@@ -2,12 +2,13 @@
 import Layout from '../layouts/Layout.astro';
 
 // Latest Zeroed release — bump this single constant when a new version ships.
-// Per-asset versions. iOS 1.3.1 and the macOS 1.3.1 DMG are live (2026-09-15).
-// The Windows zip stays on 1.3.0 until its 1.3.1 build lands on zeroed-releases.
+// Per-asset versions. iOS 1.3.1 is live (2026-09-15; 1.3.2 is in App Review);
+// the macOS 1.3.2 DMG is live on zeroed-releases (2026-09-25).
+// The Windows zip stays on 1.3.0 until a newer build lands on zeroed-releases.
 // Android is Google Play only: the sideload APK card was removed on 2026-09-22
 // (Android developer verification registers Play's signing key, not the local one).
 // Bump each line as its asset is published.
-const DMG_VERSION = '1.3.1';
+const DMG_VERSION = '1.3.2';
 const WINDOWS_VERSION = '1.3.0';
 const PLAY_VERSION = '1.3.0';
 const IOS_VERSION = '1.3.1';
