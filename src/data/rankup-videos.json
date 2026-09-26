@@ -1,5 +1,34 @@
 [
  {
+  "id": "Ve7Dq8CwFOM",
+  "type": "short",
+  "title": "Quiet move that 2600s miss",
+  "published": "2026-09-27T00:00:00+01:00",
+  "length": "1:20"
+ },
+ {
+  "id": "GT1RxJe7r0w",
+  "type": "short",
+  "title": "Promotion that 2000s miss",
+  "published": "2026-09-26T18:00:00+01:00",
+  "length": "1:22"
+ },
+ {
+  "id": "7JWH5zZ5eDs",
+  "type": "short",
+  "title": "Trapped piece that 1400s miss",
+  "published": "2026-09-26T12:00:00+01:00",
+  "length": "1:16"
+ },
+ {
+  "id": "KruCm_GU5tc",
+  "type": "short",
+  "title": "Back-rank mate that 800s miss",
+  "published": "2026-09-26T06:00:00+01:00",
+  "length": "1:14",
+  "blurb": "Back-rank mate — beginner puzzle, rated 805. Find the move before the countdown ends."
+ },
+ {
   "id": "hTsSkwvyTNk",
   "type": "short",
   "title": "Discovered attack that 2500s miss",
