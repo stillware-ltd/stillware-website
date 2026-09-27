@@ -1,5 +1,12 @@
 [
  {
+  "id": "DvDowps-AS8",
+  "type": "short",
+  "title": "Zugzwang that 2400s miss",
+  "published": "2026-09-27T06:00:00+01:00",
+  "length": "1:16"
+ },
+ {
   "id": "Ve7Dq8CwFOM",
   "type": "short",
   "title": "Quiet move that 2600s miss",
@@ -27,6 +34,28 @@
   "published": "2026-09-26T06:00:00+01:00",
   "length": "1:14",
   "blurb": "Back-rank mate — beginner puzzle, rated 805. Find the move before the countdown ends."
+ },
+ {
+  "id": "7AIvm-tf2gE",
+  "type": "short",
+  "title": "Pin that 2100s miss",
+  "published": "2026-09-26T00:00:00+01:00",
+  "length": "1:13"
+ },
+ {
+  "id": "HFSPhQWnhNs",
+  "type": "short",
+  "title": "Quiet move that 1300s miss",
+  "published": "2026-09-25T18:00:00+01:00",
+  "length": "1:21"
+ },
+ {
+  "id": "OQiEkOSNiq8",
+  "type": "short",
+  "title": "Mate in two that 900s miss",
+  "published": "2026-09-25T12:00:00+01:00",
+  "length": "1:21",
+  "blurb": "Mate in two — beginner puzzle, rated 888. Find the move before the countdown ends."
  },
  {
   "id": "hTsSkwvyTNk",
