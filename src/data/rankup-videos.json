@@ -1,5 +1,34 @@
 [
  {
+  "id": "h45rhg6pdS0",
+  "type": "short",
+  "title": "Pin that 2500s miss",
+  "published": "2026-09-28T06:00:00+01:00",
+  "length": "1:07"
+ },
+ {
+  "id": "wyzfRxptQUM",
+  "type": "short",
+  "title": "Zugzwang that 2000s miss",
+  "published": "2026-09-28T00:00:00+01:00",
+  "length": "0:44"
+ },
+ {
+  "id": "Jw7jZtGo0Bk",
+  "type": "short",
+  "title": "Rook fork that 1400s miss",
+  "published": "2026-09-27T18:00:00+01:00",
+  "length": "1:01"
+ },
+ {
+  "id": "dcHiPOYeBpg",
+  "type": "short",
+  "title": "Corner mate that 900s miss",
+  "published": "2026-09-27T12:00:00+01:00",
+  "length": "0:58",
+  "blurb": "Beginner chess puzzle, rated 946: White to play. Find the corner mate before the countdown ends."
+ },
+ {
   "id": "DvDowps-AS8",
   "type": "short",
   "title": "Zugzwang that 2400s miss",
