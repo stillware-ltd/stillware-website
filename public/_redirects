@@ -102,3 +102,7 @@
 /blog/tag/outdoor-nature                                                                         /404.html  410
 /blog/tag/outdoors                                                                               /404.html  410
 /blog/tag/teens-tech                                                                             /404.html  410
+
+# MERGED PAGES -> 301 to the page that absorbed them (use when a close match exists; otherwise retire with 410 above)
+# 2026-09-29: two YNAB-alternative posts covered the same search; the ranking URL became the pillar.
+/blog/ynab-alternative-no-subscription-ultimate-comparison    /blog/ynab-price-increase-alternatives-2026/    301
