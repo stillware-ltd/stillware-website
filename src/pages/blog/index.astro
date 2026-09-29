@@ -37,10 +37,10 @@ function readingTime(wordCount?: number): string {
             <div class="container">
                 <h2 class="section-label">Featured</h2>
                 <div class="featured-grid">
-                    {featuredPosts.map(post => (
+                    {featuredPosts.map((post, i) => (
                         <a href={`/blog/${post.slug}/`} class="featured-card reveal">
                             {(post.data.heroImage || post.data.ogImage) && (
-                                <img src={post.data.heroImage || post.data.ogImage} srcset={heroSrcset(post.data.heroImage) ?? undefined} sizes="(min-width: 800px) 750px, 100vw" alt="" class="featured-card-image" loading="lazy" decoding="async" />
+                                <img src={post.data.heroImage || post.data.ogImage} srcset={heroSrcset(post.data.heroImage) ?? undefined} sizes="(min-width: 800px) 750px, 100vw" alt="" class="featured-card-image" loading={i === 0 ? 'eager' : 'lazy'} fetchpriority={i === 0 ? 'high' : undefined} decoding="async" />
                             )}
                             <span class="featured-badge">Featured</span>
                             <h3>{post.data.title}</h3>
@@ -90,7 +90,7 @@ function readingTime(wordCount?: number): string {
                     )}
                     <article class="post-card reveal">
                         {(post.data.heroImage || post.data.ogImage) && (
-                            <a href={`/blog/${post.slug}/`} class="post-card-image-link">
+                            <a href={`/blog/${post.slug}/`} class="post-card-image-link" aria-hidden="true" tabindex="-1">
                                 <img src={post.data.heroImage || post.data.ogImage} srcset={heroSrcset(post.data.heroImage) ?? undefined} sizes="(min-width: 800px) 750px, 100vw" alt="" class="post-card-image" loading="lazy" decoding="async" />
                             </a>
                         )}

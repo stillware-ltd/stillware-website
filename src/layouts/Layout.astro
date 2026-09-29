@@ -119,6 +119,7 @@ const breadcrumbSchema = breadcrumbs.length
         (window.stillTrack.q = window.stillTrack.q || []).push([name, data, done]);
       };
     </script>
+    {UMAMI.websiteId && <link rel="preconnect" href="https://gateway.umami.is" crossorigin />}
     {UMAMI.websiteId && (
       <script
         is:inline
