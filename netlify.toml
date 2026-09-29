@@ -5,6 +5,11 @@
 [context.production]
   environment = { NODE_VERSION = "20" }
 
+# After each production deploy, tell IndexNow (Bing and others) which pages changed.
+# Local plugin: netlify/plugins/indexnow. It cannot fail a deploy: its hooks catch their own errors.
+[[plugins]]
+  package = "./netlify/plugins/indexnow"
+
 # Canonical host is https://www.stillwareltd.com. Send every other variant there in ONE hop
 # (http apex used to take two: http -> https apex -> https www). force = true so these win over any file.
 [[redirects]]
@@ -165,6 +170,14 @@
   from = "/dashboard/"
   to = "/dashboard/zeroed/"
   status = 301
+
+# The IndexNow plugin publishes a page-hash manifest with every deploy and reads the previous one back.
+# It is plumbing, not content: always fetch it fresh and keep it out of search.
+[[headers]]
+  for = "/indexnow-manifest.json"
+  [headers.values]
+    Cache-Control = "no-store"
+    X-Robots-Tag = "noindex"
 
 # Private marketing dashboard (encrypted client-side; keep out of search)
 [[headers]]
