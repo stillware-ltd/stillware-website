@@ -188,7 +188,7 @@ const faqSchema = faqItems.length >= 2 ? {
              not a store click at all. Ours sat at 0.825-0.838 - the last element on the
              page - so a reader who did not finish the article never saw a store link.
              This node is moved after the first H2 by the script below and carries
-             data-cta-slot so GA4 can separate early clicks from end-of-page clicks. -->
+             data-cta-slot so analytics can separate early clicks from end-of-page clicks. -->
         {isZeroed && (
             <div class="article-early-cta" data-cta-slot="article-early" hidden>
                 <p><strong>Zeroed</strong> does this on your own device - offline, encrypted, yours to keep.</p>
@@ -383,10 +383,7 @@ const faqSchema = faqItems.length >= 2 ? {
             entries.forEach((e) => {
                 if (!e.isIntersecting) return;
                 seen.disconnect();
-                const w = window as any;
-                if (typeof w.gtag === 'function') {
-                    w.gtag('event', 'video_impression', { video_id: id, page_path: location.pathname });
-                }
+                (window as any).stillTrack?.('video_impression', { video_id: id });
             });
         }, { threshold: 0.5 });
         seen.observe(btn);
@@ -400,8 +397,7 @@ const faqSchema = faqItems.length >= 2 ? {
             frame.setAttribute('referrerpolicy', 'strict-origin-when-cross-origin');
             frame.className = 'yt-frame';
             btn.replaceWith(frame);
-            const w = window as any;
-            if (typeof w.gtag === 'function') w.gtag('event', 'video_play', { video_id: id, page_path: location.pathname });
+            (window as any).stillTrack?.('video_play', { video_id: id });
         });
     });
 

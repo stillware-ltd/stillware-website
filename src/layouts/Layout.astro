@@ -3,6 +3,7 @@ import Header from '../components/Header.astro';
 import Footer from '../components/Footer.astro';
 import '../styles/global.css';
 import { SITE } from '../lib/seo.mjs';
+import { UMAMI } from '../lib/analytics.mjs';
 // Inter, self-hosted (was fetched from Google Fonts: a render-blocking third-party stylesheet that also told Google
 // about every visitor). Only the Latin subsets are shipped; the browser fetches latin-ext only for characters outside Latin.
 import interLatin from '@fontsource-variable/inter/files/inter-latin-wght-normal.woff2?url';
@@ -101,15 +102,30 @@ const breadcrumbSchema = breadcrumbs.length
 <!doctype html>
 <html lang="en">
 <head>
-    <!-- Google tag (gtag.js) -->
-    <script async src="https://www.googletagmanager.com/gtag/js?id=G-0SNXMEKL0N"></script>
+    <!-- Analytics: Umami Cloud, cookieless (src/lib/analytics.mjs). stillTrack() is the one way pages record an event:
+         calls made before the deferred tracker has loaded are queued and replayed when it does, and an optional
+         callback (used by /get/ to redirect) runs once the event has been handed over. -->
     <script is:inline>
-      window.dataLayer = window.dataLayer || [];
-      function gtag(){dataLayer.push(arguments);}
-      gtag('js', new Date());
-
-      gtag('config', 'G-0SNXMEKL0N');
+      window.stillTrack = function (name, data, done) {
+        var u = window.umami;
+        if (u && typeof u.track === 'function') {
+          try { Promise.resolve(u.track(name, data)).then(done, done); } catch (e) { if (done) done(); }
+          return;
+        }
+        (window.stillTrack.q = window.stillTrack.q || []).push([name, data, done]);
+      };
     </script>
+    {UMAMI.websiteId && (
+      <script
+        is:inline
+        defer
+        src={UMAMI.scriptSrc}
+        data-website-id={UMAMI.websiteId}
+        data-domains={UMAMI.domains}
+        data-do-not-track="true"
+        onload="var q=window.stillTrack.q||[];window.stillTrack.q=[];q.forEach(function(a){window.stillTrack(a[0],a[1],a[2]);})"
+      ></script>
+    )}
 
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -155,12 +171,12 @@ const breadcrumbSchema = breadcrumbs.length
     <Footer />
 
     <script is:inline>
-        // Store-click attribution: one GA4 event per click on any link that
+        // Store-click attribution: one analytics event per click on any link that
         // leads to a store listing or a direct download. Lets the scorecard
         // tie YouTube / blog / Reddit sessions (?ref=...) to install intent.
         document.addEventListener('click', function (ev) {
             var a = ev.target && ev.target.closest ? ev.target.closest('a[href]') : null;
-            if (!a || typeof window.gtag !== 'function') return;
+            if (!a || typeof window.stillTrack !== 'function') return;
             var href = a.href || '';
             var store =
                 /play\.google\.com/.test(href) ? 'google_play' :
@@ -168,6 +184,7 @@ const breadcrumbSchema = breadcrumbs.length
                 /apps\.apple\.com/.test(href) ? 'app_store' :
                 /\.dmg(\?|$)/.test(href) ? 'macos_dmg' :
                 /\.exe(\?|$)/.test(href) ? 'windows_exe' :
+                /zeroed-releases\/.*\.zip(\?|$)/.test(href) ? 'windows_zip' :
                 /\/buy\//.test(href) ? 'buy_page' : null;
             if (!store) return;
             var ref = new URLSearchParams(location.search).get('ref') || '';
@@ -175,10 +192,9 @@ const breadcrumbSchema = breadcrumbs.length
             // carries an early strip and an end-of-page banner, and the whole point of
             // the change is to tell their click rates apart.
             var slot = a.closest ? a.closest('[data-cta-slot]') : null;
-            window.gtag('event', 'store_click', {
+            window.stillTrack('store_click', {
                 store: store,
                 link_url: href,
-                page_path: location.pathname,
                 ref: ref,
                 position: slot ? slot.getAttribute('data-cta-slot') : 'other'
             });
