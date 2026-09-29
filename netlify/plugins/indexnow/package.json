@@ -1,0 +1,8 @@
+{
+  "name": "indexnow-local",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Local Netlify build plugin: pings IndexNow with the pages that changed in each production deploy.",
+  "main": "index.js",
+  "type": "commonjs"
+}
