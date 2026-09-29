@@ -1,5 +1,6 @@
 ---
 title: "Zeroed vs YNAB (2026): Honest Comparison From the Team That Builds Zeroed"
+seoTitle: "Zeroed vs YNAB (2026): An Honest Comparison"
 date: 2026-08-29
 description: "YNAB costs $109/year and lives in the cloud. Zeroed is $19.99 once and lives on your device. A genuinely honest comparison — including the reasons you might still pick YNAB."
 author: "Stillware Team"

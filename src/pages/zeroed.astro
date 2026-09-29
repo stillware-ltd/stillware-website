@@ -24,22 +24,41 @@ const zLongs = (zeroedVideos as ZVideo[]).filter((v) => v.type === 'long');
 // The featured long (dash.py videos.json `featured`) is the one viewers search for; it stays up until a better one earns the slot. Falls back to the newest.
 const latestLong = zLongs.find((v) => v.featured) || zLongs[0] || null;
 const latestIsFeatured = !!(latestLong && latestLong.featured);
+// Product markup for search. Keep the price in step with the on-page copy (founder price until 14 Feb 2027, then $39.99).
+// No rating or review markup on purpose: none exists yet, and fabricated ones are worse than none.
+const appSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'SoftwareApplication',
+  '@id': 'https://www.stillwareltd.com/zeroed/#app',
+  name: 'Zeroed',
+  alternateName: 'Zeroed: Offline Budget Planner',
+  url: 'https://www.stillwareltd.com/zeroed/',
+  image: 'https://www.stillwareltd.com/Zeroed_Desktop_Today.png',
+  description: 'Offline zero-based budgeting app. Encrypted on your device, no account, no subscription. Pay once and own it.',
+  applicationCategory: 'FinanceApplication',
+  operatingSystem: 'iOS, Android, Windows, macOS',
+  offers: { '@type': 'Offer', price: '19.99', priceCurrency: 'USD', priceValidUntil: '2027-02-14', availability: 'https://schema.org/InStock' },
+  publisher: { '@id': 'https://www.stillwareltd.com/#organization' },
+  sameAs: [APP_STORE_URL, PLAY_STORE_URL, 'https://apps.microsoft.com/detail/9NCHJ67Q98C5'],
+};
 ---
 
 <Layout
-  title="Zeroed — Stop Renting Your Budget"
-  description="The privacy-first, zero-based budgeting app you pay for once. No servers. No subscriptions. Encrypted on your device."
+  title="Zeroed: Offline Budget Planner. Pay Once, No Subscription"
+  description="Offline zero-based budgeting app for iOS, Android, Windows and macOS. Encrypted on your device, no account, no subscription. Try it free for 34 days."
   canonical="https://www.stillwareltd.com/zeroed/"
   ogImage="https://www.stillwareltd.com/Zeroed_Desktop_Today.png"
   appleAppId={APPLE_APP_ID}
 >
+    <script type="application/ld+json" set:html={JSON.stringify(appSchema)} />
+
     <!-- Hero -->
     <header class="zeroed-hero">
         <div class="hero-ambient" aria-hidden="true"></div>
         <div class="hero-content">
             <div class="hero-text">
                 <h1 class="text-gradient">Stop Renting<br />Your Budget.</h1>
-                <p class="subheadline">The first privacy-focused, zero-based budgeting app that is <strong>yours forever</strong>. No servers. No subscriptions. Securely synced via your own Google Drive.</p>
+                <p class="subheadline">Zeroed is an offline budget planner and zero-based budgeting app that is <strong>yours forever</strong>. No servers. No subscriptions. Securely synced via your own Google Drive.</p>
                 <div class="hero-cta">
                     <a href="#downloads" class="btn-primary pulse">
                         Start Your 34-Day Free Trial

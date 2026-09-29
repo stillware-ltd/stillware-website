@@ -1,5 +1,6 @@
 ---
 title: "How to Budget on an Irregular Income: Spend Last Month's Money"
+seoTitle: "Budget on an Irregular Income: Spend Last Month's Money"
 date: 2026-09-08
 description: "Averaging an irregular income is a promise about a month you have not had. Budget the money you were paid last month instead: the arithmetic, the buffer number, and a worked UK example."
 author: "Tejaswi Dhulipala"

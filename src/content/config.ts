@@ -4,7 +4,12 @@ const blog = defineCollection({
   type: 'content',
   schema: z.object({
     title: z.string(),
+    // Search-result title when the article title is too long or too generic (aim for 60 or fewer; longer is truncated in results). Optional.
+    seoTitle: z.string().optional(),
     date: z.date(),
+    // Date of the last substantive revision. Emitted as dateModified and article:modified_time; set it whenever an
+    // article's facts are refreshed (prices, comparisons, dates), not for typo fixes.
+    updated: z.date().optional(),
     description: z.string(),
     author: z.string().default('Stillware Team'),
     tags: z.array(z.string()).optional(),

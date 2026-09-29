@@ -33,13 +33,29 @@ const RANKUP_PLAY_STORE_URL =
   'https://play.google.com/store/apps/details?id=com.stillware.rankup_chess';
 const RANKUP_APP_STORE_URL = 'https://apps.apple.com/app/id6806675796';
 const RANKUP_IOS_VERSION = '0.7.1';
+// Product markup for search: free to play, with a one-time unlock (see the pricing section). No rating markup: none exists yet.
+const appSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'SoftwareApplication',
+  '@id': 'https://www.stillwareltd.com/rankupchess/#app',
+  name: 'RankUp Chess',
+  url: 'https://www.stillwareltd.com/rankupchess/',
+  description: 'Offline chess academy for kids: 5,000+ puzzles, 10 AI strength levels and interactive lessons. Free to play forever, with a one-time unlock. No ads, no subscription.',
+  applicationCategory: 'GameApplication',
+  operatingSystem: 'iOS, Android, Windows, macOS',
+  offers: { '@type': 'Offer', price: '0', priceCurrency: 'USD', availability: 'https://schema.org/InStock' },
+  publisher: { '@id': 'https://www.stillwareltd.com/#organization' },
+  sameAs: [RANKUP_APP_STORE_URL, RANKUP_PLAY_STORE_URL],
+};
 ---
 
 <Layout
   title="RankUp Chess — The Offline Chess Academy for Kids"
-  description="A premium, 100% offline chess academy designed for kids. Free to play forever — one payment unlocks the complete academy. No subscriptions, no internet required, no data harvesting."
+  description="Offline chess academy for kids: 5,000+ puzzles, 10 AI levels and lessons. Free to play forever, one payment unlocks it all. No ads, no subscription."
   canonical="https://www.stillwareltd.com/rankupchess/"
 >
+    <script type="application/ld+json" set:html={JSON.stringify(appSchema)} />
+
     <!-- Hero -->
     <header class="chess-hero">
         <div class="hero-ambient" aria-hidden="true"></div>

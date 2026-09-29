@@ -5,7 +5,7 @@ export async function GET(context) {
   const posts = await getCollection('blog');
   return rss({
     title: 'Stillware Ltd Blog',
-    description: 'Thoughts on software ownership, privacy, and the anti-SaaS movement.',
+    description: 'Budgeting without a subscription, private offline apps, and daily chess puzzles.',
     site: context.site,
     items: posts
       .sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf())

@@ -1,5 +1,6 @@
 ---
 title: "Why We Don't Do Subscriptions (For Software That Runs On Your Device)"
+seoTitle: "Why We Don't Do Subscriptions for On-Device Software"
 date: 2026-04-29
 description: "We charge once for software that lives on your device, and monthly for services we operate. Here's the line we draw — and why the distinction matters for your wallet."
 author: "Stillware Team"
