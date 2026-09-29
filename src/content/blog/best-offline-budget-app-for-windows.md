@@ -1,55 +1,75 @@
 ---
 title: "Best Offline Budget App for Windows (2026, No Subscription)"
 date: 2026-04-02
+updated: 2026-09-29
 description: "The best offline budget apps for Windows in 2026: no account, no subscription, works without internet, and your data stays on your own PC."
 author: "Stillware Team"
-wordCount: 2239
 heroImage: "/blog/images/best-offline-budget-app-for-windows/hero.webp"
 tags: ["Personal Finance", "Offline-First"]
 pillar: "comparison"
 appCluster: "zeroed"
-relatedSlugs: ["budgeting-app-that-works-without-internet", "privacy-first-budgeting-apps-compared-2026", "true-cost-of-ynab"]
+primaryKeyword: "best offline budget app for windows"
+relatedSlugs: ["budgeting-app-that-works-without-internet", "privacy-first-budgeting-apps-compared-2026", "envelope-budgeting-app-no-bank-sync", "true-cost-of-ynab"]
 ---
-## Myth vs. Reality: Finding a Budget App for Windows
 
-The myth is that you need a cloud-based, subscription-powered app to manage your money effectively. The reality is that your most important financial data—your spending habits, your debts, your savings goals—doesn’t need to live on a company’s server to be useful. In fact, it’s often safer and more reliable when it doesn’t. If you’re looking for the **best offline budget app for Windows**, you’re already questioning the status quo. You want a tool that works when you do, not when your internet connection decides to cooperate. This comparison cuts through the noise of auto-sync promises and recurring fees to find the software that puts you—not a subscription model—in control.
+Most popular budgeting apps are websites and phone apps: YNAB, Monarch, Copilot and EveryDollar all need an internet connection and keep your data on their servers. If you want a budget that lives on your own Windows PC, works without internet and does not need a subscription, the field is smaller. This page compares the six apps we would consider, using details checked against each project's own site on 29 September 2026.
 
-![Budgeting without an internet dependency](/blog/images/best-offline-budget-app-for-windows/photo-01.webp)
+**Disclosure:** we make Zeroed, the first app in the table. We list its weaknesses and where another app fits better.
 
-## Key Features to Prioritize in Your Search
+## Offline budget apps for Windows, compared
 
-Beyond the architecture and price, what should a capable offline Windows budget app actually *do*? Look for these core functionalities that empower manual, precise financial management.
+| App | Price | Budgeting style | Getting your transactions in | Where your data lives |
+|---|---|---|---|---|
+| **Zeroed** | $19.99 once (founder price until 14 Feb 2027, then $39.99) | Zero-based envelopes | Manual entry, CSV, PDF, OFX, QFX and QIF import, receipt scanner | Your PC, encrypted (AES-256); optional sync through your own Google Drive |
+| **Actual Budget** | Free, open source | Envelopes | Manual entry, file import, optional bank sync | Your PC; syncing devices needs a server you run or rent |
+| **Buckets** | $64 once | Envelopes | Manual entry, file import, optional SimpleFIN Bridge | A local file on your PC |
+| **HomeBank** | Free, open source | Categories and budgets | QIF, OFX, QFX and CSV import, duplicate detection | A single local file |
+| **Money Manager Ex** | Free, open source | Yearly and monthly budgets | CSV and QIF import | Local |
+| **GnuCash** | Free, open source | Double-entry accounting | Import and transaction matching | Local |
 
-1.  **Robust Manual Transaction Entry:** This is the heart of the system. The interface should make adding, categorizing, and splitting transactions fast and intuitive, with minimal clicks.
-2.  **Flexible Envelope/Category Management:** True envelope budgeting allows you to create, fund, and move money between categories with granular control. Look for the ability to handle overspending, monthly funding goals, and wish farms.
-3.  **Powerful File-Based Import:** Since auto-sync is off the table, the app must excel at importing bank-generated CSV files or scanning PDF statements. A good universal parser handles different bank formats, and a local OCR engine is a game-changer for digital statements.
-4.  **Local Data Visualization & Reporting:** You should be able to generate spending reports, trend charts, and net worth graphs without the data ever leaving your machine. These visuals are crucial for spotting patterns and making informed decisions.
-5.  **Controlled, Encrypted Sync (Optional):** If you use a laptop and a phone, you’ll want sync. The key is that it uses *your* cloud storage (Google Drive, OneDrive) as a passive, encrypted mailbox. **You hold the encryption keys, and the app merely reads and writes an encrypted blob to a folder you control.** This is the "Fort Knox" model—we literally can't access the data even if we wanted to.
+Sources: [Zeroed](/zeroed/), [Actual Budget](https://actualbudget.org/), [Buckets](https://www.budgetwithbuckets.com/), [HomeBank](https://www.gethomebank.org/), [Money Manager Ex](https://moneymanagerex.org/) and [GnuCash](https://www.gnucash.org/). All six run on Windows. Actual Budget has a desktop app in the Microsoft Store and on GitHub, and Zeroed is in the Microsoft Store with a portable download as well.
 
-When we built Zeroed's receipt scanner, we focused on on-device OCR because it meant your PDFs never need to be uploaded to a cloud service for processing. The scan, parse, and categorize loop happens entirely in the app, turning a stack of digital statements into categorized transactions in minutes, completely privately.
+## Which one fits?
 
-## Questions to Ask Yourself Before Choosing
+- **You want guided zero-based budgeting, a polished interface and one payment:** Zeroed. It imports statements from any bank and has an on-device receipt scanner. **Weaknesses:** no bank sync, no web app, no shared budgets yet.
+- **You want it free and are comfortable with a little setup:** Actual Budget is envelope budgeting with a good interface, and it works offline. **Weakness:** syncing more than one device takes technical comfort, and support is community-based.
+- **You want to pay once and stay in the desktop:** Buckets, at $64. **Weakness:** a small independent project, so polish and features arrive at indie pace.
+- **You want a free ledger with budgets and reports:** HomeBank or Money Manager Ex. They are categorised ledgers with budgeting, not guided envelope budgeting, and their interfaces show their age.
+- **You want real accounting:** GnuCash. It is double-entry accounting software, powerful and free, and it has a real learning curve.
 
-The best app is the one that fits your mindset and workflow. Before you decide, work through this quick self-assessment.
+If you need automatic bank sync, none of these is the right answer, and a subscription app such as YNAB or Monarch will suit you better. Our [comparison of seven YNAB alternatives](/blog/ynab-price-increase-alternatives-2026/) has current prices.
 
-![The need for offline access is real](/blog/images/best-offline-budget-app-for-windows/photo-02.webp)
+## What to look for in an offline budget app
 
-## Getting Started with an Offline-First Approach
+1. **Fast manual entry.** Without bank sync, entering and splitting transactions is the heart of the app.
+2. **Statement import.** Downloading a CSV, OFX or QIF file from your bank once a week is the offline replacement for bank sync. A good importer maps columns once and catches duplicates.
+3. **A budgeting method you will use.** Envelope or zero-based budgeting gives every dollar a job; a category ledger tracks what happened. Read our [guide to envelope budgeting apps with no bank sync](/blog/envelope-budgeting-app-no-bank-sync/) if you are unsure.
+4. **Local reports.** Spending, trends and net worth without the data leaving your PC.
+5. **Optional, encrypted sync.** If you also use a phone, look for sync that goes through storage you control instead of the developer's servers.
 
-Making the switch to a local budgeting system is a commitment to a different workflow, but it’s straightforward. Here’s how to begin.
+## Getting started offline
 
-1.  **Gather Your Statements:** Log into your bank and credit card accounts. Download the last 30-60 days of transactions as CSV files. Most banks offer this under "Account Services" or "Export."
-2.  **Set Up Your Categories:** Before importing, think about your envelope system. Start with broad categories (Housing, Food, Transportation) before drilling down into specifics. A good app will let you refine these later.
-3.  **Import and Categorize:** Use your chosen app’s import tool. You’ll likely need to map your bank’s column headers (e.g., "Description," "Amount") to the app’s expected fields. This is a one-time setup per account.
-4.  **Establish a Routine:** Pick a weekly time—Sunday evening, Monday morning—to download new statements, import, and categorize. This 15-minute ritual replaces the passive "check-in" of an auto-sync app with an active review, deepening your engagement with your finances.
-5.  **Configure Optional Sync:** If you want to use the app on other devices, follow the instructions to link your personal Google Drive. This simply creates an encrypted vault there that your other installations can unlock, keeping you in the driver's seat.
+1. **Download statements.** Log in to your bank and save the last 30 to 60 days as CSV, OFX or QIF files. Most banks put this under "Export" or "Download transactions".
+2. **Set up categories.** Start broad (Housing, Food, Transport) and refine later.
+3. **Import.** Map your bank's columns once per account.
+4. **Pick a weekly slot.** Fifteen minutes to import, categorise and check balances replaces the passive check-in of an auto-sync app.
+5. **Add sync if you want it.** Only after the routine works.
 
-The initial setup is the heaviest lift. After that, maintenance is minimal. **The reward is a financial management system that is permanently yours, works on your terms, and turns your Windows PC into a truly personal finance dashboard.**
+## Frequently asked questions
 
-Ready to build a budget you actually own? **Try Zeroed free for 34 days**—no subscription, no cloud mandates, just a one-time purchase that turns your Windows machine into your financial command center. See why we don't do subscriptions and [get started with a tool built for ownership](/zeroed).
+**What is the best offline budget app for Windows?**
+It depends on what you value. For guided envelope budgeting with a one-time price, Zeroed or Buckets. For free, Actual Budget. For a free category ledger, HomeBank or Money Manager Ex.
 
+**Is there a free offline budget app for Windows?**
+Yes: Actual Budget, HomeBank, Money Manager Ex and GnuCash are all free and open source, and all run on Windows.
+
+**Does Zeroed work on Windows?**
+Yes. Install it from the Microsoft Store, or download the portable version, which runs without installation or admin rights. It also runs on macOS, iPhone and iPad, and Android.
+
+**Can I use a budgeting app without an internet connection?**
+Yes, if your data lives on your device. Local-first apps such as Zeroed, Actual Budget and Buckets work without a connection; cloud apps do not. See our guide to a [budgeting app that works without internet](/blog/budgeting-app-that-works-without-internet/).
 
 <div class="cta-box cta-inline">
-  <p>Try Zeroed for Windows — one-time purchase, fully offline</p>
-  <a href="/zeroed" class="cta-button">Try Zeroed for Windows</a>
+  <p>Try Zeroed on Windows free for 34 days. One-time purchase, fully offline.</p>
+  <a href="/zeroed/" class="cta-button">Try Zeroed for Windows</a>
 </div>

@@ -41,6 +41,38 @@ const appSchema = {
   publisher: { '@id': 'https://www.stillwareltd.com/#organization' },
   sameAs: [APP_STORE_URL, PLAY_STORE_URL, 'https://apps.microsoft.com/detail/9NCHJ67Q98C5'],
 };
+
+// Who it is for and not for (2026-09-29): a plain fit check for visitors and for AI answers. Every line is a fact the
+// press kit and the FAQ already state; keep the two in step if the product changes (bank sync, web app, shared budgets).
+const fitFor = [
+  'You want zero-based (envelope) budgeting, where every dollar gets a job before the month starts.',
+  'You would rather pay once than rent: $19.99 at the founder price until 14 February 2027, then $39.99, with all 1.x updates included.',
+  'You want your financial data to stay on your own device, with no account and no servers. It is encrypted with AES-256, and sync (optional) goes through your own Google Drive.',
+  'You are happy to import statements (CSV, PDF, OFX, QFX or QIF) or type transactions instead of linking your bank.',
+  'You want it to work fully offline, on iPhone and iPad, Android, Windows and macOS.',
+];
+const fitNotFor = [
+  'You need automatic bank sync. Zeroed has no bank connections, by design.',
+  'You need a web app. There is none, because a web version would mean our servers holding your data.',
+  'You share one budget with a partner in real time. There are no shared budgets yet; a household can share a device or a synced Drive folder.',
+  'You want to track investment performance. Zeroed does budgets, bills, goals, debt payoff and net worth, not portfolio returns.',
+];
+
+const faqItems = [
+  { q: 'Is there really a free trial?', a: 'Yes. You get a fully unlocked, unrestricted 34-day trial — every feature, no credit card required. Use it as much as you want before deciding to buy.' },
+  { q: 'What does "buy once, own forever" mean?', a: 'You make a single payment and the app is yours for life. No subscriptions, no renewals, no hidden fees. All future v1.x updates are included at no extra cost.' },
+  { q: 'How does it sync without servers?', a: 'Zeroed uses your own Google Drive as the sync medium. A secure verification file and encrypted database live in a folder you control. Any device connected to that Drive sees and unlocks instantly.' },
+  { q: 'Why is the price so low right now?', a: 'Zeroed is new, and honest feedback from early owners is worth more to us than revenue right now. Until 14 February 2027 the founder price is $19.99 — less than three months of any subscription budgeting app. After that date it becomes $39.99.' },
+  { q: "What happens if my trial ends and I don't buy?", a: "Your data is never held hostage. When the 34-day trial ends, Zeroed switches to read-only: you can still open the app, view everything, and export all of your data. You just can't add or edit entries until you unlock it." },
+  { q: 'Does Zeroed connect to my bank?', a: 'No, and that is deliberate. Connecting a bank means a third-party service holding your bank login. Zeroed imports statements from any bank (CSV, PDF, OFX, QFX and QIF) with automatic duplicate detection, and has an on-device receipt scanner for cash spending.' },
+  { q: 'Which devices does Zeroed run on?', a: 'iPhone and iPad (App Store), Android (Google Play), Windows (Microsoft Store or a portable download) and macOS (notarized DMG). If you turn on sync, your data and a licence key travel through your own Google Drive, so your other devices unlock too.' },
+  { q: 'Can I move my budget over from YNAB?', a: 'Yes. Export your budget data from YNAB as CSV and import the register into Zeroed, then rebuild your categories. The step-by-step guide is on our blog: how to switch from YNAB to Zeroed.' },
+];
+const faqSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'FAQPage',
+  mainEntity: faqItems.map((f) => ({ '@type': 'Question', name: f.q, acceptedAnswer: { '@type': 'Answer', text: f.a } })),
+};
 ---
 
 <Layout
@@ -51,6 +83,7 @@ const appSchema = {
   appleAppId={APPLE_APP_ID}
 >
     <script type="application/ld+json" set:html={JSON.stringify(appSchema)} />
+    <script type="application/ld+json" set:html={JSON.stringify(faqSchema)} />
 
     <!-- Hero -->
     <header class="zeroed-hero">
@@ -104,19 +137,19 @@ const appSchema = {
                     <thead>
                         <tr>
                             <th>Feature</th>
-                            <th class="competitor-col">The Subscription Giants<br /><span class="col-sub">(Subscription-Budgeting App)</span></th>
+                            <th class="competitor-col">The Subscription Giants<br /><span class="col-sub">(e.g. YNAB, annual plan)</span></th>
                             <th class="zeroed-col">Zeroed<br /><span class="col-sub">(Founder Price)</span></th>
                         </tr>
                     </thead>
                     <tbody>
                         <tr>
                             <td>Cost</td>
-                            <td class="competitor-cell">$99 / Year <br /><span class="sub-text">(Forever)</span></td>
+                            <td class="competitor-cell">$109 / Year <br /><span class="sub-text">(Forever)</span></td>
                             <td class="zeroed-cell"><span class="struck">$39.99</span> $19.99 <br /><span class="sub-text zeroed-highlight">(Founder Price until 14 Feb 2027)</span></td>
                         </tr>
                         <tr>
                             <td>5-Year Cost</td>
-                            <td class="competitor-cell text-red">$495.00</td>
+                            <td class="competitor-cell text-red">$545.00</td>
                             <td class="zeroed-cell text-green">$19.99</td>
                         </tr>
                         <tr>
@@ -126,7 +159,7 @@ const appSchema = {
                         </tr>
                         <tr>
                             <td>Bank Connection</td>
-                            <td class="competitor-cell">Plaid (Breaks Often)</td>
+                            <td class="competitor-cell">Linked through third parties</td>
                             <td class="zeroed-cell">Universal CSV/PDF (Reliable)</td>
                         </tr>
                         <tr>
@@ -324,31 +357,40 @@ const appSchema = {
         </div>
     </section>
 
+    <!-- Who it is for -->
+    <section class="fit-section reveal" id="who-its-for">
+        <div class="container">
+            <h2>Is Zeroed Right for You?</h2>
+            <p class="fit-intro">A budgeting app is a long-term choice, so here is the honest fit check before you spend 34 days on it.</p>
+            <div class="fit-grid">
+                <div class="fit-card fit-yes">
+                    <h3>Zeroed is for you if&hellip;</h3>
+                    <ul>
+                        {fitFor.map((line) => <li>{line}</li>)}
+                    </ul>
+                </div>
+                <div class="fit-card fit-no">
+                    <h3>Zeroed is not for you if&hellip;</h3>
+                    <ul>
+                        {fitNotFor.map((line) => <li>{line}</li>)}
+                    </ul>
+                </div>
+            </div>
+            <p class="fit-foot">Coming from YNAB? Here is <a href="/blog/zeroed-vs-ynab-2026/">an honest Zeroed vs YNAB comparison</a> and <a href="/blog/switch-from-ynab-to-zeroed/">how to switch and keep your history</a>.</p>
+        </div>
+    </section>
+
     <!-- FAQ -->
     <section class="faq-section" id="faq">
         <div class="container">
             <h2>Frequently Asked Questions</h2>
             <div class="faq-grid">
-                <div class="faq-item">
-                    <h4>Is there really a free trial?</h4>
-                    <p>Yes. You get a fully unlocked, unrestricted 34-day trial — every feature, no credit card required. Use it as much as you want before deciding to buy.</p>
-                </div>
-                <div class="faq-item">
-                    <h4>What does "buy once, own forever" mean?</h4>
-                    <p>You make a single payment and the app is yours for life. No subscriptions, no renewals, no hidden fees. All future v1.x updates are included at no extra cost.</p>
-                </div>
-                <div class="faq-item">
-                    <h4>How does it sync without servers?</h4>
-                    <p>Zeroed uses your own Google Drive as the sync medium. A secure verification file and encrypted database live in a folder you control. Any device connected to that Drive sees and unlocks instantly.</p>
-                </div>
-                <div class="faq-item">
-                    <h4>Why is the price so low right now?</h4>
-                    <p>Zeroed is new, and honest feedback from early owners is worth more to us than revenue right now. Until 14 February 2027 the founder price is $19.99 — less than three months of any subscription budgeting app. After that date it becomes $39.99.</p>
-                </div>
-                <div class="faq-item">
-                    <h4>What happens if my trial ends and I don't buy?</h4>
-                    <p>Your data is never held hostage. When the 34-day trial ends, Zeroed switches to read-only: you can still open the app, view everything, and export all of your data. You just can't add or edit entries until you unlock it.</p>
-                </div>
+                {faqItems.map((f) => (
+                    <div class="faq-item">
+                        <h4>{f.q}</h4>
+                        <p>{f.a}</p>
+                    </div>
+                ))}
             </div>
         </div>
     </section>
@@ -1201,6 +1243,30 @@ const appSchema = {
         color: var(--color-primary);
         font-weight: 600;
     }
+
+    /* Who it is for */
+    .fit-section { padding: 6rem 0 2rem; max-width: 1000px; margin: 0 auto; }
+    .fit-section h2 { text-align: center; font-size: 2.5rem; margin-bottom: 1rem; }
+    .fit-intro { text-align: center; color: var(--color-text-muted, #64748b); margin: 0 auto 3rem; max-width: 640px; }
+    .fit-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 2rem; }
+    .fit-card {
+        background: #ffffff;
+        padding: 2.5rem;
+        border-radius: 20px;
+        border: 1px solid rgba(226, 232, 240, 0.6);
+        box-shadow: var(--shadow-premium);
+    }
+    .fit-card h3 { margin-bottom: 1.25rem; font-size: 1.25rem; }
+    .fit-yes { border-top: 4px solid #16a34a; }
+    .fit-no { border-top: 4px solid #dc2626; }
+    .fit-card ul { list-style: none; padding: 0; margin: 0; display: grid; gap: 0.9rem; }
+    .fit-card li { position: relative; padding-left: 1.75rem; line-height: 1.55; }
+    .fit-card li::before { position: absolute; left: 0; top: 0; font-weight: 700; }
+    .fit-yes li::before { content: '✓'; color: #16a34a; }
+    .fit-no li::before { content: '✕'; color: #dc2626; }
+    .fit-foot { text-align: center; margin-top: 2rem; }
+    .fit-foot a { color: var(--color-primary); font-weight: 600; }
+    @media (max-width: 768px) { .fit-grid { grid-template-columns: 1fr; } .fit-section { padding: 4rem 1rem 1rem; } }
 
     /* FAQ */
     .faq-section { padding: 8rem 0; max-width: 1000px; margin: 0 auto; }

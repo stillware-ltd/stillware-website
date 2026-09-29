@@ -18,6 +18,18 @@ const faqs = [
     q: 'Does this account for inflation?',
     a: 'No — the results are in nominal terms. A rough way to think in today’s money: subtract expected inflation from your growth rate (e.g. 6% growth minus 2.5% inflation ≈ 3.5% real) and run the calculator with that.',
   },
+  {
+    q: "How is compound interest calculated?",
+    a: "Each period, interest is added to the balance, and the next period earns interest on the new, larger balance. This calculator applies the annual rate divided by 12 every month, then adds your monthly deposit.",
+  },
+  {
+    q: "What interest rate should I use?",
+    a: "Use the rate your account actually pays for savings, or a cautious range for investments, and run more than one. Investment returns are not guaranteed and vary from year to year, so a single smooth rate is an illustration.",
+  },
+  {
+    q: "Does this include inflation or tax?",
+    a: "No. The figures are before tax and in future money, so what the balance can buy will be lower than the number suggests.",
+  },
 ];
 
 const related = [
@@ -128,6 +140,28 @@ const related = [
       mathematical illustration. Real investment returns arrive lumpy — up years, down years — and cash rates
       change. Use this to understand the mechanism and set contribution habits, not to predict a number.
     </p>
+    <h2>The formula</h2>
+    <p>The calculator repeats one step every month for the number of years you choose:</p>
+    <p><code>balance = balance × (1 + annual rate ÷ 12) + monthly deposit</code></p>
+    <p>Your total contributions are the starting amount plus every deposit; everything above that is growth.</p>
+    <h2>Worked example</h2>
+    <p>Start with $1,000, add $200 a month, and assume 5% a year:</p>
+    <table class="worked-table">
+      <thead><tr><th>After</th><th>You put in</th><th>Growth</th><th>Balance</th></tr></thead>
+      <tbody>
+        <tr><td>10 years</td><td>$25,000</td><td>$7,703</td><td>$32,703</td></tr>
+        <tr><td>20 years</td><td>$49,000</td><td>$35,919</td><td>$84,919</td></tr>
+        <tr><td>30 years</td><td>$73,000</td><td>$97,919</td><td>$170,919</td></tr>
+      </tbody>
+    </table>
+    <p>In this example growth first overtakes everything you contributed in year 25. The final ten years add $86,000 to the balance, slightly more than the first twenty years produced ($84,919), which is why starting early matters as much as the exact rate.</p>
+    <h2>How to read the result</h2>
+    <ul>
+      <li><strong>The rate is an assumption, not a forecast.</strong> Run it at a lower and a higher rate to see the range instead of relying on one number.</li>
+      <li><strong>Compare contributions with growth.</strong> Early on, your deposits do most of the work; later, growth does.</li>
+      <li><strong>Inflation is not included.</strong> A balance in 30 years buys less than the same number today.</li>
+    </ul>
+
   </Fragment>
 </ToolLayout>
 
@@ -189,3 +223,10 @@ const related = [
     results.scrollIntoView({ behavior: 'smooth', block: 'start' });
   });
 </script>
+
+<style is:global>
+  .worked-table { width: 100%; border-collapse: collapse; margin: 1rem 0 1.25rem; font-size: 0.95rem; display: block; overflow-x: auto; }
+  .worked-table th, .worked-table td { text-align: left; padding: 0.55rem 0.8rem; border-bottom: 1px solid rgba(148, 163, 184, 0.35); vertical-align: top; }
+  .worked-table th { font-weight: 700; background: rgba(148, 163, 184, 0.12); }
+  .tool-article code { background: rgba(148, 163, 184, 0.18); padding: 0.1rem 0.4rem; border-radius: 6px; font-size: 0.92em; }
+</style>

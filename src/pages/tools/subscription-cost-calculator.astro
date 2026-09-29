@@ -18,6 +18,14 @@ const faqs = [
     q: 'Is my subscription list stored anywhere?',
     a: 'No. The list is processed entirely in your browser and disappears when you close the page. Nothing is uploaded.',
   },
+  {
+    q: "How do I find all of my subscriptions?",
+    a: "Look through the last two months of bank and card statements for recurring charges, including small annual ones, and check the subscriptions section of your phone’s app store account. The ones you forgot are the point of the exercise.",
+  },
+  {
+    q: "Is an annual subscription cheaper than a monthly one?",
+    a: "Usually, per month, but only if you would use the service for the whole year. Add both options to the calculator and compare the yearly totals; YNAB, for example, is $109 a year against $179.88 for twelve monthly payments.",
+  },
 ];
 
 const related = [
@@ -109,6 +117,27 @@ const related = [
       <a href="/tools/saas-vs-ownership-simulator/">SaaS vs. ownership simulator</a> for what renting software costs
       against owning it, and <a href="/blog/why-we-dont-do-subscriptions/">why we don't do subscriptions</a> for the philosophy.
     </p>
+    <h2>The formula</h2>
+    <p>Everything is converted to a monthly amount (a yearly price ÷ 12, a weekly price × 52 ÷ 12), then <code>yearly = monthly × 12</code> and <code>ten years = monthly × 120</code>. The "invested instead" figure is what that monthly amount would grow to if it earned 5% a year, compounded monthly, for ten years. That rate is an assumption, not a forecast.</p>
+    <h2>Worked example</h2>
+    <table class="worked-table">
+      <thead><tr><th>Subscription</th><th>Monthly</th><th>Yearly</th></tr></thead>
+      <tbody>
+        <tr><td>Streaming</td><td>$15.49</td><td>$185.88</td></tr>
+        <tr><td>Music</td><td>$11.99</td><td>$143.88</td></tr>
+        <tr><td>Budgeting app</td><td>$9.08</td><td>$108.96</td></tr>
+        <tr><td>Cloud storage</td><td>$2.99</td><td>$35.88</td></tr>
+        <tr><td><strong>Total</strong></td><td><strong>$39.55</strong></td><td><strong>$474.60</strong></td></tr>
+      </tbody>
+    </table>
+    <p>Over ten years that is $4,746, and about $6,141 if the same money were invested at 5% instead. Four ordinary subscriptions come to nearly $475 a year.</p>
+    <h2>How to read the result</h2>
+    <ul>
+      <li><strong>Start with the biggest yearly line,</strong> not the one you use least.</li>
+      <li><strong>Annual plans are usually cheaper per month,</strong> but only if you would use it all year.</li>
+      <li><strong>Check the ten-year number, not the monthly one.</strong> That is the honest price of "just $9 a month".</li>
+    </ul>
+
   </Fragment>
 </ToolLayout>
 
@@ -203,4 +232,11 @@ const related = [
       grid-column: 1 / -1;
     }
   }
+</style>
+
+<style is:global>
+  .worked-table { width: 100%; border-collapse: collapse; margin: 1rem 0 1.25rem; font-size: 0.95rem; display: block; overflow-x: auto; }
+  .worked-table th, .worked-table td { text-align: left; padding: 0.55rem 0.8rem; border-bottom: 1px solid rgba(148, 163, 184, 0.35); vertical-align: top; }
+  .worked-table th { font-weight: 700; background: rgba(148, 163, 184, 0.12); }
+  .tool-article code { background: rgba(148, 163, 184, 0.18); padding: 0.1rem 0.4rem; border-radius: 6px; font-size: 0.92em; }
 </style>

@@ -1,7 +1,7 @@
 ---
 title: "How to Budget When You Get Paid Weekly (UK): The Rent Week"
 date: 2026-09-15
-description: "Paid weekly, one week a month is asked for more than twice its own pay. On a £1,280 household that week is £324.62 short — and the fix is a £228.46 set-aside from every other packet."
+description: "Paid weekly, one week a month is asked for more than twice its own pay. On a £1,280 household that week is £324.62 short; the fix is a £228.46 set-aside."
 author: "Stillware Team"
 tags: ["Personal Finance", "Guide"]
 pillar: "problem-solution"

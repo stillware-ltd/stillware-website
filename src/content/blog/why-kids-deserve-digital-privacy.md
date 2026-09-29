@@ -1,7 +1,7 @@
 ---
 title: "Why Kids Deserve Digital Privacy"
 date: 2026-03-29
-description: "Constant surveillance doesn't build trust — it teaches kids their inner world isn't their own. Here's why children need private digital spaces and how to create them."
+description: "Constant surveillance doesn't build trust; it teaches kids their inner world isn't theirs. Why children need private digital spaces and how to create them."
 author: "Stillware Team"
 wordCount: 1497
 tags: ["Kids & Tech", "Privacy", "Education"]

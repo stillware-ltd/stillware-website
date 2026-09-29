@@ -1,7 +1,7 @@
 ---
 title: "How Much Emergency Fund Do I Need? Four Answers, Priced (UK)"
 date: 2026-09-14
-description: "Three to six months of expenses is one sentence and four different numbers. On a £2,400 budget they are £1,130, £1,500, £4,500 and £9,000 — and two months to two years apart."
+description: "Three to six months of expenses is one sentence and four different numbers. On a £2,400 budget they run from £1,130 to £9,000, two months to two years apart."
 author: "Stillware Team"
 tags: ["Personal Finance", "Guide"]
 pillar: "problem-solution"

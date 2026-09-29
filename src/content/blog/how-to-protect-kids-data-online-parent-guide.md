@@ -1,7 +1,7 @@
 ---
 title: "How To Protect Kids Data Online Parent Guide"
 date: 2026-04-07
-description: "A practical parent guide on how to protect kids' data online in 2026. Learn the 4-point app audit, device lockdown settings, and why local-first apps are the safest choice for children."
+description: "A practical parent guide to protecting kids' data online in 2026: the 4-point app audit, device lockdown settings and why local-first apps are safest for kids."
 author: "Stillware Team"
 wordCount: 2143
 heroImage: "/blog/images/how-to-protect-kids-data-online-parent-guide/hero.webp"

@@ -1,7 +1,7 @@
 ---
 title: "Bill Calendar: What It Tells You, and What It Doesn't"
 date: 2026-09-16
-description: "A bill calendar says when each bill leaves. It never says whether the money is still there. £267 of one UK household's bills leave after payday — here is the column the free templates miss."
+description: "A bill calendar shows when each bill leaves, not whether the money is there. £267 of one UK household's bills leave after payday: the column templates miss."
 author: "Stillware Team"
 tags: ["Personal Finance", "Guide"]
 pillar: "problem-solution"

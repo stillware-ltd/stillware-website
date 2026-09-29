@@ -18,6 +18,14 @@ const faqs = [
     q: 'Does this calculator store my debt information?',
     a: 'No. Everything is calculated in your browser on this page. Nothing is sent to any server, and nothing is stored after you close the tab.',
   },
+  {
+    q: "Is the snowball or the avalanche method better?",
+    a: "The avalanche costs less interest because it clears the highest-rate debt first. The snowball clears the smallest balance first, which gives quick wins that help some people keep going. If the calculator shows a small difference for your debts, choose whichever you will stick with.",
+  },
+  {
+    q: "Should I pay off debt or build savings first?",
+    a: "A common approach is a small starter emergency fund first, so a surprise does not become new debt, then high-interest debt, then a full emergency fund. Use the emergency fund calculator to size the starter fund. This is general information, not financial advice.",
+  },
 ];
 
 const related = [
@@ -125,6 +133,33 @@ const companion = [
       extra money in the first place. Try our <a href="/tools/zero-based-budget-calculator/">zero-based budget calculator</a>
       to see where yours could come from.
     </p>
+    <h2>The formula</h2>
+    <p>Every month, for each debt: <code>interest = balance × APR ÷ 12</code>. Then every minimum payment is made, and all the money left over from your monthly budget (the extra payment plus the minimums of debts you have already cleared) goes to one target debt. The avalanche targets the highest APR; the snowball targets the smallest balance.</p>
+    <h2>Worked example</h2>
+    <p>Three debts and $200 a month extra:</p>
+    <table class="worked-table">
+      <thead><tr><th>Debt</th><th>Balance</th><th>APR</th><th>Minimum</th></tr></thead>
+      <tbody>
+        <tr><td>Store card</td><td>$600</td><td>12%</td><td>$30</td></tr>
+        <tr><td>Credit card</td><td>$4,000</td><td>24.9%</td><td>$100</td></tr>
+        <tr><td>Personal loan</td><td>$6,000</td><td>6%</td><td>$150</td></tr>
+      </tbody>
+    </table>
+    <table class="worked-table">
+      <thead><tr><th>Method</th><th>Time to debt-free</th><th>Total interest</th><th>Order cleared</th></tr></thead>
+      <tbody>
+        <tr><td>Avalanche</td><td>25 months</td><td>$1,306.26</td><td>Credit card, store card, loan</td></tr>
+        <tr><td>Snowball</td><td>25 months</td><td>$1,380.75</td><td>Store card, credit card, loan</td></tr>
+      </tbody>
+    </table>
+    <p>Same time, and the avalanche saves $74.50 of interest. When the difference is that small, the snowball's early win from clearing the small card first can be worth more than the money.</p>
+    <h2>How to read the result</h2>
+    <ul>
+      <li><strong>Look at the interest gap, not just the months.</strong> A big gap (a very high APR on a large balance) favours the avalanche.</li>
+      <li><strong>Enter the APR from your statement.</strong> Card issuers often compound daily, so real interest can differ slightly from a monthly calculation.</li>
+      <li><strong>The extra payment is the lever.</strong> Rerun with $50 more and see how many months it removes.</li>
+    </ul>
+
   </Fragment>
 </ToolLayout>
 
@@ -279,4 +314,11 @@ const companion = [
       grid-column: 1 / -1;
     }
   }
+</style>
+
+<style is:global>
+  .worked-table { width: 100%; border-collapse: collapse; margin: 1rem 0 1.25rem; font-size: 0.95rem; display: block; overflow-x: auto; }
+  .worked-table th, .worked-table td { text-align: left; padding: 0.55rem 0.8rem; border-bottom: 1px solid rgba(148, 163, 184, 0.35); vertical-align: top; }
+  .worked-table th { font-weight: 700; background: rgba(148, 163, 184, 0.12); }
+  .tool-article code { background: rgba(148, 163, 184, 0.18); padding: 0.1rem 0.4rem; border-radius: 6px; font-size: 0.92em; }
 </style>

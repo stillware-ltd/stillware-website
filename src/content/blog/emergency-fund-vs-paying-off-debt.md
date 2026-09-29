@@ -1,7 +1,7 @@
 ---
 title: "Emergency Fund vs Paying Off Debt: What Doing Both Costs"
 date: 2026-09-08
-description: "Everyone says do both in stages. Nobody says what both costs. On a £3,000 card at 24.7%, splitting £50/£150 costs £28.35 over a year — and at a savings rate of 4.5% it costs nothing at all."
+description: "Everyone says do both in stages. Nobody says what it costs. On a £3,000 card at 24.7%, a £50/£150 split costs £28.35 a year, and nothing at a 4.5% savings rate."
 author: "Tejaswi Dhulipala"
 tags: ["Personal Finance", "Guide"]
 pillar: "problem-solution"

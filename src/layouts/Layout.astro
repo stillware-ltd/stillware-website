@@ -66,6 +66,10 @@ const siteGraph = {
       url: `${SITE}/`,
       logo: `${SITE}/logo.png`,
       description: 'Pay-once apps that run on your device. Honest pricing, no subscriptions — never rent software that sits on your own hard drive.',
+      // Public register entry: STILLWARE LTD, Companies House 16927952 (England and Wales). No street address on purpose.
+      identifier: { '@type': 'PropertyValue', propertyID: 'UK Companies House number', value: '16927952' },
+      address: { '@type': 'PostalAddress', addressCountry: 'GB' },
+      founder: { '@type': 'Person', name: 'Tejaswi Dhulipala' },
       sameAs: [
         'https://www.youtube.com/@StillwareFamilyApps',
         'https://github.com/stillware-ltd',

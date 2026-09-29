@@ -18,6 +18,14 @@ const faqs = [
     q: 'What counts as an emergency?',
     a: 'Unexpected, necessary, urgent — job loss, a boiler failure, an emergency vet bill, essential travel. A sale is never an emergency. Naming the account "Emergencies only" genuinely helps.',
   },
+  {
+    q: "How much emergency fund do I need in the UK?",
+    a: "Work out your essential monthly spending in pounds, choose 3 to 6 months of cover (more if your income is variable), and multiply. Our UK article prices four different answers for one household: how much emergency fund do I need? Four answers, priced.",
+  },
+  {
+    q: "How much should a Canadian or Australian household keep as an emergency fund?",
+    a: "The same method applies in any currency: essential monthly spending times the months of cover that suit your risk. Choose the $ option, keep the money in an easy-access account, and check that the account is covered by your country’s deposit protection scheme.",
+  },
 ];
 
 const related = [
@@ -138,6 +146,27 @@ const companion = [
       <a href="/tools/zero-based-budget-calculator/">zero-based budget</a> will find the number, and the
       <a href="/tools/subscription-cost-calculator/">subscription audit</a> usually funds the first milestone by itself.
     </p>
+    <h2>The formula</h2>
+    <p><code>target = essential monthly spending × months of cover</code>, <code>gap = target − already saved</code>, and <code>time = gap ÷ monthly saving</code>, rounded up to whole months. Interest on the fund is ignored, which keeps the date cautious.</p>
+    <h2>Worked example</h2>
+    <p>Essential spending of $1,800 a month, $500 already saved and $150 a month set aside:</p>
+    <table class="worked-table">
+      <thead><tr><th>Cover</th><th>Target</th><th>Still to save</th><th>Fully funded in</th></tr></thead>
+      <tbody>
+        <tr><td>3 months</td><td>$5,400</td><td>$4,900</td><td>33 months (2 years 9 months)</td></tr>
+        <tr><td>6 months</td><td>$10,800</td><td>$10,300</td><td>69 months (5 years 9 months)</td></tr>
+      </tbody>
+    </table>
+    <p>The starter milestone, one month of essentials, is $1,800, which at $150 a month is reached in 9 months. Hitting the first milestone is what turns most surprises from new debt into an annoyance.</p>
+    <h2>How to read the result</h2>
+    <ul>
+      <li><strong>Do not be put off by the long date.</strong> Raising the monthly amount by a little moves it a long way; rerun with $200 or $250.</li>
+      <li><strong>Base it on essentials only.</strong> Rent or mortgage, utilities, food, transport, insurance and minimum debt payments.</li>
+      <li><strong>Pick cover that matches your risk.</strong> Fewer months for a stable dual income; more for variable income or a sole earner.</li>
+    </ul>
+    <h2>Using this in the UK, Canada or Australia</h2>
+    <p>Choose £ for the UK, or $ for Canadian and Australian dollars. Keep the fund somewhere instantly reachable: an easy-access savings account (in the UK a Cash ISA can be one, and in Canada a TFSA savings account can be) at a bank that is covered by deposit protection. The limits at the time of writing are up to £120,000 per person per authorised firm from the FSCS in the UK, up to $100,000 per category from CDIC in Canada, and up to $250,000 per account holder per institution from the Financial Claims Scheme in Australia. Check your own bank and the scheme's website for the current position.</p>
+
   </Fragment>
 </ToolLayout>
 
@@ -194,3 +223,10 @@ const companion = [
     results.scrollIntoView({ behavior: 'smooth', block: 'start' });
   });
 </script>
+
+<style is:global>
+  .worked-table { width: 100%; border-collapse: collapse; margin: 1rem 0 1.25rem; font-size: 0.95rem; display: block; overflow-x: auto; }
+  .worked-table th, .worked-table td { text-align: left; padding: 0.55rem 0.8rem; border-bottom: 1px solid rgba(148, 163, 184, 0.35); vertical-align: top; }
+  .worked-table th { font-weight: 700; background: rgba(148, 163, 184, 0.12); }
+  .tool-article code { background: rgba(148, 163, 184, 0.18); padding: 0.1rem 0.4rem; border-radius: 6px; font-size: 0.92em; }
+</style>
