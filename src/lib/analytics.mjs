@@ -8,7 +8,7 @@
 // Umami Cloud -> Settings -> Websites -> the site -> "Website ID". Production builds fail (scripts/verify-links.mjs)
 // if it is empty, so the site cannot ship without a tracker.
 export const UMAMI = {
-  websiteId: '',
+  websiteId: '9672a587-0c0f-48a3-b101-5514754ca131',
   scriptSrc: 'https://cloud.umami.is/script.js',
   // Count only the live site: local previews and Netlify deploy previews are on other hostnames.
   domains: 'www.stillwareltd.com',
