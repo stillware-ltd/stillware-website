@@ -4,13 +4,13 @@ date: 2026-09-07
 description: "App subscriptions are getting out of hand, draining $600+ yearly from your budget. Discover 5 proven rules to escape the trap and own your software again."
 author: "Tejaswi Dhulipala"
 pillar: "philosophy"
-appCluster: "deeproot-reader"
+appCluster: "general"
 primaryKeyword: "app subscriptions are getting out of hand"
 wordCount: 1408
 qualityScore: 92
 tags: ["Anti-SaaS", "Offline-First", "Privacy", "Productivity"]
 featured: true
-relatedSlugs: ["best-focus-apps-for-teens-that-block-social-media", "manual-expense-tracking-2026-mindset-shift", "privacy-first-budgeting-philosophy"]
+relatedSlugs: ["subscription-fatigue-software-alternatives", "manual-expense-tracking-2026-mindset-shift", "privacy-first-budgeting-philosophy"]
 ogImage: "/blog/images/escape-subscription-trap/og-card.svg"
 heroImage: "/blog/images/escape-subscription-trap/hero.webp"
 ---
@@ -21,7 +21,7 @@ Somewhere between 2012 and 2020, software companies collectively decided that se
 
 Add up the modest, recurring fees across five to ten niche apps and the bill lands between $600 and $2,400 every single year. That's a vacation. That's a car payment. That's your family's grocery budget for two months. And in exchange, you own nothing — not one byte of software, not one feature update, not a shred of digital equity.
 
-This is the piece most subscription apologists miss: **subscription fatigue isn't just about money. It's a slow, quiet erosion of ownership.** (Get the full philosophy behind the fix in our [Local First Software Movement Guide](/blog/local-first-software-movement-guide/)).
+This is the piece most subscription apologists miss: **subscription fatigue isn't just about money. It's a slow, quiet erosion of ownership.** (Get the full philosophy behind the fix in our [Local First Software Movement Guide](/blog/what-is-local-first-software-movement-guide-2026/)).
 
 Rather than accepting the rental economy as inevitable, let's audit what's really going on.
 
@@ -113,4 +113,4 @@ Ask yourself: could this tool exist on my device, with my files, under my contro
 
 The only obstacle is the industry's conviction that you're better off renting.
 
-We disagree — and we think you will too once you do the math. If you're curious about what intentional, local-first software looks like in practice, [check out our philosophy on building tools that last](/blog/local-first-software-movement-guide/). Still not convinced? Explore our tools and see for yourself — one-time payment, yours forever.
+We disagree — and we think you will too once you do the math. If you're curious about what intentional, local-first software looks like in practice, [check out our philosophy on building tools that last](/blog/what-is-local-first-software-movement-guide-2026/). Still not convinced? Explore our tools and see for yourself — one-time payment, yours forever.

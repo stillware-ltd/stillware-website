@@ -96,7 +96,7 @@ Ten envelopes and one ordering rule. It works on the back of an envelope, which 
 
 ## Doing it in Zeroed
 
-I built [Zeroed](https://stillwareltd.com/zeroed?ref=blog-how-to-budget-on-a-low-income-uk) to make that order visible: every pound gets a job on the day it lands, and the header shows what is still unassigned — or, in a month like this one, how far past the money you have gone. Watching it read **−£35.00** in red is the point. It is not an error message; it is the number you are going to fix, and it stops being a vague feeling of being behind.
+I built [Zeroed](/zeroed/?ref=blog-how-to-budget-on-a-low-income-uk) to make that order visible: every pound gets a job on the day it lands, and the header shows what is still unassigned — or, in a month like this one, how far past the money you have gone. Watching it read **−£35.00** in red is the point. It is not an error message; it is the number you are going to fix, and it stops being a vague feeling of being behind.
 
 It is one payment rather than a subscription, it works offline, and it never asks for your bank login — which matters more than usual when money is tight and every other app wants £8 a month to tell you that you are short. Our [zero-based budget calculator](https://www.stillwareltd.com/tools/zero-based-budget-calculator/) runs the same arithmetic in a browser, free, if you would rather not install anything.
 

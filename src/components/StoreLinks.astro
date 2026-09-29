@@ -6,8 +6,9 @@
 // A store click cost two clicks, and 17 of 224 sessions in a week reached the first one.
 // This row puts the store on the page the reader actually landed on.
 //
-// The App Store is deliberately absent: apps.apple.com/app/id6804301133 404s until the
-// 14 Sep release. Add it here (one line) once that link resolves.
+// The App Store link was held back until apps.apple.com/app/id6804301133 resolved (it 404'd
+// before the 14 Sep release). It resolves now and is listed first: about half of organic
+// clicks are on phones.
 //
 // Link hrefs are matched by the store_click handler in Layout.astro — keep the .dmg
 // extension in the URL, or the click stops being counted.
@@ -25,6 +26,7 @@ const { label = 'Or get it straight from your store:' } = Astro.props;
 <div class="store-links">
   <span class="store-links-label">{label}</span>
   <div class="store-links-row">
+    <a href="https://apps.apple.com/app/id6804301133" target="_blank" rel="noopener" class="store-link">App Store</a>
     <a href="https://apps.microsoft.com/detail/9NCHJ67Q98C5" target="_blank" rel="noopener" class="store-link">Microsoft Store</a>
     <a href="https://play.google.com/store/apps/details?id=com.stillwareltd.zeroed" target="_blank" rel="noopener" class="store-link">Google Play</a>
     <a href={`${releaseBase(DMG_VERSION)}/Zeroed-${DMG_VERSION}.dmg`} class="store-link">macOS download</a>

@@ -1,0 +1,111 @@
+---
+import Layout from '../layouts/Layout.astro';
+import { getCollection } from 'astro:content';
+
+// Served for unknown URLs (Netlify picks up /404.html) and, via public/_redirects, as the body of the
+// 410 responses for retired pages. Search results still list some retired posts, so a reader can land
+// here straight from Google: give them somewhere useful to go instead of a dead end.
+const guideSlugs = [
+  'ynab-price-increase-alternatives-2026',
+  'privacy-first-budgeting-apps-compared-2026',
+  'best-offline-budget-app-for-windows',
+];
+const posts = await getCollection('blog');
+const guides = guideSlugs.map((slug) => posts.find((p) => p.slug === slug)).filter(Boolean);
+---
+
+<Layout
+  title="Page not found — Stillware Ltd"
+  description="This page is not here, or it has been retired."
+  noindex
+>
+    <section class="not-found">
+        <div class="not-found-content">
+            <h1>That page isn't here.</h1>
+            <p>It may have been retired or moved. These are the places most visitors are looking for:</p>
+
+            <div class="not-found-actions">
+                <a href="/zeroed/" class="btn-primary">Zeroed — offline budget planner</a>
+                <a href="/tools/" class="btn-secondary">Free budgeting tools</a>
+                <a href="/rankupchess/" class="btn-secondary">RankUp Chess</a>
+            </div>
+
+            {guides.length > 0 && (
+                <div class="not-found-guides">
+                    <h2>Popular guides</h2>
+                    <ul>
+                        {guides.map((post) => (
+                            <li><a href={`/blog/${post.slug}/`}>{post.data.title}</a></li>
+                        ))}
+                    </ul>
+                    <a href="/blog/" class="btn-text">All articles &rarr;</a>
+                </div>
+            )}
+        </div>
+    </section>
+</Layout>
+
+<style>
+    .not-found {
+        min-height: 100vh;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: 8rem 2rem 4rem;
+    }
+
+    .not-found-content {
+        text-align: center;
+        max-width: 560px;
+    }
+
+    .not-found-content h1 {
+        font-size: 2.5rem;
+        margin-bottom: 1rem;
+    }
+
+    .not-found-content p {
+        color: var(--color-text-light);
+        font-size: 1.1rem;
+        line-height: 1.6;
+        margin-bottom: 2rem;
+    }
+
+    .not-found-actions {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 0.75rem;
+        justify-content: center;
+        margin-bottom: 3rem;
+    }
+
+    .not-found-guides {
+        border-top: 1px solid var(--color-border);
+        padding-top: 2rem;
+    }
+
+    .not-found-guides h2 {
+        font-size: 1.1rem;
+        margin-bottom: 1rem;
+    }
+
+    .not-found-guides ul {
+        list-style: none;
+        padding: 0;
+        margin: 0 0 1rem;
+    }
+
+    .not-found-guides li {
+        margin-bottom: 0.6rem;
+    }
+
+    .not-found-guides li a {
+        color: var(--color-primary);
+        text-decoration: none;
+        font-weight: 500;
+    }
+
+    .not-found-guides li a:hover {
+        text-decoration: underline;
+    }
+</style>

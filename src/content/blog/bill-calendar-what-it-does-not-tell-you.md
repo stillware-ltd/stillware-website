@@ -117,7 +117,7 @@ If any of those bills is already behind, that is a different problem and a bette
 
 ## Why we care about this one
 
-We build [Zeroed](https://stillwareltd.com/zeroed?ref=blog-t018), an envelope budgeting app you buy
+We build [Zeroed](/zeroed/?ref=blog-t018), an envelope budgeting app you buy
 once. It runs offline, it never asks for your bank login, and holding a dated bill's money from the
 day it lands is the thing it exists to do. That is our bias, stated plainly — and the method above
 works exactly as well on a sheet of paper with one extra column, which is why the column is the point

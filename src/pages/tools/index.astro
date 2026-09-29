@@ -118,7 +118,7 @@ const gatedTools = [
       </div>
       <div class="tools-grid three-col">
         {frictionlessTools.map(tool => (
-          <a href={`/tools/${tool.slug}`} class="tool-card reveal">
+          <a href={`/tools/${tool.slug}/`} class="tool-card reveal">
             <span class="tool-tag">{tool.tag}</span>
             <div class="tool-icon" set:html={tool.icon} />
             <h3>{tool.title}</h3>
@@ -140,7 +140,7 @@ const gatedTools = [
       </div>
       <div class="tools-grid three-col">
         {gatedTools.map(tool => (
-          <a href={`/tools/${tool.slug}`} class="tool-card gated reveal">
+          <a href={`/tools/${tool.slug}/`} class="tool-card gated reveal">
             <span class="tool-tag gated-tag">{tool.tag}</span>
             <div class="tool-icon" set:html={tool.icon} />
             <h3>{tool.title}</h3>

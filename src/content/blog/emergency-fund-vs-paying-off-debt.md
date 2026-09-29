@@ -80,7 +80,7 @@ Two envelopes and one split rule. That is the entire method, and it works on pap
 
 ## Doing it in Zeroed
 
-I built [Zeroed](https://stillwareltd.com/zeroed?ref=blog-emergency-fund-vs-paying-off-debt) to run exactly this: give every pound a job on the day it arrives, including the pound that goes to the card. Two envelopes — Emergency Fund and Card Payment — assigned on payday, and the header reads zero when the whole £200 has been placed. It is one payment rather than a subscription, it works offline, and it never asks for your bank login.
+I built [Zeroed](/zeroed/?ref=blog-emergency-fund-vs-paying-off-debt) to run exactly this: give every pound a job on the day it arrives, including the pound that goes to the card. Two envelopes — Emergency Fund and Card Payment — assigned on payday, and the header reads zero when the whole £200 has been placed. It is one payment rather than a subscription, it works offline, and it never asks for your bank login.
 
 The method above does not need it. If you would rather run two envelopes on paper, the numbers are identical.
 

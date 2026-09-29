@@ -4,12 +4,12 @@ date: 2026-04-18
 description: "Discover why manual expense tracking builds real financial awareness that automated apps can't match. Learn how 5 minutes a day can save you thousands and."
 author: "Tejaswi Dhulipala"
 pillar: "philosophy"
-appCluster: "sovereign-ledger"
+appCluster: "zeroed"
 primaryKeyword: "the case for manual expense tracking"
 wordCount: 1435
 qualityScore: 89
 tags: ["Anti-SaaS", "Offline-First", "Personal Finance", "Privacy"]
-relatedSlugs: ["privacy-first-budgeting-philosophy", "what-happens-to-financial-data-breach", "alternatives-to-ynab-local-storage"]
+relatedSlugs: ["privacy-first-budgeting-philosophy", "data-breach-what-happens-to-your-financial-data", "ynab-alternative-no-subscription-ultimate-comparison"]
 ogImage: "/blog/images/manual-expense-tracking-2026-mindset-shift/og-card.svg"
 heroImage: "/blog/images/manual-expense-tracking-2026-mindset-shift/hero.webp"
 ---
