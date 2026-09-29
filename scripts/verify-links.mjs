@@ -93,11 +93,16 @@ for (const file of htmlFiles) {
     else if (!exists(path)) fail(page, `broken internal link: ${href}`);
   }
 
-  for (const m of html.matchAll(/<(?:img|script|source)\b[^>]*?\s(?:src|srcset)="([^"\s,]+)/g)) {
-    const src = m[1];
-    if (!src.startsWith('/') || src.startsWith('//')) continue;
-    checked++;
-    if (!exists(src)) fail(page, `missing file: ${src}`);
+  for (const tag of html.matchAll(/<(?:img|script|source)\b[^>]*>/g)) {
+    for (const m of tag[0].matchAll(/\s(src|srcset)="([^"]+)"/g)) {
+      // A srcset holds several candidates ("/a.webp 480w, /b.webp 960w"); every one must exist.
+      const urls = m[1] === 'srcset' ? m[2].split(',').map((c) => c.trim().split(/\s+/)[0]) : [m[2]];
+      for (const src of urls) {
+        if (!src.startsWith('/') || src.startsWith('//')) continue;
+        checked++;
+        if (!exists(src)) fail(page, `missing file: ${src}`);
+      }
+    }
   }
   for (const m of html.matchAll(/<link\b[^>]*?\shref="(\/[^"]+)"[^>]*>/g)) {
     if (/rel="(stylesheet|icon|preload)"/.test(m[0]) && !exists(m[1])) fail(page, `missing file: ${m[1]}`);

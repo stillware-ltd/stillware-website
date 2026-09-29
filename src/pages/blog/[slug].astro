@@ -5,6 +5,7 @@ import { getCollection } from 'astro:content';
 import sharp from 'sharp';
 import { join } from 'node:path';
 import { SITE, brandTitle, postSeoTitle, isOrgAuthor } from '../../lib/seo.mjs';
+import { heroSrcset } from '../../lib/images.mjs';
 
 export async function getStaticPaths() {
   const posts = await getCollection('blog');
@@ -167,6 +168,8 @@ const faqSchema = faqItems.length >= 2 ? {
                     alt={post.data.title}
                     width={heroSize?.width}
                     height={heroSize?.height}
+                    srcset={heroSrcset(post.data.heroImage, heroSize?.width) ?? undefined}
+                    sizes="(min-width: 900px) 836px, 100vw"
                     fetchpriority="high"
                     decoding="async"
                 />
