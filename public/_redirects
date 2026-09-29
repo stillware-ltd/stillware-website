@@ -91,8 +91,14 @@
 /blog/ynab-alternative-no-subscription                                                           /404.html  410
 /blog/ynab-alternatives-local-storage                                                            /404.html  410
 
-# Tag pages whose only posts were retired
+# Tag pages whose only posts were retired (every tag slug that ever shipped and is no longer used)
 /blog/tag/lifestyle                                                                              /404.html  410
 /blog/tag/home-property                                                                          /404.html  410
 /blog/tag/seniors-accessibility                                                                  /404.html  410
 /blog/tag/creative-tools                                                                         /404.html  410
+/blog/tag/health-wellness                                                                        /404.html  410
+/blog/tag/legacy-stories                                                                         /404.html  410
+/blog/tag/music-audio                                                                            /404.html  410
+/blog/tag/outdoor-nature                                                                         /404.html  410
+/blog/tag/outdoors                                                                               /404.html  410
+/blog/tag/teens-tech                                                                             /404.html  410
