@@ -66,6 +66,6 @@ The subscription app costs nearly $1,000 over a decade. Zeroed costs $19.99 at t
 
 ## Try It
 
-Zeroed is available now on Windows and Android, with iOS coming soon. Every install starts with a fully unlocked 34-day free trial — no credit card required.
+Zeroed is available now on iPhone and iPad, Android, Windows and macOS. Every install starts with a fully unlocked 34-day free trial — no credit card required.
 
 [Explore Zeroed](/zeroed) · [Read the Manifesto](/manifesto)

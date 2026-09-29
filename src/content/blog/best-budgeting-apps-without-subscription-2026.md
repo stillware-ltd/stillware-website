@@ -1,6 +1,7 @@
 ---
 title: "The Best Budgeting Apps Without a Subscription (2026)"
 date: 2026-08-29
+updated: 2026-09-29
 description: "Six genuinely good budgeting apps you can use without a monthly fee — pay-once, free, and open-source options compared honestly, including their weaknesses."
 author: "Stillware Team"
 tags: ["Comparison", "Personal Finance", "Anti-SaaS"]
@@ -17,11 +18,11 @@ Subscription budgeting apps have a built-in irony: they charge you $80–120 eve
 
 ## 1. Zeroed — pay once, privacy-first *(ours)*
 
-**Price:** $19.99 one-time at the founder price (until 14 February 2027, then $39.99), covering Windows and Android today with iOS and macOS in progress. Fully unlocked 34-day trial, no card, no account.
+**Price:** $19.99 one-time at the founder price (until 14 February 2027, then $39.99), on iPhone and iPad, Android, Windows and macOS. Fully unlocked 34-day trial, no card, no account.
 
 **The pitch:** zero-based envelope budgeting where your data physically stays on your device, AES-256 encrypted. No servers, no account, no tracking. Imports from CSV, PDF, OFX, QFX, and QIF statements with duplicate detection, plus OCR receipt scanning. Reconciliation, goals, debt payoff planning, net worth tracking, and optional sync through your own Google Drive. If the trial ends and you don't buy, the app goes read-only — your data stays viewable and exportable forever.
 
-**Honest weaknesses:** no automatic bank sync (deliberate, but a real trade-off), no web app, no built-in couples collaboration yet, and iOS/macOS are still coming. If those matter more to you than privacy or price, read on.
+**Honest weaknesses:** no automatic bank sync (deliberate, but a real trade-off), no web app, and no built-in couples collaboration yet. If those matter more to you than privacy or price, read on.
 
 [Try Zeroed free for 34 days →](/zeroed)
 
@@ -35,11 +36,11 @@ Actual is the open-source darling of the envelope-budgeting world, and deservedl
 
 ## 3. Buckets — pay-once desktop budgeting
 
-**Price:** one-time licence (desktop).
+**Price:** $64 one-time (checked 29 September 2026), for macOS, Windows, Linux, iOS and Android. One licence covers everyone in your household, and the free trial has no time limit.
 
-Buckets is the closest philosophical cousin to Zeroed: an independent developer selling envelope budgeting as software you buy once and own, with your data in a local file. It's desktop-focused, charmingly straightforward, and honest about what it is.
+Buckets is the closest philosophical cousin to Zeroed: an independent developer selling envelope budgeting as software you buy once and own, with your data in a local file. It's straightforward and honest about what it is, with optional bank sync through file imports or SimpleFIN Bridge.
 
-**Honest weaknesses:** mobile is a companion rather than a full app, development moves at indie pace, and the interface is more functional than polished.
+**Honest weaknesses:** it's a small independent project, so development moves at indie pace, and the interface is more functional than polished.
 
 ## 4. HomeBank — free desktop veteran
 
@@ -73,4 +74,4 @@ The heavyweight: true double-entry accounting that can handle personal finances,
 - **Just want a free, capable ledger?** HomeBank or MoneyManager Ex.
 - **Want real accounting?** GnuCash.
 
-Whatever you pick from this list, the outcome is the same: your budget stops being someone else's recurring revenue. For the full argument on why we think that matters, read [our manifesto](/manifesto) — or see [what YNAB actually costs over five years](/blog/true-cost-of-ynab).
+Whatever you pick from this list, the outcome is the same: your budget stops being someone else's recurring revenue. For the full argument on why we think that matters, read [our manifesto](/manifesto) — or see [what YNAB costs in 2026](/blog/true-cost-of-ynab/) and how [seven alternatives compare with it](/blog/ynab-price-increase-alternatives-2026/).

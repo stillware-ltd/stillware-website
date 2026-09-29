@@ -9,7 +9,7 @@ primaryKeyword: "the case for manual expense tracking"
 wordCount: 1435
 qualityScore: 89
 tags: ["Anti-SaaS", "Offline-First", "Personal Finance", "Privacy"]
-relatedSlugs: ["privacy-first-budgeting-philosophy", "data-breach-what-happens-to-your-financial-data", "ynab-alternative-no-subscription-ultimate-comparison"]
+relatedSlugs: ["privacy-first-budgeting-philosophy", "data-breach-what-happens-to-your-financial-data", "ynab-price-increase-alternatives-2026"]
 ogImage: "/blog/images/manual-expense-tracking-2026-mindset-shift/og-card.svg"
 heroImage: "/blog/images/manual-expense-tracking-2026-mindset-shift/hero.webp"
 ---

@@ -1,7 +1,8 @@
 ---
 title: "How to Switch From YNAB to Zeroed (and Keep Your History)"
 date: 2026-08-29
-description: "A step-by-step guide to moving your budget from YNAB to Zeroed: export your data, import your transaction history, rebuild your categories, and go subscription-free in under an hour."
+updated: 2026-09-29
+description: "Move your budget from YNAB to Zeroed step by step: export your data, import your history, rebuild your categories and go subscription-free in under an hour."
 author: "Stillware Team"
 tags: ["Comparison", "Personal Finance", "Anti-SaaS"]
 pillar: "comparison"
@@ -17,7 +18,7 @@ Here's the whole migration, start to finish. Most people are done inside an hour
 
 ## Before you start
 
-- **Install Zeroed** on [Windows or Android](/zeroed) and start the free trial — it's 34 days, fully unlocked, no card, no account. You can run YNAB and Zeroed side by side for the entire switch, so nothing is at risk.
+- **Install Zeroed** on your [iPhone, iPad, Android phone, Windows PC or Mac](/zeroed/) and start the free trial — it's 34 days, fully unlocked, no card, no account. You can run YNAB and Zeroed side by side for the entire switch, so nothing is at risk.
 - **Don't cancel YNAB yet.** Do that at the end, once you've confirmed everything came across. (If your renewal date is close, YNAB keeps working until the paid period ends.)
 
 ## Step 1: Export your data from YNAB
@@ -64,6 +65,6 @@ Keep YNAB read-only while you live in Zeroed for a pay cycle or two. When your n
 - **No web app.** Zeroed is installed software — your budget doesn't live in a browser tab or on anyone's server.
 - **No shared cloud budget.** Partners share via a synced Drive folder or a shared device rather than separate logins.
 
-Everything else — the method, the rhythm, the "every dollar has a job" discipline — is the same, minus the annual bill. For the full feature-by-feature breakdown, see [Zeroed vs YNAB](/blog/zeroed-vs-ynab-2026).
+Everything else — the method, the rhythm, the "every dollar has a job" discipline — is the same, minus the annual bill. For the full feature-by-feature breakdown, see [Zeroed vs YNAB](/blog/zeroed-vs-ynab-2026/), and if you are still weighing other apps, [seven YNAB alternatives with prices checked](/blog/ynab-price-increase-alternatives-2026/).
 
 **Ready?** [Start your 34-day free trial](/zeroed) — no card, no account, and your YNAB data comes with you.
