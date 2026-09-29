@@ -124,4 +124,4 @@ Each puzzle is also a one-minute Short if you want to try one on the phone:
 
 ## Sources and disclosure
 
-Puzzles 00eNe, 00i6P, 02jzk, 05VnQ from the [Lichess open puzzle database](https://database.lichess.org/#puzzles) (CC0), solutions verified with Stockfish. New puzzles every day on the [RankUp Chess channel](https://www.youtube.com/channel/UC7r19r2thTxTgzxzFu3aNpQ) and on [our videos page](/videos/rankupchess/).
+Puzzles 00eNe, 00i6P, 02jzk, 05VnQ from the [Lichess open puzzle database](https://database.lichess.org/#puzzles) (CC0). New puzzles every day on the [RankUp Chess channel](https://www.youtube.com/channel/UC7r19r2thTxTgzxzFu3aNpQ) and on [our videos page](/videos/rankupchess/).

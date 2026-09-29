@@ -120,4 +120,4 @@ Each puzzle is also a 60-second Short if you want to try one on the phone:
 
 ## Sources and disclosure
 
-Puzzles 01Md6, 00F5G, 00z9K, 02Q6Q from the [Lichess open puzzle database](https://database.lichess.org/#puzzles) (CC0), solutions verified with Stockfish. New puzzles every day on the [RankUp Chess channel](https://www.youtube.com/channel/UC7r19r2thTxTgzxzFu3aNpQ) and on [our videos page](/videos/rankupchess/).
+Puzzles 01Md6, 00F5G, 00z9K, 02Q6Q from the [Lichess open puzzle database](https://database.lichess.org/#puzzles) (CC0). New puzzles every day on the [RankUp Chess channel](https://www.youtube.com/channel/UC7r19r2thTxTgzxzFu3aNpQ) and on [our videos page](/videos/rankupchess/).
