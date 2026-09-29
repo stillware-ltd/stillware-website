@@ -18,6 +18,18 @@ const faqs = [
     q: 'Is 50/30/20 better than zero-based budgeting?',
     a: 'They solve different problems. 50/30/20 is a 30-second sanity check that needs no tracking. Zero-based budgeting assigns every unit of income a specific job before the month starts, which is far more precise and is what actually changes behaviour. Many people start with 50/30/20 and graduate to zero-based once they want real control.',
   },
+  {
+    q: "Is the 50/30/20 rule based on gross or net income?",
+    a: "Net income, meaning your take-home pay after tax and payroll deductions. The buckets are meant to be checked against the money that actually lands in your account.",
+  },
+  {
+    q: "What if my needs are more than 50% of my income?",
+    a: "Change the percentages to reflect reality, for example 60/20/20, and look for the biggest need to reduce over time. The rule is a starting point, not a pass or fail test. A zero-based budget will show exactly where the money goes.",
+  },
+  {
+    q: "Where does the 50/30/20 rule come from?",
+    a: "It was popularised by Elizabeth Warren and Amelia Warren Tyagi in their 2005 book All Your Worth. It is a rule of thumb rather than a law, and the exact split matters less than checking your spending against a plan.",
+  },
 ];
 
 const related = [
@@ -133,6 +145,21 @@ const companion = [
       before the month begins. Try the <a href="/tools/zero-based-budget-calculator/">zero-based budget calculator</a>
       to build your first plan in five minutes.
     </p>
+    <h2>The formula</h2>
+    <p>Multiply your income by each share: <code>needs = income × 50%</code>, <code>wants = income × 30%</code>, <code>savings = income × 20%</code>. The shares are editable and must add up to 100. Use your <strong>take-home pay</strong>, the amount that actually reaches your account after tax, not your gross salary.</p>
+    <h2>Worked example</h2>
+    <table class="worked-table">
+      <thead><tr><th>Take-home pay</th><th>Needs (50%)</th><th>Wants (30%)</th><th>Savings (20%)</th></tr></thead>
+      <tbody><tr><td>$3,000 a month</td><td>$1,500</td><td>$900</td><td>$600</td></tr></tbody>
+    </table>
+    <p>$600 a month is $7,200 a year, or $36,000 over five years before any interest. If the calculator shows a five-year figure that looks large, that is the point: a small monthly habit is a big number once time is added.</p>
+    <h2>How to read the result</h2>
+    <ul>
+      <li><strong>Needs above 50%?</strong> Common where rent is high. Change the split to what is true (60/20/20 or 65/15/20) and find where the pressure is, instead of pretending the rule fits.</li>
+      <li><strong>Savings include extra debt payments,</strong> not just deposits: anything above the minimum on a loan or card counts.</li>
+      <li><strong>Treat the result as a target, not a verdict.</strong> Check it against last month's bank statement and see which bucket is furthest off.</li>
+    </ul>
+
   </Fragment>
 </ToolLayout>
 
@@ -195,4 +222,11 @@ const companion = [
       gap: 0.5rem;
     }
   }
+</style>
+
+<style is:global>
+  .worked-table { width: 100%; border-collapse: collapse; margin: 1rem 0 1.25rem; font-size: 0.95rem; display: block; overflow-x: auto; }
+  .worked-table th, .worked-table td { text-align: left; padding: 0.55rem 0.8rem; border-bottom: 1px solid rgba(148, 163, 184, 0.35); vertical-align: top; }
+  .worked-table th { font-weight: 700; background: rgba(148, 163, 184, 0.12); }
+  .tool-article code { background: rgba(148, 163, 184, 0.18); padding: 0.1rem 0.4rem; border-radius: 6px; font-size: 0.92em; }
 </style>

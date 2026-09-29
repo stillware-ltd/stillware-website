@@ -18,7 +18,9 @@ const blog = defineCollection({
     ogImage: z.string().optional(),
     wordCount: z.number().optional(),
     pillar: z.string().optional(),
-    appCluster: z.string().optional(),
+    // Only products that ship (or are scheduled) plus "general". An unknown value fails the build, which is the point:
+    // the 28 Aug 2026 cleanup removed nine posts whose cluster mapped to no product. Add a product here when it is real.
+    appCluster: z.enum(['zeroed', 'rankup-chess', 'held', 'rankup-maths', 'general']).optional(),
     primaryKeyword: z.string().optional(),
     qualityScore: z.number().optional(),
     heroImage: z.string().optional(),

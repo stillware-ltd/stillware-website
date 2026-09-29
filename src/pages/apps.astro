@@ -27,6 +27,7 @@ import Layout from '../layouts/Layout.astro';
                     <p class="app-desc">Privacy-first, zero-based budgeting. AES-256 encrypted, synced via your own Google Drive. No servers, no subscriptions.</p>
                     <div class="app-platforms">
                         <span class="platform-tag">Windows</span>
+                        <span class="platform-tag">macOS</span>
                         <span class="platform-tag">iOS</span>
                         <span class="platform-tag">Android</span>
                     </div>
@@ -51,6 +52,17 @@ import Layout from '../layouts/Layout.astro';
                         <span class="platform-tag">iOS</span>
                     </div>
                     <a href="/rankupchess/" class="btn-primary chess-cta">Explore RankUp Chess</a>
+                </div>
+            </div>
+
+            <!-- In development: a waiting list, never a buy button (STRATEGY 7.10). No price, date or platform until released. -->
+            <div class="upcoming-grid" style="grid-template-columns: minmax(0, 560px); justify-content: center;">
+                <div class="app-card upcoming reveal">
+                    <span class="app-status">In development</span>
+                    <h3>Held</h3>
+                    <p class="app-tagline">Your true investment return, across every account</p>
+                    <p class="app-desc">No bank logins, no subscription. Held works out what your investments have really returned, on your own device.</p>
+                    <a href="/held/" class="btn-primary">Join the waiting list</a>
                 </div>
             </div>
 

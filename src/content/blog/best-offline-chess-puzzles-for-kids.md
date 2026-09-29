@@ -124,6 +124,8 @@ Key benefits of this approach include:
 
 The next time you’re in a waiting room or planning a road trip, you have an alternative to mindless scrolling or ad-riddled games. You can provide a tool that turns that time into genuine cognitive development. The puzzles are challenging, the progress is tangible, and the privacy is absolute.
 
+Want a shortcut to better puzzle-solving? Learn the [common checkmate patterns](/chess/checkmate-patterns/) by name: back-rank mate, Arabian mate, Morphy's mate and more. Each has a plain-English explanation and a real puzzle to try.
+
 Ready to see what dedicated, offline-first chess training looks like? **Try Rank Up Chess**—it’s built from the ground up on the principles we’ve outlined: a one-time purchase, thousands of offline puzzles, a structured curriculum, and zero data collection. It’s chess mastery, on your terms. **Give it a try and see for yourself how offline chess puzzles for kids can transform learning.**
 
 

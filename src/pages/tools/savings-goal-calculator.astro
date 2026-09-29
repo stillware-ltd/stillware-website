@@ -14,6 +14,14 @@ const faqs = [
     q: 'Where should savings goal money live?',
     a: 'Money you need within a few years generally belongs in cash savings (easy-access or fixed-term accounts), not investments — a market dip the month before you need it is the risk. This is general information, not financial advice.',
   },
+  {
+    q: "How long will it take to save my goal?",
+    a: "Enter your target, what you have saved and your monthly deposit. The calculator applies your interest rate month by month and shows the date. In the example above, $200 a month reaches $5,000 in 22 months from a $500 start at 4%.",
+  },
+  {
+    q: "Does the calculator include interest?",
+    a: "Yes. Enter the annual rate your savings account pays and it compounds it monthly. Enter 0 to see the result without interest.",
+  },
 ];
 
 const related = [
@@ -127,6 +135,26 @@ const companion = [
       <li><strong>Separate it from your emergency fund.</strong> A car repair shouldn't push back your house deposit — check the <a href="/tools/emergency-fund-calculator/">emergency fund calculator</a> if the two are currently one pot.</li>
       <li><strong>Recalculate when life changes.</strong> A raise, a rent increase — come back and get a new date rather than quietly falling behind.</li>
     </ul>
+    <h2>The formula</h2>
+    <p>Each month: <code>balance = balance × (1 + annual rate ÷ 12) + monthly deposit</code>, repeated until the balance reaches your goal. With a 0% rate, it is simply <code>(goal − saved) ÷ monthly deposit</code>.</p>
+    <h2>Worked example</h2>
+    <p>A goal of $5,000, $500 saved already and a 4% savings rate:</p>
+    <table class="worked-table">
+      <thead><tr><th>Monthly deposit</th><th>Time to goal</th><th>You contribute</th></tr></thead>
+      <tbody>
+        <tr><td>$200</td><td>22 months (1 year 10 months)</td><td>$4,400, plus about $100 interest</td></tr>
+        <tr><td>$250 (25% more)</td><td>18 months</td><td></td></tr>
+        <tr><td>$300 (50% more)</td><td>15 months</td><td></td></tr>
+      </tbody>
+    </table>
+    <p>An extra $50 a month brings the date forward by four months. That trade is why the results show what a 25% and a 50% bump do.</p>
+    <h2>How to read the result</h2>
+    <ul>
+      <li><strong>Interest is a small part of short goals.</strong> Here it adds about $100 on a $5,000 goal, so the deposit does nearly all the work.</li>
+      <li><strong>Put in the rate your account really pays.</strong> Enter 0 if it pays almost nothing.</li>
+      <li><strong>Use the date as a plan.</strong> Recalculate after a raise or a rent change instead of quietly falling behind.</li>
+    </ul>
+
   </Fragment>
 </ToolLayout>
 
@@ -200,3 +228,10 @@ const companion = [
     results.scrollIntoView({ behavior: 'smooth', block: 'start' });
   });
 </script>
+
+<style is:global>
+  .worked-table { width: 100%; border-collapse: collapse; margin: 1rem 0 1.25rem; font-size: 0.95rem; display: block; overflow-x: auto; }
+  .worked-table th, .worked-table td { text-align: left; padding: 0.55rem 0.8rem; border-bottom: 1px solid rgba(148, 163, 184, 0.35); vertical-align: top; }
+  .worked-table th { font-weight: 700; background: rgba(148, 163, 184, 0.12); }
+  .tool-article code { background: rgba(148, 163, 184, 0.18); padding: 0.1rem 0.4rem; border-radius: 6px; font-size: 0.92em; }
+</style>

@@ -1,0 +1,152 @@
+---
+import Layout from '../layouts/Layout.astro';
+import { SITE } from '../lib/seo.mjs';
+
+// Lean, company-first About page (SEO strategy D3, 2026-09-29): who is behind the site, what is real, how to reach us.
+// Every fact here is already public: the Companies House entry for STILLWARE LTD (16927952, England and Wales; the sole
+// director is Tejaswi Dhulipala, who is also the byline on the founder's articles), the press kit, and the manifesto.
+// No family details and no registered address on purpose. Keep the product list to products that ship.
+const founderId = `${SITE}/about/#founder`;
+const aboutSchema = {
+  '@context': 'https://schema.org',
+  '@graph': [
+    {
+      '@type': 'AboutPage',
+      '@id': `${SITE}/about/#page`,
+      url: `${SITE}/about/`,
+      name: 'About Stillware Ltd',
+      inLanguage: 'en',
+      isPartOf: { '@id': `${SITE}/#website` },
+      about: { '@id': `${SITE}/#organization` },
+      mainEntity: { '@id': `${SITE}/#organization` },
+    },
+    {
+      '@type': 'Person',
+      '@id': founderId,
+      name: 'Tejaswi Dhulipala',
+      jobTitle: 'Founder and Director',
+      worksFor: { '@id': `${SITE}/#organization` },
+      url: `${SITE}/about/`,
+    },
+  ],
+};
+---
+
+<Layout
+  title="About Stillware Ltd: Pay-Once Apps, Built in the UK"
+  description="Stillware Ltd is an independent UK company making pay-once, offline apps that keep your data on your device. Who we are, what we build and how to reach us."
+  breadcrumbs={[{ name: 'About', href: '/about/' }]}
+>
+    <script type="application/ld+json" set:html={JSON.stringify(aboutSchema)} />
+
+    <header class="about-hero">
+        <div class="container">
+            <h1>About Stillware</h1>
+            <p>We make software you buy once, that runs on your device and keeps your data with you.</p>
+        </div>
+    </header>
+
+    <main class="about-content">
+        <div class="container about-narrow">
+            <section>
+                <h2>Who we are</h2>
+                <p>Stillware Ltd is an independent software company in the United Kingdom. It is self-funded, with no investors.</p>
+                <dl class="about-facts">
+                    <div><dt>Company</dt><dd>Stillware Ltd, registered in England and Wales, company number <a href="https://find-and-update.company-information.service.gov.uk/company/16927952" target="_blank" rel="noopener">16927952</a></dd></div>
+                    <div><dt>Founder and director</dt><dd>Tejaswi Dhulipala, who writes the articles on this site credited to that name</dd></div>
+                    <div><dt>Contact</dt><dd><a href="mailto:support@stillwareltd.com">support@stillwareltd.com</a> for support, review copies and press</dd></div>
+                </dl>
+            </section>
+
+            <section>
+                <h2>What we build</h2>
+                <div class="about-products">
+                    <a href="/zeroed/" class="about-product">
+                        <h3>Zeroed</h3>
+                        <p>An offline zero-based (envelope) budgeting app for iPhone and iPad, Android, Windows and macOS. $19.99 once at the founder price until 14 February 2027, then $39.99, with a 34-day free trial and no account.</p>
+                        <span>See Zeroed &rarr;</span>
+                    </a>
+                    <a href="/rankupchess/" class="about-product">
+                        <h3>RankUp Chess</h3>
+                        <p>An offline chess academy for kids: 5,000+ puzzles, 10 AI strength levels and interactive lessons. Free to play forever with no ads, plus one optional one-time unlock. It runs on iPhone and iPad, Android, Windows and macOS.</p>
+                        <span>See RankUp Chess &rarr;</span>
+                    </a>
+                </div>
+                <p>There are also <a href="/tools/">free budgeting and finance calculators</a> that run in your browser, and a <a href="/blog/">blog</a> of guides on budgeting without a subscription and daily chess puzzles.</p>
+            </section>
+
+            <section>
+                <h2>How we work</h2>
+                <ul class="about-rules">
+                    <li><strong>Pay once.</strong> Version 1 keeps working for good. We do not rent out software that sits on your own device.</li>
+                    <li><strong>Your data stays with you.</strong> No account, no servers holding your information. Data is encrypted on your device, and optional sync goes through your own Google Drive.</li>
+                    <li><strong>No tracking in the apps.</strong> The apps contain no analytics or telemetry. This website counts visits with a cookieless analytics tool; the <a href="/privacy/">privacy policy</a> says exactly what it collects.</li>
+                    <li><strong>You can leave.</strong> Zeroed exports all of your data, even after the trial ends.</li>
+                </ul>
+                <p>The longer version, including when a subscription is honest, is in the <a href="/manifesto/">Stillware Manifesto</a>.</p>
+            </section>
+
+            <section>
+                <h2>Find us</h2>
+                <p>
+                    <a href="https://www.youtube.com/@StillwareFamilyApps" target="_blank" rel="noopener">YouTube</a> ·
+                    <a href="https://github.com/stillware-ltd" target="_blank" rel="noopener">GitHub</a> ·
+                    <a href="https://x.com/stillwareltd" target="_blank" rel="noopener">X</a> ·
+                    <a href="https://mastodon.social/@stillwareltd" target="_blank" rel="me noopener">Mastodon</a> ·
+                    <a href="https://reddit.com/r/StillwareLtd" target="_blank" rel="noopener">Reddit</a> ·
+                    <a href="/press/">Press kit</a>
+                </p>
+            </section>
+        </div>
+    </main>
+</Layout>
+
+<style>
+    .about-hero {
+        padding: 12rem 0 4rem;
+        text-align: center;
+        background: var(--gradient-obsidian);
+    }
+    .about-hero h1 { font-size: 3.5rem; color: #ffffff; margin-bottom: 1rem; }
+    .about-hero p { font-size: 1.2rem; color: rgba(255, 255, 255, 0.65); max-width: 640px; margin: 0 auto; }
+
+    .about-content { padding: 4rem 0 8rem; }
+    .about-narrow { max-width: 820px; margin: 0 auto; }
+    .about-narrow section { margin-bottom: 3.5rem; }
+    .about-narrow h2 { font-size: 1.9rem; margin-bottom: 1rem; }
+    .about-narrow p, .about-narrow li { line-height: 1.7; }
+    .about-narrow a { color: var(--color-primary); font-weight: 600; }
+
+    .about-facts { display: grid; gap: 1rem; margin: 1.5rem 0 0; }
+    .about-facts div {
+        background: #ffffff;
+        border: 1px solid rgba(226, 232, 240, 0.7);
+        border-radius: 16px;
+        padding: 1.1rem 1.4rem;
+        box-shadow: var(--shadow-premium);
+    }
+    .about-facts dt { font-size: 0.8rem; text-transform: uppercase; letter-spacing: 0.06em; opacity: 0.6; margin-bottom: 0.25rem; }
+    .about-facts dd { margin: 0; }
+
+    .about-products { display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem; margin: 1.5rem 0; }
+    .about-product {
+        display: block;
+        background: #ffffff;
+        border: 1px solid rgba(226, 232, 240, 0.7);
+        border-radius: 20px;
+        padding: 1.75rem;
+        box-shadow: var(--shadow-premium);
+        color: inherit;
+        text-decoration: none;
+    }
+    .about-product h3 { margin-bottom: 0.6rem; }
+    .about-product p { margin-bottom: 1rem; }
+    .about-product span { color: var(--color-primary); font-weight: 600; }
+
+    .about-rules { padding-left: 1.2rem; display: grid; gap: 0.8rem; }
+
+    @media (max-width: 768px) {
+        .about-hero h1 { font-size: 2.5rem; }
+        .about-products { grid-template-columns: 1fr; }
+    }
+</style>

@@ -18,6 +18,18 @@ const faqs = [
     q: 'Is my financial information stored anywhere?',
     a: 'No. Everything is calculated in your browser on this page and disappears when you close the tab. Nothing is uploaded to any server.',
   },
+  {
+    q: "Should I include my house in my net worth?",
+    a: "Yes, if you own it: count its realistic sale value as an asset and the mortgage as a liability. Many people also track net worth without their home, to see the money that is not tied up in it.",
+  },
+  {
+    q: "Should I include my pension?",
+    a: "Yes. It is an asset, though you cannot spend it until retirement age. Track your net worth with and without it if you want to see both the total and the money you can use sooner.",
+  },
+  {
+    q: "How often should I calculate my net worth?",
+    a: "Quarterly is enough for most people. Use the same date each time and the same list of accounts, so the change from one quarter to the next is meaningful.",
+  },
 ];
 
 const related = [
@@ -110,6 +122,28 @@ const related = [
       first time above a year's salary. The number compounds slowly and then all at once, exactly like the
       interest table.
     </p>
+    <h2>The formula</h2>
+    <p><code>net worth = total assets − total liabilities</code>. The calculator also shows <code>liabilities ÷ assets</code>, the share of what you own that is financed by debt.</p>
+    <h2>Worked example</h2>
+    <table class="worked-table">
+      <thead><tr><th>Assets</th><th></th><th>Liabilities</th><th></th></tr></thead>
+      <tbody>
+        <tr><td>Current account</td><td>$2,000</td><td>Credit card</td><td>$1,500</td></tr>
+        <tr><td>Savings</td><td>$6,000</td><td>Loan</td><td>$9,000</td></tr>
+        <tr><td>Pension and investments</td><td>$15,000</td><td></td><td></td></tr>
+        <tr><td><strong>Total</strong></td><td><strong>$23,000</strong></td><td><strong>Total</strong></td><td><strong>$10,500</strong></td></tr>
+      </tbody>
+    </table>
+    <p>Net worth is $23,000 − $10,500 = <strong>$12,500</strong>, and 46% of the assets are financed by debt.</p>
+    <h2>How to read the result</h2>
+    <ul>
+      <li><strong>Direction matters more than the number.</strong> Recalculate on the same date every quarter and watch the trend.</li>
+      <li><strong>Value things at what you could sell them for,</strong> not what you paid. A car or a house is worth its realistic sale price, less what is owed on it.</li>
+      <li><strong>Retirement money counts, but you cannot spend it yet.</strong> Some people track net worth with and without it.</li>
+    </ul>
+    <h2>Using this in the UK, Canada or Australia</h2>
+    <p>Choose £ for the UK, or $ for Canadian and Australian dollars. Include the accounts you actually have: in the UK, workplace and personal pensions and ISAs; in Canada, RRSPs and TFSAs; in Australia, superannuation. Enter what each is worth today, and list mortgages, car finance, credit cards and student loans as liabilities.</p>
+
   </Fragment>
 </ToolLayout>
 
@@ -195,4 +229,11 @@ const related = [
   .nw-row {
     grid-template-columns: 1.6fr 1fr auto;
   }
+</style>
+
+<style is:global>
+  .worked-table { width: 100%; border-collapse: collapse; margin: 1rem 0 1.25rem; font-size: 0.95rem; display: block; overflow-x: auto; }
+  .worked-table th, .worked-table td { text-align: left; padding: 0.55rem 0.8rem; border-bottom: 1px solid rgba(148, 163, 184, 0.35); vertical-align: top; }
+  .worked-table th { font-weight: 700; background: rgba(148, 163, 184, 0.12); }
+  .tool-article code { background: rgba(148, 163, 184, 0.18); padding: 0.1rem 0.4rem; border-radius: 6px; font-size: 0.92em; }
 </style>

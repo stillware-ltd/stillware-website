@@ -1,7 +1,7 @@
 ---
 title: "What Your Credit Card Minimum Payment Actually Pays Off (UK)"
 date: 2026-09-12
-description: "On a £1,450 card at 24.9% APR the minimum is £44.59 — and £14.50 of it reaches the balance. Here is the whole year, and what it takes to clear the card in 20 months instead of 22 years."
+description: "On a £1,450 card at 24.9% APR the minimum is £44.59 and £14.50 of it reaches the balance. The whole year, and how to clear it in 20 months instead of 22 years."
 author: "Stillware Team"
 tags: ["Personal Finance", "Guide"]
 pillar: "problem-solution"

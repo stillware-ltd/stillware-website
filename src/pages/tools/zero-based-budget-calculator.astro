@@ -18,6 +18,14 @@ const faqs = [
     q: 'What happens when I overspend a category?',
     a: 'You move money from another category to cover it — deliberately. That single act (choosing what to take it from) is the behaviour change that makes zero-based budgeting work where tracking alone fails.',
   },
+  {
+    q: "What is zero-based budgeting?",
+    a: "A method where you assign every dollar of income to a category before the month starts, so that income minus planned spending is exactly zero. It does not mean spending everything: savings and debt payments are categories too.",
+  },
+  {
+    q: "Is zero-based budgeting the same as envelope budgeting?",
+    a: "They are close relatives. Zero-based budgeting is the rule of giving every dollar a job; envelope budgeting is the practice of holding each category’s money in its own envelope, physical or digital, and stopping when it is empty. Many apps combine the two.",
+  },
 ];
 
 const related = [
@@ -97,6 +105,28 @@ const companion = [
       honest answer. It's the same reason the cash-envelope system worked for our grandparents; this is that system
       with better maths.
     </p>
+    <h2>The formula</h2>
+    <p><code>left to assign = income − sum of every category amount</code>. The goal is exactly zero: over zero means unassigned money, and below zero means you have planned to spend more than you earn.</p>
+    <h2>Worked example</h2>
+    <p>Take-home income of $3,200 for the month:</p>
+    <table class="worked-table">
+      <thead><tr><th>Category</th><th>Amount</th><th>Category</th><th>Amount</th></tr></thead>
+      <tbody>
+        <tr><td>Rent</td><td>$1,200</td><td>Debt payments</td><td>$250</td></tr>
+        <tr><td>Utilities</td><td>$200</td><td>Savings</td><td>$450</td></tr>
+        <tr><td>Groceries</td><td>$450</td><td>Fun money</td><td>$250</td></tr>
+        <tr><td>Transport</td><td>$180</td><td>Buffer</td><td>$130</td></tr>
+        <tr><td>Insurance</td><td>$90</td><td><strong>Total</strong></td><td><strong>$3,200</strong></td></tr>
+      </tbody>
+    </table>
+    <p>$3,200 − $3,200 = $0 left to assign: every dollar has a job.</p>
+    <h2>How to read the result</h2>
+    <ul>
+      <li><strong>Positive number?</strong> Give the leftover a job. Savings, an extra debt payment or a sinking fund all count.</li>
+      <li><strong>Negative number?</strong> Trim a category until you are back to zero. Do not plan to spend money you do not have.</li>
+      <li><strong>Repeat every month.</strong> Income and bills change, so the plan is rebuilt each time, using what actually happened last month.</li>
+    </ul>
+
   </Fragment>
 </ToolLayout>
 
@@ -224,4 +254,11 @@ const companion = [
   .assign-banner.over .assign-value {
     color: #F87171;
   }
+</style>
+
+<style is:global>
+  .worked-table { width: 100%; border-collapse: collapse; margin: 1rem 0 1.25rem; font-size: 0.95rem; display: block; overflow-x: auto; }
+  .worked-table th, .worked-table td { text-align: left; padding: 0.55rem 0.8rem; border-bottom: 1px solid rgba(148, 163, 184, 0.35); vertical-align: top; }
+  .worked-table th { font-weight: 700; background: rgba(148, 163, 184, 0.12); }
+  .tool-article code { background: rgba(148, 163, 184, 0.18); padding: 0.1rem 0.4rem; border-radius: 6px; font-size: 0.92em; }
 </style>
