@@ -1,6 +1,7 @@
 ---
 import Layout from './Layout.astro';
 import StoreLinks from '../components/StoreLinks.astro';
+import { SITE, brandTitle } from '../lib/seo.mjs';
 
 interface FAQ {
   q: string;
@@ -24,6 +25,8 @@ interface Props {
   ctaTitle?: string;
   ctaText?: string;
   ctaLabel?: string;
+  /** schema.org applicationCategory for the WebApplication markup. */
+  appCategory?: string;
 }
 
 const {
@@ -38,7 +41,25 @@ const {
   ctaTitle = 'Budgeting that runs on your device, not a server',
   ctaText = 'Zeroed is a zero-based budgeting app you buy once and own forever. Private, offline, no account — and no subscription eating the money you just calculated.',
   ctaLabel = 'Try Zeroed Free for 34 Days',
+  appCategory = 'FinanceApplication',
 } = Astro.props;
+
+// Pages pass a short title; the brand is appended only when the result still fits in a search listing.
+const pageTitle = brandTitle(title, ' | ');
+const pageUrl = new URL(Astro.url.pathname, SITE).href;
+const appSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'WebApplication',
+  name: heroTitle,
+  description,
+  url: pageUrl,
+  applicationCategory: appCategory,
+  operatingSystem: 'Any (runs in the browser)',
+  browserRequirements: 'Requires JavaScript',
+  isAccessibleForFree: true,
+  offers: { '@type': 'Offer', price: '0', priceCurrency: 'USD' },
+  publisher: { '@id': `${SITE}/#organization` },
+};
 
 const faqSchema = faqs.length
   ? {
@@ -53,7 +74,15 @@ const faqSchema = faqs.length
   : null;
 ---
 
-<Layout title={title} description={description}>
+<Layout
+  title={pageTitle}
+  description={description}
+  breadcrumbs={[
+    { name: 'Tools', href: '/tools/' },
+    { name: breadcrumbLabel, href: Astro.url.pathname },
+  ]}
+>
+  <script type="application/ld+json" set:html={JSON.stringify(appSchema)} />
   {faqSchema && <script type="application/ld+json" set:html={JSON.stringify(faqSchema)} />}
 
   <header class="tool-hero">

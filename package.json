@@ -5,7 +5,7 @@
   "type": "module",
   "scripts": {
     "dev": "astro dev",
-    "build": "astro build && node scripts/verify-sitemap.mjs",
+    "build": "astro build && node scripts/verify-sitemap.mjs && node scripts/verify-links.mjs",
     "preview": "astro preview"
   },
   "dependencies": {
@@ -15,6 +15,7 @@
     "@netlify/functions": "^2.8.2",
     "@paddle/paddle-node-sdk": "^1.10.0",
     "astro": "^4.16.0",
-    "resend": "^4.8.0"
+    "resend": "^4.8.0",
+    "sharp": "^0.33.5"
   }
 }

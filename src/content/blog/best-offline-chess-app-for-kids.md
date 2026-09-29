@@ -1,7 +1,7 @@
 ---
-title: "Best Offline Chess App For Kids"
+title: "Best Offline Chess App for Kids: No Ads, No Subscription"
 date: 2026-04-09
-description: "Find the best offline chess app for kids—no Wi-Fi, no subscriptions, and zero data collection. Turn screen time into focused, ad-free strategic thinking for..."
+description: "The best offline chess apps for kids: no Wi-Fi needed, no subscription, no ads and no data collection. What to look for and how they compare."
 author: "Stillware Team"
 wordCount: 1730
 heroImage: "/blog/images/best-offline-chess-app-for-kids/hero.png"

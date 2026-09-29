@@ -2,6 +2,7 @@
 import Header from '../components/Header.astro';
 import Footer from '../components/Footer.astro';
 import '../styles/global.css';
+import { SITE } from '../lib/seo.mjs';
 
 interface Props {
   title: string;
@@ -18,9 +19,16 @@ interface Props {
   /** Keep the page out of the index but let crawlers follow its links (thin listing pages such as
    * tag pages with only a few posts). Like `noindex`, this suppresses the canonical link. */
   noindexFollow?: boolean;
+  /** Open Graph type: "article" for blog posts (adds article:published_time / modified_time), otherwise "website". */
+  ogType?: 'website' | 'article';
+  /** Article dates (ISO string or Date) for article:published_time and article:modified_time. */
+  published?: string | Date;
+  modified?: string | Date;
+  /** Trail below Home, e.g. [{ name: 'Blog', href: '/blog/' }, { name: post.title, href: '/blog/slug/' }]. Emits BreadcrumbList. */
+  breadcrumbs?: { name: string; href: string }[];
 }
 
-const { title, description, canonical, ogImage, noindex = false, noindexFollow = false, appleAppId } = Astro.props;
+const { title, description, canonical, ogImage, noindex = false, noindexFollow = false, appleAppId, ogType = 'website', published, modified, breadcrumbs = [] } = Astro.props;
 const keepOutOfIndex = noindex || noindexFollow;
 // Netlify serves pretty URLs with a trailing slash and 301s the slash-less
 // form, and the sitemap lists slash URLs. Normalise every canonical to the
@@ -32,6 +40,52 @@ function withTrailingSlash(href: string): string {
 }
 const canonicalURL = withTrailingSlash(canonical || new URL(Astro.url.pathname, Astro.site).href);
 const ogImageURL = ogImage || new URL('/StillwareLtd_logo.png', Astro.site).href;
+const iso = (d?: string | Date) => (d ? new Date(d).toISOString() : undefined);
+
+// One entity graph on every page: the company and the site it publishes. Pages add their own nodes (SoftwareApplication,
+// BlogPosting, ...) and point back here with {"@id"}. sameAs links the profiles that make up the brand's identity.
+const orgId = `${SITE}/#organization`;
+const siteGraph = {
+  '@context': 'https://schema.org',
+  '@graph': [
+    {
+      '@type': 'Organization',
+      '@id': orgId,
+      name: 'Stillware Ltd',
+      url: `${SITE}/`,
+      logo: `${SITE}/logo.png`,
+      description: 'Pay-once apps that run on your device. Honest pricing, no subscriptions — never rent software that sits on your own hard drive.',
+      sameAs: [
+        'https://www.youtube.com/@StillwareFamilyApps',
+        'https://github.com/stillware-ltd',
+        'https://dev.to/stillwareltd',
+        'https://x.com/stillwareltd',
+        'https://mastodon.social/@stillwareltd',
+        'https://reddit.com/r/StillwareLtd',
+      ],
+    },
+    {
+      '@type': 'WebSite',
+      '@id': `${SITE}/#website`,
+      url: `${SITE}/`,
+      name: 'Stillware Ltd',
+      inLanguage: 'en',
+      publisher: { '@id': orgId },
+    },
+  ],
+};
+const breadcrumbSchema = breadcrumbs.length
+  ? {
+      '@context': 'https://schema.org',
+      '@type': 'BreadcrumbList',
+      itemListElement: [{ name: 'Home', href: '/' }, ...breadcrumbs].map((b, i) => ({
+        '@type': 'ListItem',
+        position: i + 1,
+        name: b.name,
+        item: withTrailingSlash(new URL(b.href, SITE).href),
+      })),
+    }
+  : null;
 ---
 
 <!doctype html>
@@ -60,7 +114,9 @@ const ogImageURL = ogImage || new URL('/StillwareLtd_logo.png', Astro.site).href
     <meta property="og:description" content={description} />
     <meta property="og:image" content={ogImageURL} />
     <meta property="og:url" content={canonicalURL} />
-    <meta property="og:type" content="website" />
+    <meta property="og:type" content={ogType} />
+    {ogType === 'article' && published && <meta property="article:published_time" content={iso(published)} />}
+    {ogType === 'article' && (modified || published) && <meta property="article:modified_time" content={iso(modified || published)} />}
     <meta property="og:site_name" content="Stillware Ltd" />
 
     <!-- Twitter Card -->
@@ -80,21 +136,9 @@ const ogImageURL = ogImage || new URL('/StillwareLtd_logo.png', Astro.site).href
 
     <title>{title}</title>
 
-    <!-- Organization Schema -->
-    <script type="application/ld+json" set:html={JSON.stringify({
-        "@context": "https://schema.org",
-        "@type": "Organization",
-        "name": "Stillware Ltd",
-        "url": "https://www.stillwareltd.com",
-        "logo": "https://www.stillwareltd.com/logo.png",
-        "description": "Pay-once apps that run on your device. Honest pricing, no subscriptions — never rent software that sits on your own hard drive.",
-        "sameAs": [
-            "https://dev.to/stillwareltd",
-            "https://x.com/stillwareltd",
-            "https://mastodon.social/@stillwareltd",
-            "https://reddit.com/r/StillwareLtd"
-        ]
-    })} />
+    <!-- Organization + WebSite (+ BreadcrumbList when the page has a trail) -->
+    <script type="application/ld+json" set:html={JSON.stringify(siteGraph)} />
+    {breadcrumbSchema && <script type="application/ld+json" set:html={JSON.stringify(breadcrumbSchema)} />}
 </head>
 <body>
     <Header currentPath={Astro.url.pathname} />

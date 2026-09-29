@@ -2,6 +2,9 @@
 import Layout from '../../layouts/Layout.astro';
 import StoreLinks from '../../components/StoreLinks.astro';
 import { getCollection } from 'astro:content';
+import sharp from 'sharp';
+import { join } from 'node:path';
+import { SITE, brandTitle, postSeoTitle, isOrgAuthor } from '../../lib/seo.mjs';
 
 export async function getStaticPaths() {
   const posts = await getCollection('blog');
@@ -27,6 +30,21 @@ const relatedPosts = post.data.relatedSlugs
       .filter(Boolean)
       .slice(0, 3)
   : [];
+
+// Search-result title, dates and author typing for the page head and the BlogPosting schema.
+const seoTitle = brandTitle(postSeoTitle({ title: post.data.title, seoTitle: post.data.seoTitle, pillar: post.data.pillar }));
+const published = post.data.date.toISOString();
+const modified = (post.data.updated ?? post.data.date).toISOString();
+const orgAuthor = isOrgAuthor(post.data.author);
+
+// Natural size of the hero (lives in public/) so the browser can reserve its space: no layout shift while it loads.
+let heroSize: { width: number; height: number } | null = null;
+if (post.data.heroImage?.startsWith('/')) {
+  try {
+    const meta = await sharp(join(process.cwd(), 'public', post.data.heroImage)).metadata();
+    if (meta.width && meta.height) heroSize = { width: meta.width, height: meta.height };
+  } catch {}
+}
 
 // Social sharing URLs
 const shareUrl = new URL(`/blog/${post.slug}/`, Astro.site).href;
@@ -83,9 +101,16 @@ const faqSchema = faqItems.length >= 2 ? {
 ---
 
 <Layout
-  title={`${post.data.title} — Stillware Ltd`}
+  title={seoTitle}
   description={post.data.description}
   ogImage={post.data.heroImage || post.data.ogImage}
+  ogType="article"
+  published={published}
+  modified={modified}
+  breadcrumbs={[
+    { name: 'Blog', href: '/blog/' },
+    { name: post.data.title, href: `/blog/${post.slug}/` },
+  ]}
 >
     <!-- BlogPosting Structured Data -->
     <script type="application/ld+json" set:html={JSON.stringify({
@@ -93,21 +118,13 @@ const faqSchema = faqItems.length >= 2 ? {
         "@type": "BlogPosting",
         "headline": post.data.title,
         "description": post.data.description || "",
-        "datePublished": post.data.date.toISOString(),
-        "author": {
-            "@type": "Person",
-            "name": post.data.author,
-            "url": "https://www.stillwareltd.com"
-        },
-        "publisher": {
-            "@type": "Organization",
-            "name": "Stillware Ltd",
-            "url": "https://www.stillwareltd.com",
-            "logo": {
-                "@type": "ImageObject",
-                "url": "https://www.stillwareltd.com/logo.png"
-            }
-        },
+        "datePublished": published,
+        "dateModified": modified,
+        "author": orgAuthor
+            ? { "@id": `${SITE}/#organization` }
+            : { "@type": "Person", "name": post.data.author, "url": `${SITE}/` },
+        "publisher": { "@id": `${SITE}/#organization` },
+        "isPartOf": { "@id": `${SITE}/#website` },
         "mainEntityOfPage": {
             "@type": "WebPage",
             "@id": shareUrl
@@ -145,7 +162,14 @@ const faqSchema = faqItems.length >= 2 ? {
 
         {post.data.heroImage && (
             <div class="article-hero-image">
-                <img src={post.data.heroImage} alt="" />
+                <img
+                    src={post.data.heroImage}
+                    alt={post.data.title}
+                    width={heroSize?.width}
+                    height={heroSize?.height}
+                    fetchpriority="high"
+                    decoding="async"
+                />
             </div>
         )}
 
