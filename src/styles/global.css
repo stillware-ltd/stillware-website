@@ -16,7 +16,7 @@
     --gradient-text: linear-gradient(135deg, #2563EB 0%, #60A5FA 100%);
     --gradient-gold: linear-gradient(135deg, #F59E0B 0%, #FBBF24 100%);
 
-    --font-sans: 'Inter', system-ui, -apple-system, sans-serif;
+    --font-sans: 'Inter Variable', 'Inter', system-ui, -apple-system, sans-serif;
 
     --shadow-glow-blue: 0 0 40px rgba(37, 99, 235, 0.12);
     --shadow-premium: 0 1px 1px rgba(0,0,0,0.02), 0 4px 8px rgba(0,0,0,0.04), 0 16px 32px rgba(0,0,0,0.06);

@@ -1,5 +1,6 @@
 ---
 import Layout from '../../layouts/Layout.astro';
+import { heroSrcset } from '../../lib/images.mjs';
 import { getCollection } from 'astro:content';
 
 const allPosts = (await getCollection('blog')).sort(
@@ -39,7 +40,7 @@ function readingTime(wordCount?: number): string {
                     {featuredPosts.map(post => (
                         <a href={`/blog/${post.slug}/`} class="featured-card reveal">
                             {(post.data.heroImage || post.data.ogImage) && (
-                                <img src={post.data.heroImage || post.data.ogImage} alt="" class="featured-card-image" loading="lazy" />
+                                <img src={post.data.heroImage || post.data.ogImage} srcset={heroSrcset(post.data.heroImage) ?? undefined} sizes="(min-width: 800px) 750px, 100vw" alt="" class="featured-card-image" loading="lazy" decoding="async" />
                             )}
                             <span class="featured-badge">Featured</span>
                             <h3>{post.data.title}</h3>
@@ -90,7 +91,7 @@ function readingTime(wordCount?: number): string {
                     <article class="post-card reveal">
                         {(post.data.heroImage || post.data.ogImage) && (
                             <a href={`/blog/${post.slug}/`} class="post-card-image-link">
-                                <img src={post.data.heroImage || post.data.ogImage} alt="" class="post-card-image" loading="lazy" />
+                                <img src={post.data.heroImage || post.data.ogImage} srcset={heroSrcset(post.data.heroImage) ?? undefined} sizes="(min-width: 800px) 750px, 100vw" alt="" class="post-card-image" loading="lazy" decoding="async" />
                             </a>
                         )}
                         <div class="post-meta">
