@@ -13,6 +13,9 @@
 //      deploy is read from /indexnow-manifest.json on the live site, so this runs only for production builds
 //      (or with CHECK_REMOVED=1) and is skipped if the manifest cannot be fetched.
 //
+//   6. Production builds must carry the analytics tracker (a real Umami website id in src/lib/analytics.mjs), so a
+//      deploy can never silently ship with no analytics. Runs for production builds or with CHECK_ANALYTICS=1.
+//
 // Escape hatch for an emergency deploy: SKIP_LINK_CHECK=1. To retire a page on purpose, add it to public/_redirects.
 import { existsSync, readdirSync, readFileSync, statSync } from 'node:fs';
 import { join, relative } from 'node:path';
@@ -139,6 +142,14 @@ if (process.env.CONTEXT === 'production' || process.env.CHECK_REMOVED) {
     }
   } catch (err) {
     console.log(`verify-links: could not read the previous deploy manifest (${err.message}); skipping the disappeared-pages check`);
+  }
+}
+
+// ---- analytics tracker ------------------------------------------------------------------------------------------------
+if (process.env.CONTEXT === 'production' || process.env.CHECK_ANALYTICS) {
+  const home = readFileSync(join(dist, 'index.html'), 'utf8');
+  if (!/<script\b[^>]*\sdata-website-id="[0-9a-f-]{36}"/i.test(home)) {
+    fail('/', 'no analytics tracker on the home page: set UMAMI.websiteId in src/lib/analytics.mjs');
   }
 }
 

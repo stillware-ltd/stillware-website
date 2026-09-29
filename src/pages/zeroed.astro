@@ -1322,10 +1322,7 @@ const appSchema = {
             entries.forEach((e) => {
                 if (!e.isIntersecting) return;
                 seen.disconnect();
-                const w = window as any;
-                if (typeof w.gtag === 'function') {
-                    w.gtag('event', 'video_impression', { video_id: btn.dataset.id || '', page_path: location.pathname });
-                }
+                (window as any).stillTrack?.('video_impression', { video_id: btn.dataset.id || '' });
             });
         }, { threshold: 0.5 });
         seen.observe(btn);
@@ -1341,8 +1338,7 @@ const appSchema = {
             frame.setAttribute('referrerpolicy', 'strict-origin-when-cross-origin');
             frame.className = 'latest-video-frame';
             btn.replaceWith(frame);
-            const w = window as any;
-            if (typeof w.gtag === 'function') w.gtag('event', 'video_play', { video_id: id, page_path: location.pathname });
+            (window as any).stillTrack?.('video_play', { video_id: id });
         });
     });
 </script>
