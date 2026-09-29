@@ -62,7 +62,7 @@ Paper does the arithmetic perfectly. What paper cannot do is take the money out 
 
 ## Doing it in Zeroed
 
-I built [Zeroed](https://stillwareltd.com/zeroed?ref=blog-sinking-funds-for-car-repairs) for exactly this kind of envelope. The car fund is one line in the same budget as the rent, funded on the day the money arrives, so the £57.74 is gone from the spendable balance before the month starts. When the garage week comes, the envelope pays for it and the month does not notice.
+I built [Zeroed](/zeroed/?ref=blog-sinking-funds-for-car-repairs) for exactly this kind of envelope. The car fund is one line in the same budget as the rent, funded on the day the money arrives, so the £57.74 is gone from the spendable balance before the month starts. When the garage week comes, the envelope pays for it and the month does not notice.
 
 It is one payment, it works offline, and it never asks for your bank login. The method works on paper and in any envelope app; the app is where I keep mine.
 

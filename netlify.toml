@@ -5,6 +5,26 @@
 [context.production]
   environment = { NODE_VERSION = "20" }
 
+# Canonical host is https://www.stillwareltd.com. Send every other variant there in ONE hop
+# (http apex used to take two: http -> https apex -> https www). force = true so these win over any file.
+[[redirects]]
+  from = "http://stillwareltd.com/*"
+  to = "https://www.stillwareltd.com/:splat"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "http://www.stillwareltd.com/*"
+  to = "https://www.stillwareltd.com/:splat"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "https://stillwareltd.com/*"
+  to = "https://www.stillwareltd.com/:splat"
+  status = 301
+  force = true
+
 # License API — proxy clean URLs to Netlify Functions
 [[redirects]]
   from = "/webhooks/paddle"
@@ -41,16 +61,7 @@
   to = "/.netlify/functions/dashboard-ops"
   status = 200
 
-# Services line retired 2026-08 — redirect old URLs home
-[[redirects]]
-  from = "/services"
-  to = "/"
-  status = 301
-
-[[redirects]]
-  from = "/services/*"
-  to = "/"
-  status = 301
+# Retired pages (the services line, removed blog posts) return 410 Gone; see public/_redirects.
 
 # Conventional sitemap path -> the Astro sitemap index (GSC/crawlers probe /sitemap.xml; it 404'd until 2026-09-07)
 [[redirects]]
@@ -58,21 +69,50 @@
   to = "/sitemap-index.xml"
   status = 301
 
-# Legacy redirects for old /zeroed/ paths
+# Legacy /zeroed/* pages now live at /privacy/, /terms/, /support/ and /delete-account/ (one hop, straight to the slash URL).
+# force = true: the old static copies used to sit in public/zeroed/ and shadowed these rules, so the
+# duplicates answered 200. They are deleted, and force keeps the redirects winning if a file ever returns.
 [[redirects]]
   from = "/zeroed/privacy"
-  to = "/privacy"
+  to = "/privacy/"
   status = 301
+  force = true
+
+[[redirects]]
+  from = "/zeroed/privacy.html"
+  to = "/privacy/"
+  status = 301
+  force = true
 
 [[redirects]]
   from = "/zeroed/terms"
-  to = "/terms"
+  to = "/terms/"
   status = 301
+  force = true
+
+[[redirects]]
+  from = "/zeroed/terms.html"
+  to = "/terms/"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/zeroed/support"
+  to = "/support/"
+  status = 301
+  force = true
 
 [[redirects]]
   from = "/zeroed/delete-account"
-  to = "/delete-account"
+  to = "/delete-account/"
   status = 301
+  force = true
+
+[[redirects]]
+  from = "/zeroed/delete-account.html"
+  to = "/delete-account/"
+  status = 301
+  force = true
 
 # Form notifications — sends all form submissions to support email
 # Configure in Netlify Dashboard: Site settings > Forms > Form notifications
@@ -80,9 +120,17 @@
 # Forms: newsletter, notify-estate-keep, notify-fort-knox,
 #         notify-estate-keep-apps, notify-fort-knox-apps
 
-# Cache static assets
+# Security headers on every response (these were <meta http-equiv> tags in Layout.astro, which browsers ignore)
 [[headers]]
-  for = "/assets/*"
+  for = "/*"
+  [headers.values]
+    X-Content-Type-Options = "nosniff"
+    Referrer-Policy = "strict-origin-when-cross-origin"
+
+# Cache static assets. Astro writes hashed CSS/JS to /_astro/ (not /assets/), so the file name changes
+# whenever the content does and a year-long immutable cache is safe.
+[[headers]]
+  for = "/_astro/*"
   [headers.values]
     Cache-Control = "public, max-age=31536000, immutable"
 

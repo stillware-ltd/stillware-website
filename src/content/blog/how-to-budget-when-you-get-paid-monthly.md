@@ -74,7 +74,7 @@ The pots advice is worth a sentence of its own. Splitting money across accounts 
 
 ## Doing it in Zeroed
 
-I built [Zeroed](https://stillwareltd.com/zeroed?ref=blog-how-to-budget-when-you-get-paid-monthly) for exactly this month.
+I built [Zeroed](/zeroed/?ref=blog-how-to-budget-when-you-get-paid-monthly) for exactly this month.
 
 You give each envelope its amount on payday, and the header at the top of the budget shows what is left to assign. On this household it reads **−£35.00** on the first — before anything is spent — which is the whole point: the shortfall arrives as a number on payday instead of as a declined card in week three. The two envelopes that actually get spent week to week, groceries and travel, are the only ones the weekly figure has to cover; everything else is dated and already counted.
 

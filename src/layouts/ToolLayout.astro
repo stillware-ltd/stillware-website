@@ -59,7 +59,7 @@ const faqSchema = faqs.length
   <header class="tool-hero">
     <div class="container">
       <nav class="breadcrumb" aria-label="Breadcrumb">
-        <a href="/tools">Tools</a> <span>/</span> <span>{breadcrumbLabel}</span>
+        <a href="/tools/">Tools</a> <span>/</span> <span>{breadcrumbLabel}</span>
       </nav>
       <h1>{heroTitle}</h1>
       <p>{heroTagline}</p>
@@ -103,7 +103,7 @@ const faqSchema = faqs.length
       <div class="cta-banner">
         <h3>{ctaTitle}</h3>
         <p>{ctaText}</p>
-        <a href="/zeroed" class="btn-primary pulse">{ctaLabel}</a>
+        <a href="/zeroed/" class="btn-primary pulse">{ctaLabel}</a>
         <span class="cta-price-note">$19.99 once at the founder price (until 14 Feb 2027, then $39.99). No card needed for the trial.</span>
         <StoreLinks />
 
@@ -134,7 +134,7 @@ const faqSchema = faqs.length
           <h2>Related free tools</h2>
           <ul class="related-list">
             {related.map((r) => (
-              <li><a href={`/tools/${r.slug}`}>{r.title}</a></li>
+              <li><a href={`/tools/${r.slug}/`}>{r.title}</a></li>
             ))}
           </ul>
         </div>

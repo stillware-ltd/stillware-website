@@ -36,7 +36,7 @@ function readingTime(wordCount?: number): string {
                 <h2 class="section-label">Featured</h2>
                 <div class="featured-grid">
                     {featuredPosts.map(post => (
-                        <a href={`/blog/${post.slug}`} class="featured-card reveal">
+                        <a href={`/blog/${post.slug}/`} class="featured-card reveal">
                             {(post.data.heroImage || post.data.ogImage) && (
                                 <img src={post.data.heroImage || post.data.ogImage} alt="" class="featured-card-image" loading="lazy" />
                             )}
@@ -78,7 +78,7 @@ function readingTime(wordCount?: number): string {
                         <div class="newsletter-cta reveal">
                             <h3>The Stillware Letter</h3>
                             <p>A monthly essay on software ownership, privacy, and the anti-subscription movement.</p>
-                            <form name="newsletter" method="POST" data-netlify="true" action="/success" class="newsletter-cta-form">
+                            <form name="newsletter" method="POST" data-netlify="true" action="/success/" class="newsletter-cta-form">
                                 <input type="hidden" name="form-name" value="newsletter" />
                                 <input type="hidden" name="subject" value="New Newsletter Subscriber" />
                                 <input type="email" name="email" placeholder="your@email.com" required aria-label="Email address" />
@@ -88,7 +88,7 @@ function readingTime(wordCount?: number): string {
                     )}
                     <article class="post-card reveal">
                         {(post.data.heroImage || post.data.ogImage) && (
-                            <a href={`/blog/${post.slug}`} class="post-card-image-link">
+                            <a href={`/blog/${post.slug}/`} class="post-card-image-link">
                                 <img src={post.data.heroImage || post.data.ogImage} alt="" class="post-card-image" loading="lazy" />
                             </a>
                         )}
@@ -100,16 +100,16 @@ function readingTime(wordCount?: number): string {
                                 <span class="reading-time">{readingTime(post.data.wordCount)}</span>
                             )}
                         </div>
-                        <h2><a href={`/blog/${post.slug}`}>{post.data.title}</a></h2>
+                        <h2><a href={`/blog/${post.slug}/`}>{post.data.title}</a></h2>
                         {post.data.description && <p>{post.data.description}</p>}
                         {post.data.tags && (
                             <div class="post-tags">
                                 {post.data.tags.map(tag => (
-                                    <a href={`/blog/tag/${tag.toLowerCase().replace(/ & /g, '-').replace(/ /g, '-')}`} class="tag-pill">{tag}</a>
+                                    <a href={`/blog/tag/${tag.toLowerCase().replace(/ & /g, '-').replace(/ /g, '-')}/`} class="tag-pill">{tag}</a>
                                 ))}
                             </div>
                         )}
-                        <a href={`/blog/${post.slug}`} class="read-more">Read more &rarr;</a>
+                        <a href={`/blog/${post.slug}/`} class="read-more">Read more &rarr;</a>
                     </article>
                 </>
             ))}

@@ -1,10 +1,7 @@
 ---
 import Layout from '../../../layouts/Layout.astro';
 import { getCollection } from 'astro:content';
-
-function tagSlug(tag: string): string {
-  return tag.toLowerCase().replace(/ & /g, '-').replace(/ /g, '-');
-}
+import { MIN_INDEXABLE_TAG_POSTS } from '../../../lib/tags.mjs';
 
 export async function getStaticPaths() {
   const posts = await getCollection('blog');
@@ -38,6 +35,9 @@ const filteredPosts = allPosts.filter(post =>
   post.data.tags?.some(t => t.toLowerCase().replace(/ & /g, '-').replace(/ /g, '-') === currentTagSlug)
 );
 
+// Thin listing pages stay out of the index (and out of the sitemap, see astro.config.mjs) but still pass link equity.
+const thinTag = filteredPosts.length < MIN_INDEXABLE_TAG_POSTS;
+
 function readingTime(wordCount?: number): string {
   if (!wordCount) return '';
   return `${Math.ceil(wordCount / 238)} min read`;
@@ -47,10 +47,11 @@ function readingTime(wordCount?: number): string {
 <Layout
   title={`${tagName} — Stillware Ltd Blog`}
   description={`Articles about ${tagName}. Thoughts on software ownership, privacy, and the anti-SaaS movement.`}
+  noindexFollow={thinTag}
 >
     <header class="tag-hero">
         <div class="container">
-            <a href="/blog" class="back-link">&larr; All Posts</a>
+            <a href="/blog/" class="back-link">&larr; All Posts</a>
             <h1>{tagName}</h1>
             <p>{filteredPosts.length} article{filteredPosts.length !== 1 ? 's' : ''}</p>
         </div>
@@ -61,7 +62,7 @@ function readingTime(wordCount?: number): string {
             {filteredPosts.map(post => (
                 <article class="post-card reveal">
                     {post.data.ogImage && (
-                        <a href={`/blog/${post.slug}`} class="post-card-image-link">
+                        <a href={`/blog/${post.slug}/`} class="post-card-image-link">
                             <img src={post.data.ogImage} alt="" class="post-card-image" loading="lazy" />
                         </a>
                     )}
@@ -73,7 +74,7 @@ function readingTime(wordCount?: number): string {
                             <span class="reading-time">{readingTime(post.data.wordCount)}</span>
                         )}
                     </div>
-                    <h2><a href={`/blog/${post.slug}`}>{post.data.title}</a></h2>
+                    <h2><a href={`/blog/${post.slug}/`}>{post.data.title}</a></h2>
                     {post.data.description && <p>{post.data.description}</p>}
                     {post.data.tags && (
                         <div class="post-tags">
@@ -81,7 +82,7 @@ function readingTime(wordCount?: number): string {
                                 const slug = tag.toLowerCase().replace(/ & /g, '-').replace(/ /g, '-');
                                 return (
                                     <a
-                                        href={`/blog/tag/${slug}`}
+                                        href={`/blog/tag/${slug}/`}
                                         class:list={["tag-pill", { "tag-pill-active": slug === currentTagSlug }]}
                                     >
                                         {tag}
@@ -90,7 +91,7 @@ function readingTime(wordCount?: number): string {
                             })}
                         </div>
                     )}
-                    <a href={`/blog/${post.slug}`} class="read-more">Read more &rarr;</a>
+                    <a href={`/blog/${post.slug}/`} class="read-more">Read more &rarr;</a>
                 </article>
             ))}
         </div>

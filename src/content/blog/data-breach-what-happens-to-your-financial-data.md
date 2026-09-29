@@ -4,12 +4,12 @@ date: 2026-09-15
 description: "One bank login can fetch $4,145 in breach costs. Discover what actually happens to your financial data after a breach — and how to stop it."
 author: "Tejaswi Dhulipala"
 pillar: "philosophy"
-appCluster: "sovereign-ledger"
+appCluster: "zeroed"
 primaryKeyword: "data breach what happens to your financial data"
 wordCount: 1420
 qualityScore: 87
 tags: ["Anti-SaaS", "Offline-First", "Personal Finance", "Privacy"]
-relatedSlugs: ["manual-expense-tracking-2026-mindset-shift", "privacy-first-budgeting-philosophy", "alternatives-to-ynab-local-storage"]
+relatedSlugs: ["manual-expense-tracking-2026-mindset-shift", "privacy-first-budgeting-philosophy", "what-is-local-first-software-movement-guide-2026"]
 ogImage: "/blog/images/data-breach-what-happens-to-your-financial-data/og-card.svg"
 heroImage: "/blog/images/data-breach-what-happens-to-your-financial-data/hero.webp"
 ---
@@ -80,7 +80,7 @@ The tradeoff is obvious and worth naming. You type in transactions manually, or 
 
 If you want to go deeper on the discipline this requires, our breakdown of [manual expense tracking as a long-term practice](/blog/manual-expense-tracking-2026-mindset-shift/) lays out the workflow.
 
-This isn't a new idea. The [local-first software movement](/blog/local-first-software-movement-guide/) has been arguing for years that ownership of your own data should be the default, not a premium feature. Finance is just where the stakes are highest, because the downside of a leak involves your actual money rather than your playlist history.
+This isn't a new idea. The [local-first software movement](/blog/what-is-local-first-software-movement-guide-2026/) has been arguing for years that ownership of your own data should be the default, not a premium feature. Finance is just where the stakes are highest, because the downside of a leak involves your actual money rather than your playlist history.
 
 ## The Questions to Ask Any Finance App Before You Connect
 
@@ -114,6 +114,6 @@ The deeper move is to reduce how many copies of your financial life exist at all
 
 We're working on something in this space that takes the manual-entry path seriously — on-device receipt scanning, envelope budgeting, local visualization, and encrypted sync through a drive you control. No bank credentials, no aggregators, no cloud copy of your ledger. Full disclosure: we're building it because we got tired of watching the same breach pattern repeat every eighteen months.
 
-If that direction sounds like the tool you've been looking for, [explore the local-first approach and see what we're putting together](/blog/local-first-software-movement-guide/). It's a longer read, but it's the honest version of the argument.
+If that direction sounds like the tool you've been looking for, [explore the local-first approach and see what we're putting together](/blog/what-is-local-first-software-movement-guide-2026/). It's a longer read, but it's the honest version of the argument.
 
 <!-- IMAGE: type=lifestyle-photography | layout=full-width | ratio=16:9 | caption=Checking your ledger on a device that never syncs to the cloud | scene=A person at a wooden kitchen table at dawn, warm light through the window, a laptop and a paper notebook open side by side, no phone in sight, a coffee mug steeping, calm and private atmosphere, shallow depth of field, editorial photography style -->

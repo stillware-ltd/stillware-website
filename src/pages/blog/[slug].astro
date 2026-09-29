@@ -136,7 +136,7 @@ const faqSchema = faqItems.length >= 2 ? {
                 {post.data.tags && post.data.tags.length > 0 && (
                     <div class="post-hero-tags">
                         {post.data.tags.map((tag: string) => (
-                            <a href={`/blog/tag/${tag.toLowerCase().replace(/ & /g, '-').replace(/ /g, '-')}`} class="hero-tag-pill">{tag}</a>
+                            <a href={`/blog/tag/${tag.toLowerCase().replace(/ & /g, '-').replace(/ /g, '-')}/`} class="hero-tag-pill">{tag}</a>
                         ))}
                     </div>
                 )}
@@ -166,9 +166,22 @@ const faqSchema = faqItems.length >= 2 ? {
             <div class="article-early-cta" data-cta-slot="article-early" hidden>
                 <p><strong>Zeroed</strong> does this on your own device - offline, encrypted, yours to keep.</p>
                 <div class="early-cta-links">
+                    <a href="https://apps.apple.com/app/id6804301133" target="_blank" rel="noopener">App Store</a>
                     <a href="https://apps.microsoft.com/detail/9NCHJ67Q98C5" target="_blank" rel="noopener">Microsoft Store</a>
                     <a href="https://play.google.com/store/apps/details?id=com.stillwareltd.zeroed" target="_blank" rel="noopener">Google Play</a>
-                    <a href="/zeroed" class="early-cta-plain">What it is</a>
+                    <a href="/zeroed/" class="early-cta-plain">What it is</a>
+                </div>
+            </div>
+        )}
+        {/* Chess articles (the daily puzzle companions) had no early store link at all; same node, same script below.
+            Only one .article-early-cta is rendered per page, so a post tagged for both keeps the Zeroed one. */}
+        {isChess && !isZeroed && (
+            <div class="article-early-cta" data-cta-slot="article-early" hidden>
+                <p><strong>RankUp Chess</strong> trains this on your own device - offline, no ads, no subscription.</p>
+                <div class="early-cta-links">
+                    <a href="https://apps.apple.com/app/id6806675796" target="_blank" rel="noopener">App Store</a>
+                    <a href="https://play.google.com/store/apps/details?id=com.stillware.rankup_chess" target="_blank" rel="noopener">Google Play</a>
+                    <a href="/rankupchess/" class="early-cta-plain">What it is</a>
                 </div>
             </div>
         )}
@@ -180,7 +193,7 @@ const faqSchema = faqItems.length >= 2 ? {
                     <h3>Try Zeroed — The Budget App You Actually Own</h3>
                     <p>No servers. No subscriptions. Your data stays on your device, encrypted with AES-256. Try every feature free for 34 days.</p>
                     <div class="product-cta-actions">
-                        <a href="/zeroed" class="btn-primary">Explore Zeroed</a>
+                        <a href="/zeroed/" class="btn-primary">Explore Zeroed</a>
                         <span class="product-cta-price">Founder price: $19.99 until 14 Feb 2027</span>
                     </div>
                     <StoreLinks />
@@ -193,7 +206,7 @@ const faqSchema = faqItems.length >= 2 ? {
                     <h3>Try RankUp Chess — The Offline Chess Academy for Kids</h3>
                     <p>5,000+ puzzles, 10-tier AI, interactive lessons. 100% offline. No subscriptions, no ads, no data harvesting.</p>
                     <div class="product-cta-actions">
-                        <a href="/rankupchess" class="btn-primary chess-btn">Explore RankUp Chess</a>
+                        <a href="/rankupchess/" class="btn-primary chess-btn">Explore RankUp Chess</a>
                     </div>
                 </div>
             </div>
@@ -238,7 +251,7 @@ const faqSchema = faqItems.length >= 2 ? {
                             <p class="author-bio">We build pay-once apps that run on your device, plus operated AI services for businesses. Honest pricing on both sides — never rent for software sitting on your hard drive.</p>
                         </>
                     )}
-                    <a href="/apps" class="author-link">Explore our apps &rarr;</a>
+                    <a href="/apps/" class="author-link">Explore our apps &rarr;</a>
                 </div>
             </div>
         </aside>
@@ -249,9 +262,9 @@ const faqSchema = faqItems.length >= 2 ? {
                 <h2 class="newsletter-heading">The Stillware Letter</h2>
                 <p class="newsletter-description">
                     A monthly essay on software ownership, privacy, and the anti-subscription movement.
-                    No spam. No tracking. Unsubscribe anytime.
+                    No spam. Unsubscribe anytime.
                 </p>
-                <form class="newsletter-form" name="newsletter-post" method="POST" data-netlify="true" action="/blog/">
+                <form class="newsletter-form" name="newsletter-post" method="POST" data-netlify="true" action="/success/">
                     <input type="hidden" name="form-name" value="newsletter-post" />
                     <input type="hidden" name="source" value={`/blog/${post.slug}/`} />
                     <input
@@ -275,7 +288,7 @@ const faqSchema = faqItems.length >= 2 ? {
                     <h2 class="related-heading">Up Next</h2>
                     <div class="related-grid">
                         {relatedPosts.map((related: any) => (
-                            <a href={`/blog/${related.slug}`} class="related-card">
+                            <a href={`/blog/${related.slug}/`} class="related-card">
                                 <time datetime={related.data.date.toISOString()}>
                                     {related.data.date.toLocaleDateString('en-US', { year: 'numeric', month: 'short', day: 'numeric' })}
                                 </time>
@@ -295,7 +308,7 @@ const faqSchema = faqItems.length >= 2 ? {
         )}
 
         <footer class="post-footer">
-            <a href="/blog" class="btn-text">&larr; Back to Blog</a>
+            <a href="/blog/" class="btn-text">&larr; Back to Blog</a>
         </footer>
     </article>
 </Layout>

@@ -4,13 +4,13 @@ date: 2026-09-19
 description: "Discover why the local first software movement is reshaping how we own data. Learn what it actually means for privacy and control before you install."
 author: "Tejaswi Dhulipala"
 pillar: "philosophy"
-appCluster: "deeproot-reader"
+appCluster: "general"
 primaryKeyword: "local first software movement"
 wordCount: 1560
 qualityScore: 93
 tags: ["Anti-SaaS", "Offline-First", "Privacy", "Productivity"]
 featured: true
-relatedSlugs: ["escape-subscription-trap", "best-focus-apps-for-teens-that-block-social-media", "data-breach-what-happens-to-your-financial-data"]
+relatedSlugs: ["escape-subscription-trap", "why-we-dont-do-subscriptions", "data-breach-what-happens-to-your-financial-data"]
 ogImage: "/blog/images/local-first-software-movement-why-it-matters/og-card.svg"
 heroImage: "/blog/images/local-first-software-movement-why-it-matters/hero.webp"
 ---
@@ -85,7 +85,7 @@ Now think about what happens when the company behind your read-it-later app gets
 
 This is the piece of local-first thinking that resonates with readers who don't care about servers at all. It's not an ideology. It's a bet about time. Files on your drive in a readable format outlast formats, companies, and operating systems. Files in a proprietary vault don't.
 
-For readers who've been thinking about this longer, the [local-first software movement guide](/blog/local-first-software-movement-guide/) goes deeper into the technical roots — CRDTs, sync engines, the actual algorithms that make offline collaboration possible. It's a good companion if you want the engineering detail behind the ideals.
+For readers who've been thinking about this longer, the [local-first software movement guide](/blog/what-is-local-first-software-movement-guide-2026/) goes deeper into the technical roots — CRDTs, sync engines, the actual algorithms that make offline collaboration possible. It's a good companion if you want the engineering detail behind the ideals.
 
 ![Leather-bound notebooks and a laptop glowing on a wooden desk, representing decades of marginal notes preserved offline](/blog/images/local-first-software-movement-why-it-matters/photo-05.webp)
 
