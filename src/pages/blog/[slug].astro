@@ -55,7 +55,7 @@ const shareUrlEncoded = encodeURIComponent(shareUrl);
 // Product CTA based on appCluster
 const appCluster = post.data.appCluster || '';
 const isZeroed = appCluster === 'zeroed' || post.data.tags?.some((t: string) => ['Personal Finance', 'Anti-SaaS', 'Comparison'].includes(t));
-const isChess = appCluster === 'rankupchess' || post.data.tags?.some((t: string) => t.toLowerCase().includes('chess'));
+const isChess = appCluster === 'rankupchess' || appCluster === 'rankup-chess' || post.data.tags?.some((t: string) => t.toLowerCase().includes('chess'));
 
 // Companion video (youtube-article skill): the post embeds the long video click-to-play and declares it as VideoObject.
 const videoId = post.data.video;
@@ -179,6 +179,12 @@ const faqSchema = faqItems.length >= 2 ? {
         <div class="post-body">
             <Content />
         </div>
+
+        {post.data.pillar === 'daily-puzzle' && (
+            <aside class="puzzle-hub-link">
+                <p><strong>Learn to spot these faster.</strong> Every mating pattern from the daily puzzles is explained, with a puzzle for each, in our guide to <a href="/chess/checkmate-patterns/">chess checkmate patterns</a>.</p>
+            </aside>
+        )}
 
         <!-- Early store CTA (growth improvement b312d933, 2026-09-16).
              Measured field rule: of the five app-funnel articles measured for
@@ -772,6 +778,16 @@ const faqSchema = faqItems.length >= 2 ? {
 
     /* ── Early store CTA (after the first H2) ── */
 
+    .puzzle-hub-link {
+        max-width: 760px;
+        margin: 2rem auto;
+        padding: 1rem 1.25rem;
+        border-left: 4px solid var(--color-primary);
+        background: rgba(148, 163, 184, 0.1);
+        border-radius: 0 12px 12px 0;
+    }
+    .puzzle-hub-link p { margin: 0; line-height: 1.6; }
+    .puzzle-hub-link a { color: var(--color-primary); font-weight: 600; }
     .article-early-cta {
         max-width: 720px;
         margin: 2rem auto;
