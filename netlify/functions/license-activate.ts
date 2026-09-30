@@ -18,7 +18,8 @@ export default async function handler(req: Request, _context: Context) {
     return jsonResponse({ success: false, error: "Invalid JSON" }, 400);
   }
 
-  const { license_key, machine_id, machine_name, product } = body;
+  // machine_name is still sent by older app builds; it is deliberately ignored (a device name can identify a person).
+  const { license_key, machine_id, product } = body;
   if (!license_key || !machine_id) {
     return jsonResponse({ success: false, error: "Missing license_key or machine_id" }, 400);
   }
@@ -35,7 +36,7 @@ export default async function handler(req: Request, _context: Context) {
   // 1. Look up license — scoped to the requested product so a Zeroed key
   //    can never activate a RankUp Chess install (and vice versa).
   const license = await db.execute({
-    sql: "SELECT id, email, max_activations, revoked FROM licenses WHERE key_hash = ? AND product = ?",
+    sql: "SELECT id, max_activations, revoked FROM licenses WHERE key_hash = ? AND product = ?",
     args: [keyHash, productSlug],
   });
 
@@ -50,7 +51,6 @@ export default async function handler(req: Request, _context: Context) {
 
   const licenseId = row.id as string;
   const maxActivations = row.max_activations as number;
-  const customerEmail = row.email as string;
 
   // 2. Check if this machine already has an activation (active or deactivated)
   const existing = await db.execute({
@@ -63,8 +63,8 @@ export default async function handler(req: Request, _context: Context) {
     if (activation.deactivated_at) {
       // Reactivate: clear deactivated_at
       await db.execute({
-        sql: "UPDATE activations SET deactivated_at = NULL, machine_name = ? WHERE id = ?",
-        args: [machine_name || null, activation.id],
+        sql: "UPDATE activations SET deactivated_at = NULL WHERE id = ?",
+        args: [activation.id],
       });
     }
     // Return existing (or just reactivated) instance
@@ -72,7 +72,6 @@ export default async function handler(req: Request, _context: Context) {
       success: true,
       instance_id: activation.id as string,
       license_key,
-      customer_email: customerEmail,
     });
   }
 
@@ -92,9 +91,9 @@ export default async function handler(req: Request, _context: Context) {
 
   // 4. Create new activation
   await db.execute({
-    sql: `INSERT INTO activations (id, license_id, machine_id, machine_name)
-          VALUES (lower(hex(randomblob(16))), ?, ?, ?)`,
-    args: [licenseId, machine_id, machine_name || null],
+    sql: `INSERT INTO activations (id, license_id, machine_id)
+          VALUES (lower(hex(randomblob(16))), ?, ?)`,
+    args: [licenseId, machine_id],
   });
 
   // Fetch the inserted row to get the generated ID
@@ -109,7 +108,6 @@ export default async function handler(req: Request, _context: Context) {
     success: true,
     instance_id: instanceId,
     license_key,
-    customer_email: customerEmail,
   });
 }
 

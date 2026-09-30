@@ -5,6 +5,9 @@ import { generateLicenseKey, hashLicenseKey } from "./lib/crypto.js";
 import { sendLicenseEmail } from "./lib/email.js";
 import { PRODUCTS, productFromTransactionItems } from "./lib/products.js";
 
+// licenses.email is NOT NULL in the schema; we keep a placeholder instead of the buyer's address.
+const EMAIL_NOT_STORED = "not-stored";
+
 export default async function handler(req: Request, _context: Context) {
   if (req.method !== "POST") {
     return new Response("Method not allowed", { status: 405 });
@@ -91,7 +94,10 @@ export default async function handler(req: Request, _context: Context) {
   const licenseKey = generateLicenseKey();
   const keyHash = hashLicenseKey(licenseKey);
 
-  // 7. Store in database (idempotency via UNIQUE constraint on paddle_txn_id)
+  // 7. Store in database (idempotency via UNIQUE constraint on paddle_txn_id).
+  //    Data minimisation (2026-09-30): the buyer's email is used below to send the key and is NOT stored. Paddle, the
+  //    merchant of record, already holds it and can be searched to find the transaction id if support needs the licence.
+  //    The column is NOT NULL from the original schema, so it holds a placeholder.
   const db = getDb();
   try {
     await db.execute({
@@ -99,7 +105,7 @@ export default async function handler(req: Request, _context: Context) {
             VALUES (?, ?, ?, ?, ?)`,
       args: [
         keyHash,
-        customerEmail,
+        EMAIL_NOT_STORED,
         transactionId,
         product.slug,
         product.maxActivations,
@@ -120,7 +126,7 @@ export default async function handler(req: Request, _context: Context) {
     return new Response("Database error", { status: 500 });
   }
 
-  // 8. Send license email
+  // 8. Send license email (the only use of the address)
   try {
     await sendLicenseEmail(customerEmail, licenseKey, product);
   } catch (err) {
