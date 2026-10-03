@@ -39,6 +39,8 @@ Four puzzles, four patterns: the **mate in three**, the **discovered check**, th
 
 **White to play.** Black just played bishop takes on h3. It wins a pawn, or so it seems. The black king on h8 is short of squares. Two targets, one move. Can you find the fork?
 
+Play it on Lichess before reading on: [lichess.org/training/00hgt](https://lichess.org/training/00hgt). It was rated 892 in the Lichess database we took it from; ratings there shift a little as people solve it.
+
 ### Solution
 
 1. **Re8+** — White: Rook to e8, check.
@@ -61,6 +63,8 @@ Rook to e8, check. The rook attacks the king on h8 and the rook on a8 at the sam
 
 **Black to play.** White just played pawn takes on g4. It wins a knight, or so it seems. Notice the white king on g1 and the white queen on f2, close together. Can you see the check that starts it all?
 
+Play it on Lichess before reading on: [lichess.org/training/01tjv](https://lichess.org/training/01tjv). It was rated 1512 in the Lichess database we took it from; ratings there shift a little as people solve it.
+
 ### Solution
 
 1. **Qxf2+** — Black: Queen takes on f2, check.
@@ -81,6 +85,8 @@ Queen takes on f2, check. The king cannot go to f1, because our queen on f2 cont
 
 **White to play.** Black has just played bishop takes on e1. It wins a rook, or so it seems. The first move is a check. Which piece gives it?
 
+Play it on Lichess before reading on: [lichess.org/training/00OR6](https://lichess.org/training/00OR6). It was rated 2265 in the Lichess database we took it from; ratings there shift a little as people solve it.
+
 ### Solution
 
 1. **Qf6+** — White: Queen to f6, check.
@@ -100,6 +106,8 @@ Queen to f6, check. The king cannot go to g7, because our queen on f6 controls t
 ![Puzzle 4: Black to play after Qxd6](/blog/images/daily-chess-puzzle-8-mate-in-three-discovered-check-quiet-move-sacrifice/puzzle-4.webp)
 
 **Black to play.** White has just played queen takes on d6. It wins a pawn, or so it seems. The strongest move here is a quiet one. What is it?
+
+Play it on Lichess before reading on: [lichess.org/training/02Yz2](https://lichess.org/training/02Yz2). It was rated 2457 in the Lichess database we took it from; ratings there shift a little as people solve it.
 
 ### Solution
 

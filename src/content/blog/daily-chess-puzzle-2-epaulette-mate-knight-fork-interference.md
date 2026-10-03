@@ -26,6 +26,8 @@ Three puzzles, three patterns: the **epaulette mate**, the **knight fork** and t
 
 **White to play.** Black has just played rook to e8. The black king on d8 is short of squares. Can you find the checkmate?
 
+Play it on Lichess before reading on: [lichess.org/training/020XG](https://lichess.org/training/020XG). It was rated 1037 in the Lichess database we took it from; ratings there shift a little as people solve it.
+
 ### Solution
 
 1. **Rd7+** — White: Rook to d7, check.
@@ -46,6 +48,8 @@ Rook to d7, check. We offer the rook, and the king cannot take it, because our r
 
 **White to play.** Black has just played pawn to c6. Notice the black king on e8 and the black queen on f5, close together. Where can our knight land to attack both at once?
 
+Play it on Lichess before reading on: [lichess.org/training/01U4x](https://lichess.org/training/01U4x). It was rated 1338 in the Lichess database we took it from; ratings there shift a little as people solve it.
+
 ### Solution
 
 1. **Nd6+** — White: Knight to d6, check.
@@ -63,6 +67,8 @@ Knight to d6, check. The knight attacks the king on e8 and the queen on f5 at th
 ![Puzzle 3: Black to play after Be2](/blog/images/daily-chess-puzzle-2-epaulette-mate-knight-fork-interference/puzzle-3.webp)
 
 **Black to play.** White has just played bishop to e2. Notice the white king on g1 and the white queen on d1, close together. Two of White's pieces are protecting each other. Can you find the move that cuts the line between them?
+
+Play it on Lichess before reading on: [lichess.org/training/00Yuf](https://lichess.org/training/00Yuf). It was rated 1931 in the Lichess database we took it from; ratings there shift a little as people solve it.
 
 ### Solution
 

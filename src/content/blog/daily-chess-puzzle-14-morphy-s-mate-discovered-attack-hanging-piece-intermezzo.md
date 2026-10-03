@@ -39,6 +39,8 @@ Four puzzles, four patterns: the **morphy's mate**, the **discovered attack**, t
 
 **Black to play.** White has just played knight takes on b6. It wins a queen, or so it seems. The white king on h2 is short of squares. There is a forced mate here. Can you see how it starts?
 
+Play it on Lichess before reading on: [lichess.org/training/01yBt](https://lichess.org/training/01yBt). It was rated 989 in the Lichess database we took it from; ratings there shift a little as people solve it.
+
 ### Solution
 
 1. **Rf2+** — Black: Rook to f2, check.
@@ -59,6 +61,8 @@ Rook to f2, check. The king cannot go to g1, because our rook on g8 controls tha
 
 **Black to play.** White just played king to h1. The white king on h1 is short of squares. There is a check here that changes everything. Can you find it?
 
+Play it on Lichess before reading on: [lichess.org/training/00Lh9](https://lichess.org/training/00Lh9). It was rated 1324 in the Lichess database we took it from; ratings there shift a little as people solve it.
+
 ### Solution
 
 1. **Ng3+** — Black: Knight to g3, check.
@@ -76,6 +80,8 @@ Knight to g3, check. The knight steps aside, and our rook on e8 now looks straig
 ![Puzzle 3: Black to play after gxh6](/blog/images/daily-chess-puzzle-14-morphy-s-mate-discovered-attack-hanging-piece-intermezzo/puzzle-3.webp)
 
 **Black to play.** White just played pawn takes on h6. It wins a pawn, or so it seems. And the white knight on h4 has nothing defending it. Which capture wins material?
+
+Play it on Lichess before reading on: [lichess.org/training/024AF](https://lichess.org/training/024AF). It was rated 2102 in the Lichess database we took it from; ratings there shift a little as people solve it.
 
 ### Solution
 
@@ -96,6 +102,8 @@ Bishop takes on h4. White takes. Pawn takes on g7, check. King takes on g7. That
 ![Puzzle 4: Black to play after Ng6](/blog/images/daily-chess-puzzle-14-morphy-s-mate-discovered-attack-hanging-piece-intermezzo/puzzle-4.webp)
 
 **Black to play.** White has just played knight to g6. Notice the white king on f2 and the white queen on e4, close together. Which capture wins material?
+
+Play it on Lichess before reading on: [lichess.org/training/097kn](https://lichess.org/training/097kn). It was rated 2427 in the Lichess database we took it from; ratings there shift a little as people solve it.
 
 ### Solution
 

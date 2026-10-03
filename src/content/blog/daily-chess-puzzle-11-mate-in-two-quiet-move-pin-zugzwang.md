@@ -39,6 +39,8 @@ Four puzzles, four patterns: the **mate in two**, the **quiet move**, the **pin*
 
 **Black to play.** White just played bishop takes on d4. It wins a bishop, or so it seems. The king is running out of squares. Can you find the winning check?
 
+Play it on Lichess before reading on: [lichess.org/training/00eNe](https://lichess.org/training/00eNe). It was rated 888 in the Lichess database we took it from; ratings there shift a little as people solve it.
+
 ### Solution
 
 1. **Rxe1+** — Black: Rook takes on e1, check.
@@ -58,6 +60,8 @@ Rook takes on e1, check. The rook attacks the king on g1 and the rook on c1 at t
 ![Puzzle 2: White to play after Qf8](/blog/images/daily-chess-puzzle-11-mate-in-two-quiet-move-pin-zugzwang/puzzle-2.webp)
 
 **White to play.** Black has just played queen to f8. And the black queen on f8 has nothing defending it. Notice the black king on h8 and the black queen on f8, close together. Where can our rook land to attack both at once?
+
+Play it on Lichess before reading on: [lichess.org/training/00i6P](https://lichess.org/training/00i6P). It was rated 1349 in the Lichess database we took it from; ratings there shift a little as people solve it.
 
 ### Solution
 
@@ -79,6 +83,8 @@ Rook takes on f8, check. The rook attacks the king on h8 and the rook on b8 at t
 
 **White to play.** Black just played pawn to g3. And the black rook on a4 has nothing defending it. One piece cannot move without exposing another. Can you see which?
 
+Play it on Lichess before reading on: [lichess.org/training/02jzk](https://lichess.org/training/02jzk). It was rated 2076 in the Lichess database we took it from; ratings there shift a little as people solve it.
+
 ### Solution
 
 1. **a7** — White: Pawn to a7.
@@ -98,6 +104,8 @@ Pawn to a7. Black tries king to b3. And now, rook takes on c4. We give up the ro
 ![Puzzle 4: Black to play after Ke3](/blog/images/daily-chess-puzzle-11-mate-in-two-quiet-move-pin-zugzwang/puzzle-4.webp)
 
 **Black to play.** White just played king to e3. It looks natural, but it leaves something behind. No checks, no captures. Can you find the move that leaves White with nothing good to play?
+
+Play it on Lichess before reading on: [lichess.org/training/05VnQ](https://lichess.org/training/05VnQ). It was rated 2420 in the Lichess database we took it from; ratings there shift a little as people solve it.
 
 ### Solution
 

@@ -26,6 +26,8 @@ Three puzzles, three patterns: the **swallow's tail mate**, the **skewer** and t
 
 **White to play.** Black has just played king to g7. Take a moment to look at the whole board. The king is running out of squares. Can you find the winning check?
 
+Play it on Lichess before reading on: [lichess.org/training/00CtS](https://lichess.org/training/00CtS). It was rated 1024 in the Lichess database we took it from; ratings there shift a little as people solve it.
+
 ### Solution
 
 1. **Qh8+** — White: Queen to h8, check.
@@ -46,6 +48,8 @@ Queen to h8, check. We offer the queen, and the king cannot take it, because our
 
 **Black to play.** White just played pawn to a3. Take a moment to look at the whole board. Can you find the skewer?
 
+Play it on Lichess before reading on: [lichess.org/training/01kfz](https://lichess.org/training/01kfz). It was rated 1631 in the Lichess database we took it from; ratings there shift a little as people solve it.
+
 ### Solution
 
 1. **Rxc7** — Black: Rook takes on c7.
@@ -65,6 +69,8 @@ Rook takes on c7. That wins the rook. White takes. Queen takes on c7. And now, r
 ![Puzzle 3: Black to play after Qxc5](/blog/images/daily-chess-puzzle-6-swallow-s-tail-mate-skewer-exposed-king/puzzle-3.webp)
 
 **Black to play.** White has just played queen takes on c5. It wins a bishop, or so it seems. The first move is a check. Which piece gives it?
+
+Play it on Lichess before reading on: [lichess.org/training/03XXf](https://lichess.org/training/03XXf). It was rated 2100 in the Lichess database we took it from; ratings there shift a little as people solve it.
 
 ### Solution
 

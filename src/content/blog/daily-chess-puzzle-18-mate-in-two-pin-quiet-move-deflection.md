@@ -39,6 +39,8 @@ Four puzzles, four patterns: the **mate in two**, the **pin**, the **quiet move*
 
 **White to play.** Black just played pawn takes on f6. It wins a knight, or so it seems. The black king on e8 is short of squares. Can you find the checkmate?
 
+Play it on Lichess before reading on: [lichess.org/training/00Ydr](https://lichess.org/training/00Ydr). It was rated 1075 in the Lichess database we took it from; ratings there shift a little as people solve it.
+
 ### Solution
 
 1. **Bh5+** — White: Bishop to h5, check.
@@ -58,6 +60,8 @@ Bishop to h5, check. The king cannot go to e7, because our pawn on d6 controls t
 ![Puzzle 2: White to play after Qf6](/blog/images/daily-chess-puzzle-18-mate-in-two-pin-quiet-move-deflection/puzzle-2.webp)
 
 **White to play.** Black just played queen to f6. Notice the black king on g8 and the black queen on f6, close together. Can you find the pin?
+
+Play it on Lichess before reading on: [lichess.org/training/00M1q](https://lichess.org/training/00M1q). It was rated 1438 in the Lichess database we took it from; ratings there shift a little as people solve it.
 
 ### Solution
 
@@ -79,6 +83,8 @@ Queen to h7, check. We offer the queen, and the king cannot take it, because our
 
 **White to play.** Black has just played rook takes on e4. It wins a pawn, or so it seems. No check and no capture, but one move wins. Can you find it?
 
+Play it on Lichess before reading on: [lichess.org/training/03r91](https://lichess.org/training/03r91). It was rated 2055 in the Lichess database we took it from; ratings there shift a little as people solve it.
+
 ### Solution
 
 1. **Bg5** — White: Bishop to g5.
@@ -98,6 +104,8 @@ Bishop to g5. Black plays queen to e5. Bishop to f6. Black takes. Queen takes on
 ![Puzzle 4: Black to play after Kc4](/blog/images/daily-chess-puzzle-18-mate-in-two-pin-quiet-move-deflection/puzzle-4.webp)
 
 **Black to play.** White has just played king to c4. It looks safe. It is not. One defender is doing all the work. Can you find the move that drags it away?
+
+Play it on Lichess before reading on: [lichess.org/training/08J9l](https://lichess.org/training/08J9l). It was rated 2458 in the Lichess database we took it from; ratings there shift a little as people solve it.
 
 ### Solution
 

@@ -39,6 +39,8 @@ Four puzzles, four patterns: the **pillsbury's mate**, the **discovered check**,
 
 **Black to play.** White just played pawn to e8, promoting to a queen. The white king on g1 is short of squares. The king is running out of squares. Can you find the winning check?
 
+Play it on Lichess before reading on: [lichess.org/training/01RPd](https://lichess.org/training/01RPd). It was rated 1097 in the Lichess database we took it from; ratings there shift a little as people solve it.
+
 ### Solution
 
 1. **Ra1+** — Black: Rook to a1, check.
@@ -59,6 +61,8 @@ Rook to a1, check. The king cannot go to f1, because our rook on a1 controls tha
 
 **White to play.** Black has just played pawn takes on h6. It wins a bishop, or so it seems. Notice the black king on g8 and the black queen on d8, close together. There is a check here that changes everything. Can you find it?
 
+Play it on Lichess before reading on: [lichess.org/training/02Ojk](https://lichess.org/training/02Ojk). It was rated 1391 in the Lichess database we took it from; ratings there shift a little as people solve it.
+
 ### Solution
 
 1. **Nxe6+** — White: Knight takes on e6, check.
@@ -77,6 +81,8 @@ Knight takes on e6, check. The knight steps aside, and our rook on g1 now looks 
 
 **Black to play.** White has just played queen takes on e4. It wins a pawn, or so it seems. The white king on g2 is short of squares. There is a forcing sequence here, and it starts with a sacrifice.
 
+Play it on Lichess before reading on: [lichess.org/training/02mPu](https://lichess.org/training/02mPu). It was rated 2049 in the Lichess database we took it from; ratings there shift a little as people solve it.
+
 ### Solution
 
 1. **Qf2+** — Black: Queen to f2, check.
@@ -94,6 +100,8 @@ Queen to f2, check. We offer the queen, and the king cannot take it, because our
 ![Puzzle 4: Black to play after Qg4](/blog/images/daily-chess-puzzle-16-pillsbury-s-mate-discovered-check-sacrifice-queen-fork/puzzle-4.webp)
 
 **Black to play.** White just played queen to g4. Notice the white king on g2 and the white queen on g4, close together. Where can our queen land to attack both at once?
+
+Play it on Lichess before reading on: [lichess.org/training/0A38J](https://lichess.org/training/0A38J). It was rated 2672 in the Lichess database we took it from; ratings there shift a little as people solve it.
 
 ### Solution
 

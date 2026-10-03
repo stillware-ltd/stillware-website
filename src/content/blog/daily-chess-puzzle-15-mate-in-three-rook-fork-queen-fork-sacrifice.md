@@ -39,6 +39,8 @@ Four puzzles, four patterns: the **mate in three**, the **rook fork**, the **que
 
 **White to play.** Black has just played rook takes on b4. It wins a bishop, or so it seems. The black king on g8 is short of squares. Can you see the check that starts it all?
 
+Play it on Lichess before reading on: [lichess.org/training/00QHM](https://lichess.org/training/00QHM). It was rated 904 in the Lichess database we took it from; ratings there shift a little as people solve it.
+
 ### Solution
 
 1. **Rc8+** — White: Rook to c8, check.
@@ -61,6 +63,8 @@ Rook to c8, check. The king cannot go to f8, because our rook on c8 controls tha
 
 **White to play.** Black has just played queen to d6. Notice the black king on g8 and the black queen on d6, close together. The strongest move here is a quiet one. What is it?
 
+Play it on Lichess before reading on: [lichess.org/training/02N0A](https://lichess.org/training/02N0A). It was rated 1330 in the Lichess database we took it from; ratings there shift a little as people solve it.
+
 ### Solution
 
 1. **g6** — White: Pawn to g6.
@@ -81,6 +85,8 @@ Pawn to g6. Black takes. Pawn takes on g6. Rook takes on g6, check. The rook att
 
 **Black to play.** White has just played rook to e1. And the white rook on e1 has nothing defending it. The strongest move here is a quiet one. What is it?
 
+Play it on Lichess before reading on: [lichess.org/training/0220F](https://lichess.org/training/0220F). It was rated 2215 in the Lichess database we took it from; ratings there shift a little as people solve it.
+
 ### Solution
 
 1. **Qh4** — Black: Queen to h4.
@@ -100,6 +106,8 @@ Queen to h4. White plays pawn to h3. Queen to f2, check. We offer the queen, and
 ![Puzzle 4: White to play after d6](/blog/images/daily-chess-puzzle-15-mate-in-three-rook-fork-queen-fork-sacrifice/puzzle-4.webp)
 
 **White to play.** Black has just played pawn to d6. It looks natural, but it leaves something behind. Would you give up your knight here? There is a reason to.
+
+Play it on Lichess before reading on: [lichess.org/training/0Dgqx](https://lichess.org/training/0Dgqx). It was rated 2740 in the Lichess database we took it from; ratings there shift a little as people solve it.
 
 ### Solution
 

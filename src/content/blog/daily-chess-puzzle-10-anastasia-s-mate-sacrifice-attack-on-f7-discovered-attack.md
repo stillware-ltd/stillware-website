@@ -39,6 +39,8 @@ Four puzzles, four patterns: the **anastasia's mate**, the **sacrifice**, the **
 
 **White to play.** Black has just played queen takes on b2. It wins a bishop, or so it seems. Can you see the check that starts it all?
 
+Play it on Lichess before reading on: [lichess.org/training/02242](https://lichess.org/training/02242). It was rated 1019 in the Lichess database we took it from; ratings there shift a little as people solve it.
+
 ### Solution
 
 1. **Ne7+** — White: Knight to e7, check.
@@ -61,6 +63,8 @@ Knight to e7, check. Black has to move the king. King to h7. And now, rook to h4
 
 **White to play.** Black has just played pawn takes on d3. It wins a pawn, or so it seems. The black king on g8 is short of squares. The winning move gives up material. Can you see why it works?
 
+Play it on Lichess before reading on: [lichess.org/training/00Pr6](https://lichess.org/training/00Pr6). It was rated 1440 in the Lichess database we took it from; ratings there shift a little as people solve it.
+
 ### Solution
 
 1. **Qxf7+** — White: Queen takes on f7, check.
@@ -81,6 +85,8 @@ Queen takes on f7, check. We give up the queen for a pawn. Black takes. Rook tak
 
 **White to play.** Black just played knight takes on e5. It wins a pawn, or so it seems. Something can be taken here. Can you see what, and why?
 
+Play it on Lichess before reading on: [lichess.org/training/03JjV](https://lichess.org/training/03JjV). It was rated 2031 in the Lichess database we took it from; ratings there shift a little as people solve it.
+
 ### Solution
 
 1. **Bxe5** — White: Bishop takes on e5.
@@ -100,6 +106,8 @@ Bishop takes on e5. That wins the knight. Black accepts. Bishop takes on e5. Que
 ![Puzzle 4: White to play after Qd8](/blog/images/daily-chess-puzzle-10-anastasia-s-mate-sacrifice-attack-on-f7-discovered-attack/puzzle-4.webp)
 
 **White to play.** Black has just played queen to d8. It looks safe. It is not. The winning move gives up material. Can you see why it works?
+
+Play it on Lichess before reading on: [lichess.org/training/01rCa](https://lichess.org/training/01rCa). It was rated 2541 in the Lichess database we took it from; ratings there shift a little as people solve it.
 
 ### Solution
 

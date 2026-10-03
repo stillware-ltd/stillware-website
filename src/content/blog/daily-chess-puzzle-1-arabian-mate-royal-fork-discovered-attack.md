@@ -26,6 +26,8 @@ Three puzzles, three patterns: the **arabian mate**, the **royal fork** and the 
 
 **White to play.** Black has just played bishop to d3. It looks harmless, but Black's king on g8 is short of squares, and our knight and rook are already close by. Can you see the check that drives the king into the corner?
 
+Play it on Lichess before reading on: [lichess.org/training/00H8a](https://lichess.org/training/00H8a). It was rated 805 in the Lichess database we took it from; ratings there shift a little as people solve it.
+
 ### Solution
 
 1. **Nf6+** — White: Knight to f6, check.
@@ -46,6 +48,8 @@ Knight to f6, check. The king cannot go to f7, because our rook on c7 controls t
 
 **Black to play.** White has just retreated the knight to d2. Notice the white king on g1 and the white queen on c3. Whenever the king and queen sit close together, look for a knight fork. Where can our knight land to attack both at once?
 
+Play it on Lichess before reading on: [lichess.org/training/000Pw](https://lichess.org/training/000Pw). It was rated 1542 in the Lichess database we took it from; ratings there shift a little as people solve it.
+
 ### Solution
 
 1. **Ne2+** — Black: Knight to e2, check.
@@ -63,6 +67,8 @@ Knight to e2, check. The knight attacks the king on g1 and the queen on c3 at th
 ![Puzzle 3: White to play after Ba6](/blog/images/daily-chess-puzzle-1-arabian-mate-royal-fork-discovered-attack/puzzle-3.webp)
 
 **White to play.** Black plays bishop to a6, pinning our knight against the king. It looks like Black is winning material. But look at our queen on g7, and our rook on a1, sitting on the same rank as that black queen. There is a forcing sequence here. It starts with a sacrifice.
+
+Play it on Lichess before reading on: [lichess.org/training/00Pms](https://lichess.org/training/00Pms). It was rated 2155 in the Lichess database we took it from; ratings there shift a little as people solve it.
 
 ### Solution
 

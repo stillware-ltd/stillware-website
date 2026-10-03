@@ -39,6 +39,8 @@ Four puzzles, four patterns: the **pillsbury's mate**, the **pin**, the **skewer
 
 **White to play.** Black just played rook takes on e5. It wins a pawn, or so it seems. Can you find the checkmate?
 
+Play it on Lichess before reading on: [lichess.org/training/01Md6](https://lichess.org/training/01Md6). It was rated 936 in the Lichess database we took it from; ratings there shift a little as people solve it.
+
 ### Solution
 
 1. **Rc8+** — White: Rook to c8, check.
@@ -59,6 +61,8 @@ Rook to c8, check. The king cannot go to h7, because our bishop on e4 controls t
 
 **White to play.** Black just played knight takes on f4. It wins a bishop, or so it seems. Notice the black king on g8 and the black queen on d8, close together. One piece cannot move without exposing another. Can you see which?
 
+Play it on Lichess before reading on: [lichess.org/training/00F5G](https://lichess.org/training/00F5G). It was rated 1525 in the Lichess database we took it from; ratings there shift a little as people solve it.
+
 ### Solution
 
 1. **Nh6+** — White: Knight to h6, check.
@@ -77,6 +81,8 @@ Knight to h6, check. We offer the knight. So Black has just one move: king to h8
 
 **White to play.** Black has just played king to g7. Notice how close our bishop on e8 and our rook on h5 are to the black king on g7. And the black bishop on b7 has nothing defending it. Two pieces on one line, the bigger one in front. Can you see the move?
 
+Play it on Lichess before reading on: [lichess.org/training/00z9K](https://lichess.org/training/00z9K). It was rated 2148 in the Lichess database we took it from; ratings there shift a little as people solve it.
+
 ### Solution
 
 1. **Rxh7+** — White: Rook takes on h7, check.
@@ -94,6 +100,8 @@ Rook takes on h7, check. We give up the rook for a pawn. Black has to move the k
 ![Puzzle 4: White to play after Kg7](/blog/images/daily-chess-puzzle-9-pillsbury-s-mate-pin-skewer-queen-fork/puzzle-4.webp)
 
 **White to play.** Black just played king to g7. And the black rook on a1 has nothing defending it. Can you see the square that attacks two pieces at the same time?
+
+Play it on Lichess before reading on: [lichess.org/training/02Q6Q](https://lichess.org/training/02Q6Q). It was rated 2730 in the Lichess database we took it from; ratings there shift a little as people solve it.
 
 ### Solution
 

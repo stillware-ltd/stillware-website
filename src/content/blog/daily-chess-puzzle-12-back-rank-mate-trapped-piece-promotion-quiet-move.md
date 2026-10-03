@@ -39,6 +39,8 @@ Four puzzles, four patterns: the **back-rank mate**, the **trapped piece**, the 
 
 **Black to play.** White has just played queen to b2. Take a moment to look at the whole board. The king is running out of squares. Can you find the winning check?
 
+Play it on Lichess before reading on: [lichess.org/training/012tD](https://lichess.org/training/012tD). It was rated 805 in the Lichess database we took it from; ratings there shift a little as people solve it.
+
 ### Solution
 
 1. **Rd1+** — Black: Rook to d1, check.
@@ -58,6 +60,8 @@ Rook to d1, check. The rook attacks the king on g1 and the rook on a1 at the sam
 ![Puzzle 2: White to play after Qf6](/blog/images/daily-chess-puzzle-12-back-rank-mate-trapped-piece-promotion-quiet-move/puzzle-2.webp)
 
 **White to play.** Black just played queen to f6. Notice the black king on g8 and the black queen on f6, close together. One of Black's pieces has run out of squares. Can you find the move that wins it?
+
+Play it on Lichess before reading on: [lichess.org/training/00YeV](https://lichess.org/training/00YeV). It was rated 1394 in the Lichess database we took it from; ratings there shift a little as people solve it.
 
 ### Solution
 
@@ -79,6 +83,8 @@ Bishop to g5. Black plays queen to g6. Knight to h4. The knight attacks the quee
 
 **White to play.** Black has just played queen to d5. Notice the black king on c8 and the black queen on d5, close together. Which capture wins material?
 
+Play it on Lichess before reading on: [lichess.org/training/04DFs](https://lichess.org/training/04DFs). It was rated 1983 in the Lichess database we took it from; ratings there shift a little as people solve it.
+
 ### Solution
 
 1. **Qxd5** — White: Queen takes on d5.
@@ -98,6 +104,8 @@ Queen takes on d5. The queens come off. Black takes. Rook takes on d5. Now, pawn
 ![Puzzle 4: Black to play after Qf7](/blog/images/daily-chess-puzzle-12-back-rank-mate-trapped-piece-promotion-quiet-move/puzzle-4.webp)
 
 **Black to play.** White just played queen to f7. Take a moment to look at the whole board. The winning move gives up material. Can you see why it works?
+
+Play it on Lichess before reading on: [lichess.org/training/03yEO](https://lichess.org/training/03yEO). It was rated 2590 in the Lichess database we took it from; ratings there shift a little as people solve it.
 
 ### Solution
 

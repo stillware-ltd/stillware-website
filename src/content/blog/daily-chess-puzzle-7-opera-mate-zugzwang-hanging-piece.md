@@ -35,6 +35,8 @@ Three puzzles, three patterns: the **opera mate**, the **zugzwang** and the **ha
 
 **White to play.** Black just played king takes on h7. It wins a queen, or so it seems. The king is running out of squares. Can you find the winning check?
 
+Play it on Lichess before reading on: [lichess.org/training/00nZE](https://lichess.org/training/00nZE). It was rated 996 in the Lichess database we took it from; ratings there shift a little as people solve it.
+
 ### Solution
 
 1. **Rh3+** — White: Rook to h3, check.
@@ -55,6 +57,8 @@ Rook to h3, check. The king cannot go to h6, because our rook on h3 controls tha
 
 **Black to play.** White has just played king takes on a4. It wins a pawn, or so it seems. No checks, no captures. Can you find the move that leaves White with nothing good to play?
 
+Play it on Lichess before reading on: [lichess.org/training/00m6L](https://lichess.org/training/00m6L). It was rated 1392 in the Lichess database we took it from; ratings there shift a little as people solve it.
+
 ### Solution
 
 1. **Kb6** — Black: King to b6.
@@ -74,6 +78,8 @@ King to b6. White defends with king to a3. And now, king to b5. White plays king
 ![Puzzle 3: Black to play after R8c5](/blog/images/daily-chess-puzzle-7-opera-mate-zugzwang-hanging-piece/puzzle-3.webp)
 
 **Black to play.** White just played rook from 8 to c5. And the white queen on g8 has nothing defending it. There is a capture that your opponent cannot answer. Can you find it?
+
+Play it on Lichess before reading on: [lichess.org/training/03uA2](https://lichess.org/training/03uA2). It was rated 2097 in the Lichess database we took it from; ratings there shift a little as people solve it.
 
 ### Solution
 

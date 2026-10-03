@@ -26,6 +26,8 @@ Three puzzles, three patterns: the **back-rank mate**, the **deflection** and th
 
 **White to play.** Black has just played queen to g3. Take a moment to look at the whole board. Would you give up your queen here? There is a reason to.
 
+Play it on Lichess before reading on: [lichess.org/training/02m66](https://lichess.org/training/02m66). It was rated 849 in the Lichess database we took it from; ratings there shift a little as people solve it.
+
 ### Solution
 
 1. **Qxf7+** — White: Queen takes on f7, check.
@@ -48,6 +50,8 @@ Queen takes on f7, check. We give up the queen for a pawn. Black's only move is 
 
 **Black to play.** White just played rook to g4. It looks natural, but it leaves something behind. One defender is doing all the work. Can you find the move that drags it away?
 
+Play it on Lichess before reading on: [lichess.org/training/00Gc5](https://lichess.org/training/00Gc5). It was rated 1594 in the Lichess database we took it from; ratings there shift a little as people solve it.
+
 ### Solution
 
 1. **Rxe5+** — Black: Rook takes on e5, check.
@@ -65,6 +69,8 @@ Rook takes on e5, check. We give up the rook for a pawn. White has to take it. K
 ![Puzzle 3: Black to play after Bxf5](/blog/images/daily-chess-puzzle-4-back-rank-mate-deflection-double-check/puzzle-3.webp)
 
 **Black to play.** White has just played bishop takes on f5. It wins a knight, or so it seems. Where can our knight land to attack both at once?
+
+Play it on Lichess before reading on: [lichess.org/training/03M4g](https://lichess.org/training/03M4g). It was rated 2117 in the Lichess database we took it from; ratings there shift a little as people solve it.
 
 ### Solution
 

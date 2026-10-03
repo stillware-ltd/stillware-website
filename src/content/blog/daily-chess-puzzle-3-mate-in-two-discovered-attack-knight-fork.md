@@ -26,6 +26,8 @@ Three puzzles, three patterns: the **mate in two**, the **discovered attack** an
 
 **White to play.** Black has just played king to f8. The black king on f8 is short of squares. The king is running out of squares. Can you find the winning check?
 
+Play it on Lichess before reading on: [lichess.org/training/02Ack](https://lichess.org/training/02Ack). It was rated 1034 in the Lichess database we took it from; ratings there shift a little as people solve it.
+
 ### Solution
 
 1. **Rd8+** — White: Rook to d8, check.
@@ -46,6 +48,8 @@ Rook to d8, check. The rook attacks the king on f8 and the bishop on c8 at the s
 
 **Black to play.** White just played queen to f3. And the white rook on a7 has nothing defending it. Notice the white king on g1 and the white queen on f3, close together. Which capture wins material?
 
+Play it on Lichess before reading on: [lichess.org/training/02qhV](https://lichess.org/training/02qhV). It was rated 1661 in the Lichess database we took it from; ratings there shift a little as people solve it.
+
 ### Solution
 
 1. **Bxc6** — Black: Bishop takes on c6.
@@ -63,6 +67,8 @@ Bishop takes on c6. The bishop steps aside, and our queen on e7 now looks straig
 ![Puzzle 3: White to play after Bb4](/blog/images/daily-chess-puzzle-3-mate-in-two-discovered-attack-knight-fork/puzzle-3.webp)
 
 **White to play.** Black has just played bishop to b4. It looks safe. It is not. Where can our knight land to attack both at once?
+
+Play it on Lichess before reading on: [lichess.org/training/00LZl](https://lichess.org/training/00LZl). It was rated 2135 in the Lichess database we took it from; ratings there shift a little as people solve it.
 
 ### Solution
 

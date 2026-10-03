@@ -39,6 +39,8 @@ Four puzzles, four patterns: the **opera mate**, the **clearance sacrifice**, th
 
 **White to play.** Black just played rook to d3. The black king on a8 is short of squares. There is a forced mate here. Can you see how it starts?
 
+Play it on Lichess before reading on: [lichess.org/training/00LNB](https://lichess.org/training/00LNB). It was rated 1100 in the Lichess database we took it from; ratings there shift a little as people solve it.
+
 ### Solution
 
 1. **Rxa6+** — White: Rook takes on a6, check.
@@ -59,6 +61,8 @@ Rook takes on a6, check. We give up the rook for a pawn. Black's only move is pa
 
 **Black to play.** White has just played bishop to f1. Notice the white king on e1 and the white queen on d2, close together. Two targets, one move. Can you find the fork?
 
+Play it on Lichess before reading on: [lichess.org/training/02GrY](https://lichess.org/training/02GrY). It was rated 1657 in the Lichess database we took it from; ratings there shift a little as people solve it.
+
 ### Solution
 
 1. **Qe4+** — Black: Queen to e4, check.
@@ -76,6 +80,8 @@ Queen to e4, check. The queen attacks the king on e1 and the knight on f3 at the
 ![Puzzle 3: White to play after e5](/blog/images/daily-chess-puzzle-17-opera-mate-clearance-sacrifice-trapped-piece-queen-fork/puzzle-3.webp)
 
 **White to play.** Black has just played pawn to e5. And the black queen on b2 has nothing defending it. One of Black's pieces has run out of squares. Can you find the move that wins it?
+
+Play it on Lichess before reading on: [lichess.org/training/02na8](https://lichess.org/training/02na8). It was rated 2065 in the Lichess database we took it from; ratings there shift a little as people solve it.
 
 ### Solution
 
@@ -96,6 +102,8 @@ Bishop to c1. Black tries bishop to b4, check. Now, king to f1. Black takes. Que
 ![Puzzle 4: Black to play after Kf2](/blog/images/daily-chess-puzzle-17-opera-mate-clearance-sacrifice-trapped-piece-queen-fork/puzzle-4.webp)
 
 **Black to play.** White has just played king to f2. And the white rook on h1 has nothing defending it. Where can our queen land to attack both at once?
+
+Play it on Lichess before reading on: [lichess.org/training/0B6Qc](https://lichess.org/training/0B6Qc). It was rated 2413 in the Lichess database we took it from; ratings there shift a little as people solve it.
 
 ### Solution
 

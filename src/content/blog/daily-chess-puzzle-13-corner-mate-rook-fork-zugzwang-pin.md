@@ -39,6 +39,8 @@ Four puzzles, four patterns: the **corner mate**, the **rook fork**, the **zugzw
 
 **White to play.** Black just played king takes on g8. It wins a rook, or so it seems. There is a forced mate here. Can you see how it starts?
 
+Play it on Lichess before reading on: [lichess.org/training/01IFr](https://lichess.org/training/01IFr). It was rated 946 in the Lichess database we took it from; ratings there shift a little as people solve it.
+
 ### Solution
 
 1. **Qg6+** — White: Queen to g6, check.
@@ -59,6 +61,8 @@ Queen to g6, check. The king cannot go to f7, because our queen on g6 controls t
 
 **White to play.** Black just played pawn to h6. And the black bishop on c8 has nothing defending it. Two targets, one move. Can you find the fork?
 
+Play it on Lichess before reading on: [lichess.org/training/01rEy](https://lichess.org/training/01rEy). It was rated 1444 in the Lichess database we took it from; ratings there shift a little as people solve it.
+
 ### Solution
 
 1. **Rd8+** — White: Rook to d8, check.
@@ -77,6 +81,8 @@ Rook to d8, check. The rook attacks the king on h8 and the bishop on c8 at the s
 
 **Black to play.** White just played pawn to h4. It looks safe. It is not. Something can be taken here. Can you see what, and why?
 
+Play it on Lichess before reading on: [lichess.org/training/037Ap](https://lichess.org/training/037Ap). It was rated 2019 in the Lichess database we took it from; ratings there shift a little as people solve it.
+
 ### Solution
 
 1. **gxh4** — Black: Pawn takes on h4.
@@ -94,6 +100,8 @@ Pawn takes on h4. White takes. King takes on f4. King to g6.
 ![Puzzle 4: Black to play after Kf1](/blog/images/daily-chess-puzzle-13-corner-mate-rook-fork-zugzwang-pin/puzzle-4.webp)
 
 **Black to play.** White just played king to f1. Notice how close our knight on e2 and our rook on d2 are to the white king on f1. One piece cannot move without exposing another. Can you see which?
+
+Play it on Lichess before reading on: [lichess.org/training/030Zf](https://lichess.org/training/030Zf). It was rated 2516 in the Lichess database we took it from; ratings there shift a little as people solve it.
 
 ### Solution
 
