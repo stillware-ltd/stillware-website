@@ -1,5 +1,34 @@
 [
  {
+  "id": "ztMR4BAqTDA",
+  "type": "short",
+  "title": "Fossil Dig - Deflection that 2500s miss",
+  "published": "2026-10-03T06:00:00+01:00",
+  "length": "1:20"
+ },
+ {
+  "id": "8Hnq8IpEsWs",
+  "type": "short",
+  "title": "Castle - Quiet move that 2100s miss",
+  "published": "2026-10-03T00:00:00+01:00",
+  "length": "1:01"
+ },
+ {
+  "id": "wTg03wUm0kk",
+  "type": "short",
+  "title": "Starship - Pin that 1400s miss",
+  "published": "2026-10-02T18:00:00+01:00",
+  "length": "1:07"
+ },
+ {
+  "id": "VylQFSx6v2c",
+  "type": "short",
+  "title": "Paper Fold - Mate in two that 1100s miss",
+  "published": "2026-10-02T12:00:00+01:00",
+  "length": "0:57",
+  "blurb": "Beginner chess puzzle, rated 1075: White to play. Find the mate in two before the countdown ends."
+ },
+ {
   "id": "7hgXpv8j5w0",
   "type": "short",
   "title": "Coral Reef - Queen fork that 2400s miss",
