@@ -3,7 +3,6 @@ import Layout from '../layouts/Layout.astro';
 
 // The product version, shown wherever the page states which release this is.
 const RANKUP_VERSION = '0.8.0';
-const RANKUP_ANDROID_VERSION = '0.6.0';
 
 // Download URLs derive from their own per-platform constants, which track the
 // release asset that actually exists rather than the product version.
@@ -16,7 +15,6 @@ const RANKUP_WINDOWS_VERSION: string | null = '0.8.0';
 const RANKUP_WINDOWS_DOWNLOAD = RANKUP_WINDOWS_VERSION
   ? `https://github.com/stillware-ltd/rankup-chess-releases/releases/download/v${RANKUP_WINDOWS_VERSION}/RankUpChess-Setup-${RANKUP_WINDOWS_VERSION}.exe`
   : null;
-const RANKUP_WINDOWS_CURRENT = RANKUP_WINDOWS_VERSION === RANKUP_VERSION;
 
 // macOS ships Developer ID signed and notarised, so it installs without a
 // Gatekeeper warning. Universal binary, macOS 10.15+. 0.8.0 (board themes)
@@ -27,12 +25,34 @@ const RANKUP_MACOS_DOWNLOAD =
 
 // Mobile store links. The iOS app went live on the App Store on 2026-09-16
 // (iPhone and iPad, iOS 15+); the link is country-neutral so Apple picks the
-// visitor's storefront. 0.7.0 went live on 2026-09-19 and 0.7.1 on 2026-09-22;
-// 0.8.0 is in review since 2026-09-25.
+// visitor's storefront. 0.7.0 went live on 2026-09-19, 0.7.1 on 2026-09-22
+// and 0.8.0 on 2026-09-25. Google Play was still listing 0.7.1 on 2026-09-29.
 const RANKUP_PLAY_STORE_URL =
   'https://play.google.com/store/apps/details?id=com.stillware.rankup_chess';
 const RANKUP_APP_STORE_URL = 'https://apps.apple.com/app/id6806675796';
-const RANKUP_IOS_VERSION = '0.7.1';
+const RANKUP_IOS_VERSION = '0.8.0';
+const RANKUP_ANDROID_VERSION = '0.7.1';
+
+// The "Current release" line names the platforms already on RANKUP_VERSION,
+// then any still catching up. A platform with no version (Windows set to
+// null) is left out of both and gets its own "coming soon" sentence.
+const RANKUP_PLATFORMS = [
+  { names: ['Windows'], version: RANKUP_WINDOWS_VERSION },
+  { names: ['macOS'], version: RANKUP_MACOS_VERSION },
+  { names: ['iPhone', 'iPad'], version: RANKUP_IOS_VERSION },
+  { names: ['Android'], version: RANKUP_ANDROID_VERSION },
+];
+const listOf = (items: string[]) =>
+  items.length > 1 ? `${items.slice(0, -1).join(', ')} and ${items[items.length - 1]}` : items.join('');
+const RANKUP_CURRENT_ON = listOf(
+  RANKUP_PLATFORMS.filter((p) => p.version === RANKUP_VERSION).flatMap((p) => p.names),
+);
+const RANKUP_CATCHING_UP = listOf(
+  RANKUP_PLATFORMS.filter((p) => p.version && p.version !== RANKUP_VERSION).map(
+    (p) => `${listOf(p.names)} ${p.names.length > 1 ? 'are' : 'is'} on v${p.version}`,
+  ),
+);
+
 // Product markup for search: free to play, with a one-time unlock (see the pricing section). No rating markup: none exists yet.
 const appSchema = {
   '@context': 'https://schema.org',
@@ -81,7 +101,7 @@ const appSchema = {
                             <span class="btn-subtext">macOS &middot; v{RANKUP_MACOS_VERSION} &middot; free forever</span>
                         </a>
                     )}
-                    <p class="version-line">Current release <strong>v{RANKUP_VERSION}</strong> on {RANKUP_WINDOWS_CURRENT ? 'Windows and macOS' : 'macOS'}. iPhone and iPad are on v{RANKUP_IOS_VERSION} and Android on v{RANKUP_ANDROID_VERSION}, with {RANKUP_VERSION} on its way{RANKUP_WINDOWS_CURRENT ? '.' : RANKUP_WINDOWS_VERSION ? <Fragment>; Windows is on v{RANKUP_WINDOWS_VERSION}.</Fragment> : '; the Windows version is coming soon.'}</p>
+                    <p class="version-line">Current release <strong>v{RANKUP_VERSION}</strong>{RANKUP_CURRENT_ON && ` on ${RANKUP_CURRENT_ON}`}.{RANKUP_CATCHING_UP && ` ${RANKUP_CATCHING_UP}, with ${RANKUP_VERSION} on its way.`}{!RANKUP_WINDOWS_VERSION && ' The Windows version is coming soon.'}</p>
                     {RANKUP_WINDOWS_DOWNLOAD && (
                         <p class="version-line">The Windows installer isn't code-signed yet, so the first time you run it Windows may say &ldquo;Windows protected your PC&rdquo;. Choose <strong>More info</strong>, then <strong>Run anyway</strong>.</p>
                     )}
