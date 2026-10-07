@@ -36,6 +36,7 @@ Sources: [Zeroed](/zeroed/), [Actual Budget](https://actualbudget.org/), [Bucket
 - **You want to pay once and stay in the desktop:** Buckets, at $64. **Weakness:** a small independent project, so polish and features arrive at indie pace.
 - **You want a free ledger with budgets and reports:** HomeBank or Money Manager Ex. They are categorised ledgers with budgeting, not guided envelope budgeting, and their interfaces show their age.
 - **You want real accounting:** GnuCash. It is double-entry accounting software, powerful and free, and it has a real learning curve.
+- **You are replacing Microsoft Money:** see [Microsoft Money alternatives](/blog/microsoft-money-alternatives/) for what opens or imports your Money data.
 
 If you need automatic bank sync, none of these is the right answer, and a subscription app such as YNAB or Monarch will suit you better. Our [comparison of seven YNAB alternatives](/blog/ynab-price-increase-alternatives-2026/) has current prices.
 

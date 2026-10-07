@@ -73,5 +73,6 @@ The heavyweight: true double-entry accounting that can handle personal finances,
 - **Desktop-only and indie-minded?** Buckets.
 - **Just want a free, capable ledger?** HomeBank or MoneyManager Ex.
 - **Want real accounting?** GnuCash.
+- **Moving from Microsoft Money?** See [Microsoft Money alternatives](/blog/microsoft-money-alternatives/), including how to bring your Money data across.
 
 Whatever you pick from this list, the outcome is the same: your budget stops being someone else's recurring revenue. For the full argument on why we think that matters, read [our manifesto](/manifesto) — or see [what YNAB costs in 2026](/blog/true-cost-of-ynab/) and how [seven alternatives compare with it](/blog/ynab-price-increase-alternatives-2026/).
