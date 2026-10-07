@@ -10,6 +10,7 @@ appCluster: "zeroed"
 primaryKeyword: "how much to set aside for tax contractor"
 wordCount: 695
 videoTitle: "Six Years of Tax Bills From Savings, Each One a Surprise"
+heroImage: "/blog/images/six-years-of-tax-bills-from-savings-each-one-a-surprise/hero.webp"
 relatedSlugs: []
 video: "5JjJqWT5w4E"
 _id: "20261005-0000-T26-O01-F9"
@@ -44,6 +45,8 @@ Every figure the Short says, and where it comes from on the household's sheet.
 | seven thousand four hundred / three thousand seven hundred | `tax_jan` = 7,400; `tax_jul` = 3,700 | on the sheet |
 | eleven thousand one hundred / nine hundred and twenty-five | `tax_jan + tax_jul`; `tax_year / 12` | on the sheet |
 
+![Bar chart of Anita's figures in pounds: Company bills, a month £9,000; She pays herself £5,500; Left in the company £3,500; Tax bills in a year £11,100; Tax slice to set aside, a month £925.](/blog/images/six-years-of-tax-bills-from-savings-each-one-a-surprise/numbers.webp "The money figures from the working table above, for Anita's household.")
+
 ## The turn
 
 The tax is not a bill that arrives in January; it is a slice of every invoice that was never hers, and January only sends the receipt.
@@ -59,6 +62,8 @@ The tax is not a bill that arrives in January; it is a slice of every invoice th
 ## In Zeroed
 
 Anita's HMRC envelope holds nine hundred and twenty-five a month against a January target. This January is a transfer, not a surprise.
+
+![Zeroed on a phone, Budget screen: an Assign Underfunded: £3,525.00 button, then the Company group with the HMRC envelope, an orange goal flag beside its name and £2,775.00 available, and Accountant with £100.00 available.](/blog/images/six-years-of-tax-bills-from-savings-each-one-a-surprise/proof.webp "From Zeroed itself: the screen the Short shows, loaded with Anita's example budget.")
 
 Zeroed: Offline Budget Planner is the app in the Short — envelope budgeting you buy once. It works offline, with no bank login, no subscription and no data harvesting; the first thirty-four days are free, no card needed. [Try Zeroed](https://www.stillwareltd.com/zeroed/?utm_source=site&utm_medium=article&utm_content=article-0000).
 

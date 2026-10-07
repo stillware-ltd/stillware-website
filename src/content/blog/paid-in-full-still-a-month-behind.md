@@ -10,6 +10,7 @@ appCluster: "zeroed"
 primaryKeyword: "paying credit card in full but month behind"
 wordCount: 685
 videoTitle: "Paid in Full. Still a Month Behind."
+heroImage: "/blog/images/paid-in-full-still-a-month-behind/hero.webp"
 relatedSlugs: []
 video: "uV5eTr64gXw"
 _id: "20261006-0000-T19-O01-F2"
@@ -43,6 +44,8 @@ Every figure the Short says, and where it comes from on the household's sheet.
 | three thousand eight hundred and twenty-four | `card_statement * 2` | on the sheet |
 | by about a month | `months_behind` = 1 | on the sheet |
 
+![Key figures for Priya, in pounds: Card points worth, a month £19; One month's card statement £1,912; Two statements, a month behind £3,824.](/blog/images/paid-in-full-still-a-month-behind/numbers.webp "The money figures from the working table above, for Priya's household.")
+
 ## The turn
 
 Paying in full feels like the opposite of debt; it is a one-month loan renewed every statement, invisible because it is always paid.
@@ -59,6 +62,8 @@ Paying in full feels like the opposite of debt; it is a one-month loan renewed e
 ## In Zeroed
 
 Priya's card is an account beside her envelopes. The Card envelope holds one thousand nine hundred and twelve on statement day, and nothing waits for payday.
+
+![Zeroed on a phone, Budget screen, Saving group: Savings with £0.00 available, Card with a green goal flag and £1,912.00 available, and Emergency with an orange flag and £0.00 available.](/blog/images/paid-in-full-still-a-month-behind/proof.webp "From Zeroed itself: the screen the Short shows, loaded with Priya's example budget.")
 
 Zeroed: Offline Budget Planner is the app in the Short — envelope budgeting you buy once. It works offline, with no bank login, no subscription and no data harvesting; the first thirty-four days are free, no card needed. [Try Zeroed](https://www.stillwareltd.com/zeroed/?utm_source=site&utm_medium=article&utm_content=article-0000).
 

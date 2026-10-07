@@ -10,6 +10,7 @@ appCluster: "zeroed"
 primaryKeyword: "what to do with an annual bonus"
 wordCount: 754
 videoTitle: "£2,000 of the Bonus Went Somewhere. Nobody Can Say Where."
+heroImage: "/blog/images/2-000-of-the-bonus-went-somewhere-nobody-can-say-where/hero.webp"
 relatedSlugs: []
 video: "fH0vFCK0_d4"
 _id: "20261006-1200-T02-O01-F7"
@@ -47,6 +48,8 @@ Every figure the Short says, and where it comes from on the household's sheet.
 | ten thousand six hundred / four hundred left | `annual_lumps` = 10,600; `bonus_last - annual_lumps` | annual_lumps = holidays + christmas + uni_first_term |
 | nine thousand eight hundred a month | `takehome` = 9,800 | on the sheet |
 
+![Bar chart of The Okafors' figures in pounds: The bonus £11,000; Kitchen £6,000; Holiday £3,000; Not accounted for £2,000.](/blog/images/2-000-of-the-bonus-went-somewhere-nobody-can-say-where/numbers.webp "The money figures from the working table above, for The Okafors's household.")
+
 ## The turn
 
 The bonus is not extra money; it is the year's lumps arriving early, almost to the pound, spent before the first of them fell due.
@@ -64,6 +67,8 @@ The bonus is not extra money; it is the year's lumps arriving early, almost to t
 ## In Zeroed
 
 the Okafors' three envelopes carry a target each. Assign underfunded filled all three from the bonus in one tap, and four hundred stayed free.
+
+![Zeroed on a phone, Budget screen: a green To Be Budgeted card showing £400.00, the Home and Family groups collapsed, and the Lumps group with a Holidays envelope, a green goal flag and £6,000.00 available. A banner at the bottom reads Auto-assigned to 3 categories, with an Undo button.](/blog/images/2-000-of-the-bonus-went-somewhere-nobody-can-say-where/proof.webp "From Zeroed itself: the screen the Short shows, loaded with The Okafors' example budget.")
 
 Zeroed: Offline Budget Planner is the app in the Short — envelope budgeting you buy once. It works offline, with no bank login, no subscription and no data harvesting; the first thirty-four days are free, no card needed. [Try Zeroed](https://www.stillwareltd.com/zeroed/?utm_source=site&utm_medium=article&utm_content=article-1200).
 

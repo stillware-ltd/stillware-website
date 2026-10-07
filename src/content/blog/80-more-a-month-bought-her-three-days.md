@@ -10,6 +10,7 @@ appCluster: "zeroed"
 primaryKeyword: "eating out budget runs out before payday"
 wordCount: 731
 videoTitle: "£80 More a Month Bought Her Three Days"
+heroImage: "/blog/images/80-more-a-month-bought-her-three-days/hero.webp"
 relatedSlugs: []
 video: "ElVjsNrxisY"
 _id: "20261005-1200-T11-O01-F1"
@@ -46,6 +47,8 @@ Every figure the Short says, and where it comes from on the household's sheet.
 | one hundred and twenty a week | `weekly_envelope` = 120 | weekly_envelope = round(eating_out_budget / 4.33, -1) |
 | nine pounds under | `week_under` = 9 | on the sheet |
 
+![Bar chart of Priya's figures in pounds: Eating out budget, a month £520; The raise she tried £80; Put on the card, a month £210; What it really costs, a month £730.](/blog/images/80-more-a-month-bought-her-three-days/numbers.webp "The money figures from the working table above, for Priya's household.")
+
 ## The turn
 
 More money did not move the date, because a month is too long a container for a person to feel; the same money cut into weeks did.
@@ -62,6 +65,8 @@ More money did not move the date, because a month is too long a container for a 
 ## In Zeroed
 
 Priya's Eating out row shows a pace mark. She checks it each Friday, and the card has stayed empty.
+
+![Zeroed on a phone, Budget screen, Everyday group: Groceries with £7.00 available, Eating out with £45.00 available, Subscriptions with £54.04 available and Social with £5.00, each row with a progress bar.](/blog/images/80-more-a-month-bought-her-three-days/proof.webp "From Zeroed itself: the screen the Short shows, loaded with Priya's example budget.")
 
 Zeroed: Offline Budget Planner is the app in the Short — envelope budgeting you buy once. It works offline, with no bank login, no subscription and no data harvesting; the first thirty-four days are free, no card needed. [Try Zeroed](https://www.stillwareltd.com/zeroed/?utm_source=site&utm_medium=article&utm_content=article-1200).
 

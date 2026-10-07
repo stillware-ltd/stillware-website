@@ -10,6 +10,7 @@ appCluster: "zeroed"
 primaryKeyword: "where did my pay rise go"
 wordCount: 743
 videoTitle: "£2,000 a Month in Pay Rises. He Kept £70."
+heroImage: "/blog/images/2-000-a-month-in-pay-rises-he-kept-70/hero.webp"
 relatedSlugs: []
 video: "9K99Xbjd9eQ"
 _id: "20261006-0600-T01-O01-F8"
@@ -45,6 +46,8 @@ Every figure the Short says, and where it comes from on the household's sheet.
 | sixteen thousand five hundred and sixty pounds a year | `rest * 12` | on the sheet |
 | Dev's is one thousand nine hundred and thirty | `rise - kept` | on the sheet |
 
+![Bar chart of Dev's figures in pounds: Pay rise, a month £2,000; What he kept £70; Absorbed by spending £1,930; Rent going up £550; Spread across other lines £1,380.](/blog/images/2-000-a-month-in-pay-rises-he-kept-70/numbers.webp "The money figures from the working table above, for Dev's household.")
+
 ## The turn
 
 He did not decide to spend it; creep is not a car, it is twenty small yeses arriving with a rise that had no job.
@@ -61,6 +64,8 @@ He did not decide to spend it; creep is not a car, it is twenty small yeses arri
 ## In Zeroed
 
 Dev's Next rise envelope took half of the last rise the day it landed. The row shows its target met before the month began.
+
+![Zeroed on a phone, Budget screen: Streaming with a red Cover -£1.97 label, Taxis with £57.00 available, Everything with £2,307.00 available, and in the Saving group a Next rise envelope with a green goal flag and £300.00.](/blog/images/2-000-a-month-in-pay-rises-he-kept-70/proof.webp "From Zeroed itself: the screen the Short shows, loaded with Dev's example budget.")
 
 Zeroed: Offline Budget Planner is the app in the Short — envelope budgeting you buy once. It works offline, with no bank login, no subscription and no data harvesting; the first thirty-four days are free, no card needed. [Try Zeroed](https://www.stillwareltd.com/zeroed/?utm_source=site&utm_medium=article&utm_content=article-0600).
 

@@ -10,6 +10,7 @@ appCluster: "zeroed"
 primaryKeyword: "unknown payments on my bank statement"
 wordCount: 693
 videoTitle: "Same Pay. One Knows Where It Went."
+heroImage: "/blog/images/same-pay-one-knows-where-it-went/hero.webp"
 relatedSlugs: []
 video: "Qity6SVrT7E"
 _id: "20261006-1800-T18-O01-F3"
@@ -46,6 +47,8 @@ Every figure the Short says, and where it comes from on the household's sheet.
 | four thousand and eighty pounds a year | `unknown_spend * 12` | on the sheet |
 | fifteen minutes | `statement_minutes` = 15 | on the sheet |
 
+![Bar chart of Sam & Jo's figures in pounds: Parking app £130; Hospital canteen £210; Spend they could not name, a month £340; Since January £3,060; In a year £4,080.](/blog/images/same-pay-one-knows-where-it-went/numbers.webp "The money figures from the working table above, for Sam & Jo's household.")
+
 ## The turn
 
 The seven names Jo could not place were two things, the hospital canteen and a parking app; the money went to work, unlabelled, not frittered.
@@ -62,6 +65,8 @@ The seven names Jo could not place were two things, the hospital canteen and a p
 ## In Zeroed
 
 Jo's imported statement shows the canteen terminal and the parking app already named by a rule. Two hundred and ten for lunches, in an envelope of its own.
+
+![Zeroed on a phone, Review Import screen: two statement lines, dated Feb 8 for -32.10 and Mar 8 for -9.57, each with a payee box reading Select Payee and a category box reading Category Required.](/blog/images/same-pay-one-knows-where-it-went/proof.webp "From Zeroed itself: the screen the Short shows, loaded with Sam & Jo's example budget.")
 
 Zeroed: Offline Budget Planner is the app in the Short — envelope budgeting you buy once. It works offline, with no bank login, no subscription and no data harvesting; the first thirty-four days are free, no card needed. [Try Zeroed](https://www.stillwareltd.com/zeroed/?utm_source=site&utm_medium=article&utm_content=article-1800).
 

@@ -10,6 +10,7 @@ appCluster: "zeroed"
 primaryKeyword: "how to budget with commission income"
 wordCount: 756
 videoTitle: "Their Budget Is Wrong Every Month of the Year"
+heroImage: "/blog/images/their-budget-is-wrong-every-month-of-the-year/hero.webp"
 relatedSlugs: []
 video: "62K7J7v4FSI"
 _id: "20261005-1800-T15-O01-F5"
@@ -46,6 +47,8 @@ Every figure the Short says, and where it comes from on the household's sheet.
 | five thousand three hundred | `base_total` = 5,300 | base_total = marcus_base + jen |
 | four thousand one hundred / twelve hundred spare | `fixed` = 4,100; `base_total - fixed` | fixed = mortgage + car1_finance + car2_lease + bills + groceries + kids + other_fixed |
 
+![Bar chart of Marcus & Jen's figures in pounds: Commission, weakest quarter £2,000; Commission, best quarter £8,000; Average commission, a month £1,640; Weakest quarter, a month £667; Short over that quarter £2,919.](/blog/images/their-budget-is-wrong-every-month-of-the-year/numbers.webp "The money figures from the working table above, for Marcus & Jen's household.")
+
 ## The turn
 
 The plan was not too generous; it had an average in it, and no month ever pays the average — commission is a delivery, not income.
@@ -63,6 +66,8 @@ The plan was not too generous; it had an average in it, and no month ever pays t
 ## In Zeroed
 
 Marcus and Jen's plan is built on five thousand three hundred. The last commission sat in To Be Budgeted until the Quarter envelope took its share.
+
+![Zeroed on a phone, Budget screen: a green To Be Budgeted card showing £3,200.00, Smart Assign and Copy Last Month buttons, an Assign Underfunded: £6,335.00 button, the Home and Cars groups collapsed, and in Plan a Quarter envelope with an orange flag and £0.00 available.](/blog/images/their-budget-is-wrong-every-month-of-the-year/proof.webp "From Zeroed itself: the screen the Short shows, loaded with Marcus & Jen's example budget.")
 
 Zeroed: Offline Budget Planner is the app in the Short — envelope budgeting you buy once. It works offline, with no bank login, no subscription and no data harvesting; the first thirty-four days are free, no card needed. [Try Zeroed](https://www.stillwareltd.com/zeroed/?utm_source=site&utm_medium=article&utm_content=article-1800).
 

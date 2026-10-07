@@ -10,6 +10,7 @@ appCluster: "zeroed"
 primaryKeyword: "find forgotten subscriptions on bank statement"
 wordCount: 719
 videoTitle: "£14.99 a Month for an App She Never Opened"
+heroImage: "/blog/images/14-99-a-month-for-an-app-she-never-opened/hero.webp"
 relatedSlugs: []
 video: "a3Hr716yUgY"
 _id: "20261005-0600-T07-O01-F12"
@@ -45,6 +46,8 @@ Every figure the Short says, and where it comes from on the household's sheet.
 | the other three, thirty-nine pounds | `subs_named` = 3; `named_total_rounded` = 39 | named_total_rounded = round(subs - (forgotten_sub + blank_cloud + blank_fitness)) |
 | thirty-five pounds a month now goes to her Surprises envelope | `blanks_total_rounded` = 35 | blanks_total_rounded = round(forgotten_sub + blank_cloud + blank_fitness) |
 
+![Bar chart of Leah's figures in pounds: Fitness app £14.99; Cloud storage £7.99; Streaming service £11.99; Those three together, a month £35; The three she named, a month £39.](/blog/images/14-99-a-month-for-an-app-she-never-opened/numbers.webp "The money figures from the working table above, for Leah's household.")
+
 ## The turn
 
 It was never the total; the three she could name were choices she would make again, and the three she could not had never been looked at.
@@ -61,6 +64,8 @@ It was never the total; the three she could name were choices she would make aga
 ## In Zeroed
 
 Leah's Surprises envelope shows the thirty-five pounds a month that used to be three unnamed lines.
+
+![Zeroed on a phone, Budget screen scrolled to the Saving group: the Surprises envelope with a green goal flag and £351.00 available. Above it, Social shows £119.50 available, Gym and Subscriptions £0.00.](/blog/images/14-99-a-month-for-an-app-she-never-opened/proof.webp "From Zeroed itself: the screen the Short shows, loaded with Leah's example budget.")
 
 Zeroed: Offline Budget Planner is the app in the Short — envelope budgeting you buy once. It works offline, with no bank login, no subscription and no data harvesting; the first thirty-four days are free, no card needed. [Try Zeroed](https://www.stillwareltd.com/zeroed/?utm_source=site&utm_medium=article&utm_content=article-0600).
 
