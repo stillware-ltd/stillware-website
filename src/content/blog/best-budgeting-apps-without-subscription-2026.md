@@ -1,7 +1,7 @@
 ---
 title: "The Best Budgeting Apps Without a Subscription (2026)"
 date: 2026-08-29
-updated: 2026-09-29
+updated: 2026-10-07
 description: "Six genuinely good budgeting apps you can use without a monthly fee — pay-once, free, and open-source options compared honestly, including their weaknesses."
 author: "Stillware Team"
 tags: ["Comparison", "Personal Finance", "Anti-SaaS"]
@@ -15,6 +15,21 @@ ogImage: "/Zeroed_Desktop_Today.png"
 Subscription budgeting apps have a built-in irony: they charge you $80–120 every year to help you spend less money. If that maths bothers you, this list is for you — six budgeting tools you can use **without a monthly fee**, compared honestly.
 
 **Disclosure:** we build Zeroed, the first app on this list. We've included its weaknesses alongside everyone else's, and every other app here is genuinely worth your consideration — several of them are free and excellent.
+
+## Money management apps with no monthly fees
+
+**The short answer:** four good money management apps cost nothing at all: Actual Budget, HomeBank, MoneyManager Ex and GnuCash. Two more charge once instead of monthly: Zeroed ($19.99) and Buckets ($64). None of the six needs a subscription to keep working. Prices checked 7 October 2026.
+
+| App | Price | Monthly fee? | Platforms |
+|---|---|---|---|
+| **Zeroed** *(ours)* | $19.99 once (founder price until 14 Feb 2027, then $39.99) | No | iPhone, iPad, Android, Windows, macOS |
+| **Actual Budget** | Free, open source | No | Desktop app or self-hosted, web |
+| **Buckets** | $64 once, untimed free trial | No | macOS, Windows, Linux, iOS, Android |
+| **HomeBank** | Free | No | Windows, Linux, macOS |
+| **MoneyManager Ex** | Free, open source | No | Windows, macOS, Linux, Android |
+| **GnuCash** | Free, open source | No | Windows, macOS, Linux |
+
+If you are replacing desktop software such as Microsoft Money or Quicken and want investment tracking too, see [Microsoft Money alternatives](/blog/microsoft-money-alternatives/).
 
 ## 1. Zeroed — pay once, privacy-first *(ours)*
 
@@ -76,3 +91,16 @@ The heavyweight: true double-entry accounting that can handle personal finances,
 - **Moving from Microsoft Money?** See [Microsoft Money alternatives](/blog/microsoft-money-alternatives/), including how to bring your Money data across.
 
 Whatever you pick from this list, the outcome is the same: your budget stops being someone else's recurring revenue. For the full argument on why we think that matters, read [our manifesto](/manifesto) — or see [what YNAB costs in 2026](/blog/true-cost-of-ynab/) and how [seven alternatives compare with it](/blog/ynab-price-increase-alternatives-2026/).
+
+## Frequently asked questions
+
+**Are there money management apps with no monthly fee?**
+Yes. Actual Budget, HomeBank, MoneyManager Ex and GnuCash are free, and Zeroed ($19.99) and Buckets ($64) are a single payment. None of them needs a subscription to keep working, and all of them keep your data in a file or on a device you control.
+
+**Which free money management apps have no ads?**
+The free apps here are open-source or community projects, not ad-funded: Actual Budget, HomeBank, MoneyManager Ex and GnuCash. MoneyManager Ex states plainly that it is free to download "without ads and charges".
+
+**Is a pay-once budgeting app better than a free one?**
+It depends on what you want. The free options are excellent if you are comfortable with a ledger-style app or with setting up your own sync. A pay-once app like Zeroed or Buckets buys a guided envelope method and, in Zeroed's case, the same app on your phone and computer, still without a monthly fee.
+
+*Sources (checked 7 October 2026): [Buckets](https://www.budgetwithbuckets.com/), [MoneyManager Ex](https://www.moneymanagerex.org/), [GnuCash](https://www.gnucash.org/), [HomeBank](https://www.gethomebank.org/), [Actual Budget](https://actualbudget.org/), [Zeroed](/zeroed/).*
