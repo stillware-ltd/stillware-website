@@ -100,7 +100,7 @@ function faqFromBody(body: string): { q: string; a: string }[] {
     const flush = () => { if (q && a.length) out.push({ q: clean(q), a: clean(a.join(' ')) }); q = null; a = []; };
     for (const raw of body.split('\n')) {
         const line = raw.trim();
-        if (line.startsWith('## ')) { flush(); inside = /faq|frequently asked|questions/i.test(line); continue; }
+        if (line.startsWith('## ')) { flush(); inside = /faq|frequently asked|common questions|questions people/i.test(line); continue; }  // not "Questions to ask yourself" checklists
         if (!inside) continue;
         if (line === '---') { flush(); break; }
         const m = line.match(/^\*\*(.+?\?)\*\*\s*(.*)$/);
