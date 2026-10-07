@@ -12,6 +12,8 @@
 // WARNINGS (printed, never fail the build):
 //   - the search-result title is over 60 characters (add a shorter `seoTitle`)
 //   - the description is not 120 to 160 characters
+//   - no `heroImage` (the main image Google shows for the article; see scripts/optimize-heroes.mjs): the posts are listed
+//   - the only image is an SVG `ogImage` (a text card Google and social previews cannot use): the posts are listed
 //
 // Escape hatch for an emergency deploy: SKIP_LINK_CHECK=1 (the same switch as verify-links.mjs).
 import { existsSync, readdirSync, readFileSync } from 'node:fs';
@@ -47,6 +49,9 @@ function parse(file) {
 const errors = [];
 const warnings = [];
 const byKeyword = new Map();
+const noHero = [];
+const svgOnly = [];
+const isSvg = (p) => /\.svg$/i.test((p || '').split(/[?#]/)[0]);
 
 for (const file of readdirSync(dir).filter((f) => f.endsWith('.md')).sort()) {
   const slug = file.replace(/\.md$/, '');
@@ -71,6 +76,12 @@ for (const file of readdirSync(dir).filter((f) => f.endsWith('.md')).sort()) {
   const title = postSeoTitle({ title: data.title || '', seoTitle: data.seoTitle, pillar: data.pillar });
   if (title.length > TITLE_MAX) warnings.push(`${slug}: search title is ${title.length} characters (limit ${TITLE_MAX}); add a shorter seoTitle.`);
 
+  // Main image (heroImage -> /blog/images/<slug>/hero.webp, at least 1200 px wide, ideally 1600x900). An SVG ogImage is not one.
+  if (!data.heroImage) {
+    noHero.push(slug);
+    if (isSvg(data.ogImage)) svgOnly.push(slug);
+  }
+
   const dl = (data.description || '').length;
   if (dl < 120 || dl > 160) warnings.push(`${slug}: description is ${dl} characters (aim for 120 to 160).`);
 }
@@ -81,9 +92,18 @@ for (const [kw, slugs] of byKeyword) {
   }
 }
 
+const imageWarnings = noHero.length + svgOnly.length;
 if (warnings.length) {
   console.warn(`verify-content: ${warnings.length} warning(s):`);
   for (const w of warnings) console.warn(`  - ${w}`);
+}
+if (noHero.length) {
+  console.warn(`verify-content: ${noHero.length} post(s) with no heroImage (the main image Google shows; add /blog/images/<slug>/hero.webp, at least 1200 px wide, and set heroImage):`);
+  for (const slug of noHero) console.warn(`  - ${slug}`);
+}
+if (svgOnly.length) {
+  console.warn(`verify-content: ${svgOnly.length} post(s) whose only image is an SVG ogImage (never used as og:image or in schema; the page falls back to a raster default until a hero is added):`);
+  for (const slug of svgOnly) console.warn(`  - ${slug}`);
 }
 if (errors.length) {
   console.error(`verify-content: ${errors.length} problem(s) found:`);
@@ -91,5 +111,5 @@ if (errors.length) {
   console.error('Fix the articles above. For an emergency deploy set SKIP_LINK_CHECK=1.');
   process.exitCode = 1;
 } else {
-  console.log(`verify-content: ok (${warnings.length} warning(s))`);
+  console.log(`verify-content: ok (${warnings.length + imageWarnings} warning(s))`);
 }

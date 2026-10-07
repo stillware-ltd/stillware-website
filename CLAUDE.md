@@ -28,6 +28,7 @@ Astro site on Netlify (www.stillwareltd.com). The search strategy of record is `
 - The template prints `title` as the only H1: no `# ` line in the body.
 - `appCluster` is one of `zeroed | rankup-chess | held | rankup-maths | general` (`src/content/config.ts`).
 - The tags "Anti-SaaS", "Comparison" and "Personal Finance" show the Zeroed promo, and any tag containing "chess" shows the RankUp Chess promo: use them only on money and chess posts. Tag pages with fewer than 5 posts are noindex by design; do not reuse the retired tag slugs listed in `public/_redirects`.
+- Images: set `heroImage: "/blog/images/<slug>/hero.webp"`, a raster at least 1200 px wide (1600x900 or larger is better; no text overlay, no logo). `scripts/optimize-heroes.mjs` then makes the srcset copies and the 16:9, 4:3 and 1:1 crops that become `og:image` and the BlogPosting `image`. An SVG is never used for og:image or schema; `verify-content` warns about posts with no hero. A section image with a caption is `![alt](/blog/images/<slug>/photo-03.webp "Caption")` (the title becomes a `<figcaption>`).
 - `relatedSlugs` and every internal link must point at an existing page; set `updated:` (date of the last substantive revision) when facts are refreshed.
 - Retiring a page: do not. If a page truly must go, ask the founder, add the dated line to `seo/approved-removals.txt`, then add the 410 or 301 to `public/_redirects`.
 
