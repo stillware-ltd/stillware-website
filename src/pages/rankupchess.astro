@@ -1,5 +1,6 @@
 ---
 import Layout from '../layouts/Layout.astro';
+import KeyFacts from '../components/KeyFacts.astro';
 
 // The product version, shown wherever the page states which release this is.
 const RANKUP_VERSION = '0.8.0';
@@ -60,13 +61,43 @@ const appSchema = {
   '@type': 'SoftwareApplication',
   '@id': 'https://www.stillwareltd.com/rankupchess/#app',
   name: 'RankUp Chess',
+  alternateName: 'RankUp',
   url: 'https://www.stillwareltd.com/rankupchess/',
   description: 'Offline chess academy for kids: 5,000+ puzzles, 10 AI strength levels and interactive lessons. Free to play forever, with a one-time unlock. No ads, no subscription.',
   applicationCategory: 'GameApplication',
   operatingSystem: 'iOS, Android, Windows, macOS',
   offers: { '@type': 'Offer', price: '0', priceCurrency: 'USD', availability: 'https://schema.org/InStock' },
   publisher: { '@id': 'https://www.stillwareltd.com/#organization' },
+  // Where to get it: the App Store and Google Play listings, and the direct downloads this page offers (macOS DMG, Windows installer).
+  installUrl: [RANKUP_APP_STORE_URL, RANKUP_PLAY_STORE_URL],
+  downloadUrl: [RANKUP_MACOS_DOWNLOAD, ...(RANKUP_WINDOWS_DOWNLOAD ? [RANKUP_WINDOWS_DOWNLOAD] : [])],
   sameAs: [RANKUP_APP_STORE_URL, RANKUP_PLAY_STORE_URL],
+};
+
+// Key facts (answer-first block under the hero). Each line restates something this page already says: the hero, the
+// feature cards, the parental section and the pricing section. Keep them in step with those, not the other way round.
+const keyFacts = [
+  { term: 'What it is', detail: 'An offline chess academy designed for kids, from absolute beginner to tournament ready: 5,000+ puzzles, 10 AI strength levels (Level 1 Beginner, 400 Elo, up to Level 10 World Class, 2400 Elo) and interactive lessons.' },
+  { term: 'Platforms', detail: 'Windows, macOS, iPhone and iPad (App Store) and Android (Google Play).' },
+  { term: 'Price', detail: 'Free to play forever, with no trial clock and no lockout. One optional one-time payment unlocks the complete academy; it is priced per platform in the pricing section below.' },
+  { term: 'Subscription and ads', detail: 'No subscription, no renewal and no ads.' },
+  { term: 'Offline and privacy', detail: '100% offline, local-first gameplay. No central servers, no chat rooms and no data harvesting.' },
+  { term: 'Parents', detail: 'A Parental Gate locks sensitive settings, profile resets and the premium upgrade screen behind a parental PIN, while kids can launch the app and start a game in seconds.' },
+];
+
+// FAQ (visible below and as FAQPage JSON-LD). Every answer uses only what this page already states elsewhere.
+const faqItems = [
+  { q: 'Does RankUp Chess work offline?', a: 'Yes. RankUp Chess is a 100% offline chess academy: playing, puzzles and lessons run on your device without an internet connection. It has no central servers and no chat rooms.' },
+  { q: 'Is RankUp Chess made for kids?', a: 'Yes. It is an offline chess academy designed for kids, from absolute beginner to tournament ready. A Parental Gate locks sensitive settings, profile resets and the premium upgrade screen behind a parental PIN, while kids can launch the app and jump into a game in seconds.' },
+  { q: 'Is RankUp Chess free to play?', a: 'Yes. Playing chess is free forever, with no trial clock and no lockout, on every platform. The free core includes the beginner-friendly AI levels, Pass & Play with family, 3 Daily Challenges every day and the first curriculum chapter. Progress, achievements, settings and parental controls are always free.' },
+  { q: 'Is there a subscription, and what does the one-time payment unlock?', a: 'There is no subscription and no renewal. One optional one-time payment unlocks the rest of the academy: the full 5,000+ puzzle library, all 10 AI strength levels, the complete curriculum and engine-powered game review, with all v1.x updates included.' },
+  { q: 'Does RankUp Chess have ads or collect my child\'s data?', a: 'No ads, and no data harvesting. RankUp Chess has no central servers and no chat rooms, so it cannot track your child.' },
+  { q: 'How many puzzles and AI levels does RankUp Chess have?', a: 'More than 5,000 puzzles, from simple mate-in-ones to advanced middle-game strategies, and 10 AI strength levels, from Level 1 (Beginner, 400 Elo) to Level 10 (World Class, 2400 Elo), plus interactive lessons.' },
+];
+const faqSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'FAQPage',
+  mainEntity: faqItems.map((f) => ({ '@type': 'Question', name: f.q, acceptedAnswer: { '@type': 'Answer', text: f.a } })),
 };
 ---
 
@@ -76,6 +107,7 @@ const appSchema = {
   canonical="https://www.stillwareltd.com/rankupchess/"
 >
     <script type="application/ld+json" set:html={JSON.stringify(appSchema)} />
+    <script type="application/ld+json" set:html={JSON.stringify(faqSchema)} />
 
     <!-- Hero -->
     <header class="chess-hero">
@@ -135,6 +167,8 @@ const appSchema = {
             </div>
         </div>
     </header>
+
+    <KeyFacts heading="RankUp Chess key facts" facts={keyFacts} accent="gold" />
 
     <!-- The Stillware Difference -->
     <section class="difference-section reveal" id="difference">
@@ -366,6 +400,21 @@ const appSchema = {
                     <p class="pricing-note">Windows may show a SmartScreen warning the first time, because the installer isn't code-signed yet: choose More info, then Run anyway.</p>
                 )}
                 <p class="pricing-vat-note">Prices shown exclusive of VAT. Local taxes may apply at checkout depending on your country.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQ -->
+    <section class="faq-section" id="faq">
+        <div class="container">
+            <h2>Frequently Asked Questions</h2>
+            <div class="faq-grid">
+                {faqItems.map((f) => (
+                    <div class="faq-item">
+                        <h3>{f.q}</h3>
+                        <p>{f.a}</p>
+                    </div>
+                ))}
             </div>
         </div>
     </section>
@@ -873,6 +922,25 @@ const appSchema = {
         border-radius: 20px;
         box-shadow: 0 25px 50px -12px rgba(15, 23, 42, 0.25);
         animation: float 6s ease-in-out infinite;
+    }
+
+    /* FAQ */
+    .faq-section { padding: 6rem 0; max-width: 1000px; margin: 0 auto; }
+    .faq-section h2 { text-align: center; font-size: 2.5rem; margin-bottom: 3rem; }
+    .faq-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem; }
+    .faq-item {
+        background: #ffffff;
+        padding: 2rem;
+        border-radius: 20px;
+        border: 1px solid rgba(226, 232, 240, 0.6);
+        box-shadow: var(--shadow-premium);
+    }
+    .faq-item h3 { font-size: 1.15rem; line-height: 1.4; margin-bottom: 0.75rem; }
+    .faq-item p { color: var(--color-text-light); font-size: 1.02rem; line-height: 1.6; }
+    @media (max-width: 768px) {
+        .faq-section { padding: 4rem 1rem; }
+        .faq-section h2 { font-size: 2rem; }
+        .faq-grid { grid-template-columns: 1fr; }
     }
 
     /* Pricing */
