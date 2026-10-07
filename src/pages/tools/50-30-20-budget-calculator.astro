@@ -8,27 +8,39 @@ const faqs = [
   },
   {
     q: 'Is the 50/30/20 rule based on gross or net income?',
-    a: 'Net (after-tax, take-home) income. Use what actually lands in your bank account each month, including any regular side income.',
+    a: 'Net (after-tax, take-home) income, meaning your pay after tax and payroll deductions. Use what actually lands in your bank account each month, including any regular side income.',
   },
   {
     q: 'What if my needs are more than 50% of my income?',
-    a: 'Very common, especially in high-rent cities. The rule is a compass, not a law: if needs run 60–65%, shrink the wants share first and protect at least some savings rate. The custom-split option in this calculator lets you model your real ratio — and a full zero-based budget gives you line-item control the rule can’t.',
+    a: 'Very common, especially in high-rent cities. The rule is a compass, not a law: if needs run 60–65%, shrink the wants share first and protect at least some savings rate. Change the percentages to reflect reality, for example 60/20/20, and look for the biggest need to reduce over time. The custom-split option in this calculator lets you model your real ratio — and a full zero-based budget gives you line-item control the rule can’t.',
   },
   {
     q: 'Is 50/30/20 better than zero-based budgeting?',
     a: 'They solve different problems. 50/30/20 is a 30-second sanity check that needs no tracking. Zero-based budgeting assigns every unit of income a specific job before the month starts, which is far more precise and is what actually changes behaviour. Many people start with 50/30/20 and graduate to zero-based once they want real control.',
   },
   {
-    q: "Is the 50/30/20 rule based on gross or net income?",
-    a: "Net income, meaning your take-home pay after tax and payroll deductions. The buckets are meant to be checked against the money that actually lands in your account.",
+    q: 'Where does the 50/30/20 rule come from?',
+    a: 'It was popularised by Elizabeth Warren and Amelia Warren Tyagi in their 2005 book All Your Worth. It is a rule of thumb rather than a law, and the exact split matters less than checking your spending against a plan.',
   },
   {
-    q: "What if my needs are more than 50% of my income?",
-    a: "Change the percentages to reflect reality, for example 60/20/20, and look for the biggest need to reduce over time. The rule is a starting point, not a pass or fail test. A zero-based budget will show exactly where the money goes.",
+    q: 'How much is 50/30/20 on $3,000 or £2,400 a month?',
+    a: 'On $3,000 a month take-home pay it is $1,500 for needs, $900 for wants and $600 for savings and extra debt repayment. On £2,400 a month it is £1,200, £720 and £480. The rule works the same in any currency, because it only uses percentages.',
   },
   {
-    q: "Where does the 50/30/20 rule come from?",
-    a: "It was popularised by Elizabeth Warren and Amelia Warren Tyagi in their 2005 book All Your Worth. It is a rule of thumb rather than a law, and the exact split matters less than checking your spending against a plan.",
+    q: 'Are minimum debt payments needs or savings?',
+    a: 'Needs. A minimum payment is something you have to pay, so it sits in the 50%. Anything you pay above the minimum counts toward the 20% for savings and extra debt repayment.',
+  },
+  {
+    q: 'Does the 50/30/20 rule work in pounds, not just dollars?',
+    a: 'Yes. The rule is made of percentages, so it works in pounds, euros or dollars. This calculator lets you pick £, $ or €, and the worked examples on this page are given in both pounds and dollars.',
+  },
+  {
+    q: 'Is the 50/30/20 rule realistic on a low income?',
+    a: 'Often not as written. When rent, food and transport already take more than half of your take-home pay, a 50% needs bucket cannot hold them. Enter your real needs first, then split what is left between wants and savings, rather than forcing the three round numbers.',
+  },
+  {
+    q: 'How do I use the 50/30/20 rule with an irregular income?',
+    a: 'Use a cautious monthly figure as your take-home pay, such as your lowest recent month, and run the rule on that. Anything you earn above it can go to savings or to the next month. The Budgeting guide links a page on budgeting with an irregular income.',
   },
 ];
 
@@ -123,6 +135,63 @@ const companion = [
   </div>
 
   <Fragment slot="article">
+    <h2>What is the 50/30/20 rule?</h2>
+    <p>
+      <strong>The 50/30/20 rule is a budgeting guideline that splits your after-tax income three ways: 50% for needs, 30% for wants and 20% for savings and extra debt repayment. On £2,400 a month that is £1,200, £720 and £480; on $3,000 it is $1,500, $900 and $600.</strong>
+    </p>
+    <p>
+      It was popularised by Elizabeth Warren and Amelia Warren Tyagi in their 2005 book <em>All Your Worth</em>. The appeal is
+      that it needs no tracking: you sort a bank statement into three buckets and see which one is out of line.
+    </p>
+
+    <h2>50/30/20 in pounds and dollars: worked examples</h2>
+    <p>Each row takes the monthly take-home pay (after tax) and applies the three shares. The last column is what the 20% adds up to over twelve months, before any interest.</p>
+    <table class="worked-table">
+      <thead><tr><th>Take-home pay a month</th><th>Needs (50%)</th><th>Wants (30%)</th><th>Savings and extra debt (20%)</th><th>Saved in a year</th></tr></thead>
+      <tbody>
+        <tr><td>£1,800</td><td>£900</td><td>£540</td><td>£360</td><td>£4,320</td></tr>
+        <tr><td>£2,400</td><td>£1,200</td><td>£720</td><td>£480</td><td>£5,760</td></tr>
+        <tr><td>£3,200</td><td>£1,600</td><td>£960</td><td>£640</td><td>£7,680</td></tr>
+        <tr><td>$2,500</td><td>$1,250</td><td>$750</td><td>$500</td><td>$6,000</td></tr>
+        <tr><td>$4,000</td><td>$2,000</td><td>$1,200</td><td>$800</td><td>$9,600</td></tr>
+      </tbody>
+    </table>
+
+    <h2>When does the 50/30/20 rule not fit?</h2>
+    <p>
+      <strong>It does not fit when your needs alone take more than 50% of your take-home pay,</strong> which is common on a low
+      income or where rent is high. Forcing the three round numbers then just hides the problem.
+    </p>
+    <p>Here is an illustration on £1,800 a month take-home pay. The rule says needs should be £900.</p>
+    <table class="worked-table">
+      <thead><tr><th>Need</th><th>Amount a month</th></tr></thead>
+      <tbody>
+        <tr><td>Rent</td><td>£850</td></tr>
+        <tr><td>Food</td><td>£250</td></tr>
+        <tr><td>Transport</td><td>£120</td></tr>
+        <tr><td>Energy and phone</td><td>£80</td></tr>
+        <tr><td><strong>Needs in total</strong></td><td><strong>£1,300 (72% of £1,800)</strong></td></tr>
+      </tbody>
+    </table>
+    <p>
+      Those needs are £400 over the 50% line before a pound goes to wants or savings. The honest move is to enter the real
+      needs figure first and split what is left, £500, between wants and savings: for example £320 for wants (18%) and £180
+      for savings (10%). Use the custom split in the calculator above to run your own numbers, then look for the one need that
+      can come down over time. The same applies to a high rent, a long commute or a large minimum debt payment.
+    </p>
+
+    <h2>How does 50/30/20 relate to zero-based budgeting?</h2>
+    <p>
+      <strong>50/30/20 sets three targets; zero-based budgeting gives every pound or dollar a named job until nothing is left unassigned.</strong>
+      50/30/20 is the quick check you can do in a minute. A zero-based budget is the plan you spend from, with an envelope for rent,
+      food, savings and each other category. Many people use 50/30/20 to set the first split, then break each bucket into envelopes.
+    </p>
+    <p>
+      The <a href="/budgeting/">Budgeting guide</a> links the full set of pages on zero-based and envelope budgeting, from your first
+      budget to apps, saving and debt. <a href="/zeroed/">Zeroed</a> is the app for the envelope method: offline, with no bank login and
+      no subscription.
+    </p>
+
     <h2>How to use the 50/30/20 rule well</h2>
     <p>
       The rule's power is its bluntness: three buckets you can check against your bank statement in a minute.
