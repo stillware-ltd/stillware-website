@@ -78,7 +78,7 @@
   <text x="735" y="126" text-anchor="middle" font-size="16" font-weight="600" fill="#1e293b">Third Parties</text>
 
   <foreignObject x="629" y="134" width="212" height="86">
-    <p xmlns="http://www.w3.org/1999/xhtml" style="font-family:Inter,system-ui,sans-serif;font-size:12px;color:#64748b;margin:0;line-height:1.35;text-align:center;">May receive aggregated insights</p>
+    <p xmlns="http://www.w3.org/1999/xhtml" style="font-family:Inter,system-ui,sans-serif;font-size:12px;color:#64748b;margin:0;line-height:1.35;text-align:center;">May receive data, depending on the policy</p>
   </foreignObject>
   
   
@@ -92,7 +92,7 @@
   <text x="1005" y="126" text-anchor="middle" font-size="16" font-weight="600" fill="#1e293b">You</text>
 
   <foreignObject x="899" y="134" width="212" height="86">
-    <p xmlns="http://www.w3.org/1999/xhtml" style="font-family:Inter,system-ui,sans-serif;font-size:12px;color:#64748b;margin:0;line-height:1.35;text-align:center;">Receive targeted ads</p>
+    <p xmlns="http://www.w3.org/1999/xhtml" style="font-family:Inter,system-ui,sans-serif;font-size:12px;color:#64748b;margin:0;line-height:1.35;text-align:center;">May see targeted ads</p>
   </foreignObject>
   
   

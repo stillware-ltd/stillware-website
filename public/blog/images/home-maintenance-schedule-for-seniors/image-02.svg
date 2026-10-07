@@ -42,19 +42,19 @@
   
   <circle cx="78" cy="268" r="6" fill="#dc2626" opacity="0.6"/>
   <foreignObject x="96" y="254" width="444" height="46">
-    <p xmlns="http://www.w3.org/1999/xhtml" style="font-family:Inter,system-ui,sans-serif;font-size:15px;color:#1e293b;margin:0;line-height:1.45;">$1</p>
+    <p xmlns="http://www.w3.org/1999/xhtml" style="font-family:Inter,system-ui,sans-serif;font-size:15px;color:#1e293b;margin:0;line-height:1.45;">Surprise repair bill</p>
   </foreignObject>
   
   
   <circle cx="78" cy="324" r="6" fill="#dc2626" opacity="0.6"/>
   <foreignObject x="96" y="310" width="444" height="46">
-    <p xmlns="http://www.w3.org/1999/xhtml" style="font-family:Inter,system-ui,sans-serif;font-size:15px;color:#1e293b;margin:0;line-height:1.45;">200+ repair bill</p>
+    <p xmlns="http://www.w3.org/1999/xhtml" style="font-family:Inter,system-ui,sans-serif;font-size:15px;color:#1e293b;margin:0;line-height:1.45;">Possible water or frost damage</p>
   </foreignObject>
   
   
   <circle cx="78" cy="380" r="6" fill="#dc2626" opacity="0.6"/>
   <foreignObject x="96" y="366" width="444" height="46">
-    <p xmlns="http://www.w3.org/1999/xhtml" style="font-family:Inter,system-ui,sans-serif;font-size:15px;color:#1e293b;margin:0;line-height:1.45;">No heat for 72 hours</p>
+    <p xmlns="http://www.w3.org/1999/xhtml" style="font-family:Inter,system-ui,sans-serif;font-size:15px;color:#1e293b;margin:0;line-height:1.45;">A cold house until it is fixed</p>
   </foreignObject>
   
   
@@ -85,7 +85,7 @@
   
   <circle cx="678" cy="268" r="6" fill="#16a34a" opacity="0.6"/>
   <foreignObject x="696" y="254" width="444" height="46">
-    <p xmlns="http://www.w3.org/1999/xhtml" style="font-family:Inter,system-ui,sans-serif;font-size:15px;color:#1e293b;margin:0;line-height:1.45;">$150 preventive visit</p>
+    <p xmlns="http://www.w3.org/1999/xhtml" style="font-family:Inter,system-ui,sans-serif;font-size:15px;color:#1e293b;margin:0;line-height:1.45;">Routine preventive visit</p>
   </foreignObject>
   
   

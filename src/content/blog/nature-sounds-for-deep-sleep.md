@@ -1,15 +1,15 @@
 ---
 title: "Nature Sounds for Deep Sleep: 5 Types Compared"
 date: 2026-09-08
-description: "Discover which nature sounds for deep sleep actually work. We compare rain, ocean, and forest audio — plus the offline secret most apps hide."
+updated: 2026-10-07
+description: "Nature sounds for deep sleep compared: rain, forest, ocean, thunder and running water, what the research says, plus volume, placement and offline play."
 author: "Stillware Editorial"
 pillar: "problem-solution"
-appCluster: "somnus"
+appCluster: "general"
 primaryKeyword: "nature sounds for deep sleep"
-wordCount: 2228
-qualityScore: 97
-tags: ["Anti-SaaS", "Guide", "Offline-First", "Privacy"]
-relatedSlugs: ["insomnia-relief-without-medication", "sleep-sounds-for-insomnia-real-fix", "track-sleep-without-wearable"]
+wordCount: 2745
+tags: ["Guide", "Sleep", "Offline-First", "Privacy"]
+relatedSlugs: ["why-offline-apps-are-better", "what-is-local-first-software-movement-guide-2026", "best-offline-hiking-journal-apps"]
 ogImage: "/blog/images/nature-sounds-for-deep-sleep/og-card.svg"
 heroImage: "/blog/images/nature-sounds-for-deep-sleep/hero.webp"
 ---
@@ -18,17 +18,17 @@ heroImage: "/blog/images/nature-sounds-for-deep-sleep/hero.webp"
 
 You're tired of lying awake while your brain replays the day's worst moments. You've tried counting breaths, adjusting the thermostat, even the podcast about medieval pig farming. Nothing sticks. **Nature sounds for deep sleep** might be the missing piece — but only if you pick the right type and play it the right way.
 
-After reading this, you'll know exactly which nature sounds match your sleep struggles — whether racing thoughts keep you up, traffic noise leaks through your windows, or you simply can't switch your brain off after a screen-filled day. You'll also learn volume levels that won't damage your hearing, speaker placement tricks, and why your nature sounds should never depend on an internet connection.
+After reading this, you'll know which nature sounds to try for your sleep struggles — whether racing thoughts keep you up, traffic noise leaks through your windows, or you simply can't switch your brain off after a screen-filled day. You'll also learn how to keep the volume low, speaker placement tricks, and why it helps to have your nature sounds play without an internet connection.
 
-**Nature sounds for deep sleep** work because they exploit something called masking. Your brain processes unexpected sounds as threats — that's why a car door slamming at 2 AM jolts you awake. Nature sounds fill the quiet gaps with consistent, predictable audio, so your brain has nothing sudden to flag.
+**Nature sounds for deep sleep** are usually explained by masking. The idea is that a steady, predictable sound narrows the gap between quiet and a sudden noise, so there is less for your brain to flag. A car door slamming at 2 AM is jarring partly because it stands out against silence; a steady background sound makes that contrast smaller.
 
 ![Person sleeping with a phone playing forest sounds on a bedside table](/blog/images/nature-sounds-for-deep-sleep/photo-05.webp)
 
-The science is real. Studies from sleep researchers show that listening to nature sounds before bed reduces stress hormone levels and improves sleep quality, particularly during the deep-sleep and REM stages. <!-- DATA_NEEDED: Meta-analysis effect sizes for nature sounds on sleep onset latency and deep sleep duration -->
+The research is more limited than the marketing suggests. In a small 2017 study in *Scientific Reports* (17 healthy adults, awake in a brain scanner), listening to natural sounds was linked to a rise in a heart-rate measure of parasympathetic, rest-and-digest activity compared with artificial sounds; the study did not measure sleep ([Gould van Praag et al., 2017](https://www.nature.com/articles/srep45273)). A 2021 systematic review of continuous noise as a sleep aid, such as white noise, rated the evidence that it improves sleep as very low quality and said more research is needed; it also raised the possibility of harm to sleep and hearing ([Riedy et al., Sleep Medicine Reviews](https://doi.org/10.1016/j.smrv.2020.101385)). That review did not look at nature recordings specifically, but the honest summary is this: nature sounds are worth trying if you like them, and they are not a proven treatment.
 
-But here's the catch nobody mentions: most apps streaming these sounds are built on infrastructure that fails exactly when you need it most.
+But there's a practical catch: an app that streams its sounds needs a working connection at the moment you need it.
 
-> The most popular sleep sound apps require an active internet connection at 2 AM. That's the exact moment your connection is least likely to cooperate.
+> A sleep sound that has to be streamed needs an internet connection at 2 AM, which is not a moment you want to spend troubleshooting your Wi-Fi.
 
 ---
 
@@ -38,16 +38,18 @@ You wake up at 2:17 AM with your mind running. Maybe it's work. Maybe it's that 
 
 This isn't a connectivity issue. It's an architecture issue.
 
-The apps that dominate the nature sounds space are subscription-based, cloud-dependent services. They stream audio from remote servers. When your internet hiccups — when your ISP has a maintenance window at 3 AM, when your neighbor's router floods your channel, when the provider's CDN has an outage — your sleep aid becomes a frustration aid.
+Some sleep sound apps are subscription-based and stream their audio from remote servers. When your internet hiccups — when your ISP has a maintenance window at 3 AM, when your neighbor's router floods your channel, when the provider's CDN has an outage — a streamed sleep aid becomes a frustration aid. If you use an app, check whether it lets you download sounds for offline play.
 
-The real problem runs deeper than connectivity. Most sleep apps are built on a rental model: pay monthly, keep renting the same rain loop. Pay for a year and you could have owned the audio outright. Companies in this space have also been caught harvesting usage data — tracking when you sleep, how long you listen, what sounds you prefer. All of that ends up on servers you don't control.
+There's also cost and data to think about. Some sleep apps rent you the same rain loop for a monthly fee, and an app that runs online may collect usage data such as when you sleep and how long you listen. Read the privacy policy of any app you use for sleep.
 
-So here's the pattern that keeps repeating:
+So here's a pattern worth avoiding:
 
 - **Problem**: You can't fall asleep without background sounds.
 - **Attempt**: You download a popular app with good reviews.
-- **Failure**: The app requires an account, then a subscription, then an always-on connection. It also phones home with your sleep patterns.
-- **Real Solution**: Nature sound files stored locally on your device. No account. No tracking. No internet required.
+- **Failure**: The app asks for an account, a subscription or an always-on connection.
+- **Real Solution**: Nature sound files stored locally on your device, or a sound feature built into your phone. No account. No internet required.
+
+Your phone may already have one. On iPhone and iPad, Apple's Background Sounds feature (Settings, then Accessibility, then Audio/Visual) plays sounds such as ocean and rain, and Apple says that on iOS 26 or later you can add a timer so the sounds stop at a set time. Because it is a setting on the phone rather than a streaming service, you can test it in airplane mode to see that it plays without a connection.
 
 For the problem-solution arc to work, the audio has to live where you live — on the device in your hand.
 
@@ -55,39 +57,39 @@ For the problem-solution arc to work, the audio has to live where you live — o
 
 ## Rain Sounds for Deep Sleep: The Steady-State Champion
 
-Steady rainfall produces what audio engineers call pink noise — sound energy distributed evenly across frequencies, but with more power in the lower range than white noise. That low-frequency dominance is what makes rain feel physically soothing, like a weighted blanket for your ears.
+Steady rainfall is broadband noise: sound energy spread across many frequencies at once, which is why it is often compared to white or pink noise. Some people find that even, steady sound soothing, like a weighted blanket for your ears.
 
-- **Light drizzle**: Best for the initial wind-down phase. High-frequency patter keeps your brain gently occupied while you drift off.
-- **Steady downpour**: The classic deep-sleep sound. Consistent amplitude means nothing startles you out of lighter sleep stages.
+- **Light drizzle**: Often used for the initial wind-down phase. The gentle patter gives your brain something light to follow while you drift off.
+- **Steady downpour**: The classic choice. Consistent volume means fewer sudden changes to startle you.
 - **Rain on different surfaces**: Rain hitting leaves sounds different from rain on a metal roof. Experiment with recordings to find your texture preference.
-- **Distant thunder**: Useful for masking low-frequency city rumble. The thunder should be occasional, not frequent.
+- **Distant thunder**: Can help cover low-frequency city rumble. The thunder should be occasional, not frequent.
 
-Volume discipline matters here. Rain sounds should sit at roughly the same level as a quiet conversation — 30 to 40 decibels. If you can hear the rain sounds clearly over your own breathing, they're too loud.
+Keep the volume low. Harvard Health's advice for sleep noise is to keep it no louder than a background conversation (31 March 2025 article). As a rough rule of thumb, you should still be able to hear a person speaking in a normal voice across the room, and the rain should not drown out your own breathing. For context, the World Health Organization's guideline values for sleep in a bedroom are 30 dB LAeq for continuous noise and 45 dB LAmax for single noise events. Those figures are about unwanted noise rather than playback, but they show why quieter is the safer direction.
 
 ![Rain drops falling onto a sleeping person's bedroom window](/blog/images/nature-sounds-for-deep-sleep/photo-06.webp)
 
-**The key to rain sounds is consistency — your brain habituates to steady audio within minutes, and that habituated state is exactly where deep sleep begins.**
+**The key to rain sounds is consistency: a steady sound tends to fade into the background more than a changing one.**
 
-Technical detail worth knowing: recordings matter more than you'd think. Poorly recorded rain has compression artifacts — tiny audio glitches that can register as sudden sounds. High-bitrate recordings, stored locally, avoid this entirely because nothing gets recompressed in transit.
+Recordings matter. A poorly made recording can have clicks, hiss or an audible seam where the loop restarts, and those can register as sudden sounds. Choose a recording that loops smoothly, and download it so it plays the same way every time.
 
 ---
 
 ## Forest Sounds for Sleeping: Bio-Masking at Its Best
 
-Forest sounds for sleeping use a different mechanism. Instead of steady noise, forests offer layered, organic soundscapes. Birds at dawn. Crickets at dusk. Wind moving through leaves. These sounds carry more rhythmic variety than rain, which makes them excellent for people whose minds tend to wander.
+Forest sounds for sleeping use a different mechanism. Instead of steady noise, forests offer layered, organic soundscapes. Birds at dawn. Crickets at dusk. Wind moving through leaves. These sounds carry more rhythmic variety than rain, which some people find helpful if their minds tend to wander.
 
-The forest soundscape operates as bio-masking. Insect and bird calls fall into predictable frequency bands, leaving gaps that your brain fills with relaxation rather than alertness. This works especially well for people who live in urban environments, because it replaces mechanical noise with biological noise.
+Think of the forest soundscape as biological masking: a layered mix of insects, birds and wind sitting over mechanical noise. "Bio-masking" is our shorthand here, not an established scientific term, and this is the idea rather than a measured result. Some people who live in cities find it easier to relax with natural sound in the background than with traffic hum.
 
-Match your forest sounds to your sleep stage:
+Here is how you might match forest sounds to the moment:
 
-1. **Crickets and night insects**: Ideal for the transition from wakefulness to light sleep. The rhythmic chirping provides a tempo your breathing can follow.
-2. **Dawn chorus**: Birdsong with slowly increasing intensity works well for people who wake too early — it conditions your brain to recognize morning gradually rather than abruptly.
-3. **Wind and leaves**: The most underrated forest sound. Broad-spectrum rustling covers a huge frequency range, masking both high-frequency electronics hum and low-frequency traffic.
+1. **Crickets and night insects**: Often chosen for the transition from wakefulness to light sleep. The rhythmic chirping gives a gentle tempo to follow.
+2. **Dawn chorus**: Birdsong that builds slowly is a gentler start to the morning than an alarm for some people who wake too early. Others find birdsong too alerting (see below).
+3. **Wind and leaves**: An underrated forest sound. Broad, rustling sound covers a wide range of frequencies, which makes it a good candidate for softening a mix of electronics hum and traffic.
 4. **Distant water in forest**: A creek or stream combined with forest ambience offers the depth of rainforest without the intensity of a downpour.
 
-**Forest sounds excel at masking irregular urban noise — sirens, car horns, and neighbor slams — because bird and insect calls occupy the same frequency spaces.**
+**Forest sounds can take the edge off irregular urban noise, but they will not erase a siren or a slamming door.**
 
-One practical note: forest recordings with too many bird species can trigger alert responses in some people. Human brains are wired to notice birdsong — it historically signaled safety or food. If dawn chorus keeps you awake, you're not defective. Switch to wind-heavy forest recordings instead.
+One practical note: some people find lively birdsong too engaging to sleep to. If dawn chorus keeps you awake, you're not defective. Switch to wind-heavy forest recordings instead.
 
 ![Dense night forest with fireflies](/blog/images/nature-sounds-for-deep-sleep/photo-07.webp)
 
@@ -95,87 +97,91 @@ One practical note: forest recordings with too many bird species can trigger ale
 
 ## Ocean Sounds for Sleep: The Broad-Spectrum Solution
 
-Ocean sounds for sleep occupy a fascinating middle ground. Waves produce a sound profile that's more variable than steady rain — you get the crash, the hiss, the retreat — but the variation happens in a rhythm predictable enough for your brain to ignore.
+Ocean sounds for sleep occupy a fascinating middle ground. Waves produce a sound profile that's more variable than steady rain — you get the crash, the hiss, the retreat — but the variation happens in a rhythm predictable enough that some people tune it out.
 
-The surf cycle maps surprisingly well onto human respiratory patterns. A wave crashes, it retreats, there's a pause. That cycle typically falls between 6 and 12 cycles per minute, which overlaps with relaxed breathing rates. Some sleep researchers suggest this coincidence is why ocean sounds relax people so effectively.
+The surf cycle is slow and regular: a wave builds, crashes and retreats, and there is a pause. Some people find it easy to slow their breathing to that rhythm. Whether ocean sounds relax you is a matter of personal preference, not an established effect.
 
-- **Crashing waves**: Best for deep sleep maintenance. The dramatic sound envelope masks sudden noises effectively.
+- **Crashing waves**: A more dramatic option that can cover more of the background. Keep the volume low, since loud crashes can be startling.
 - **Gentle lapping**: For light sleepers who want minimal acoustic stimulation.
-- **Distant surf**: The background hum of waves hitting a shore blocks low-frequency noise without dominating your auditory field.
+- **Distant surf**: A softer background hum that can sit under low-frequency noise without dominating your auditory field.
 
-<!-- DATA_NEEDED: Frequency spectrum analysis comparing pink noise, rain, and ocean surf for sleep masking -->
+Your device placement changes how ocean sounds work. Speakers on a bedside table point sound directly at your head. A phone placed on the floor or in a corner reflects sound off walls, creating a more diffuse acoustic field. For ocean sounds especially, indirect placement may make the recording feel more immersive and less directional.
 
-Your device placement changes how ocean sounds work. Speakers on a bedside table point sound directly at your head. A phone placed on the floor or in a corner reflects sound off walls, creating a more diffuse acoustic field. For ocean sounds especially, indirect placement makes the recording feel more immersive and less directional.
+**Ocean sounds are a good one to try if you want something rhythmic without being busy.**
 
-**Ocean sounds are your best choice if you sleep through the beach but wake up in the city — the wave cycle gives you a similar large-scale rhythm to what your body expects.**
+### A fifth option: streams and running water
+
+If rain feels too busy and waves too dramatic, running water is worth a try. A stream or a small waterfall gives a steady, gentle, broadband sound similar to rain, without the rise and fall of surf. Choose a recording without sudden splashes, bird calls or an audible loop point. Like every sound in this guide, it comes down to personal preference.
 
 ---
 
 ## Thunder Sounds: Use With Caution
 
-Thunder belongs in the toolkit, but it's not for everyone. Slow-building storm recordings with distant thunder serve one specific purpose: masking deep, low-frequency noise. Highway rumble. Train tracks. Industrial HVAC systems.
+Thunder belongs in the toolkit, but it's not for everyone. Slow-building storm recordings with distant thunder can help cover deep, low-frequency noise: highway rumble, train tracks, building HVAC systems.
 
-The risk with thunder is startle response. A crack that's too loud or too close can spike your heart rate at the exact moment you're entering a deep sleep stage. If you're drawn to thunder sounds, follow these guidelines:
+The risk with thunder is startle response. A crack that's too loud or too close can startle you awake just as you're drifting off. If you're drawn to thunder sounds, follow these guidelines:
 
-- Choose recordings with the thunder **10 to 15 decibels quieter** than the rain layer
+- Choose recordings where the thunder sits well below the rain layer
 - Look for "distant storm" recordings, not "storm overhead" ones
-- Start with thunder mixed at 20% of the volume you'd use for rain, then adjust up
-- Skip thunder entirely if you have PTSD, anxiety disorders, or a strong startle reflex
+- If your app lets you mix layers, start with the thunder very quiet, then adjust up
+- Skip thunder if sudden loud sounds are a trigger for you, for example with PTSD, an anxiety disorder or a strong startle reflex
 
-**Thunder is the only nature sound category where louder recordings actively hurt sleep — the startle response it triggers is physiologically incompatible with deep sleep.**
+**Thunder is the sound in this guide most likely to startle you, so keep it quiet and distant.**
 
-The same offline principles apply here. An app that requires your phone to fetch storm audio from a server adds latency — and latency in audio creates micro-gaps. Those micro-gaps are the audio equivalent of someone flicking the lights every few seconds.
+The same offline principle applies here. If storm audio has to be fetched from a server, a slow connection can cause stutters or gaps, and a break in a steady soundscape is the audio equivalent of someone flicking the lights every few seconds.
 
 ---
 
 ## Building Your Nightly Routine: Volume, Placement, and Breathing
 
-Getting nature sounds right requires more than picking a nice recording. The setup matters. Here's a practical framework for building a routine that actually works.
+Getting nature sounds right requires more than picking a nice recording. The setup matters. Here's a practical framework for building a routine that works for you.
 
 ### Volume Settings That Protect Your Ears
 
-Your ears have no protection mechanism against sustained audio. The damage from moderately loud sound accumulates over years. That 50-decibel rain loop seems harmless — and it is — but the same app that plays rain might play an alert at 80 decibels if you're not careful.
+Loud sound over long periods can damage hearing: the US National Institute for Occupational Safety and Health (NIOSH) treats noise at 85 dBA and above as hazardous. Sleep sounds should sit far below that, but phones can also play alarms, notifications and other audio at full volume, so check your volume before you fall asleep.
 
-- **Target range**: 30–40 dB for background nature sounds
+- **Target range**: Keep it low, no louder than a background conversation
 - **Test method**: Set the volume so you can still hear a person speaking in a normal voice across the room
-- **Never exceed**: 50 dB for overnight playback
-- **Use a timer**: Thirty to sixty minutes of playback is enough for most people to reach deep sleep; Timed audio prevents the "awake and annoyed" problem when recordings end abruptly
+- **Avoid**: Turning the volume up to drown out loud noise. If a noise is too loud for a quiet recording to cover, deal with the source of the noise instead
+- **Use a timer, or a seamless loop**: Some people prefer the sound to stop after a set time, others want it all night. Try both. Either way, avoid recordings that end abruptly, because sudden silence can itself wake you
 
 ### Speaker Placement That Works
 
-Where you put your playback device changes everything. A phone under your pillow is a heat hazard and a sound quality downgrade. A dedicated speaker on a bedside table fires audio straight at your ears, which keeps your brain in a more alert state.
+Where you put your playback device changes everything. Keep a phone out from under your pillow and bedding: fire services such as Essex Fire and Rescue warn against charging a phone under a pillow, and London Fire Brigade advises against leaving phones plugged in to charge overnight, so charge it earlier in the evening. A dedicated speaker on a bedside table points audio straight at your ears, which some people find less relaxing.
 
-**Better approach**: place the speaker at least three feet from your head, aimed away from you. Sound reflects off the wall and reaches you diffused, which your brain processes as more distant and less threatening.
+**Better approach**: try placing the speaker a few feet from your head, aimed away from you. Sound reflects off the wall and reaches you diffused, which some people find feels more distant and less intrusive.
 
 ![Bedroom speaker placement at the foot of the bed](/blog/images/nature-sounds-for-deep-sleep/photo-08.webp)
 
 ### Combining Nature Sounds With Breathing
 
-Nature sounds and slow breathing complement each other in a specific way. Rain sounds give you a steady auditory reference point. Ocean sounds give you a rising-and-falling rhythm. Match your breathing to the recording:
+Nature sounds and slow breathing can go well together. Rain sounds give you a steady auditory reference point. Ocean sounds give you a rising-and-falling rhythm. Try matching your breathing to the recording:
 
 1. Choose an ocean or wave recording with a cycle you can follow
 2. Inhale for four counts as the wave builds
 3. Exhale for six counts as the wave retreats
 4. Let the pattern continue for ten minutes
 
-The extended exhale (longer than the inhale) activates your parasympathetic nervous system. The nature sounds provide an external rhythm that prevents your mind from hijacking the pattern.
+A 2018 systematic review found that slow breathing was associated with increases in heart rate variability, a marker linked to parasympathetic activity ([Zaccaro et al., Frontiers in Human Neuroscience](https://pubmed.ncbi.nlm.nih.gov/30245619/)). If a longer exhale feels uncomfortable, use the simpler NHS exercise instead: count steadily from one to five on the in breath and again on the out breath, for at least five minutes. The sounds can give you something steady to anchor the pattern to.
 
 ---
 
 ## Why Offline Nature Sounds Matter More Than You Think
 
-Every nature sound category we've covered shares one hidden requirement: they need to play without interruption. And the only way to guarantee uninterrupted playback at 2 AM is to have the audio stored locally on your device.
+Every nature sound category we've covered shares one hidden requirement: they need to play without interruption. And the most reliable way to avoid interruptions at 2 AM is to have the audio stored locally on your device.
 
-This isn't about hating streaming services. Streaming nature sounds works fine at 8 PM when your connection is healthy. **The problem is that the moment you need sleep sounds most urgently — the 2 AM wake-up, the insomnia spiral, the anxious night before a big day — is exactly when connectivity failures happen.** You deserve a sleep aid that works regardless of your ISP's mood.
+This isn't about hating streaming services. Streaming nature sounds works fine at 8 PM when your connection is healthy. **The catch is that you may need sleep sounds most urgently at 2 AM, and that is a bad moment to find the connection has dropped.** You deserve a sleep aid that works regardless of your ISP's mood.
 
-There's also a quiet privacy issue. Sleep data reveals more about you than you'd think — when you sleep, how long you sleep, whether you wake at night. Apps that stream nature sounds routinely collect this data. A local audio file collects nothing.
+There's also a quiet privacy issue. When you sleep and how long you sleep are personal information. Some apps collect usage data, so read the privacy policy of any sleep app. A local audio file on its own doesn't send anything anywhere.
 
-Full disclosure: we're exploring building a nature sounds app called Somnus that would address these issues directly. It's still in concept phase, so we can't tell you much yet. What we can say is that our approach follows the same principles as everything we build: audio stored on your device, no accounts, no tracking, no subscription. If you'd like to explore similar themes, read our [guide to scam prevention for seniors](/blog/essential-scam-prevention-tips-for-seniors/) — it covers how untrustworthy apps exploit vulnerable users. Or check out our [first car maintenance guide for teens](/blog/first-car-maintenance-guide-for-teens/) to see how we approach practical topics with the same local-first philosophy.
+If you like the offline idea, our guide to [why offline apps are better](/blog/why-offline-apps-are-better/) explains it in more detail, and [what local-first software is](/blog/what-is-local-first-software-movement-guide-2026/) covers the wider approach.
 
-**The bottom line: pick your nature sound category based on the noise you need to mask, keep the volume between 30 and 40 decibels, place your speaker away from your head, and make sure — absolutely sure — that the audio works without an internet connection.** You deserve better than a sleep aid that needs a server farm to function.
+**The bottom line: pick your nature sound category based on the noise you need to mask, keep the volume low, place your speaker away from your head, and make sure — absolutely sure — that the audio works without an internet connection.** You deserve better than a sleep aid that needs a server farm to function.
 
 Start with a single category. Rain is the safest baseline. Try it for one week at a consistent volume. Add ocean sounds only if rain feels too monotonous. Introduce forest sounds when you want more texture. Build your library slowly, and you'll eventually have a set of recordings that meet every sleep state you encounter.
 
 And when you find the right combination, get it saved locally on your device. That's where it belongs. And that's where it will still be when you need it most — at 2 AM, when the internet goes down and your brain refuses to follow suit.
 
-If you're ready to break free from subscription-based sleep apps, give the local-first approach a try — explore Somnus or other offline audio players that respect your privacy and your sleep.
+If you have had trouble sleeping for months, the NHS advises seeing a GP; its [insomnia page](https://www.nhs.uk/conditions/insomnia/) also lists self-help tips.
+
+Sources: Gould van Praag et al., [Mind-wandering and alterations to default mode network connectivity when listening to naturalistic versus artificial sounds](https://www.nature.com/articles/srep45273), Scientific Reports, 2017; Riedy, Smith, Rocha and Basner, [Noise as a sleep aid: A systematic review](https://doi.org/10.1016/j.smrv.2020.101385), Sleep Medicine Reviews, 2021; Harvard Health, [Can white noise really help you sleep better?](https://www.health.harvard.edu/healthy-aging-and-longevity/can-white-noise-really-help-you-sleep-better), 31 March 2025; World Health Organization, [Guidelines for Community Noise](https://www.who.int/publications/i/item/a68672), 1999 (bedroom guideline values); CDC/NIOSH, [About noise and hearing](https://www.cdc.gov/niosh/noise/about/index.html) (85 dBA); Apple, [Use Background Sounds to help with sleep, focus, and more](https://support.apple.com/en-us/109346); Zaccaro et al., [How Breath-Control Can Change Your Life](https://pubmed.ncbi.nlm.nih.gov/30245619/), Frontiers in Human Neuroscience, 2018; NHS, [Breathing exercises for stress](https://www.nhs.uk/mental-health/self-help/guides-tools-and-activities/breathing-exercises-for-stress/) and [Insomnia](https://www.nhs.uk/conditions/insomnia/); Essex Fire and Rescue Service, [Batteries and charging safety](https://www.essex-fire.gov.uk/batteries-and-charging-safety); London Fire Brigade, [Electrical items](https://www.london-fire.gov.uk/safety/the-home/electrical-items/). All checked 7 October 2026.
