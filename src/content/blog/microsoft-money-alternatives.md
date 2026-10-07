@@ -11,6 +11,7 @@ primaryKeyword: "microsoft money alternatives"
 wordCount: 1875
 relatedSlugs: ["best-budgeting-apps-without-subscription-2026", "best-offline-budget-app-for-windows", "ynab-alternative-no-subscription-ultimate-comparison"]
 ogImage: "/Zeroed_Desktop_Today.png"
+heroImage: "/blog/images/microsoft-money-alternatives/hero.webp"
 ---
 
 **The short answer:** the closest like-for-like replacement for Microsoft Money is **Quicken Classic** on Windows, which can open a Money file directly, but it is a yearly subscription. If you want **no monthly fee**, the strongest picks are:
@@ -116,6 +117,8 @@ Six have no monthly fee. Four are free: GnuCash, MoneyManager Ex, HomeBank and A
 For a wider list of budgeting apps without a subscription, see [the best budgeting apps without a subscription](/blog/best-budgeting-apps-without-subscription-2026/).
 
 ## How to move your data out of Microsoft Money
+
+![An older man at his kitchen table checks a printed statement against his laptop](/blog/images/microsoft-money-alternatives/moving-your-data.webp "Check each imported balance against a recent statement before you rely on it.")
 
 1. **Back up first.** Copy your `.mny` file and any backup (`.mbf`) files somewhere safe before you change anything.
 2. **Open the file in Money Plus Sunset** if you are on an older version. Quicken needs this step to convert the file, and Sunset is also where you make QIF exports. Remember that Sunset cannot import data files from non-US editions, so if you used a UK edition, make your exports from that edition if it offers them.

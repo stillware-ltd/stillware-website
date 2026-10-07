@@ -10,6 +10,7 @@ appCluster: "zeroed"
 primaryKeyword: "switch from ynab"
 relatedSlugs: ["zeroed-vs-ynab-2026", "best-budgeting-apps-without-subscription-2026", "true-cost-of-ynab", "envelope-budgeting-app-no-bank-sync"]
 ogImage: "/Zeroed_Desktop_Today.png"
+heroImage: "/blog/images/switch-from-ynab-to-zeroed/hero.webp"
 ---
 
 So you've decided to stop paying $109 a year to budget your own money. Good news: because YNAB and Zeroed both use the same zero-based envelope method, switching is mostly a data move, not a re-learning exercise. Every skill you built in YNAB — giving dollars jobs, rolling with the punches, ageing your money — transfers directly.

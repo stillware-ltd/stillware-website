@@ -8,6 +8,7 @@ appCluster: "rankup-maths"
 primaryKeyword: "11 plus maths"
 tags: ["Education", "11 Plus"]
 relatedSlugs: []
+heroImage: "/blog/images/11-plus-maths-what-is-on-the-paper-and-how-to-prepare/hero.webp"
 ---
 
 The 11+ is an entrance test for selective schools, mainly grammar schools in England and some independent schools, and maths is a big part of it. It is easy to over-prepare in the wrong way, so this guide sets out what the maths paper actually looks like, what varies from place to place, and a calm way to use the months before the test.

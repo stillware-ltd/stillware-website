@@ -9,6 +9,7 @@ appCluster: "held"
 primaryKeyword: "portfolio tracker comparison"
 tags: ["Investing", "Portfolio Tracking"]
 relatedSlugs: ["why-we-dont-do-subscriptions"]
+heroImage: "/blog/images/portfolio-tracker-sharesight-kubera-portfolio-performance-compared/hero.webp"
 ---
 
 If you hold funds, ETFs or shares across several accounts, the number you actually want is your return across all of them. Each provider shows its own figure, worked out its own way, and adding them up gives the wrong answer because the money went in at different times. Three tools come up most often for fixing that: Sharesight, Kubera and Portfolio Performance. They are built for different people and priced very differently. This page compares them using each company's own pricing pages on 29 September 2026.
