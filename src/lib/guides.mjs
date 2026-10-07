@@ -6,7 +6,9 @@
 //   - src/data/checkmate-patterns.json   one entry per named checkmate pattern (definition, how to recognise it, FAQ).
 //     A pattern page exists only when at least one published daily puzzle has that pattern as its named mate, so an entry
 //     for a pattern the routine has not used yet stays dormant until its first puzzle is published.
-//     To add a pattern the routine starts using, add an entry with a `match` regex for the puzzle title.
+//     To add a pattern the routine starts using, add an entry with a `match` regex for the puzzle title. Entries for all 13
+//     named mates the routine can pick exist already (see PATTERNS in Youtube/tools/select_set.py). Bump `updated` in the
+//     JSON when a definition, tip or FAQ answer is changed: it is the "Updated" date shown on every pattern page.
 //   - THEMES below                        the Shorts themes: the label, and the two pillar pages each links to.
 import data from '../data/checkmate-patterns.json';
 
