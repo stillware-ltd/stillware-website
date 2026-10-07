@@ -3,9 +3,13 @@ import sitemap from '@astrojs/sitemap';
 import rehypeTrailingSlash from './src/plugins/rehype-trailing-slash.mjs';
 import rehypeImgAttrs from './src/plugins/rehype-img-attrs.mjs';
 import { thinTagSlugs } from './src/lib/tags.mjs';
+import { sitemapLastmods } from './src/lib/post-dates.mjs';
 
 // Tag pages with only a few posts are noindex (see blog/tag/[tag].astro), so keep them out of the sitemap too.
 const thinTags = thinTagSlugs();
+// <lastmod> only where there is a real date: articles (frontmatter `updated`, else `date`), /blog/ and tag pages (the newest
+// article they list). Everything else gets none; the build time would claim every page changed on every deploy.
+const lastmods = sitemapLastmods();
 
 export default defineConfig({
   site: 'https://www.stillwareltd.com',
@@ -20,6 +24,11 @@ export default defineConfig({
         if (pathname.includes('/buy/') || pathname === '/get/' || pathname === '/success/') return false;
         const tag = pathname.match(/^\/blog\/tag\/([^/]+)\/$/);
         return !(tag && thinTags.has(tag[1]));
+      },
+      serialize(item) {
+        const lastmod = lastmods.get(new URL(item.url).pathname);
+        if (lastmod) item.lastmod = lastmod;
+        return item;
       },
     }),
   ],

@@ -6,6 +6,8 @@ import sharp from 'sharp';
 import { join } from 'node:path';
 import { SITE, brandTitle, postSeoTitle, isOrgAuthor } from '../../lib/seo.mjs';
 import { heroSrcset } from '../../lib/images.mjs';
+// Videos made unlisted on YouTube (src/data/unlisted-videos.json): still embeddable, but not worth declaring as VideoObject.
+import unlistedVideos from '../../data/unlisted-videos.json';
 
 export async function getStaticPaths() {
   const posts = await getCollection('blog');
@@ -35,8 +37,22 @@ const relatedPosts = post.data.relatedSlugs
 // Search-result title, dates and author typing for the page head and the BlogPosting schema.
 const seoTitle = brandTitle(postSeoTitle({ title: post.data.title, seoTitle: post.data.seoTitle, pillar: post.data.pillar }));
 const published = post.data.date.toISOString();
-const modified = (post.data.updated ?? post.data.date).toISOString();
+// "Updated" is shown, and used as dateModified / article:modified_time, only when it is later than the publish date.
+const wasUpdated = !!post.data.updated && post.data.updated.valueOf() > post.data.date.valueOf();
+const modified = (wasUpdated ? post.data.updated! : post.data.date).toISOString();
+// "7 Oct 2026": day, three-letter month, year (fixed abbreviations, so "Sep" is never "Sept" whatever the Node/ICU version).
+const MONTHS = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
+const updatedLabel = wasUpdated
+  ? `${post.data.updated!.getUTCDate()} ${MONTHS[post.data.updated!.getUTCMonth()]} ${post.data.updated!.getUTCFullYear()}`
+  : '';
 const orgAuthor = isOrgAuthor(post.data.author);
+// The founder's byline is the Person on /about/ (same @id as src/pages/about.astro); every other byline is the company.
+const isFounder = post.data.author === 'Tejaswi Dhulipala';
+const authorNode = isFounder
+  ? { "@type": "Person", "@id": `${SITE}/about/#founder`, "name": "Tejaswi Dhulipala", "url": `${SITE}/about/` }
+  : orgAuthor
+    ? { "@id": `${SITE}/#organization` }
+    : { "@type": "Person", "name": post.data.author };
 
 // Natural size of the hero (lives in public/) so the browser can reserve its space: no layout shift while it loads.
 let heroSize: { width: number; height: number } | null = null;
@@ -59,7 +75,8 @@ const isChess = appCluster === 'rankupchess' || appCluster === 'rankup-chess' ||
 
 // Companion video (youtube-article skill): the post embeds the long video click-to-play and declares it as VideoObject.
 const videoId = post.data.video;
-const videoSchema = videoId ? {
+const unlistedIds = new Set((unlistedVideos.videos as { id: string }[]).map((v) => v.id));
+const videoSchema = videoId && !unlistedIds.has(videoId) ? {
     "@context": "https://schema.org",
     "@type": "VideoObject",
     "name": post.data.videoTitle || post.data.title,
@@ -68,7 +85,7 @@ const videoSchema = videoId ? {
     "uploadDate": post.data.date.toISOString(),
     "embedUrl": `https://www.youtube-nocookie.com/embed/${videoId}`,
     "contentUrl": `https://www.youtube.com/watch?v=${videoId}`,
-    "publisher": { "@type": "Organization", "name": "Stillware Ltd", "url": "https://www.stillwareltd.com" }
+    "publisher": { "@id": `${SITE}/#organization` }
 } : null;
 
 // FAQPage schema from the article's own "Frequently asked" section (quality strategy Phase 3, 2026-09-16):
@@ -121,9 +138,7 @@ const faqSchema = faqItems.length >= 2 ? {
         "description": post.data.description || "",
         "datePublished": published,
         "dateModified": modified,
-        "author": orgAuthor
-            ? { "@id": `${SITE}/#organization` }
-            : { "@type": "Person", "name": post.data.author, "url": `${SITE}/` },
+        "author": authorNode,
         "publisher": { "@id": `${SITE}/#organization` },
         "isPartOf": { "@id": `${SITE}/#website` },
         "mainEntityOfPage": {
@@ -145,6 +160,9 @@ const faqSchema = faqItems.length >= 2 ? {
                     <time datetime={post.data.date.toISOString()}>
                         {post.data.date.toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' })}
                     </time>
+                    {wasUpdated && (
+                        <time class="post-updated" datetime={modified}>Updated {updatedLabel}</time>
+                    )}
                     {post.data.wordCount && (
                         <span class="post-reading-time">{readingTime(post.data.wordCount)}</span>
                     )}
@@ -478,6 +496,11 @@ const faqSchema = faqItems.length >= 2 ? {
     .post-reading-time {
         font-size: 0.85rem;
         color: rgba(255, 255, 255, 0.5);
+    }
+
+    .post-updated::before {
+        content: "\00b7";
+        margin-right: 0.75rem;
     }
 
     .post-reading-time::before {

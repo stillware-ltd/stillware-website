@@ -1,0 +1,90 @@
+---
+// "Key facts" block for the two app pages (SEO strategy P4, answer-first): a compact definition list that states, in plain
+// words, what the app is, where it runs, what it costs and what it does with your data. Search and answer engines quote a
+// short definition list far more readily than copy spread over a marketing page.
+//
+// Every line passed in must already be stated elsewhere on the same page (SEO_STRATEGY.md section 5.4: the app page is the
+// source of truth). Change the page first, then this block.
+interface Fact {
+  term: string;
+  detail: string;
+}
+interface Props {
+  heading: string;
+  facts: Fact[];
+  /** "blue" for Zeroed, "gold" for RankUp Chess. */
+  accent?: 'blue' | 'gold';
+}
+const { heading, facts, accent = 'blue' } = Astro.props;
+---
+
+<section class={`key-facts key-facts-${accent}`} aria-labelledby="key-facts-heading">
+    <div class="key-facts-inner">
+        <h2 id="key-facts-heading">{heading}</h2>
+        <dl class="key-facts-list">
+            {facts.map((f) => (
+                <div class="key-fact">
+                    <dt>{f.term}</dt>
+                    <dd>{f.detail}</dd>
+                </div>
+            ))}
+        </dl>
+    </div>
+</section>
+
+<style>
+    .key-facts {
+        padding: 4rem 2rem 1rem;
+        --kf-accent: var(--color-primary);
+    }
+    .key-facts-gold { --kf-accent: #B45309; }
+
+    .key-facts-inner {
+        max-width: 1000px;
+        margin: 0 auto;
+    }
+
+    .key-facts h2 {
+        font-size: 1.9rem;
+        text-align: center;
+        margin-bottom: 1.75rem;
+    }
+
+    .key-facts-list {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 1rem;
+        margin: 0;
+    }
+
+    .key-fact {
+        background: #ffffff;
+        border: 1px solid rgba(226, 232, 240, 0.8);
+        border-left: 4px solid var(--kf-accent);
+        border-radius: 14px;
+        padding: 1.1rem 1.4rem;
+        box-shadow: var(--shadow-premium);
+    }
+
+    .key-fact dt {
+        font-size: 0.8rem;
+        font-weight: 700;
+        text-transform: uppercase;
+        letter-spacing: 0.06em;
+        color: #475569;
+        margin-bottom: 0.3rem;
+    }
+
+    .key-fact dd {
+        margin: 0;
+        font-size: 1.02rem;
+        line-height: 1.55;
+        color: var(--color-text);
+    }
+
+    @media (max-width: 768px) {
+        .key-facts { padding: 3rem 1rem 0.5rem; }
+        .key-facts h2 { font-size: 1.6rem; }
+        .key-facts-list { grid-template-columns: 1fr; }
+    }
+</style>

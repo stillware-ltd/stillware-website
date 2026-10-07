@@ -50,7 +50,9 @@ function withTrailingSlash(href: string): string {
   return u.href;
 }
 const canonicalURL = withTrailingSlash(canonical || new URL(Astro.url.pathname, Astro.site).href);
-const ogImageURL = ogImage || new URL('/StillwareLtd_logo.png', Astro.site).href;
+// og:image and twitter:image must be absolute https URLs: crawlers and link unfurlers do not resolve a relative path
+// (blog posts pass a root-relative hero such as /blog/images/<slug>/hero.png). new URL() leaves an absolute URL as it is.
+const ogImageURL = new URL(ogImage || '/StillwareLtd_logo.png', Astro.site).href;
 const iso = (d?: string | Date) => (d ? new Date(d).toISOString() : undefined);
 
 // One entity graph on every page: the company and the site it publishes. Pages add their own nodes (SoftwareApplication,
@@ -69,9 +71,16 @@ const siteGraph = {
       // Public register entry: STILLWARE LTD, Companies House 16927952 (England and Wales). No street address on purpose.
       identifier: { '@type': 'PropertyValue', propertyID: 'UK Companies House number', value: '16927952' },
       address: { '@type': 'PostalAddress', addressCountry: 'GB' },
-      founder: { '@type': 'Person', name: 'Tejaswi Dhulipala' },
+      // Same node as the Person on /about/ (src/pages/about.astro), so the founder is one entity across the site.
+      founder: { '@type': 'Person', '@id': `${SITE}/about/#founder`, name: 'Tejaswi Dhulipala', url: `${SITE}/about/` },
+      // Every official profile. YouTube: both channels from Marketing/channels.md, by id (the form the site links) and by handle.
+      // @StillwareFamilyApps was the Zeroed channel's name for 18-22 Sep 2026 only; its handle URL no longer resolves.
       sameAs: [
-        'https://www.youtube.com/@StillwareFamilyApps',
+        'https://www.youtube.com/channel/UCEvncfxFpbDNXkHbeucU75A',
+        'https://www.youtube.com/@Zeroed-Official',
+        'https://www.youtube.com/channel/UC7r19r2thTxTgzxzFu3aNpQ',
+        'https://www.youtube.com/@RankUpChess',
+        'https://find-and-update.company-information.service.gov.uk/company/16927952',
         'https://github.com/stillware-ltd',
         'https://dev.to/stillwareltd',
         'https://x.com/stillwareltd',

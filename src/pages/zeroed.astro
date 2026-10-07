@@ -1,5 +1,6 @@
 ---
 import Layout from '../layouts/Layout.astro';
+import KeyFacts from '../components/KeyFacts.astro';
 
 // Latest Zeroed release — bump this single constant when a new version ships.
 // Per-asset versions. 1.4.0 is live on the App Store (2026-10-04) and Google Play
@@ -18,6 +19,7 @@ const APP_STORE_URL = `https://apps.apple.com/app/id${APPLE_APP_ID}`;
 const PLAY_STORE_URL = 'https://play.google.com/store/apps/details?id=com.stillwareltd.zeroed';
 const releaseBase = (v: string) => `https://github.com/stillware-ltd/zeroed-releases/releases/download/v${v}`;
 const RELEASE_PAGE = `https://github.com/stillware-ltd/zeroed-releases/releases/tag/v${LATEST_VERSION}`;
+const MS_STORE_URL = 'https://apps.microsoft.com/detail/9NCHJ67Q98C5';
 import zeroedVideos from '../data/zeroed-videos.json';
 type ZVideo = { id: string; type: string; title: string; published: string; featured?: boolean; blurb?: string };
 const zLongs = (zeroedVideos as ZVideo[]).filter((v) => v.type === 'long');
@@ -36,11 +38,26 @@ const appSchema = {
   image: 'https://www.stillwareltd.com/Zeroed_Desktop_Today.png',
   description: 'Offline zero-based budgeting app. Encrypted on your device, no account, no subscription. Pay once and own it.',
   applicationCategory: 'FinanceApplication',
-  operatingSystem: 'iOS, Android, Windows, macOS',
+  operatingSystem: 'iOS, iPadOS, Android, Windows, macOS',
   offers: { '@type': 'Offer', price: '19.99', priceCurrency: 'USD', priceValidUntil: '2027-02-14', availability: 'https://schema.org/InStock' },
   publisher: { '@id': 'https://www.stillwareltd.com/#organization' },
-  sameAs: [APP_STORE_URL, PLAY_STORE_URL, 'https://apps.microsoft.com/detail/9NCHJ67Q98C5'],
+  // Where to get it: the three store listings, and the direct downloads this page offers (macOS DMG, Windows portable zip).
+  installUrl: [APP_STORE_URL, PLAY_STORE_URL, MS_STORE_URL],
+  downloadUrl: [`${releaseBase(DMG_VERSION)}/Zeroed-${DMG_VERSION}.dmg`, `${releaseBase(WINDOWS_VERSION)}/Zeroed-Windows-${WINDOWS_VERSION}.zip`],
+  // The store listings and the AlternativeTo listing the press kit links.
+  sameAs: [APP_STORE_URL, PLAY_STORE_URL, MS_STORE_URL, 'https://alternativeto.net/software/zeroed/'],
 };
+
+// Key facts (answer-first block under the hero). Each line restates something this page already says: the hero, the
+// pricing section, the fit check and the FAQ. Keep them in step with those, not the other way round.
+const keyFacts = [
+  { term: 'What it is', detail: 'An offline zero-based (envelope) budgeting app, where every dollar gets a job before the month starts.' },
+  { term: 'Platforms', detail: 'iPhone and iPad (App Store), Android (Google Play), Windows (Microsoft Store or a portable download) and macOS (notarized DMG).' },
+  { term: 'Price', detail: 'Pay once and own it: $19.99 at the founder price until 14 February 2027, then $39.99. All v1.x updates are included. No subscription.' },
+  { term: 'Free trial', detail: '34 days with every feature unlocked and no credit card. If you do not buy, Zeroed becomes read-only: you can still open it, view everything and export all of your data.' },
+  { term: 'Offline and your data', detail: 'Works fully offline. Your data stays on your own device, encrypted with AES-256, with no servers holding it. Syncing is optional and goes through your own Google Drive.' },
+  { term: 'Account and bank', detail: 'No account. No bank sync, by design: import CSV, PDF, OFX, QFX or QIF statements from any bank, or type transactions in.' },
+];
 
 // Who it is for and not for (2026-09-29): a plain fit check for visitors and for AI answers. Every line is a fact the
 // press kit and the FAQ already state; keep the two in step if the product changes (bank sync, web app, shared budgets).
@@ -129,6 +146,8 @@ const faqSchema = {
             </div>
         </div>
     </header>
+
+    <KeyFacts heading="Zeroed key facts" facts={keyFacts} accent="blue" />
 
     <!-- Comparison -->
     <section class="comparison-section reveal" id="comparison">

@@ -27,6 +27,17 @@ const year = new Date().getFullYear();
                     </ul>
                 </div>
                 <div class="footer-column">
+                    <p class="footer-heading">Learn</p>
+                    <ul class="footer-nav">
+                        <li><a href="/rankupchess/">RankUp Chess</a></li>
+                        <li><a href="/chess/checkmate-patterns/">Checkmate Patterns</a></li>
+                        <li><a href="/tools/">Free Calculators</a></li>
+                        <li><a href="/videos/zeroed/">Zeroed Videos</a></li>
+                        <li><a href="/videos/rankupchess/">RankUp Chess Videos</a></li>
+                        <li><a href="/press/">Press Kit</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
                     <p class="footer-heading">Support</p>
                     <ul class="footer-nav">
                         <li><a href="/support/">Help Center</a></li>
@@ -121,7 +132,7 @@ const year = new Date().getFullYear();
 
     .footer-links {
         display: flex;
-        gap: 4rem;
+        gap: 3.5rem;
     }
 
     .footer-column .footer-heading {
@@ -214,6 +225,19 @@ const year = new Date().getFullYear();
     .copyright {
         color: rgba(255, 255, 255, 0.62);
         font-size: 0.85rem;
+    }
+
+    /* Four link columns beside the brand need about 1100px; below that, stack the brand above them. */
+    @media (max-width: 1100px) {
+        .footer-main {
+            flex-direction: column;
+            gap: 2.5rem;
+        }
+
+        .footer-links {
+            flex-wrap: wrap;
+            gap: 2.5rem 3.5rem;
+        }
     }
 
     @media (max-width: 768px) {
