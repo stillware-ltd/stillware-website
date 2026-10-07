@@ -1,5 +1,6 @@
 ---
 title: "Six Years of Tax Bills From Savings, Each One a Surprise"
+seoTitle: "How Much to Set Aside for Tax as a Contractor: Example"
 date: 2026-10-05
 description: "For six years a contractor paid her tax bill from savings and was surprised every time, until she moved the tax slice first."
 author: "Stillware Team"

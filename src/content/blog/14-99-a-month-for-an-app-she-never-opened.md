@@ -1,5 +1,6 @@
 ---
 title: "£14.99 a Month for an App She Never Opened"
+seoTitle: "Find Forgotten Subscriptions on Your Bank Statement (UK)"
 date: 2026-10-05
 description: "A civil servant found £14.99 a month going to an app she never opened, then £420 a year across three lines she could not name."
 author: "Stillware Team"

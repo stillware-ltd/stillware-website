@@ -1,5 +1,6 @@
 ---
 title: "£80 More a Month Bought Her Three Days"
+seoTitle: "Eating Out Budget Runs Out Before Payday? A Worked Example"
 date: 2026-10-05
 description: "A product manager added £80 a month to her eating-out budget and it bought her three days. Splitting the same money into weeks worked instead."
 author: "Stillware Team"
