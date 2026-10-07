@@ -140,6 +140,8 @@ const faqSchema = faqItems.length >= 2 ? {
         "datePublished": published,
         "dateModified": modified,
         "author": authorNode,
+        // The founder is accountable for everything published here (SEO_STRATEGY.md §10 F3); a team byline stays a team byline.
+        "accountablePerson": { "@id": `${SITE}/about/#founder` },
         "publisher": { "@id": `${SITE}/#organization` },
         "isPartOf": { "@id": `${SITE}/#website` },
         "mainEntityOfPage": {
@@ -169,7 +171,7 @@ const faqSchema = faqItems.length >= 2 ? {
                     )}
                 </div>
                 <h1>{post.data.title}</h1>
-                <p class="post-author">By {post.data.author}</p>
+                <p class="post-author">By {post.data.author}{post.data.author !== "Tejaswi Dhulipala" && (<> · Published by <a href="/about/">Tejaswi Dhulipala</a>, founder</>)}</p>
                 {post.data.tags && post.data.tags.length > 0 && (
                     <div class="post-hero-tags">
                         {post.data.tags.map((tag: string) => (
@@ -301,8 +303,8 @@ const faqSchema = faqItems.length >= 2 ? {
                         </>
                     ) : (
                         <>
-                            <p class="author-name">Written by the Stillware Team</p>
-                            <p class="author-bio">We build pay-once apps that run on your device and keep your data with you. Honest pricing: never rent software that sits on your own hard drive. <a href="/about/">About Stillware</a>.</p>
+                            <p class="author-name">Written by the Stillware Team · Published by Tejaswi Dhulipala</p>
+                            <p class="author-bio">Tejaswi Dhulipala is the founder and director of Stillware Ltd, an independent, self-funded UK software company (Companies House 16927952), and is responsible for what this site publishes. We build pay-once apps that run on your device and keep your data with you, including Zeroed and RankUp Chess. Prices and facts in our guides are checked and dated. <a href="/about/">About Stillware</a>.</p>
                         </>
                     )}
                     <a href="/apps/" class="author-link">Explore our apps &rarr;</a>
@@ -522,6 +524,12 @@ const faqSchema = faqItems.length >= 2 ? {
         color: rgba(255, 255, 255, 0.5);
         font-size: 1rem;
         margin-bottom: 1rem;
+    }
+
+    .post-author a {
+        color: rgba(255, 255, 255, 0.85);
+        text-decoration: underline;
+        text-underline-offset: 2px;
     }
 
     .post-hero-tags {
