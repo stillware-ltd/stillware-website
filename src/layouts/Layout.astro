@@ -20,6 +20,9 @@ interface Props {
   description: string;
   canonical?: string;
   ogImage?: string;
+  /** Pixel size of `ogImage`, when known: emitted as og:image:width / og:image:height (blog posts pass their hero crop's). */
+  ogImageWidth?: number;
+  ogImageHeight?: number;
   /** Apple app id — emits the Smart App Banner meta so Safari on iOS offers the App Store listing. */
   appleAppId?: string;
   /** When true, instruct search engines not to index this page. Also
@@ -39,7 +42,7 @@ interface Props {
   breadcrumbs?: { name: string; href: string }[];
 }
 
-const { title, description, canonical, ogImage, noindex = false, noindexFollow = false, appleAppId, ogType = 'website', published, modified, breadcrumbs = [] } = Astro.props;
+const { title, description, canonical, ogImage, ogImageWidth, ogImageHeight, noindex = false, noindexFollow = false, appleAppId, ogType = 'website', published, modified, breadcrumbs = [] } = Astro.props;
 const keepOutOfIndex = noindex || noindexFollow;
 // Netlify serves pretty URLs with a trailing slash and 301s the slash-less
 // form, and the sitemap lists slash URLs. Normalise every canonical to the
@@ -52,7 +55,10 @@ function withTrailingSlash(href: string): string {
 const canonicalURL = withTrailingSlash(canonical || new URL(Astro.url.pathname, Astro.site).href);
 // og:image and twitter:image must be absolute https URLs: crawlers and link unfurlers do not resolve a relative path
 // (blog posts pass a root-relative hero such as /blog/images/<slug>/hero.png). new URL() leaves an absolute URL as it is.
-const ogImageURL = new URL(ogImage || '/StillwareLtd_logo.png', Astro.site).href;
+// Never an SVG: Google, Facebook, LinkedIn and X do not render one as a preview, so an SVG falls back to the default raster.
+const ogImageIsSvg = !!ogImage && /\.svg$/i.test(ogImage.split(/[?#]/)[0]);
+const usableOgImage = ogImage && !ogImageIsSvg ? ogImage : undefined;
+const ogImageURL = new URL(usableOgImage || '/StillwareLtd_logo.png', Astro.site).href;
 const iso = (d?: string | Date) => (d ? new Date(d).toISOString() : undefined);
 
 // One entity graph on every page: the company and the site it publishes. Pages add their own nodes (SoftwareApplication,
@@ -148,11 +154,15 @@ const breadcrumbSchema = breadcrumbs.length
     {/* X-Content-Type-Options and Referrer-Policy are real response headers in netlify.toml; as <meta http-equiv> browsers ignore them. */}
     {noindex && <meta name="robots" content="noindex, nofollow" />}
     {!noindex && noindexFollow && <meta name="robots" content="noindex, follow" />}
+    {/* max-image-preview:large lets Google show the page's image at full width in results and Discover. Indexable pages only. */}
+    {!keepOutOfIndex && <meta name="robots" content="index, follow, max-image-preview:large" />}
 
     <!-- Open Graph -->
     <meta property="og:title" content={title} />
     <meta property="og:description" content={description} />
     <meta property="og:image" content={ogImageURL} />
+    {usableOgImage && ogImageWidth && ogImageHeight && <meta property="og:image:width" content={String(ogImageWidth)} />}
+    {usableOgImage && ogImageWidth && ogImageHeight && <meta property="og:image:height" content={String(ogImageHeight)} />}
     <meta property="og:url" content={canonicalURL} />
     <meta property="og:type" content={ogType} />
     {ogType === 'article' && published && <meta property="article:published_time" content={iso(published)} />}

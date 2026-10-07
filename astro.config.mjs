@@ -2,6 +2,7 @@ import { defineConfig } from 'astro/config';
 import sitemap from '@astrojs/sitemap';
 import rehypeTrailingSlash from './src/plugins/rehype-trailing-slash.mjs';
 import rehypeImgAttrs from './src/plugins/rehype-img-attrs.mjs';
+import rehypeImgFigure from './src/plugins/rehype-img-figure.mjs';
 import { thinTagSlugs } from './src/lib/tags.mjs';
 import { sitemapLastmods } from './src/lib/post-dates.mjs';
 
@@ -34,7 +35,7 @@ export default defineConfig({
   ],
   output: 'static',
   markdown: {
-    rehypePlugins: [rehypeTrailingSlash, rehypeImgAttrs],
+    rehypePlugins: [rehypeTrailingSlash, rehypeImgFigure, rehypeImgAttrs],
   },
   // Legacy /zeroed/* URLs (privacy, terms, support, delete-account) are 301'd in netlify.toml.
   // Astro's `redirects` option only writes a meta-refresh page (HTTP 200), which Search Console reports as a redirect error.
