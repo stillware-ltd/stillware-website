@@ -1,7 +1,8 @@
 ---
 title: "Their Budget Is Wrong Every Month of the Year"
+seoTitle: "How to Budget With Commission Income: A Worked Example"
 date: 2026-10-05
-description: "A couple budgeted on average commission and were wrong every month. Budgeting the base alone ended the argument."
+description: "A couple budgeted on average commission and were wrong every month. Budgeting the £5,300 base alone ended the argument, and commission went into one envelope."
 author: "Stillware Team"
 tags: ["Zeroed Shorts", "Budgeting UK", "Irregular income"]
 pillar: "shorts"

@@ -1,0 +1,1080 @@
+{
+  "updated": "2026-10-07",
+  "patterns": [
+    {
+      "id": "back-rank-mate",
+      "name": "Back-rank mate",
+      "title": "Back-Rank Mate in Chess: Pattern, Examples and Puzzles",
+      "description": "Back-rank mate explained: a rook or queen checks a king boxed in by its own pawns. How to spot it, worked puzzles with solutions, mistakes and FAQs.",
+      "match": "back[- ]rank mate",
+      "answer": "A back-rank mate is a checkmate on the first or eighth rank, delivered by a rook or queen against a king that cannot step forward because its own pawns or pieces block the squares in front of it. Beginners fall for it most often, but the threat of it shapes play at every level.",
+      "glance": [
+        [
+          "Delivered by",
+          "A rook or a queen"
+        ],
+        [
+          "The king",
+          "On its back rank, blocked in by its own pawns (or pieces) on the next rank"
+        ],
+        [
+          "Key square",
+          "The back-rank square where the rook or queen lands with check"
+        ],
+        [
+          "Cure for the defender",
+          "Luft: a pawn move that gives the king a square"
+        ]
+      ],
+      "recognise": [
+        "The king is still on its back rank with its pawns unmoved in front of it. A castled king with the f-, g- and h-pawns at home is the classic target.",
+        "The attacker has a rook or queen that can reach that rank, usually along an open file.",
+        "Only one or two pieces guard the back rank. Look for a defender you can capture, trade off or drag away, because that is how the examples below are won.",
+        "No flight square. If one of the pawns in front of the king has moved, the king has luft (German for air) and the mate is gone.",
+        "The key square is where your rook or queen lands with check. It is often the square the defending piece was standing on."
+      ],
+      "mistakes": [
+        "Attacking without counting the king's flight squares. One pawn move such as h6 or h3 gives the king air and the combination fails.",
+        "Forgetting the defender's reply. Before you give up material, check that nothing can capture the checking piece or block the check.",
+        "Defending with a single guard. If one rook is the only piece covering the back rank, a sacrifice can drag it away.",
+        "Waiting until the threat is on the board. Making luft early costs one move; being mated costs the game."
+      ],
+      "faq": [
+        [
+          "What is a back-rank mate in chess?",
+          "A checkmate delivered by a rook or queen along the first or eighth rank, against a king that is blocked in by its own pieces, usually pawns on the next rank."
+        ],
+        [
+          "How do you stop a back-rank mate?",
+          "Make luft: move one of the pawns in front of the king, such as h3 for White or h6 for Black, so the king has a square to go to. You can also keep a rook or queen guarding the back rank."
+        ],
+        [
+          "Why is it called a back-rank mate?",
+          "The check is given on the back rank, the rank closest to the king's own side of the board: the first rank for White and the eighth for Black. It is also known as the corridor mate."
+        ],
+        [
+          "Can a queen give a back-rank mate?",
+          "Yes. A rook or a queen can do it. In one of the daily puzzles on this page, a pawn promotes to a queen on the back rank and gives the mate."
+        ],
+        [
+          "How can I practise a back-rank mate?",
+          "Work through the puzzles on this page, then try the daily puzzles linked below. RankUp Chess, an offline chess academy for kids, has a library of 5,000+ puzzles you can filter by difficulty and theme. It is free to play, with no ads and no subscription."
+        ]
+      ],
+      "related": [
+        "opera-mate",
+        "epaulette-mate",
+        "pillsburys-mate"
+      ],
+      "history": null,
+      "sources": [
+        {
+          "name": "Wikipedia: Back-rank checkmate",
+          "url": "https://en.wikipedia.org/wiki/Back-rank_checkmate"
+        },
+        {
+          "name": "Lichess puzzle themes",
+          "url": "https://lichess.org/training/themes"
+        }
+      ],
+      "examples": {
+        "02m66": {
+          "fen": "3r2k1/p1p2ppp/1p6/5Q2/8/4P1qP/PP1r2P1/4RRK1 w - - 1 28",
+          "why": "Black's king on h8 is boxed in by its own pawns on g7 and h7. White's queen takes on f7 with check, then offers itself on f8. Black's rook has to take it, which pulls that rook onto f8, and White's rook recaptures there with mate on the back rank."
+        },
+        "012tD": {
+          "fen": "8/5ppk/7p/2pr4/4p3/4P3/1Qp2PPP/R5K1 b - - 2 36",
+          "why": "White's king on g1 is shut in by its own pawns on f2, g2 and h2. Black's rook checks on d1 and White's rook takes it, but Black's pawn recaptures on d1 and promotes to a queen, and that new queen gives mate along the first rank."
+        },
+        "00MS3": {
+          "fen": "rn1qr1k1/1p3ppp/2p2b2/p2p4/3P4/2N2N2/PPP1QPPP/2KRR3 w - - 0 13",
+          "why": "Black's king on g8 has pawns on f7, g7 and h7. White's queen takes on e8 with check, Black's queen recaptures, and White's rook recaptures on e8 with mate along the eighth rank."
+        }
+      },
+      "np": "a back-rank mate",
+      "blurb": "A rook or queen mates a king boxed in by its own pawns on the back rank."
+    },
+    {
+      "id": "arabian-mate",
+      "name": "Arabian mate",
+      "title": "Arabian Mate in Chess: Pattern, Examples and Puzzles",
+      "description": "The Arabian mate explained: a rook and a knight trap the king in the corner. How to spot it, worked puzzles with solutions, common mistakes and FAQs.",
+      "match": "arabian mate",
+      "answer": "The Arabian mate is a checkmate in the corner of the board, delivered by a rook and a knight. The rook stands next to the king and gives the check. The knight, two squares away diagonally from the king, protects the rook and covers the other escape square. With the king on h8: rook on h7, knight on f6.",
+      "glance": [
+        [
+          "Delivered by",
+          "A rook (check) and a knight (support)"
+        ],
+        [
+          "The king",
+          "On a corner square: h8, a8, h1 or a1"
+        ],
+        [
+          "Key squares",
+          "For a king on h8: rook on h7, knight on f6"
+        ],
+        [
+          "Cure for the defender",
+          "Keep a piece guarding the squares beside the corner king, or give it room to leave the corner"
+        ]
+      ],
+      "recognise": [
+        "The pieces are one rook and one knight, against a king on a corner square.",
+        "The picture for a king on h8: rook on h7, knight on f6. The rook gives the check and covers g7, and the knight covers g8 and protects the rook.",
+        "The knight stands on the same diagonal as the king, two squares away. It is not a knight's move away from the king.",
+        "Look for a way to drive the king into the corner first. In the first example below, a knight check (Nf6+) sends the king to h8 and the rook follows.",
+        "The rook needs a route to the square beside the king, often along the seventh rank or the h-file."
+      ],
+      "mistakes": [
+        "Putting the rook next to the king before the knight is in place. An unprotected rook is simply captured by the king.",
+        "Checking from the wrong side. Make sure your check pushes the king into the corner rather than out towards the centre.",
+        "Defending: ignoring a knight that can jump to the long diagonal (f6 for a king on h8). Count the knight's squares before you tuck the king away in the corner."
+      ],
+      "faq": [
+        [
+          "What is the Arabian mate?",
+          "A checkmate in which a rook and a knight trap the king in a corner. The rook sits next to the king and gives the check, and the knight, two squares away diagonally, protects the rook and covers the last escape square."
+        ],
+        [
+          "Why is it called the Arabian mate?",
+          "Wikipedia notes that the pattern is mentioned in an ancient Arabic manuscript, and that it comes from an older form of chess in which the knight and the rook were the two most powerful pieces."
+        ],
+        [
+          "Does the Arabian mate only work in the corner?",
+          "Yes. The pattern is defined by a king trapped on a corner square, with the rook beside it and the knight two squares away on the diagonal."
+        ],
+        [
+          "How can I practise the Arabian mate?",
+          "Work through the puzzles on this page, then try the daily puzzles linked below. RankUp Chess, an offline chess academy for kids, has a library of 5,000+ puzzles you can filter by difficulty and theme. It is free to play, with no ads and no subscription."
+        ]
+      ],
+      "related": [
+        "anastasias-mate",
+        "corner-mate",
+        "morphys-mate"
+      ],
+      "history": "Wikipedia notes that the Arabian mate is mentioned in an ancient Arabic manuscript, and that the pattern comes from an older form of chess in which the knight and the rook were the two most powerful pieces.",
+      "sources": [
+        {
+          "name": "Wikipedia: Checkmate pattern",
+          "url": "https://en.wikipedia.org/wiki/Checkmate_pattern"
+        },
+        {
+          "name": "Lichess puzzle themes",
+          "url": "https://lichess.org/training/themes"
+        }
+      ],
+      "examples": {
+        "00H8a": {
+          "fen": "5bk1/2R4p/6p1/8/4NP1P/3bP1K1/r7/8 w - - 3 46",
+          "why": "The black king is on h8. White's rook on h7 gives the check and covers g7, and the knight on f6 covers g8 and protects the rook, so the king cannot take it."
+        },
+        "02Mt2": {
+          "fen": "6k1/R5Np/8/5p2/5P2/5RP1/P2r3n/5BK1 b - - 0 32",
+          "why": "The pattern appears in the other corner, with Black delivering it. White's king is on h1, Black's rook on h2 gives the check and covers g2, and the knight on f3, two squares away on the diagonal, protects the rook and covers g1."
+        }
+      },
+      "np": "the Arabian mate",
+      "blurb": "A rook and a knight trap the king in a corner."
+    },
+    {
+      "id": "anastasias-mate",
+      "name": "Anastasia's mate",
+      "title": "Anastasia's Mate in Chess: Pattern, Examples and Puzzles",
+      "description": "Anastasia's mate explained: a knight and a rook trap the king against the edge. How to spot it, a worked puzzle with the solution, mistakes and FAQs.",
+      "match": "anastasia['’]?s mate",
+      "answer": "Anastasia's mate is a checkmate in which a knight and a rook (or queen) trap the king between the edge of the board and one of its own pieces. The knight covers the king's escape squares and the rook or queen checks along the a-file or h-file. It often follows a sacrifice that opens that file.",
+      "glance": [
+        [
+          "Delivered by",
+          "A rook or queen (check) and a knight (escape squares)"
+        ],
+        [
+          "The king",
+          "On the a-file or h-file, with one of its own pieces beside it"
+        ],
+        [
+          "Key squares",
+          "For a king on h7 with a pawn on g7: knight on e7, rook or queen on the h-file"
+        ],
+        [
+          "Often starts with",
+          "A sacrifice that opens the edge file"
+        ]
+      ],
+      "recognise": [
+        "The pieces are a knight and a rook or queen. The king sits on the edge of the board, on the h-file or the a-file.",
+        "One of the king's own pieces closes the other side. The classic picture is a king on h7 with its own pawn on g7.",
+        "The knight lands two squares away so it covers the squares beside the king. With the king on h7 and a pawn on g7, a knight on e7 covers g8 and g6.",
+        "A rook or queen gives the check along the edge file, for example from h5. The edge of the board does the work a second defender would otherwise do.",
+        "Look for a sacrifice that opens the file or drags a defender away. The queen or a rook is often given up on the a- or h-file first."
+      ],
+      "mistakes": [
+        "Giving the check before the knight is in place. Without the knight covering the squares beside the king, the king slips away.",
+        "Overlooking that the friendly piece beside the king is part of the trap. If that pawn moves, the king gains a square.",
+        "Forgetting the mirror image. The same pattern works on the a-file, with the knight and the pieces reflected.",
+        "Defending: leaving the king on the edge file with a pawn beside it and no defender for the squares a knight can reach."
+      ],
+      "faq": [
+        [
+          "What is Anastasia's mate?",
+          "A checkmate in which a knight and a rook or queen trap the king between the side of the board and one of its own pieces. The knight takes away the escape squares and the rook or queen gives the check along the edge file."
+        ],
+        [
+          "Why is it called Anastasia's mate?",
+          "Wikipedia says the name comes from the novel Anastasia und das Schachspiel, published in 1803 by Wilhelm Heinse, which contains the pattern."
+        ],
+        [
+          "Which file does Anastasia's mate use?",
+          "The a-file or the h-file, on the edge of the board. The edge takes the place of a defending piece, so the king needs only one friendly piece beside it to be trapped."
+        ],
+        [
+          "How do you set up Anastasia's mate?",
+          "A common route is to sacrifice a queen or a rook on the a-file or h-file to open it and pull the king onto the edge, then bring the knight to cover the escape squares. In the worked puzzle below the knight checks first and the rook follows."
+        ],
+        [
+          "How can I practise Anastasia's mate?",
+          "Work through the puzzles on this page, then try the daily puzzles linked below. RankUp Chess, an offline chess academy for kids, has a library of 5,000+ puzzles you can filter by difficulty and theme. It is free to play, with no ads and no subscription."
+        ]
+      ],
+      "related": [
+        "arabian-mate",
+        "corner-mate",
+        "smothered-mate"
+      ],
+      "history": "Wikipedia says the name comes from the novel Anastasia und das Schachspiel, published in 1803 by Wilhelm Heinse.",
+      "sources": [
+        {
+          "name": "Wikipedia: Checkmate pattern",
+          "url": "https://en.wikipedia.org/wiki/Checkmate_pattern"
+        },
+        {
+          "name": "Lichess puzzle themes",
+          "url": "https://lichess.org/training/themes"
+        }
+      ],
+      "examples": {
+        "02242": {
+          "fen": "r4rk1/1p3pp1/8/2p1pNP1/4PnR1/P7/1q5N/3R3K w - - 0 33",
+          "why": "Black's king ends on h7 with its own pawn on g7 beside it. White's knight on e7 covers g8 and g6, and the rook on h5 gives the check along the h-file, so the king has nowhere to go."
+        }
+      },
+      "np": "Anastasia's mate",
+      "blurb": "A knight and a rook trap the king between the edge of the board and its own piece."
+    },
+    {
+      "id": "epaulette-mate",
+      "name": "Epaulette mate",
+      "title": "Epaulette Mate in Chess: Pattern, Examples and Puzzles",
+      "description": "The epaulette mate explained: the king's own rooks block its escape and a queen or rook checks from the front. Worked puzzle, mistakes and FAQs.",
+      "match": "epaulette mate",
+      "answer": "An epaulette mate is a checkmate in which two of the king's own pieces, most often rooks, stand on the squares beside it like epaulettes on a uniform's shoulders. With those two retreat squares blocked, a protected queen or rook checking from directly in front is mate. The classic picture is a king on its back rank between two rooks.",
+      "glance": [
+        [
+          "Delivered by",
+          "A queen or a rook, checking from directly in front of the king"
+        ],
+        [
+          "The king",
+          "Between two of its own pieces, usually rooks, with no other flight square"
+        ],
+        [
+          "Key square",
+          "The square directly in front of the king, protected so the king cannot capture"
+        ],
+        [
+          "Looks like",
+          "The swallow's tail mate, but the blockers stand beside the king"
+        ]
+      ],
+      "recognise": [
+        "The king has its own pieces on both squares beside it, most often two rooks on the back rank.",
+        "A queen or rook can check from directly in front of the king, and that checking piece is protected so the king cannot capture it.",
+        "No other square is free: the squares in front of the king are covered by the checking piece and the rest are blocked.",
+        "The checking piece is often offered first. A sacrifice can pull away a defender or force the capture that sets the mate up, as in the example below."
+      ],
+      "mistakes": [
+        "Checking from the front with an unprotected piece. The king captures it and the pattern is gone.",
+        "Missing a capture of the checking piece. Make sure any recapture still leaves mate, as in the worked example.",
+        "Defending: putting rooks on both sides of the king with no way for it to step off its rank. Give the king a square or keep a piece guarding the file in front of it."
+      ],
+      "faq": [
+        [
+          "What is an epaulette mate?",
+          "A checkmate in which two of the king's own pieces occupy two parallel retreat squares, usually the squares on either side of it, so the king cannot escape the check. The most common version has the king on its back rank between two rooks."
+        ],
+        [
+          "Why is it called the epaulette mate?",
+          "The two rooks beside the king look like the epaulettes, the ornamental shoulder pieces on a military uniform."
+        ],
+        [
+          "What is the difference between an epaulette mate and a swallow's tail mate?",
+          "In an epaulette mate the king's own pieces block the two squares beside it. In a swallow's tail mate they block the two squares diagonally behind it. Wikipedia notes that the two patterns resemble each other."
+        ],
+        [
+          "Has a famous game ended in an epaulette mate?",
+          "Wikipedia cites Magnus Carlsen's game against Sipke Ernst at Wijk aan Zee in 2004, when Carlsen was 13, which ended in an unusual sideways epaulette mate."
+        ],
+        [
+          "How can I practise an epaulette mate?",
+          "Work through the puzzles on this page, then try the daily puzzles linked below. RankUp Chess, an offline chess academy for kids, has a library of 5,000+ puzzles you can filter by difficulty and theme. It is free to play, with no ads and no subscription."
+        ]
+      ],
+      "related": [
+        "swallows-tail-mate",
+        "back-rank-mate",
+        "opera-mate"
+      ],
+      "history": "The name comes from the way the two rooks beside the king look like epaulettes, the shoulder pieces on a military uniform.",
+      "sources": [
+        {
+          "name": "Wikipedia: Checkmate pattern",
+          "url": "https://en.wikipedia.org/wiki/Checkmate_pattern"
+        },
+        {
+          "name": "Lichess puzzle themes",
+          "url": "https://lichess.org/training/themes"
+        }
+      ],
+      "examples": {
+        "020XG": {
+          "fen": "2rkr3/ppp3RR/4P3/8/b1P1p3/P3P3/4KP2/8 w - - 3 37",
+          "why": "Black's king on d8 has its own rooks on c8 and e8 beside it and a pawn on c7. White's rook on d7 checks from directly in front, protected by the pawn on e6, and covers e7."
+        }
+      },
+      "np": "an epaulette mate",
+      "blurb": "The king's own rooks block both sides while a queen or rook checks from the front."
+    },
+    {
+      "id": "swallows-tail-mate",
+      "name": "Swallow's tail mate",
+      "title": "Swallow's Tail Mate in Chess: Pattern, Examples and Puzzles",
+      "description": "The swallow's tail mate explained: a protected queen checks while the king's own pieces block its retreat. Worked puzzles, mistakes and FAQs.",
+      "match": "swallow['’]?s[- ]tail mate",
+      "answer": "A swallow's tail mate is a checkmate in which a queen, protected by another piece, checks the king from the square next to it, in a straight line, while the king's own pieces block the two squares diagonally behind it. The pieces form a V, like the tail of a swallow. It is also called the guéridon mate.",
+      "glance": [
+        [
+          "Delivered by",
+          "A queen, protected by a rook, bishop or other piece"
+        ],
+        [
+          "The king",
+          "Not on the edge, with its own pieces on both squares diagonally behind it"
+        ],
+        [
+          "Key square",
+          "The square next to the king, in a straight line, with the queen protected"
+        ],
+        [
+          "Also called",
+          "The guéridon mate"
+        ]
+      ],
+      "recognise": [
+        "A queen (sometimes a rook) can land on a square next to the king, in a straight line rather than diagonally, with a rook, bishop or other piece protecting it so the king cannot capture it.",
+        "The king's own pieces stand on the two squares diagonally behind it. Together with the queen, they make a V or Y shape.",
+        "The queen covers every other square around the king, so the only squares left are the ones the king's own pieces occupy.",
+        "The queen is often offered or placed with check to force the king onto the right square first, as in the examples below."
+      ],
+      "mistakes": [
+        "Playing the queen next to the king without support. If nothing protects it, the king captures it.",
+        "Confusing it with the dovetail mate. In the dovetail mate the queen is diagonally next to the king; in the swallow's tail it is next to the king in a straight line.",
+        "Defending: letting your own pieces gather on the squares behind a king that has stepped into the open. The pieces meant to protect the king become its cage."
+      ],
+      "faq": [
+        [
+          "What is a swallow's tail mate?",
+          "A checkmate in which a protected queen checks the king from a square next to it, in a straight line, while the king's own pieces block the two squares diagonally behind it. The shape looks like the tail of a swallow."
+        ],
+        [
+          "What is a guéridon mate?",
+          "It is another name for the swallow's tail mate. Wikipedia lists the two names together."
+        ],
+        [
+          "Is the swallow's tail the same as the dovetail mate?",
+          "No. Wikipedia treats them as separate patterns. In the dovetail mate the queen is diagonally next to the king; in the swallow's tail the queen is next to the king in a straight line."
+        ],
+        [
+          "How is it like the epaulette mate?",
+          "Both use the king's own pieces to block its escape and a check from directly in front. In the epaulette mate the blockers stand beside the king; in the swallow's tail they stand diagonally behind it."
+        ],
+        [
+          "How can I practise a swallow's tail mate?",
+          "Work through the puzzles on this page, then try the daily puzzles linked below. RankUp Chess, an offline chess academy for kids, has a library of 5,000+ puzzles you can filter by difficulty and theme. It is free to play, with no ads and no subscription."
+        ]
+      ],
+      "related": [
+        "epaulette-mate",
+        "dovetail-mate",
+        "back-rank-mate"
+      ],
+      "history": "Lichess describes the pattern as visually resembling a swallow's tail, similar to a V shape. Wikipedia lists the guéridon mate as another name for it.",
+      "sources": [
+        {
+          "name": "Wikipedia: Checkmate pattern",
+          "url": "https://en.wikipedia.org/wiki/Checkmate_pattern"
+        },
+        {
+          "name": "Lichess puzzle themes",
+          "url": "https://lichess.org/training/themes"
+        }
+      ],
+      "examples": {
+        "00CtS": {
+          "fen": "Q7/5qk1/p2p4/b1p1pr2/P7/6P1/4KP1R/8 w - - 4 39",
+          "why": "Black's king is on g6. White's queen on h6, protected by the rook on h2, checks from beside it. The king's own queen on f7 and rook on f5 block the two squares behind it, and the queen covers everything else."
+        },
+        "02jeT": {
+          "fen": "8/1kp5/1p1p4/4p3/4P2q/1PNP1Qb1/1PP3P1/5K2 b - - 3 38",
+          "why": "White's king is on e2. Black's queen on e1, protected by the bishop on g3, checks from directly in front. White's own pawn on d3 and queen on f3 block the two squares diagonally behind the king."
+        }
+      },
+      "np": "a swallow's tail mate",
+      "blurb": "A protected queen checks while the king's own pieces block the squares behind it."
+    },
+    {
+      "id": "opera-mate",
+      "name": "Opera mate",
+      "title": "Opera Mate in Chess: Pattern, Examples and Puzzles",
+      "description": "The opera mate explained: a rook checks on the back rank and a bishop protects it. Worked puzzles with solutions, common mistakes and FAQs.",
+      "match": "opera mate",
+      "answer": "The opera mate is a checkmate in which a rook gives check and a bishop protects the rook, while a pawn or another piece blocks the king's remaining escape. It is named after the game Paul Morphy won in 1858 at the Paris opera against the Duke of Brunswick and Count Isouard, which ended with this pattern.",
+      "glance": [
+        [
+          "Delivered by",
+          "A rook (check) and a bishop (protects the rook)"
+        ],
+        [
+          "The king",
+          "Usually on the back rank, with a pawn or piece restricting it"
+        ],
+        [
+          "Classic picture",
+          "King e8, pawn f7, White rook d8 and bishop g5"
+        ],
+        [
+          "Named after",
+          "Morphy's 1858 opera game"
+        ]
+      ],
+      "recognise": [
+        "A rook that can give check along the back rank, and a bishop on a diagonal that points at the rook's square, so the king cannot simply capture the rook.",
+        "A king whose other squares are closed. A pawn or another piece beside the king takes away the rest.",
+        "The classic picture: Black king on e8, Black pawn on f7, White rook on d8 and White bishop on g5.",
+        "The rook is often brought to the back rank by a sacrifice that removes the last defender. Morphy's own game finished with a queen sacrifice.",
+        "The worked puzzles below all end with a rook protected by a bishop, although the king is not on e8. The rook-and-bishop idea is the same."
+      ],
+      "mistakes": [
+        "Giving check with a rook the bishop does not protect. The king takes it.",
+        "Forgetting to check the bishop's diagonal. If a piece stands in the way, the rook is not protected.",
+        "Defending: leaving the king in the centre or on the back rank while the opponent's rook and bishop line up. Develop your pieces and castle."
+      ],
+      "faq": [
+        [
+          "What is the opera mate?",
+          "A checkmate in which a rook gives the check, a bishop protects the rook, and a pawn or another piece restricts the king's escape. It usually happens on the back rank."
+        ],
+        [
+          "Why is it called the opera mate?",
+          "It is named after the game Paul Morphy played in 1858 in Paris against the Duke of Brunswick and Count Isouard, played during a performance at the opera and known as the Opera Game."
+        ],
+        [
+          "How is the opera mate different from Pillsbury's mate?",
+          "Both use a rook and a bishop. In the opera mate the bishop protects the rook that gives the check. In Pillsbury's mate the bishop takes away the king's escape squares."
+        ],
+        [
+          "How can I practise the opera mate?",
+          "Work through the puzzles on this page, then try the daily puzzles linked below. RankUp Chess, an offline chess academy for kids, has a library of 5,000+ puzzles you can filter by difficulty and theme. It is free to play, with no ads and no subscription."
+        ]
+      ],
+      "related": [
+        "back-rank-mate",
+        "pillsburys-mate",
+        "morphys-mate"
+      ],
+      "history": "It is named after the Opera Game, played in 1858 in Paris, in which Paul Morphy beat the Duke of Brunswick and Count Isouard, who played together, during a performance at the opera.",
+      "sources": [
+        {
+          "name": "Wikipedia: Checkmate pattern",
+          "url": "https://en.wikipedia.org/wiki/Checkmate_pattern"
+        },
+        {
+          "name": "Wikipedia: Opera Game",
+          "url": "https://en.wikipedia.org/wiki/Opera_Game"
+        },
+        {
+          "name": "Lichess puzzle themes",
+          "url": "https://lichess.org/training/themes"
+        }
+      ],
+      "examples": {
+        "00nZE": {
+          "fen": "r1b1r3/pp1p1p1k/2n2Bp1/2p1qp2/2B1P3/3P1R2/PPP3PP/R5K1 w - - 0 17",
+          "why": "Black's king ends on g8. White's rook on h8 gives the check along the back rank, protected by the bishop on f6, which also covers g7, and Black's own pawn on f7 takes away the last square. The king is on g8 rather than e8, but the rook-and-bishop idea is the same."
+        },
+        "00LNB": {
+          "fen": "kr6/1pR4p/p4R2/n7/P3p3/3rB3/6PP/6K1 w - - 1 39",
+          "why": "Black's king is in the corner on a8, with its own rook beside it on b8. White's rook gives the check from a7 along the a-file and covers b7, and the bishop on e3 protects it. The mate lands on the edge file rather than the back rank, but again the bishop protects the rook."
+        },
+        "00vl5": {
+          "fen": "5r2/p1k2qpp/2n5/2N1p3/2b5/1PP1B3/P2Q2PP/4R1K1 b - - 0 24",
+          "why": "White's king on g1 is shut in by its own pawns on g2 and h2. Black's rook on f1 gives the check along the first rank, and the bishop on c4 protects it."
+        }
+      },
+      "np": "the opera mate",
+      "blurb": "A rook checks on the back rank and a bishop protects it."
+    },
+    {
+      "id": "pillsburys-mate",
+      "name": "Pillsbury's mate",
+      "title": "Pillsbury's Mate in Chess: Pattern, Examples and Puzzles",
+      "description": "Pillsbury's mate explained: a rook gives the check while a bishop cuts off the king's escape. Worked puzzles with solutions, mistakes and FAQs.",
+      "match": "pillsbury['’]?s mate",
+      "answer": "Pillsbury's mate is a checkmate in which a rook gives the check while a bishop takes away the king's escape squares. It is named after the American master Harry Nelson Pillsbury and is the mirror of Morphy's mate, where the bishop gives the check and the rook confines the king.",
+      "glance": [
+        [
+          "Delivered by",
+          "A rook (check) and a bishop (covers an escape square)"
+        ],
+        [
+          "The king",
+          "Castled, usually on g8 or g1, beside its own pawns"
+        ],
+        [
+          "Key square",
+          "The square the bishop covers, such as h7 for a king on g8"
+        ],
+        [
+          "Mirror of",
+          "Morphy's mate"
+        ]
+      ],
+      "recognise": [
+        "A rook that can give check along the king's rank or file, and a bishop that already covers one of the king's escape squares.",
+        "A castled king beside its own pawns. The pawns, the rook and the bishop between them take care of every square.",
+        "The bishop's diagonal is the key. In the first example below the bishop on e4 covers h7, the one square a king on g8 could otherwise use.",
+        "Compare it with Morphy's mate. In Pillsbury's mate the rook delivers the mate and the bishop confines the king; in Morphy's mate the roles are swapped."
+      ],
+      "mistakes": [
+        "Moving the bishop off its diagonal too early. It is the piece that closes the escape square.",
+        "Counting the king's squares carelessly. One uncovered square is enough for the king to survive.",
+        "Defending: leaving the diagonal next to the castled king open. A pawn or piece on the bishop's path, such as a pawn on g6, stops it."
+      ],
+      "faq": [
+        [
+          "What is Pillsbury's mate?",
+          "A checkmate in which a rook gives the check while a bishop cuts off the king's escape. Wikipedia describes it as attacking the king with the rook while the bishop is cutting off the king."
+        ],
+        [
+          "Who was Pillsbury?",
+          "Harry Nelson Pillsbury was an American chess master, and the mate is named after him. Wikipedia notes that it is very similar to Morphy's mate."
+        ],
+        [
+          "What is the difference between Pillsbury's mate and Morphy's mate?",
+          "The roles are swapped. In Pillsbury's mate a rook delivers the checkmate and a bishop confines the king. In Morphy's mate a bishop delivers the checkmate and a rook confines the king."
+        ],
+        [
+          "How can I practise Pillsbury's mate?",
+          "Work through the puzzles on this page, then try the daily puzzles linked below. RankUp Chess, an offline chess academy for kids, has a library of 5,000+ puzzles you can filter by difficulty and theme. It is free to play, with no ads and no subscription."
+        ]
+      ],
+      "related": [
+        "morphys-mate",
+        "opera-mate",
+        "back-rank-mate"
+      ],
+      "history": "It is named after the American master Harry Nelson Pillsbury.",
+      "sources": [
+        {
+          "name": "Wikipedia: Checkmate pattern",
+          "url": "https://en.wikipedia.org/wiki/Checkmate_pattern"
+        },
+        {
+          "name": "Lichess puzzle themes",
+          "url": "https://lichess.org/training/themes"
+        }
+      ],
+      "examples": {
+        "01Md6": {
+          "fen": "6k1/p4pp1/7p/4r3/P2pB3/4n2P/1r4P1/2R1R2K w - - 0 30",
+          "why": "Black's king is on g8 with its own pawns on f7 and g7. White's rook on e8 gives the check along the back rank, and White's bishop on e4 covers h7, the one square the king might have used."
+        },
+        "01RPd": {
+          "fen": "1R2Q3/6k1/6p1/6P1/2p1b3/2Pn2pP/r7/6K1 b - - 0 38",
+          "why": "White's king is on g1. Black's rook on b1 gives the check along the first rank, Black's bishop on e4 covers g2, and Black's pawn on g3 covers f2 and h2."
+        },
+        "02dPT": {
+          "fen": "3r2k1/p4pp1/1p3b1p/3Q1B2/5p2/2q4P/P4PP1/3R2K1 w - - 2 32",
+          "why": "Black's king is on g8 with pawns on f7 and g7. White's rook on d8 gives the check along the back rank and White's bishop on f5 covers h7."
+        }
+      },
+      "np": "Pillsbury's mate",
+      "blurb": "A rook gives the mate while a bishop cuts off the king's escape."
+    },
+    {
+      "id": "morphys-mate",
+      "name": "Morphy's mate",
+      "title": "Morphy's Mate in Chess: Pattern, Examples and Puzzles",
+      "description": "Morphy's mate explained: a bishop gives the check while a rook and a pawn confine the king. A worked puzzle with the solution, mistakes and FAQs.",
+      "match": "morphy['’]?s mate",
+      "answer": "Morphy's mate is a checkmate in which a bishop gives the check while a rook, helped by one of the king's own pawns, confines the king. It is named after Paul Morphy and is the mirror of Pillsbury's mate. With a bishop on f6, a rook on the g-file shuts in a king on h8.",
+      "glance": [
+        [
+          "Delivered by",
+          "A bishop (check) and a rook (confines the king)"
+        ],
+        [
+          "The king",
+          "In the corner or castled, with its own pawn beside it"
+        ],
+        [
+          "Key squares",
+          "For a king on h8: bishop on f6, rook on the g-file"
+        ],
+        [
+          "Mirror of",
+          "Pillsbury's mate"
+        ]
+      ],
+      "recognise": [
+        "A bishop on the long diagonal pointing at the king's corner, such as f6 for a king on h8.",
+        "A rook on the neighbouring file, such as the g-file, that takes away the squares beside the king. The king's own pawn on h7 closes the rest.",
+        "Wikipedia's example: with a bishop on f6, White plays Rxg7+ Kh8 and then Rg6 is mate.",
+        "In many ways it is like the corner mate, but the bishop, not a knight, gives the check."
+      ],
+      "mistakes": [
+        "Giving the bishop check before the rook controls the neighbouring file. The king steps out sideways.",
+        "Blocking your own bishop. Check that the long diagonal is open all the way to the king.",
+        "Defending: leaving the long diagonal open beside a castled or cornered king. A piece on the diagonal, or a pawn move that gives the king room, ends the idea."
+      ],
+      "faq": [
+        [
+          "What is Morphy's mate?",
+          "A checkmate in which a bishop attacks the king while a rook and one of the king's own pawns confine it."
+        ],
+        [
+          "Who was Paul Morphy?",
+          "Paul Morphy was an American chess master of the nineteenth century, and the mate is named after him. He also played the 1858 Opera Game in Paris, which gave the opera mate its name."
+        ],
+        [
+          "What is the difference between Morphy's mate and Pillsbury's mate?",
+          "The roles are swapped. In Morphy's mate a bishop gives the check and a rook confines the king. In Pillsbury's mate a rook gives the check and a bishop confines the king."
+        ],
+        [
+          "How can I practise Morphy's mate?",
+          "Work through the puzzles on this page, then try the daily puzzles linked below. RankUp Chess, an offline chess academy for kids, has a library of 5,000+ puzzles you can filter by difficulty and theme. It is free to play, with no ads and no subscription."
+        ]
+      ],
+      "related": [
+        "pillsburys-mate",
+        "corner-mate",
+        "arabian-mate"
+      ],
+      "history": "It is named after Paul Morphy, the American master of the Opera Game.",
+      "sources": [
+        {
+          "name": "Wikipedia: Checkmate pattern",
+          "url": "https://en.wikipedia.org/wiki/Checkmate_pattern"
+        },
+        {
+          "name": "Wikipedia: Opera Game",
+          "url": "https://en.wikipedia.org/wiki/Opera_Game"
+        },
+        {
+          "name": "Lichess puzzle themes",
+          "url": "https://lichess.org/training/themes"
+        }
+      ],
+      "examples": {
+        "01yBt": {
+          "fen": "4k1r1/2p4Q/pN3r2/1p6/1P6/P2B3P/7K/3b4 b - - 0 44",
+          "why": "White's king is on h1. Black's bishop on f3 gives the check along the long diagonal, protected by the rook on f2, which also covers h2. The rook on g8 controls the g-file, so g1 and g2 are covered too."
+        }
+      },
+      "np": "Morphy's mate",
+      "blurb": "A bishop gives the mate while a rook and a pawn confine the king."
+    },
+    {
+      "id": "corner-mate",
+      "name": "Corner mate",
+      "title": "Corner Mate in Chess: Pattern, Examples and Puzzles",
+      "description": "The corner mate explained: a rook or queen confines the king to the corner and a knight gives the final check. A worked puzzle, mistakes and FAQs.",
+      "match": "corner mate",
+      "answer": "A corner mate is a checkmate in which a rook or queen confines the king to a corner and a knight delivers the final check. The heavy piece takes away the squares beside the king, and because a knight's check cannot be blocked, the king has no answer. For a king on h8, the knight mates from f7 or g6.",
+      "glance": [
+        [
+          "Delivered by",
+          "A knight (check), with a rook or queen confining the king"
+        ],
+        [
+          "The king",
+          "On a corner square"
+        ],
+        [
+          "Key squares",
+          "For a king on h8: the heavy piece covers g8, g7 and h7, and the knight checks from f7 or g6"
+        ],
+        [
+          "Compare",
+          "The Arabian mate, where the rook gives the check"
+        ]
+      ],
+      "recognise": [
+        "The king is on or near a corner, with few squares to go to.",
+        "A queen or rook can cover the squares beside the king, usually by landing on the next file with check.",
+        "A knight is one jump from a checking square. For a king on h8, those squares are f7 and g6.",
+        "Look for a first check that leaves the king only one move, into the corner. In the worked puzzle, Qg6+ leaves only Kh8 and the knight finishes with Nf7.",
+        "A pawn can seal the last escape square too, as Wikipedia notes."
+      ],
+      "mistakes": [
+        "Checking in a way that lets the king run out of the corner. Before you check, make sure its only reply is into the corner.",
+        "Forgetting the knight's route. Count the jumps: the mate fails if the knight needs two moves to reach the checking square.",
+        "Defending: keeping the king on the corner with no defender for f7 or g6 (for a king on h8). The knight's check cannot be blocked, so those squares must be covered."
+      ],
+      "faq": [
+        [
+          "What is a corner mate?",
+          "A checkmate in which a rook or queen confines the king to a corner and a knight delivers the check. Lichess describes it as confining the king to the corner with a rook or queen and using a knight to deliver the checkmate."
+        ],
+        [
+          "How is the corner mate different from the Arabian mate?",
+          "In the Arabian mate the rook gives the check and the knight supports it. In the corner mate the rook or queen only confines the king, and the knight gives the check."
+        ],
+        [
+          "Why can't you block a knight's check?",
+          "A knight jumps over the pieces in between, so the only ways to answer its check are to capture the knight or move the king. In a corner mate neither is possible."
+        ],
+        [
+          "How can I practise a corner mate?",
+          "Work through the puzzles on this page, then try the daily puzzles linked below. RankUp Chess, an offline chess academy for kids, has a library of 5,000+ puzzles you can filter by difficulty and theme. It is free to play, with no ads and no subscription."
+        ]
+      ],
+      "related": [
+        "arabian-mate",
+        "morphys-mate",
+        "anastasias-mate"
+      ],
+      "history": null,
+      "sources": [
+        {
+          "name": "Wikipedia: Checkmate pattern",
+          "url": "https://en.wikipedia.org/wiki/Checkmate_pattern"
+        },
+        {
+          "name": "Lichess puzzle themes",
+          "url": "https://lichess.org/training/themes"
+        }
+      ],
+      "examples": {
+        "01IFr": {
+          "fen": "6k1/pp6/1bpN3p/4P1p1/7q/3Q3P/PP4P1/7K w - - 0 29",
+          "why": "Black's king is on h8. White's queen on g6 covers g8, g7 and h7, and the knight on f7 gives the check. No Black piece can capture the knight."
+        }
+      },
+      "np": "a corner mate",
+      "blurb": "A rook or queen confines the king to the corner and a knight gives the mate."
+    },
+    {
+      "id": "bodens-mate",
+      "name": "Boden's mate",
+      "title": "Boden's Mate in Chess: Pattern, Examples and Puzzles",
+      "description": "Boden's mate explained: two bishops on criss-crossing diagonals mate a king boxed in by its own pieces. A worked puzzle, mistakes and FAQs.",
+      "match": "boden['’]?s mate",
+      "answer": "Boden's mate is a checkmate delivered by two bishops on criss-crossing diagonals against a king whose escape squares are blocked by its own pieces or covered by the bishops. The king has usually castled queenside and is mated on c8 or c1. It often follows a queen sacrifice that opens the diagonal.",
+      "glance": [
+        [
+          "Delivered by",
+          "Two bishops on crossing diagonals"
+        ],
+        [
+          "The king",
+          "Usually castled queenside, on c8 or c1, hemmed in by its own pieces"
+        ],
+        [
+          "Classic picture",
+          "Black king c8, White bishops on a6 and f4"
+        ],
+        [
+          "Often starts with",
+          "A queen sacrifice that opens the diagonal"
+        ]
+      ],
+      "recognise": [
+        "The king has castled queenside and sits on c8 (or c1), with its own pieces, often a rook and a pawn or knight, on d8 and d7.",
+        "One bishop can reach the diagonal that checks the king, such as a6 for a king on c8. The other bishop covers the remaining squares from the crossing diagonal, such as f4.",
+        "Look for a queen sacrifice that pulls a pawn or piece onto the diagonal square, for example Qxc6+ bxc6 and then Ba6 mate.",
+        "The pattern has other versions, such as a king on e8 mated by bishops on g6 and a3."
+      ],
+      "mistakes": [
+        "Starting the sacrifice before both bishops can reach their squares. Check both diagonals first.",
+        "Assuming Black must take. Check every reply to the sacrifice, because if the king can step away or another piece can capture, the combination changes.",
+        "Defending: castling queenside while the opponent has both bishops pointing at that side. Keep a pawn or piece guarding the key diagonal squares."
+      ],
+      "faq": [
+        [
+          "What is Boden's mate?",
+          "A checkmate in which two bishops on criss-crossing diagonals mate a king whose escape squares are blocked by its own pieces or covered by the bishops."
+        ],
+        [
+          "Why is it called Boden's mate?",
+          "It is named after Samuel Boden, who played a famous early example in a game against Schulder in London in 1853. Wikipedia notes that the pattern had been seen earlier, in a game between Horwitz and Popert in Hamburg in 1844."
+        ],
+        [
+          "Which king does Boden's mate usually catch?",
+          "A king that has castled queenside. It is most often mated on c8 or c1."
+        ],
+        [
+          "How can I practise Boden's mate?",
+          "Work through the puzzles on this page, then try the daily puzzles linked below. RankUp Chess, an offline chess academy for kids, has a library of 5,000+ puzzles you can filter by difficulty and theme. It is free to play, with no ads and no subscription."
+        ]
+      ],
+      "related": [
+        "pillsburys-mate",
+        "morphys-mate",
+        "back-rank-mate"
+      ],
+      "history": "It is named after Samuel Boden, who played a famous early example against Schulder in London in 1853. The pattern had appeared earlier, in Horwitz against Popert in Hamburg in 1844.",
+      "sources": [
+        {
+          "name": "Wikipedia: Boden's mate",
+          "url": "https://en.wikipedia.org/wiki/Boden%27s_Mate"
+        },
+        {
+          "name": "Wikipedia: Checkmate pattern",
+          "url": "https://en.wikipedia.org/wiki/Checkmate_pattern"
+        },
+        {
+          "name": "Lichess puzzle themes",
+          "url": "https://lichess.org/training/themes"
+        }
+      ],
+      "examples": {
+        "01z9G": {
+          "fen": "2kr1b1r/pp1n1pp1/2p1pnp1/8/2Bq1BP1/2N2Q1P/PPP2P2/2K1R2R w - - 0 16",
+          "why": "Black's king is on c8 with its own rook on d8 and knight on d7. White's bishop on a6 gives the check and covers b7, and the bishop on f4 covers c7 and b8."
+        }
+      },
+      "np": "Boden's mate",
+      "blurb": "Two bishops on crossing diagonals mate a king hemmed in by its own pieces."
+    },
+    {
+      "id": "smothered-mate",
+      "name": "Smothered mate",
+      "title": "Smothered Mate in Chess: Pattern, Examples and Puzzles",
+      "description": "Smothered mate explained: a knight checks a king boxed in by its own pieces. How to spot it, worked puzzles with solutions, mistakes and FAQs.",
+      "match": "smothered mate",
+      "answer": "A smothered mate is a checkmate delivered by a knight against a king that cannot move because its own pieces completely surround it. A knight is the one piece that can jump over those blockers to give the check. It is usually seen in a corner, where only three pieces are needed to surround the king.",
+      "glance": [
+        [
+          "Delivered by",
+          "A knight"
+        ],
+        [
+          "The king",
+          "Usually in a corner, surrounded by its own pieces"
+        ],
+        [
+          "Famous version",
+          "Philidor's legacy: Qg8+ Rxg8 and Nf7 mate"
+        ],
+        [
+          "Why a knight",
+          "It jumps over the blockers"
+        ]
+      ],
+      "recognise": [
+        "The king is in a corner with its own pieces on every square next to it, often a rook and two pawns.",
+        "A knight can reach a checking square. For a king on h8, those squares are f7 and g6.",
+        "The famous version, known as Philidor's legacy: a king on h8 with pawns on g7 and h7 and a rook on f8. The queen sacrifices on g8 with check, the rook has to take, and now the king is boxed in by its own rook and pawns. The knight mates on f7.",
+        "Look for a forcing sacrifice, usually a check, that removes the one square the king could use or forces a piece to fill it."
+      ],
+      "mistakes": [
+        "Missing the knight's route. Count whether the knight can reach the checking square in the number of moves you have.",
+        "Sacrificing without checking that the defender is forced to take. If the opponent can decline, the idea fails.",
+        "Defending: castling and then boxing in the king with your own rook and pawns. Give the king a flight square so that one knight check is not the end."
+      ],
+      "faq": [
+        [
+          "What is a smothered mate?",
+          "A checkmate delivered by a knight in which the king cannot move because it is completely surrounded by its own pieces, which a knight can jump over."
+        ],
+        [
+          "Why is the knight the piece that gives a smothered mate?",
+          "Pieces that move along lines, such as the queen, rook and bishop, are stopped by the king's own pieces. A knight jumps over them to give the check."
+        ],
+        [
+          "What is Philidor's legacy?",
+          "The best-known smothered mate: the queen sacrifices on g8 with check, the rook takes, and the knight mates on f7. Wikipedia notes it is also called Philidor's mate, and that it is documented long before Philidor."
+        ],
+        [
+          "How can I practise a smothered mate?",
+          "Work through the puzzles on this page, then try the daily puzzles linked below. RankUp Chess, an offline chess academy for kids, has a library of 5,000+ puzzles you can filter by difficulty and theme. It is free to play, with no ads and no subscription."
+        ]
+      ],
+      "related": [
+        "arabian-mate",
+        "corner-mate",
+        "anastasias-mate"
+      ],
+      "history": "The most famous version is known as Philidor's mate or Philidor's legacy, after François-André Danican Philidor, although Wikipedia notes that it was documented several hundred years before him.",
+      "sources": [
+        {
+          "name": "Wikipedia: Smothered mate",
+          "url": "https://en.wikipedia.org/wiki/Smothered_mate"
+        },
+        {
+          "name": "Wikipedia: Checkmate pattern",
+          "url": "https://en.wikipedia.org/wiki/Checkmate_pattern"
+        },
+        {
+          "name": "Lichess puzzle themes",
+          "url": "https://lichess.org/training/themes"
+        }
+      ],
+      "examples": {},
+      "np": "a smothered mate",
+      "blurb": "A knight mates a king surrounded by its own pieces."
+    },
+    {
+      "id": "hook-mate",
+      "name": "Hook mate",
+      "title": "Hook Mate in Chess: Pattern, Examples and Puzzles",
+      "description": "Hook mate explained: a rook, knight and pawn work together while an enemy pawn blocks the king. How to spot it, mistakes and FAQs.",
+      "match": "hook mate",
+      "answer": "A hook mate is a checkmate made by a rook, a knight and a pawn working together, with one of the enemy king's own pawns blocking an escape. The rook gives the check and is protected by the knight, and the knight is protected by the pawn, which also covers one of the king's escape squares.",
+      "glance": [
+        [
+          "Delivered by",
+          "A rook (check), protected by a knight, protected by a pawn"
+        ],
+        [
+          "The king",
+          "Blocked by one of its own pawns"
+        ],
+        [
+          "Classic picture",
+          "Black king e7 and pawn f7, White rook e8, knight f6 and pawn e5"
+        ],
+        [
+          "Chain",
+          "Pawn protects knight, knight protects rook"
+        ]
+      ],
+      "recognise": [
+        "A chain of three pieces: the rook gives the check, the knight protects the rook, and the pawn protects the knight.",
+        "The pawn also takes away one of the king's escape squares.",
+        "The king's own pawn blocks another square, so the king has nowhere left to go.",
+        "The classic picture: Black king on e7, Black pawn on f7, White rook on e8, knight on f6 and pawn on e5."
+      ],
+      "mistakes": [
+        "Breaking the chain. If the pawn or the knight is not protected, the king or a defender can capture it.",
+        "Forgetting the squares the pawn covers. Check each escape square against the rook, knight and pawn.",
+        "Defending: allowing an enemy pawn to reach the square that supports a knight next to the king."
+      ],
+      "faq": [
+        [
+          "What is a hook mate?",
+          "A checkmate made with a rook, a knight and a pawn, in which an enemy pawn blocks the king's escape. The rook is protected by the knight, the knight is protected by the pawn, and the pawn also attacks one of the king's escape squares."
+        ],
+        [
+          "How can I practise a hook mate?",
+          "Work through the puzzles on this page, then try the daily puzzles linked below. RankUp Chess, an offline chess academy for kids, has a library of 5,000+ puzzles you can filter by difficulty and theme. It is free to play, with no ads and no subscription."
+        ]
+      ],
+      "related": [
+        "smothered-mate",
+        "arabian-mate",
+        "anastasias-mate"
+      ],
+      "history": null,
+      "sources": [
+        {
+          "name": "Wikipedia: Checkmate pattern",
+          "url": "https://en.wikipedia.org/wiki/Checkmate_pattern"
+        },
+        {
+          "name": "Lichess puzzle themes",
+          "url": "https://lichess.org/training/themes"
+        }
+      ],
+      "examples": {},
+      "np": "a hook mate",
+      "blurb": "A rook, knight and pawn chain mates a king with an enemy pawn blocking it."
+    },
+    {
+      "id": "dovetail-mate",
+      "name": "Dovetail mate",
+      "title": "Dovetail Mate in Chess: Pattern, Examples and Puzzles",
+      "description": "Dovetail mate explained: a queen checks diagonally while the king's own pieces block its other squares. How to spot it, mistakes and FAQs.",
+      "match": "dovetail mate",
+      "answer": "A dovetail mate is a checkmate in which a queen gives check from a square diagonally next to the king, while the king's own pieces block its only two other escape squares. It is also known as Cozio's mate, named after a study by Carlo Cozio published in 1766.",
+      "glance": [
+        [
+          "Delivered by",
+          "A queen, next to the king on a diagonal"
+        ],
+        [
+          "The king",
+          "With its own pieces blocking its only two other flight squares"
+        ],
+        [
+          "Also called",
+          "Cozio's mate"
+        ],
+        [
+          "Compare",
+          "The swallow's tail mate, where the queen is next to the king in a straight line"
+        ]
+      ],
+      "recognise": [
+        "A queen can land on a square diagonally next to the king.",
+        "The king's own pieces occupy its only two other escape squares, side by side.",
+        "How the queen is supported does not matter, according to Wikipedia.",
+        "Compare it with the swallow's tail mate, where the queen is next to the king in a straight line."
+      ],
+      "mistakes": [
+        "Placing the queen where the king can capture it. The queen needs support or a square the king cannot reach.",
+        "Confusing it with the swallow's tail mate. The queen's position, diagonal or straight, is what separates them.",
+        "Defending: leaving your own pieces on the squares beside an exposed king. They block its only escape."
+      ],
+      "faq": [
+        [
+          "What is a dovetail mate?",
+          "A checkmate in which a queen delivers the check from a square diagonally next to the king, and the king's only two other escape squares are blocked by its own pieces."
+        ],
+        [
+          "Why is it called Cozio's mate?",
+          "Wikipedia says the dovetail mate is also known as Cozio's mate, named after a study by Carlo Cozio published in 1766."
+        ],
+        [
+          "How is the dovetail mate different from the swallow's tail mate?",
+          "Wikipedia treats them as separate patterns. In the dovetail mate the queen is diagonally next to the king; in the swallow's tail mate the queen is next to the king in a straight line."
+        ],
+        [
+          "How can I practise a dovetail mate?",
+          "Work through the puzzles on this page, then try the daily puzzles linked below. RankUp Chess, an offline chess academy for kids, has a library of 5,000+ puzzles you can filter by difficulty and theme. It is free to play, with no ads and no subscription."
+        ]
+      ],
+      "related": [
+        "swallows-tail-mate",
+        "epaulette-mate",
+        "back-rank-mate"
+      ],
+      "history": "Wikipedia says the dovetail mate is also known as Cozio's mate, named after a study by Carlo Cozio published in 1766.",
+      "sources": [
+        {
+          "name": "Wikipedia: Checkmate pattern",
+          "url": "https://en.wikipedia.org/wiki/Checkmate_pattern"
+        },
+        {
+          "name": "Lichess puzzle themes",
+          "url": "https://lichess.org/training/themes"
+        }
+      ],
+      "examples": {},
+      "np": "a dovetail mate",
+      "blurb": "A queen checks from a diagonal while the king's own pieces block its other squares."
+    }
+  ]
+}

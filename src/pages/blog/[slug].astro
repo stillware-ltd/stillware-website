@@ -1,6 +1,7 @@
 ---
 import Layout from '../../layouts/Layout.astro';
 import StoreLinks from '../../components/StoreLinks.astro';
+import GuideLinks from '../../components/GuideLinks.astro';
 import { getCollection } from 'astro:content';
 import sharp from 'sharp';
 import { join } from 'node:path';
@@ -197,6 +198,8 @@ const faqSchema = faqItems.length >= 2 ? {
         <div class="post-body">
             <Content />
         </div>
+
+        <GuideLinks post={post} />
 
         {post.data.pillar === 'daily-puzzle' && (
             <aside class="puzzle-hub-link">

@@ -1,5 +1,6 @@
 ---
 title: "£2,000 of the Bonus Went Somewhere. Nobody Can Say Where."
+seoTitle: "What to Do With an Annual Bonus: A Worked UK Example"
 date: 2026-10-06
 description: "An £11,000 bonus was gone by June and £2,000 of it could not be traced. It turned out the bonus had never been extra money at all."
 author: "Stillware Team"

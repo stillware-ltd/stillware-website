@@ -1,0 +1,79 @@
+---
+// "Part of the guide" block under an article (SEO strategy 6.3, 2026-10-07). Gives every new article inbound and outbound
+// links to the evergreen pages Google already trusts:
+//   - a Shorts worked example   -> the Budgeting guide (its theme's section) and two pillar pages for that theme;
+//   - a daily chess puzzle      -> the pattern pages for the mates it teaches, and the Checkmate patterns hub.
+// Renders nothing for any other post, and drops a link whose target page does not exist, so it can never add a broken link.
+import { getCollection } from 'astro:content';
+import { PATTERNS, patternIndex, patternsForPost, themeOf, themeAnchor } from '../lib/guides.mjs';
+
+const { post } = Astro.props;
+const posts = await getCollection('blog');
+const slugs = new Set(posts.map((p) => p.slug));
+const exists = (href: string) => {
+  const blog = href.match(/^\/blog\/([^/]+)\/$/);
+  return blog ? slugs.has(blog[1]) : true; // /tools/ pages are checked by verify-links after the build
+};
+const titleOf = (href: string) => {
+  const blog = href.match(/^\/blog\/([^/]+)\/$/);
+  if (blog) return posts.find((p) => p.slug === blog[1])?.data.title ?? href;
+  const tool: Record<string, string> = {
+    '/tools/50-30-20-budget-calculator/': '50/30/20 budget calculator',
+    '/tools/zero-based-budget-calculator/': 'Zero-based budget calculator',
+    '/tools/savings-goal-calculator/': 'Savings goal calculator',
+    '/tools/debt-payoff-calculator/': 'Debt payoff calculator',
+    '/tools/subscription-cost-calculator/': 'Subscription cost calculator',
+    '/tools/net-worth-calculator/': 'Net worth calculator',
+  };
+  return tool[href] ?? href;
+};
+
+let heading = '';
+let intro = '';
+let links: { href: string; text: string }[] = [];
+let hub: { href: string; text: string } | null = null;
+
+if (post.data.pillar === 'shorts') {
+  const theme = themeOf(post);
+  heading = 'Part of the Budgeting guide';
+  intro = 'This worked example sits in the Budgeting guide. Read more like it, or go deeper on the same money problem.';
+  if (theme.slug) links.push({ href: `/budgeting/#${themeAnchor(theme.slug)}`, text: `More worked examples: ${theme.label}` });
+  for (const href of theme.pillars.filter(exists).slice(0, 2)) links.push({ href, text: titleOf(href) });
+  hub = { href: '/budgeting/', text: 'The full Budgeting guide' };
+} else if (post.data.pillar === 'daily-puzzle') {
+  const index = patternIndex(posts);
+  const named = patternsForPost(post, index);
+  if (named.length) {
+    heading = 'Part of the Checkmate patterns guide';
+    intro = 'Learn the mate in this puzzle properly: what it is, how to recognise it and more worked examples.';
+    for (const p of named) links.push({ href: `/chess/checkmate-patterns/${p.id}/`, text: `${p.name} in chess: pattern, examples and puzzles` });
+    hub = { href: '/chess/checkmate-patterns/', text: 'All checkmate patterns' };
+  }
+}
+---
+
+{links.length > 0 && (
+  <aside class="guide-links" aria-labelledby="guide-links-heading">
+    <h2 id="guide-links-heading">{heading}</h2>
+    <p>{intro}</p>
+    <ul>
+      {links.map((l) => <li><a href={l.href}>{l.text}</a></li>)}
+      {hub && <li><a href={hub.href}>{hub.text}</a></li>}
+    </ul>
+  </aside>
+)}
+
+<style>
+  .guide-links {
+    max-width: 760px;
+    margin: 2rem auto;
+    padding: 1.1rem 1.25rem;
+    border-left: 4px solid var(--color-primary);
+    background: rgba(148, 163, 184, 0.1);
+    border-radius: 0 12px 12px 0;
+  }
+  .guide-links h2 { font-size: 1.15rem; margin: 0 0 0.4rem; }
+  .guide-links p { margin: 0 0 0.6rem; line-height: 1.6; }
+  .guide-links ul { margin: 0; padding-left: 1.2rem; display: grid; gap: 0.3rem; }
+  .guide-links a { color: var(--color-primary); font-weight: 600; }
+</style>

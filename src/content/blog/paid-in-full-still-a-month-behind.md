@@ -1,5 +1,6 @@
 ---
 title: "Paid in Full. Still a Month Behind."
+seoTitle: "Paying a Credit Card in Full but a Month Behind: Example"
 date: 2026-10-06
 description: "She paid her credit card in full every month and was still a month behind. Two numbers on payday showed the float, and one envelope ended it."
 author: "Stillware Team"

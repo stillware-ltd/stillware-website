@@ -1,5 +1,6 @@
 ---
 title: "Same Pay. One Knows Where It Went."
+seoTitle: "Unknown Payments on Your Bank Statement: A Worked Example"
 date: 2026-10-06
 description: "A nurse had £340 a month she could not account for. Fifteen minutes with a colleague showed it went on work lunches and parking."
 author: "Stillware Team"

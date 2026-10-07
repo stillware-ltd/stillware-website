@@ -1,5 +1,6 @@
 ---
 title: "£2,000 a Month in Pay Rises. He Kept £70."
+seoTitle: "Where Did My Pay Rise Go? A Worked UK Example"
 date: 2026-10-06
 description: "A software engineer's take-home rose £2,000 a month in four years while his savings rose £70. The gap was twenty small yeses."
 author: "Stillware Team"
