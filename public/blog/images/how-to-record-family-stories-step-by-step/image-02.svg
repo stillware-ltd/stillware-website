@@ -1,0 +1,171 @@
+
+
+
+
+
+
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 390" width="1200" height="390">
+  <style>
+    text { font-family: Inter, system-ui, -apple-system, sans-serif; }
+  </style>
+
+  <rect width="1200" height="390" fill="#f0fdf4"/>
+
+  <!-- Background pattern (per-article variation) -->
+  <rect width="1200" height="675" fill="#ecfdf5" opacity="0.4"/>
+
+  <!-- Subtle top accent bar -->
+  <rect width="1200" height="4" fill="#92400e"/>
+
+  <!-- Title -->
+  <text x="600" y="50" text-anchor="middle" font-size="28" font-weight="700" fill="#1e293b">Simple workflow for organizing recorded family interviews</text>
+
+  <!-- Step accent colors (theme-aware with alternation) -->
+  
+
+  
+  
+  
+  
+
+  <!-- Step circle -->
+  <circle cx="197" cy="125" r="28" fill="#92400e"/>
+  <circle cx="197" cy="125" r="28" fill="none" stroke="#92400e" stroke-width="3" opacity="0.25"/>
+  <text x="197" y="133" text-anchor="middle" font-size="18" font-weight="700" fill="#ffffff">1</text>
+
+  <!-- Connector line from circle to box -->
+  <line x1="197" y1="153" x2="197" y2="180" stroke="#92400e" stroke-width="2"/>
+
+  <!-- Step box -->
+  <rect x="115" y="180" width="165" height="155" rx="14" fill="#ecfdf5" stroke="#e2e8f0" stroke-width="1.5"/>
+  <rect x="115" y="180" width="165" height="4" rx="2" fill="#92400e"/>
+  <text x="197" y="216" text-anchor="middle" font-size="16" font-weight="600" fill="#1e293b">Record Session</text>
+
+  <!-- Description -->
+  <foreignObject x="125" y="224" width="145" height="100">
+    <p xmlns="http://www.w3.org/1999/xhtml" style="font-family:Inter,system-ui,sans-serif;font-size:11.5px;color:#64748b;margin:0;line-height:1.4;text-align:center;">Capture audio with phone or laptop in quiet room</p>
+  </foreignObject>
+
+  <!-- Arrow to next step -->
+  
+  
+  <line x1="284" y1="257" x2="308" y2="257" stroke="#cbd5e1" stroke-width="2"/>
+  <polygon points="308,252 317,257 308,262" fill="#cbd5e1"/>
+  
+  
+  
+  
+  
+
+  <!-- Step circle -->
+  <circle cx="398" cy="125" r="28" fill="#fb7185"/>
+  <circle cx="398" cy="125" r="28" fill="none" stroke="#fb7185" stroke-width="3" opacity="0.25"/>
+  <text x="398" y="133" text-anchor="middle" font-size="18" font-weight="700" fill="#ffffff">2</text>
+
+  <!-- Connector line from circle to box -->
+  <line x1="398" y1="153" x2="398" y2="180" stroke="#fb7185" stroke-width="2"/>
+
+  <!-- Step box -->
+  <rect x="316" y="180" width="165" height="155" rx="14" fill="#ecfdf5" stroke="#e2e8f0" stroke-width="1.5"/>
+  <rect x="316" y="180" width="165" height="4" rx="2" fill="#fb7185"/>
+  <text x="398" y="216" text-anchor="middle" font-size="16" font-weight="600" fill="#1e293b">Label Immediately</text>
+
+  <!-- Description -->
+  <foreignObject x="326" y="224" width="145" height="100">
+    <p xmlns="http://www.w3.org/1999/xhtml" style="font-family:Inter,system-ui,sans-serif;font-size:11.5px;color:#64748b;margin:0;line-height:1.4;text-align:center;">Name file with format Date_Name_Topic (2024_03_Grandma_ChildhoodHome)</p>
+  </foreignObject>
+
+  <!-- Arrow to next step -->
+  
+  
+  <line x1="485" y1="257" x2="509" y2="257" stroke="#cbd5e1" stroke-width="2"/>
+  <polygon points="509,252 518,257 509,262" fill="#cbd5e1"/>
+  
+  
+  
+  
+  
+
+  <!-- Step circle -->
+  <circle cx="599" cy="125" r="28" fill="#0891b2"/>
+  <circle cx="599" cy="125" r="28" fill="none" stroke="#0891b2" stroke-width="3" opacity="0.25"/>
+  <text x="599" y="133" text-anchor="middle" font-size="18" font-weight="700" fill="#ffffff">3</text>
+
+  <!-- Connector line from circle to box -->
+  <line x1="599" y1="153" x2="599" y2="180" stroke="#0891b2" stroke-width="2"/>
+
+  <!-- Step box -->
+  <rect x="517" y="180" width="165" height="155" rx="14" fill="#ecfdf5" stroke="#e2e8f0" stroke-width="1.5"/>
+  <rect x="517" y="180" width="165" height="4" rx="2" fill="#0891b2"/>
+  <text x="599" y="216" text-anchor="middle" font-size="16" font-weight="600" fill="#1e293b">Save Locally</text>
+
+  <!-- Description -->
+  <foreignObject x="527" y="224" width="145" height="100">
+    <p xmlns="http://www.w3.org/1999/xhtml" style="font-family:Inter,system-ui,sans-serif;font-size:11.5px;color:#64748b;margin:0;line-height:1.4;text-align:center;">Store on your computer&#39;s hard drive (not cloud-only)</p>
+  </foreignObject>
+
+  <!-- Arrow to next step -->
+  
+  
+  <line x1="686" y1="257" x2="710" y2="257" stroke="#cbd5e1" stroke-width="2"/>
+  <polygon points="710,252 719,257 710,262" fill="#cbd5e1"/>
+  
+  
+  
+  
+  
+
+  <!-- Step circle -->
+  <circle cx="800" cy="125" r="28" fill="#92400e"/>
+  <circle cx="800" cy="125" r="28" fill="none" stroke="#92400e" stroke-width="3" opacity="0.25"/>
+  <text x="800" y="133" text-anchor="middle" font-size="18" font-weight="700" fill="#ffffff">4</text>
+
+  <!-- Connector line from circle to box -->
+  <line x1="800" y1="153" x2="800" y2="180" stroke="#92400e" stroke-width="2"/>
+
+  <!-- Step box -->
+  <rect x="718" y="180" width="165" height="155" rx="14" fill="#ecfdf5" stroke="#e2e8f0" stroke-width="1.5"/>
+  <rect x="718" y="180" width="165" height="4" rx="2" fill="#92400e"/>
+  <text x="800" y="216" text-anchor="middle" font-size="16" font-weight="600" fill="#1e293b">Backup Offline</text>
+
+  <!-- Description -->
+  <foreignObject x="728" y="224" width="145" height="100">
+    <p xmlns="http://www.w3.org/1999/xhtml" style="font-family:Inter,system-ui,sans-serif;font-size:11.5px;color:#64748b;margin:0;line-height:1.4;text-align:center;">Copy to an external drive or USB stick monthly</p>
+  </foreignObject>
+
+  <!-- Arrow to next step -->
+  
+  
+  <line x1="887" y1="257" x2="911" y2="257" stroke="#cbd5e1" stroke-width="2"/>
+  <polygon points="911,252 920,257 911,262" fill="#cbd5e1"/>
+  
+  
+  
+  
+  
+
+  <!-- Step circle -->
+  <circle cx="1001" cy="125" r="28" fill="#fb7185"/>
+  <circle cx="1001" cy="125" r="28" fill="none" stroke="#fb7185" stroke-width="3" opacity="0.25"/>
+  <text x="1001" y="133" text-anchor="middle" font-size="18" font-weight="700" fill="#ffffff">5</text>
+
+  <!-- Connector line from circle to box -->
+  <line x1="1001" y1="153" x2="1001" y2="180" stroke="#fb7185" stroke-width="2"/>
+
+  <!-- Step box -->
+  <rect x="919" y="180" width="165" height="155" rx="14" fill="#ecfdf5" stroke="#e2e8f0" stroke-width="1.5"/>
+  <rect x="919" y="180" width="165" height="4" rx="2" fill="#fb7185"/>
+  <text x="1001" y="216" text-anchor="middle" font-size="16" font-weight="600" fill="#1e293b">Share Selectively</text>
+
+  <!-- Description -->
+  <foreignObject x="929" y="224" width="145" height="100">
+    <p xmlns="http://www.w3.org/1999/xhtml" style="font-family:Inter,system-ui,sans-serif;font-size:11.5px;color:#64748b;margin:0;line-height:1.4;text-align:center;">Export MP3 files for family via USB or direct file transfer</p>
+  </foreignObject>
+
+  <!-- Arrow to next step -->
+  
+  
+
+  <!-- Source attribution -->
+  <text x="1190" y="382" text-anchor="end" font-size="10" fill="#cbd5e1">stillwareltd.com</text>
+</svg>

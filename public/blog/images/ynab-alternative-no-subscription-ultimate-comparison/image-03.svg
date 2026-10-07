@@ -1,0 +1,207 @@
+
+
+
+
+
+
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 365" width="1200" height="365">
+  <style>
+    text { font-family: Inter, system-ui, -apple-system, sans-serif; }
+  </style>
+
+  <rect width="1200" height="365" fill="#ffffff"/>
+
+  <!-- Background pattern (per-article variation) -->
+  <rect width="1200" height="6" fill="#2563eb"/><rect y="6" width="1200" height="2" fill="#60a5fa" opacity="0.4"/>
+
+  <!-- Subtle top accent bar -->
+  <rect width="1200" height="4" fill="#059669"/>
+
+  <!-- Title -->
+  <text x="600" y="50" text-anchor="middle" font-size="26" font-weight="700" fill="#1e293b">2026 Budgeting App Comparison: Core Features</text>
+
+  <!-- Column header colors (theme-aware alternation) -->
+  
+  
+
+  <!-- Table -->
+  
+  
+  
+
+  <!-- Column header -->
+  <rect x="100" y="80" width="200" height="52" fill="#059669"/>
+  
+  <rect x="100" y="80" width="4" height="52" fill="#059669"/>
+  
+  <text x="200" y="112" text-anchor="middle" font-size="16" font-weight="600" fill="#ffffff">Feature</text>
+
+  <!-- Rows -->
+  
+  
+  <rect x="100" y="148" width="200" height="52" fill="#f8fafc" stroke="#e2e8f0" stroke-width="0.5"/>
+  <text x="116" y="170" font-size="13" font-weight="600" fill="#1e293b">Feature</text>
+  <text x="116" y="190" font-size="13" fill="#64748b">Envelope Budgeting</text>
+  
+  
+  <rect x="100" y="206" width="200" height="52" fill="#ffffff" stroke="#e2e8f0" stroke-width="0.5"/>
+  <text x="116" y="228" font-size="13" font-weight="600" fill="#1e293b">Data Storage</text>
+  <text x="116" y="248" font-size="13" fill="#64748b">Manual Entry</text>
+  
+  
+  <rect x="100" y="264" width="200" height="52" fill="#f8fafc" stroke="#e2e8f0" stroke-width="0.5"/>
+  <text x="116" y="286" font-size="13" font-weight="600" fill="#1e293b">Bank Import</text>
+  <text x="116" y="306" font-size="13" fill="#64748b">Price Model:Privacy Model</text>
+  
+  
+  
+  
+
+  <!-- Column header -->
+  <rect x="300" y="80" width="200" height="52" fill="#60a5fa"/>
+  
+  <text x="400" y="112" text-anchor="middle" font-size="16" font-weight="600" fill="#ffffff">YNAB</text>
+
+  <!-- Rows -->
+  
+  
+  <rect x="300" y="148" width="200" height="52" fill="#f8fafc" stroke="#e2e8f0" stroke-width="0.5"/>
+  <text x="316" y="170" font-size="13" font-weight="600" fill="#1e293b">YNAB</text>
+  <text x="316" y="190" font-size="13" fill="#64748b">Yes</text>
+  
+  
+  <rect x="300" y="206" width="200" height="52" fill="#ffffff" stroke="#e2e8f0" stroke-width="0.5"/>
+  <text x="316" y="228" font-size="13" font-weight="600" fill="#1e293b">Cloud Servers</text>
+  <text x="316" y="248" font-size="13" fill="#64748b">Cloud Servers</text>
+  
+  
+  <rect x="300" y="264" width="200" height="52" fill="#f8fafc" stroke="#e2e8f0" stroke-width="0.5"/>
+  <text x="316" y="286" font-size="13" font-weight="600" fill="#1e293b">Plaid API</text>
+  <text x="316" y="306" font-size="13" fill="#64748b">Plaid API</text>
+  
+  
+  <rect x="300" y="322" width="200" height="52" fill="#ffffff" stroke="#e2e8f0" stroke-width="0.5"/>
+  <text x="316" y="344" font-size="13" font-weight="600" fill="#1e293b">$99/year</text>
+  <text x="316" y="364" font-size="13" fill="#64748b">$99/year</text>
+  
+  
+  <rect x="300" y="380" width="200" height="52" fill="#f8fafc" stroke="#e2e8f0" stroke-width="0.5"/>
+  <text x="316" y="402" font-size="13" font-weight="600" fill="#1e293b">Company holds data</text>
+  <text x="316" y="422" font-size="13" fill="#64748b">Company holds data</text>
+  
+  
+  
+  
+
+  <!-- Column header -->
+  <rect x="500" y="80" width="200" height="52" fill="#059669"/>
+  
+  <text x="600" y="112" text-anchor="middle" font-size="16" font-weight="600" fill="#ffffff">EveryDollar</text>
+
+  <!-- Rows -->
+  
+  
+  <rect x="500" y="148" width="200" height="52" fill="#f8fafc" stroke="#e2e8f0" stroke-width="0.5"/>
+  <text x="516" y="170" font-size="13" font-weight="600" fill="#1e293b">EveryDollar</text>
+  <text x="516" y="190" font-size="13" fill="#64748b">Yes</text>
+  
+  
+  <rect x="500" y="206" width="200" height="52" fill="#ffffff" stroke="#e2e8f0" stroke-width="0.5"/>
+  <text x="516" y="228" font-size="13" font-weight="600" fill="#1e293b">Cloud Servers</text>
+  <text x="516" y="248" font-size="13" fill="#64748b">Cloud Servers</text>
+  
+  
+  <rect x="500" y="264" width="200" height="52" fill="#f8fafc" stroke="#e2e8f0" stroke-width="0.5"/>
+  <text x="516" y="286" font-size="13" font-weight="600" fill="#1e293b">Plaid API</text>
+  <text x="516" y="306" font-size="13" fill="#64748b">Plaid API</text>
+  
+  
+  <rect x="500" y="322" width="200" height="52" fill="#ffffff" stroke="#e2e8f0" stroke-width="0.5"/>
+  <text x="516" y="344" font-size="13" font-weight="600" fill="#1e293b">$8/month</text>
+  <text x="516" y="364" font-size="13" fill="#64748b">$8/month</text>
+  
+  
+  <rect x="500" y="380" width="200" height="52" fill="#f8fafc" stroke="#e2e8f0" stroke-width="0.5"/>
+  <text x="516" y="402" font-size="13" font-weight="600" fill="#1e293b">Company holds data</text>
+  <text x="516" y="422" font-size="13" fill="#64748b">Company holds data</text>
+  
+  
+  
+  
+
+  <!-- Column header -->
+  <rect x="700" y="80" width="200" height="52" fill="#60a5fa"/>
+  
+  <text x="800" y="112" text-anchor="middle" font-size="16" font-weight="600" fill="#ffffff">Goodbudget</text>
+
+  <!-- Rows -->
+  
+  
+  <rect x="700" y="148" width="200" height="52" fill="#f8fafc" stroke="#e2e8f0" stroke-width="0.5"/>
+  <text x="716" y="170" font-size="13" font-weight="600" fill="#1e293b">Goodbudget</text>
+  <text x="716" y="190" font-size="13" fill="#64748b">Yes</text>
+  
+  
+  <rect x="700" y="206" width="200" height="52" fill="#ffffff" stroke="#e2e8f0" stroke-width="0.5"/>
+  <text x="716" y="228" font-size="13" font-weight="600" fill="#1e293b">Cloud Servers</text>
+  <text x="716" y="248" font-size="13" fill="#64748b">Cloud Servers</text>
+  
+  
+  <rect x="700" y="264" width="200" height="52" fill="#f8fafc" stroke="#e2e8f0" stroke-width="0.5"/>
+  <text x="716" y="286" font-size="13" font-weight="600" fill="#1e293b">Manual only</text>
+  <text x="716" y="306" font-size="13" fill="#64748b">Manual only</text>
+  
+  
+  <rect x="700" y="322" width="200" height="52" fill="#ffffff" stroke="#e2e8f0" stroke-width="0.5"/>
+  <text x="716" y="344" font-size="13" font-weight="600" fill="#1e293b">$7/month</text>
+  <text x="716" y="364" font-size="13" fill="#64748b">$7/month</text>
+  
+  
+  <rect x="700" y="380" width="200" height="52" fill="#f8fafc" stroke="#e2e8f0" stroke-width="0.5"/>
+  <text x="716" y="402" font-size="13" font-weight="600" fill="#1e293b">Company holds data</text>
+  <text x="716" y="422" font-size="13" fill="#64748b">Company holds data</text>
+  
+  
+  
+  
+
+  <!-- Column header -->
+  <rect x="900" y="80" width="200" height="52" fill="#059669"/>
+  
+  <text x="1000" y="112" text-anchor="middle" font-size="16" font-weight="600" fill="#ffffff">Zeroed</text>
+
+  <!-- Rows -->
+  
+  
+  <rect x="900" y="148" width="200" height="52" fill="#f8fafc" stroke="#e2e8f0" stroke-width="0.5"/>
+  <text x="916" y="170" font-size="13" font-weight="600" fill="#1e293b">Zeroed</text>
+  <text x="916" y="190" font-size="13" fill="#64748b">Yes</text>
+  
+  
+  <rect x="900" y="206" width="200" height="52" fill="#ffffff" stroke="#e2e8f0" stroke-width="0.5"/>
+  <text x="916" y="228" font-size="13" font-weight="600" fill="#1e293b">Your Device</text>
+  <text x="916" y="248" font-size="13" fill="#64748b">Your Device</text>
+  
+  
+  <rect x="900" y="264" width="200" height="52" fill="#f8fafc" stroke="#e2e8f0" stroke-width="0.5"/>
+  <text x="916" y="286" font-size="13" font-weight="600" fill="#1e293b">OCR/CSV parser</text>
+  <text x="916" y="306" font-size="13" fill="#64748b">OCR/CSV parser</text>
+  
+  
+  <rect x="900" y="322" width="200" height="52" fill="#ffffff" stroke="#e2e8f0" stroke-width="0.5"/>
+  <text x="916" y="344" font-size="13" font-weight="600" fill="#1e293b">$39.99 once</text>
+  <text x="916" y="364" font-size="13" fill="#64748b">$39.99 once</text>
+  
+  
+  <rect x="900" y="380" width="200" height="52" fill="#f8fafc" stroke="#e2e8f0" stroke-width="0.5"/>
+  <text x="916" y="402" font-size="13" font-weight="600" fill="#1e293b">You hold the keys</text>
+  <text x="916" y="422" font-size="13" fill="#64748b">You hold the keys</text>
+  
+  
+
+  <!-- Bottom border -->
+  <rect x="100" y="322" width="1000" height="3" fill="#059669"/>
+
+  <!-- Source attribution -->
+  <text x="1190" y="357" text-anchor="end" font-size="10" fill="#cbd5e1">stillwareltd.com</text>
+</svg>
