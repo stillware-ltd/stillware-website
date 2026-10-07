@@ -1,0 +1,190 @@
+---
+import Layout from '../../../layouts/Layout.astro';
+import { getCollection } from 'astro:content';
+import { SITE } from '../../../lib/seo.mjs';
+import { PATTERNS, patternIndex, puzzleNumber, puzzleLabel } from '../../../lib/guides.mjs';
+
+// Checkmate patterns hub (SEO strategy 5.6, 2026-09-29; one page per pattern added 2026-10-07). The daily puzzle posts are
+// templated companions to the YouTube Shorts and were 170 impressions and 0 clicks between them, so they are not treated as
+// separate search assets. This page is the one page for the topic "chess checkmate patterns" and the hub for the pattern
+// pages at /chess/checkmate-patterns/<pattern>/. Definitions are written in our own words from the Lichess theme list and
+// Wikipedia's checkmate-pattern article (src/data/checkmate-patterns.json). A pattern is listed, with its page, once at
+// least one published daily puzzle names it in its title, so new daily posts join the hub without an edit here.
+
+const all = (await getCollection('blog'))
+  .filter((p) => p.data.pillar === 'daily-puzzle')
+  .sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf());
+
+const label = puzzleLabel;
+const num = (title: string) => puzzleNumber(title);
+const byNumber = (a: any, b: any) => num(a.data.title) - num(b.data.title);
+
+const index = patternIndex(await getCollection('blog'));
+const sections = PATTERNS.filter((p) => index.has(p.id)).map((p) => ({
+  ...p,
+  posts: (index.get(p.id) ?? []).map((e) => all.find((post) => post.slug === e.slug)).filter(Boolean),
+}));
+const mateInN = all.filter((p) => /mate in (two|three|2|3)/i.test(p.data.title)).sort(byNumber);
+const allByNumber = [...all].sort(byNumber);
+
+const pageUrl = `${SITE}/chess/checkmate-patterns/`;
+const schema = {
+  '@context': 'https://schema.org',
+  '@graph': [
+    {
+      '@type': 'CollectionPage',
+      '@id': `${pageUrl}#page`,
+      url: pageUrl,
+      name: 'Chess checkmate patterns explained',
+      inLanguage: 'en',
+      isPartOf: { '@id': `${SITE}/#website` },
+      publisher: { '@id': `${SITE}/#organization` },
+      mainEntity: {
+        '@type': 'ItemList',
+        name: 'Checkmate pattern guides',
+        itemListElement: sections.map((s, i) => ({
+          '@type': 'ListItem',
+          position: i + 1,
+          url: `${SITE}/chess/checkmate-patterns/${s.id}/`,
+          name: s.title,
+        })),
+      },
+      hasPart: {
+        '@type': 'ItemList',
+        name: 'Daily chess puzzles',
+        itemListElement: allByNumber.map((p, i) => ({
+          '@type': 'ListItem',
+          position: i + 1,
+          url: `${SITE}/blog/${p.slug}/`,
+          name: label(p.data.title),
+        })),
+      },
+    },
+  ],
+};
+---
+
+<Layout
+  title="Checkmate Patterns in Chess: Names, Examples and Puzzles"
+  description="Learn the common chess checkmate patterns, from back-rank and Arabian mate to Morphy's mate, with plain-English definitions and a puzzle for each."
+  breadcrumbs={[{ name: 'Checkmate patterns', href: '/chess/checkmate-patterns/' }]}
+>
+  <script type="application/ld+json" set:html={JSON.stringify(schema)} />
+
+  <header class="cmp-hero">
+    <div class="container">
+      <p class="eyebrow">Chess</p>
+      <h1>Checkmate patterns, explained</h1>
+      <p class="lead">A checkmate pattern is a named arrangement of pieces that ends a game, such as the back-rank mate, the Arabian mate or Anastasia&rsquo;s mate. Below are {sections.length} pattern guides, each with a plain-English definition, how to recognise the pattern, worked puzzles with solutions and FAQs.</p>
+    </div>
+  </header>
+
+  <main class="cmp-content">
+    <div class="container cmp-narrow">
+      <section aria-labelledby="pattern-guides">
+        <h2 id="pattern-guides">Checkmate pattern guides</h2>
+        <ul class="cmp-cards">
+          {sections.map((s) => (
+            <li>
+              <a href={`/chess/checkmate-patterns/${s.id}/`}>
+                <strong>{s.name}</strong>
+                <span>{s.blurb}</span>
+              </a>
+            </li>
+          ))}
+        </ul>
+      </section>
+
+      <section>
+        <h2>Why learn checkmate patterns?</h2>
+        <p>Strong players do not calculate every mate from scratch. They recognise a shape they have seen before. Here are the patterns that keep turning up, what each one is, and a real puzzle to practise it on.</p>
+        <p>A checkmate pattern is a familiar arrangement of pieces that ends the game: the same few shapes recur across thousands of games. If you can name one when you see it, you find the winning move faster and you also spot when your own king is one move from the same fate. The names come from the players, places or shapes they are remembered for, such as Morphy, Pillsbury and the swallow&rsquo;s tail.</p>
+        <p>The puzzles linked below come from our daily puzzle series. Each position comes from a real game in the open Lichess database and is engine-verified, and each post has the solution and a video that walks through it. To practise thousands more, <a href="/rankupchess/">RankUp Chess</a> has a library of 5,000+ puzzles you can filter by difficulty and theme, offline and free to play.</p>
+      </section>
+
+      <nav class="cmp-toc" aria-label="Patterns on this page">
+        <strong>On this page</strong>
+        <ul>
+          {sections.map((s) => <li><a href={`#${s.id}`}>{s.name}</a></li>)}
+          {mateInN.length > 0 && <li><a href="#mate-in-n">Mate in two and three</a></li>}
+          <li><a href="#all-puzzles">All daily puzzles</a></li>
+        </ul>
+      </nav>
+
+      {sections.map((s) => (
+        <section id={s.id} class="cmp-pattern">
+          <h2>{s.name}</h2>
+          <p>{s.answer}</p>
+          <p><strong>How to spot it.</strong> {s.recognise[0]}</p>
+          <p><a href={`/chess/checkmate-patterns/${s.id}/`}>Full guide: {s.name} in chess, with worked puzzles and FAQs</a></p>
+          <p class="cmp-practise"><strong>Practise it:</strong></p>
+          <ul>
+            {s.posts.map((p) => <li><a href={`/blog/${p.slug}/`}>{label(p.data.title)}</a></li>)}
+          </ul>
+        </section>
+      ))}
+
+      {mateInN.length > 0 && (
+        <section id="mate-in-n" class="cmp-pattern">
+          <h2>Mate in two and mate in three</h2>
+          <p>These are puzzle types rather than patterns: you are told the king can be mated in a set number of moves, and you have to find the forcing sequence. Look at every check, every capture and every threat before you settle on a move; a quiet move that removes the king&rsquo;s last escape square is often the answer.</p>
+          <ul>
+            {mateInN.map((p) => <li><a href={`/blog/${p.slug}/`}>{label(p.data.title)}</a></li>)}
+          </ul>
+        </section>
+      )}
+
+      <section id="all-puzzles" class="cmp-pattern">
+        <h2>All daily chess puzzles</h2>
+        <ul>
+          {allByNumber.map((p) => <li><a href={`/blog/${p.slug}/`}>{label(p.data.title)}</a></li>)}
+        </ul>
+      </section>
+
+      <section class="cmp-cta">
+        <h2>Train these patterns offline</h2>
+        <p>RankUp Chess is an offline chess academy for kids: 5,000+ puzzles, 10 AI strength levels and interactive lessons. It is free to play forever, with no ads and one optional one-time unlock.</p>
+        <p><a href="/rankupchess/" class="btn-primary">See RankUp Chess</a> <a href="/blog/best-offline-chess-puzzles-for-kids/" class="cmp-link">Best offline chess puzzles for kids</a></p>
+      </section>
+    </div>
+  </main>
+</Layout>
+
+<style>
+  .cmp-hero { padding: 12rem 0 4rem; text-align: center; background: var(--gradient-obsidian); }
+  .cmp-hero .eyebrow { text-transform: uppercase; letter-spacing: 0.12em; font-size: 0.8rem; color: rgba(255, 255, 255, 0.55); margin-bottom: 0.75rem; }
+  .cmp-hero h1 { font-size: 3.2rem; color: #ffffff; margin-bottom: 1rem; }
+  .cmp-hero .lead { font-size: 1.15rem; color: rgba(255, 255, 255, 0.7); max-width: 720px; margin: 0 auto; }
+
+  .cmp-content { padding: 4rem 0 8rem; }
+  .cmp-narrow { max-width: 820px; margin: 0 auto; }
+  .cmp-narrow section { margin-bottom: 3rem; padding: 0; }
+  .cmp-narrow h2 { font-size: 1.8rem; margin-bottom: 0.9rem; }
+  .cmp-narrow p, .cmp-narrow li { line-height: 1.7; }
+  .cmp-narrow a { color: var(--color-primary); font-weight: 600; }
+  .cmp-narrow ul { padding-left: 1.25rem; display: grid; gap: 0.35rem; }
+
+  .cmp-toc { background: #ffffff; border: 1px solid rgba(226, 232, 240, 0.8); border-radius: 16px; padding: 1.25rem 1.5rem; margin-bottom: 3rem; box-shadow: var(--shadow-premium); }
+  .cmp-toc ul { columns: 2; column-gap: 2rem; margin: 0.75rem 0 0; padding-left: 1.1rem; display: block; }
+  .cmp-toc li { break-inside: avoid; margin-bottom: 0.25rem; }
+
+  .cmp-cards { list-style: none; padding: 0; margin: 0; display: grid; grid-template-columns: repeat(2, 1fr); gap: 0.9rem; }
+  .cmp-cards li { margin: 0; }
+  .cmp-cards a { display: block; height: 100%; background: #ffffff; border: 1px solid rgba(226, 232, 240, 0.9); border-radius: 14px; padding: 1rem 1.15rem; box-shadow: var(--shadow-premium); text-decoration: none; }
+  .cmp-cards a:hover { border-color: var(--color-primary); }
+  .cmp-cards strong { display: block; font-size: 1.05rem; margin-bottom: 0.2rem; color: var(--color-primary); }
+  .cmp-cards span { display: block; font-weight: 400; color: var(--color-text); line-height: 1.5; font-size: 0.95rem; }
+
+  .cmp-narrow .cmp-pattern { padding-top: 0.5rem; border-top: 1px solid rgba(148, 163, 184, 0.3); scroll-margin-top: 6rem; }
+  .cmp-practise { margin-bottom: 0.25rem; }
+
+  .cmp-narrow .cmp-cta { background: #ffffff; border: 1px solid rgba(226, 232, 240, 0.8); border-radius: 20px; padding: 2rem; box-shadow: var(--shadow-premium); }
+  .cmp-cta .btn-primary { color: #ffffff; margin-right: 1rem; }
+  .cmp-link { white-space: nowrap; }
+
+  @media (max-width: 768px) {
+    .cmp-hero h1 { font-size: 2.3rem; }
+    .cmp-toc ul { columns: 1; }
+    .cmp-cards { grid-template-columns: 1fr; }
+  }
+</style>
