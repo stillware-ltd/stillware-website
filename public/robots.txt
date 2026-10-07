@@ -1,4 +1,93 @@
+# Stillware Ltd robots.txt
+# Everything public is open to search engines and answer engines. Admin, private and checkout paths stay closed.
+# A crawler that has its own group below follows ONLY that group and ignores "*", so each group repeats the three
+# Disallow lines. Keep every group in step with the "*" group when a path is added.
+
 User-agent: *
+Disallow: /admin/
+Disallow: /private/
+Disallow: /buy/
+Allow: /
+
+User-agent: Googlebot
+Disallow: /admin/
+Disallow: /private/
+Disallow: /buy/
+Allow: /
+
+User-agent: Bingbot
+Disallow: /admin/
+Disallow: /private/
+Disallow: /buy/
+Allow: /
+
+User-agent: OAI-SearchBot
+Disallow: /admin/
+Disallow: /private/
+Disallow: /buy/
+Allow: /
+
+User-agent: ChatGPT-User
+Disallow: /admin/
+Disallow: /private/
+Disallow: /buy/
+Allow: /
+
+User-agent: GPTBot
+Disallow: /admin/
+Disallow: /private/
+Disallow: /buy/
+Allow: /
+
+User-agent: PerplexityBot
+Disallow: /admin/
+Disallow: /private/
+Disallow: /buy/
+Allow: /
+
+User-agent: Perplexity-User
+Disallow: /admin/
+Disallow: /private/
+Disallow: /buy/
+Allow: /
+
+User-agent: ClaudeBot
+Disallow: /admin/
+Disallow: /private/
+Disallow: /buy/
+Allow: /
+
+User-agent: Claude-SearchBot
+Disallow: /admin/
+Disallow: /private/
+Disallow: /buy/
+Allow: /
+
+User-agent: Claude-User
+Disallow: /admin/
+Disallow: /private/
+Disallow: /buy/
+Allow: /
+
+User-agent: Google-Extended
+Disallow: /admin/
+Disallow: /private/
+Disallow: /buy/
+Allow: /
+
+User-agent: Applebot
+Disallow: /admin/
+Disallow: /private/
+Disallow: /buy/
+Allow: /
+
+User-agent: Applebot-Extended
+Disallow: /admin/
+Disallow: /private/
+Disallow: /buy/
+Allow: /
+
+User-agent: DuckDuckBot
 Disallow: /admin/
 Disallow: /private/
 Disallow: /buy/
