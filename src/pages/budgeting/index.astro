@@ -1,0 +1,273 @@
+---
+// The Budgeting guide: hub for the zero-based and envelope budgeting cluster (SEO strategy 4 P2/P3 and 6.3, 2026-10-07).
+// It links the pillar pages, the calculators and every Zeroed Shorts worked example. The pillars are listed by slug below
+// and looked up in the content collection (a missing slug fails the build); the worked examples are every post with
+// pillar "shorts", grouped by theme tag, newest first, so each day's new articles appear here with no edit.
+import Layout from '../../layouts/Layout.astro';
+import StoreLinks from '../../components/StoreLinks.astro';
+import { getCollection } from 'astro:content';
+import { SITE } from '../../lib/seo.mjs';
+import { themeOf, themeAnchor } from '../../lib/guides.mjs';
+
+const posts = await getCollection('blog');
+const bySlug = new Map(posts.map((p) => [p.slug, p]));
+const need = (slug: string) => {
+  const post = bySlug.get(slug);
+  if (!post) throw new Error(`budgeting hub: no article with slug "${slug}"`);
+  return post;
+};
+type Row = { q: string; slug?: string; href?: string; label?: string };
+const link = (r: Row) => (r.slug ? { href: `/blog/${r.slug}/`, label: need(r.slug).data.title } : { href: r.href!, label: r.label! });
+
+const sections: { id: string; title: string; answer: string; rows: Row[] }[] = [
+  {
+    id: 'start-here',
+    title: 'Start here: what is zero-based budgeting?',
+    answer: 'Zero-based budgeting means income minus planned spending, saving and debt payments equals zero: every pound or dollar is given a job before the month starts. Envelope budgeting is the same method with one named envelope for each category, so you can see what is left to spend.',
+    rows: [
+      { q: 'What is zero-based budgeting, step by step?', slug: 'zero-based-budgeting-explained-simply' },
+      { q: 'Which envelope budgeting app works without bank sync?', slug: 'envelope-budgeting-app-no-bank-sync' },
+      { q: 'Why does cash stuffing stop working, and what replaces it?', slug: 'why-cash-stuffing-stops-working-week-6' },
+      { q: 'Can I build a first zero-based budget now?', href: '/tools/zero-based-budget-calculator/', label: 'Zero-Based Budget Calculator' },
+      { q: 'Is 50/30/20 a good place to start?', href: '/tools/50-30-20-budget-calculator/', label: '50/30/20 Budget Calculator' },
+    ],
+  },
+  {
+    id: 'apps-and-alternatives',
+    title: 'Apps and alternatives: which budgeting app should I use?',
+    answer: 'Budgeting apps differ on three things that decide the choice: what they cost over several years, whether they need an internet connection or a bank login, and whether your data lives on your device or on a server. These pages compare them.',
+    rows: [
+      { q: 'What are the alternatives after the YNAB price increase?', slug: 'ynab-price-increase-alternatives-2026' },
+      { q: 'How much does YNAB cost, in total?', slug: 'true-cost-of-ynab' },
+      { q: 'How does Zeroed compare with YNAB?', slug: 'zeroed-vs-ynab-2026' },
+      { q: 'How do I switch from YNAB to Zeroed?', slug: 'switch-from-ynab-to-zeroed' },
+      { q: 'Which offline budget app works on Windows?', slug: 'best-offline-budget-app-for-windows' },
+      { q: 'Which budgeting app works without internet?', slug: 'budgeting-app-that-works-without-internet' },
+      { q: 'Which budgeting apps have no subscription?', slug: 'best-budgeting-apps-without-subscription-2026' },
+      { q: 'How do the private budgeting apps compare?', slug: 'privacy-first-budgeting-apps-compared-2026' },
+    ],
+  },
+  {
+    id: 'your-situation',
+    title: 'Your situation: how should I budget with my income?',
+    answer: 'How you are paid changes the first step. Weekly pay, monthly pay, an irregular income and a low income each need a slightly different setup, and so does money spread across several accounts. These guides give the steps with worked numbers.',
+    rows: [
+      { q: 'How do I budget on a low income?', slug: 'how-to-budget-on-a-low-income-uk' },
+      { q: 'How do I budget when I am paid weekly?', slug: 'how-to-budget-when-you-get-paid-weekly' },
+      { q: 'How do I budget when I am paid monthly?', slug: 'how-to-budget-when-you-get-paid-monthly' },
+      { q: 'How do I budget on an irregular income?', slug: 'how-to-budget-on-an-irregular-income' },
+      { q: 'How do I budget with more than one bank account?', slug: 'budgeting-with-multiple-bank-accounts' },
+      { q: 'How do I get a month ahead on my bills?', slug: 'how-to-get-a-month-ahead-on-bills' },
+      { q: 'What does a bill calendar show, and what does it miss?', slug: 'bill-calendar-what-it-does-not-tell-you' },
+    ],
+  },
+  {
+    id: 'saving',
+    title: 'Saving: sinking funds and an emergency fund',
+    answer: 'A sinking fund is money set aside a little at a time for a bill you know is coming, such as a car repair or an annual premium. An emergency fund covers the costs you cannot predict. In a zero-based budget both are categories that you fund before the month starts.',
+    rows: [
+      { q: 'What does a full list of sinking funds cost each month?', slug: 'sinking-funds-uk-total' },
+      { q: 'What should a car-repair sinking fund hold?', slug: 'sinking-funds-for-car-repairs' },
+      { q: 'How much emergency fund do I need?', slug: 'how-much-emergency-fund-uk' },
+      { q: 'How big should my emergency fund be, for my own numbers?', href: '/tools/emergency-fund-calculator/', label: 'Emergency Fund Calculator' },
+      { q: 'When will I reach a savings goal?', href: '/tools/savings-goal-calculator/', label: 'Savings Goal Calculator' },
+    ],
+  },
+  {
+    id: 'debt',
+    title: 'Debt: minimum payments and the emergency fund trade-off',
+    answer: 'A minimum payment is the smallest amount a lender will accept, not a plan for clearing the debt. These pages show what a minimum payment actually pays off, and how to weigh building an emergency fund against paying debt down faster.',
+    rows: [
+      { q: 'What does a credit card minimum payment actually pay off?', slug: 'what-your-minimum-payment-actually-pays-off' },
+      { q: 'Emergency fund or debt first?', slug: 'emergency-fund-vs-paying-off-debt' },
+      { q: 'Which debt should I pay first, snowball or avalanche?', href: '/tools/debt-payoff-calculator/', label: 'Debt Payoff Calculator' },
+    ],
+  },
+];
+
+const calculators = [
+  { href: '/tools/zero-based-budget-calculator/', name: 'Zero-Based Budget Calculator', what: 'Give every unit of income a job and get "left to assign" to exactly zero.' },
+  { href: '/tools/50-30-20-budget-calculator/', name: '50/30/20 Budget Calculator', what: 'Enter your take-home pay and get your needs, wants and savings targets, or set your own split.' },
+  { href: '/tools/emergency-fund-calculator/', name: 'Emergency Fund Calculator', what: 'Your safety-net number in months of essential expenses, and a realistic date for having it.' },
+  { href: '/tools/savings-goal-calculator/', name: 'Savings Goal Calculator', what: 'Enter the target and the monthly amount and get the date you will hit it.' },
+  { href: '/tools/debt-payoff-calculator/', name: 'Debt Payoff Calculator', what: 'Snowball against avalanche with your real debts: months to debt-free, total interest and the best order.' },
+  { href: '/tools/subscription-cost-calculator/', name: 'Subscription Cost Calculator', what: 'List what you subscribe to and see the monthly, yearly and ten-year cost.' },
+  { href: '/tools/net-worth-calculator/', name: 'Net Worth Calculator', what: 'What you own minus what you owe, in two minutes.' },
+  { href: '/tools/compound-interest-calculator/', name: 'Compound Interest Calculator', what: 'Year-by-year growth with monthly contributions.' },
+  { href: '/tools/cash-envelope-ledgers/', name: 'Cash Envelope Ledger Sheets', what: 'Printable ledger sheets for tracking every envelope by hand.' },
+];
+
+// Worked examples: every Zeroed Short's companion article, grouped by its theme tag, newest first.
+const shorts = posts
+  .filter((p) => p.data.pillar === 'shorts')
+  .sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf() || a.slug.localeCompare(b.slug));
+const groups = new Map<string, { slug: string; label: string; posts: typeof shorts }>();
+for (const post of shorts) {
+  const theme = themeOf(post);
+  const key = theme.slug ?? 'other';
+  if (!groups.has(key)) groups.set(key, { slug: key, label: theme.label, posts: [] });
+  groups.get(key)!.posts.push(post);
+}
+const themeGroups = [...groups.values()].sort(
+  (a, b) => b.posts[0].data.date.valueOf() - a.posts[0].data.date.valueOf() || a.label.localeCompare(b.label),
+);
+const fmtDate = (d: Date) => d.toLocaleDateString('en-GB', { day: 'numeric', month: 'short', year: 'numeric', timeZone: 'UTC' });
+
+const pageUrl = `${SITE}/budgeting/`;
+const itemList = (name: string, items: { url: string; name: string }[]) => ({
+  '@type': 'ItemList',
+  name,
+  itemListElement: items.map((it, i) => ({ '@type': 'ListItem', position: i + 1, url: it.url, name: it.name })),
+});
+const guideItems = [
+  ...sections.flatMap((s) => s.rows.map(link)),
+].filter((it, i, all) => all.findIndex((o) => o.href === it.href) === i).map((it) => ({ url: `${SITE}${it.href}`, name: it.label }));
+const schema = {
+  '@context': 'https://schema.org',
+  '@graph': [
+    {
+      '@type': 'CollectionPage',
+      '@id': `${pageUrl}#page`,
+      url: pageUrl,
+      name: 'Budgeting guide: zero-based budgeting, envelopes and UK examples',
+      description: 'A guide to zero-based and envelope budgeting: apps and alternatives, budgeting for your income, saving, debt, free calculators and worked examples.',
+      inLanguage: 'en',
+      isPartOf: { '@id': `${SITE}/#website` },
+      publisher: { '@id': `${SITE}/#organization` },
+      mainEntity: itemList('Budgeting guides and calculators', guideItems),
+      hasPart: itemList('Worked examples', shorts.map((p) => ({ url: `${SITE}/blog/${p.slug}/`, name: p.data.title }))),
+    },
+  ],
+};
+const TITLE = 'Budgeting Guide: Zero-Based, Envelopes and UK Examples';
+---
+
+<Layout
+  title={TITLE}
+  description="A budgeting guide to zero-based and envelope budgeting: apps and alternatives, budgeting on your income, saving, debt, free calculators and UK worked examples."
+  breadcrumbs={[{ name: 'Budgeting guide', href: '/budgeting/' }]}
+>
+  <script type="application/ld+json" set:html={JSON.stringify(schema)} />
+
+  <header class="bg-hero">
+    <div class="container">
+      <p class="eyebrow">Budgeting guide</p>
+      <h1>Budgeting guide: zero-based budgeting, envelopes and UK examples</h1>
+      <p class="lead">Zero-based budgeting means giving every pound or dollar of income a job before you spend it, so that income minus planned spending equals zero. Envelope budgeting is the same idea with one pot per category. This guide links every Stillware pillar page, calculator and worked example, grouped by the problem you are solving.</p>
+    </div>
+  </header>
+
+  <main class="bg-content">
+    <div class="container bg-narrow">
+      <nav class="bg-toc" aria-label="Sections of the budgeting guide">
+        <strong>In this guide</strong>
+        <ul>
+          {sections.map((s) => <li><a href={`#${s.id}`}>{s.title.split(':')[0]}</a></li>)}
+          <li><a href="#calculators">Calculators</a></li>
+          <li><a href="#worked-examples">Worked examples</a></li>
+        </ul>
+      </nav>
+
+      {sections.map((s) => (
+        <section id={s.id} class="bg-section">
+          <h2>{s.title}</h2>
+          <p class="bg-answer">{s.answer}</p>
+          <table class="bg-table">
+            <thead><tr><th scope="col">You want to know</th><th scope="col">Read</th></tr></thead>
+            <tbody>
+              {s.rows.map((r) => {
+                const l = link(r);
+                return <tr><td>{r.q}</td><td><a href={l.href}>{l.label}</a></td></tr>;
+              })}
+            </tbody>
+          </table>
+        </section>
+      ))}
+
+      <section id="calculators" class="bg-section">
+        <h2>Calculators: free and private</h2>
+        <p class="bg-answer">These calculators work out the maths behind a budget. They run in your browser and need no sign-up, and the printable ledger sheets are free. <a href="/tools/">See all the free tools.</a></p>
+        <ul class="bg-list">
+          {calculators.map((c) => <li><a href={c.href}><strong>{c.name}</strong></a>: {c.what}</li>)}
+        </ul>
+      </section>
+
+      <section id="worked-examples" class="bg-section">
+        <h2>Worked examples: real-number budgeting problems, solved</h2>
+        <p class="bg-answer">Each Zeroed Short has a companion article that works every number on a UK household&rsquo;s sheet, so you can check the maths. The households are illustrations built from typical UK figures, not real people. They are grouped by money problem, newest first.</p>
+        {themeGroups.length > 1 && (
+          <nav class="bg-chips" aria-label="Worked examples by theme">
+            {themeGroups.map((g) => <a href={`#${themeAnchor(g.slug)}`}>{g.label}</a>)}
+          </nav>
+        )}
+        {themeGroups.length === 0 && <p>New worked examples are published here every day.</p>}
+        {themeGroups.map((g) => (
+          <div class="bg-theme" id={themeAnchor(g.slug)}>
+            <h3>{g.label}</h3>
+            <ul class="bg-list">
+              {g.posts.map((p) => (
+                <li>
+                  <a href={`/blog/${p.slug}/`}><strong>{p.data.title}</strong></a>
+                  <span class="bg-date"> {fmtDate(p.data.date)}</span>
+                  <br />
+                  <span class="bg-desc">{p.data.description}</span>
+                </li>
+              ))}
+            </ul>
+          </div>
+        ))}
+      </section>
+
+      <section class="bg-cta" data-cta-slot="budgeting-hub">
+        <h2>Do your budget on your own device</h2>
+        <p>Zeroed: Offline Budget Planner is envelope budgeting you buy once. It works offline, with no bank login, no subscription and no data harvesting; the first thirty-four days are free, no card needed.</p>
+        <p><a href="/zeroed/" class="btn-primary">See Zeroed</a></p>
+        <StoreLinks />
+      </section>
+    </div>
+  </main>
+</Layout>
+
+<style>
+  .bg-hero { padding: 12rem 0 4rem; text-align: center; background: var(--gradient-obsidian); }
+  .bg-hero .eyebrow { text-transform: uppercase; letter-spacing: 0.12em; font-size: 0.8rem; color: rgba(255, 255, 255, 0.55); margin-bottom: 0.75rem; }
+  .bg-hero h1 { font-size: 2.9rem; color: #ffffff; margin: 0 auto 1rem; max-width: 820px; }
+  .bg-hero .lead { font-size: 1.15rem; color: rgba(255, 255, 255, 0.8); max-width: 760px; margin: 0 auto; line-height: 1.65; }
+
+  .bg-content { padding: 4rem 0 8rem; }
+  .bg-narrow { max-width: 860px; margin: 0 auto; }
+  .bg-narrow .bg-section { margin-bottom: 3rem; padding: 0.75rem 0 0; border-top: 1px solid rgba(148, 163, 184, 0.3); scroll-margin-top: 6rem; }
+  .bg-narrow h2 { font-size: 1.7rem; margin-bottom: 0.9rem; }
+  .bg-narrow h3 { font-size: 1.2rem; margin: 1.5rem 0 0.5rem; }
+  .bg-narrow p, .bg-narrow li { line-height: 1.7; }
+  .bg-narrow a { color: var(--color-primary); font-weight: 600; }
+  .bg-answer { margin-bottom: 1.1rem; }
+
+  .bg-toc { background: #ffffff; border: 1px solid rgba(226, 232, 240, 0.8); border-radius: 16px; padding: 1.25rem 1.5rem; margin-bottom: 3rem; box-shadow: var(--shadow-premium); }
+  .bg-toc ul { columns: 2; column-gap: 2rem; margin: 0.75rem 0 0; padding-left: 1.1rem; }
+  .bg-toc li { break-inside: avoid; margin-bottom: 0.25rem; }
+
+  .bg-table { width: 100%; border-collapse: collapse; background: #ffffff; border: 1px solid rgba(226, 232, 240, 0.8); border-radius: 12px; overflow: hidden; box-shadow: var(--shadow-premium); }
+  .bg-table th, .bg-table td { text-align: left; padding: 0.7rem 1rem; border-bottom: 1px solid rgba(148, 163, 184, 0.3); vertical-align: top; line-height: 1.5; }
+  .bg-table th { font-weight: 700; background: rgba(148, 163, 184, 0.12); }
+  .bg-table tr:last-child td { border-bottom: none; }
+  .bg-table td:first-child { width: 48%; }
+
+  .bg-list { padding-left: 1.25rem; display: grid; gap: 0.7rem; }
+  .bg-date { color: var(--color-text-light); font-size: 0.9rem; font-weight: 400; }
+  .bg-desc { color: var(--color-text); font-size: 0.95rem; }
+
+  .bg-chips { display: flex; flex-wrap: wrap; gap: 0.5rem; margin: 0.5rem 0 1rem; }
+  .bg-chips a { padding: 0.3rem 0.75rem; border: 1px solid rgba(148, 163, 184, 0.5); border-radius: 999px; font-size: 0.9rem; text-decoration: none; background: #ffffff; }
+  .bg-theme { scroll-margin-top: 6rem; }
+
+  .bg-narrow .bg-cta { background: #ffffff; border: 1px solid rgba(226, 232, 240, 0.8); border-radius: 20px; padding: 2rem; box-shadow: var(--shadow-premium); text-align: center; }
+  .bg-cta .btn-primary { color: #ffffff; }
+
+  @media (max-width: 768px) {
+    .bg-hero { padding: 8.5rem 0 3rem; }
+    .bg-hero h1 { font-size: 2rem; }
+    .bg-toc ul { columns: 1; }
+    .bg-table td:first-child { width: auto; }
+  }
+</style>
