@@ -7,6 +7,11 @@
 # One site path per line (a trailing slash means a page; a path with a file extension means a file). Sorted.
 # Source: Marketing/state/seo/baseline_2026-10-07/protected_status.json (109 URLs, baseline 2026-10-07).
 # The weekly SEO routine refreshes this list from the Search Console API; it only ever ADDS paths.
+#
+# From 2026-10-07 the list also includes URLs with Bing Webmaster Tools impressions or AI Performance (Microsoft Copilot)
+# citations, not only Google Search Console impressions. A page can be cited by an AI answer engine with no Google
+# impressions: Copilot cited /blog/gratitude-journal-prompts-mental-health/ 10 times, but it had been deleted on 2026-09-29
+# because the Google-only list missed it. Append Bing and Copilot paths here too; the list only ever grows.
 /
 /about/
 /apps/
@@ -40,6 +45,7 @@
 /blog/envelope-budgeting-app-no-bank-sync/
 /blog/escape-subscription-trap/
 /blog/first-car-maintenance-checklist-for-teens/
+/blog/gratitude-journal-prompts-mental-health/
 /blog/hidden-costs-cloud-home-maintenance-log-offline-alternative/
 /blog/home-inventory-app-fails-insurance-claims/
 /blog/home-inventory-app-renters-insurance-guide/
