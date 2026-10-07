@@ -1,0 +1,26 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 675" width="1200" height="675" role="img" aria-label="Five-year cost of budgeting apps: YNAB $545, Goodbudget Premium $400, EveryDollar Premium $399.95, Buckets $64, Zeroed $19.99">
+  <style>
+    text { font-family: Inter, system-ui, -apple-system, sans-serif; }
+  </style>
+  <rect width="1200" height="675" fill="#ffffff"/>
+  <rect width="1200" height="6" fill="#2563eb"/><rect y="6" width="1200" height="2" fill="#60a5fa" opacity="0.4"/>
+  <text x="600" y="58" text-anchor="middle" font-size="26" font-weight="700" fill="#1e293b">Five-Year Cost of Budgeting Apps (Annual Plans)</text>
+  <text x="600" y="86" text-anchor="middle" font-size="14" fill="#64748b">US dollars, before tax. Prices checked 7 October 2026 on each vendor's own site.</text>
+  <line x1="300" y1="110" x2="300" y2="600" stroke="#e2e8f0" stroke-width="1"/>
+  <text x="286" y="158" text-anchor="end" font-size="14" font-weight="500" fill="#1e293b">YNAB (annual plan)</text>
+  <rect x="305" y="120" width="700" height="62" rx="10" fill="#dc2626" opacity="0.85"/>
+  <text x="1017" y="158" font-size="16" font-weight="700" fill="#dc2626">$545</text>
+  <text x="286" y="254" text-anchor="end" font-size="14" font-weight="500" fill="#1e293b">Goodbudget Premium</text>
+  <rect x="305" y="216" width="514" height="62" rx="10" fill="#f59e0b" opacity="0.85"/>
+  <text x="831" y="254" font-size="16" font-weight="700" fill="#f59e0b">$400</text>
+  <text x="286" y="350" text-anchor="end" font-size="14" font-weight="500" fill="#1e293b">EveryDollar Premium</text>
+  <rect x="305" y="312" width="514" height="62" rx="10" fill="#f59e0b" opacity="0.85"/>
+  <text x="831" y="350" font-size="16" font-weight="700" fill="#f59e0b">$399.95</text>
+  <text x="286" y="446" text-anchor="end" font-size="14" font-weight="500" fill="#1e293b">Buckets (pay once)</text>
+  <rect x="305" y="408" width="82" height="62" rx="10" fill="#16a34a" opacity="0.85"/>
+  <text x="399" y="446" font-size="16" font-weight="700" fill="#16a34a">$64</text>
+  <text x="286" y="542" text-anchor="end" font-size="14" font-weight="500" fill="#1e293b">Zeroed (pay once, founder price)</text>
+  <rect x="305" y="504" width="26" height="62" rx="10" fill="#2563eb" opacity="0.85"/>
+  <text x="343" y="542" font-size="16" font-weight="700" fill="#2563eb">$19.99</text>
+  <text x="1190" y="665" text-anchor="end" font-size="10" fill="#94a3b8">stillwareltd.com</text>
+</svg>

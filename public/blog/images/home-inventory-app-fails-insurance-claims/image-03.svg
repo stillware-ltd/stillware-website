@@ -1,0 +1,46 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 470" width="1200" height="470" role="img" aria-label="What each home inventory entry should record: item and room, brand model and serial number, purchase date and price, photo or video, receipt, replacement cost estimate">
+  <style>
+    text { font-family: Inter, system-ui, -apple-system, sans-serif; }
+  </style>
+  <rect width="1200" height="470" fill="#ffffff"/>
+  <rect width="1200" height="6" fill="#2563eb"/><rect y="6" width="1200" height="2" fill="#60a5fa" opacity="0.4"/>
+  <text x="600" y="54" text-anchor="middle" font-size="26" font-weight="700" fill="#1e293b">What Each Home Inventory Entry Should Record</text>
+  <text x="600" y="82" text-anchor="middle" font-size="14" fill="#64748b">Based on insurance-industry and state regulator guidance (Triple-I, Maine Bureau of Insurance), checked 7 October 2026.</text>
+  <rect x="40" y="110" width="360" height="150" rx="12" fill="#f8fafc" stroke="#e2e8f0"/>
+  <circle cx="76" cy="150" r="18" fill="#2563eb"/>
+  <text x="76" y="156" text-anchor="middle" font-size="16" font-weight="700" fill="#ffffff">1</text>
+  <text x="106" y="156" font-size="17" font-weight="700" fill="#1e293b">Item and room</text>
+  <text x="64" y="196" font-size="14" fill="#475569">Name the item and where it is, such as</text>
+  <text x="64" y="218" font-size="14" fill="#475569">living room, 55-inch TV.</text>
+  <rect x="420" y="110" width="360" height="150" rx="12" fill="#f8fafc" stroke="#e2e8f0"/>
+  <circle cx="456" cy="150" r="18" fill="#2563eb"/>
+  <text x="456" y="156" text-anchor="middle" font-size="16" font-weight="700" fill="#ffffff">2</text>
+  <text x="486" y="156" font-size="17" font-weight="700" fill="#1e293b">Brand, model, serial number</text>
+  <text x="444" y="196" font-size="14" fill="#475569">Photograph the label; serial numbers</text>
+  <text x="444" y="218" font-size="14" fill="#475569">help prove ownership.</text>
+  <rect x="800" y="110" width="360" height="150" rx="12" fill="#f8fafc" stroke="#e2e8f0"/>
+  <circle cx="836" cy="150" r="18" fill="#2563eb"/>
+  <text x="836" y="156" text-anchor="middle" font-size="16" font-weight="700" fill="#ffffff">3</text>
+  <text x="866" y="156" font-size="17" font-weight="700" fill="#1e293b">Purchase date and price</text>
+  <text x="824" y="196" font-size="14" fill="#475569">What you paid and when; keep the order</text>
+  <text x="824" y="218" font-size="14" fill="#475569">email.</text>
+  <rect x="40" y="280" width="360" height="150" rx="12" fill="#f8fafc" stroke="#e2e8f0"/>
+  <circle cx="76" cy="320" r="18" fill="#2563eb"/>
+  <text x="76" y="326" text-anchor="middle" font-size="16" font-weight="700" fill="#ffffff">4</text>
+  <text x="106" y="326" font-size="17" font-weight="700" fill="#1e293b">Photo or video</text>
+  <text x="64" y="366" font-size="14" fill="#475569">The item as it is today, including any</text>
+  <text x="64" y="388" font-size="14" fill="#475569">damage.</text>
+  <rect x="420" y="280" width="360" height="150" rx="12" fill="#f8fafc" stroke="#e2e8f0"/>
+  <circle cx="456" cy="320" r="18" fill="#2563eb"/>
+  <text x="456" y="326" text-anchor="middle" font-size="16" font-weight="700" fill="#ffffff">5</text>
+  <text x="486" y="326" font-size="17" font-weight="700" fill="#1e293b">Receipt or proof of purchase</text>
+  <text x="444" y="366" font-size="14" fill="#475569">Photo or PDF, stored somewhere that</text>
+  <text x="444" y="388" font-size="14" fill="#475569">survives a fire or flood.</text>
+  <rect x="800" y="280" width="360" height="150" rx="12" fill="#f8fafc" stroke="#e2e8f0"/>
+  <circle cx="836" cy="320" r="18" fill="#2563eb"/>
+  <text x="836" y="326" text-anchor="middle" font-size="16" font-weight="700" fill="#ffffff">6</text>
+  <text x="866" y="326" font-size="17" font-weight="700" fill="#1e293b">Replacement cost estimate</text>
+  <text x="824" y="366" font-size="14" fill="#475569">What it would cost to buy again today;</text>
+  <text x="824" y="388" font-size="14" fill="#475569">review it each year.</text>
+  <text x="1190" y="460" text-anchor="end" font-size="10" fill="#94a3b8">stillwareltd.com</text>
+</svg>

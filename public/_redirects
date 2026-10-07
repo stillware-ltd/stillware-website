@@ -5,7 +5,15 @@
 # 410 tells Google the removal is deliberate, so it drops the URL faster than a 404; sending unrelated
 # pages to the homepage would be treated as a soft 404. Rules without ! never override a real file, so
 # re-publishing one of these slugs later just works. To retire a page, append its path here.
-# Policy: never delete a page that has had search impressions without adding it here or 301-ing it to a close match.
+#
+# POLICY (SEO_STRATEGY.md section 2, rule 1; enforced by scripts/verify-protected.mjs at the end of `npm run build`):
+#   - Never delete, 410, 404, noindex or redirect a page listed in seo/protected-urls.txt (every URL with at least one
+#     Search Console impression in 16 months), unless it is in seo/approved-removals.txt with a dated, founder-written line.
+#   - A retired URL with zero impressions may be retired with 410, or 301-ed to a page that answers the SAME query.
+#     Never 301 to an unrelated page or to the homepage (Google reads that as a soft 404).
+#   - Before adding any 410 or 301 line, check the path against seo/protected-urls.txt. The build fails if a protected
+#     path has a 301/302/404/410 rule or no built page.
+#   - Log every change to this file in seo/CHANGES.md.
 
 # Services line, retired 2026-08 (previously 301 to / which Google reads as a soft 404)
 /services      /404.html  410
@@ -13,54 +21,22 @@
 /business      /404.html  410
 
 # Blog posts removed from the site (2026-04-17 prune, 2026-08-28 cleanup, 2026-09-29 off-topic prune)
-/blog/best-apps-for-seniors-easy-to-use-2026                                                     /404.html  410
-/blog/best-creative-apps-kids-screen-time-alternatives                                           /404.html  410
-/blog/best-focus-apps-for-teens-that-block-social-media                                          /404.html  410
-/blog/best-gamified-chore-tracker-for-kids-no-subscription                                       /404.html  410
-/blog/best-gamified-chore-trackers-for-kids                                                      /404.html  410
-/blog/best-home-inventory-apps-for-insurance-claims                                              /404.html  410
-/blog/best-offline-apps-for-kids-no-ads                                                          /404.html  410
-/blog/best-offline-apps-for-kids-no-ads-2026                                                     /404.html  410
-/blog/best-offline-chess-app-for-kids-2026                                                       /404.html  410
-/blog/best-offline-chess-app-for-kids-2026-no-ads                                                /404.html  410
-/blog/best-offline-hiking-journal-apps                                                           /404.html  410
 /blog/best-offline-hiking-map-app-compared                                                       /404.html  410
 /blog/best-offline-hiking-map-app-no-subscription                                                /404.html  410
 /blog/best-offline-hiking-map-app-no-subscription-compared                                       /404.html  410
 /blog/best-offline-medication-tracker-apps-for-seniors                                           /404.html  410
 /blog/best-offline-medication-trackers-for-seniors                                               /404.html  410
 /blog/best-offline-password-managers-for-seniors                                                 /404.html  410
-/blog/best-offline-study-app-for-teens-2026                                                      /404.html  410
-/blog/best-offline-study-app-for-teens-guide                                                     /404.html  410
-/blog/best-one-time-purchase-apps-2026                                                           /404.html  410
 /blog/best-physics-simulation-apps-for-kids-offline                                              /404.html  410
 /blog/best-record-keeping-apps-for-elderly-parents                                               /404.html  410
-/blog/best-teen-study-apps-block-social-media                                                    /404.html  410
 /blog/essential-scam-prevention-tips-for-seniors                                                 /404.html  410
-/blog/first-car-maintenance-checklist-for-teens                                                  /404.html  410
-/blog/first-car-maintenance-guide-for-teens                                                      /404.html  410
 /blog/focus-music-without-streaming-offline-alternatives                                         /404.html  410
 /blog/gratitude-journal-prompts-mental-health                                                    /404.html  410
-/blog/hidden-costs-cloud-home-maintenance-log-offline-alternative                                /404.html  410
-/blog/home-inventory-app-fails-insurance-claims                                                  /404.html  410
-/blog/home-inventory-app-for-faster-insurance-claims                                             /404.html  410
-/blog/home-inventory-app-insurance-claims-guide                                                  /404.html  410
-/blog/home-inventory-app-renters-insurance-guide                                                 /404.html  410
-/blog/home-inventory-for-insurance-renters-guide                                                 /404.html  410
-/blog/home-maintenance-schedule-for-seniors                                                      /404.html  410
-/blog/how-home-inventory-app-simplifies-insurance-claims                                         /404.html  410
-/blog/how-to-build-a-digital-family-museum-before-downsizing                                     /404.html  410
-/blog/how-to-digitize-handwritten-recipes                                                        /404.html  410
 /blog/how-to-learn-coding-on-phone-offline                                                       /404.html  410
 /blog/how-to-make-a-zine-for-kids-guide                                                          /404.html  410
-/blog/how-to-preserve-family-recipes-digitally                                                   /404.html  410
-/blog/how-to-protect-kids-data-online-5-step-audit                                               /404.html  410
 /blog/how-to-record-a-band-demo-offline                                                          /404.html  410
-/blog/how-to-record-family-stories-step-by-step                                                  /404.html  410
 /blog/how-to-spot-a-scam-for-seniors-guide                                                       /404.html  410
 /blog/how-to-start-a-nature-journal-with-kids                                                    /404.html  410
-/blog/how-to-start-a-rock-collection-for-kids                                                    /404.html  410
-/blog/how-to-start-a-rock-collection-for-kids-simple-steps                                       /404.html  410
 /blog/how-to-start-a-side-hustle-at-16                                                           /404.html  410
 /blog/how-to-start-a-side-hustle-at-16-complete-guide                                            /404.html  410
 /blog/how-to-teach-kids-coding-logic-without-syntax                                              /404.html  410
@@ -68,28 +44,17 @@
 /blog/how-to-teach-kids-fractions-through-cooking                                                /404.html  410
 /blog/how-to-track-chronic-illness-symptoms-effectively                                          /404.html  410
 /blog/how-to-write-a-memoir-for-beginners-guide                                                  /404.html  410
-/blog/local-first-software-movement-guide                                                        /404.html  410
-/blog/nature-sounds-for-deep-sleep                                                               /404.html  410
 /blog/offline-medication-tracker-app-for-seniors                                                 /404.html  410
 /blog/offline-medication-tracker-apps-for-seniors                                                /404.html  410
 /blog/offline-password-manager-for-seniors                                                       /404.html  410
 /blog/photo-comics-boost-kid-storytelling-skills                                                 /404.html  410
 /blog/pixel-art-tutorial-for-beginners-first-sprite                                              /404.html  410
 /blog/pixel-art-tutorial-for-kids-16x16-grid-guide                                               /404.html  410
-/blog/privacy-budgeting-apps-compared                                                            /404.html  410
-/blog/privacy-first-budgeting-apps-2026-comparison                                               /404.html  410
 /blog/stop-motion-animation-for-beginners-guide                                                  /404.html  410
 /blog/teaching-kids-coding-without-screen-time                                                   /404.html  410
 /blog/teen-side-hustle-tools-offline                                                             /404.html  410
-/blog/what-is-local-first-software-movement                                                      /404.html  410
-/blog/what-is-local-first-software-movement-guide                                                /404.html  410
-/blog/why-flashcards-fail-spaced-repetition-works                                                /404.html  410
 /blog/why-free-apps-sell-your-data                                                               /404.html  410
-/blog/why-offline-apps-protect-seniors-data                                                      /404.html  410
-/blog/why-offline-apps-protect-seniors-data-better                                               /404.html  410
 /blog/why-you-should-stop-using-free-apps                                                        /404.html  410
-/blog/ynab-alternative-no-subscription                                                           /404.html  410
-/blog/ynab-alternatives-local-storage                                                            /404.html  410
 
 # Tag pages whose only posts were retired (every tag slug that ever shipped and is no longer used)
 /blog/tag/lifestyle                                                                              /404.html  410
@@ -103,6 +68,34 @@
 /blog/tag/outdoors                                                                               /404.html  410
 /blog/tag/teens-tech                                                                             /404.html  410
 
-# MERGED PAGES -> 301 to the page that absorbed them (use when a close match exists; otherwise retire with 410 above)
-# 2026-09-29: two YNAB-alternative posts covered the same search; the ranking URL became the pillar.
-/blog/ynab-alternative-no-subscription-ultimate-comparison    /blog/ynab-price-increase-alternatives-2026/    301
+# DUPLICATES -> 301 to the page that answers the same query (2026-10-07, SEO_STRATEGY.md section 4 P1.2).
+# Each source below never earned a Search Console impression, so nothing ranked is lost; the 301 keeps stray links and
+# bookmarks alive. Each target is a live or restored page that exists in src/content/blog/. The 16 working pages that were
+# 410 until 2026-10-07 are live again at their original URLs, so their 410 lines are gone.
+/blog/best-gamified-chore-trackers-for-kids                     /blog/best-gamified-chore-tracker-for-kids-no-subscription/    301
+/blog/best-offline-chess-app-for-kids-2026                      /blog/best-offline-chess-app-for-kids/    301
+/blog/best-offline-chess-app-for-kids-2026-no-ads               /blog/best-offline-chess-app-for-kids/    301
+/blog/privacy-budgeting-apps-compared                           /blog/privacy-first-budgeting-apps-compared-2026/    301
+/blog/privacy-first-budgeting-apps-2026-comparison              /blog/privacy-first-budgeting-apps-compared-2026/    301
+/blog/ynab-alternative-no-subscription                          /blog/ynab-alternative-no-subscription-ultimate-comparison/    301
+/blog/ynab-alternatives-local-storage                           /blog/ynab-alternative-no-subscription-ultimate-comparison/    301
+/blog/best-one-time-purchase-apps-2026                          /blog/best-budgeting-apps-without-subscription-2026/    301
+/blog/local-first-software-movement-guide                       /blog/what-is-local-first-software-movement-guide-2026/    301
+/blog/what-is-local-first-software-movement                     /blog/what-is-local-first-software-movement-guide-2026/    301
+/blog/what-is-local-first-software-movement-guide               /blog/what-is-local-first-software-movement-guide-2026/    301
+/blog/how-to-protect-kids-data-online-5-step-audit              /blog/how-to-protect-kids-data-online-parent-guide/    301
+/blog/best-offline-apps-for-kids-no-ads                         /blog/best-creative-apps-kids-screen-time-alternatives/    301
+/blog/best-offline-apps-for-kids-no-ads-2026                    /blog/best-creative-apps-kids-screen-time-alternatives/    301
+/blog/best-home-inventory-apps-for-insurance-claims             /blog/home-inventory-app-fails-insurance-claims/    301
+/blog/home-inventory-app-for-faster-insurance-claims            /blog/home-inventory-app-fails-insurance-claims/    301
+/blog/home-inventory-app-insurance-claims-guide                 /blog/home-inventory-app-fails-insurance-claims/    301
+/blog/how-home-inventory-app-simplifies-insurance-claims        /blog/home-inventory-app-fails-insurance-claims/    301
+/blog/home-inventory-for-insurance-renters-guide                /blog/home-inventory-app-renters-insurance-guide/    301
+/blog/first-car-maintenance-guide-for-teens                     /blog/first-car-maintenance-checklist-for-teens/    301
+/blog/how-to-start-a-rock-collection-for-kids                   /blog/how-to-start-a-rock-collection-for-kids-simple-steps/    301
+/blog/how-to-preserve-family-recipes-digitally                  /blog/how-to-digitize-handwritten-recipes/    301
+/blog/best-teen-study-apps-block-social-media                   /blog/best-focus-apps-for-teens-that-block-social-media/    301
+/blog/best-offline-study-app-for-teens-2026                     /blog/best-focus-apps-for-teens-that-block-social-media/    301
+/blog/best-offline-study-app-for-teens-guide                    /blog/best-focus-apps-for-teens-that-block-social-media/    301
+/blog/why-offline-apps-protect-seniors-data                     /blog/why-offline-apps-are-better/    301
+/blog/why-offline-apps-protect-seniors-data-better              /blog/why-offline-apps-are-better/    301

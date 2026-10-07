@@ -1,0 +1,17 @@
+# Approved removals: the ONLY way a page listed in seo/protected-urls.txt may be missing, redirected, 410/404 or noindexed.
+#
+# SEO_STRATEGY.md section 2, rule 1: a working page (>= 1 Search Console impression in 16 months) is never removed unless
+# there is a DATED, FOUNDER-WRITTEN line here. scripts/verify-protected.mjs skips exactly the paths below and nothing else.
+#
+# Format, one per line:   <path> | <YYYY-MM-DD> | <who approved it> | <reason>
+# Lines starting with # are comments. Never add a line to make a failing build pass without the founder's say-so.
+#
+# --- Grandfathered at adoption (2026-10-07): intentionally non-200 today -------------------------------------------------
+/services/ | 2026-10-07 | lead agent, at adoption | grandfathered 2026-10-07 at adoption; services line retired 2026-08 and served as 410; founder decision F1 open
+/services/nevermiss/ | 2026-10-07 | lead agent, at adoption | grandfathered 2026-10-07 at adoption; NeverMiss paused, served as 410; founder decision F1 open (keep the 410 or publish an honest waiting-list page)
+/services/terms/ | 2026-10-07 | lead agent, at adoption | grandfathered 2026-10-07 at adoption; services terms retired with the services line (410); founder decision F1 open
+/blog/tag/outdoor-nature/ | 2026-10-07 | lead agent, at adoption | retired tag page (410); its one post is restored under the tag "Hiking", so this tag URL is not rebuilt
+/blog/tag/creative-tools/ | 2026-10-07 | lead agent, at adoption | retired tag page (410); its one post is restored under the tag "Kids & Tech", so this tag URL is not rebuilt
+/tools/NerdWallet/ | 2026-10-07 | lead agent, at adoption | malformed URL that Google reported; it was never a page on this site (404)
+# --- Intentionally noindex today (checked in the 2026-10-07 build) --------------------------------------------------------
+/blog/tag/productivity/ | 2026-10-07 | lead agent, at adoption | thin tag page (fewer than 5 posts), noindex,follow by design in src/pages/blog/tag/[tag].astro (MIN_INDEXABLE_TAG_POSTS in src/lib/tags.mjs); it becomes indexable by itself at 5 posts
