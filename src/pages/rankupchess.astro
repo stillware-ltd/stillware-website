@@ -2,7 +2,7 @@
 import Layout from '../layouts/Layout.astro';
 
 // The product version, shown wherever the page states which release this is.
-const RANKUP_VERSION = '0.8.0';
+const RANKUP_VERSION = '0.9.0';
 
 // Download URLs derive from their own per-platform constants, which track the
 // release asset that actually exists rather than the product version.
@@ -17,9 +17,11 @@ const RANKUP_WINDOWS_DOWNLOAD = RANKUP_WINDOWS_VERSION
   : null;
 
 // macOS ships Developer ID signed and notarised, so it installs without a
-// Gatekeeper warning. Universal binary, macOS 10.15+. 0.8.0 (board themes)
-// was published on 2026-09-25.
-const RANKUP_MACOS_VERSION = '0.8.0';
+// Gatekeeper warning. Universal binary. 0.8.0 (board themes, macOS 10.15+)
+// was published on 2026-09-25; 0.9.0 (the family adventure) on 2026-10-07
+// needs macOS 12, so Macs on 10.15 or 11 stay on 0.8.0 (linked from the
+// release notes and the releases README).
+const RANKUP_MACOS_VERSION = '0.9.0';
 const RANKUP_MACOS_DOWNLOAD =
   `https://github.com/stillware-ltd/rankup-chess-releases/releases/download/v${RANKUP_MACOS_VERSION}-macos/RankUpChess-${RANKUP_MACOS_VERSION}-macOS.dmg`;
 
@@ -93,13 +95,13 @@ const appSchema = {
                             </a>
                             <a href={RANKUP_MACOS_DOWNLOAD} class="hero-cta-secondary">
                                 Download for macOS
-                                <span class="btn-subtext">macOS &middot; v{RANKUP_MACOS_VERSION} &middot; free forever</span>
+                                <span class="btn-subtext">macOS 12+ &middot; v{RANKUP_MACOS_VERSION} &middot; free forever</span>
                             </a>
                         </Fragment>
                     ) : (
                         <a href={RANKUP_MACOS_DOWNLOAD} class="btn-primary pulse">
                             Download Free
-                            <span class="btn-subtext">macOS &middot; v{RANKUP_MACOS_VERSION} &middot; free forever</span>
+                            <span class="btn-subtext">macOS 12+ &middot; v{RANKUP_MACOS_VERSION} &middot; free forever</span>
                         </a>
                     )}
                     <p class="version-line">Current release <strong>v{RANKUP_VERSION}</strong>{RANKUP_CURRENT_ON && ` on ${RANKUP_CURRENT_ON}`}.{RANKUP_CATCHING_UP && ` ${RANKUP_CATCHING_UP}, with ${RANKUP_VERSION} on its way.`}{!RANKUP_WINDOWS_VERSION && ' The Windows version is coming soon.'}</p>
@@ -128,9 +130,9 @@ const appSchema = {
             </div>
             <div class="hero-visual">
                 <div class="hero-carousel">
-                    <img src="/rankupchess-screens/mac_01_home-1040.webp" alt="RankUp Chess on macOS — Home screen with Play AI, Pass & Play, 5000 Puzzles, Learn Skills, Opening Explorer and the Daily Challenge" class="hero-image hero-slide active" width="1200" height="900" />
-                    <img src="/rankupchess-screens/mac_05_puzzle_library-1040.webp" alt="RankUp Chess on macOS — Puzzle Library with 5,000 puzzles filterable by difficulty and theme" class="hero-image hero-slide" width="1200" height="900" loading="lazy" />
-                    <img src="/rankupchess-screens/mac_08_review_analysis-1040.webp" alt="RankUp Chess on macOS — Post-game review with an evaluation graph and a move list flagging inaccuracies" class="hero-image hero-slide" width="1200" height="900" loading="lazy" />
+                    <img src="/rankupchess-screens/mac_090_04_home-1040.webp" alt="RankUp Chess on macOS: Home, with Today’s Adventure, the week’s theme and Play AI, Pass &amp; Play, Puzzles and Learn Skills" class="hero-image hero-slide active" width="1200" height="900" />
+                    <img src="/rankupchess-screens/mac_090_01_adventure_map-1040.webp" alt="RankUp Chess on macOS: the adventure map, with Rook asking where to next and the next lands to explore" class="hero-image hero-slide" width="1200" height="900" loading="lazy" />
+                    <img src="/rankupchess-screens/mac_090_03_voiced_lesson-1040.webp" alt="RankUp Chess on macOS: a voiced lesson on kingside castling, with Rook explaining the move" class="hero-image hero-slide" width="1200" height="900" loading="lazy" />
                 </div>
             </div>
         </div>
@@ -162,18 +164,16 @@ const appSchema = {
                 </button>
                 <div class="slides-container-wrapper">
                     <div class="slides-container">
-                        <img src="/rankupchess-screens/phone_01_home-560.webp" alt="RankUp Chess — Home screen with Play AI, Pass & Play, 5000 Puzzles, Learn Skills, Opening Explorer and the Daily Challenge" class="slide-image" width="1017" height="2200" loading="lazy" />
-                        <img src="/rankupchess-screens/phone_02_profile_stats-560.webp" alt="RankUp Chess — Player profile showing Elo rating and playing statistics" class="slide-image" width="1017" height="2200" loading="lazy" />
-                        <img src="/rankupchess-screens/phone_03_achievements-560.webp" alt="RankUp Chess — Achievements screen showing 13 of 25 unlocked, filtered by Milestones, Tactics and Streaks, with locked badges still hidden" class="slide-image" width="1017" height="2200" loading="lazy" />
-                        <img src="/rankupchess-screens/phone_04_skill_tree_progress-560.webp" alt="RankUp Chess — Skill Tree showing progress through the curriculum chapters" class="slide-image" width="1017" height="2200" loading="lazy" />
-                        <img src="/rankupchess-screens/phone_05_puzzle_library-560.webp" alt="RankUp Chess — Puzzle Library with 5,000 puzzles filterable by difficulty and theme" class="slide-image" width="1017" height="2200" loading="lazy" />
-                        <img src="/rankupchess-screens/phone_06_puzzle_hints-560.webp" alt="RankUp Chess — Solving a puzzle with hints available" class="slide-image" width="1017" height="2200" loading="lazy" />
-                        <img src="/rankupchess-screens/phone_07_game_history-560.webp" alt="RankUp Chess — Game history listing previous matches" class="slide-image" width="1017" height="2200" loading="lazy" />
-                        <img src="/rankupchess-screens/phone_08_review_analysis-560.webp" alt="RankUp Chess — Post-game review of a match against the computer, with an evaluation graph, the board position, and a move list flagging inaccuracies" class="slide-image" width="1017" height="2200" loading="lazy" />
-                        <img src="/rankupchess-screens/phone_09_ai_levels-560.webp" alt="RankUp Chess — Play vs AI difficulty levels, from Beginner to World Class" class="slide-image" width="1017" height="2200" loading="lazy" />
-                        <img src="/rankupchess-screens/phone_10_match_live-560.webp" alt="RankUp Chess — A live match on the Treehouse board, one of six board themes" class="slide-image" width="1017" height="2200" loading="lazy" />
-                        <img src="/rankupchess-screens/phone_11_board_themes-560.webp" alt="RankUp Chess — The board theme gallery: Treehouse and Coral Reef are free, Paper Fold, Starship, Castle and Fossil Dig come with Premium" class="slide-image" width="1017" height="2200" loading="lazy" />
-                        <img src="/rankupchess-screens/phone_12_match_castle-560.webp" alt="RankUp Chess — A match on the Castle board, a Premium theme with its own pieces, sounds and effects" class="slide-image" width="1017" height="2200" loading="lazy" />
+                        <img src="/rankupchess-screens/phone_090_01_adventure_map-560.webp" alt="RankUp Chess: Learn chess on a fun adventure. The adventure map, with Rook the friendly talking chess piece" class="slide-image" width="1017" height="2210" loading="lazy" />
+                        <img src="/rankupchess-screens/phone_090_02_voiced_lesson-560.webp" alt="RankUp Chess: Rook reads every lesson out loud. A voiced lesson on kingside castling, one of 61 lessons in 8 lands" class="slide-image" width="1017" height="2210" loading="lazy" />
+                        <img src="/rankupchess-screens/phone_090_03_family_profiles-560.webp" alt="RankUp Chess: No ads. No chat. Just chess. Up to 8 family profiles on one device, with no accounts" class="slide-image" width="1017" height="2210" loading="lazy" />
+                        <img src="/rankupchess-screens/phone_090_04_friendly_bots-560.webp" alt="RankUp Chess: Friendly bots that grow with you. Ten computer opponents, from Pip the Pawn (400) to a 2400 expert" class="slide-image" width="1017" height="2210" loading="lazy" />
+                        <img src="/rankupchess-screens/phone_090_05_daily_goals-560.webp" alt="RankUp Chess: Small daily goals, big progress. Today’s Adventure on the home screen, with streaks and ranks" class="slide-image" width="1017" height="2210" loading="lazy" />
+                        <img src="/rankupchess-screens/phone_090_06_puzzles-560.webp" alt="RankUp Chess: Over 6,000 puzzles to solve. Puzzle islands by theme, Puzzle Dash and a Mate-in-1 Marathon" class="slide-image" width="1017" height="2210" loading="lazy" />
+                        <img src="/rankupchess-screens/phone_090_07_certificate-560.webp" alt="RankUp Chess: A certificate for every land you finish, to save or share" class="slide-image" width="1017" height="2210" loading="lazy" />
+                        <img src="/rankupchess-screens/phone_090_08_weekly_report-560.webp" alt="RankUp Chess: See the progress every week. The grown-ups’ weekly report: minutes played, lessons finished and skills practised" class="slide-image" width="1017" height="2210" loading="lazy" />
+                        <img src="/rankupchess-screens/phone_090_09_daily_challenge-560.webp" alt="RankUp Chess: A fresh puzzle every day. The Daily Challenge, with hints that teach the idea" class="slide-image" width="1017" height="2210" loading="lazy" />
+                        <img src="/rankupchess-screens/phone_090_10_fun_games-560.webp" alt="RankUp Chess: Chess with a twist. Pawn Wars, King of the Hill and family club tournaments" class="slide-image" width="1017" height="2210" loading="lazy" />
                     </div>
                 </div>
                 <button class="slide-nav-btn next" aria-label="Next Slide">
@@ -196,19 +196,18 @@ const appSchema = {
                 </button>
                 <div class="slides-container-wrapper">
                     <div class="slides-container">
-                        <img src="/rankupchess-screens/mac_01_home-1040.webp" alt="RankUp Chess on macOS — Home screen with Play AI, Pass & Play, 5000 Puzzles, Learn Skills, Opening Explorer and the Daily Challenge" class="slide-image slide-image-wide" width="1200" height="900" loading="lazy" />
-                        <img src="/rankupchess-screens/mac_02_profile_stats-1040.webp" alt="RankUp Chess on macOS — Player profile with Elo rating and playing statistics" class="slide-image slide-image-wide" width="1200" height="900" loading="lazy" />
-                        <img src="/rankupchess-screens/mac_03_achievements-1040.webp" alt="RankUp Chess on macOS — Achievements, filterable by Milestones, Tactics and Streaks" class="slide-image slide-image-wide" width="1200" height="900" loading="lazy" />
-                        <img src="/rankupchess-screens/mac_04_skill_tree_progress-1040.webp" alt="RankUp Chess on macOS — Skill Tree progress across Beginner Village, Castle Grounds and Battle Plains" class="slide-image slide-image-wide" width="1200" height="900" loading="lazy" />
-                        <img src="/rankupchess-screens/mac_05_puzzle_library-1040.webp" alt="RankUp Chess on macOS — Puzzle Library with 5,000 puzzles filterable by difficulty and theme" class="slide-image slide-image-wide" width="1200" height="900" loading="lazy" />
-                        <img src="/rankupchess-screens/mac_06_puzzle_hints-1040.webp" alt="RankUp Chess on macOS — Solving a puzzle with hints available" class="slide-image slide-image-wide" width="1200" height="900" loading="lazy" />
-                        <img src="/rankupchess-screens/mac_07_game_history-1040.webp" alt="RankUp Chess on macOS — Game history listing previous matches" class="slide-image slide-image-wide" width="1200" height="900" loading="lazy" />
-                        <img src="/rankupchess-screens/mac_08_review_analysis-1040.webp" alt="RankUp Chess on macOS — Post-game review with an evaluation graph and a move list flagging inaccuracies" class="slide-image slide-image-wide" width="1200" height="900" loading="lazy" />
-                        <img src="/rankupchess-screens/mac_09_ai_levels-1040.webp" alt="RankUp Chess on macOS — Play vs AI difficulty levels, from Beginner to World Class" class="slide-image slide-image-wide" width="1200" height="900" loading="lazy" />
-                        <img src="/rankupchess-screens/mac_10_opening_explorer-1040.webp" alt="RankUp Chess on macOS — Opening Explorer browsing ECO openings with board previews" class="slide-image slide-image-wide" width="1200" height="900" loading="lazy" />
-                        <img src="/rankupchess-screens/mac_13_match_treehouse-1040.webp" alt="RankUp Chess on macOS — A match on the Treehouse board, one of six board themes" class="slide-image slide-image-wide" width="1200" height="900" loading="lazy" />
-                        <img src="/rankupchess-screens/mac_11_board_themes-1040.webp" alt="RankUp Chess on macOS — The board theme gallery: Treehouse and Coral Reef are free, Paper Fold, Starship, Castle and Fossil Dig come with Premium" class="slide-image slide-image-wide" width="1200" height="900" loading="lazy" />
-                        <img src="/rankupchess-screens/mac_12_match_castle-1040.webp" alt="RankUp Chess on macOS — A match on the Castle board, a Premium theme" class="slide-image slide-image-wide" width="1200" height="900" loading="lazy" />
+                        <img src="/rankupchess-screens/mac_090_01_adventure_map-1040.webp" alt="RankUp Chess on macOS: the adventure map, 61 lessons across 8 lands" class="slide-image slide-image-wide" width="1200" height="900" loading="lazy" />
+                        <img src="/rankupchess-screens/mac_090_02_lesson_intro-1040.webp" alt="RankUp Chess on macOS: Rook introduces today’s lesson" class="slide-image slide-image-wide" width="1200" height="900" loading="lazy" />
+                        <img src="/rankupchess-screens/mac_090_03_voiced_lesson-1040.webp" alt="RankUp Chess on macOS: a voiced lesson on kingside castling" class="slide-image slide-image-wide" width="1200" height="900" loading="lazy" />
+                        <img src="/rankupchess-screens/mac_090_04_home-1040.webp" alt="RankUp Chess on macOS: Home, with Today’s Adventure and three short goals a day" class="slide-image slide-image-wide" width="1200" height="900" loading="lazy" />
+                        <img src="/rankupchess-screens/mac_090_05_friendly_bots-1040.webp" alt="RankUp Chess on macOS: ten computer opponents with personalities, from Pip the Pawn (400 Elo)" class="slide-image slide-image-wide" width="1200" height="900" loading="lazy" />
+                        <img src="/rankupchess-screens/mac_090_10_puzzles-1040.webp" alt="RankUp Chess on macOS: the Puzzle Library, with puzzle islands, Puzzle Dash and the Mate-in-1 Marathon" class="slide-image slide-image-wide" width="1200" height="900" loading="lazy" />
+                        <img src="/rankupchess-screens/mac_090_06_daily_challenge-1040.webp" alt="RankUp Chess on macOS: the Daily Challenge, with hints" class="slide-image slide-image-wide" width="1200" height="900" loading="lazy" />
+                        <img src="/rankupchess-screens/mac_090_07_family_profiles-1040.webp" alt="RankUp Chess on macOS: family profiles and the family’s week" class="slide-image slide-image-wide" width="1200" height="900" loading="lazy" />
+                        <img src="/rankupchess-screens/mac_090_08_weekly_report-1040.webp" alt="RankUp Chess on macOS: the grown-ups’ weekly report for a child" class="slide-image slide-image-wide" width="1200" height="900" loading="lazy" />
+                        <img src="/rankupchess-screens/mac_090_09_certificate-1040.webp" alt="RankUp Chess on macOS: a certificate for finishing a land" class="slide-image slide-image-wide" width="1200" height="900" loading="lazy" />
+                        <img src="/rankupchess-screens/mac_090_11_opening_adventures-1040.webp" alt="RankUp Chess on macOS: Opening Adventures, learning real openings move by move" class="slide-image slide-image-wide" width="1200" height="900" loading="lazy" />
+                        <img src="/rankupchess-screens/mac_090_12_fun_games-1040.webp" alt="RankUp Chess on macOS: fun games, Pawn Wars and King of the Hill" class="slide-image slide-image-wide" width="1200" height="900" loading="lazy" />
                     </div>
                 </div>
                 <button class="slide-nav-btn next" aria-label="Next Slide">
@@ -289,7 +288,7 @@ const appSchema = {
                     <p class="parental-reassure">Let them learn, play, and make mistakes — without worrying about what they might click on.</p>
                 </div>
                 <div class="parental-visual">
-                    <img src="/rankupchess-screens/mac_11_settings_parental-1040.webp" alt="RankUp Chess — Settings showing Parental Controls with a PIN requirement and the Parent Dashboard, plus backup and restore" class="parental-image" width="1200" height="900" loading="lazy" />
+                    <img src="/rankupchess-screens/mac_090_08_weekly_report-1040.webp" alt="RankUp Chess: the grown-ups’ weekly report for a child, with time played, a suggested next step, conversation prompts and goals" class="parental-image" width="1200" height="900" loading="lazy" />
                 </div>
             </div>
         </div>
