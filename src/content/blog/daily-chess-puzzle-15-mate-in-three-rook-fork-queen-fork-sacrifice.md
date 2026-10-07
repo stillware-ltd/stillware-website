@@ -1,5 +1,6 @@
 ---
 title: "Daily Chess Puzzle #15: Mate in three, Rook fork, Queen fork and Sacrifice"
+seoTitle: "Mate in Three Puzzle + 3 More: Daily Chess Puzzle #15"
 date: 2026-09-29
 description: "Four chess puzzles from beginner to master — mate in three, rook fork, queen fork and sacrifice — with positions and solutions. Rated 900–2800."
 author: "Stillware Team"

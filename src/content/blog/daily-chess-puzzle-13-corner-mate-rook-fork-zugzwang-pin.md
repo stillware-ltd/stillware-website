@@ -1,5 +1,6 @@
 ---
 title: "Daily Chess Puzzle #13: Corner mate, Rook fork, Zugzwang and Pin"
+seoTitle: "Corner Mate Puzzle + 3 More: Daily Chess Puzzle #13"
 date: 2026-09-27
 description: "Four chess puzzles from beginner to master — corner mate, rook fork, zugzwang and pin — with positions and solutions. Rated 900–2600."
 author: "Stillware Team"

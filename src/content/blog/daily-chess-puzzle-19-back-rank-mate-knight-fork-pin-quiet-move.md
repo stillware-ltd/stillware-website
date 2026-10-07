@@ -1,5 +1,6 @@
 ---
 title: "Daily Chess Puzzle #19: Back-rank mate, Knight fork, Pin and Quiet move"
+seoTitle: "Back-Rank Mate Puzzle + 3 More: Daily Chess Puzzle #19"
 date: 2026-10-03
 description: "Four chess puzzles from beginner to master — back-rank mate, knight fork, pin and quiet move — with positions and solutions. Rated 800–2500."
 author: "Stillware Team"

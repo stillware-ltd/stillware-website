@@ -1,5 +1,6 @@
 ---
 title: "Daily Chess Puzzle #12: Back-rank mate, Trapped piece, Promotion and Quiet move"
+seoTitle: "Back-Rank Mate Puzzle + 3 More: Daily Chess Puzzle #12"
 date: 2026-09-26
 description: "Four chess puzzles from beginner to master — back-rank mate, trapped piece, promotion and quiet move — with positions and solutions. Rated 800–2600."
 author: "Stillware Team"

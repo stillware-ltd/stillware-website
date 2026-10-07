@@ -1,5 +1,6 @@
 ---
 title: "Daily Chess Puzzle #18: Mate in two, Pin, Quiet move and Deflection"
+seoTitle: "Mate in Two Puzzle + 3 More: Daily Chess Puzzle #18"
 date: 2026-10-02
 description: "Four chess puzzles from beginner to master — mate in two, pin, quiet move and deflection — with positions and solutions. Rated 1000–2500."
 author: "Stillware Team"

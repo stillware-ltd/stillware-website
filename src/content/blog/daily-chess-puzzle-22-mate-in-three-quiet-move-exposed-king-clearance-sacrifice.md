@@ -1,5 +1,6 @@
 ---
 title: "Daily Chess Puzzle #22: Mate in three, Quiet move, Exposed king and Clearance sacrifice"
+seoTitle: "Mate in Three Puzzle + 3 More: Daily Chess Puzzle #22"
 date: 2026-10-06
 description: "Four chess puzzles from beginner to master — mate in three, quiet move, exposed king and clearance sacrifice — with positions and solutions. Rated 700–2800."
 author: "Stillware Team"

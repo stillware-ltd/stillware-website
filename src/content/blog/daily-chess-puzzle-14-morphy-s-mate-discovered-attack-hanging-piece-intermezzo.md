@@ -1,5 +1,6 @@
 ---
 title: "Daily Chess Puzzle #14: Morphy's mate, Discovered attack, Hanging piece and Intermezzo"
+seoTitle: "Morphy's Mate Puzzle + 3 More: Daily Chess Puzzle #14"
 date: 2026-09-28
 description: "Four chess puzzles from beginner to master — morphy's mate, discovered attack, hanging piece and intermezzo — with positions and solutions. Rated 900–2500."
 author: "Stillware Team"

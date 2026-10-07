@@ -1,5 +1,6 @@
 ---
 title: "Daily Chess Puzzle #21: Swallow's tail mate, Deflection, Promotion and Discovered check"
+seoTitle: "Swallow's Tail Mate Puzzle + 3 More: Daily Chess Puzzle #21"
 date: 2026-10-05
 description: "Four chess puzzles from beginner to master — swallow's tail mate, deflection, promotion and discovered check — with positions and solutions. Rated 1000–2700."
 author: "Stillware Team"

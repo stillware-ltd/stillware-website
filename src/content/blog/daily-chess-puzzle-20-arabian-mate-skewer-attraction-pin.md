@@ -1,5 +1,6 @@
 ---
 title: "Daily Chess Puzzle #20: Arabian mate, Skewer, Attraction and Pin"
+seoTitle: "Arabian Mate Puzzle + 3 More: Daily Chess Puzzle #20"
 date: 2026-10-04
 description: "Four chess puzzles from beginner to master — arabian mate, skewer, attraction and pin — with positions and solutions. Rated 900–2800."
 author: "Stillware Team"

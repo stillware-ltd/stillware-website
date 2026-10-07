@@ -1,5 +1,6 @@
 ---
 title: "Daily Chess Puzzle #17: Opera mate, Clearance sacrifice, Trapped piece and Queen fork"
+seoTitle: "Opera Mate Puzzle + 3 More: Daily Chess Puzzle #17"
 date: 2026-10-01
 description: "Four chess puzzles from beginner to master — opera mate, clearance sacrifice, trapped piece and queen fork — with positions and solutions. Rated 1100–2500."
 author: "Stillware Team"
