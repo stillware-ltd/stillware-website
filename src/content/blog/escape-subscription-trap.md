@@ -1,12 +1,13 @@
 ---
 title: "Why App Subscriptions Are Getting Out of Hand (5 Fixes)"
 date: 2026-09-07
-description: "App subscriptions are getting out of hand, draining $600+ yearly from your budget. Discover 5 proven rules to escape the trap and own your software again."
+updated: 2026-10-07
+description: "App subscriptions are getting out of hand: one 2025 survey put US spending at about $90 a month. 5 rules to escape the trap and own your software again."
 author: "Tejaswi Dhulipala"
 pillar: "philosophy"
 appCluster: "general"
 primaryKeyword: "app subscriptions are getting out of hand"
-wordCount: 1408
+wordCount: 1497
 qualityScore: 92
 tags: ["Anti-SaaS", "Offline-First", "Privacy", "Productivity"]
 featured: true
@@ -17,9 +18,9 @@ heroImage: "/blog/images/escape-subscription-trap/hero.webp"
 
 App subscriptions are getting out of hand. The subscription economy isn't a failure of your willpower. It's a failure of the software industry's imagination.
 
-Somewhere between 2012 and 2020, software companies collectively decided that selling you something once wasn't profitable enough. Adobe went first, then Microsoft, then every noodly startup with a pivot deck. Now a typical household quietly hemorrhages money to apps they barely use — budgeting tools, note-taking apps, password managers, recipe organizers, workout plans, photo editors, VPNs, and reading apps that each cost $5 to $20 monthly. It sounds negligible per line item. It isn't.
+Over the last fifteen years, much of the software industry decided that selling you something once wasn't profitable enough. Microsoft launched Office 365 for businesses in 2011 and for homes in 2013. In May 2013 Adobe said new versions of its creative apps would come only through its Creative Cloud subscription. Then came every noodly startup with a pivot deck. Now many households quietly hemorrhage money to apps they barely use — budgeting tools, note-taking apps, password managers, recipe organizers, workout plans, photo editors, VPNs, and reading apps that each cost $5 to $20 monthly. It sounds negligible per line item. It isn't.
 
-Add up the modest, recurring fees across five to ten niche apps and the bill lands between $600 and $2,400 every single year. That's a vacation. That's a car payment. That's your family's grocery budget for two months. And in exchange, you own nothing — not one byte of software, not one feature update, not a shred of digital equity.
+Add up the modest, recurring fees across five to ten niche apps at $5 to $20 each and the bill lands between $300 and $2,400 every single year. At the top end, that's a vacation, every year. And people tend to underestimate it. In a 2022 C+R Research survey of 1,000 US consumers, people guessed they spent $86 a month on subscriptions; their itemised total came to $219, and 42% had forgotten about a subscription they were still paying for. A 2025 CNET survey put average spending at about $90 a month, with about $17 of it going on subscriptions people rarely or never use. And in exchange, you own nothing — not one byte of software, not one feature update, not a shred of digital equity.
 
 This is the piece most subscription apologists miss: **subscription fatigue isn't just about money. It's a slow, quiet erosion of ownership.** (Get the full philosophy behind the fix in our [Local First Software Movement Guide](/blog/what-is-local-first-software-movement-guide-2026/)).
 
@@ -35,17 +36,17 @@ Before we get to solutions, we need to bust some myths. The software industry ha
 
 **Myth 1: "Subscriptions guarantee ongoing development."**
 
-They guarantee revenue. That's not the same thing. Some of the most stagnant apps I've used in the last year are subscription products — they collect monthly fees while shipping trivial updates (or none at all). Meanwhile, one-time-purchase software often improves because the developer's reputation depends on it. We built our apps with this logic: if someone hands us money once for a lifetime license, we owe them a polished product forever. That's a stronger incentive than a subscription, not a weaker one.
+They guarantee revenue. That's not the same thing. Some of the most stagnant apps I've used in the last year are subscription products — they collect monthly fees while shipping trivial updates (or none at all). Meanwhile, one-time-purchase software often improves because the developer's reputation depends on it. We built our own apps on this logic: [Zeroed](/zeroed/) is a one-time purchase with all 1.x updates included, and [RankUp Chess](/rankupchess/) is free to play, with one optional payment that unlocks everything. If someone pays us once, we owe them a polished product. That's a strong incentive, not a weak one.
 
 **Myth 2: "Buying software outright means you're stuck with old versions."**
 
-Pretty much every consumer app updates core functionality within its major version line. A v1.x license typically includes all v1.x improvements — bug fixes, compatibility patches, feature additions. You're not frozen in amber. You're just not paying forever for incremental upkeep.
+Many pay-once apps update core functionality within a major version line. A v1.x license often includes all v1.x improvements — bug fixes, compatibility patches, feature additions. Check the terms before you buy; Zeroed, for example, states that all 1.x updates are included. Even Microsoft still sells a one-time Office Home 2024, at $179.99 (price checked 7 October 2026), alongside Microsoft 365 Personal at $99.99 a year. You're not frozen in amber. You're just not paying forever for incremental upkeep.
 
 **Myth 3: "Cloud sync requires a subscription."**
 
 This one's demonstrably false. Services like Google Drive, Dropbox, or even a local NAS can handle secure sync without the app vendor touching your data. There's no technical reason a $20 app can't sync across your devices using infrastructure you already own.
 
-After researching dozens of productivity apps, one pattern stands out to us: **most charge monthly not because they must, but because the revenue model was designed before the product was.**
+Our view, and it is an opinion rather than a measured finding: **many apps charge monthly not because they must, but because the revenue model was designed before the product was.**
 
 ![Person reviewing bank statement and discovering forgotten monthly software charges](/blog/images/escape-subscription-trap/photo-05.webp)
 
@@ -71,7 +72,7 @@ Related reading: our take on [Privacy First Budgeting Philosophy](/blog/privacy-
 
 The escape doesn't require dramatic austerity. It requires a simple decision framework.
 
-Here are the rules we apply when evaluating any software purchase — and they've saved us thousands across personal and professional tools:
+Here are the rules we apply when evaluating any software purchase:
 
 **Rule 1: Calculate your five-year total cost of ownership.**
 
@@ -89,6 +90,8 @@ Instant messaging? Needs servers — subscription justified. Note-taking or read
 
 Calendar a recurring reminder to review every subscription. If you haven't used the app in 30 days, cancel it. If you wouldn't re-subscribe at full price today, cancel it.
 
+Don't wait for regulators to do it for you. In the US, the FTC's 2024 "click-to-cancel" rule was struck down by a federal appeals court in July 2025, days before it took effect, and the FTC only restarted the process in March 2026. In the UK, the new subscription rules in the Digital Markets, Competition and Consumers Act are due in January 2027. Until then, the audit is your job.
+
 **Rule 5: Prefer software that respects your continuance.**
 
 One-time payment apps signal a fundamentally different relationship. They're saying: *we want your business, not your dependency*. That's worth a premium, not a discount.
@@ -101,7 +104,7 @@ One-time payment apps signal a fundamentally different relationship. They're say
 
 When you break the subscription cycle, something subtle changes. Your software becomes infrastructure rather than a drain. You buy tools that sit quietly on your device, doing their job without phoning home or nagging for renewal.
 
-That's what we're building toward — utility software that respects its place in your life. Tools that make you money or save you time, then get out of the way. Tools that keep your data on your device where it belongs, that work on an airplane or a trail with no connectivity, that remain yours regardless of what happens to us.
+That's the kind of software we try to make — utility software that respects its place in your life. Tools that save you money or time, then get out of the way. Tools that keep your data on your device where it belongs and work on an airplane or a trail with no connectivity: Zeroed budgets fully offline with no account, and RankUp Chess runs its puzzles and lessons without an internet connection.
 
 The fix for subscription fatigue isn't merely finding cheaper software. It's remembering what ownership feels like.
 
@@ -113,4 +116,6 @@ Ask yourself: could this tool exist on my device, with my files, under my contro
 
 The only obstacle is the industry's conviction that you're better off renting.
 
-We disagree — and we think you will too once you do the math. If you're curious about what intentional, local-first software looks like in practice, [check out our philosophy on building tools that last](/blog/what-is-local-first-software-movement-guide-2026/). Still not convinced? Explore our tools and see for yourself — one-time payment, yours forever.
+We disagree — and we think you will too once you do the math. If you're curious about what intentional, local-first software looks like in practice, [check out our philosophy on building tools that last](/blog/what-is-local-first-software-movement-guide-2026/). Still not convinced? Try [Zeroed](/zeroed/) free for 34 days (no credit card; pay once if you keep it) or [RankUp Chess](/rankupchess/), which is free to play with one optional unlock and no subscription.
+
+Sources, checked 7 October 2026: Microsoft, [Office 365 launch](https://news.microsoft.com/source/2011/06/28/microsoft-launches-office-365-globally/) (2011), [Office 365 Home Premium](https://news.microsoft.com/2013/01/29/microsoft-releases-office-365-home-premium-2/) (2013) and [current prices](https://www.microsoft.com/en-us/microsoft-365/buy/compare-all-microsoft-365-products); Adobe's May 2013 Creative Cloud announcement, reposted by [DVInfo](https://www.dvinfo.net/news/adobe-accelerates-shift-to-the-cloud.html); C+R Research, [Subscription Service Statistics and Costs](https://www.crresearch.com/blog/subscription-service-statistics-and-costs/) (2022); CNET's 2025 subscription survey, syndicated by [Yahoo Finance](https://finance.yahoo.com/news/subscriptions-control-cnet-survey-shows-110000941.html); FTC, [Negative Option Rule](https://www.ftc.gov/legal-library/browse/rules/negative-option-rule) and [March 2026 advance notice](https://www.ftc.gov/news-events/news/press-releases/2026/03/ftc-seeks-public-comment-response-advance-notice-proposed-rulemaking-regarding-negative-option); UK government, [subscription traps announcement](https://www.gov.uk/government/news/pm-starts-roll-out-of-everyday-fixes-on-the-cost-of-living-ending-rip-off-discounts-and-subscription-traps) (August 2026).
