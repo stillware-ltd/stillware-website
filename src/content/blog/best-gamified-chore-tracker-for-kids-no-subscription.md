@@ -12,6 +12,7 @@ tags: ["Kids & Tech", "Family", "Guide", "Offline-First", "Privacy"]
 featured: true
 relatedSlugs: ["best-creative-apps-kids-screen-time-alternatives", "how-to-protect-kids-data-online-parent-guide", "why-kids-deserve-digital-privacy"]
 ogImage: "/blog/images/best-gamified-chore-tracker-for-kids-no-subscription/og-card.svg"
+heroImage: "/blog/images/best-gamified-chore-tracker-for-kids-no-subscription/hero.webp"
 ---
 
 **The short answer:** the best gamified chore tracker for kids with no subscription depends on your phone. On iPhone and iPad, SimplChores ($1.99 once) and iAllowance ($2.99 once) are the pay-once options we found. On any device, OurHome and Habitica are free to use, and a paper chart is free forever. Prices checked 7 October 2026.
