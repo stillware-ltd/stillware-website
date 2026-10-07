@@ -1,5 +1,35 @@
 ---
 import Layout from '../layouts/Layout.astro';
+import { getCollection } from 'astro:content';
+
+// "Guides and tools" (SEO strategy P2): the homepage links the hubs and the strongest guides, so crawlers and readers reach
+// them from the best-linked page on the site. Titles and descriptions come from the article itself, so a retitled
+// guide updates here; a slug that no longer exists is skipped rather than linked.
+const posts = await getCollection('blog');
+const guideCards = [
+  { slug: 'ynab-price-increase-alternatives-2026', kicker: 'Comparison' },
+  { slug: 'best-offline-budget-app-for-windows', kicker: 'Comparison' },
+  { slug: 'zero-based-budgeting-explained-simply', kicker: 'Guide' },
+  { slug: 'budgeting-app-that-works-without-internet', kicker: 'Guide' },
+  { slug: 'best-offline-chess-app-for-kids', kicker: 'Chess for kids' },
+]
+  .map(({ slug, kicker }) => {
+    const post = posts.find((p) => p.slug === slug);
+    return post ? { href: `/blog/${slug}/`, kicker, title: post.data.title, description: post.data.description } : null;
+  })
+  .filter((c): c is { href: string; kicker: string; title: string; description: string } => c !== null);
+// The 50/30/20 calculator is a page, not an article: its title and description are the ones on the page itself.
+guideCards.push({
+  href: '/tools/50-30-20-budget-calculator/',
+  kicker: 'Free calculator',
+  title: '50/30/20 Budget Calculator',
+  description: 'Enter your monthly after-tax income to get needs, wants and savings amounts, with custom splits. Free, no sign-up.',
+});
+const guideHubs = [
+  { href: '/blog/', label: 'Blog', note: 'All guides and daily chess puzzles' },
+  { href: '/tools/', label: 'Tools', note: 'Free budget calculators and printables' },
+  { href: '/chess/checkmate-patterns/', label: 'Checkmate patterns', note: 'Common mates, with a puzzle for each' },
+];
 ---
 
 <Layout
@@ -87,6 +117,37 @@ import Layout from '../layouts/Layout.astro';
                     <a href="/rankupchess/" class="btn-primary chess-btn">Explore RankUp Chess</a>
                 </div>
             </div>
+        </div>
+    </section>
+
+    <!-- Guides and tools -->
+    <section class="guides-section reveal" id="guides">
+        <div class="container">
+            <div class="guides-header">
+                <h2>Guides and tools</h2>
+                <p>Free calculators and plain-English guides on budgeting without a subscription, plus chess for kids.</p>
+            </div>
+            <ul class="guide-hubs">
+                {guideHubs.map((h) => (
+                    <li>
+                        <a href={h.href} class="guide-hub">
+                            <strong>{h.label}</strong>
+                            <span>{h.note}</span>
+                        </a>
+                    </li>
+                ))}
+            </ul>
+            <ul class="guide-cards">
+                {guideCards.map((c) => (
+                    <li>
+                        <a href={c.href} class="guide-card">
+                            <span class="guide-kicker">{c.kicker}</span>
+                            <span class="guide-title">{c.title}</span>
+                            <span class="guide-desc">{c.description}</span>
+                        </a>
+                    </li>
+                ))}
+            </ul>
         </div>
     </section>
 
@@ -297,6 +358,102 @@ import Layout from '../layouts/Layout.astro';
         animation: float 6s ease-in-out infinite;
     }
 
+    /* Guides and tools */
+    .guides-section {
+        padding: 6rem 0;
+    }
+
+    .guides-header {
+        text-align: center;
+        margin-bottom: 2.5rem;
+    }
+
+    .guides-header h2 {
+        font-size: 2.5rem;
+        margin-bottom: 0.75rem;
+    }
+
+    .guides-header p {
+        color: var(--color-text-light);
+        font-size: 1.15rem;
+        max-width: 620px;
+        margin: 0 auto;
+    }
+
+    .guide-hubs,
+    .guide-cards {
+        list-style: none;
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 1.5rem;
+    }
+
+    .guide-hubs {
+        margin-bottom: 1.5rem;
+    }
+
+    .guide-hub,
+    .guide-card {
+        display: flex;
+        flex-direction: column;
+        gap: 0.4rem;
+        height: 100%;
+        padding: 1.5rem;
+        background: #ffffff;
+        border-radius: 20px;
+        border: 1px solid rgba(226, 232, 240, 0.8);
+        box-shadow: var(--shadow-premium);
+        text-decoration: none;
+        color: var(--color-text);
+        transition: all 0.4s var(--transition-premium);
+    }
+
+    .guide-hub {
+        background: var(--color-surface);
+    }
+
+    .guide-hub:hover,
+    .guide-card:hover {
+        transform: translateY(-4px);
+        border-color: rgba(37, 99, 235, 0.25);
+        box-shadow: 0 8px 24px rgba(37, 99, 235, 0.08);
+    }
+
+    .guide-hub strong {
+        font-size: 1.15rem;
+        color: var(--color-secondary);
+    }
+
+    .guide-hub span {
+        font-size: 0.95rem;
+        color: var(--color-text-light);
+    }
+
+    .guide-kicker {
+        font-size: 0.75rem;
+        font-weight: 700;
+        text-transform: uppercase;
+        letter-spacing: 0.07em;
+        color: var(--color-primary);
+    }
+
+    .guide-title {
+        font-size: 1.1rem;
+        font-weight: 700;
+        line-height: 1.35;
+        color: var(--color-secondary);
+    }
+
+    .guide-desc {
+        font-size: 0.95rem;
+        line-height: 1.55;
+        color: var(--color-text-light);
+        display: -webkit-box;
+        -webkit-line-clamp: 3;
+        -webkit-box-orient: vertical;
+        overflow: hidden;
+    }
+
     /* Final CTA */
     .final-cta-section {
         background: linear-gradient(135deg, #0F172A 0%, #1E293B 50%, #0F172A 100%);
@@ -414,5 +571,12 @@ import Layout from '../layouts/Layout.astro';
         .spotlight-grid { grid-template-columns: 1fr; text-align: center; }
         .spotlight-grid.reverse { direction: ltr; }
         .spotlight-text h2 { font-size: 2.25rem; }
+        .guides-section { padding: 4rem 0; }
+        .guides-header h2 { font-size: 2rem; }
+        .guide-hubs, .guide-cards { grid-template-columns: 1fr; }
+    }
+
+    @media (min-width: 769px) and (max-width: 1024px) {
+        .guide-cards { grid-template-columns: repeat(2, 1fr); }
     }
 </style>
