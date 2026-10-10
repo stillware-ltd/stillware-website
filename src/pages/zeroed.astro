@@ -4,12 +4,14 @@ import KeyFacts from '../components/KeyFacts.astro';
 
 // Latest Zeroed release — bump this single constant when a new version ships.
 // Per-asset versions. 1.4.0 is live on the App Store (2026-10-04) and Google Play
-// (confirmed 2026-10-05); the macOS 1.4.0 DMG is live on zeroed-releases (2026-10-04).
+// (confirmed 2026-10-05). The macOS 1.4.1 DMG is live on zeroed-releases (2026-10-10)
+// and needs macOS 12; Macs on 10.15 or 11 stay on 1.4.0, linked from the 1.4.1
+// release notes. iOS 1.4.1 is in App Review: bump IOS_VERSION when it is released.
 // The Windows zip stays on 1.3.0 until a newer build lands on zeroed-releases.
 // Android is Google Play only: the sideload APK card was removed on 2026-09-22
 // (Android developer verification registers Play's signing key, not the local one).
 // Bump each line as its asset is published.
-const DMG_VERSION = '1.4.0';
+const DMG_VERSION = '1.4.1';
 const WINDOWS_VERSION = '1.3.0';
 const PLAY_VERSION = '1.4.0';
 const IOS_VERSION = '1.4.0';
@@ -338,8 +340,8 @@ const faqSchema = {
                         <svg viewBox="0 0 24 24" fill="currentColor" width="20" height="20"><path d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.81-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83M13 3.5c.73-.83 1.94-1.46 2.94-1.5.13 1.17-.34 2.35-1.04 3.19-.69.85-1.83 1.51-2.95 1.42-.15-1.15.41-2.35 1.05-3.11z"/></svg>
                     </div>
                     <h3>macOS</h3>
-                    <p>Notarized <code>.dmg</code> — open and drag Zeroed into Applications. Apple Silicon &amp; Intel.</p>
-                    <span class="download-meta">53 MB &middot; v{DMG_VERSION}</span>
+                    <p>Notarized <code>.dmg</code> — open and drag Zeroed into Applications. Apple Silicon &amp; Intel, macOS 12 or later.</p>
+                    <span class="download-meta">52 MB &middot; v{DMG_VERSION}</span>
                 </a>
                 <a href={APP_STORE_URL} target="_blank" rel="noopener" class="direct-download-card">
                     <div class="download-icon">
