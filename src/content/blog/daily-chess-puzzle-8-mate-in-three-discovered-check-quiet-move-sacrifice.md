@@ -55,7 +55,7 @@ Rook to e8, check. The rook attacks the king on h8 and the rook on a8 at the sam
 
 **The pattern.** A mate in three. Every move is a check, so the opponent never gets a free move to defend. When you have the initiative, keep checking until the net closes.
 
-> **Want more like this?** [RankUp Chess](https://www.stillwareltd.com/rankupchess/?ref=blog-daily-8) has 5,000 rated puzzles like these, sorted by level and theme, with hints and lessons, fully offline. Pay once, no subscription.
+> **Want more like this?** [RankUp Chess](https://www.stillwareltd.com/rankupchess/?ref=blog-daily-8) has 6,000+ rated puzzles like these, sorted by level and theme, with hints and lessons, fully offline. Pay once, no subscription.
 
 ## Puzzle 2: Discovered check (intermediate, rated 1512)
 

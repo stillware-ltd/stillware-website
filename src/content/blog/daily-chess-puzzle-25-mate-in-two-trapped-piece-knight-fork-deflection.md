@@ -54,7 +54,7 @@ Rook to f8, check. The rook attacks the king on h8 and the rook on e8 at the sam
 
 **The pattern.** A mate in two. If you were tempted by knight takes on c5, Black answers queen to e7 and the chance is gone.
 
-> **Want more like this?** [RankUp Chess](https://www.stillwareltd.com/rankupchess/?ref=blog-daily-25) has 5,000 rated puzzles like these, sorted by level and theme, with hints and lessons, fully offline. No ads; pay once, no subscription.
+> **Want more like this?** [RankUp Chess](https://www.stillwareltd.com/rankupchess/?ref=blog-daily-25) has 6,000+ rated puzzles like these, sorted by level and theme, with hints and lessons, fully offline. No ads; pay once, no subscription.
 
 ## Puzzle 2: Trapped piece (intermediate, rated 1431)
 

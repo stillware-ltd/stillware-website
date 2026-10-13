@@ -40,7 +40,7 @@ Knight to f6, check. The king cannot go to f7, because our rook on c7 controls t
 
 **The pattern.** This pattern is called the Arabian mate. The knight guards g8, the rook covers the seventh rank and the h-file, and the knight protects the rook. Remember the shape: knight and rook, side by side, against a cornered king.
 
-> **Want more like this?** [RankUp Chess](https://www.stillwareltd.com/rankupchess/?ref=blog-daily-1) has 5,000 rated puzzles like these, sorted by level and theme, with hints and lessons, fully offline. Pay once, no subscription.
+> **Want more like this?** [RankUp Chess](https://www.stillwareltd.com/rankupchess/?ref=blog-daily-1) has 6,000+ rated puzzles like these, sorted by level and theme, with hints and lessons, fully offline. Pay once, no subscription.
 
 ## Puzzle 2: Royal fork (intermediate, rated 1542)
 

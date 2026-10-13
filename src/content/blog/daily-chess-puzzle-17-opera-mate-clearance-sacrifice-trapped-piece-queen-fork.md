@@ -54,7 +54,7 @@ Rook takes on a6, check. We give up the rook for a pawn. Black's only move is pa
 
 **The pattern.** The opera mate. A rook on the back rank, protected by a bishop on the long diagonal, and the king's own pawn blocking the escape.
 
-> **Want more like this?** [RankUp Chess](https://www.stillwareltd.com/rankupchess/?ref=blog-daily-17) has 5,000 rated puzzles like these, sorted by level and theme, with hints and lessons, fully offline. No ads; pay once, no subscription.
+> **Want more like this?** [RankUp Chess](https://www.stillwareltd.com/rankupchess/?ref=blog-daily-17) has 6,000+ rated puzzles like these, sorted by level and theme, with hints and lessons, fully offline. No ads; pay once, no subscription.
 
 ## Puzzle 2: Clearance sacrifice (intermediate, rated 1657)
 
