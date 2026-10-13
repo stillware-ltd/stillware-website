@@ -54,7 +54,7 @@ Bishop to h5, check. The king cannot go to e7, because our pawn on d6 controls t
 
 **The pattern.** A mate in two. The first move takes away the escape, the second delivers mate, and the reply in between is forced.
 
-> **Want more like this?** [RankUp Chess](https://www.stillwareltd.com/rankupchess/?ref=blog-daily-18) has 5,000 rated puzzles like these, sorted by level and theme, with hints and lessons, fully offline. No ads; pay once, no subscription.
+> **Want more like this?** [RankUp Chess](https://www.stillwareltd.com/rankupchess/?ref=blog-daily-18) has 6,000+ rated puzzles like these, sorted by level and theme, with hints and lessons, fully offline. No ads; pay once, no subscription.
 
 ## Puzzle 2: Pin (intermediate, rated 1438)
 

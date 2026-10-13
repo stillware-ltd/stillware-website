@@ -53,7 +53,7 @@ Rook to a1, check. The king cannot go to f1, because our rook on a1 controls tha
 
 **The pattern.** Pillsbury's mate: a rook on the open g-file and a bishop on the long diagonal aim at the castled king together. Open the file, and the bishop does the rest.
 
-> **Want more like this?** [RankUp Chess](https://www.stillwareltd.com/rankupchess/?ref=blog-daily-16) has 5,000 rated puzzles like these, sorted by level and theme, with hints and lessons, fully offline. No ads; pay once, no subscription.
+> **Want more like this?** [RankUp Chess](https://www.stillwareltd.com/rankupchess/?ref=blog-daily-16) has 6,000+ rated puzzles like these, sorted by level and theme, with hints and lessons, fully offline. No ads; pay once, no subscription.
 
 ## Puzzle 2: Discovered check (intermediate, rated 1391)
 

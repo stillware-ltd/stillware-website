@@ -54,7 +54,7 @@ Queen to g6, check. The king cannot go to f7, because our queen on g6 controls t
 
 **The pattern.** A corner mate. The king is driven into the corner, a knight covers the escape, and a rook or queen delivers the final check.
 
-> **Want more like this?** [RankUp Chess](https://www.stillwareltd.com/rankupchess/?ref=blog-daily-13) has 5,000 rated puzzles like these, sorted by level and theme, with hints and lessons, fully offline. No ads; pay once, no subscription.
+> **Want more like this?** [RankUp Chess](https://www.stillwareltd.com/rankupchess/?ref=blog-daily-13) has 6,000+ rated puzzles like these, sorted by level and theme, with hints and lessons, fully offline. No ads; pay once, no subscription.
 
 ## Puzzle 2: Rook fork (intermediate, rated 1444)
 

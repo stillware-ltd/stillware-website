@@ -53,7 +53,7 @@ Rook takes on e1, check. The rook attacks the king on g1 and the rook on c1 at t
 
 **The pattern.** A mate in two. The first move takes away the escape, the second delivers mate, and the reply in between is forced. Forcing moves first, and the mate appears. If you were tempted by queen takes on d4, White answers rook takes on e6 and the chance is gone.
 
-> **Want more like this?** [RankUp Chess](https://www.stillwareltd.com/rankupchess/?ref=blog-daily-11) has 5,000 rated puzzles like these, sorted by level and theme, with hints and lessons, fully offline. No ads; pay once, no subscription.
+> **Want more like this?** [RankUp Chess](https://www.stillwareltd.com/rankupchess/?ref=blog-daily-11) has 6,000+ rated puzzles like these, sorted by level and theme, with hints and lessons, fully offline. No ads; pay once, no subscription.
 
 ## Puzzle 2: Quiet move (intermediate, rated 1349)
 

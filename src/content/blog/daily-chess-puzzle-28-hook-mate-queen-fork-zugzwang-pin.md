@@ -54,7 +54,7 @@ Rook takes on f8, check. The king cannot go to f7, because our rook on f8 contro
 
 **The pattern.** A hook mate. If you were tempted by knight takes on f8, Black answers queen to c7 and the chance is gone.
 
-> **Want more like this?** [RankUp Chess](https://www.stillwareltd.com/rankupchess/?ref=blog-daily-28) has 5,000 rated puzzles like these, sorted by level and theme, with hints and lessons, fully offline. No ads; pay once, no subscription.
+> **Want more like this?** [RankUp Chess](https://www.stillwareltd.com/rankupchess/?ref=blog-daily-28) has 6,000+ rated puzzles like these, sorted by level and theme, with hints and lessons, fully offline. No ads; pay once, no subscription.
 
 ## Puzzle 2: Queen fork (intermediate, rated 1641)
 

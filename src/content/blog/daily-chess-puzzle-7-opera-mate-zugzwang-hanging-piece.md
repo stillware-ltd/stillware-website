@@ -49,7 +49,7 @@ Rook to h3, check. The king cannot go to h6, because our rook on h3 controls tha
 
 **The pattern.** The opera mate. A rook on the back rank, protected by a bishop on the long diagonal, and the king's own pawn blocking the escape. Rook and bishop, working on two lines at once. If you were tempted by bishop takes on e5, Black answers knight takes on e5 and the chance is gone.
 
-> **Want more like this?** [RankUp Chess](https://www.stillwareltd.com/rankupchess/?ref=blog-daily-7) has 5,000 rated puzzles like these, sorted by level and theme, with hints and lessons, fully offline. Pay once, no subscription.
+> **Want more like this?** [RankUp Chess](https://www.stillwareltd.com/rankupchess/?ref=blog-daily-7) has 6,000+ rated puzzles like these, sorted by level and theme, with hints and lessons, fully offline. Pay once, no subscription.
 
 ## Puzzle 2: Zugzwang (intermediate, rated 1392)
 

@@ -54,7 +54,7 @@ Rook to f2, check. The king cannot go to g1, because our rook on g8 controls tha
 
 **The pattern.** Morphy's mate. A bishop on the long diagonal gives the check, and a rook on the neighbouring file takes the last escape square.
 
-> **Want more like this?** [RankUp Chess](https://www.stillwareltd.com/rankupchess/?ref=blog-daily-14) has 5,000 rated puzzles like these, sorted by level and theme, with hints and lessons, fully offline. No ads; pay once, no subscription.
+> **Want more like this?** [RankUp Chess](https://www.stillwareltd.com/rankupchess/?ref=blog-daily-14) has 6,000+ rated puzzles like these, sorted by level and theme, with hints and lessons, fully offline. No ads; pay once, no subscription.
 
 ## Puzzle 2: Discovered attack (intermediate, rated 1324)
 
