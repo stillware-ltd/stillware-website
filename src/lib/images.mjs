@@ -60,8 +60,8 @@ export const GENERAL_FALLBACK = '/StillwareLtd_logo_title.png';
 const CLUSTER_FALLBACK = {
   zeroed: '/Zeroed_Desktop_Today.png',
   // The macOS home screen the /rankupchess/ page opens with (its 1040 px webp is the page's first hero slide).
-  'rankup-chess': '/rankupchess-screens/mac_090_04_home.jpg',
-  rankupchess: '/rankupchess-screens/mac_090_04_home.jpg',
+  'rankup-chess': '/rankupchess-screens/mac_0100_04_home.jpg',
+  rankupchess: '/rankupchess-screens/mac_0100_04_home.jpg',
 };
 export const clusterFallback = (appCluster) => CLUSTER_FALLBACK[appCluster] || GENERAL_FALLBACK;
 
