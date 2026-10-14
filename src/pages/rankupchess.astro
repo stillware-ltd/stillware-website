@@ -3,7 +3,7 @@ import Layout from '../layouts/Layout.astro';
 import KeyFacts from '../components/KeyFacts.astro';
 
 // The product version, shown wherever the page states which release this is.
-const RANKUP_VERSION = '0.10.1';
+const RANKUP_VERSION = '0.10.3';
 
 // Download URLs derive from their own per-platform constants, which track the
 // release asset that actually exists rather than the product version.
@@ -24,8 +24,9 @@ const RANKUP_WINDOWS_DOWNLOAD = RANKUP_WINDOWS_VERSION
 // was published on 2026-09-25; 0.9.0 (the family adventure) on 2026-10-07
 // needs macOS 12, so Macs on 10.15 or 11 stay on 0.8.0 (linked from the
 // release notes and the releases README); 0.10.0 (the board-theme update) on
-// 2026-10-13; 0.10.1 (licence keys activate again) on 2026-10-14.
-const RANKUP_MACOS_VERSION = '0.10.1';
+// 2026-10-13; 0.10.1 (licence keys activate again) on 2026-10-14; 0.10.2 (per-platform
+// licences) and 0.10.3 (voice lead-in) the same day.
+const RANKUP_MACOS_VERSION = '0.10.3';
 const RANKUP_MACOS_DOWNLOAD =
   `https://github.com/stillware-ltd/rankup-chess-releases/releases/download/v${RANKUP_MACOS_VERSION}-macos/RankUpChess-${RANKUP_MACOS_VERSION}-macOS.dmg`;
 
