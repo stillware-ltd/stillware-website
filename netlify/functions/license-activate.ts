@@ -1,6 +1,7 @@
 import type { Context } from "@netlify/functions";
 import { getDb } from "./lib/db.js";
 import { hashLicenseKey } from "./lib/crypto.js";
+import { findLicenseByKey } from "./lib/licenses.js";
 import {
   DEFAULT_PRODUCT_FOR_LEGACY_CLIENTS,
   isValidProduct,
@@ -34,17 +35,14 @@ export default async function handler(req: Request, _context: Context) {
   const db = getDb();
 
   // 1. Look up license — scoped to the requested product so a Zeroed key
-  //    can never activate a RankUp Chess install (and vice versa).
-  const license = await db.execute({
-    sql: "SELECT id, max_activations, revoked FROM licenses WHERE key_hash = ? AND product = ?",
-    args: [keyHash, productSlug],
-  });
+  //    can never activate a RankUp Chess install (and vice versa). A re-issued
+  //    key finds the same licence as the original (lib/licenses.ts).
+  const row = await findLicenseByKey(db, keyHash, productSlug);
 
-  if (license.rows.length === 0) {
+  if (!row) {
     return jsonResponse({ success: false, error: "Invalid license key." }, 404);
   }
 
-  const row = license.rows[0];
   if (row.revoked) {
     return jsonResponse({ success: false, error: "This license has been revoked." }, 403);
   }
