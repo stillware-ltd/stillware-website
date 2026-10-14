@@ -39,6 +39,7 @@ const comingSoon = isComingSoon(config);
           ? `${config.name} is launching soon. We'll let you know the moment it's available.`
           : `Opening secure payment window for ${config.name}.`}
       </p>
+      {config.licenceNote && <p class="checkout-licence">{config.licenceNote}</p>}
       <noscript>
         <p class="checkout-error">
           JavaScript is required to complete checkout. Please enable JavaScript
@@ -129,6 +130,11 @@ const comingSoon = isComingSoon(config);
   .checkout-content {
     text-align: center;
     max-width: 520px;
+  }
+
+  .checkout-licence {
+    margin: -1rem 0 2rem;
+    font-weight: 600;
   }
 
   .checkout-alt {

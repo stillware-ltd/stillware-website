@@ -43,6 +43,10 @@ export interface PaddleProductConfig {
    * inside the app (Apple requires in-app purchase there; a Paddle licence
    * does not unlock the iOS build). */
   appStoreUrl?: string;
+  /** What the licence covers, shown before checkout when it is tied to a platform.
+   * RankUp Chess licences are per platform (founder, 2026-10-14); the licence
+   * server enforces it (netlify/functions/lib/products.ts). */
+  licenceNote?: string;
 }
 
 export const PADDLE_PRODUCTS: Record<CheckoutSlug, PaddleProductConfig> = {
@@ -56,9 +60,11 @@ export const PADDLE_PRODUCTS: Record<CheckoutSlug, PaddleProductConfig> = {
   // RankUp Chess — Windows/Linux, $14.99.
   rankup: {
     slug: "rankup",
-    name: "RankUp Chess",
+    name: "RankUp Chess for Windows and Linux",
     tagline: "Software you own.",
     priceId: "pri_01knztpnwdqxx8ecnbrjt4zkzq",
+    licenceNote:
+      "This licence unlocks RankUp Chess on Windows and Linux, on up to 3 computers. The Mac version is a separate purchase.",
   },
   // RankUp Chess — macOS, $19.99. The macOS app links here directly; the
   // price must match `fallbackDisplayPrice` in the app's purchase_config.dart,
@@ -68,6 +74,8 @@ export const PADDLE_PRODUCTS: Record<CheckoutSlug, PaddleProductConfig> = {
     name: "RankUp Chess for macOS",
     tagline: "Software you own.",
     priceId: "pri_01m194cc17phxmgqdqs737mw2p",
+    licenceNote:
+      "This licence unlocks RankUp Chess on the Mac, on up to 3 Macs. The Windows and Linux version is a separate purchase.",
   },
 };
 
