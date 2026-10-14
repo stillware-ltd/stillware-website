@@ -11,11 +11,11 @@
   package = "./netlify/plugins/indexnow"
 
 # License API — proxy clean URLs to Netlify Functions.
-# These come BEFORE the canonical-host redirects below, so they answer on every host. The
-# shipped desktop apps and the Paddle webhook destination POST to the apex
-# (https://stillwareltd.com/api/..., /webhooks/paddle). A redirect is not followed for a POST
-# (Dart's HttpClient and Paddle both stop at the 308), so redirecting these paths broke licence
-# activation and key delivery from 2026-09-29. First match wins: keep this block on top.
+# Call these on https://www.stillwareltd.com only. The apex (stillwareltd.com) is a domain alias
+# that Netlify redirects to the primary domain BEFORE any rule here runs (308 for a POST), and
+# neither Dart's HttpClient nor Paddle follows a redirect for a POST. No rule in this file can
+# serve them on the apex: desktop builds that call the apex, and a Paddle webhook destination on
+# the apex, fail until they use www. Kept above the host rules so nothing below can shadow them.
 [[redirects]]
   from = "/webhooks/paddle"
   to = "/.netlify/functions/paddle-webhook"
@@ -34,6 +34,11 @@
 [[redirects]]
   from = "/api/licenses/validate"
   to = "/.netlify/functions/license-validate"
+  status = 200
+
+[[redirects]]
+  from = "/api/licenses/resend-key"
+  to = "/.netlify/functions/license-resend-key"
   status = 200
 
 [[redirects]]

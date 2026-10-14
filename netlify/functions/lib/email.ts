@@ -12,12 +12,20 @@ function getResend(): Resend {
   return resendClient;
 }
 
+/**
+ * Emails a licence key. `reissue` is for lost-key recovery (license-resend-key.ts): the key is
+ * a new one for an earlier purchase, and any key sent before keeps working.
+ */
 export async function sendLicenseEmail(
   to: string,
   licenseKey: string,
-  product: ProductConfig
+  product: ProductConfig,
+  { reissue = false }: { reissue?: boolean } = {}
 ): Promise<void> {
   const from = process.env.RESEND_FROM_EMAIL || "Stillware <noreply@stillwareltd.com>";
+  const intro = reissue
+    ? `You asked for your ${product.name} license key again. Here is a new key for your purchase. Any key we sent you before still works:`
+    : `Thank you for purchasing ${product.name}! Here is your lifetime license key:`;
 
   await getResend().emails.send({
     from,
@@ -49,7 +57,7 @@ export async function sendLicenseEmail(
       <h1>${product.name} — License Key</h1>
     </div>
     <div class="body">
-      <p>Thank you for purchasing ${product.name}! Here is your lifetime license key:</p>
+      <p>${intro}</p>
       <div class="key-box">
         <code>${licenseKey}</code>
       </div>
