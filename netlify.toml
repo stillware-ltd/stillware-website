@@ -10,27 +10,12 @@
 [[plugins]]
   package = "./netlify/plugins/indexnow"
 
-# Canonical host is https://www.stillwareltd.com. Send every other variant there in ONE hop
-# (http apex used to take two: http -> https apex -> https www). force = true so these win over any file.
-[[redirects]]
-  from = "http://stillwareltd.com/*"
-  to = "https://www.stillwareltd.com/:splat"
-  status = 301
-  force = true
-
-[[redirects]]
-  from = "http://www.stillwareltd.com/*"
-  to = "https://www.stillwareltd.com/:splat"
-  status = 301
-  force = true
-
-[[redirects]]
-  from = "https://stillwareltd.com/*"
-  to = "https://www.stillwareltd.com/:splat"
-  status = 301
-  force = true
-
-# License API — proxy clean URLs to Netlify Functions
+# License API — proxy clean URLs to Netlify Functions.
+# These come BEFORE the canonical-host redirects below, so they answer on every host. The
+# shipped desktop apps and the Paddle webhook destination POST to the apex
+# (https://stillwareltd.com/api/..., /webhooks/paddle). A redirect is not followed for a POST
+# (Dart's HttpClient and Paddle both stop at the 308), so redirecting these paths broke licence
+# activation and key delivery from 2026-09-29. First match wins: keep this block on top.
 [[redirects]]
   from = "/webhooks/paddle"
   to = "/.netlify/functions/paddle-webhook"
@@ -65,6 +50,26 @@
   from = "/api/dashboard/ops"
   to = "/.netlify/functions/dashboard-ops"
   status = 200
+
+# Canonical host is https://www.stillwareltd.com. Send every other variant there in ONE hop
+# (http apex used to take two: http -> https apex -> https www). force = true so these win over any file.
+[[redirects]]
+  from = "http://stillwareltd.com/*"
+  to = "https://www.stillwareltd.com/:splat"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "http://www.stillwareltd.com/*"
+  to = "https://www.stillwareltd.com/:splat"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "https://stillwareltd.com/*"
+  to = "https://www.stillwareltd.com/:splat"
+  status = 301
+  force = true
 
 # Retired pages (the services line, removed blog posts) return 410 Gone; see public/_redirects.
 
