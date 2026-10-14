@@ -1,6 +1,7 @@
 import type { Context } from "@netlify/functions";
 import { getDb } from "./lib/db.js";
 import { hashLicenseKey } from "./lib/crypto.js";
+import { findLicenseByKey } from "./lib/licenses.js";
 import {
   DEFAULT_PRODUCT_FOR_LEGACY_CLIENTS,
   isValidProduct,
@@ -31,16 +32,13 @@ export default async function handler(req: Request, _context: Context) {
   const db = getDb();
 
   // Verify the license exists for the requested product
-  const license = await db.execute({
-    sql: "SELECT id FROM licenses WHERE key_hash = ? AND product = ?",
-    args: [keyHash, productSlug],
-  });
+  const license = await findLicenseByKey(db, keyHash, productSlug);
 
-  if (license.rows.length === 0) {
+  if (!license) {
     return jsonResponse({ success: false, error: "Invalid license key." }, 404);
   }
 
-  const licenseId = license.rows[0].id as string;
+  const licenseId = license.id as string;
 
   // Deactivate the specific activation
   const result = await db.execute({

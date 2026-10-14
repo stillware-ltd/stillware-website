@@ -37,6 +37,11 @@
   status = 200
 
 [[redirects]]
+  from = "/api/licenses/resend-key"
+  to = "/.netlify/functions/license-resend-key"
+  status = 200
+
+[[redirects]]
   from = "/api/licenses/trial/start"
   to = "/.netlify/functions/trial-start"
   status = 200

@@ -27,7 +27,18 @@ CREATE TABLE IF NOT EXISTS activations (
   UNIQUE(license_id, machine_id)
 );
 
+-- Keys issued after the purchase for the same licence (lost-key recovery,
+-- license-resend-key.ts). The original key stays in licenses.key_hash; every key
+-- here unlocks the same licence, with the same activations and device limit.
+-- Created on first use by lib/licenses.ts, so it needs no manual migration.
+CREATE TABLE IF NOT EXISTS license_keys (
+  key_hash        TEXT PRIMARY KEY,
+  license_id      TEXT NOT NULL REFERENCES licenses(id),
+  created_at      TEXT NOT NULL DEFAULT (datetime('now'))
+);
+
 CREATE INDEX IF NOT EXISTS idx_activations_license ON activations(license_id);
+CREATE INDEX IF NOT EXISTS idx_license_keys_license ON license_keys(license_id);
 CREATE INDEX IF NOT EXISTS idx_licenses_email ON licenses(email);
 CREATE INDEX IF NOT EXISTS idx_licenses_product ON licenses(product);
 
