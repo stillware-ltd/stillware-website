@@ -4,7 +4,11 @@ import { hashLicenseKey } from "./lib/crypto.js";
 import { findLicenseByKey } from "./lib/licenses.js";
 import {
   DEFAULT_PRODUCT_FOR_LEGACY_CLIENTS,
+  PRODUCTS,
   isValidProduct,
+  platformOfClient,
+  wrongPlatformMessage,
+  type LicensePlatform,
 } from "./lib/products.js";
 
 export default async function handler(req: Request, _context: Context) {
@@ -20,7 +24,7 @@ export default async function handler(req: Request, _context: Context) {
   }
 
   // machine_name is still sent by older app builds; it is deliberately ignored (a device name can identify a person).
-  const { license_key, machine_id, product } = body;
+  const { license_key, machine_id, product, platform } = body;
   if (!license_key || !machine_id) {
     return jsonResponse({ success: false, error: "Missing license_key or machine_id" }, 400);
   }
@@ -45,6 +49,20 @@ export default async function handler(req: Request, _context: Context) {
 
   if (row.revoked) {
     return jsonResponse({ success: false, error: "This license has been revoked." }, 403);
+  }
+
+  // RankUp Chess licences are for one platform (lib/products.ts): a Mac key does not unlock
+  // Windows or Linux, nor the other way round. Licences with no platform (Zeroed, and every
+  // one minted before 2026-10-14) activate anywhere. An app that does not say which OS it
+  // runs on (RankUp Chess 0.10.1 and earlier) is let through, so no buyer on an older build
+  // is stuck.
+  const licencePlatform = (row.platform as LicensePlatform | null) ?? null;
+  const clientPlatform = platformOfClient(platform);
+  if (licencePlatform && clientPlatform && clientPlatform !== licencePlatform) {
+    return jsonResponse(
+      { success: false, error: wrongPlatformMessage(PRODUCTS[productSlug], licencePlatform) },
+      403
+    );
   }
 
   const licenseId = row.id as string;

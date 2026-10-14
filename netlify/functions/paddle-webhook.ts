@@ -3,7 +3,12 @@ import { Environment, Paddle, EventName } from "@paddle/paddle-node-sdk";
 import { getDb } from "./lib/db.js";
 import { generateLicenseKey, hashLicenseKey } from "./lib/crypto.js";
 import { sendLicenseEmail } from "./lib/email.js";
-import { PRODUCTS, productFromTransactionItems } from "./lib/products.js";
+import { ensureLicensePlatformColumn } from "./lib/licenses.js";
+import {
+  PRODUCTS,
+  platformFromTransactionItems,
+  productFromTransactionItems,
+} from "./lib/products.js";
 
 // licenses.email is NOT NULL in the schema; we keep a placeholder instead of the buyer's address.
 const EMAIL_NOT_STORED = "not-stored";
@@ -77,6 +82,8 @@ export default async function handler(req: Request, _context: Context) {
     return new Response("Unknown product price ID", { status: 500 });
   }
   const product = PRODUCTS[productSlug];
+  // RankUp Chess licences are for the platform whose price was bought; Zeroed's are for any.
+  const platform = platformFromTransactionItems(items);
 
   // 5. Fetch the actual customer email from Paddle API
   let customerEmail: string;
@@ -100,15 +107,17 @@ export default async function handler(req: Request, _context: Context) {
   //    The column is NOT NULL from the original schema, so it holds a placeholder.
   const db = getDb();
   try {
+    await ensureLicensePlatformColumn(db);
     await db.execute({
-      sql: `INSERT INTO licenses (key_hash, email, paddle_txn_id, product, max_activations)
-            VALUES (?, ?, ?, ?, ?)`,
+      sql: `INSERT INTO licenses (key_hash, email, paddle_txn_id, product, max_activations, platform)
+            VALUES (?, ?, ?, ?, ?, ?)`,
       args: [
         keyHash,
         EMAIL_NOT_STORED,
         transactionId,
         product.slug,
         product.maxActivations,
+        platform,
       ],
     });
   } catch (err: any) {
@@ -128,7 +137,7 @@ export default async function handler(req: Request, _context: Context) {
 
   // 8. Send license email (the only use of the address)
   try {
-    await sendLicenseEmail(customerEmail, licenseKey, product);
+    await sendLicenseEmail(customerEmail, licenseKey, product, { platform });
   } catch (err) {
     console.error("Failed to send license email:", err);
   }
