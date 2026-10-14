@@ -1,5 +1,5 @@
 import { Resend } from "resend";
-import type { ProductConfig } from "./products.js";
+import { PLATFORM_LABEL, type LicensePlatform, type ProductConfig } from "./products.js";
 
 let resendClient: Resend | null = null;
 
@@ -14,18 +14,22 @@ function getResend(): Resend {
 
 /**
  * Emails a licence key. `reissue` is for lost-key recovery (license-resend-key.ts): the key is
- * a new one for an earlier purchase, and any key sent before keeps working.
+ * a new one for an earlier purchase, and any key sent before keeps working. `platform` names
+ * the platform a per-platform licence is for (lib/products.ts); null means any platform.
  */
 export async function sendLicenseEmail(
   to: string,
   licenseKey: string,
   product: ProductConfig,
-  { reissue = false }: { reissue?: boolean } = {}
+  { reissue = false, platform = null }: { reissue?: boolean; platform?: LicensePlatform | null } = {}
 ): Promise<void> {
   const from = process.env.RESEND_FROM_EMAIL || "Stillware <noreply@stillwareltd.com>";
   const intro = reissue
     ? `You asked for your ${product.name} license key again. Here is a new key for your purchase. Any key we sent you before still works:`
     : `Thank you for purchasing ${product.name}! Here is your lifetime license key:`;
+  const devices = platform
+    ? `This key is for ${product.name} on <strong>${PLATFORM_LABEL[platform].on}</strong>. You can activate it on up to <strong>${product.maxActivations} ${PLATFORM_LABEL[platform].devices}</strong>.`
+    : `You can activate this key on up to <strong>${product.maxActivations} devices</strong>.`;
 
   await getResend().emails.send({
     from,
@@ -68,7 +72,7 @@ export async function sendLicenseEmail(
         <li data-step="3.">Tap <strong>"I have a License Key"</strong></li>
         <li data-step="4.">Paste the key above and tap <strong>Activate</strong></li>
       </ul>
-      <p>You can activate this key on up to <strong>${product.maxActivations} devices</strong>. If you need to move it to a new machine, deactivate an existing one first.</p>
+      <p>${devices} If you need to move it to a new machine, deactivate an existing one first.</p>
       <p>Keep this email safe — it's your proof of purchase.</p>
     </div>
     <div class="footer">

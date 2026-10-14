@@ -14,7 +14,11 @@ CREATE TABLE IF NOT EXISTS licenses (
   product         TEXT NOT NULL DEFAULT 'zeroed',  -- 'zeroed' | 'rankup' | ...
   max_activations INTEGER NOT NULL DEFAULT 3,
   created_at      TEXT NOT NULL DEFAULT (datetime('now')),
-  revoked         INTEGER NOT NULL DEFAULT 0
+  revoked         INTEGER NOT NULL DEFAULT 0,
+  -- 'macos' | 'windows' (Windows and Linux) for per-platform RankUp Chess licences;
+  -- NULL activates on any platform (Zeroed, and every licence minted before
+  -- 2026-10-14). Added to existing databases by lib/licenses.ts on first use.
+  platform        TEXT
 );
 
 CREATE TABLE IF NOT EXISTS activations (

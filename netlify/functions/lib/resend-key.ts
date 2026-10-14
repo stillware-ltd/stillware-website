@@ -1,9 +1,11 @@
 import type { Client } from "@libsql/client";
 import { generateLicenseKey, hashLicenseKey } from "./crypto.js";
-import { ensureLicenseKeysTable } from "./licenses.js";
+import { ensureLicenseKeysTable, ensureLicensePlatformColumn } from "./licenses.js";
 import {
   PRODUCTS,
+  platformFromTransactionItems,
   productFromTransactionItems,
+  type LicensePlatform,
   type ProductConfig,
   type ProductSlug,
 } from "./products.js";
@@ -25,7 +27,7 @@ export interface ResendDeps {
     to: string,
     licenseKey: string,
     product: ProductConfig,
-    opts: { reissue: boolean }
+    opts: { reissue: boolean; platform: LicensePlatform | null }
   ) => Promise<void>;
 }
 
@@ -68,8 +70,9 @@ async function resendFor(
   product: ProductConfig
 ): Promise<ResendOutcome> {
   const cooldown = `-${RESEND_COOLDOWN_MINUTES} minutes`;
+  await ensureLicensePlatformColumn(db);
   const found = await db.execute({
-    sql: `SELECT id, revoked, created_at > datetime('now', ?) AS fresh
+    sql: `SELECT id, revoked, platform, created_at > datetime('now', ?) AS fresh
           FROM licenses WHERE paddle_txn_id = ? AND product = ?`,
     args: [cooldown, purchase.id, product.slug],
   });
@@ -79,12 +82,13 @@ async function resendFor(
     // deliveries were redirected). Mint it now, as paddle-webhook.ts would have. The UNIQUE
     // paddle_txn_id makes a webhook that arrives later a duplicate, which sends nothing.
     const key = generateLicenseKey();
+    const platform = platformFromTransactionItems(purchase.items);
     await db.execute({
-      sql: `INSERT INTO licenses (key_hash, email, paddle_txn_id, product, max_activations)
-            VALUES (?, ?, ?, ?, ?)`,
-      args: [hashLicenseKey(key), EMAIL_NOT_STORED, purchase.id, product.slug, product.maxActivations],
+      sql: `INSERT INTO licenses (key_hash, email, paddle_txn_id, product, max_activations, platform)
+            VALUES (?, ?, ?, ?, ?, ?)`,
+      args: [hashLicenseKey(key), EMAIL_NOT_STORED, purchase.id, product.slug, product.maxActivations, platform],
     });
-    await send(purchase.customerEmail, key, product, { reissue: false });
+    await send(purchase.customerEmail, key, product, { reissue: false, platform });
     return "minted";
   }
 
@@ -110,6 +114,8 @@ async function resendFor(
     sql: "INSERT INTO license_keys (key_hash, license_id) VALUES (?, ?)",
     args: [hashLicenseKey(key), license.id],
   });
-  await send(purchase.customerEmail, key, product, { reissue: true });
+  // A re-issued key unlocks the same licence, so it is for the same platform (or any).
+  const platform = (license.platform as LicensePlatform | null) ?? null;
+  await send(purchase.customerEmail, key, product, { reissue: true, platform });
   return "reissued";
 }

@@ -17,6 +17,8 @@ export interface ProductConfig {
   tagline: string;
   /** Default activation device limit for new licenses. */
   maxActivations: number;
+  /** Product page, linked when a key is refused for being for another platform. */
+  pageUrl: string;
 }
 
 export const PRODUCTS: Record<ProductSlug, ProductConfig> = {
@@ -25,12 +27,14 @@ export const PRODUCTS: Record<ProductSlug, ProductConfig> = {
     name: "Zeroed",
     tagline: "Zero stress. Total control.",
     maxActivations: 5,
+    pageUrl: "https://www.stillwareltd.com/zeroed/",
   },
   rankup: {
     slug: "rankup",
     name: "RankUp Chess",
     tagline: "Software you own.",
     maxActivations: 3,
+    pageUrl: "https://www.stillwareltd.com/rankupchess/",
   },
 };
 
@@ -78,6 +82,62 @@ export function productFromTransactionItems(
     }
   }
   return null;
+}
+
+/**
+ * The platform a licence is for. RankUp Chess is sold per platform (founder, 2026-10-14):
+ * its Mac price unlocks only the Mac app and its Windows/Linux price only Windows and
+ * Linux. Zeroed is not: its price is in no list here, so its licences, and every licence
+ * minted before this rule, have no platform and activate on any OS.
+ */
+export type LicensePlatform = "macos" | "windows";
+
+/** Prices that tie a licence to a platform. Linux shares the Windows price. */
+export const PRICE_ID_TO_PLATFORM: Record<string, LicensePlatform> = {
+  // RankUp Chess — Lifetime, Windows/Linux ($14.99)
+  pri_01knztpnwdqxx8ecnbrjt4zkzq: "windows",
+  // RankUp Chess — Lifetime, macOS ($19.99)
+  pri_01m194cc17phxmgqdqs737mw2p: "macos",
+};
+
+/**
+ * The platform of the line item that decides the product (the one
+ * productFromTransactionItems picks), or null for a licence that works anywhere.
+ */
+export function platformFromTransactionItems(
+  items: Array<{ price?: { id?: string } | null } | undefined> | undefined
+): LicensePlatform | null {
+  for (const item of items ?? []) {
+    const id = item?.price?.id;
+    if (id && productForPriceId(id)) return PRICE_ID_TO_PLATFORM[id] ?? null;
+  }
+  return null;
+}
+
+/**
+ * The licence platform an app's OS falls under, from the `platform` it sends on activate
+ * ("macos" | "windows" | "linux"). Null when the app did not say: RankUp Chess 0.10.1 and
+ * earlier, and every Zeroed build.
+ */
+export function platformOfClient(os: unknown): LicensePlatform | null {
+  if (os === "macos") return "macos";
+  if (os === "windows" || os === "linux") return "windows";
+  return null;
+}
+
+/** How a platform reads in emails and messages. */
+export const PLATFORM_LABEL: Record<LicensePlatform, { on: string; devices: string }> = {
+  macos: { on: "the Mac", devices: "Macs" },
+  windows: { on: "Windows and Linux", devices: "Windows or Linux computers" },
+};
+
+/** Why activation refused a key bought for the other platform. */
+export function wrongPlatformMessage(product: ProductConfig, licence: LicensePlatform): string {
+  const other = licence === "macos" ? "Windows and Linux version" : "Mac version";
+  return (
+    `This key is for ${product.name} on ${PLATFORM_LABEL[licence].on}. ` +
+    `The ${other} is a separate purchase: ${product.pageUrl}`
+  );
 }
 
 /**

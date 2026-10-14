@@ -23,8 +23,24 @@ export async function ensureLicenseKeysTable(db: Client): Promise<void> {
   licenseKeysReady = true;
 }
 
+// `licenses.platform` ("macos" | "windows" | NULL, lib/products.ts) arrived on 2026-10-14
+// for per-platform RankUp Chess licences. SQLite has no ADD COLUMN IF NOT EXISTS, so the
+// first use per instance tries it and ignores "duplicate column". Rows from before have
+// NULL: they keep activating on any platform.
+let platformColumnReady = false;
+
+export async function ensureLicensePlatformColumn(db: Client): Promise<void> {
+  if (platformColumnReady) return;
+  try {
+    await db.execute("ALTER TABLE licenses ADD COLUMN platform TEXT");
+  } catch {
+    /* column already exists */
+  }
+  platformColumnReady = true;
+}
+
 /**
- * The licence `keyHash` unlocks for `product` (id, max_activations, revoked), or null.
+ * The licence `keyHash` unlocks for `product` (id, max_activations, revoked, platform), or null.
  *
  * The original-key lookup runs first and is the query activate/validate/deactivate always
  * ran, so a key that was never re-issued costs nothing extra; `license_keys` is only read
@@ -35,15 +51,16 @@ export async function findLicenseByKey(
   keyHash: string,
   product: string
 ): Promise<Row | null> {
+  await ensureLicensePlatformColumn(db);
   const original = await db.execute({
-    sql: "SELECT id, max_activations, revoked FROM licenses WHERE key_hash = ? AND product = ?",
+    sql: "SELECT id, max_activations, revoked, platform FROM licenses WHERE key_hash = ? AND product = ?",
     args: [keyHash, product],
   });
   if (original.rows.length > 0) return original.rows[0];
 
   await ensureLicenseKeysTable(db);
   const reissued = await db.execute({
-    sql: `SELECT l.id, l.max_activations, l.revoked
+    sql: `SELECT l.id, l.max_activations, l.revoked, l.platform
           FROM license_keys k JOIN licenses l ON l.id = k.license_id
           WHERE k.key_hash = ? AND l.product = ?`,
     args: [keyHash, product],
