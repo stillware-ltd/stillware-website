@@ -1,10 +1,15 @@
 import type { Context } from "@netlify/functions";
 import { getDb } from "./lib/db.js";
 import { hashLicenseKey } from "./lib/crypto.js";
+import type { Client } from "@libsql/client";
+import { householdSettings } from "./lib/household-config.js";
+import { householdTierOfLicence, issueRecord } from "./lib/household.js";
+import { signerFromEnv } from "./lib/household-prod.js";
 import { findLicenseByKey } from "./lib/licenses.js";
 import {
   DEFAULT_PRODUCT_FOR_LEGACY_CLIENTS,
   PRODUCTS,
+  isHouseholdProduct,
   isValidProduct,
   platformOfClient,
   wrongPlatformMessage,
@@ -51,6 +56,17 @@ export default async function handler(req: Request, _context: Context) {
     return jsonResponse({ success: false, error: "This license has been revoked." }, 403);
   }
 
+  // Household licence (KL.2): an Every device licence works on any platform and gets the
+  // household's activations, and its signed record comes back with the activation. Null while
+  // HOUSEHOLD_ENABLED is off, so nothing below changes for today's licences until the switch.
+  const settings = householdSettings(process.env);
+  const everyDevice = settings.enabled && isHouseholdProduct(productSlug)
+    ? householdTierOfLicence(
+        { revoked: row.revoked, tier: row.tier, created_at: row.created_at },
+        settings.upgradeBefore
+      )
+    : null;
+
   // RankUp Chess licences are for one platform (lib/products.ts): a Mac key does not unlock
   // Windows or Linux, nor the other way round. Licences with no platform (Zeroed, and every
   // one minted before 2026-10-14) activate anywhere. An app that does not say which OS it
@@ -58,7 +74,7 @@ export default async function handler(req: Request, _context: Context) {
   // is stuck.
   const licencePlatform = (row.platform as LicensePlatform | null) ?? null;
   const clientPlatform = platformOfClient(platform);
-  if (licencePlatform && clientPlatform && clientPlatform !== licencePlatform) {
+  if (!everyDevice && licencePlatform && clientPlatform && clientPlatform !== licencePlatform) {
     return jsonResponse(
       { success: false, error: wrongPlatformMessage(PRODUCTS[productSlug], licencePlatform) },
       403
@@ -66,7 +82,8 @@ export default async function handler(req: Request, _context: Context) {
   }
 
   const licenseId = row.id as string;
-  const maxActivations = row.max_activations as number;
+  const rowMax = row.max_activations as number;
+  const maxActivations = everyDevice ? Math.max(rowMax, settings.deviceCap) : rowMax;
 
   // 2. Check if this machine already has an activation (active or deactivated)
   const existing = await db.execute({
@@ -88,6 +105,7 @@ export default async function handler(req: Request, _context: Context) {
       success: true,
       instance_id: activation.id as string,
       license_key,
+      ...(await householdPart(db, productSlug, licenseId, everyDevice)),
     });
   }
 
@@ -124,7 +142,32 @@ export default async function handler(req: Request, _context: Context) {
     success: true,
     instance_id: instanceId,
     license_key,
+    ...(await householdPart(db, productSlug, licenseId, everyDevice)),
   });
+}
+
+/**
+ * `{ household: {record, kid, sig} }` for an Every device licence, else nothing. A record that
+ * cannot be signed is logged and left out: it must never stop an activation.
+ */
+async function householdPart(
+  db: Client,
+  product: string,
+  licenceId: string,
+  everyDevice: { via: "paddle" | "upgrade"; purchased: string } | null
+): Promise<{ household?: object }> {
+  if (!everyDevice) return {};
+  try {
+    const signed = await issueRecord({ db, now: () => new Date(), signer: signerFromEnv }, product, {
+      lid: licenceId,
+      via: everyDevice.via,
+      purchased: everyDevice.purchased,
+    });
+    return { household: signed };
+  } catch (err) {
+    console.error("license-activate: could not issue the household record:", err instanceof Error ? err.message : err);
+    return {};
+  }
 }
 
 function jsonResponse(data: object, status = 200): Response {

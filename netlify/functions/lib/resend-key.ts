@@ -1,9 +1,10 @@
 import type { Client } from "@libsql/client";
 import { generateLicenseKey, hashLicenseKey } from "./crypto.js";
-import { ensureLicenseKeysTable, ensureLicensePlatformColumn } from "./licenses.js";
+import { householdSettings } from "./household-config.js";
+import { ensureLicenceTierColumn, ensureLicenseKeysTable, ensureLicensePlatformColumn } from "./licenses.js";
 import {
   PRODUCTS,
-  platformFromTransactionItems,
+  licenceTermsFromTransactionItems,
   productFromTransactionItems,
   type LicensePlatform,
   type ProductConfig,
@@ -29,6 +30,8 @@ export interface ResendDeps {
     product: ProductConfig,
     opts: { reissue: boolean; platform: LicensePlatform | null }
   ) => Promise<void>;
+  /** HOUSEHOLD_DEVICE_CAP, for a licence minted here from an Every device price. Default: the environment's. */
+  deviceCap?: number;
 }
 
 /** No second re-issued key for the same licence within this many minutes of the last. */
@@ -65,7 +68,7 @@ export async function resendKeys(
 }
 
 async function resendFor(
-  { db, send }: ResendDeps,
+  { db, send, deviceCap }: ResendDeps,
   purchase: Purchase,
   product: ProductConfig
 ): Promise<ResendOutcome> {
@@ -82,11 +85,17 @@ async function resendFor(
     // deliveries were redirected). Mint it now, as paddle-webhook.ts would have. The UNIQUE
     // paddle_txn_id makes a webhook that arrives later a duplicate, which sends nothing.
     const key = generateLicenseKey();
-    const platform = platformFromTransactionItems(purchase.items);
+    // An Every device price mints an Every device licence, as the webhook would have.
+    const { platform, tier, maxActivations } = licenceTermsFromTransactionItems(
+      purchase.items,
+      product,
+      deviceCap ?? householdSettings(process.env).deviceCap
+    );
+    await ensureLicenceTierColumn(db);
     await db.execute({
-      sql: `INSERT INTO licenses (key_hash, email, paddle_txn_id, product, max_activations, platform)
-            VALUES (?, ?, ?, ?, ?, ?)`,
-      args: [hashLicenseKey(key), EMAIL_NOT_STORED, purchase.id, product.slug, product.maxActivations, platform],
+      sql: `INSERT INTO licenses (key_hash, email, paddle_txn_id, product, max_activations, platform, tier)
+            VALUES (?, ?, ?, ?, ?, ?, ?)`,
+      args: [hashLicenseKey(key), EMAIL_NOT_STORED, purchase.id, product.slug, maxActivations, platform, tier],
     });
     await send(purchase.customerEmail, key, product, { reissue: false, platform });
     return "minted";

@@ -1,17 +1,12 @@
 import type { Context } from "@netlify/functions";
 import { Environment, Paddle, EventName } from "@paddle/paddle-node-sdk";
 import { getDb } from "./lib/db.js";
-import { generateLicenseKey, hashLicenseKey } from "./lib/crypto.js";
 import { sendLicenseEmail } from "./lib/email.js";
-import { ensureLicensePlatformColumn } from "./lib/licenses.js";
-import {
-  PRODUCTS,
-  platformFromTransactionItems,
-  productFromTransactionItems,
-} from "./lib/products.js";
-
-// licenses.email is NOT NULL in the schema; we keep a placeholder instead of the buyer's address.
-const EMAIL_NOT_STORED = "not-stored";
+import { householdSettings } from "./lib/household-config.js";
+import { issueRecord } from "./lib/household.js";
+import { signerFromEnv } from "./lib/household-prod.js";
+import { mintLicence } from "./lib/paddle-licence.js";
+import { PRODUCTS, productFromTransactionItems } from "./lib/products.js";
 
 export default async function handler(req: Request, _context: Context) {
   if (req.method !== "POST") {
@@ -82,8 +77,6 @@ export default async function handler(req: Request, _context: Context) {
     return new Response("Unknown product price ID", { status: 500 });
   }
   const product = PRODUCTS[productSlug];
-  // RankUp Chess licences are for the platform whose price was bought; Zeroed's are for any.
-  const platform = platformFromTransactionItems(items);
 
   // 5. Fetch the actual customer email from Paddle API
   let customerEmail: string;
@@ -97,49 +90,42 @@ export default async function handler(req: Request, _context: Context) {
     return new Response("Failed to retrieve customer details", { status: 500 });
   }
 
-  // 6. Generate license key
-  const licenseKey = generateLicenseKey();
-  const keyHash = hashLicenseKey(licenseKey);
-
-  // 7. Store in database (idempotency via UNIQUE constraint on paddle_txn_id).
-  //    Data minimisation (2026-09-30): the buyer's email is used below to send the key and is NOT stored. Paddle, the
-  //    merchant of record, already holds it and can be searched to find the transaction id if support needs the licence.
-  //    The column is NOT NULL from the original schema, so it holds a placeholder.
+  // 6. Mint the licence and email the key (lib/paddle-licence.ts). RankUp Chess licences are for
+  //    the platform whose price was bought; Zeroed's are for any; an Every device price is for
+  //    any platform with the household's activations, and its household record is issued
+  //    alongside the key once HOUSEHOLD_ENABLED is on. Idempotent via the UNIQUE paddle_txn_id.
   const db = getDb();
+  const settings = householdSettings(process.env);
+  let outcome: "minted" | "duplicate";
   try {
-    await ensureLicensePlatformColumn(db);
-    await db.execute({
-      sql: `INSERT INTO licenses (key_hash, email, paddle_txn_id, product, max_activations, platform)
-            VALUES (?, ?, ?, ?, ?, ?)`,
-      args: [
-        keyHash,
-        EMAIL_NOT_STORED,
-        transactionId,
-        product.slug,
-        product.maxActivations,
-        platform,
-      ],
-    });
+    outcome = await mintLicence(
+      {
+        db,
+        sendKey: sendLicenseEmail,
+        deviceCap: settings.deviceCap,
+        issueHousehold: settings.enabled
+          ? async (licenceId, purchased) => {
+              await issueRecord({ db, now: () => new Date(), signer: signerFromEnv }, product.slug, {
+                lid: licenceId,
+                via: "paddle",
+                purchased,
+              });
+            }
+          : undefined,
+      },
+      { transactionId, items, product, customerEmail }
+    );
   } catch (err: any) {
-    if (
-      err?.message?.includes("UNIQUE constraint failed") ||
-      err?.code === "SQLITE_CONSTRAINT_UNIQUE"
-    ) {
-      console.log(`Duplicate webhook for transaction ${transactionId}, returning 200`);
-      return new Response(JSON.stringify({ success: true, duplicate: true }), {
-        status: 200,
-        headers: { "Content-Type": "application/json" },
-      });
-    }
     console.error("Database error:", err);
     return new Response("Database error", { status: 500 });
   }
 
-  // 8. Send license email (the only use of the address)
-  try {
-    await sendLicenseEmail(customerEmail, licenseKey, product, { platform });
-  } catch (err) {
-    console.error("Failed to send license email:", err);
+  if (outcome === "duplicate") {
+    console.log(`Duplicate webhook for transaction ${transactionId}, returning 200`);
+    return new Response(JSON.stringify({ success: true, duplicate: true }), {
+      status: 200,
+      headers: { "Content-Type": "application/json" },
+    });
   }
 
   return new Response(
