@@ -109,14 +109,25 @@ test("the owner line needs the switch date: none is printed with a blank date", 
   assert.match(pricingMarkup(), /Bought RankUp before \{RANKUP_SWITCH_DATE_TEXT\}\? You already have Every device, free\./);
 });
 
+test("the page no longer says it has no central servers (a licence server exists), and says what it does collect", () => {
+  assert.equal(/central servers?/i.test(SOURCE), false, "no 'central server' claim anywhere on the page");
+  assert.equal(/literally cannot track/i.test(SOURCE), false);
+  const frontmatter = SOURCE.slice(0, SOURCE.indexOf("---", 4));
+  assert.match(frontmatter, /No chat rooms, no ads, no tracking, and nothing about your child is collected\./);
+  assert.match(frontmatter, /It has no chat rooms and no online play\./);
+  assert.match(frontmatter, /a parent signs in with the email of their purchase and a code we send to it\. We use it for nothing else\./);
+  assert.match(SOURCE, /We have no chat rooms, no ads and no tracking, and we collect nothing about your child\./);
+  assert.match(SOURCE, /Up to 8 family profiles on one device, with no child accounts/);
+});
+
 test("title, H1 and URL are the page's own, unchanged", () => {
   assert.match(SOURCE, /title="RankUp Chess — The Offline Chess Academy for Kids"/);
   assert.match(SOURCE, /canonical="https:\/\/www\.stillwareltd\.com\/rankupchess\/"/);
   assert.match(SOURCE, /<h1 class="text-gradient-gold">Stop renting your kids' educational apps\.<\/h1>/);
 });
 
-test("script: asks for platform web, and fills in the figures it is given", async () => {
-  const r = await run(ok({ country: "GB", currency: "GBP", prices: { every_device: "£19.99", upgrade: "£7.99" } }));
+test("script: asks for platform web, and fills in the figures it is given (card 2 included)", async () => {
+  const r = await run(ok({ country: "GB", currency: "GBP", prices: { every_device: "£19.99", this_device: "£11.99", upgrade: "£7.99" } }));
   assert.equal(r.calls.length, 1);
   assert.equal(r.calls[0].url, "/api/household/prices");
   assert.equal(r.calls[0].init.method, "POST");
@@ -124,16 +135,24 @@ test("script: asks for platform web, and fills in the figures it is given", asyn
   assert.equal(r.every.textContent, "£19.99");
   assert.equal(r.every.hidden, false);
   assert.equal(r.upgrade.textContent, "£7.99");
-  // web has no this_device price: that slot stays empty and hidden
-  assert.equal(r.mine.textContent, "");
-  assert.equal(r.mine.hidden, true);
+  // card 2 gets the single Only-on price, from this_device
+  assert.equal(r.mine.textContent, "£11.99");
+  assert.equal(r.mine.hidden, false);
   assert.match(r.note.textContent, /for your country, in your currency/);
 });
 
-test("script: a price for the single-kind card is shown when one is sent", async () => {
+test("script: another currency is shown as Paddle formatted it", async () => {
   const r = await run(ok({ prices: { every_device: "19,99 €", this_device: "11,99 €", upgrade: "7,99 €" } }));
+  assert.equal(r.every.textContent, "19,99 €");
   assert.equal(r.mine.textContent, "11,99 €");
-  assert.equal(r.mine.hidden, false);
+  assert.equal(r.upgrade.textContent, "7,99 €");
+});
+
+test("script: a price that is missing from the answer leaves its own slot empty, and the others filled", async () => {
+  const r = await run(ok({ prices: { every_device: "£19.99", upgrade: "£7.99" } }));
+  assert.equal(r.every.textContent, "£19.99");
+  assert.equal(r.mine.textContent, "");
+  assert.equal(r.mine.hidden, true);
 });
 
 test("script: any failure leaves the page as the server wrote it (no figure, 'shown at checkout')", async () => {
