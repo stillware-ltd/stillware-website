@@ -1,6 +1,8 @@
 import type { Context } from "@netlify/functions";
 import { getDb } from "./lib/db.js";
 import { hashLicenseKey } from "./lib/crypto.js";
+import { householdSettings } from "./lib/household-config.js";
+import { everyDeviceOfLicence, householdRecordPart } from "./lib/household-licence.js";
 import { findLicenseByKey } from "./lib/licenses.js";
 import {
   DEFAULT_PRODUCT_FOR_LEGACY_CLIENTS,
@@ -56,7 +58,18 @@ export default async function handler(req: Request, _context: Context) {
     }
   }
 
-  return jsonResponse({ valid: true });
+  // Household licence (KL.2): an Every device licence (or one due the free upgrade) also gets its
+  // signed record, as license-activate's answer carries it, so a key holder gets it at the next
+  // periodic check without entering the key again. Nothing is added while HOUSEHOLD_ENABLED is off.
+  const everyDevice = everyDeviceOfLicence(
+    { revoked: license.revoked, tier: license.tier, created_at: license.created_at },
+    productSlug,
+    householdSettings(process.env)
+  );
+  return jsonResponse({
+    valid: true,
+    ...(await householdRecordPart(db, productSlug, license.id as string, everyDevice, "license-validate")),
+  });
 }
 
 function jsonResponse(data: object, status = 200): Response {

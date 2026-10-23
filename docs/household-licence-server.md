@@ -18,7 +18,7 @@ All are `POST` JSON at `https://www.stillwareltd.com/api/household/...` (www onl
 
 Other answers: `400 bad_request` or `bad_email` (a field is missing or malformed), `405` (not POST), `429 rate_limited` (the IP limit), `500 server_misconfigured` (the signing key is missing or unusable).
 
-The record on the wire is `{"record": {...}, "kid": "...", "sig": "<base64url, no padding>"}`. `license-activate` carries the same object as `household` in its answer when the licence is Every device.
+The record on the wire is `{"record": {...}, "kid": "...", "sig": "<base64url, no padding>"}`. `license-activate` and `license-validate` carry the same object as `household` in their answers when the flag is on and the licence is Every device (tagged `every_device`, upgraded with the Paddle upgrade, or due the free upgrade through `HOUSEHOLD_UPGRADE_BEFORE`). The desktop app revalidates now and then, so an existing key holder gets the record at the next check without entering the key again. An invalid or revoked licence, another product, the flag off, or a signing key that is missing leaves the answer as it always was (`{"valid": true}`).
 
 `POST /webhooks/revenuecat` is RevenueCat's webhook (see below).
 
@@ -176,7 +176,7 @@ To stop issuing records: unset `HOUSEHOLD_ENABLED` (or set it to anything but `1
 
 What that does:
 - `household-fetch`, `signin-start`, `signin-verify`, `link-start`, `link-verify` answer `404 {"error":"off"}`. No more RevenueCat lookups either.
-- `license-activate` stops returning `household` and goes back to the plain rules (the platform check, the licence's own activation limit).
+- `license-activate` and `license-validate` stop returning `household`; `license-activate` goes back to the plain rules (the platform check, the licence's own activation limit).
 - `paddle-webhook` still tags an Every device licence but no longer signs a record with it.
 - `revenuecat-webhook` keeps recording and revoking (it signs nothing).
 - `household-purge` keeps running: retention does not depend on the flag.
@@ -191,4 +191,4 @@ To go further back, revert the commit. The new tables and the `tier` column stay
 
 ## Choices the contract left open
 
-Drafted as KD-40 in the KL.2 report: `platform` is checked and not kept; `fetch` is not under the IP limit; the fifth wrong code answers `too_many_tries`; `link/start` mails only for an app user id that owns a purchase; a licence has one record per `kid`; earlier Paddle buyers are upgraded from the licences table and earlier store buyers through the RevenueCat lookup above; the $9.99 Paddle upgrade of a key upgrades that licence in place (no extra mail) and falls back to a new licence rather than lose the purchase; the hourly purge deletes code rows 24 hours after their code stopped working and rate-limit rows older than 24 hours (so within 25 hours); refunds are read as `CANCELLATION` with `CUSTOMER_SUPPORT`; `prices` is open whatever the flag, answers with the strings Paddle formats (`formattedTotals.total`), takes the country from Netlify and the IP address (passed on, never kept) to Paddle, caches an hour per product, country and platform, gives `web` the Windows and Linux price as `this_device`, and has `currency: null` and no prices when there is nothing named to ask for.
+Drafted as KD-40 in the KL.2 report: `platform` is checked and not kept; `fetch` is not under the IP limit; the fifth wrong code answers `too_many_tries`; `link/start` mails only for an app user id that owns a purchase; a licence has one record per `kid`; earlier Paddle buyers are upgraded from the licences table and earlier store buyers through the RevenueCat lookup above; the $9.99 Paddle upgrade of a key upgrades that licence in place (no extra mail) and falls back to a new licence rather than lose the purchase; the hourly purge deletes code rows 24 hours after their code stopped working and rate-limit rows older than 24 hours (so within 25 hours); refunds are read as `CANCELLATION` with `CUSTOMER_SUPPORT`; `prices` is open whatever the flag, answers with the strings Paddle formats (`formattedTotals.total`), takes the country from Netlify and the IP address (passed on, never kept) to Paddle, caches an hour per product, country and platform, gives `web` the Windows and Linux price as `this_device`, `license-validate` returns the record as `license-activate` does (flag on, Every device or due the free upgrade; nothing otherwise), and has `currency: null` and no prices when there is nothing named to ask for.

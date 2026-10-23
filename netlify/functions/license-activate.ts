@@ -1,15 +1,12 @@
 import type { Context } from "@netlify/functions";
 import { getDb } from "./lib/db.js";
 import { hashLicenseKey } from "./lib/crypto.js";
-import type { Client } from "@libsql/client";
 import { householdSettings } from "./lib/household-config.js";
-import { householdTierOfLicence, issueRecord } from "./lib/household.js";
-import { signerFromEnv } from "./lib/household-prod.js";
+import { everyDeviceOfLicence, householdRecordPart } from "./lib/household-licence.js";
 import { findLicenseByKey } from "./lib/licenses.js";
 import {
   DEFAULT_PRODUCT_FOR_LEGACY_CLIENTS,
   PRODUCTS,
-  isHouseholdProduct,
   isValidProduct,
   platformOfClient,
   wrongPlatformMessage,
@@ -60,12 +57,11 @@ export default async function handler(req: Request, _context: Context) {
   // household's activations, and its signed record comes back with the activation. Null while
   // HOUSEHOLD_ENABLED is off, so nothing below changes for today's licences until the switch.
   const settings = householdSettings(process.env);
-  const everyDevice = settings.enabled && isHouseholdProduct(productSlug)
-    ? householdTierOfLicence(
-        { revoked: row.revoked, tier: row.tier, created_at: row.created_at },
-        settings.upgradeBefore
-      )
-    : null;
+  const everyDevice = everyDeviceOfLicence(
+    { revoked: row.revoked, tier: row.tier, created_at: row.created_at },
+    productSlug,
+    settings
+  );
 
   // RankUp Chess licences are for one platform (lib/products.ts): a Mac key does not unlock
   // Windows or Linux, nor the other way round. Licences with no platform (Zeroed, and every
@@ -105,7 +101,7 @@ export default async function handler(req: Request, _context: Context) {
       success: true,
       instance_id: activation.id as string,
       license_key,
-      ...(await householdPart(db, productSlug, licenseId, everyDevice)),
+      ...(await householdRecordPart(db, productSlug, licenseId, everyDevice, "license-activate")),
     });
   }
 
@@ -142,32 +138,8 @@ export default async function handler(req: Request, _context: Context) {
     success: true,
     instance_id: instanceId,
     license_key,
-    ...(await householdPart(db, productSlug, licenseId, everyDevice)),
+    ...(await householdRecordPart(db, productSlug, licenseId, everyDevice, "license-activate")),
   });
-}
-
-/**
- * `{ household: {record, kid, sig} }` for an Every device licence, else nothing. A record that
- * cannot be signed is logged and left out: it must never stop an activation.
- */
-async function householdPart(
-  db: Client,
-  product: string,
-  licenceId: string,
-  everyDevice: { via: "paddle" | "upgrade"; purchased: string } | null
-): Promise<{ household?: object }> {
-  if (!everyDevice) return {};
-  try {
-    const signed = await issueRecord({ db, now: () => new Date(), signer: signerFromEnv }, product, {
-      lid: licenceId,
-      via: everyDevice.via,
-      purchased: everyDevice.purchased,
-    });
-    return { household: signed };
-  } catch (err) {
-    console.error("license-activate: could not issue the household record:", err instanceof Error ? err.message : err);
-    return {};
-  }
 }
 
 function jsonResponse(data: object, status = 200): Response {
