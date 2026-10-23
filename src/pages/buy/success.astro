@@ -13,11 +13,11 @@ import Layout from '../../layouts/Layout.astro';
         <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
       </div>
       <h1>Thank you for your purchase</h1>
-      <p>
+      <p id="success-lead">
         Your payment is complete. We've sent your license key to the email
         address you used at checkout.
       </p>
-      <p class="muted">
+      <p class="muted" id="success-how">
         Open the app, go to the upgrade screen, and paste in your license key
         to unlock all features. Email may take a couple of minutes to arrive —
         check your spam folder if you don't see it.
@@ -31,6 +31,24 @@ import Layout from '../../layouts/Layout.astro';
     </div>
   </section>
 </Layout>
+
+<script is:inline>
+  // The Every device upgrade sends buyers here with ?upgrade=1. Their key does not change, so the
+  // key-email text above would be wrong for them. (If we could not match their key, the server
+  // emails a new Every device key instead; the text says so.)
+  if (new URLSearchParams(window.location.search).get('upgrade') === '1') {
+    var lead = document.getElementById('success-lead');
+    var how = document.getElementById('success-how');
+    if (lead) {
+      lead.innerText =
+        'Your payment is complete. If you started it from RankUp Chess on your computer, Every device is now on for the key you already have, so there is nothing to enter.';
+    }
+    if (how) {
+      how.innerText =
+        "Open the app and it picks the change up the next time it checks. If we could not match your key, we've emailed you a new Every device key instead; check your spam folder if you don't see it.";
+    }
+  }
+</script>
 
 <style>
   .purchase-success {

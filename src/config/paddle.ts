@@ -26,7 +26,7 @@ export type ProductSlug = "zeroed" | "rankup";
  * whereas a `?price=` parameter an existing page ignored would quietly charge
  * the wrong amount.
  */
-export type CheckoutSlug = "zeroed" | "rankup" | "rankup-mac";
+export type CheckoutSlug = "zeroed" | "rankup" | "rankup-mac" | "rankup-every-device" | "rankup-upgrade";
 
 export interface PaddleProductConfig {
   /** Licence product this checkout grants. Not necessarily the URL slug. */
@@ -47,6 +47,18 @@ export interface PaddleProductConfig {
    * RankUp Chess licences are per platform (founder, 2026-10-14); the licence
    * server enforces it (netlify/functions/lib/products.ts). */
   licenceNote?: string;
+  /** Heading and text of the "not available yet" state (no price id, or `comingSoon`), in place of "Coming Soon". */
+  unavailableHeading?: string;
+  unavailableText?: string;
+  /**
+   * Only the Every device upgrade page sets this. The desktop app opens it with
+   * `?licence=<64 hex>` (the SHA-256 of the buyer's key, as the licence server's hashLicenseKey
+   * makes it), and the page passes a well-formed value to Paddle as `customData: { licence }`, so
+   * the server upgrades that key in place. Every other page ignores the parameter.
+   */
+  passesLicence?: boolean;
+  /** Where Paddle sends the buyer afterwards. `/buy/success` when left out. */
+  successPath?: string;
 }
 
 export const PADDLE_PRODUCTS: Record<CheckoutSlug, PaddleProductConfig> = {
@@ -77,8 +89,38 @@ export const PADDLE_PRODUCTS: Record<CheckoutSlug, PaddleProductConfig> = {
     licenceNote:
       "This licence unlocks RankUp Chess on the Mac, on up to 3 Macs. The Windows and Linux version is a separate purchase.",
   },
+
+  // RankUp Chess — Every device (KL.4 opens this page). SWITCH DAY: the price id is created at KL.3.
+  // Until it is filled in here AND added to EVERY_DEVICE_PADDLE_PRICE_IDS in
+  // netlify/functions/lib/products.ts (and PRICE_ID_TO_PRODUCT), the page says the purchase is not
+  // available yet and opens no checkout.
+  "rankup-every-device": {
+    slug: "rankup",
+    name: "RankUp Chess: Every device",
+    tagline: "Software you own.",
+    priceId: "",
+    unavailableHeading: "Not available yet",
+    unavailableText: "Every device isn't available to buy yet. Nothing has been charged.",
+    licenceNote:
+      "Every device unlocks RankUp Chess on every phone, tablet and computer your family owns: Windows, Mac, Android, iPhone and iPad.",
+  },
+  // RankUp Chess — the Every device upgrade for a desktop key holder (KL.4 opens this page with
+  // ?licence=<64 hex>). Same rules for the price id, in EVERY_DEVICE_UPGRADE_PADDLE_PRICE_IDS.
+  "rankup-upgrade": {
+    slug: "rankup",
+    name: "RankUp Chess: add Every device",
+    tagline: "Software you own.",
+    priceId: "",
+    unavailableHeading: "Not available yet",
+    unavailableText: "Adding Every device isn't available yet. Nothing has been charged.",
+    licenceNote:
+      "Adds Every device to the RankUp Chess key you already own, and your key stays the same. If we cannot match your key, we email you a new Every device key instead, so your payment is never lost.",
+    passesLicence: true,
+    successPath: "/buy/success?upgrade=1",
+  },
 };
 
+/** No price id yet (or a placeholder), or marked coming soon: the page opens no checkout. */
 export function isComingSoon(config: PaddleProductConfig): boolean {
-  return config.comingSoon === true || config.priceId.includes("PLACEHOLDER");
+  return config.comingSoon === true || config.priceId.trim() === "" || config.priceId.includes("PLACEHOLDER");
 }

@@ -22,6 +22,9 @@ if (!config) {
 }
 
 const comingSoon = isComingSoon(config);
+const unavailableHeading = config.unavailableHeading ?? `${config.name} — Coming Soon`;
+const unavailableText =
+  config.unavailableText ?? `${config.name} is launching soon. We'll let you know the moment it's available.`;
 ---
 
 <Layout
@@ -32,14 +35,13 @@ const comingSoon = isComingSoon(config);
   <section class="checkout-page">
     <div class="checkout-content">
       <h1 id="checkout-heading">
-        {comingSoon ? `${config.name} — Coming Soon` : 'Loading checkout…'}
+        {comingSoon ? unavailableHeading : 'Loading checkout…'}
       </h1>
       <p class="checkout-status" id="checkout-status">
-        {comingSoon
-          ? `${config.name} is launching soon. We'll let you know the moment it's available.`
-          : `Opening secure payment window for ${config.name}.`}
+        {comingSoon ? unavailableText : `Opening secure payment window for ${config.name}.`}
       </p>
       {config.licenceNote && <p class="checkout-licence">{config.licenceNote}</p>}
+      {config.passesLicence && !comingSoon && <p class="checkout-licence" id="checkout-no-key" hidden></p>}
       <noscript>
         <p class="checkout-error">
           JavaScript is required to complete checkout. Please enable JavaScript
@@ -65,8 +67,18 @@ const comingSoon = isComingSoon(config);
           token: PADDLE_CLIENT_TOKEN,
           priceId: config.priceId,
           productName: config.name,
+          passLicence: config.passesLicence === true,
+          successPath: config.successPath ?? '/buy/success',
         }}
       >
+        // The Every device upgrade page is opened by the desktop app with ?licence=<64 hex>: the
+        // SHA-256 of the buyer's key. Only a value of exactly 64 hex characters is passed on (as
+        // Paddle custom data); anything else is ignored. Only the upgrade page uses this.
+        function licenceFromSearch(search) {
+          const value = new URLSearchParams(search).get('licence');
+          return value !== null && /^[0-9a-fA-F]{64}$/.test(value) ? value.toLowerCase() : null;
+        }
+
         (function () {
           const status = document.getElementById('checkout-status');
           const heading = document.getElementById('checkout-heading');
@@ -97,11 +109,28 @@ const comingSoon = isComingSoon(config);
           const checkoutOptions = {
             items: [{ priceId: priceId, quantity: 1 }],
             settings: {
-              successUrl: window.location.origin + '/buy/success',
+              successUrl: window.location.origin + successPath,
             },
           };
           if (discountCode) {
             checkoutOptions.discountCode = discountCode;
+          }
+
+          // Without a usable key hash the upgrade still opens, with no custom data: the licence
+          // server then makes a new Every device licence and emails its key, so the payment is
+          // never lost. Say so before the buyer pays.
+          if (passLicence) {
+            const licence = licenceFromSearch(window.location.search);
+            if (licence) {
+              checkoutOptions.customData = { licence: licence };
+            } else {
+              const note = document.getElementById('checkout-no-key');
+              if (note) {
+                note.hidden = false;
+                note.innerText =
+                  'This page was opened without your key from the app, so this payment gives you a new Every device key by email instead of upgrading the key you have.';
+              }
+            }
           }
 
           try {
