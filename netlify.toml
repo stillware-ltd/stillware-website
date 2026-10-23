@@ -56,6 +56,39 @@
   to = "/.netlify/functions/dashboard-ops"
   status = 200
 
+# Household licence ("Every device", KL.2): the app's sign-in and the RevenueCat webhook. Same www-only
+# rule as above. Each /api/household/* function answers 404 {"error":"off"} until HOUSEHOLD_ENABLED is "1";
+# docs/household-licence-server.md says how to switch them off again and what stays valid.
+[[redirects]]
+  from = "/api/household/fetch"
+  to = "/.netlify/functions/household-fetch"
+  status = 200
+
+[[redirects]]
+  from = "/api/household/signin/start"
+  to = "/.netlify/functions/household-signin-start"
+  status = 200
+
+[[redirects]]
+  from = "/api/household/signin/verify"
+  to = "/.netlify/functions/household-signin-verify"
+  status = 200
+
+[[redirects]]
+  from = "/api/household/link/start"
+  to = "/.netlify/functions/household-link-start"
+  status = 200
+
+[[redirects]]
+  from = "/api/household/link/verify"
+  to = "/.netlify/functions/household-link-verify"
+  status = 200
+
+[[redirects]]
+  from = "/webhooks/revenuecat"
+  to = "/.netlify/functions/revenuecat-webhook"
+  status = 200
+
 # Canonical host is https://www.stillwareltd.com. Send every other variant there in ONE hop
 # (http apex used to take two: http -> https apex -> https www). force = true so these win over any file.
 [[redirects]]
