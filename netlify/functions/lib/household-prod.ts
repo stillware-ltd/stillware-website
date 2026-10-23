@@ -4,6 +4,7 @@ import { REQUESTS_PER_IP_PER_HOUR, START_MIN_MS } from "./household-config.js";
 import { householdHandlers, type HouseholdHandlers } from "./household-http.js";
 import { loadSigner, type Signer } from "./household-record.js";
 import { paddleCompletedTransactionIds } from "./paddle-lookup.js";
+import { lookupLegacyPurchase, type LegacyLookup } from "./revenuecat-lookup.js";
 
 // The real dependencies of the household endpoints: the Turso database, Resend, Paddle and the
 // signing key from the environment. The function files call productionHandlers(); tests build
@@ -21,11 +22,20 @@ export function signerFromEnv(): Signer {
   return cachedSigner.signer;
 }
 
+/** RevenueCat lookups for earlier buyers, only when REVENUECAT_SECRET_API_KEY is set. */
+function legacyLookupFromEnv(): LegacyLookup | undefined {
+  const key = (process.env.REVENUECAT_SECRET_API_KEY ?? "").trim();
+  if (!key) return undefined;
+  return (appUserId, entitlementId, platform) =>
+    lookupLegacyPurchase({ key, appUserId, entitlementId, platform });
+}
+
 export function productionHandlers(): HouseholdHandlers {
   return householdHandlers({
     env: () => process.env,
     build: (settings) => ({
       household: {
+        legacyLookup: legacyLookupFromEnv(),
         db: getDb(),
         now: () => new Date(),
         settings,

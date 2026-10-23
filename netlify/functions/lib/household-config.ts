@@ -1,3 +1,5 @@
+import { DEFAULT_LEGACY_ENTITLEMENT } from "./revenuecat-lookup.js";
+
 // Settings of the household licence server (KL.2). Read from the environment on every request,
 // never at import time, so a test can set them per case and a flag that is off costs nothing.
 
@@ -18,6 +20,9 @@ export const CODES_PER_EMAIL_PER_HOUR = 5;
 /** Requests per IP address per hour to the four email-code endpoints. */
 export const REQUESTS_PER_IP_PER_HOUR = 20;
 
+/** RevenueCat lookups per app user id per hour (an earlier buyer's first `fetch`), so a loop cannot hammer RevenueCat. */
+export const LEGACY_LOOKUPS_PER_ID_PER_HOUR = 3;
+
 /**
  * The /start endpoints take at least this long to answer, so an address that gets a mail (a
  * Paddle lookup, a database write and a send) cannot be told from one that gets nothing by
@@ -31,16 +36,21 @@ export interface HouseholdSettings {
   /** Devices per licence (HOUSEHOLD_DEVICE_CAP). */
   deviceCap: number;
   /**
-   * HOUSEHOLD_UPGRADE_BEFORE, YYYY-MM-DD: a RankUp Paddle licence created before this date is
-   * upgraded free to Every device (record `via: "upgrade"`). Unset: nobody is upgraded.
+   * HOUSEHOLD_UPGRADE_BEFORE, YYYY-MM-DD, the switch date: an earlier buyer is upgraded free to
+   * Every device (record `via: "upgrade"`). That is a RankUp Paddle licence created before it, or
+   * a store purchase of the legacy entitlement first bought before it (found through RevenueCat's
+   * REST API on the first `fetch`). Unset: nobody is upgraded, and RevenueCat is never asked.
    */
   upgradeBefore: string | null;
+  /** HOUSEHOLD_LEGACY_ENTITLEMENT: the RevenueCat entitlement of the One platform purchase. */
+  legacyEntitlement: string;
 }
 
 export function householdSettings(env: Env): HouseholdSettings {
   const cap = Number(env.HOUSEHOLD_DEVICE_CAP);
   const upgradeBefore = (env.HOUSEHOLD_UPGRADE_BEFORE ?? "").trim();
   return {
+    legacyEntitlement: (env.HOUSEHOLD_LEGACY_ENTITLEMENT ?? "").trim() || DEFAULT_LEGACY_ENTITLEMENT,
     enabled: env.HOUSEHOLD_ENABLED === "1",
     deviceCap: Number.isInteger(cap) && cap > 0 ? cap : DEFAULT_DEVICE_CAP,
     upgradeBefore: /^\d{4}-\d{2}-\d{2}$/.test(upgradeBefore) ? upgradeBefore : null,

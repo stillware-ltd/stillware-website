@@ -135,6 +135,9 @@ export function ipBucket(ip: string): string {
 
 export const emailBucket = (hash: string) => "email:" + hash;
 
+/** The rate-limit bucket of RevenueCat lookups for one app user id (hashed, like the others). */
+export const legacyLookupBucket = (appUserId: string) => "rcid:" + sha256Hex("household-rcid|" + appUserId).slice(0, 32);
+
 // ---------------------------------------------------------------------------------------------
 // Rate limits
 

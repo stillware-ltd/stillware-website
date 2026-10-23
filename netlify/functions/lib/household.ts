@@ -2,6 +2,7 @@ import type { Client } from "@libsql/client";
 import {
   CODES_PER_EMAIL_PER_HOUR,
   CODE_TTL_MINUTES,
+  LEGACY_LOOKUPS_PER_ID_PER_HOUR,
   type HouseholdSettings,
 } from "./household-config.js";
 import {
@@ -26,8 +27,10 @@ import {
   licenceById,
   licencesByTransactions,
   linkedAppUsers,
+  legacyLookupBucket,
   newCode,
   putIssued,
+  recordPurchase,
   storeCode,
   takeDeviceSlot,
   takeHit,
@@ -37,6 +40,7 @@ import {
 } from "./household-store.js";
 import { ensureLicenceTierColumn } from "./licenses.js";
 import { PRODUCTS, type ProductConfig, type ProductSlug } from "./products.js";
+import type { LegacyLookup } from "./revenuecat-lookup.js";
 
 // The household licence server's logic (KL.2), kept apart from the HTTP handlers and from the
 // Paddle, Resend and RevenueCat clients so it can be tested against a local database (as
@@ -59,6 +63,11 @@ export interface HouseholdDeps {
   sendCode: SendCode;
   /** Ids of the completed Paddle transactions of the customer(s) with this address. */
   paddleTransactionIds: (email: string) => Promise<string[]>;
+  /**
+   * Asks RevenueCat whether an app user id bought the One platform unlock before the switch.
+   * Absent when REVENUECAT_SECRET_API_KEY is not set: then `fetch` never asks.
+   */
+  legacyLookup?: LegacyLookup;
 }
 
 /** What an answer is: an HTTP status and a JSON body. household-http.ts turns it into a Response. */
@@ -218,14 +227,77 @@ export const isEmail = (s: unknown): s is string =>
 /**
  * fetch: the record of the licence an app user id owns through a store purchase.
  * 404 none otherwise (including a revoked one).
+ *
+ * An earlier buyer has no entitlement here yet (their purchase predates the webhook), so when
+ * none is found and HOUSEHOLD_UPGRADE_BEFORE and a RevenueCat key are set, RevenueCat is asked
+ * once (upgradeFromRevenueCat). 503 try_later when it cannot be reached; 429 when this app user
+ * id has used up its lookups for the hour.
  */
-export async function fetchRecord(deps: HouseholdDeps, product: string, appUserId: string): Promise<Answer> {
+export async function fetchRecord(
+  deps: HouseholdDeps,
+  product: string,
+  appUserId: string,
+  platform?: string
+): Promise<Answer> {
   await ensureHouseholdTables(deps.db);
   const signer = readSigner(deps);
   if (!signer) return SERVER_MISCONFIGURED;
-  const e = await eligibleForAppUser(deps.db, product, [appUserId]);
+  let e = await eligibleForAppUser(deps.db, product, [appUserId]);
+  if (!e) {
+    const upgraded = await upgradeFromRevenueCat(deps, product, appUserId, platform);
+    if (upgraded === "unavailable") return answer(503, { error: "try_later" });
+    if (upgraded === "limited") return answer(429, { error: "rate_limited" });
+    e = upgraded;
+  }
   if (!e) return answer(404, { error: "none" });
   return answer(200, { ...(await issueRecord(deps, product, e)) });
+}
+
+/**
+ * The free upgrade of an earlier store buyer. Asks RevenueCat for the app user id's One platform
+ * entitlement (at most LEGACY_LOOKUPS_PER_ID_PER_HOUR times an hour per id, counted before the
+ * call). A purchase first made before HOUSEHOLD_UPGRADE_BEFORE is stored as an entitlement with
+ * `via: "upgrade"` (sandbox ones marked as such, as the webhook does), so the next `fetch` finds
+ * it here and RevenueCat is not asked again. A purchase on or after that date, no purchase or a
+ * 404 is null (the same as never having bought). Nothing is stored when RevenueCat cannot be
+ * reached.
+ */
+async function upgradeFromRevenueCat(
+  deps: HouseholdDeps,
+  product: string,
+  appUserId: string,
+  platform?: string
+): Promise<Eligible | null | "unavailable" | "limited"> {
+  const { settings, legacyLookup } = deps;
+  if (!legacyLookup || !settings.upgradeBefore) return null;
+  if (!(await takeHit(deps.db, legacyLookupBucket(appUserId), LEGACY_LOOKUPS_PER_ID_PER_HOUR, deps.now()))) {
+    return "limited";
+  }
+  let found;
+  try {
+    found = await legacyLookup(appUserId, settings.legacyEntitlement, platform);
+  } catch (err) {
+    console.error("household: RevenueCat lookup failed:", err instanceof Error ? err.name : "error");
+    return "unavailable";
+  }
+  if (found.status === "unavailable") return "unavailable";
+  if (found.status === "none") return null;
+
+  const p = found.purchase;
+  if (!(p.purchased < settings.upgradeBefore)) return null;
+  await recordPurchase(deps.db, {
+    product,
+    appUserId,
+    productId: p.productId,
+    store: p.store,
+    via: "upgrade",
+    purchased: p.purchased,
+    transactionId: p.transactionId,
+    originalTransactionId: p.transactionId,
+    environment: p.sandbox ? "SANDBOX" : "PRODUCTION",
+  });
+  // Null if that transaction was recorded before and since refunded (or for another app user id).
+  return eligibleForAppUser(deps.db, product, [appUserId]);
 }
 
 /**

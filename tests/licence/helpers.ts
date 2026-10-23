@@ -1,5 +1,6 @@
 import crypto from "node:crypto";
 import { mkdtempSync, readFileSync } from "node:fs";
+import { after } from "node:test";
 import { tmpdir } from "node:os";
 import { join, sep } from "node:path";
 import { createClient, type Client } from "@libsql/client";
@@ -7,6 +8,7 @@ import { householdSettings, type Env, type HouseholdSettings } from "../../netli
 import { householdHandlers, type HouseholdHandlers } from "../../netlify/functions/lib/household-http.js";
 import type { HouseholdDeps, SendCode } from "../../netlify/functions/lib/household.js";
 import { type Signer } from "../../netlify/functions/lib/household-record.js";
+import type { LegacyLookupResult } from "../../netlify/functions/lib/revenuecat-lookup.js";
 import { recordPurchase, type CodePurpose } from "../../netlify/functions/lib/household-store.js";
 
 // Shared test scaffolding: a local libsql database file in a temp folder, a signing key made
@@ -17,6 +19,20 @@ export const SCHEMA_PATH = new URL("../../netlify/functions/lib/schema.sql", imp
 
 let latestUrl = "";
 
+// libsql's native module can crash the process (a segfault, exit code 139) when it exits with
+// databases still open, now and then, after every test has passed. So every database a test file
+// opens is closed once the file's tests are done.
+const opened: Client[] = [];
+after(() => {
+  for (const db of opened.splice(0)) {
+    try {
+      db.close();
+    } catch {
+      /* already closed */
+    }
+  }
+});
+
 /** The `file:` URL of the database freshDb opened last (for code that opens its own client). */
 export const lastDbUrl = () => latestUrl;
 
@@ -25,6 +41,7 @@ export async function freshDb(withSchema = true): Promise<Client> {
   const dir = mkdtempSync(join(tmpdir(), "household-test-"));
   latestUrl = "file:" + join(dir, "licences.db").split(sep).join("/");
   const db = createClient({ url: latestUrl });
+  opened.push(db);
   if (withSchema) await db.executeMultiple(readFileSync(SCHEMA_PATH, "utf8"));
   return db;
 }
@@ -90,6 +107,15 @@ export interface World {
   mail: { fail: boolean };
   /** While true the signing key is "not configured": the signer throws. */
   signerFails: { value: boolean };
+  /**
+   * The fake RevenueCat lookup for earlier buyers. `enabled: false` is "REVENUECAT_SECRET_API_KEY
+   * not set" (no lookup function at all); `result` is what RevenueCat says; `calls` is every ask.
+   */
+  legacy: {
+    enabled: boolean;
+    result: LegacyLookupResult;
+    calls: Array<{ appUserId: string; entitlementId: string; platform?: string }>;
+  };
   handlers: HouseholdHandlers;
   /** The logic's dependencies as the environment is right now (for calling lib/household.ts directly). */
   depsNow: () => HouseholdDeps;
@@ -113,6 +139,7 @@ export async function makeWorld(opts: WorldOptions = {}): Promise<World> {
   const sleeps: number[] = [];
   const mail = { fail: opts.failSend ?? false };
   const signerFails = { value: false };
+  const legacy: World["legacy"] = { enabled: false, result: { status: "none" }, calls: [] };
 
   const sendCode: SendCode = async (to, code, _product, purpose) => {
     if (mail.fail) throw new Error("fake outage");
@@ -128,6 +155,12 @@ export async function makeWorld(opts: WorldOptions = {}): Promise<World> {
       return key.signer;
     },
     sendCode,
+    legacyLookup: legacy.enabled
+      ? async (appUserId, entitlementId, platform) => {
+          legacy.calls.push({ appUserId, entitlementId, platform });
+          return legacy.result;
+        }
+      : undefined,
     paddleTransactionIds: async (email) => {
       paddleCalls.push(email);
       if (paddleFails.value) throw new Error("fake Paddle outage");
@@ -175,7 +208,7 @@ export async function makeWorld(opts: WorldOptions = {}): Promise<World> {
     return mails[mails.length - 1].code;
   };
 
-  return { db, clock, key, env, sent, paddle, paddleCalls, paddleFails, sleeps, mail, signerFails, handlers, depsNow, call, lastCode };
+  return { db, clock, key, env, sent, paddle, paddleCalls, paddleFails, sleeps, mail, signerFails, legacy, handlers, depsNow, call, lastCode };
 }
 
 let txnCounter = 0;

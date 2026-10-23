@@ -122,7 +122,7 @@ export function householdHandlers(source: HandlerSource): HouseholdHandlers {
     fetch: endpoint(
       async ({ deps, product, body }) => {
         if (!isAppUserId(body.appUserId) || !isPlatform(body.platform)) return bad();
-        return reply(await fetchRecord(deps.household, product, body.appUserId));
+        return reply(await fetchRecord(deps.household, product, body.appUserId, body.platform.toLowerCase()));
       },
       { limitIp: false }
     ),

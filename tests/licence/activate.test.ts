@@ -4,6 +4,7 @@ import crypto from "node:crypto";
 import type { Client } from "@libsql/client";
 import { hashLicenseKey } from "../../netlify/functions/lib/crypto.js";
 import { verifySignedRecord } from "../../netlify/functions/lib/household-record.js";
+import { getDb } from "../../netlify/functions/lib/db.js";
 import { freshDb, lastDbUrl, makeKey } from "./helpers.js";
 
 // license-activate: unchanged for today's licences, and for an Every device licence it returns
@@ -29,6 +30,11 @@ before(async () => {
 });
 
 after(() => {
+  try {
+    getDb().close(); // the handlers' own client (see helpers.ts on why databases are closed)
+  } catch {
+    /* never opened */
+  }
   for (const [k, v] of Object.entries(saved)) {
     if (v === undefined) delete process.env[k];
     else process.env[k] = v;
