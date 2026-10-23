@@ -67,10 +67,12 @@ CREATE TABLE IF NOT EXISTS trials (
 --                                `lid` is the licence id in the record; `revoked` is set by a refund.
 --  household_email_links         An address linked to an app user id, as a SHA-256 of the normalised address.
 --  household_codes               Sign-in and link codes: salted hash, expiry, tries, single use. A row with no
---                                `lid` is a decoy for an address with no purchase (it can never match).
+--                                `lid` is a decoy for an address with no purchase (it can never match). The daily
+--                                purge deletes rows whose code stopped working over 24 hours ago.
 --  household_issued              The signed records (the exact text signed, and the signature), per key id.
 --  household_devices             Successful sign-ins per licence, against HOUSEHOLD_DEVICE_CAP.
---  household_hits                Rate-limit hits (hashed address, hashed IP), kept two hours or so.
+--  household_upgrades            Paddle transactions that upgraded an existing key in place (so a repeat delivery is a duplicate).
+--  household_hits                Rate-limit hits (hashed address, hashed IP); the daily purge deletes those older than 24 hours.
 -- ---------------------------------------------------------------------------------------------
 CREATE TABLE IF NOT EXISTS household_store_entitlements (
   id                      INTEGER PRIMARY KEY AUTOINCREMENT,
@@ -132,6 +134,12 @@ CREATE TABLE IF NOT EXISTS household_devices (
   devices    INTEGER NOT NULL DEFAULT 0,
   updated_at TEXT NOT NULL,
   PRIMARY KEY (product, lid)
+);
+
+CREATE TABLE IF NOT EXISTS household_upgrades (
+  paddle_txn_id TEXT PRIMARY KEY,
+  license_id    TEXT NOT NULL,
+  created_at    TEXT NOT NULL DEFAULT (datetime('now'))
 );
 
 CREATE TABLE IF NOT EXISTS household_hits (

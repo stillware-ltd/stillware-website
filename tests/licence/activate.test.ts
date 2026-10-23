@@ -4,6 +4,8 @@ import crypto from "node:crypto";
 import type { Client } from "@libsql/client";
 import { hashLicenseKey } from "../../netlify/functions/lib/crypto.js";
 import { verifySignedRecord } from "../../netlify/functions/lib/household-record.js";
+import { mintLicence } from "../../netlify/functions/lib/paddle-licence.js";
+import { PRODUCTS } from "../../netlify/functions/lib/products.js";
 import { getDb } from "../../netlify/functions/lib/db.js";
 import { freshDb, lastDbUrl, makeKey } from "./helpers.js";
 
@@ -191,4 +193,47 @@ test("flag on: another product's licence never gets a record", async () => {
   const res = await call(licenceKey, "m1", { product: "zeroed" });
   assert.equal(res.status, 200);
   assert.equal("household" in res.body, false);
+});
+
+// A Paddle upgrade price: the known macOS price stands in for the new one, which exists from KL.3.
+const UPGRADE_PRICE = "pri_01m194cc17phxmgqdqs737mw2p";
+async function upgradeViaPaddle(licenceKey: string, txn: string) {
+  return mintLicence(
+    {
+      db, deviceCap: 10, sendKey: async () => {}, everyDevicePrices: [], upgradePrices: [UPGRADE_PRICE],
+    },
+    {
+      transactionId: txn, items: [{ price: { id: UPGRADE_PRICE } }], product: PRODUCTS.rankup,
+      customerEmail: "buyer@example.net", customData: { licence: hashLicenseKey(licenceKey) },
+    }
+  );
+}
+
+test("flag on: a per-platform key upgraded through Paddle returns the record, on any platform", async () => {
+  process.env.HOUSEHOLD_ENABLED = "1";
+  const { licenceKey, id } = await addLicence({ platform: "windows", created: "2026-09-01 10:00:00" });
+  assert.equal((await call(licenceKey, "m0", { platform: "macos" })).status, 403, "before the upgrade it is Windows only");
+  assert.equal(await upgradeViaPaddle(licenceKey, "txn-upgrade-1"), "upgraded");
+
+  const res = await call(licenceKey, "m1", { platform: "macos" });
+  assert.equal(res.status, 200);
+  assert.equal(res.body.license_key, licenceKey, "the key did not change");
+  assert.deepEqual(res.body.household.record, {
+    v: 1, product: "rankup", lid: id, tier: "every_device", via: "paddle", purchased: "2026-09-01",
+    issued: res.body.household.record.issued,
+  });
+  assert.equal(verifySignedRecord(res.body.household, key.publicKey), true);
+  // the household's activations, not the three it was sold with
+  for (let i = 2; i <= 10; i++) assert.equal((await call(licenceKey, `m${i}`, { platform: "linux" })).status, 200);
+  assert.equal((await call(licenceKey, "m11")).status, 403);
+});
+
+test("flag off: an upgraded key works on any platform, but returns no record yet", async () => {
+  const { licenceKey } = await addLicence({ platform: "windows" });
+  assert.equal(await upgradeViaPaddle(licenceKey, "txn-upgrade-2"), "upgraded");
+  const res = await call(licenceKey, "m1", { platform: "macos" });
+  assert.equal(res.status, 200);
+  assert.equal("household" in res.body, false);
+  const issued = await db.execute("SELECT COUNT(*) AS n FROM household_issued");
+  assert.equal(issued.rows[0].n, 0);
 });

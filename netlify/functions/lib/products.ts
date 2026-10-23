@@ -111,7 +111,8 @@ export function platformFromTransactionItems(
     const id = item?.price?.id;
     // An Every device price works on any platform, whatever PRICE_ID_TO_PLATFORM says.
     if (id && productForPriceId(id)) {
-      return EVERY_DEVICE_PADDLE_PRICE_IDS.includes(id) ? null : (PRICE_ID_TO_PLATFORM[id] ?? null);
+      const everyDevice = EVERY_DEVICE_PADDLE_PRICE_IDS.includes(id) || EVERY_DEVICE_UPGRADE_PADDLE_PRICE_IDS.includes(id);
+      return everyDevice ? null : (PRICE_ID_TO_PLATFORM[id] ?? null);
     }
   }
   return null;
@@ -193,6 +194,19 @@ export const EVERY_DEVICE_STORE_PRODUCT_IDS: Record<string, ProductSlug> = {};
  */
 export const EVERY_DEVICE_PADDLE_PRICE_IDS: readonly string[] = [];
 
+/**
+ * Paddle price ids of the Every device UPGRADE for a desktop key holder ($9.99). THE FOUNDER FILLS
+ * THIS IN AT KL.3; empty until then. Same rules as the list above: add each id to
+ * PRICE_ID_TO_PRODUCT as well, and never to PRICE_ID_TO_PLATFORM, and never to both lists.
+ *
+ * The desktop app opens the checkout for this price with
+ *   customData: { licence: "<sha256 of the normalised key, as hashLicenseKey makes it>" }
+ * and the webhook upgrades that licence in place (lib/paddle-licence.ts): same key, no new
+ * email. If the custom data is missing, malformed or matches no upgradable licence, the buyer
+ * gets a new Every device licence and key instead: the purchase is never lost.
+ */
+export const EVERY_DEVICE_UPGRADE_PADDLE_PRICE_IDS: readonly string[] = [];
+
 /** The only tier a household record is issued for. */
 export type LicenceTier = "every_device";
 
@@ -201,6 +215,29 @@ export interface LicenceTerms {
   /** "every_device" for an Every device price; null for everything sold before. */
   tier: LicenceTier | null;
   maxActivations: number;
+}
+
+/** The price id of the line item that decides the product (the first one a product is known for). */
+function decidingPriceId(
+  items: Array<{ price?: { id?: string } | null } | undefined> | undefined
+): string | undefined {
+  for (const item of items ?? []) {
+    const id = item?.price?.id;
+    if (id && productForPriceId(id)) return id;
+  }
+  return undefined;
+}
+
+/**
+ * Whether a transaction is the Every device upgrade of an existing key (its deciding line item
+ * is one of `upgradePrices`). `upgradePrices` is a parameter so tests can use their own list.
+ */
+export function isUpgradePaddlePrice(
+  items: Array<{ price?: { id?: string } | null } | undefined> | undefined,
+  upgradePrices: readonly string[] = EVERY_DEVICE_UPGRADE_PADDLE_PRICE_IDS
+): boolean {
+  const id = decidingPriceId(items);
+  return id !== undefined && upgradePrices.includes(id);
 }
 
 /**
@@ -214,16 +251,9 @@ export function licenceTermsFromTransactionItems(
   items: Array<{ price?: { id?: string } | null } | undefined> | undefined,
   product: ProductConfig,
   deviceCap: number,
-  everyDevicePrices: readonly string[] = EVERY_DEVICE_PADDLE_PRICE_IDS
+  everyDevicePrices: readonly string[] = [...EVERY_DEVICE_PADDLE_PRICE_IDS, ...EVERY_DEVICE_UPGRADE_PADDLE_PRICE_IDS]
 ): LicenceTerms {
-  let decidingPrice: string | undefined;
-  for (const item of items ?? []) {
-    const id = item?.price?.id;
-    if (id && productForPriceId(id)) {
-      decidingPrice = id;
-      break;
-    }
-  }
+  const decidingPrice = decidingPriceId(items);
   if (decidingPrice && everyDevicePrices.includes(decidingPrice)) {
     return { platform: null, tier: "every_device", maxActivations: deviceCap };
   }

@@ -75,6 +75,12 @@ CREATE TABLE IF NOT EXISTS household_devices (
   PRIMARY KEY (product, lid)
 );
 
+CREATE TABLE IF NOT EXISTS household_upgrades (
+  paddle_txn_id TEXT PRIMARY KEY,
+  license_id    TEXT NOT NULL,
+  created_at    TEXT NOT NULL DEFAULT (datetime('now'))
+);
+
 CREATE TABLE IF NOT EXISTS household_hits (
   bucket TEXT NOT NULL,
   at     TEXT NOT NULL
@@ -379,10 +385,26 @@ export interface NewCodeInput {
   ttlMinutes: number;
 }
 
-/** Deletes codes that expired more than a day ago, so the table (decoys included) stays small. */
+/** How long a row that has stopped counting is kept, in hours. The figure the privacy policy quotes. */
+export const RETENTION_HOURS = 24;
+
+/**
+ * Deletes the codes that stopped working more than RETENTION_HOURS ago, decoys included. A code
+ * stops working when it expires, is used, or is replaced by a newer one: whichever came first.
+ */
 export async function purgeOldCodes(db: Client, now: Date): Promise<number> {
-  const cutoff = new Date(now.getTime() - 86_400_000).toISOString();
-  const res = await db.execute({ sql: "DELETE FROM household_codes WHERE expires_at < ?", args: [cutoff] });
+  const cutoff = new Date(now.getTime() - RETENTION_HOURS * 3_600_000).toISOString();
+  const res = await db.execute({
+    sql: "DELETE FROM household_codes WHERE MIN(expires_at, COALESCE(closed_at, expires_at)) < ?",
+    args: [cutoff],
+  });
+  return res.rowsAffected;
+}
+
+/** Deletes rate-limit hits older than RETENTION_HOURS (they stop counting after one hour). */
+export async function purgeOldHits(db: Client, now: Date): Promise<number> {
+  const cutoff = new Date(now.getTime() - RETENTION_HOURS * 3_600_000).toISOString();
+  const res = await db.execute({ sql: "DELETE FROM household_hits WHERE at < ?", args: [cutoff] });
   return res.rowsAffected;
 }
 

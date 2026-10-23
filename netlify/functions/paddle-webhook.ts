@@ -5,7 +5,7 @@ import { sendLicenseEmail } from "./lib/email.js";
 import { householdSettings } from "./lib/household-config.js";
 import { issueRecord } from "./lib/household.js";
 import { signerFromEnv } from "./lib/household-prod.js";
-import { mintLicence } from "./lib/paddle-licence.js";
+import { customDataFrom, mintLicence } from "./lib/paddle-licence.js";
 import { PRODUCTS, productFromTransactionItems } from "./lib/products.js";
 
 export default async function handler(req: Request, _context: Context) {
@@ -96,7 +96,7 @@ export default async function handler(req: Request, _context: Context) {
   //    alongside the key once HOUSEHOLD_ENABLED is on. Idempotent via the UNIQUE paddle_txn_id.
   const db = getDb();
   const settings = householdSettings(process.env);
-  let outcome: "minted" | "duplicate";
+  let outcome: Awaited<ReturnType<typeof mintLicence>>;
   try {
     outcome = await mintLicence(
       {
@@ -113,7 +113,7 @@ export default async function handler(req: Request, _context: Context) {
             }
           : undefined,
       },
-      { transactionId, items, product, customerEmail }
+      { transactionId, items, product, customerEmail, customData: customDataFrom(eventData.data) }
     );
   } catch (err: any) {
     console.error("Database error:", err);
@@ -129,7 +129,7 @@ export default async function handler(req: Request, _context: Context) {
   }
 
   return new Response(
-    JSON.stringify({ success: true, product: product.slug }),
+    JSON.stringify({ success: true, product: product.slug, ...(outcome === "upgraded" ? { upgraded: true } : {}) }),
     {
       status: 200,
       headers: { "Content-Type": "application/json" },
