@@ -5,6 +5,22 @@ import KeyFacts from '../components/KeyFacts.astro';
 // The product version, shown wherever the page states which release this is.
 const RANKUP_VERSION = '0.10.3';
 
+// SWITCH DAY (KL.7), not yet live: the pricing section shows two tiers, Every device and
+// "only on one kind of device", with no price figure in the HTML. The visitor's own country price
+// is filled in by the script at the bottom of this file, from /api/household/prices (the licence
+// server; docs/household-licence-server.md). The date below is the founder's (KD-13): set it
+// before merging, as 'YYYY-MM-DD'. While it is null, the line "Bought RankUp before ...? You
+// already have Every device, free." is left out rather than printed with no date.
+const RANKUP_SWITCH_DATE: string | null = null;
+const RANKUP_SWITCH_DATE_TEXT = RANKUP_SWITCH_DATE
+  ? new Date(`${RANKUP_SWITCH_DATE}T00:00:00Z`).toLocaleDateString('en-GB', {
+      day: 'numeric',
+      month: 'long',
+      year: 'numeric',
+      timeZone: 'UTC',
+    })
+  : null;
+
 // Download URLs derive from their own per-platform constants, which track the
 // release asset that actually exists rather than the product version.
 // Windows: the earlier installers (0.5.0 and older) were withdrawn with the
@@ -87,7 +103,7 @@ const appSchema = {
 const keyFacts = [
   { term: 'What it is', detail: 'An offline chess academy designed for kids, from absolute beginner to tournament ready: 6,000+ puzzles, 10 AI strength levels (Level 1 Beginner, 400 Elo, up to Level 10 World Class, 2400 Elo) and interactive lessons.' },
   { term: 'Platforms', detail: 'Windows, macOS, iPhone and iPad (App Store) and Android (Google Play).' },
-  { term: 'Price', detail: 'Free to play forever, with no trial clock and no lockout. One optional one-time payment unlocks the complete academy; it is priced and licensed per platform (the Windows licence also covers Linux, the Mac licence is separate), as listed in the pricing section below.' },
+  { term: 'Price', detail: 'Free to play forever, with no trial clock and no lockout. One optional one-time payment unlocks the complete academy: Every device, or only the kind of device you use. Adding Every device later is a smaller extra payment. No subscription. Your price, for your country, is in the pricing section below.' },
   { term: 'Subscription and ads', detail: 'No subscription, no renewal and no ads.' },
   { term: 'Offline and privacy', detail: '100% offline, local-first gameplay. No account, no chat rooms and no data harvesting: games and progress stay on the device.' },
   { term: 'Parents', detail: 'A Parental Gate locks sensitive settings, profile resets and the premium upgrade screen behind a parental PIN, while kids can launch the app and start a game in seconds.' },
@@ -98,7 +114,7 @@ const faqItems = [
   { q: 'Does RankUp Chess work offline?', a: 'Yes. RankUp Chess is a 100% offline chess academy: playing, puzzles and lessons run on your device without an internet connection. Games and progress stay on the device, and it has no chat rooms. It goes online only to buy or restore the upgrade and, on a computer, to check its licence key.' },
   { q: 'Is RankUp Chess made for kids?', a: 'Yes. It is an offline chess academy designed for kids, from absolute beginner to tournament ready. A Parental Gate locks sensitive settings, profile resets and the premium upgrade screen behind a parental PIN, while kids can launch the app and jump into a game in seconds.' },
   { q: 'Is RankUp Chess free to play?', a: 'Yes. Playing chess is free forever, with no trial clock and no lockout, on every platform. The free core includes the beginner-friendly AI levels, Pass & Play with family, 3 Daily Challenges every day and the first curriculum chapter. Progress, achievements, settings and parental controls are always free.' },
-  { q: 'Is there a subscription, and what does the one-time payment unlock?', a: 'There is no subscription and no renewal. One optional one-time payment unlocks the rest of the academy: the full 6,000+ puzzle library, all 10 AI strength levels, the complete curriculum and engine-powered game review, with all v1.x updates included.' },
+  { q: 'Is there a subscription, and what does the one-time payment unlock?', a: 'There is no subscription and no renewal. One optional one-time payment unlocks the rest of the academy: the full 6,000+ puzzle library, all 10 AI strength levels, the complete curriculum and engine-powered game review, with all v1.x updates included. You can buy it for every device your family owns, or only for the kind of device you use. Either way you pay once.' },
   { q: 'Does RankUp Chess have ads or collect my child\'s data?', a: 'No ads, and no data harvesting. RankUp Chess has no account, no chat rooms and no analytics, and your child\'s games and progress stay on the device. The only data that leaves it is what a purchase needs, as our privacy policy explains.' },
   { q: 'How many puzzles and AI levels does RankUp Chess have?', a: 'More than 6,000 puzzles, from simple mate-in-ones to advanced middle-game strategies, and 10 AI strength levels, from Level 1 (Beginner, 400 Elo) to Level 10 (World Class, 2400 Elo), plus interactive lessons.' },
 ];
@@ -341,45 +357,33 @@ const faqSchema = {
             <div class="pricing-header">
                 <h2>Free to Play, Forever.</h2>
                 <p class="pricing-sub">The core game is free for life — play the beginner-friendly AI levels, Pass &amp; Play with family, take on 3 Daily Challenges every day, and learn the basics with the first curriculum chapter. Progress, achievements, settings, and parental controls are always free. No trial clock. No lockout. No ads.</p>
+                <h3 class="pricing-lead">Unlock the Complete Academy</h3>
+                <p class="pricing-desc">One payment, one time, unlocks everything else — the full 6,000+ puzzle library, all 10 AI strength levels, the complete curriculum, and engine-powered game review. We will never charge you a recurring subscription. Choose Every device, or only the kind of device you use.</p>
             </div>
-            <div class="pricing-card featured">
-                <div class="badge-pill">Optional One-Time Purchase</div>
-                <h3>Unlock the Complete Academy</h3>
-                <p class="pricing-desc">One payment, one time, unlocks everything else — the full 6,000+ puzzle library, all 10 AI strength levels, the complete curriculum, and engine-powered game review. We will never charge you a recurring subscription.</p>
-                <div class="price-container">
-                    <div class="price-row">
-                        <span class="price-platform">
-                            <svg viewBox="0 0 24 24" fill="currentColor" width="16" height="16" aria-hidden="true"><path d="M0 3.449L9.75 2.1v9.451H0m10.949-9.602L24 0v11.4H10.949M0 12.6h9.75v9.451L0 20.699M10.949 12.6H24V24l-12.9-1.801" /></svg>
-                            Windows
-                        </span>
-                        <span class="price-amount-inline">$14.99</span>
-                        <span class="price-meta">one-time &middot; up to 3 Windows or Linux PCs</span>
-                    </div>
-                    <div class="price-row">
-                        <span class="price-platform">
-                            <svg viewBox="0 0 24 24" fill="currentColor" width="16" height="16" aria-hidden="true"><path d="M17.05 20.28c-.98.95-2.05.8-3.08.35-1.09-.46-2.09-.48-3.24 0-1.44.62-2.2.44-3.06-.35C2.79 15.25 3.51 7.59 9.05 7.31c1.35.07 2.29.74 3.08.8 1.18-.24 2.31-.93 3.57-.84 1.51.12 2.65.72 3.4 1.8-3.12 1.87-2.38 5.98.48 7.13-.57 1.5-1.31 2.99-2.54 4.09zM12.03 7.25c-.15-2.23 1.66-4.07 3.74-4.25.29 2.58-2.34 4.5-3.74 4.25z" /></svg>
-                            macOS
-                        </span>
-                        <span class="price-amount-inline">$14.99</span>
-                        <span class="price-meta">one-time &middot; up to 3 Macs</span>
-                    </div>
-                    <div class="price-row">
-                        <span class="price-platform">
-                            <svg viewBox="0 0 24 24" fill="currentColor" width="16" height="16" aria-hidden="true"><path d="M17.523 2.293l-1.59 2.755c-1.17-.678-2.53-1.048-3.933-1.048s-2.763.37-3.933 1.048L6.477 2.293a.578.578 0 00-.79.211.58.58 0 00.211.79l1.548 2.682A8.502 8.502 0 004 12.5h16a8.502 8.502 0 00-3.446-6.524l1.548-2.682a.58.58 0 00-.579-.79zM9 10.5a1 1 0 110-2 1 1 0 010 2zm6 0a1 1 0 110-2 1 1 0 010 2zM4 13.5v6a2.5 2.5 0 005 0v-6zm11 0v6a2.5 2.5 0 005 0v-6z" /></svg>
-                            Android
-                        </span>
-                        <span class="price-amount-inline">$14.99</span>
-                        <span class="price-meta">one-time &middot; via Google Play</span>
-                    </div>
-                    <div class="price-row">
-                        <span class="price-platform">
-                            <svg viewBox="0 0 24 24" fill="currentColor" width="16" height="16" aria-hidden="true"><path d="M17.05 20.28c-.98.95-2.05.8-3.08.35-1.09-.46-2.09-.48-3.24 0-1.44.62-2.2.44-3.06-.35C2.79 15.25 3.51 7.59 9.05 7.31c1.35.07 2.29.74 3.08.8 1.18-.24 2.31-.93 3.57-.84 1.51.12 2.65.72 3.4 1.8-3.12 1.87-2.38 5.98.48 7.13-.57 1.5-1.31 2.99-2.54 4.09zM12.03 7.25c-.15-2.23 1.66-4.07 3.74-4.25.29 2.58-2.34 4.5-3.74 4.25z" /></svg>
-                            iOS
-                        </span>
-                        <span class="price-amount-inline">$14.99</span>
-                        <span class="price-meta">one-time &middot; via the App Store</span>
-                    </div>
+            <div class="pricing-cards">
+                <div class="pricing-card featured">
+                    <div class="badge-pill">Best for families</div>
+                    <h4>Every device</h4>
+                    <p class="price-line"><span class="price-amount-local" data-price="every_device" hidden></span><span class="price-terms">one payment</span></p>
+                    <p class="price-detail">One-time &middot; every phone, tablet and computer your family owns &middot; every child &middot; Windows, Mac, Android, iPhone and iPad</p>
+                    {RANKUP_SWITCH_DATE_TEXT && (
+                        <p class="price-owner">Bought RankUp before {RANKUP_SWITCH_DATE_TEXT}? You already have Every device, free.</p>
+                    )}
                 </div>
+                <div class="pricing-card">
+                    <h4>Only on one kind of device</h4>
+                    <p class="price-line"><span class="price-amount-local" data-price="this_device" hidden></span><span class="price-terms">one payment</span></p>
+                    <ul class="kind-list">
+                        <li>Only on Windows (up to 3 Windows or Linux PCs)</li>
+                        <li>Only on Mac (up to 3 Macs)</li>
+                        <li>Only on Android (Google Play)</li>
+                        <li>Only on iPhone and iPad (App Store)</li>
+                    </ul>
+                    <p class="price-owner">Own one and want them all? Add Every device for <strong class="price-upgrade" data-price="upgrade">a smaller extra payment</strong>.</p>
+                </div>
+            </div>
+            <p class="pricing-note pricing-price-note" data-price-note>Your price is shown at checkout.</p>
+            <div class="pricing-shared">
                 <ul class="features-list">
                     <li><span class="check-icon">&#10003;</span> Full 6,000+ Puzzle Library</li>
                     <li><span class="check-icon">&#10003;</span> All 10 AI Levels (up to 2400 Elo)</li>
@@ -405,7 +409,6 @@ const faqSchema = {
                 {RANKUP_WINDOWS_DOWNLOAD && (
                     <p class="pricing-note">Windows may show a SmartScreen warning the first time, because the installer isn't code-signed yet: choose More info, then Run anyway.</p>
                 )}
-                <p class="pricing-vat-note">Prices shown exclusive of VAT. Local taxes may apply at checkout depending on your country.</p>
             </div>
         </div>
     </section>
@@ -448,7 +451,48 @@ const faqSchema = {
 </Layout>
 
 <script>
+    // Local prices (switch day). The HTML shows no figure; this asks the licence server for the
+    // visitor's own country price (platform "web": Every device and the upgrade) and fills it in.
+    // If it fails, answers slowly or sends nothing usable, the page stays as it is: no figure, and
+    // "Your price is shown at checkout". Text goes in with textContent, never as HTML.
+    async function showLocalPrices() {
+        const slots = document.querySelectorAll('[data-price]');
+        if (slots.length === 0) return;
+        const controller = new AbortController();
+        const timer = setTimeout(() => controller.abort(), 5000);
+        try {
+            const res = await fetch('/api/household/prices', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ product: 'rankup', platform: 'web' }),
+                signal: controller.signal,
+            });
+            if (!res.ok) return;
+            const data = await res.json();
+            const prices = data && typeof data.prices === 'object' ? data.prices : null;
+            if (!prices) return;
+            let shown = 0;
+            slots.forEach((el) => {
+                const text = prices[el.dataset.price];
+                if (typeof text !== 'string' || text.length > 24 || !/\d/.test(text)) return;
+                el.textContent = text;
+                el.hidden = false;
+                shown += 1;
+            });
+            const note = document.querySelector('[data-price-note]');
+            if (note && shown > 0) {
+                note.textContent = 'These prices are for your country, in your currency. The final price, with any local tax, is shown at checkout.';
+            }
+        } catch {
+            /* leave the page as it is */
+        } finally {
+            clearTimeout(timer);
+        }
+    }
+
     document.addEventListener('DOMContentLoaded', () => {
+        showLocalPrices();
+
         // Hero Carousel
         const heroSlides = document.querySelectorAll('.hero-slide');
         let heroIndex = 0;
@@ -1008,6 +1052,117 @@ const faqSchema = {
         font-size: 1rem;
         line-height: 1.6;
         margin-bottom: 2rem;
+    }
+
+    /* Two tiers (switch day) */
+    .pricing-lead {
+        font-size: 1.75rem;
+        color: #ffffff;
+        margin: 2.25rem 0 0.75rem;
+    }
+
+    .pricing-header .pricing-desc {
+        max-width: 650px;
+        margin: 0 auto 0;
+        color: rgba(255, 255, 255, 0.6);
+    }
+
+    .pricing-cards {
+        display: grid;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 1.5rem;
+        max-width: 1040px;
+        margin: 0 auto;
+    }
+
+    .pricing-cards .pricing-card {
+        max-width: none;
+        margin: 0;
+        padding: 2.25rem;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .pricing-card.featured {
+        border-color: rgba(245, 158, 11, 0.6);
+        background: rgba(245, 158, 11, 0.06);
+    }
+
+    .pricing-card h4 {
+        font-size: 1.6rem;
+        color: #ffffff;
+        margin-bottom: 0.75rem;
+    }
+
+    .price-line {
+        margin: 0 0 1rem;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 0.35rem;
+    }
+
+    .price-amount-local {
+        font-size: 2.75rem;
+        font-weight: 800;
+        color: #10B981;
+        line-height: 1;
+    }
+
+    .price-terms {
+        font-size: 0.95rem;
+        color: rgba(255, 255, 255, 0.7);
+    }
+
+    .price-detail {
+        color: rgba(255, 255, 255, 0.75);
+        font-size: 0.98rem;
+        line-height: 1.55;
+        margin-bottom: 1rem;
+    }
+
+    .kind-list {
+        list-style: none;
+        padding: 0;
+        margin: 0 0 1rem;
+        text-align: left;
+        color: rgba(255, 255, 255, 0.82);
+        font-size: 0.98rem;
+        line-height: 1.55;
+    }
+
+    .kind-list li {
+        padding: 0.35rem 0;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+    }
+
+    .price-owner {
+        color: rgba(255, 255, 255, 0.8);
+        font-size: 0.98rem;
+        line-height: 1.55;
+        margin: auto 0 0;
+    }
+
+    .price-upgrade {
+        color: #10B981;
+    }
+
+    .pricing-price-note {
+        max-width: 650px;
+        margin: 1.5rem auto 0;
+        text-align: center;
+    }
+
+    .pricing-shared {
+        max-width: 520px;
+        margin: 2.5rem auto 0;
+        text-align: center;
+    }
+
+    @media (max-width: 820px) {
+        .pricing-cards { grid-template-columns: 1fr; }
+        .pricing-cards .pricing-card { padding: 1.75rem; }
     }
 
     .price-container {
