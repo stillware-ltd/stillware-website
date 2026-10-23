@@ -24,5 +24,6 @@ export default async function handler(_req: Request) {
   }
 }
 
-// Every day at 03:17 UTC (Netlify cron is UTC).
-export const config: Config = { schedule: "17 3 * * *" };
+// Every hour, at 17 minutes past (Netlify cron is UTC), so a row is gone about an hour after
+// it passes the 24-hour mark: the privacy policy can say "within 25 hours".
+export const config: Config = { schedule: "17 * * * *" };

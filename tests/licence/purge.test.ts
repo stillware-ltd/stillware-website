@@ -7,7 +7,7 @@ import { RETENTION_HOURS, purgeHousehold } from "../../netlify/functions/lib/hou
 import { addLink, emailHash, ensureHouseholdTables } from "../../netlify/functions/lib/household-store.js";
 import { addStorePurchase, freshDb, lastDbUrl, makeWorld } from "./helpers.js";
 
-// The daily retention run: what it deletes (codes that stopped working over 24 hours ago, hits
+// The hourly retention run: what it deletes (codes that stopped working over 24 hours ago, hits
 // older than 24 hours) and what it leaves alone (links, entitlements, issued records, devices).
 
 const NOW = new Date("2026-10-23T03:17:00Z");
@@ -207,14 +207,13 @@ after(() => {
   }
 });
 
-test("household-purge.ts: a daily schedule, and a handler that runs the purge on the database", async () => {
+test("household-purge.ts: an hourly schedule, and a handler that runs the purge on the database", async () => {
   const mod = await import("../../netlify/functions/household-purge.js");
   const schedule = String(mod.config.schedule);
   const fields = schedule.split(" ");
   assert.equal(fields.length, 5, schedule);
-  assert.deepEqual(fields.slice(2), ["*", "*", "*"], "every day");
-  assert.match(fields[0], /^\d+$/);
-  assert.match(fields[1], /^\d+$/, "at one fixed time");
+  assert.deepEqual(fields.slice(1), ["*", "*", "*", "*"], "every hour");
+  assert.match(fields[0], /^\d+$/, "at a fixed minute");
 
   const db = await freshDb();
   process.env.TURSO_DATABASE_URL = lastDbUrl();
