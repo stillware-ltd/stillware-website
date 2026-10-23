@@ -54,7 +54,8 @@ export interface PriceIds {
 /**
  * The Paddle price ids the answer may ask for, from the tables products.ts holds:
  *  - `this_device`: the per-platform price that platform buys today (Windows and Linux share one,
- *    the Mac has its own). Left out for `web`: the page shows one "only on one kind of device" card.
+ *    the Mac has its own). For `web` it is the Windows and Linux price: P8 gives "Only on one kind
+ *    of device" one price on every platform, so after KL.3 that is the price the page's second card shows.
  *  - `every_device` and `upgrade`: the first id on the Every device lists, for this product.
  * A kind with no id is left out.
  */
@@ -63,7 +64,7 @@ export function priceIdsFor(product: ProductSlug, platform: PricePlatform, table
   const ids: PriceIds = {};
   const every = forProduct(tables.everyDevice);
   if (every) ids.every_device = every;
-  const licencePlatform = platform === "web" ? null : platformOfClient(platform);
+  const licencePlatform = platform === "web" ? "windows" : platformOfClient(platform);
   if (licencePlatform) {
     const own = Object.entries(tables.perPlatform).find(
       ([id, p]) => p === licencePlatform && tables.priceToProduct[id] === product
@@ -139,8 +140,8 @@ export async function handlePrices(req: Request, deps: PricesDeps, caller: Calle
 
   const ids = priceIdsFor(product, kind, deps.tables);
   const wanted = Object.values(ids);
-  // Nothing to ask for (the Every device prices do not exist yet, and this is the web): no
-  // price, no currency. Nothing is invented.
+  // Nothing to ask for (no price id is named for this product and platform): no price, no
+  // currency. Nothing is invented.
   if (wanted.length === 0) return json(200, { country, currency: null, prices: {} });
 
   const now = deps.now();

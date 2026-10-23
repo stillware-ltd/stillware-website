@@ -69,12 +69,16 @@ test("household-prices file: not behind the flag (a bad body is a 400, not a 404
   const bad = await mod.default(post({ product: "rankup", platform: "ios" }), geo);
   assert.equal(bad.status, 400);
   assert.deepEqual(await bad.json(), { error: "bad_request" });
-  // and a good body with nothing to ask for (the Every device prices do not exist yet; web has no per-platform one)
-  const prices = await import("../../netlify/functions/lib/products.js");
-  if (prices.EVERY_DEVICE_PADDLE_PRICE_IDS.length === 0 && prices.EVERY_DEVICE_UPGRADE_PADDLE_PRICE_IDS.length === 0) {
+  // and a good body goes on to ask Paddle (no PADDLE_API_KEY here, so: try later, not "off")
+  delete process.env.PADDLE_API_KEY;
+  const err = console.error;
+  console.error = () => {};
+  try {
     const web = await mod.default(post({ product: "rankup", platform: "web" }), geo);
-    assert.equal(web.status, 200);
-    assert.deepEqual(await web.json(), { country: "GB", currency: null, prices: {} });
+    assert.equal(web.status, 503);
+    assert.deepEqual(await web.json(), { error: "try_later" });
+  } finally {
+    console.error = err;
   }
 });
 

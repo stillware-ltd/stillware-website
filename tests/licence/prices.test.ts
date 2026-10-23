@@ -90,7 +90,7 @@ test("the shape: country, currency and the strings Paddle formatted, in the cont
   assert.equal(de.body.country, "DE");
 });
 
-test("each platform: Windows and Linux the Windows price, Mac its own, web no this_device", async () => {
+test("each platform: Windows and Linux the Windows price, Mac its own, web the Windows and Linux price", async () => {
   const w = await setup();
   const windows = await w.ask({ product: "rankup", platform: "windows" });
   const linux = await w.ask({ product: "rankup", platform: "linux" });
@@ -100,25 +100,30 @@ test("each platform: Windows and Linux the Windows price, Mac its own, web no th
   assert.equal(windows.body.prices.this_device, "£11.99");
   assert.equal(linux.body.prices.this_device, "£11.99");
   assert.equal(mac.body.prices.this_device, "£12.49");
-  assert.equal("this_device" in web.body.prices, false);
-  assert.deepEqual(web.body.prices, { every_device: "£19.99", upgrade: "£7.99" });
+  assert.equal(web.body.prices.this_device, "£11.99", "web shows the single Only-on price: the Windows and Linux one");
+  assert.deepEqual(web.body.prices, { every_device: "£19.99", this_device: "£11.99", upgrade: "£7.99" });
+  assert.equal(
+    web.text,
+    '{"country":"GB","currency":"GBP","prices":{"every_device":"£19.99","this_device":"£11.99","upgrade":"£7.99"}}',
+    "the contract's example, for the web"
+  );
   for (const r of [windows, linux, mac, web]) {
     assert.equal(r.body.prices.every_device, "£19.99");
     assert.equal(r.body.prices.upgrade, "£7.99");
   }
-  // only the prices products.ts names were asked for, and web never asked for a per-platform one
+  // only the prices products.ts names were asked for; web asked for the Windows and Linux one, never the Mac's
   assert.deepEqual(w.calls.map((c) => c.priceIds), [
     [EVERY, WINDOWS, UPGRADE],
     [EVERY, WINDOWS, UPGRADE],
     [EVERY, MACOS, UPGRADE],
-    [EVERY, UPGRADE],
+    [EVERY, WINDOWS, UPGRADE],
   ]);
 });
 
 test("priceIdsFor: from the tables, for this product only", () => {
   assert.deepEqual(priceIdsFor("rankup", "windows", TABLES), { every_device: EVERY, this_device: WINDOWS, upgrade: UPGRADE });
   assert.deepEqual(priceIdsFor("rankup", "macos", TABLES), { every_device: EVERY, this_device: MACOS, upgrade: UPGRADE });
-  assert.deepEqual(priceIdsFor("rankup", "web", TABLES), { every_device: EVERY, upgrade: UPGRADE });
+  assert.deepEqual(priceIdsFor("rankup", "web", TABLES), { every_device: EVERY, this_device: WINDOWS, upgrade: UPGRADE });
   // a price id that belongs to another product is not asked for
   const other: PriceTables = { ...TABLES, priceToProduct: { ...TABLES.priceToProduct, [EVERY]: "zeroed", [WINDOWS]: "zeroed" } };
   assert.deepEqual(priceIdsFor("rankup", "windows", other), { upgrade: UPGRADE });
@@ -127,7 +132,7 @@ test("priceIdsFor: from the tables, for this product only", () => {
   assert.equal(priceIdsFor("rankup", "windows", real).this_device, WINDOWS);
   assert.equal(priceIdsFor("rankup", "linux", real).this_device, WINDOWS);
   assert.equal(priceIdsFor("rankup", "macos", real).this_device, MACOS);
-  assert.equal("this_device" in priceIdsFor("rankup", "web", real), false);
+  assert.equal(priceIdsFor("rankup", "web", real).this_device, WINDOWS, "web: the Windows and Linux price");
 });
 
 test("a price with no id is left out: nothing invented, and nothing to ask means no call", async () => {
@@ -137,10 +142,18 @@ test("a price with no id is left out: nothing invented, and nothing to ask means
   assert.deepEqual(win.body.prices, { this_device: "£11.99" });
   assert.deepEqual(w.calls[0].priceIds, [WINDOWS]);
 
+  // with no Every device prices yet, web still has the Only-on price to show
   const web = await w.ask({ product: "rankup", platform: "web" });
   assert.equal(web.status, 200);
-  assert.deepEqual(web.body, { country: "GB", currency: null, prices: {} });
-  assert.equal(w.calls.length, 1, "web with no Every device prices yet asks Paddle nothing");
+  assert.deepEqual(web.body.prices, { this_device: "£11.99" });
+  assert.deepEqual(w.calls[1].priceIds, [WINDOWS]);
+
+  // and with nothing named at all (no per-platform price, no Every device price) nothing is asked
+  const bare = await setup({ tables: { ...TABLES, perPlatform: {}, everyDevice: [], upgrade: [] } });
+  const none = await bare.ask({ product: "rankup", platform: "web" });
+  assert.equal(none.status, 200);
+  assert.deepEqual(none.body, { country: "GB", currency: null, prices: {} });
+  assert.equal(bare.calls.length, 0, "nothing named, so Paddle is asked nothing");
 
   // only the upgrade price missing
   const w2 = await setup({ tables: { ...TABLES, upgrade: [] } });
