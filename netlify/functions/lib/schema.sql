@@ -18,7 +18,10 @@ CREATE TABLE IF NOT EXISTS licenses (
   -- 'macos' | 'windows' (Windows and Linux) for per-platform RankUp Chess licences;
   -- NULL activates on any platform (Zeroed, and every licence minted before
   -- 2026-10-14). Added to existing databases by lib/licenses.ts on first use.
-  platform        TEXT
+  platform        TEXT,
+  -- 'every_device' for a licence sold at an Every device price (household licence, KL.2);
+  -- NULL for everything sold before. Added to existing databases by lib/licenses.ts on first use.
+  tier            TEXT
 );
 
 CREATE TABLE IF NOT EXISTS activations (
@@ -54,3 +57,86 @@ CREATE TABLE IF NOT EXISTS trials (
   started_at TEXT NOT NULL,
   PRIMARY KEY (product, device_id)
 );
+
+-- ---------------------------------------------------------------------------------------------
+-- Household licence (KL.2): "Every device". Dark until HOUSEHOLD_ENABLED is "1".
+-- Created on first use by lib/household-store.ts (HOUSEHOLD_SCHEMA), so no manual migration is
+-- needed; the statements below are the same ones, and a test keeps the two identical.
+--
+--  household_store_entitlements  Every device purchases by RevenueCat app user id (revenuecat-webhook).
+--                                `lid` is the licence id in the record; `revoked` is set by a refund.
+--  household_email_links         An address linked to an app user id, as a SHA-256 of the normalised address.
+--  household_codes               Sign-in and link codes: salted hash, expiry, tries, single use. A row with no
+--                                `lid` is a decoy for an address with no purchase (it can never match).
+--  household_issued              The signed records (the exact text signed, and the signature), per key id.
+--  household_devices             Successful sign-ins per licence, against HOUSEHOLD_DEVICE_CAP.
+--  household_hits                Rate-limit hits (hashed address, hashed IP), kept two hours or so.
+-- ---------------------------------------------------------------------------------------------
+CREATE TABLE IF NOT EXISTS household_store_entitlements (
+  id                      INTEGER PRIMARY KEY AUTOINCREMENT,
+  product                 TEXT NOT NULL,
+  app_user_id             TEXT NOT NULL,
+  lid                     TEXT NOT NULL UNIQUE,
+  product_id              TEXT NOT NULL,
+  store                   TEXT NOT NULL,
+  via                     TEXT NOT NULL,
+  purchased               TEXT NOT NULL,
+  transaction_id          TEXT NOT NULL UNIQUE,
+  original_transaction_id TEXT,
+  environment             TEXT NOT NULL DEFAULT 'PRODUCTION',
+  revoked                 INTEGER NOT NULL DEFAULT 0,
+  revoked_at              TEXT,
+  created_at              TEXT NOT NULL DEFAULT (datetime('now'))
+);
+CREATE INDEX IF NOT EXISTS idx_household_ent_user ON household_store_entitlements(product, app_user_id);
+
+CREATE TABLE IF NOT EXISTS household_email_links (
+  product     TEXT NOT NULL,
+  email_hash  TEXT NOT NULL,
+  app_user_id TEXT NOT NULL,
+  created_at  TEXT NOT NULL DEFAULT (datetime('now')),
+  PRIMARY KEY (product, email_hash, app_user_id)
+);
+CREATE INDEX IF NOT EXISTS idx_household_links_user ON household_email_links(app_user_id);
+
+CREATE TABLE IF NOT EXISTS household_codes (
+  id          TEXT PRIMARY KEY,
+  purpose     TEXT NOT NULL,
+  product     TEXT NOT NULL,
+  email_hash  TEXT NOT NULL,
+  app_user_id TEXT NOT NULL DEFAULT '',
+  lid         TEXT,
+  lid_source  TEXT,
+  salt        TEXT NOT NULL,
+  code_hash   TEXT NOT NULL,
+  tries       INTEGER NOT NULL DEFAULT 0,
+  expires_at  TEXT NOT NULL,
+  closed_at   TEXT,
+  created_at  TEXT NOT NULL
+);
+CREATE INDEX IF NOT EXISTS idx_household_codes_lookup ON household_codes(purpose, product, email_hash, created_at);
+
+CREATE TABLE IF NOT EXISTS household_issued (
+  product    TEXT NOT NULL,
+  lid        TEXT NOT NULL,
+  kid        TEXT NOT NULL,
+  record     TEXT NOT NULL,
+  sig        TEXT NOT NULL,
+  created_at TEXT NOT NULL,
+  PRIMARY KEY (product, lid, kid)
+);
+
+CREATE TABLE IF NOT EXISTS household_devices (
+  product    TEXT NOT NULL,
+  lid        TEXT NOT NULL,
+  devices    INTEGER NOT NULL DEFAULT 0,
+  updated_at TEXT NOT NULL,
+  PRIMARY KEY (product, lid)
+);
+
+CREATE TABLE IF NOT EXISTS household_hits (
+  bucket TEXT NOT NULL,
+  at     TEXT NOT NULL
+);
+CREATE INDEX IF NOT EXISTS idx_household_hits_bucket ON household_hits(bucket, at);
+CREATE INDEX IF NOT EXISTS idx_household_hits_at ON household_hits(at);

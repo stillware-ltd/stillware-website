@@ -1,0 +1,401 @@
+import type { Client } from "@libsql/client";
+import {
+  CODES_PER_EMAIL_PER_HOUR,
+  CODE_TTL_MINUTES,
+  type HouseholdSettings,
+} from "./household-config.js";
+import {
+  canonicalBytes,
+  issuedStamp,
+  signRecord,
+  type HouseholdRecord,
+  type RecordVia,
+  type SignedRecord,
+  type Signer,
+} from "./household-record.js";
+import {
+  addLink,
+  anyPaddleHouseholdLicence,
+  checkCode,
+  emailBucket,
+  emailHash,
+  ensureHouseholdTables,
+  entitlementByLid,
+  entitlementForAppUsers,
+  getIssued,
+  licenceById,
+  licencesByTransactions,
+  linkedAppUsers,
+  newCode,
+  putIssued,
+  storeCode,
+  takeDeviceSlot,
+  takeHit,
+  type CodeCheck,
+  type CodePurpose,
+  type PaddleLicenceRow,
+} from "./household-store.js";
+import { ensureLicenceTierColumn } from "./licenses.js";
+import { PRODUCTS, type ProductConfig, type ProductSlug } from "./products.js";
+
+// The household licence server's logic (KL.2), kept apart from the HTTP handlers and from the
+// Paddle, Resend and RevenueCat clients so it can be tested against a local database (as
+// lib/resend-key.ts is). Contract: docs/household-licence.md in the RankUp Chess repo, §4-§5.
+
+export type SendCode = (
+  to: string,
+  code: string,
+  product: ProductConfig,
+  purpose: CodePurpose
+) => Promise<void>;
+
+/** What the logic needs from the outside. The handlers build the real ones; tests build fakes. */
+export interface HouseholdDeps {
+  db: Client;
+  now: () => Date;
+  settings: HouseholdSettings;
+  /** The signing key and key id. Throws when they are not configured. */
+  signer: () => Signer;
+  sendCode: SendCode;
+  /** Ids of the completed Paddle transactions of the customer(s) with this address. */
+  paddleTransactionIds: (email: string) => Promise<string[]>;
+}
+
+/** What an answer is: an HTTP status and a JSON body. household-http.ts turns it into a Response. */
+export interface Answer {
+  status: number;
+  body: Record<string, unknown>;
+}
+
+const answer = (status: number, body: Record<string, unknown>): Answer => ({ status, body });
+const OK: Answer = answer(200, { ok: true });
+
+/** A licence that has a right to a record. */
+export interface Eligible {
+  lid: string;
+  source: "store" | "paddle";
+  via: RecordVia;
+  /** YYYY-MM-DD, UTC. */
+  purchased: string;
+}
+
+// ---------------------------------------------------------------------------------------------
+// Which Paddle licences are Every device
+
+/**
+ * Whether a Paddle licence is Every device, and how:
+ *  - tagged `tier = 'every_device'` when it was sold (an Every device price): via "paddle";
+ *  - otherwise, created before `upgradeBefore` (the switch date; unset means never): the free
+ *    upgrade of an earlier buyer, via "upgrade".
+ * A revoked licence is neither. `purchased` is the date the licence was created, in UTC.
+ */
+export function householdTierOfLicence(
+  row: { revoked: unknown; tier: unknown; created_at: unknown },
+  upgradeBefore: string | null
+): { via: "paddle" | "upgrade"; purchased: string } | null {
+  if (Number(row.revoked) !== 0) return null;
+  const purchased = String(row.created_at ?? "").slice(0, 10);
+  if (!/^\d{4}-\d{2}-\d{2}$/.test(purchased)) return null;
+  if (row.tier === "every_device") return { via: "paddle", purchased };
+  if (upgradeBefore && purchased < upgradeBefore) return { via: "upgrade", purchased };
+  return null;
+}
+
+function eligibleFromLicence(row: PaddleLicenceRow, upgradeBefore: string | null): Eligible | null {
+  const tier = householdTierOfLicence(row, upgradeBefore);
+  return tier ? { lid: row.id, source: "paddle", via: tier.via, purchased: tier.purchased } : null;
+}
+
+// ---------------------------------------------------------------------------------------------
+// Issuing a record
+
+export interface IssueDeps {
+  db: Client;
+  now: () => Date;
+  signer: () => Signer;
+}
+
+/**
+ * The signed record for a licence. The first call signs it and keeps it; later calls (the
+ * same household on its next device) get the same record back. A new key id signs a new one,
+ * so retiring a key in the app just needs the server to be on the new `kid`.
+ */
+export async function issueRecord(
+  deps: IssueDeps,
+  product: string,
+  licence: { lid: string; via: RecordVia; purchased: string }
+): Promise<SignedRecord> {
+  await ensureHouseholdTables(deps.db);
+  const signer = deps.signer();
+  const stored = await getIssued(deps.db, product, licence.lid, signer.kid);
+  if (stored) return stored;
+
+  const now = deps.now();
+  const record: HouseholdRecord = {
+    v: 1,
+    product,
+    lid: licence.lid,
+    tier: "every_device",
+    via: licence.via,
+    purchased: licence.purchased,
+    issued: issuedStamp(now),
+  };
+  canonicalBytes(record); // refuses a malformed record before anything is signed or kept
+  const signed = signRecord(record, signer);
+  await putIssued(deps.db, signed, now);
+  // Two requests at once both sign; the table keeps the first, and both answer with it.
+  return (await getIssued(deps.db, product, licence.lid, signer.kid)) ?? signed;
+}
+
+// ---------------------------------------------------------------------------------------------
+// Finding who owns what
+
+/** The licence an app user id owns through a store purchase (revenuecat-webhook), if any. */
+export async function eligibleForAppUser(
+  db: Client,
+  product: string,
+  appUserIds: string[]
+): Promise<Eligible | null> {
+  const e = await entitlementForAppUsers(db, product, appUserIds);
+  return e ? { lid: e.lid, source: "store", via: e.via, purchased: e.purchased } : null;
+}
+
+/**
+ * The Every device licence an address owns: through an email linked to a store purchase, or
+ * through a Paddle purchase made with that address (looked up at Paddle, as lib/resend-key.ts
+ * does: the address is never stored here).
+ */
+async function eligibleForEmail(
+  deps: HouseholdDeps,
+  product: string,
+  email: string,
+  hash: string
+): Promise<Eligible | null> {
+  const { db, settings } = deps;
+  const linked = await eligibleForAppUser(db, product, await linkedAppUsers(db, product, hash));
+  if (linked) return linked;
+
+  await ensureLicenceTierColumn(db);
+  // No licence could qualify: no need to ask Paddle anything.
+  if (!(await anyPaddleHouseholdLicence(db, product, settings.upgradeBefore))) return null;
+  let transactionIds: string[];
+  try {
+    transactionIds = await deps.paddleTransactionIds(email);
+  } catch (err) {
+    console.error("household: Paddle lookup failed:", err);
+    return null;
+  }
+  for (const row of await licencesByTransactions(db, product, transactionIds)) {
+    const e = eligibleFromLicence(row, settings.upgradeBefore);
+    if (e) return e;
+  }
+  return null;
+}
+
+/** The licence a stored code points at, if it is still Every device and not revoked. */
+async function eligibleByLid(
+  deps: HouseholdDeps,
+  product: string,
+  lid: string,
+  source: "store" | "paddle"
+): Promise<Eligible | null> {
+  if (source === "store") {
+    const e = await entitlementByLid(deps.db, product, lid);
+    return e ? { lid: e.lid, source: "store", via: e.via, purchased: e.purchased } : null;
+  }
+  await ensureLicenceTierColumn(deps.db);
+  const row = await licenceById(deps.db, product, lid);
+  return row ? eligibleFromLicence(row, deps.settings.upgradeBefore) : null;
+}
+
+// ---------------------------------------------------------------------------------------------
+// The five endpoints' logic
+
+export const EMAIL_RE = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+export const isEmail = (s: unknown): s is string =>
+  typeof s === "string" && s.trim().length <= 254 && EMAIL_RE.test(s.trim());
+
+/**
+ * fetch: the record of the licence an app user id owns through a store purchase.
+ * 404 none otherwise (including a revoked one).
+ */
+export async function fetchRecord(deps: HouseholdDeps, product: string, appUserId: string): Promise<Answer> {
+  await ensureHouseholdTables(deps.db);
+  const signer = readSigner(deps);
+  if (!signer) return SERVER_MISCONFIGURED;
+  const e = await eligibleForAppUser(deps.db, product, [appUserId]);
+  if (!e) return answer(404, { error: "none" });
+  return answer(200, { ...(await issueRecord(deps, product, e)) });
+}
+
+/**
+ * signin/start: a 6-digit code goes to the address only if a purchase matches. The answer is
+ * 200 {"ok":true} in every case. An address with no purchase still gets a stored decoy code,
+ * so a later signin/verify for it answers exactly as it would for a real one.
+ * `outcome` is for logs and tests; the HTTP answer never depends on it.
+ */
+export async function startSignin(
+  deps: HouseholdDeps,
+  product: ProductSlug,
+  rawEmail: string
+): Promise<{ answer: Answer; outcome: "sent" | "no_match" | "limited" }> {
+  await ensureHouseholdTables(deps.db);
+  const email = rawEmail.trim();
+  const hash = emailHash(email);
+  const now = deps.now();
+  if (!(await takeHit(deps.db, emailBucket(hash), CODES_PER_EMAIL_PER_HOUR, now))) {
+    return { answer: OK, outcome: "limited" };
+  }
+  const eligible = await eligibleForEmail(deps, product, email, hash);
+  const code = newCode();
+  await storeCode(deps.db, {
+    purpose: "signin",
+    product,
+    emailHash: hash,
+    appUserId: "",
+    code: eligible ? code : null,
+    lid: eligible?.lid ?? null,
+    lidSource: eligible?.source ?? null,
+    now,
+    ttlMinutes: CODE_TTL_MINUTES,
+  });
+  if (!eligible) return { answer: OK, outcome: "no_match" };
+  await mail(deps, email, code, product, "signin");
+  return { answer: OK, outcome: "sent" };
+}
+
+/**
+ * signin/verify: the code, then the cap, then the signed record.
+ *  - 400 wrong_code (with triesLeft), expired, too_many_tries
+ *  - 409 device_cap: this licence already counts the household cap of devices
+ * `platform` is checked by the caller and not kept: no device data is stored.
+ */
+export async function verifySignin(
+  deps: HouseholdDeps,
+  product: ProductSlug,
+  rawEmail: string,
+  code: string
+): Promise<Answer> {
+  await ensureHouseholdTables(deps.db);
+  const signer = readSigner(deps);
+  if (!signer) return SERVER_MISCONFIGURED;
+  const now = deps.now();
+  const checked = await checkCode(deps.db, {
+    purpose: "signin",
+    product,
+    emailHash: emailHash(rawEmail),
+    appUserId: "",
+    code,
+    now,
+  });
+  if (!checked.ok) return codeError(checked);
+  // A code that was never mailed cannot match; this only guards against an odd row.
+  if (!checked.lid || !checked.lidSource) return answer(400, { error: "expired" });
+
+  const licence = await eligibleByLid(deps, product, checked.lid, checked.lidSource);
+  if (!licence) return answer(404, { error: "none" });
+  if (!(await takeDeviceSlot(deps.db, product, licence.lid, deps.settings.deviceCap, now))) {
+    return answer(409, { error: "device_cap" });
+  }
+  return answer(200, { ...(await issueRecord(deps, product, licence)) });
+}
+
+/**
+ * link/start: a store buyer asks to link an address to their app user id. A code goes to the
+ * address only when that app user id owns an Every device purchase; the answer is 200 either
+ * way (and a decoy is stored when nothing is sent, as in signin/start).
+ */
+export async function startLink(
+  deps: HouseholdDeps,
+  product: ProductSlug,
+  appUserId: string,
+  rawEmail: string
+): Promise<{ answer: Answer; outcome: "sent" | "no_match" | "limited" }> {
+  await ensureHouseholdTables(deps.db);
+  const email = rawEmail.trim();
+  const hash = emailHash(email);
+  const now = deps.now();
+  if (!(await takeHit(deps.db, emailBucket(hash), CODES_PER_EMAIL_PER_HOUR, now))) {
+    return { answer: OK, outcome: "limited" };
+  }
+  const owns = (await entitlementForAppUsers(deps.db, product, [appUserId])) !== null;
+  const code = newCode();
+  await storeCode(deps.db, {
+    purpose: "link",
+    product,
+    emailHash: hash,
+    appUserId,
+    code: owns ? code : null,
+    lid: null,
+    lidSource: null,
+    now,
+    ttlMinutes: CODE_TTL_MINUTES,
+  });
+  if (!owns) return { answer: OK, outcome: "no_match" };
+  await mail(deps, email, code, product, "link");
+  return { answer: OK, outcome: "sent" };
+}
+
+/**
+ * link/verify: the code confirms the address; it is then linked to the app user id (as a
+ * SHA-256 of the normalised address), and that address can sign in. 200 {"linked":true}, or
+ * the same code errors as signin/verify.
+ */
+export async function verifyLink(
+  deps: HouseholdDeps,
+  product: ProductSlug,
+  appUserId: string,
+  rawEmail: string,
+  code: string
+): Promise<Answer> {
+  await ensureHouseholdTables(deps.db);
+  const hash = emailHash(rawEmail);
+  const checked = await checkCode(deps.db, {
+    purpose: "link",
+    product,
+    emailHash: hash,
+    appUserId,
+    code,
+    now: deps.now(),
+  });
+  if (!checked.ok) return codeError(checked);
+  // Checked again now: the purchase may have been refunded since the code was sent.
+  if ((await entitlementForAppUsers(deps.db, product, [appUserId])) === null) {
+    return answer(404, { error: "none" });
+  }
+  await addLink(deps.db, product, hash, appUserId);
+  return answer(200, { linked: true });
+}
+
+// ---------------------------------------------------------------------------------------------
+
+const SERVER_MISCONFIGURED: Answer = answer(500, { error: "server_misconfigured" });
+
+function readSigner(deps: HouseholdDeps): Signer | null {
+  try {
+    return deps.signer();
+  } catch (err) {
+    console.error("household: signing key is not usable:", err instanceof Error ? err.message : err);
+    return null;
+  }
+}
+
+function codeError(c: Exclude<CodeCheck, { ok: true }>): Answer {
+  if (c.error === "wrong_code") return answer(400, { error: "wrong_code", triesLeft: c.triesLeft });
+  return answer(400, { error: c.error });
+}
+
+async function mail(
+  deps: HouseholdDeps,
+  email: string,
+  code: string,
+  product: ProductSlug,
+  purpose: CodePurpose
+): Promise<void> {
+  try {
+    await deps.sendCode(email, code, PRODUCTS[product], purpose);
+  } catch (err) {
+    // The answer must not depend on whether the mail went: log it (never the address) and go on.
+    console.error(`household: could not send a ${purpose} code:`, err instanceof Error ? err.message : err);
+  }
+}

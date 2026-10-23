@@ -1,4 +1,6 @@
 import { Resend } from "resend";
+import { CODE_TTL_MINUTES } from "./household-config.js";
+import type { CodePurpose } from "./household-store.js";
 import { PLATFORM_LABEL, type LicensePlatform, type ProductConfig } from "./products.js";
 
 let resendClient: Resend | null = null;
@@ -84,4 +86,36 @@ export async function sendLicenseEmail(
 </html>
     `.trim(),
   });
+}
+
+/**
+ * The mail that carries a 6-digit sign-in or link code (household licence, KL.2). Plain words,
+ * plain text, nothing else in it.
+ */
+export function householdCodeMessage(
+  product: ProductConfig,
+  purpose: CodePurpose,
+  code: string
+): { subject: string; text: string } {
+  const what = purpose === "link" ? "confirmation code" : "sign-in code";
+  return {
+    subject: `Your ${product.name} ${what}`,
+    text:
+      `Your ${product.name} ${what} is ${code}. It works for ${CODE_TTL_MINUTES} minutes.\n\n` +
+      "If you did not ask for this, you can ignore this email.\n",
+  };
+}
+
+/** Sends the code mail. Throws if Resend refuses it, so the caller can log it. */
+export async function sendHouseholdCodeEmail(
+  to: string,
+  code: string,
+  product: ProductConfig,
+  purpose: CodePurpose
+): Promise<void> {
+  const from = process.env.RESEND_FROM_EMAIL || "Stillware <noreply@stillwareltd.com>";
+  const { subject, text } = householdCodeMessage(product, purpose, code);
+  // Resend reports a refused mail in `error` instead of throwing.
+  const { error } = await getResend().emails.send({ from, to, subject, text });
+  if (error) throw new Error(`Resend refused the mail: ${error.name}`);
 }

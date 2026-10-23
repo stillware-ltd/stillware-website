@@ -109,7 +109,10 @@ export function platformFromTransactionItems(
 ): LicensePlatform | null {
   for (const item of items ?? []) {
     const id = item?.price?.id;
-    if (id && productForPriceId(id)) return PRICE_ID_TO_PLATFORM[id] ?? null;
+    // An Every device price works on any platform, whatever PRICE_ID_TO_PLATFORM says.
+    if (id && productForPriceId(id)) {
+      return EVERY_DEVICE_PADDLE_PRICE_IDS.includes(id) ? null : (PRICE_ID_TO_PLATFORM[id] ?? null);
+    }
   }
   return null;
 }
@@ -156,4 +159,89 @@ export const DEFAULT_PRODUCT_FOR_LEGACY_CLIENTS: ProductSlug = "zeroed";
  */
 export function isValidProduct(slug: string | undefined): slug is ProductSlug {
   return slug === "zeroed" || slug === "rankup";
+}
+
+// ---------------------------------------------------------------------------------------------
+// Household (Every device) licence, KL.2. The contract is docs/household-licence.md in the
+// RankUp Chess repo; the server's side is documented in docs/household-licence-server.md here.
+// Everything below is dark until HOUSEHOLD_ENABLED is "1" (lib/household-config.ts).
+// ---------------------------------------------------------------------------------------------
+
+/** Products whose household endpoints are open. RankUp Maths joins this list when it ships. */
+export const HOUSEHOLD_PRODUCTS: readonly ProductSlug[] = ["rankup"];
+
+export function isHouseholdProduct(slug: unknown): slug is ProductSlug {
+  return typeof slug === "string" && (HOUSEHOLD_PRODUCTS as readonly string[]).includes(slug);
+}
+
+/**
+ * RevenueCat product ids (App Store and Google Play) that make a household Every device,
+ * each with the product it belongs to. This covers "Every device" and "Every device upgrade".
+ *
+ * THE FOUNDER FILLS THIS IN AT KL.3, when the store products exist. It is empty on purpose:
+ * until then the RevenueCat webhook records nothing. Example, with made-up ids:
+ *   rankupchess_every_device: "rankup",
+ *   rankupchess_every_device_upgrade: "rankup",
+ * The One platform product (rankupchess_premium_unlock) must NOT be listed.
+ */
+export const EVERY_DEVICE_STORE_PRODUCT_IDS: Record<string, ProductSlug> = {};
+
+/**
+ * Paddle price ids that are Every device. THE FOUNDER FILLS THIS IN AT KL.3; empty until then.
+ * Add each id here AND to PRICE_ID_TO_PRODUCT above (the webhook refuses a price it does not
+ * know). Do not add it to PRICE_ID_TO_PLATFORM: an Every device licence is for any platform.
+ */
+export const EVERY_DEVICE_PADDLE_PRICE_IDS: readonly string[] = [];
+
+/** The only tier a household record is issued for. */
+export type LicenceTier = "every_device";
+
+export interface LicenceTerms {
+  platform: LicensePlatform | null;
+  /** "every_device" for an Every device price; null for everything sold before. */
+  tier: LicenceTier | null;
+  maxActivations: number;
+}
+
+/**
+ * What a new licence is worth, from the Paddle line items: its platform, its tier and how
+ * many desktop activations it gets. The line item that decides is the one
+ * productFromTransactionItems picks. An Every device price gives tier "every_device", no
+ * platform and `deviceCap` activations; any other price gives what it always gave.
+ * `everyDevicePrices` is a parameter so tests can use their own list.
+ */
+export function licenceTermsFromTransactionItems(
+  items: Array<{ price?: { id?: string } | null } | undefined> | undefined,
+  product: ProductConfig,
+  deviceCap: number,
+  everyDevicePrices: readonly string[] = EVERY_DEVICE_PADDLE_PRICE_IDS
+): LicenceTerms {
+  let decidingPrice: string | undefined;
+  for (const item of items ?? []) {
+    const id = item?.price?.id;
+    if (id && productForPriceId(id)) {
+      decidingPrice = id;
+      break;
+    }
+  }
+  if (decidingPrice && everyDevicePrices.includes(decidingPrice)) {
+    return { platform: null, tier: "every_device", maxActivations: deviceCap };
+  }
+  return {
+    platform: platformFromTransactionItems(items),
+    tier: null,
+    maxActivations: product.maxActivations,
+  };
+}
+
+/**
+ * Looks up a RevenueCat product id in the Every device list. `Object.hasOwn` keeps an id
+ * such as "__proto__" from matching. `ids` is a parameter so tests can use their own list.
+ */
+export function everyDeviceStoreProduct(
+  productId: unknown,
+  ids: Record<string, ProductSlug> = EVERY_DEVICE_STORE_PRODUCT_IDS
+): ProductSlug | null {
+  if (typeof productId !== "string") return null;
+  return Object.hasOwn(ids, productId) ? ids[productId] : null;
 }
