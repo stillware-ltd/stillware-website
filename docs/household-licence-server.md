@@ -2,7 +2,7 @@
 
 The server side of the household licence. The contract it builds is `docs/household-licence.md` in the RankUp Chess repo (§3 the signature, §4 the record, §5 the endpoints). Everything here is dark: until `HOUSEHOLD_ENABLED` is `1`, the five endpoints answer `404 {"error":"off"}` and nothing about today's licences changes.
 
-Code: `netlify/functions/household-*.ts`, `revenuecat-webhook.ts`, and `netlify/functions/lib/household*.ts`, `revenuecat.ts`, `paddle-licence.ts`, `paddle-lookup.ts`. Tests: `npm run test:licence`.
+Code: `netlify/functions/household-*.ts`, `revenuecat-webhook.ts`, and `netlify/functions/lib/household*.ts`, `revenuecat.ts`, `paddle-licence.ts`, `paddle-lookup.ts`, `paddle-prices.ts`. Tests: `npm run test:licence`.
 
 ## Endpoints
 
@@ -21,6 +21,20 @@ Other answers: `400 bad_request` or `bad_email` (a field is missing or malformed
 The record on the wire is `{"record": {...}, "kid": "...", "sig": "<base64url, no padding>"}`. `license-activate` carries the same object as `household` in its answer when the licence is Every device.
 
 `POST /webhooks/revenuecat` is RevenueCat's webhook (see below).
+
+## Local prices: `prices`
+
+`POST /api/household/prices` with `{"product":"rankup","platform":"windows" | "macos" | "linux" | "web"}` answers the buyer's own country price, as the founder decided on 23 October 2026 (P8's bands, set per country in Paddle):
+
+`200 {"country":"GB","currency":"GBP","prices":{"every_device":"£19.99","this_device":"£11.99","upgrade":"£7.99"}}`
+
+- **Not behind `HOUSEHOLD_ENABLED`.** It reads public prices only and works today. It needs `PADDLE_API_KEY` (already set); without it, or when Paddle fails or takes over 3 seconds, it answers `503 {"error":"try_later"}`. An unknown product or platform, or a bad body, is `400 {"error":"bad_request"}`.
+- **Country** is Netlify's geolocation (`context.geo.country.code`). With none, `503 try_later`: it does not guess.
+- **Paddle's pricing preview** (the Node SDK's `pricingPreview.preview`) is asked for the price ids below, with the buyer's IP address (`x-nf-client-connection-ip`, else the function context's) as `customerIpAddress`, so currency and tax are right. With no IP address, the country goes in as the address. **The IP address is never stored or logged** (the SDK's own request log is switched off for this client, errors are logged by class and Paddle's short error code only, and a test checks the database, the answer and the log for the address).
+- **Strings** are `formattedTotals.total` of the line item, exactly as Paddle formats it for that currency (tax included where Paddle includes it for that country). That Paddle's total is the figure the checkout shows is confirmed with a sandbox preview at KL.3.
+- **Which prices** may be asked for: only those `products.ts` already names for RankUp. `this_device` is the platform's existing per-platform price (`PRICE_ID_TO_PLATFORM`: Windows and Linux share one, the Mac has its own; left out for `web`). `every_device` and `upgrade` are the first ids on `EVERY_DEVICE_PADDLE_PRICE_IDS` and `EVERY_DEVICE_UPGRADE_PADDLE_PRICE_IDS`. A price with no id, or one Paddle does not return, is left out. With nothing to ask for (the Every device prices do not exist before KL.3, and `web` has no per-platform price), the answer is `200 {"country":"GB","currency":null,"prices":{}}` and Paddle is not called.
+- **Cache:** per product, country and platform, for one hour, in `household_price_cache` (public prices only). The hourly purge deletes entries stored more than 24 hours ago. A database that is down costs only the cache.
+- The desktop app asks it only when its own switch is on, and the RankUp page's switch-day script asks it with `platform: "web"`. When there is no answer, both show no price, and Paddle's checkout shows the real one.
 
 ## How a household gets a record
 
@@ -50,7 +64,7 @@ Set in Netlify (never in the repository). A changed variable reaches functions w
 | `HOUSEHOLD_LEGACY_ENTITLEMENT` | optional | The RevenueCat entitlement of the One platform purchase. Default `rankupchess_premium_unlock`. |
 | `REVENUECAT_WEBHOOK_AUTH` | the webhook | The exact `Authorization` header value RevenueCat sends, for example `Bearer <long random string>`. Unset: the webhook answers 500 and accepts nothing. |
 
-Already set for the licence server and used here: `TURSO_DATABASE_URL`, `TURSO_AUTH_TOKEN`, `RESEND_API_KEY`, `RESEND_FROM_EMAIL` (optional), `PADDLE_API_KEY`, `PADDLE_WEBHOOK_SECRET`.
+Already set for the licence server and used here: `TURSO_DATABASE_URL`, `TURSO_AUTH_TOKEN`, `RESEND_API_KEY`, `RESEND_FROM_EMAIL` (optional), `PADDLE_API_KEY` (also what the `prices` endpoint asks Paddle with), `PADDLE_WEBHOOK_SECRET`. The `prices` endpoint needs no new variable.
 
 One scheduled function, `household-purge`, runs every hour at 17 minutes past (the retention run, see "Data kept"). It needs no new variable beyond the database's, and it deploys with the site: Netlify runs scheduled functions from the published production deploy. It runs whether or not `HOUSEHOLD_ENABLED` is on.
 
@@ -125,8 +139,9 @@ The tables are created on first use by `lib/household-store.ts` and written out 
 | `household_issued` | The signed record and signature (no email, name or device) | Kept. Records already issued stay valid. |
 | `household_devices` | Sign-ins counted per licence id | Kept. |
 | `household_upgrades` | Paddle transaction id and licence id of an in-place upgrade | Kept. |
+| `household_price_cache` | The `prices` answer (public prices) per product, country and platform, with the time it was stored. No IP address, no visitor data. | Used for 1 hour. The hourly run deletes entries stored more than 24 hours ago. |
 
-The hourly run is `netlify/functions/household-purge.ts` (at 17 minutes past each hour, UTC; the 24-hour figure is `RETENTION_HOURS` in `lib/household-store.ts`). It also runs while `HOUSEHOLD_ENABLED` is off, and touches nothing but the two clocks above. These are the figures for the privacy policy: code rows "within 25 hours of the code stopping working", rate-limit rows "within 25 hours", a linked-address hash "while the purchase exists, and on request".
+The hourly run is `netlify/functions/household-purge.ts` (at 17 minutes past each hour, UTC; the 24-hour figure is `RETENTION_HOURS` in `lib/household-store.ts`). It also runs while `HOUSEHOLD_ENABLED` is off, and touches nothing but the three clocks above (codes, rate-limit hits, cached prices). These are the figures for the privacy policy: code rows "within 25 hours of the code stopping working", rate-limit rows "within 25 hours", a linked-address hash "while the purchase exists, and on request".
 
 Paddle buyers' addresses are not kept here at all: `licenses.email` holds the placeholder `not-stored`, and the sign-in asks Paddle.
 
@@ -165,6 +180,7 @@ What that does:
 - `paddle-webhook` still tags an Every device licence but no longer signs a record with it.
 - `revenuecat-webhook` keeps recording and revoking (it signs nothing).
 - `household-purge` keeps running: retention does not depend on the flag.
+- `prices` keeps working: it is not behind the flag (it reads public prices only). To stop it, take its redirect out of `netlify.toml`, or unset `PADDLE_API_KEY` (then it answers `503 try_later`, and the app and the page show no price).
 
 What stays valid:
 - Every record already issued. The app checks the signature offline; there is no revocation list (the contract's honour-based rule), so a refund or a rollback does not take a record back.
@@ -175,4 +191,4 @@ To go further back, revert the commit. The new tables and the `tier` column stay
 
 ## Choices the contract left open
 
-Drafted as KD-40 in the KL.2 report: `platform` is checked and not kept; `fetch` is not under the IP limit; the fifth wrong code answers `too_many_tries`; `link/start` mails only for an app user id that owns a purchase; a licence has one record per `kid`; earlier Paddle buyers are upgraded from the licences table and earlier store buyers through the RevenueCat lookup above; the $9.99 Paddle upgrade of a key upgrades that licence in place (no extra mail) and falls back to a new licence rather than lose the purchase; the hourly purge deletes code rows 24 hours after their code stopped working and rate-limit rows older than 24 hours (so within 25 hours); refunds are read as `CANCELLATION` with `CUSTOMER_SUPPORT`.
+Drafted as KD-40 in the KL.2 report: `platform` is checked and not kept; `fetch` is not under the IP limit; the fifth wrong code answers `too_many_tries`; `link/start` mails only for an app user id that owns a purchase; a licence has one record per `kid`; earlier Paddle buyers are upgraded from the licences table and earlier store buyers through the RevenueCat lookup above; the $9.99 Paddle upgrade of a key upgrades that licence in place (no extra mail) and falls back to a new licence rather than lose the purchase; the hourly purge deletes code rows 24 hours after their code stopped working and rate-limit rows older than 24 hours (so within 25 hours); refunds are read as `CANCELLATION` with `CUSTOMER_SUPPORT`; `prices` is open whatever the flag, answers with the strings Paddle formats (`formattedTotals.total`), takes the country from Netlify and the IP address (passed on, never kept) to Paddle, caches an hour per product, country and platform, and has `currency: null` and no prices when there is nothing to ask for.
