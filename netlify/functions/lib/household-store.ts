@@ -81,6 +81,15 @@ CREATE TABLE IF NOT EXISTS household_upgrades (
   created_at    TEXT NOT NULL DEFAULT (datetime('now'))
 );
 
+CREATE TABLE IF NOT EXISTS household_price_cache (
+  product    TEXT NOT NULL,
+  country    TEXT NOT NULL,
+  platform   TEXT NOT NULL,
+  body       TEXT NOT NULL,
+  fetched_at TEXT NOT NULL,
+  PRIMARY KEY (product, country, platform)
+);
+
 CREATE TABLE IF NOT EXISTS household_hits (
   bucket TEXT NOT NULL,
   at     TEXT NOT NULL
@@ -405,6 +414,48 @@ export async function purgeOldCodes(db: Client, now: Date): Promise<number> {
 export async function purgeOldHits(db: Client, now: Date): Promise<number> {
   const cutoff = new Date(now.getTime() - RETENTION_HOURS * 3_600_000).toISOString();
   const res = await db.execute({ sql: "DELETE FROM household_hits WHERE at < ?", args: [cutoff] });
+  return res.rowsAffected;
+}
+
+// ---------------------------------------------------------------------------------------------
+// Local prices cache (the `prices` endpoint)
+
+/** The cached `prices` answer for a country and platform if it was stored since `since`, else null. */
+export async function getCachedPrices(
+  db: Client,
+  product: string,
+  country: string,
+  platform: string,
+  since: Date
+): Promise<string | null> {
+  const res = await db.execute({
+    sql: `SELECT body FROM household_price_cache
+          WHERE product = ? AND country = ? AND platform = ? AND fetched_at > ?`,
+    args: [product, country, platform, since.toISOString()],
+  });
+  return res.rows.length ? String(res.rows[0].body) : null;
+}
+
+/** Keeps a `prices` answer (public prices only: no address, no IP) for a country and platform. */
+export async function putCachedPrices(
+  db: Client,
+  product: string,
+  country: string,
+  platform: string,
+  body: string,
+  now: Date
+): Promise<void> {
+  await db.execute({
+    sql: `INSERT OR REPLACE INTO household_price_cache (product, country, platform, body, fetched_at)
+          VALUES (?, ?, ?, ?, ?)`,
+    args: [product, country, platform, body, now.toISOString()],
+  });
+}
+
+/** Deletes cached prices stored more than RETENTION_HOURS ago (they stop being used after one hour). */
+export async function purgeOldPrices(db: Client, now: Date): Promise<number> {
+  const cutoff = new Date(now.getTime() - RETENTION_HOURS * 3_600_000).toISOString();
+  const res = await db.execute({ sql: "DELETE FROM household_price_cache WHERE fetched_at < ?", args: [cutoff] });
   return res.rowsAffected;
 }
 

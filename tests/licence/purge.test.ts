@@ -28,6 +28,13 @@ async function code(db: Client, label: string, o: { created: string; expires: st
 }
 const hit = (db: Client, at: string) =>
   db.execute({ sql: "INSERT INTO household_hits (bucket, at) VALUES (?, ?)", args: ["email:test", at] });
+const price = (db: Client, country: string, fetchedAt: string) =>
+  db.execute({
+    sql: "INSERT OR REPLACE INTO household_price_cache (product, country, platform, body, fetched_at) VALUES ('rankup', ?, 'web', '{}', ?)",
+    args: [country, fetchedAt],
+  });
+const priceCountries = async (db: Client) =>
+  (await db.execute("SELECT country FROM household_price_cache ORDER BY country")).rows.map((r) => String(r.country));
 const codeIds = async (db: Client) => (await db.execute("SELECT id FROM household_codes ORDER BY id")).rows.map((r) => String(r.id));
 const hitTimes = async (db: Client) => (await db.execute("SELECT at FROM household_hits ORDER BY at")).rows.map((r) => String(r.at));
 
@@ -104,18 +111,29 @@ test("hits: older than 24 hours go, 24 hours or less stay", async () => {
   assert.deepEqual(await hitTimes(db), [iso(-DAY), iso(-DAY + 1000), iso(-2 * H), iso(-1000)].sort());
 });
 
+test("cached prices: stored over 24 hours ago go, 24 hours or less stay", async () => {
+  const db = await freshDb();
+  await price(db, "AA", iso(-DAY - 1000));
+  await price(db, "BB", iso(-DAY));
+  await price(db, "CC", iso(-DAY + 1000));
+  await price(db, "DD", iso(-30 * 60_000));
+  const result = await purgeHousehold(db, NOW);
+  assert.equal(result.prices, 1);
+  assert.deepEqual(await priceCountries(db), ["BB", "CC", "DD"]);
+});
+
 test("a run with nothing to delete deletes nothing, and a second run finds nothing new", async () => {
   const db = await freshDb();
-  assert.deepEqual(await purgeHousehold(db, NOW), { codes: 0, hits: 0 });
+  assert.deepEqual(await purgeHousehold(db, NOW), { codes: 0, hits: 0, prices: 0 });
   await code(db, "old", { created: iso(-3 * DAY), expires: iso(-3 * DAY + 600_000) });
   await hit(db, iso(-3 * DAY));
-  assert.deepEqual(await purgeHousehold(db, NOW), { codes: 1, hits: 1 });
-  assert.deepEqual(await purgeHousehold(db, NOW), { codes: 0, hits: 0 });
+  assert.deepEqual(await purgeHousehold(db, NOW), { codes: 1, hits: 1, prices: 0 });
+  assert.deepEqual(await purgeHousehold(db, NOW), { codes: 0, hits: 0, prices: 0 });
 });
 
 test("it works on a database that has no household tables yet", async () => {
   const db = await freshDb(false);
-  assert.deepEqual(await purgeHousehold(db, NOW), { codes: 0, hits: 0 });
+  assert.deepEqual(await purgeHousehold(db, NOW), { codes: 0, hits: 0, prices: 0 });
 });
 
 test("it leaves the ledger alone: links, entitlements (revoked ones too), issued records and device counts", async () => {
@@ -223,13 +241,15 @@ test("household-purge.ts: an hourly schedule, and a handler that runs the purge 
   await code(db, "fresh", { created: new Date(realNow - 60_000).toISOString(), expires: new Date(realNow + 540_000).toISOString() });
   await hit(db, new Date(realNow - 3 * DAY).toISOString());
   await hit(db, new Date(realNow - 60_000).toISOString());
+  await price(db, "DE", new Date(realNow - 3 * DAY).toISOString());
+  await price(db, "GB", new Date(realNow - 60_000).toISOString());
 
   const log = console.log;
   console.log = () => {};
   try {
     const res = await mod.default(new Request("https://x/", { method: "POST", body: JSON.stringify({ next_run: "x" }) }));
     assert.equal(res.status, 200);
-    assert.deepEqual(await res.json(), { ok: true, codes: 1, hits: 1 });
+    assert.deepEqual(await res.json(), { ok: true, codes: 1, hits: 1, prices: 1 });
   } finally {
     console.log = log;
   }

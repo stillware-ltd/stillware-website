@@ -72,6 +72,7 @@ CREATE TABLE IF NOT EXISTS trials (
 --  household_issued              The signed records (the exact text signed, and the signature), per key id.
 --  household_devices             Successful sign-ins per licence, against HOUSEHOLD_DEVICE_CAP.
 --  household_upgrades            Paddle transactions that upgraded an existing key in place (so a repeat delivery is a duplicate).
+--  household_price_cache         The `prices` endpoint's answer per product, country and platform (public prices only), used for one hour.
 --  household_hits                Rate-limit hits (hashed address, hashed IP); the daily purge deletes those older than 24 hours.
 -- ---------------------------------------------------------------------------------------------
 CREATE TABLE IF NOT EXISTS household_store_entitlements (
@@ -140,6 +141,15 @@ CREATE TABLE IF NOT EXISTS household_upgrades (
   paddle_txn_id TEXT PRIMARY KEY,
   license_id    TEXT NOT NULL,
   created_at    TEXT NOT NULL DEFAULT (datetime('now'))
+);
+
+CREATE TABLE IF NOT EXISTS household_price_cache (
+  product    TEXT NOT NULL,
+  country    TEXT NOT NULL,
+  platform   TEXT NOT NULL,
+  body       TEXT NOT NULL,
+  fetched_at TEXT NOT NULL,
+  PRIMARY KEY (product, country, platform)
 );
 
 CREATE TABLE IF NOT EXISTS household_hits (

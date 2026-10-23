@@ -41,7 +41,7 @@ test("schema.sql and the tables made on first use are the same", async () => {
     .rows.map((r) => r.name);
   assert.deepEqual(names, [
     "household_codes", "household_devices", "household_email_links", "household_hits", "household_issued",
-    "household_store_entitlements", "household_upgrades",
+    "household_price_cache", "household_store_entitlements", "household_upgrades",
   ]);
 });
 

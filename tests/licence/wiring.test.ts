@@ -61,6 +61,23 @@ test("each household function file: with the flag on but no database configured,
   }
 });
 
+test("household-prices file: not behind the flag (a bad body is a 400, not a 404 off)", async () => {
+  const mod = await import("../../netlify/functions/household-prices.js");
+  assert.equal(typeof mod.default, "function");
+  delete process.env.HOUSEHOLD_ENABLED;
+  const geo = { geo: { country: { code: "GB" } }, ip: "203.0.113.5" } as never;
+  const bad = await mod.default(post({ product: "rankup", platform: "ios" }), geo);
+  assert.equal(bad.status, 400);
+  assert.deepEqual(await bad.json(), { error: "bad_request" });
+  // and a good body with nothing to ask for (the Every device prices do not exist yet; web has no per-platform one)
+  const prices = await import("../../netlify/functions/lib/products.js");
+  if (prices.EVERY_DEVICE_PADDLE_PRICE_IDS.length === 0 && prices.EVERY_DEVICE_UPGRADE_PADDLE_PRICE_IDS.length === 0) {
+    const web = await mod.default(post({ product: "rankup", platform: "web" }), geo);
+    assert.equal(web.status, 200);
+    assert.deepEqual(await web.json(), { country: "GB", currency: null, prices: {} });
+  }
+});
+
 test("revenuecat-webhook file: no secret configured is 500; a request without it is 401", async () => {
   const mod = await import("../../netlify/functions/revenuecat-webhook.js");
   assert.equal(typeof mod.default, "function");
@@ -84,6 +101,7 @@ test("netlify.toml: clean URLs for the five endpoints and the webhook, above the
     ["/api/household/signin/verify", "household-signin-verify"],
     ["/api/household/link/start", "household-link-start"],
     ["/api/household/link/verify", "household-link-verify"],
+    ["/api/household/prices", "household-prices"],
     ["/webhooks/revenuecat", "revenuecat-webhook"],
   ];
   const firstHostRule = redirects.find((r) => r.from.startsWith("http://") || r.from.startsWith("https://"));
