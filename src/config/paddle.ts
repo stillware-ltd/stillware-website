@@ -69,25 +69,25 @@ export const PADDLE_PRODUCTS: Record<CheckoutSlug, PaddleProductConfig> = {
     priceId: "pri_01knnyfj5zezrch30qqbzkc378",
     appStoreUrl: "https://apps.apple.com/app/id6804301133",
   },
-  // RankUp Chess — Windows/Linux, $14.99.
+  // RankUp Chess — Only on Windows (also Linux), $14.99. SWITCH DAY: the P8 tier name (docs/kl/switch-day-copy.md
+  // section 2.6); the price this page opens is unchanged.
   rankup: {
     slug: "rankup",
-    name: "RankUp Chess for Windows and Linux",
+    name: "RankUp Chess: Only on Windows",
     tagline: "Software you own.",
     priceId: "pri_01knztpnwdqxx8ecnbrjt4zkzq",
-    licenceNote:
-      "This licence unlocks RankUp Chess on Windows and Linux, on up to 3 computers. The Mac version is a separate purchase.",
+    licenceNote: "Only on Windows: this licence unlocks RankUp Chess on up to 3 Windows or Linux computers.",
   },
-  // RankUp Chess — macOS, $19.99. The macOS app links here directly; the
+  // RankUp Chess — Only on Mac, $19.99 (P8 sets the Only-on price at the switch, in Paddle; this page
+  // opens whichever price its id names). The macOS app links here directly; the
   // price must match `fallbackDisplayPrice` in the app's purchase_config.dart,
   // because the app never queries Paddle for a live price.
   "rankup-mac": {
     slug: "rankup",
-    name: "RankUp Chess for macOS",
+    name: "RankUp Chess: Only on Mac",
     tagline: "Software you own.",
     priceId: "pri_01m194cc17phxmgqdqs737mw2p",
-    licenceNote:
-      "This licence unlocks RankUp Chess on the Mac, on up to 3 Macs. The Windows and Linux version is a separate purchase.",
+    licenceNote: "Only on Mac: this licence unlocks RankUp Chess on up to 3 Macs.",
   },
 
   // RankUp Chess — Every device (KL.4 opens this page). SWITCH DAY: the price id is created at KL.3.

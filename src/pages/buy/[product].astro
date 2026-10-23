@@ -32,6 +32,63 @@ const unavailableText =
   description={`Complete your purchase of ${config.name}.`}
   noindex
 >
+  {config.passesLicence && (
+    <script is:inline id="licence-hand-over">
+      // The desktop app opens the Every device upgrade page with ?licence=<64 hex>: the SHA-256 of
+      // the buyer's key. This runs while the page is still being parsed, so before Umami's deferred
+      // tracker has run and read the address: the value is taken out of the address at once
+      // (history.replaceState), and kept for this tab only (sessionStorage), so a reload of the tab
+      // still upgrades the key. Only exactly 64 hex characters count; anything else is dropped.
+      // Storage that is blocked only means a reload has no value, which is the fallback (no custom
+      // data: the server then makes a new Every device licence). Only this page does any of this.
+      (function () {
+        var STORAGE_KEY = 'rankup-upgrade-licence';
+
+        function validHash(value) {
+          return typeof value === 'string' && /^[0-9a-fA-F]{64}$/.test(value) ? value.toLowerCase() : null;
+        }
+
+        function stored() {
+          try {
+            return validHash(window.sessionStorage.getItem(STORAGE_KEY));
+          } catch (e) {
+            return null;
+          }
+        }
+
+        function keep(value) {
+          try {
+            if (value) window.sessionStorage.setItem(STORAGE_KEY, value);
+            else window.sessionStorage.removeItem(STORAGE_KEY);
+          } catch (e) {
+            /* blocked: a reload then has no value */
+          }
+        }
+
+        function takeLicence() {
+          var params = new URLSearchParams(window.location.search);
+          if (!params.has('licence')) return stored();
+          // A licence in the address, good or not, replaces whatever this tab held before.
+          var fromAddress = validHash(params.get('licence'));
+          keep(fromAddress);
+          params.delete('licence');
+          var rest = params.toString();
+          try {
+            window.history.replaceState(
+              window.history.state,
+              '',
+              window.location.pathname + (rest ? '?' + rest : '') + window.location.hash
+            );
+          } catch (e) {
+            /* the address stays as it is */
+          }
+          return fromAddress;
+        }
+
+        window.stillwareUpgradeLicence = takeLicence();
+      })();
+    </script>
+  )}
   <section class="checkout-page">
     <div class="checkout-content">
       <h1 id="checkout-heading">
@@ -71,14 +128,6 @@ const unavailableText =
           successPath: config.successPath ?? '/buy/success',
         }}
       >
-        // The Every device upgrade page is opened by the desktop app with ?licence=<64 hex>: the
-        // SHA-256 of the buyer's key. Only a value of exactly 64 hex characters is passed on (as
-        // Paddle custom data); anything else is ignored. Only the upgrade page uses this.
-        function licenceFromSearch(search) {
-          const value = new URLSearchParams(search).get('licence');
-          return value !== null && /^[0-9a-fA-F]{64}$/.test(value) ? value.toLowerCase() : null;
-        }
-
         (function () {
           const status = document.getElementById('checkout-status');
           const heading = document.getElementById('checkout-heading');
@@ -116,11 +165,12 @@ const unavailableText =
             checkoutOptions.discountCode = discountCode;
           }
 
-          // Without a usable key hash the upgrade still opens, with no custom data: the licence
-          // server then makes a new Every device licence and emails its key, so the payment is
-          // never lost. Say so before the buyer pays.
+          // The upgrade page's key hash, taken out of the address by the hand-over script above
+          // (only that page has one; every other page never looks). Without a usable one the upgrade
+          // still opens, with no custom data: the licence server then makes a new Every device
+          // licence and emails its key, so the payment is never lost. Say so before the buyer pays.
           if (passLicence) {
-            const licence = licenceFromSearch(window.location.search);
+            const licence = window.stillwareUpgradeLicence || null;
             if (licence) {
               checkoutOptions.customData = { licence: licence };
             } else {
