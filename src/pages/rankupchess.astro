@@ -89,17 +89,17 @@ const keyFacts = [
   { term: 'Platforms', detail: 'Windows, macOS, iPhone and iPad (App Store) and Android (Google Play).' },
   { term: 'Price', detail: 'Free to play forever, with no trial clock and no lockout. One optional one-time payment unlocks the complete academy; it is priced and licensed per platform (the Windows licence also covers Linux, the Mac licence is separate), as listed in the pricing section below.' },
   { term: 'Subscription and ads', detail: 'No subscription, no renewal and no ads.' },
-  { term: 'Offline and privacy', detail: '100% offline, local-first gameplay. No central servers, no chat rooms and no data harvesting.' },
+  { term: 'Offline and privacy', detail: '100% offline, local-first gameplay. No account, no chat rooms and no data harvesting: games and progress stay on the device.' },
   { term: 'Parents', detail: 'A Parental Gate locks sensitive settings, profile resets and the premium upgrade screen behind a parental PIN, while kids can launch the app and start a game in seconds.' },
 ];
 
 // FAQ (visible below and as FAQPage JSON-LD). Every answer uses only what this page already states elsewhere.
 const faqItems = [
-  { q: 'Does RankUp Chess work offline?', a: 'Yes. RankUp Chess is a 100% offline chess academy: playing, puzzles and lessons run on your device without an internet connection. It has no central servers and no chat rooms.' },
+  { q: 'Does RankUp Chess work offline?', a: 'Yes. RankUp Chess is a 100% offline chess academy: playing, puzzles and lessons run on your device without an internet connection. Games and progress stay on the device, and it has no chat rooms. It goes online only to buy or restore the upgrade and, on a computer, to check its licence key.' },
   { q: 'Is RankUp Chess made for kids?', a: 'Yes. It is an offline chess academy designed for kids, from absolute beginner to tournament ready. A Parental Gate locks sensitive settings, profile resets and the premium upgrade screen behind a parental PIN, while kids can launch the app and jump into a game in seconds.' },
   { q: 'Is RankUp Chess free to play?', a: 'Yes. Playing chess is free forever, with no trial clock and no lockout, on every platform. The free core includes the beginner-friendly AI levels, Pass & Play with family, 3 Daily Challenges every day and the first curriculum chapter. Progress, achievements, settings and parental controls are always free.' },
   { q: 'Is there a subscription, and what does the one-time payment unlock?', a: 'There is no subscription and no renewal. One optional one-time payment unlocks the rest of the academy: the full 6,000+ puzzle library, all 10 AI strength levels, the complete curriculum and engine-powered game review, with all v1.x updates included.' },
-  { q: 'Does RankUp Chess have ads or collect my child\'s data?', a: 'No ads, and no data harvesting. RankUp Chess has no central servers and no chat rooms, so it cannot track your child.' },
+  { q: 'Does RankUp Chess have ads or collect my child\'s data?', a: 'No ads, and no data harvesting. RankUp Chess has no account, no chat rooms and no analytics, and your child\'s games and progress stay on the device. The only data that leaves it is what a purchase needs, as our privacy policy explains.' },
   { q: 'How many puzzles and AI levels does RankUp Chess have?', a: 'More than 6,000 puzzles, from simple mate-in-ones to advanced middle-game strategies, and 10 AI strength levels, from Level 1 (Beginner, 400 Elo) to Level 10 (World Class, 2400 Elo), plus interactive lessons.' },
 ];
 const faqSchema = {
@@ -277,7 +277,7 @@ const faqSchema = {
                         <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
                     </div>
                     <h3>The "Fort Knox" Privacy Architecture</h3>
-                    <p>100% offline, local-first gameplay. We have no central servers, no chat rooms, and literally cannot track your child. The safest digital environment possible.</p>
+                    <p>100% offline, local-first gameplay. No account, no chat rooms and no analytics: your child's games and progress never leave the device. The only data that goes online is what a purchase needs.</p>
                 </div>
                 <div class="feature-card reveal-up reveal-delay-3">
                     <div class="icon-box">

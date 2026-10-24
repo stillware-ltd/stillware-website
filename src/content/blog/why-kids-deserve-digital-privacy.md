@@ -71,7 +71,7 @@ This flips the script. Instead of the parent being the warden checking the logs,
 
 It acknowledges a simple truth: we cannot spy our way into our children’s confidence. We can only create conditions where they feel safe enough to share it voluntarily, on their own terms.
 
-Our view at Stillware is simple: a child's app that cannot work with airplane mode on should be careful about calling itself private. It is how we built [RankUp Chess](/rankupchess/), our chess app for kids: its puzzles and lessons run on the device without an internet connection, and it has no ads, no central servers and no chat rooms. When the architecture makes the promise, it does not depend on a privacy policy that can change with the next update.
+Our view at Stillware is simple: a child's app that cannot work with airplane mode on should be careful about calling itself private. It is how we built [RankUp Chess](/rankupchess/), our chess app for kids: its puzzles and lessons run on the device without an internet connection, and it has no ads, no account and no chat rooms. When the architecture makes the promise, it does not depend on a privacy policy that can change with the next update.
 
 ![The lifecycle of a private entry](/blog/images/why-kids-deserve-digital-privacy/image-03.svg)
 

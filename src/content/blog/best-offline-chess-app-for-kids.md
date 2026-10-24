@@ -12,7 +12,7 @@ relatedSlugs: ["best-offline-chess-puzzles-for-kids", "why-kids-deserve-digital-
 ---
 ## What You'll Learn About Offline Chess Apps for Kids
 
-You’re about to find the single best offline chess app for kids that works without Wi-Fi, collects zero data, and costs you one time. We’ll cut through the noise of subscription-based platforms and show you exactly what features matter for real learning. By the end, you’ll know how to choose an app that turns screen time into focused, ad-free strategic thinking—whether you’re on a road trip, in a waiting room, or just want a break from the internet.
+You’re about to find the single best offline chess app for kids that works without Wi-Fi, collects nothing about your child, and costs you one time. We’ll cut through the noise of subscription-based platforms and show you exactly what features matter for real learning. By the end, you’ll know how to choose an app that turns screen time into focused, ad-free strategic thinking—whether you’re on a road trip, in a waiting room, or just want a break from the internet.
 
 **The right chess app isn't just about teaching moves; it's about creating a private, focused space for a young mind to grow.**
 
