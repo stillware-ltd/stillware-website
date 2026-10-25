@@ -15,8 +15,10 @@ All are `POST` JSON at `https://www.stillwareltd.com/api/household/...` (www onl
 | `/api/household/signin/verify` | `product`, `email`, `code`, `platform` | 200 the record; 400 `wrong_code` (+ `triesLeft`), `expired`, `too_many_tries`; 404 `none`; 409 `device_cap` |
 | `/api/household/link/start` | `product`, `appUserId`, `email` | always 200 `{"ok":true}`; a code is mailed only when the app user id owns an Every device purchase |
 | `/api/household/link/verify` | `product`, `appUserId`, `email`, `code` | 200 `{"linked":true}`; the same errors as `signin/verify` except `device_cap` |
+| `/api/household/email/remove/start` (KL.8) | `product`, `email` | always 200 `{"ok":true}`; a code is mailed only when the address is linked (a decoy otherwise) |
+| `/api/household/email/remove/verify` (KL.8) | `product`, `email`, `code` | 200 `{"removed":true}`: every link of the address, its code rows and its rate-limit hits are deleted; the same code errors as `signin/verify` |
 
-Other answers: `400 bad_request` or `bad_email` (a field is missing or malformed), `405` (not POST), `429 rate_limited` (the IP limit), `500 server_misconfigured` (the signing key is missing or unusable).
+Other answers: `400 bad_request` or `bad_email` (a field is missing or malformed), `405` (not POST), `429 rate_limited` (the IP limit), `500 server_misconfigured` (the signing key, or `HOUSEHOLD_EMAIL_KEY`, is missing or unusable; without the hashing key no endpoint runs and nothing is written).
 
 The record on the wire is `{"record": {...}, "kid": "...", "sig": "<base64url, no padding>"}`. `license-activate` and `license-validate` carry the same object as `household` in their answers when the flag is on and the licence is Every device (tagged `every_device`, upgraded with the Paddle upgrade, or due the free upgrade through `HOUSEHOLD_UPGRADE_BEFORE`). The desktop app revalidates now and then, so an existing key holder gets the record at the next check without entering the key again. An invalid or revoked licence, another product, the flag off, or a signing key that is missing leaves the answer as it always was (`{"valid": true}`).
 
@@ -47,7 +49,7 @@ The record on the wire is `{"record": {...}, "kid": "...", "sig": "<base64url, n
 | Earlier Paddle buyer | free upgrade: any RankUp Paddle licence created before `HOUSEHOLD_UPGRADE_BEFORE` | `upgrade` |
 | Earlier store buyer | free upgrade: the first `fetch` asks RevenueCat's REST API (see below) and stores the purchase | `upgrade` |
 
-The sign-in finds Paddle purchases by asking Paddle (as `license-resend-key` does). The server stores no buyer address: a linked address is kept only as a SHA-256 of the lower-cased, trimmed text.
+The sign-in finds Paddle purchases by asking Paddle (as `license-resend-key` does). The server stores no buyer address: a linked address is kept only as a keyed hash (HMAC-SHA-256 under `HOUSEHOLD_EMAIL_KEY`) of the lower-cased, trimmed text, and only with the parent's consent (KL.8, below).
 
 ## Environment variables
 
@@ -58,6 +60,7 @@ Set in Netlify (never in the repository). A changed variable reaches functions w
 | `HOUSEHOLD_ENABLED` | the switch | `1` is on. Anything else, or unset, is off. |
 | `HOUSEHOLD_SIGNING_KEY` | signing | Ed25519 private key, PKCS#8 DER, base64. A PEM also works. |
 | `HOUSEHOLD_SIGNING_KID` | signing | The key id the app holds the public key under, for example `rk-2026-1`. |
+| `HOUSEHOLD_EMAIL_KEY` | every endpoint (KL.8) | The secret every address, IP and app user id is hashed under (HMAC-SHA-256), base64, **32 bytes or more**. Make it with `node -e "console.log(require('node:crypto').randomBytes(32).toString('base64'))"` and put it straight into Netlify. Unset or short: every household endpoint answers `500 server_misconfigured`. **Never change it once addresses are linked:** every stored hash would stop matching, and families would have to link again. |
 | `HOUSEHOLD_DEVICE_CAP` | optional | Devices per licence. Default 10 (KD-13). Also the desktop activations of an Every device licence. |
 | `HOUSEHOLD_UPGRADE_BEFORE` | optional | `YYYY-MM-DD`, the switch date. RankUp Paddle licences created before it, and store purchases of the legacy entitlement first bought before it, count as Every device (`upgrade`). Unset: nobody is upgraded and RevenueCat is never asked. |
 | `REVENUECAT_SECRET_API_KEY` | optional | A RevenueCat **secret** API key (read access to customers), used only for the earlier-buyer lookup below. Unset: `fetch` never asks RevenueCat and answers `404 none` for an app user id it does not know. Never the public SDK key. |
@@ -117,12 +120,31 @@ An earlier buyer bought the One platform unlock before this server knew about Re
 
 The response shape is the one RevenueCat's v1 documentation gives for a subscriber (`entitlements[<id>]` with `product_identifier`, `purchase_date`, `expires_date`; `non_subscriptions[<product id>]` with `id`, `store`, `purchase_date`, `original_purchase_date`, `is_sandbox`, `store_transaction_id`). It is not yet confirmed against a live response. **A sandbox purchase of the One platform product at KL.3 confirms it**: call `fetch` for that app user id with the switch date set to tomorrow, and expect a `via: "upgrade"` record.
 
+## Parental consent: "email plus" (KL.8)
+
+RankUp Chess is directed to children, so under the COPPA Rule an address typed into it is treated as if a child might have typed it. The sign-in and the link therefore collect it through **verifiable parental consent by "email plus"** (16 CFR 312.5(b)(2)(viii)). That method is open to an operator that does not disclose children's personal information to third parties; Resend, Netlify, Turso and Paddle act for the service. The research and the plan are in the RankUp Chess repo, `docs/kl/coppa-parent-email-research.md` and `docs/kl/kl8-coppa-email-plus-plan.md`.
+
+- **The direct notice** (312.4(c)(1)) is the code mail itself (`householdCodeMessage` in `lib/email.ts`). It says:
+  - that the address was typed into RankUp Chess;
+  - that a parent's agreement is needed, and that nothing is used or kept without it;
+  - what is kept (sign-in: nothing; link: a keyed hash next to an anonymous purchase number) and for how long;
+  - who handles it (Resend, Netlify, Turso, and Paddle for a website purchase);
+  - the privacy notice;
+  - how to agree (enter the code, tap "Agree and …");
+  - that an unused request is deleted within 25 hours.
+
+  `tests/licence/notice.test.ts` checks every element.
+- **The consent** is entering the code under the app's consent line. A link keeps `notice_version` (`NOTICE_VERSION` in `lib/household-config.ts`: change it whenever the notice's meaning changes) and its consent time (`created_at`).
+- **The "plus"** is the confirmation sent right after a successful `link/verify`, `signin/verify` or `email/remove/verify` (`householdConfirmationMessage`). It says what happened, what is kept, and how to take consent back: Settings → Restore Purchases → Remove my email in the app, or a reply. Mails go out with `Reply-To: support@stillwareltd.com`.
+- **Taking consent back** is `email/remove/*` from the app, a reply to any mail, or support's deletion line (below).
+- A failed mail never changes an answer; it is logged without the address.
+
 ## The RevenueCat webhook
 
 Not behind the flag: it is the ledger of what was bought, and it writes only for product ids in the list above. It answers 401 to a missing or wrong `Authorization` header (constant-time compare), and 200 to everything it handles or ignores.
 
 - `NON_RENEWING_PURCHASE`, `INITIAL_PURCHASE` for a listed product: records app user id, product id, store, purchase date (UTC), transaction id and environment. Sandbox purchases are recorded too (marked `SANDBOX`). The same transaction twice is recorded once.
-- Refund (`CANCELLATION` with `cancel_reason` `CUSTOMER_SUPPORT`, or a `REFUND` event): the entitlement is revoked. No new record, sign-in or link for it. Records already issued stay valid.
+- Refund (`CANCELLATION` with `cancel_reason` `CUSTOMER_SUPPORT`, or a `REFUND` event): the entitlement is revoked. No new record, sign-in or link for it. Records already issued stay valid. A household left with no purchase that is not revoked loses its linked addresses at once (`unlinked` in the answer; KL.8).
 - `TRANSFER`: the entitlements (and linked addresses) of the `transferred_from` ids move to `transferred_to`.
 - Anything else: ignored, 200.
 
@@ -132,28 +154,37 @@ The tables are created on first use by `lib/household-store.ts` and written out 
 
 | Table | What it holds | How long |
 |---|---|---|
-| `household_codes` | SHA-256 of the address (also for an address that matched no purchase), a salted hash of the code, the licence id or app user id it was for, tries, times | The code works for **10 minutes** and once. The hourly run deletes a row once its code **stopped working more than 24 hours ago** (expired, used, or replaced by a newer code, whichever came first). So a row is gone **within 25 hours** of its code stopping, at the latest. |
-| `household_hits` | A hashed address or hashed IP (or a hashed app user id, for the RevenueCat lookup) and a time. They count for **1 hour**. | The hourly run deletes hits **older than 24 hours**, so they are gone **within 25 hours** of being made at the latest. (A random clean-up on use usually removes them sooner, after about 2 hours; the hourly run is the guarantee.) |
-| `household_email_links` | SHA-256 of a linked address, next to the anonymous app user id | **As long as the purchase exists.** Deleted when the family asks (below). Not touched by the hourly run. |
-| `household_store_entitlements` | App user id, product id, store, purchase date, transaction id, sandbox or not, revoked or not | Kept: it is the purchase. A refund sets `revoked = 1` and the row stays (the ledger), but a revoked row can no longer sign a record, fetch, send a code or link. |
-| `household_issued` | The signed record and signature (no email, name or device) | Kept. Records already issued stay valid. |
-| `household_devices` | Sign-ins counted per licence id | Kept. |
+| `household_codes` | The keyed hash of the address (also for an address that matched no purchase), a salted hash of the code, the licence id or app user id it was for, tries, times | The code works for **10 minutes** and once. The hourly run deletes a row once its code **stopped working more than 24 hours ago** (expired, used, or replaced by a newer code, whichever came first). So a row is gone **within 25 hours** of its code stopping, at the latest. |
+| `household_hits` | A keyed hash of an address or IP (or of an app user id, for the RevenueCat lookup) and a time. They count for **1 hour**. | The hourly run deletes hits **older than 24 hours**, so they are gone **within 25 hours** of being made at the latest. (A random clean-up on use usually removes them sooner, after about 2 hours; the hourly run is the guarantee.) |
+| `household_email_links` | The keyed hash of a linked address, next to the anonymous app user id; the notice version agreed to and the consent time; the last sign-in through it (KL.8) | **730 days after its last sign-in** (or its linking, if never used). Deleted at once when the family removes it (`email/remove/*`), asks support, or its purchase is refunded and the household has none left. The hourly run also drops a link whose app user id has no purchase left that is not revoked. |
+| `household_store_entitlements` | App user id, product id, store, purchase date, transaction id, sandbox or not, revoked or not | Kept while the purchase is valid: it is the purchase. A refund sets `revoked = 1`, and a revoked row can no longer sign a record, fetch, send a code or link. **A refunded row is deleted 395 days after the refund** (disputes and chargebacks), with its issued record and device count (KL.8). |
+| `household_issued` | The signed record and signature (no email, name or device) | Kept while its purchase is; deleted with a refunded purchase (above). Records already issued stay valid on devices. |
+| `household_devices` | Sign-ins counted per licence id | As `household_issued`. |
 | `household_upgrades` | Paddle transaction id and licence id of an in-place upgrade | Kept. |
 | `household_price_cache` | The `prices` answer (public prices) per product, country and platform, with the time it was stored. No IP address, no visitor data. | Used for 1 hour. The hourly run deletes entries stored more than 24 hours ago. |
 
-The hourly run is `netlify/functions/household-purge.ts` (at 17 minutes past each hour, UTC; the 24-hour figure is `RETENTION_HOURS` in `lib/household-store.ts`). It also runs while `HOUSEHOLD_ENABLED` is off, and touches nothing but the three clocks above (codes, rate-limit hits, cached prices). These are the figures for the privacy policy: code rows "within 25 hours of the code stopping working", rate-limit rows "within 25 hours", a linked-address hash "while the purchase exists, and on request".
+The hourly run is `netlify/functions/household-purge.ts` (at 17 minutes past each hour, UTC; the 24-hour figure is `RETENTION_HOURS` in `lib/household-store.ts`). It also runs while `HOUSEHOLD_ENABLED` is off, and touches nothing but the clocks above: codes, rate-limit hits, cached prices, and (KL.8) stale or orphaned links and old refunded purchases. These are the figures for the privacy policy:
+- code rows: "within 25 hours of the code stopping working";
+- rate-limit rows: "within 25 hours";
+- a linked-address hash: "two years after its last sign-in, when you remove it, or when the purchase is refunded";
+- a refunded purchase: "13 months after the refund".
+
+The limits are `LINK_RETENTION_DAYS` and `REVOKED_RETENTION_DAYS` in `lib/household-config.ts`.
 
 Paddle buyers' addresses are not kept here at all: `licenses.email` holds the placeholder `not-stored`, and the sign-in asks Paddle.
 
 ### Delete a family's linked email (support)
 
-Take the address, trim and lower-case it, and compute its SHA-256 (the rule the server uses):
+A family can do this themselves: in the app, Settings → Restore Purchases → Remove my email (`email/remove/*`). For a request by email:
+
+1. Take `HOUSEHOLD_EMAIL_KEY` from Netlify (Site settings → Environment variables). Never write it in a ticket or a chat.
+2. Print the address's keyed hash, the rule the server uses, with the script in this repo:
 
 ```
-node -e "console.log(require('node:crypto').createHash('sha256').update(process.argv[1].trim().toLowerCase()).digest('hex'))" "parent@example.com"
+HOUSEHOLD_EMAIL_KEY=<the key> node scripts/household-email-hash.mjs "parent@example.com"
 ```
 
-Then run this one line on the database (Turso shell):
+3. Run this one line on the database (Turso shell):
 
 ```
 DELETE FROM household_email_links WHERE email_hash = '<that hash>';
@@ -163,8 +194,8 @@ That ends sign-in by that address on other devices; the purchase, and every devi
 
 ## Limits
 
-- 5 codes an hour per address (sign-in and link together). Past that, `start` still answers 200 and sends nothing.
-- 20 requests an hour per IP to the four email-code endpoints. Past that, 429. `fetch` is not counted.
+- 5 codes an hour per address (sign-in, link and remove together). Past that, `start` still answers 200 and sends nothing.
+- 20 requests an hour per IP to the six email-code endpoints. Past that, 429. `fetch` is not counted.
 - RevenueCat lookups for earlier buyers: 3 an hour per app user id (hashed in the hits table).
 - 5 tries per code; the fifth wrong one uses the code up. A code lasts 10 minutes and works once.
 - The household cap: each successful `signin/verify` counts one device for the licence (no device id is sent). At the cap, 409 `device_cap`. To give a family room: `UPDATE household_devices SET devices = 0 WHERE lid = '<lid>'` (the `lid` is in the record they hold).
@@ -175,7 +206,7 @@ That ends sign-in by that address on other devices; the purchase, and every devi
 To stop issuing records: unset `HOUSEHOLD_ENABLED` (or set it to anything but `1`) and redeploy. A deploy is metered, so this is one deploy.
 
 What that does:
-- `household-fetch`, `signin-start`, `signin-verify`, `link-start`, `link-verify` answer `404 {"error":"off"}`. No more RevenueCat lookups either.
+- `household-fetch`, `signin-start`, `signin-verify`, `link-start`, `link-verify`, `email-remove-start` and `email-remove-verify` answer `404 {"error":"off"}`. No more RevenueCat lookups either. (A parent can still have a linked email removed by support, below.)
 - `license-activate` and `license-validate` stop returning `household`; `license-activate` goes back to the plain rules (the platform check, the licence's own activation limit).
 - `paddle-webhook` still tags an Every device licence but no longer signs a record with it.
 - `revenuecat-webhook` keeps recording and revoking (it signs nothing).
@@ -192,3 +223,10 @@ To go further back, revert the commit. The new tables and the `tier` column stay
 ## Choices the contract left open
 
 Drafted as KD-40 in the KL.2 report: `platform` is checked and not kept; `fetch` is not under the IP limit; the fifth wrong code answers `too_many_tries`; `link/start` mails only for an app user id that owns a purchase; a licence has one record per `kid`; earlier Paddle buyers are upgraded from the licences table and earlier store buyers through the RevenueCat lookup above; the $9.99 Paddle upgrade of a key upgrades that licence in place (no extra mail) and falls back to a new licence rather than lose the purchase; the hourly purge deletes code rows 24 hours after their code stopped working and rate-limit rows older than 24 hours (so within 25 hours); refunds are read as `CANCELLATION` with `CUSTOMER_SUPPORT`; `prices` is open whatever the flag, answers with the strings Paddle formats (`formattedTotals.total`), takes the country from Netlify and the IP address (passed on, never kept) to Paddle, caches an hour per product, country and platform, gives `web` the Windows and Linux price as `this_device`, `license-validate` returns the record as `license-activate` does (flag on, Every device or due the free upgrade; nothing otherwise), and has `currency: null` and no prices when there is nothing named to ask for.
+
+KL.8 (KD-46 in the RankUp Chess repo) settled the rest for COPPA:
+- email plus as the consent method, with the direct notice in the code mail and a confirmation after each successful verify;
+- removal by the parent (`email/remove/*`, decoy for unlinked addresses);
+- every hash keyed with `HOUSEHOLD_EMAIL_KEY`;
+- links kept 730 days after their last sign-in and dropped when their purchase is refunded;
+- refunded purchases deleted 395 days after the refund.
