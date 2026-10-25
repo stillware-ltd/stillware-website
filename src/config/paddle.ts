@@ -78,7 +78,8 @@ export const PADDLE_PRODUCTS: Record<CheckoutSlug, PaddleProductConfig> = {
     priceId: "pri_01knztpnwdqxx8ecnbrjt4zkzq",
     licenceNote: "Only on Windows: this licence unlocks RankUp Chess on up to 3 Windows or Linux computers.",
   },
-  // RankUp Chess — Only on Mac, $19.99 (P8 sets the Only-on price at the switch, in Paddle; this page
+  // RankUp Chess — Only on Mac, $14.99 from 28 October 2026 ($19.99 before; the amount changes in Paddle
+  // that day and the id stays, KD-47; this page
   // opens whichever price its id names). The macOS app links here directly; the
   // price must match `fallbackDisplayPrice` in the app's purchase_config.dart,
   // because the app never queries Paddle for a live price.
