@@ -3,7 +3,7 @@
 **Status: DRAFT for the founder to adopt (written 25 October 2026, KL.8).** The COPPA Rule (16 CFR 312.8(b), as amended 22 April 2025) asks an operator to keep a written program with safeguards suited to its size and to the sensitivity of what it holds. It names a coordinator, a risk assessment at least once a year, safeguards for the risks found, regular testing and monitoring, and a yearly review. This is that program for the one Stillware service that handles a parent's email: the household licence functions in this repo and their database.
 
 - **Coordinator:** the founder (Stillware Ltd), who runs and answers for the program.
-- **Adopted:** `[FOUNDER: date]`.
+- **Adopted:** 25 October 2026 (the founder, once two-factor sign-in was on everywhere).
 - **First risk assessment:** at the release that turns the RankUp sign-in on (below). Then once a year.
 - **Yearly review:** one year after adoption, and after any incident or any new kind of data.
 
@@ -26,7 +26,7 @@
 | A forged household record | Records are signed with Ed25519; the app checks the signature against keys built into it | KD-12 in the RankUp repo |
 | Interception | HTTPS only (Netlify), `www` only | `netlify.toml` |
 | A provider misuses data | Only the providers in `service-providers.md`, each under written terms; nothing is sent to anyone else | `service-providers.md` |
-| Account takeover of a dashboard | Two-factor sign-in on every dashboard that reaches the data, the logs or the secrets. **Checked 25 October 2026 (read-only):** the Google account the founder signs in with has 2-Step Verification on (since 26 December 2025), which covers **Resend** and **Turso** (both sign in only through Google); **Netlify, Paddle and RevenueCat: off**, to turn on; **GitHub: not confirmed**. `[FOUNDER: confirm when all six are on]` | the dashboards |
+| Account takeover of a dashboard | Two-factor sign-in on every dashboard that reaches the data, the logs or the secrets: **on for all six as of 25 October 2026.** Netlify, Paddle, RevenueCat and GitHub have their own two-factor on (the founder, 25 October); Resend and Turso sign in only through the founder's Google account, which has 2-Step Verification on (since 26 December 2025; checked 25 October) | the dashboards |
 | Too many people with access | Only the founder can read the database, the environment variables and the function logs | the dashboards |
 
 **Data minimisation is a safeguard too:** the service asks for an email only when a grown-up chooses, keeps none for a sign-in, and never receives anything about a child.
