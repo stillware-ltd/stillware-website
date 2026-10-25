@@ -1,5 +1,6 @@
 import test from "node:test";
 import assert from "node:assert/strict";
+import { format } from "node:util";
 import { NOTICE_VERSION } from "../../netlify/functions/lib/household-config.js";
 import { purgeHousehold } from "../../netlify/functions/lib/household-purge.js";
 import { addLink } from "../../netlify/functions/lib/household-store.js";
@@ -108,8 +109,9 @@ test("a failed confirmation mail changes no answer (link and sign-in)", async ()
   const w = await makeWorld();
   await addStorePurchase(w, { appUserId: USER });
   w.mail.failConfirm = true;
+  const logged: string[] = [];
   const err = console.error;
-  console.error = () => {};
+  console.error = (...args: unknown[]) => void logged.push(format(...args));
   try {
     await link(w);
     await signinStart(w);
@@ -117,6 +119,9 @@ test("a failed confirmation mail changes no answer (link and sign-in)", async ()
   } finally {
     console.error = err;
   }
+  // Logged without the address, though the error quoted it.
+  assert.equal(logged.filter((line) => line.includes("could not send a")).length, 2);
+  assert.ok(logged.every((line) => !line.toLowerCase().includes(EMAIL.toLowerCase())), logged.join(" | "));
 });
 
 test("retention: a link goes 730 days after its last sign-in, or after its linking if never used", async () => {

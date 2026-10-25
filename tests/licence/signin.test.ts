@@ -1,5 +1,6 @@
 import test from "node:test";
 import assert from "node:assert/strict";
+import { format } from "node:util";
 import crypto from "node:crypto";
 import { householdSettings } from "../../netlify/functions/lib/household-config.js";
 import { verifySignedRecord } from "../../netlify/functions/lib/household-record.js";
@@ -384,17 +385,40 @@ test("Paddle: an outage gives the usual answer and no mail", async () => {
   const w = await makeWorld();
   await addPaddleLicence(w, { email: "buyer@example.net", tier: "every_device" });
   w.paddleFails.value = true;
-  const res = await start(w, "buyer@example.net");
+  const logged: string[] = [];
+  const err = console.error;
+  console.error = (...args: unknown[]) => void logged.push(format(...args));
+  let res;
+  try {
+    res = await start(w, "buyer@example.net");
+  } finally {
+    console.error = err;
+  }
   assert.equal(res.status, 200);
   assert.deepEqual(res.body, { ok: true });
   assert.equal(w.sent.length, 0);
+  // The outage is logged, never the address (KL.8: no address in logs).
+  assert.ok(logged.some((line) => line.includes("Paddle lookup failed")));
+  assert.ok(logged.every((line) => !line.includes("buyer@example.net")), logged.join(" | "));
 });
 
-test("a mail outage does not change the answer", async () => {
+test("a mail outage does not change the answer, and logs neither the address nor the code", async () => {
   const { w } = await owner({ failSend: true });
-  const res = await start(w);
+  const logged: string[] = [];
+  const err = console.error;
+  console.error = (...args: unknown[]) => void logged.push(format(...args));
+  let res;
+  try {
+    res = await start(w);
+  } finally {
+    console.error = err;
+  }
   assert.equal(res.status, 200);
   assert.deepEqual(res.body, { ok: true });
+  const line = logged.find((l) => l.includes("could not send a signin code"));
+  assert.ok(line, logged.join(" | "));
+  // The fake error quoted both, in capitals for the address; both are taken out.
+  assert.equal(line, "household: could not send a signin code: fake outage sending [redacted] to [redacted]");
 });
 
 test("addresses are compared trimmed and lower-cased, and mailed as typed", async () => {

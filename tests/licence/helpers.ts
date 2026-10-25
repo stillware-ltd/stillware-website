@@ -159,12 +159,14 @@ export async function makeWorld(opts: WorldOptions = {}): Promise<World> {
   const legacy: World["legacy"] = { enabled: false, result: { status: "none" }, calls: [] };
 
   const sendCode: SendCode = async (to, code, _product, purpose) => {
-    if (mail.fail) throw new Error("fake outage");
+    // Like a provider's error, it quotes the request.
+    if (mail.fail) throw new Error(`fake outage sending ${code} to ${to.toUpperCase()}`);
     sent.push({ to, code, purpose });
   };
 
   const sendConfirmation: SendConfirmation = async (to, _product, kind, at) => {
-    if (mail.failConfirm) throw new Error("fake outage");
+    // Not an Error, as some SDKs throw: a plain object that quotes the recipient.
+    if (mail.failConfirm) throw { message: `fake outage for ${to}`, to };
     confirmations.push({ to, kind, at });
   };
 
@@ -187,7 +189,8 @@ export async function makeWorld(opts: WorldOptions = {}): Promise<World> {
       : undefined,
     paddleTransactionIds: async (email) => {
       paddleCalls.push(email);
-      if (paddleFails.value) throw new Error("fake Paddle outage");
+      // Like a real SDK error, it carries the request (and so the address).
+      if (paddleFails.value) throw new Error(`fake Paddle outage for ${email}`);
       return paddle.get(email.trim().toLowerCase()) ?? [];
     },
   });

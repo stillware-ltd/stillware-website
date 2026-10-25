@@ -214,7 +214,8 @@ async function eligibleForEmail(
   try {
     transactionIds = await deps.paddleTransactionIds(email);
   } catch (err) {
-    console.error("household: Paddle lookup failed:", err);
+    // The name only: an SDK error can carry the request, and the address with it.
+    console.error("household: Paddle lookup failed:", err instanceof Error ? err.name : "error");
     return null;
   }
   for (const row of await licencesByTransactions(db, product, transactionIds)) {
@@ -555,8 +556,21 @@ async function confirm(
   try {
     await deps.sendConfirmation(rawEmail.trim(), PRODUCTS[product], kind, at);
   } catch (err) {
-    console.error(`household: could not send a ${kind} confirmation:`, err instanceof Error ? err.message : err);
+    console.error(`household: could not send a ${kind} confirmation:`, failureText(err, rawEmail.trim()));
   }
+}
+
+/**
+ * A send failure as one log line: the provider's own words, with the address (in any case) and the
+ * code taken out, since a provider's error can quote the request.
+ */
+function failureText(err: unknown, ...secrets: string[]): string {
+  const message = (err as { message?: unknown } | null)?.message;
+  let text = typeof message === "string" ? message : "error";
+  for (const secret of secrets.filter((s) => s.length > 0)) {
+    text = text.replace(new RegExp(secret.replace(/[.*+?^${}()|[\]\\]/g, "\\$&"), "gi"), "[redacted]");
+  }
+  return text;
 }
 
 async function mail(
@@ -570,6 +584,6 @@ async function mail(
     await deps.sendCode(email, code, PRODUCTS[product], purpose);
   } catch (err) {
     // The answer must not depend on whether the mail went: log it (never the address) and go on.
-    console.error(`household: could not send a ${purpose} code:`, err instanceof Error ? err.message : err);
+    console.error(`household: could not send a ${purpose} code:`, failureText(err, email.trim(), code));
   }
 }
