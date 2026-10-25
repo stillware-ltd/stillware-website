@@ -71,10 +71,10 @@ Already set for the licence server and used here: `TURSO_DATABASE_URL`, `TURSO_A
 
 One scheduled function, `household-purge`, runs every hour at 17 minutes past (the retention run, see "Data kept"). It needs no new variable beyond the database's, and it deploys with the site: Netlify runs scheduled functions from the published production deploy. It runs whether or not `HOUSEHOLD_ENABLED` is on.
 
-Make a key pair on your own machine (the private key goes straight into Netlify; the public key goes into the app's `licence_keys.dart` under the same `kid`):
+Make a key pair on your own machine (the private key goes straight into Netlify; the public key goes into the app's `licence_keys.dart` under the same `kid`). The app reads the public key only as base64url without padding (43 characters, `A-Z a-z 0-9 - _`); a plain base64 key would count as no key and verify nothing:
 
 ```
-node -e "const c=require('node:crypto');const k=c.generateKeyPairSync('ed25519');console.log('private (HOUSEHOLD_SIGNING_KEY):',k.privateKey.export({type:'pkcs8',format:'der'}).toString('base64'));console.log('public (raw 32 bytes, base64):',k.publicKey.export({type:'spki',format:'der'}).subarray(-32).toString('base64'))"
+node -e "const c=require('node:crypto');const k=c.generateKeyPairSync('ed25519');console.log('private (HOUSEHOLD_SIGNING_KEY):',k.privateKey.export({type:'pkcs8',format:'der'}).toString('base64'));console.log('public (raw 32 bytes, base64url, for licence_keys.dart):',k.publicKey.export({type:'spki',format:'der'}).subarray(-32).toString('base64url'))"
 ```
 
 Rotation: set the new key and a new `kid`, and add the new public key to the app. The server signs under the new `kid` from then on (a record is kept per licence and `kid`); older records keep verifying in the app unless it lists their `kid` as revoked.
