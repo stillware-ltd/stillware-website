@@ -66,8 +66,9 @@ interface Call {
 
 export function householdHandlers(source: HandlerSource): HouseholdHandlers {
   /**
-   * Shared front of every endpoint, in this order: flag off -> 404 off; not POST -> 405; the
-   * IP limit (when `limitIp`) -> 429; bad JSON -> 400; unknown product -> 400 unknown_product.
+   * Shared front of every endpoint, in this order: flag off -> 404 off; not POST -> 405; no
+   * hashing key -> 500 server_misconfigured; the IP limit (when `limitIp`) -> 429; bad JSON -> 400;
+   * unknown product -> 400 unknown_product.
    * Anything unexpected is a 500 that says nothing, and is logged without the request.
    */
   function endpoint(work: (call: Call) => Promise<Response>, opts: { limitIp: boolean }): HouseholdHandler {
@@ -77,13 +78,18 @@ export function householdHandlers(source: HandlerSource): HouseholdHandlers {
       if (req.method !== "POST") return json(405, { error: "method_not_allowed" });
       try {
         const deps = source.build(settings);
-        const { db, now } = deps.household;
+        const { db, now, emailKey } = deps.household;
+        // No hashing key: nothing can be looked up or limited safely, so nothing runs (KL.8).
+        if (!emailKey) {
+          console.error("household: HOUSEHOLD_EMAIL_KEY is not set or too short");
+          return json(500, { error: "server_misconfigured" });
+        }
         await ensureHouseholdTables(db);
 
         if (opts.limitIp) {
           const ip = clientIp(req, contextIp);
           // No address (never on Netlify) means no IP limit rather than one bucket for everybody.
-          if (ip && !(await takeHit(db, ipBucket(ip), deps.perIpLimit, now()))) {
+          if (ip && !(await takeHit(db, ipBucket(ip, emailKey), deps.perIpLimit, now()))) {
             return json(429, { error: "rate_limited" });
           }
         }

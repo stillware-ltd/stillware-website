@@ -60,6 +60,11 @@ export interface HouseholdDeps {
   settings: HouseholdSettings;
   /** The signing key and key id. Throws when they are not configured. */
   signer: () => Signer;
+  /**
+   * The key every address, IP and app user id is hashed under (HOUSEHOLD_EMAIL_KEY). Null when it
+   * is not configured: the HTTP layer then answers server_misconfigured before any logic runs.
+   */
+  emailKey: Buffer | null;
   sendCode: SendCode;
   /** Ids of the completed Paddle transactions of the customer(s) with this address. */
   paddleTransactionIds: (email: string) => Promise<string[]>;
@@ -77,6 +82,12 @@ export interface Answer {
 }
 
 const answer = (status: number, body: Record<string, unknown>): Answer => ({ status, body });
+
+/** The hashing key. household-http.ts refuses to call the logic without one, so this only guards. */
+function keyOf(deps: HouseholdDeps): Buffer {
+  if (!deps.emailKey) throw new Error("HOUSEHOLD_EMAIL_KEY is not set");
+  return deps.emailKey;
+}
 const OK: Answer = answer(200, { ok: true });
 
 /** A licence that has a right to a record. */
@@ -270,7 +281,7 @@ async function upgradeFromRevenueCat(
 ): Promise<Eligible | null | "unavailable" | "limited"> {
   const { settings, legacyLookup } = deps;
   if (!legacyLookup || !settings.upgradeBefore) return null;
-  if (!(await takeHit(deps.db, legacyLookupBucket(appUserId), LEGACY_LOOKUPS_PER_ID_PER_HOUR, deps.now()))) {
+  if (!(await takeHit(deps.db, legacyLookupBucket(appUserId, keyOf(deps)), LEGACY_LOOKUPS_PER_ID_PER_HOUR, deps.now()))) {
     return "limited";
   }
   let found;
@@ -313,7 +324,7 @@ export async function startSignin(
 ): Promise<{ answer: Answer; outcome: "sent" | "no_match" | "limited" }> {
   await ensureHouseholdTables(deps.db);
   const email = rawEmail.trim();
-  const hash = emailHash(email);
+  const hash = emailHash(email, keyOf(deps));
   const now = deps.now();
   if (!(await takeHit(deps.db, emailBucket(hash), CODES_PER_EMAIL_PER_HOUR, now))) {
     return { answer: OK, outcome: "limited" };
@@ -355,7 +366,7 @@ export async function verifySignin(
   const checked = await checkCode(deps.db, {
     purpose: "signin",
     product,
-    emailHash: emailHash(rawEmail),
+    emailHash: emailHash(rawEmail, keyOf(deps)),
     appUserId: "",
     code,
     now,
@@ -385,7 +396,7 @@ export async function startLink(
 ): Promise<{ answer: Answer; outcome: "sent" | "no_match" | "limited" }> {
   await ensureHouseholdTables(deps.db);
   const email = rawEmail.trim();
-  const hash = emailHash(email);
+  const hash = emailHash(email, keyOf(deps));
   const now = deps.now();
   if (!(await takeHit(deps.db, emailBucket(hash), CODES_PER_EMAIL_PER_HOUR, now))) {
     return { answer: OK, outcome: "limited" };
@@ -421,7 +432,7 @@ export async function verifyLink(
   code: string
 ): Promise<Answer> {
   await ensureHouseholdTables(deps.db);
-  const hash = emailHash(rawEmail);
+  const hash = emailHash(rawEmail, keyOf(deps));
   const checked = await checkCode(deps.db, {
     purpose: "link",
     product,

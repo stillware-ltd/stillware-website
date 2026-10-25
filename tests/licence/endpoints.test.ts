@@ -37,6 +37,19 @@ test("the flag off: every endpoint answers 404 {error:off}, whatever it is sent"
   }
 });
 
+test("no hashing key (HOUSEHOLD_EMAIL_KEY unset or short): every endpoint is a 500 server_misconfigured", async () => {
+  // KL.8: without the key nothing could be hashed, looked up or limited safely, so nothing runs.
+  const w = await makeWorld({ emailKey: null });
+  for (const name of NAMES) {
+    const res = await w.call(name, VALID[name]);
+    assert.equal(res.status, 500, name);
+    assert.deepEqual(res.body, { error: "server_misconfigured" });
+  }
+  assert.equal(w.sent.length, 0);
+  assert.equal(w.paddleCalls.length, 0);
+  assert.equal((await dumpHouseholdTables(w.db)).rows.length, 0, "nothing is written without the key");
+});
+
 test("the flag is exactly the string 1", async () => {
   const w = await makeWorld({ env: { HOUSEHOLD_ENABLED: "1" } });
   assert.equal((await w.call("signinStart", VALID.signinStart)).status, 200);

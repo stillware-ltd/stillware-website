@@ -1,8 +1,7 @@
 import test from "node:test";
 import assert from "node:assert/strict";
 import { verifySignedRecord } from "../../netlify/functions/lib/household-record.js";
-import { emailHash } from "../../netlify/functions/lib/household-store.js";
-import { addStorePurchase, dumpHouseholdTables, makeWorld, type World } from "./helpers.js";
+import { addStorePurchase, dumpHouseholdTables, makeWorld, type World, testEmailHash } from "./helpers.js";
 
 // link/start and link/verify: a store buyer confirms an address with a code; that address then
 // signs in (signin/start and signin/verify).
@@ -67,7 +66,7 @@ test("link: the address is kept only as a SHA-256 of its normalised form", async
   await linkVerify(w, w.lastCode(EMAIL));
   const { rows, text } = await dumpHouseholdTables(w.db);
   const link = rows.find((r) => "email_hash" in r && !("code_hash" in r))!;
-  assert.equal(link.email_hash, emailHash("parent@example.com"));
+  assert.equal(link.email_hash, testEmailHash("parent@example.com"));
   assert.match(String(link.email_hash), /^[0-9a-f]{64}$/);
   assert.equal(link.app_user_id, USER);
   assert.equal(text.toLowerCase().includes("example.com"), false);

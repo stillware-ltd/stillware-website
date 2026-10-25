@@ -4,8 +4,8 @@ import type { Client } from "@libsql/client";
 import { handleRevenueCatWebhook, sameSecret, storeOf } from "../../netlify/functions/lib/revenuecat.js";
 import { EVERY_DEVICE_STORE_PRODUCT_IDS, everyDeviceStoreProduct } from "../../netlify/functions/lib/products.js";
 import { verifySignedRecord } from "../../netlify/functions/lib/household-record.js";
-import { addLink, emailHash } from "../../netlify/functions/lib/household-store.js";
-import { makeWorld, type World } from "./helpers.js";
+import { addLink } from "../../netlify/functions/lib/household-store.js";
+import { makeWorld, type World, testEmailHash } from "./helpers.js";
 
 // The RevenueCat webhook: the authorisation header, Every device purchases, refunds, transfers,
 // and everything else ignored with a 200.
@@ -255,7 +255,7 @@ test("a purchase event delivered again after its refund does not bring the licen
 test("a transfer moves the purchase (and linked addresses) to the new app user id", async () => {
   const w = await makeWorld();
   await send(w, purchase({ app_user_id: "$RCAnonymousID:anon1" }));
-  await addLink(w.db, "rankup", emailHash("parent@example.com"), "$RCAnonymousID:anon1");
+  await addLink(w.db, "rankup", testEmailHash("parent@example.com"), "$RCAnonymousID:anon1");
 
   const res = await send(w, {
     event: { type: "TRANSFER", transferred_from: ["$RCAnonymousID:anon1"], transferred_to: ["$RCAnonymousID:anon2", "parent-account-77"] },
@@ -277,8 +277,8 @@ test("a transfer between two ids that both have a link and a purchase keeps both
   const w = await makeWorld();
   await send(w, purchase({ app_user_id: "a", transaction_id: "ta" }));
   await send(w, purchase({ app_user_id: "b", transaction_id: "tb" }));
-  await addLink(w.db, "rankup", emailHash("x@example.com"), "a");
-  await addLink(w.db, "rankup", emailHash("x@example.com"), "b");
+  await addLink(w.db, "rankup", testEmailHash("x@example.com"), "a");
+  await addLink(w.db, "rankup", testEmailHash("x@example.com"), "b");
   const res = await send(w, { event: { type: "TRANSFER", transferred_from: ["a"], transferred_to: ["b"] } });
   assert.deepEqual(res.body, { ok: true, moved: 1 });
   assert.deepEqual((await rows(w.db)).map((r) => r.app_user_id), ["b", "b"]);

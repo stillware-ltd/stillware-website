@@ -12,7 +12,7 @@ import { freshDb, lastDbUrl, makeKey } from "./helpers.js";
 const key = makeKey("rk-test-1");
 const SECRET = "sk_test_NOT_A_REAL_KEY_for_wiring_test";
 const NAMES = [
-  "HOUSEHOLD_ENABLED", "HOUSEHOLD_SIGNING_KEY", "HOUSEHOLD_SIGNING_KID", "HOUSEHOLD_UPGRADE_BEFORE",
+  "HOUSEHOLD_ENABLED", "HOUSEHOLD_SIGNING_KEY", "HOUSEHOLD_SIGNING_KID", "HOUSEHOLD_EMAIL_KEY", "HOUSEHOLD_UPGRADE_BEFORE",
   "HOUSEHOLD_LEGACY_ENTITLEMENT", "REVENUECAT_SECRET_API_KEY", "TURSO_DATABASE_URL", "TURSO_AUTH_TOKEN",
 ];
 const saved: Record<string, string | undefined> = {};
@@ -63,10 +63,11 @@ after(() => {
 
 beforeEach(() => {
   seen.length = 0;
-  for (const k of NAMES.slice(0, 6)) delete process.env[k];
+  for (const k of NAMES.slice(0, 7)) delete process.env[k];
   process.env.HOUSEHOLD_ENABLED = "1";
   process.env.HOUSEHOLD_SIGNING_KEY = key.privateBase64;
   process.env.HOUSEHOLD_SIGNING_KID = "rk-test-1";
+  process.env.HOUSEHOLD_EMAIL_KEY = Buffer.alloc(32, 7).toString("base64");
 });
 
 const call = async (appUserId: string) => {

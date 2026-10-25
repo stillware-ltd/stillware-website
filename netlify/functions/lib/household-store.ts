@@ -9,8 +9,9 @@ import type { HouseholdRecord, RecordVia, SignedRecord } from "./household-recor
 // created on first use, as lib/licenses.ts does for its own, so no manual migration is needed;
 // lib/schema.sql carries the same definitions (a test keeps the two in step).
 //
-// Nothing here holds an address in the clear: an email is kept only as the SHA-256 of its
-// normalised form, and a code only as a salted hash that expires.
+// Nothing here holds an address in the clear: an email is kept only as a keyed hash of its
+// normalised form (HMAC-SHA-256 under HOUSEHOLD_EMAIL_KEY, so it cannot be matched to an address
+// without the key: KL.8), and a code only as a salted hash that expires.
 
 export const HOUSEHOLD_SCHEMA = `
 CREATE TABLE IF NOT EXISTS household_store_entitlements (
@@ -115,9 +116,32 @@ export function normaliseEmail(email: string): string {
   return email.trim().toLowerCase();
 }
 
-/** SHA-256 (hex) of the normalised address: how a linked email is kept and looked up. */
-export function emailHash(email: string): string {
-  return crypto.createHash("sha256").update(normaliseEmail(email)).digest("hex");
+/** The fewest bytes HOUSEHOLD_EMAIL_KEY may decode to. */
+export const MIN_EMAIL_KEY_BYTES = 32;
+
+/**
+ * The server's hashing key from HOUSEHOLD_EMAIL_KEY (base64), or null when it is unset, not
+ * base64, or shorter than MIN_EMAIL_KEY_BYTES. With no key the household endpoints refuse to run.
+ */
+export function parseEmailKey(value: string | undefined): Buffer | null {
+  const text = (value ?? "").trim();
+  if (!/^[A-Za-z0-9+/]+={0,2}$/.test(text)) return null;
+  const key = Buffer.from(text, "base64");
+  return key.length >= MIN_EMAIL_KEY_BYTES ? key : null;
+}
+
+/** HMAC-SHA-256 (hex) of `label|value` under the key. The label keeps the three uses apart. */
+function keyedHex(key: Buffer, label: string, value: string): string {
+  return crypto.createHmac("sha256", key).update(`${label}|${value}`).digest("hex");
+}
+
+/**
+ * How an address is kept and looked up (codes, links, the per-address limit): HMAC-SHA-256 of
+ * the normalised address under the server's key. A plain SHA-256 of an email can be reversed by
+ * hashing likely addresses (FTC Office of Technology, July 2024); this cannot, without the key.
+ */
+export function emailHash(email: string, key: Buffer): string {
+  return keyedHex(key, "email", normaliseEmail(email));
 }
 
 /** A 6-digit code, uniformly random, zero-padded. */
@@ -143,15 +167,19 @@ function sameHex(a: string, b: string): boolean {
   return x.length === y.length && crypto.timingSafeEqual(x, y);
 }
 
-/** A short digest of a request's address, for the rate-limit bucket. Kept two hours at most. */
-export function ipBucket(ip: string): string {
-  return "ip:" + sha256Hex("household-ip|" + ip).slice(0, 32);
+/**
+ * A short keyed digest of a request's address, for the rate-limit bucket. Keyed, because an IPv4
+ * address hashed without a secret can be found again by trying all four billion of them.
+ */
+export function ipBucket(ip: string, key: Buffer): string {
+  return "ip:" + keyedHex(key, "ip", ip).slice(0, 32);
 }
 
 export const emailBucket = (hash: string) => "email:" + hash;
 
-/** The rate-limit bucket of RevenueCat lookups for one app user id (hashed, like the others). */
-export const legacyLookupBucket = (appUserId: string) => "rcid:" + sha256Hex("household-rcid|" + appUserId).slice(0, 32);
+/** The rate-limit bucket of RevenueCat lookups for one app user id (keyed, like the others). */
+export const legacyLookupBucket = (appUserId: string, key: Buffer) =>
+  "rcid:" + keyedHex(key, "rcid", appUserId).slice(0, 32);
 
 // ---------------------------------------------------------------------------------------------
 // Rate limits

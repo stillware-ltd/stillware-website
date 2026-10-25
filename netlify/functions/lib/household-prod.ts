@@ -3,6 +3,7 @@ import { sendHouseholdCodeEmail } from "./email.js";
 import { REQUESTS_PER_IP_PER_HOUR, START_MIN_MS } from "./household-config.js";
 import { householdHandlers, type HouseholdHandlers } from "./household-http.js";
 import { loadSigner, type Signer } from "./household-record.js";
+import { parseEmailKey } from "./household-store.js";
 import { paddleCompletedTransactionIds } from "./paddle-lookup.js";
 import { lookupLegacyPurchase, type LegacyLookup } from "./revenuecat-lookup.js";
 
@@ -20,6 +21,15 @@ export function signerFromEnv(): Signer {
     cachedSigner = { key, kid, signer: loadSigner(key, kid) };
   }
   return cachedSigner.signer;
+}
+
+let cachedEmailKey: { text: string; key: Buffer | null } | null = null;
+
+/** The hashing key from HOUSEHOLD_EMAIL_KEY (base64, 32 bytes or more), parsed once; null when unusable. */
+export function emailKeyFromEnv(): Buffer | null {
+  const text = process.env.HOUSEHOLD_EMAIL_KEY ?? "";
+  if (!cachedEmailKey || cachedEmailKey.text !== text) cachedEmailKey = { text, key: parseEmailKey(text) };
+  return cachedEmailKey.key;
 }
 
 /** RevenueCat lookups for earlier buyers, only when REVENUECAT_SECRET_API_KEY is set. */
@@ -40,6 +50,7 @@ export function productionHandlers(): HouseholdHandlers {
         now: () => new Date(),
         settings,
         signer: signerFromEnv,
+        emailKey: emailKeyFromEnv(),
         sendCode: sendHouseholdCodeEmail,
         paddleTransactionIds: (email) => paddleCompletedTransactionIds(process.env.PADDLE_API_KEY, email),
       },

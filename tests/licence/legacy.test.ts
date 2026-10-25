@@ -1,7 +1,7 @@
 import test from "node:test";
 import assert from "node:assert/strict";
 import { verifySignedRecord } from "../../netlify/functions/lib/household-record.js";
-import { addLink, emailHash } from "../../netlify/functions/lib/household-store.js";
+import { addLink } from "../../netlify/functions/lib/household-store.js";
 import { householdSettings } from "../../netlify/functions/lib/household-config.js";
 import {
   DEFAULT_LEGACY_ENTITLEMENT,
@@ -12,7 +12,7 @@ import {
   type LegacyPurchase,
 } from "../../netlify/functions/lib/revenuecat-lookup.js";
 import { handleRevenueCatWebhook } from "../../netlify/functions/lib/revenuecat.js";
-import { makeWorld, type World, type WorldOptions } from "./helpers.js";
+import { makeWorld, type World, type WorldOptions, testEmailHash } from "./helpers.js";
 
 // Earlier store buyers: `fetch` asks RevenueCat's REST API once, when it finds no entitlement,
 // and stores a purchase made before HOUSEHOLD_UPGRADE_BEFORE as an "upgrade". The HTTP call is
@@ -82,7 +82,7 @@ test("the upgrade record also works through a linked address", async () => {
   const w = await legacyWorld();
   w.legacy.result = { status: "purchase", purchase: purchase() };
   const fetched = await doFetch(w);
-  await addLink(w.db, "rankup", emailHash("parent@example.com"), USER);
+  await addLink(w.db, "rankup", testEmailHash("parent@example.com"), USER);
   await w.call("signinStart", { product: "rankup", email: "parent@example.com" });
   const signed = await w.call("signinVerify", {
     product: "rankup", email: "parent@example.com", code: w.lastCode("parent@example.com"), platform: "android",

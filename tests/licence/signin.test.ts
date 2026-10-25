@@ -3,7 +3,7 @@ import assert from "node:assert/strict";
 import crypto from "node:crypto";
 import { householdSettings } from "../../netlify/functions/lib/household-config.js";
 import { verifySignedRecord } from "../../netlify/functions/lib/household-record.js";
-import { addLink, emailHash } from "../../netlify/functions/lib/household-store.js";
+import { addLink } from "../../netlify/functions/lib/household-store.js";
 import {
   addPaddleLicence,
   addStorePurchase,
@@ -11,6 +11,7 @@ import {
   makeWorld,
   type World,
   type WorldOptions,
+  testEmailHash,
 } from "./helpers.js";
 
 // signin/start and signin/verify: the code mailed only when a purchase matches, the same answer
@@ -22,7 +23,7 @@ const EMAIL = "parent@example.com";
 async function owner(opts?: WorldOptions) {
   const w = await makeWorld(opts);
   const lid = await addStorePurchase(w, { appUserId: "u1", purchased: "2026-10-02" });
-  await addLink(w.db, "rankup", emailHash(EMAIL), "u1");
+  await addLink(w.db, "rankup", testEmailHash(EMAIL), "u1");
   return { w, lid };
 }
 
@@ -225,7 +226,7 @@ test("rate limit: 5 codes an hour per address; the 6th gets {ok:true} and no mai
   assert.deepEqual(sixth.body, { ok: true });
   assert.equal(w.sent.length, 5, "no sixth code was sent");
   // a different address is not held back
-  await addLink(w.db, "rankup", emailHash("other@example.com"), "u1");
+  await addLink(w.db, "rankup", testEmailHash("other@example.com"), "u1");
   await start(w, "other@example.com");
   assert.equal(w.sent.length, 6);
   // the same address in another spelling is the same address
@@ -289,7 +290,7 @@ test("device cap: each successful sign-in counts one device; at the cap, 409 dev
   assert.deepEqual((await verify(w, code)).body, { error: "expired" });
   // another household is unaffected: the cap is per licence
   await addStorePurchase(w, { appUserId: "u2" });
-  await addLink(w.db, "rankup", emailHash("second@example.com"), "u2");
+  await addLink(w.db, "rankup", testEmailHash("second@example.com"), "u2");
   assert.equal((await verify(w, await signInCode(w, "second@example.com"), "second@example.com")).status, 200);
 });
 
@@ -399,7 +400,7 @@ test("a mail outage does not change the answer", async () => {
 test("addresses are compared trimmed and lower-cased, and mailed as typed", async () => {
   const w = await makeWorld();
   await addStorePurchase(w, { appUserId: "u1" });
-  await addLink(w.db, "rankup", emailHash("Parent@Example.COM "), "u1");
+  await addLink(w.db, "rankup", testEmailHash("Parent@Example.COM "), "u1");
   await start(w, "  parent@example.com");
   assert.equal(w.sent.length, 1);
   assert.equal(w.sent[0].to, "parent@example.com");
@@ -417,8 +418,9 @@ test("at rest: no address, no code and no secret is kept in the clear", async ()
   const codeRow = rows.find((r) => "code_hash" in r)!;
   assert.match(String(codeRow.code_hash), /^[0-9a-f]{64}$/);
   assert.match(String(codeRow.salt), /^[0-9a-f]{32}$/);
-  assert.equal(codeRow.email_hash, emailHash(EMAIL));
-  assert.equal(codeRow.email_hash, crypto.createHash("sha256").update(EMAIL).digest("hex"));
+  assert.equal(codeRow.email_hash, testEmailHash(EMAIL));
+  // keyed (KL.8): not the plain SHA-256 that anyone could rebuild from a list of addresses
+  assert.notEqual(codeRow.email_hash, crypto.createHash("sha256").update(EMAIL).digest("hex"));
   assert.ok(codeRow.closed_at, "the used code is closed");
   // the stored expiry is ten minutes after it was issued
   assert.equal(Date.parse(String(codeRow.expires_at)) - Date.parse(String(codeRow.created_at)), 10 * 60_000);

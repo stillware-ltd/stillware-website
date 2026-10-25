@@ -1,11 +1,12 @@
+import { execFileSync } from "node:child_process";
 import test, { after, before } from "node:test";
 import assert from "node:assert/strict";
 import crypto from "node:crypto";
 import type { Client } from "@libsql/client";
 import { getDb } from "../../netlify/functions/lib/db.js";
 import { RETENTION_HOURS, purgeHousehold } from "../../netlify/functions/lib/household-purge.js";
-import { addLink, emailHash, ensureHouseholdTables } from "../../netlify/functions/lib/household-store.js";
-import { addStorePurchase, freshDb, lastDbUrl, makeWorld } from "./helpers.js";
+import { addLink, ensureHouseholdTables } from "../../netlify/functions/lib/household-store.js";
+import { addStorePurchase, freshDb, lastDbUrl, makeWorld, TEST_EMAIL_KEY, testEmailHash } from "./helpers.js";
 
 // The hourly retention run: what it deletes (codes that stopped working over 24 hours ago, hits
 // older than 24 hours) and what it leaves alone (links, entitlements, issued records, devices).
@@ -22,7 +23,7 @@ async function code(db: Client, label: string, o: { created: string; expires: st
   await db.execute({
     sql: `INSERT INTO household_codes (id, purpose, product, email_hash, app_user_id, salt, code_hash, expires_at, closed_at, created_at)
           VALUES (?, 'signin', 'rankup', ?, '', 'salt', 'hash', ?, ?, ?)`,
-    args: [id, emailHash(`${label}@example.com`), o.expires, o.closed ?? null, o.created],
+    args: [id, testEmailHash(`${label}@example.com`), o.expires, o.closed ?? null, o.created],
   });
   return id;
 }
@@ -140,7 +141,7 @@ test("it leaves the ledger alone: links, entitlements (revoked ones too), issued
   const w = await makeWorld();
   const lid = await addStorePurchase(w, { appUserId: "u1", purchased: "2026-08-01" });
   const refunded = await addStorePurchase(w, { appUserId: "u2", purchased: "2026-08-02" });
-  await addLink(w.db, "rankup", emailHash("parent@example.com"), "u1");
+  await addLink(w.db, "rankup", testEmailHash("parent@example.com"), "u1");
   const issued = await w.call("fetch", { product: "rankup", appUserId: "u1", platform: "ios" });
   assert.equal(issued.status, 200);
   await w.db.execute({ sql: "UPDATE household_store_entitlements SET revoked = 1 WHERE lid = ?", args: [refunded] });
@@ -164,7 +165,7 @@ test("it leaves the ledger alone: links, entitlements (revoked ones too), issued
 test("a refunded entitlement keeps its row but can no longer issue a record, however long after", async () => {
   const w = await makeWorld();
   await addStorePurchase(w, { appUserId: "u1", transactionId: "T-REFUND" });
-  await addLink(w.db, "rankup", emailHash("parent@example.com"), "u1");
+  await addLink(w.db, "rankup", testEmailHash("parent@example.com"), "u1");
   const first = await w.call("fetch", { product: "rankup", appUserId: "u1", platform: "ios" });
   assert.equal(first.status, 200);
 
@@ -190,12 +191,16 @@ test("support's one line deletes a family's linked email, and only theirs", asyn
   const w = await makeWorld();
   await addStorePurchase(w, { appUserId: "u1" });
   await addStorePurchase(w, { appUserId: "u2" });
-  await addLink(w.db, "rankup", emailHash("parent@example.com"), "u1");
-  await addLink(w.db, "rankup", emailHash("other@example.com"), "u2");
+  await addLink(w.db, "rankup", testEmailHash("parent@example.com"), "u1");
+  await addLink(w.db, "rankup", testEmailHash("other@example.com"), "u2");
 
-  // the hash as the doc tells support to compute it
-  const hash = crypto.createHash("sha256").update(" Parent@Example.com ".trim().toLowerCase()).digest("hex");
-  assert.equal(hash, emailHash("parent@example.com"));
+  // the hash as the doc tells support to compute it: the script, with the server's key
+  const out = execFileSync(process.execPath, ["scripts/household-email-hash.mjs", " Parent@Example.com "], {
+    env: { ...process.env, HOUSEHOLD_EMAIL_KEY: TEST_EMAIL_KEY.toString("base64") },
+    encoding: "utf8",
+  });
+  const hash = out.trim();
+  assert.equal(hash, testEmailHash("parent@example.com"));
   const res = await w.db.execute({ sql: "DELETE FROM household_email_links WHERE email_hash = ?", args: [hash] });
   assert.equal(res.rowsAffected, 1);
 

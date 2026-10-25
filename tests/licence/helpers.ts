@@ -9,13 +9,19 @@ import { householdHandlers, type HouseholdHandlers } from "../../netlify/functio
 import type { HouseholdDeps, SendCode } from "../../netlify/functions/lib/household.js";
 import { type Signer } from "../../netlify/functions/lib/household-record.js";
 import type { LegacyLookupResult } from "../../netlify/functions/lib/revenuecat-lookup.js";
-import { recordPurchase, type CodePurpose } from "../../netlify/functions/lib/household-store.js";
+import { emailHash, recordPurchase, type CodePurpose } from "../../netlify/functions/lib/household-store.js";
 
 // Shared test scaffolding: a local libsql database file in a temp folder, a signing key made
 // for the test, a clock the test moves, and fakes for the mail and for Paddle. No real secret
 // and no network call is involved anywhere.
 
 export const SCHEMA_PATH = new URL("../../netlify/functions/lib/schema.sql", import.meta.url);
+
+/** The hashing key every test world uses (HOUSEHOLD_EMAIL_KEY's stand-in): 32 fixed bytes. */
+export const TEST_EMAIL_KEY = Buffer.alloc(32, 7);
+
+/** An address as the test worlds store it: keyed with TEST_EMAIL_KEY. */
+export const testEmailHash = (email: string) => emailHash(email, TEST_EMAIL_KEY);
 
 let latestUrl = "";
 
@@ -90,6 +96,8 @@ export interface WorldOptions {
   failSend?: boolean;
   /** When true the /start padding really sleeps (for the timing test); otherwise it is only noted. */
   realSleep?: boolean;
+  /** The hashing key; null is "HOUSEHOLD_EMAIL_KEY not set". Defaults to TEST_EMAIL_KEY. */
+  emailKey?: Buffer | null;
 }
 
 /** Everything one test needs: a database, the handlers over fakes, and the knobs. */
@@ -154,6 +162,7 @@ export async function makeWorld(opts: WorldOptions = {}): Promise<World> {
       if (signerFails.value) throw new Error("household signing key or kid is not set");
       return key.signer;
     },
+    emailKey: opts.emailKey === undefined ? TEST_EMAIL_KEY : opts.emailKey,
     sendCode,
     legacyLookup: legacy.enabled
       ? async (appUserId, entitlementId, platform) => {
