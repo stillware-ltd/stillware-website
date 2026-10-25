@@ -12,9 +12,11 @@ import { PADDLE_PRODUCTS, isComingSoon, type CheckoutSlug } from "../../src/conf
 // the ?licence= parameter that only the upgrade page takes, keeps for its tab and passes to Paddle as
 // custom data. The page's own inline scripts are run here with a fake window, history, storage and Paddle.
 
-const PAGE = readFileSync(new URL("../../src/pages/buy/[product].astro", import.meta.url), "utf8");
-const SUCCESS = readFileSync(new URL("../../src/pages/buy/success.astro", import.meta.url), "utf8");
-const LAYOUT = readFileSync(new URL("../../src/layouts/Layout.astro", import.meta.url), "utf8");
+// Read with LF endings: a Windows checkout (core.autocrlf) gives CRLF, and the scripts are found by text.
+const source = (path: string) => readFileSync(new URL(path, import.meta.url), "utf8").replace(/\r\n/g, "\n");
+const PAGE = source("../../src/pages/buy/[product].astro");
+const SUCCESS = source("../../src/pages/buy/success.astro");
+const LAYOUT = source("../../src/layouts/Layout.astro");
 const HASH = "0123456789abcdef0123456789abcdef0123456789abcdef0123456789abcdef";
 const OTHER = "fedcba9876543210fedcba9876543210fedcba9876543210fedcba9876543210";
 const SITE = "https://www.stillwareltd.com";
