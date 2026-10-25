@@ -3,7 +3,7 @@
 **Status: DRAFT for the founder to adopt (written 25 October 2026, KL.8).** The COPPA Rule (16 CFR 312.10, as amended 22 April 2025) asks for a written policy that says why children's personal information is collected, the business need to keep it, and when it is deleted, and it forbids keeping it indefinitely. The policy's summary is printed in the privacy policy (`/privacy/`, RankUp section, "How Long We Keep It").
 
 - **Owner:** the founder (Stillware Ltd).
-- **Adopted:** `[FOUNDER: date]`.
+- **Adopted:** 25 October 2026 (the founder: "F3 confirmed").
 - **Next review:** one year after adoption, and whenever the service starts keeping something new.
 - **Where it is enforced:** `netlify/functions/household-purge.ts` (hourly, at 17 minutes past), `lib/household-store.ts` and `lib/household-config.ts`. The tests in `tests/licence/purge.test.ts` and `consent.test.ts` hold the figures.
 
@@ -30,8 +30,8 @@ RankUp Chess is directed to children, so the service treats an email typed into 
 4. Backups: `[FOUNDER: Turso's point-in-time restore window for the plan in use]`. A deleted row can survive in a backup until that window passes; it is never restored into the live database except to recover from a fault, and then the purge runs again before the service reopens.
 5. A change to a figure here changes the privacy policy in the same deploy, and `NOTICE_VERSION` in `lib/household-config.ts` when it changes what a parent agreed to.
 
-## The founder's open choices (F3)
+## The founder's choices (F3), confirmed 25 October 2026
 
 - 730 days for a link after its last sign-in (the plan's D5).
 - 13 months for a refunded purchase; active purchases while sold plus 12 months (D6).
-- Whether to delete an active purchase record on request, knowing the household then cannot restore on another device.
+- Any record deleted on request, after telling the person that the household then cannot restore on another device.
