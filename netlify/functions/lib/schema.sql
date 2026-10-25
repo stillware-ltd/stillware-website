@@ -94,10 +94,12 @@ CREATE TABLE IF NOT EXISTS household_store_entitlements (
 CREATE INDEX IF NOT EXISTS idx_household_ent_user ON household_store_entitlements(product, app_user_id);
 
 CREATE TABLE IF NOT EXISTS household_email_links (
-  product     TEXT NOT NULL,
-  email_hash  TEXT NOT NULL,
-  app_user_id TEXT NOT NULL,
-  created_at  TEXT NOT NULL DEFAULT (datetime('now')),
+  product        TEXT NOT NULL,
+  email_hash     TEXT NOT NULL,
+  app_user_id    TEXT NOT NULL,
+  created_at     TEXT NOT NULL DEFAULT (datetime('now')),
+  notice_version TEXT NOT NULL DEFAULT '',
+  last_used_at   TEXT,
   PRIMARY KEY (product, email_hash, app_user_id)
 );
 CREATE INDEX IF NOT EXISTS idx_household_links_user ON household_email_links(app_user_id);

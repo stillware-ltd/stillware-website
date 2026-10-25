@@ -1,6 +1,6 @@
 import crypto from "node:crypto";
 import type { Client } from "@libsql/client";
-import { MAX_TRIES } from "./household-config.js";
+import { LINK_RETENTION_DAYS, MAX_TRIES, REVOKED_RETENTION_DAYS } from "./household-config.js";
 import { canonicalBytes } from "./household-record.js";
 import type { HouseholdRecord, RecordVia, SignedRecord } from "./household-record.js";
 
@@ -33,10 +33,12 @@ CREATE TABLE IF NOT EXISTS household_store_entitlements (
 CREATE INDEX IF NOT EXISTS idx_household_ent_user ON household_store_entitlements(product, app_user_id);
 
 CREATE TABLE IF NOT EXISTS household_email_links (
-  product     TEXT NOT NULL,
-  email_hash  TEXT NOT NULL,
-  app_user_id TEXT NOT NULL,
-  created_at  TEXT NOT NULL DEFAULT (datetime('now')),
+  product        TEXT NOT NULL,
+  email_hash     TEXT NOT NULL,
+  app_user_id    TEXT NOT NULL,
+  created_at     TEXT NOT NULL DEFAULT (datetime('now')),
+  notice_version TEXT NOT NULL DEFAULT '',
+  last_used_at   TEXT,
   PRIMARY KEY (product, email_hash, app_user_id)
 );
 CREATE INDEX IF NOT EXISTS idx_household_links_user ON household_email_links(app_user_id);
@@ -322,11 +324,73 @@ export async function entitlementByLid(db: Client, product: string, lid: string)
 // ---------------------------------------------------------------------------------------------
 // Email links
 
-export async function addLink(db: Client, product: string, hash: string, appUserId: string): Promise<void> {
+/**
+ * Links an address (its keyed hash) to an app user id, with the version of the notice the parent
+ * agreed to (KL.8). Linking again renews the consent: the newer notice and time replace the old.
+ */
+export async function addLink(
+  db: Client,
+  product: string,
+  hash: string,
+  appUserId: string,
+  noticeVersion = "",
+  now?: Date
+): Promise<void> {
   await db.execute({
-    sql: "INSERT OR IGNORE INTO household_email_links (product, email_hash, app_user_id) VALUES (?, ?, ?)",
-    args: [product, hash, appUserId],
+    sql: `INSERT INTO household_email_links (product, email_hash, app_user_id, notice_version, created_at)
+          VALUES (?, ?, ?, ?, COALESCE(?, datetime('now')))
+          ON CONFLICT (product, email_hash, app_user_id)
+          DO UPDATE SET notice_version = excluded.notice_version, created_at = excluded.created_at`,
+    args: [product, hash, appUserId, noticeVersion, now ? now.toISOString() : null],
   });
+}
+
+/** Notes a successful sign-in for an address's links, which restarts their retention clock. */
+export async function touchLinks(db: Client, product: string, hash: string, now: Date): Promise<number> {
+  const res = await db.execute({
+    sql: "UPDATE household_email_links SET last_used_at = ? WHERE product = ? AND email_hash = ?",
+    args: [now.toISOString(), product, hash],
+  });
+  return res.rowsAffected;
+}
+
+/**
+ * Forgets an address (KL.8, a parent taking consent back): every link of it for this product, every
+ * code row for it, and its per-address rate-limit hits. Returns how many links went.
+ */
+export async function removeEmail(db: Client, product: string, hash: string): Promise<number> {
+  const links = await db.execute({
+    sql: "DELETE FROM household_email_links WHERE product = ? AND email_hash = ?",
+    args: [product, hash],
+  });
+  await db.execute({ sql: "DELETE FROM household_codes WHERE product = ? AND email_hash = ?", args: [product, hash] });
+  await db.execute({ sql: "DELETE FROM household_hits WHERE bucket = ?", args: [emailBucket(hash)] });
+  return links.rowsAffected;
+}
+
+/**
+ * After a refund: deletes the links of the app user ids behind those transactions that no longer
+ * own any purchase that is not revoked. A link exists only to restore a purchase.
+ */
+export async function dropLinksOfRefunded(db: Client, transactionIds: string[]): Promise<number> {
+  const ids = [...new Set(transactionIds)];
+  if (ids.length === 0) return 0;
+  const marks = ids.map(() => "?").join(", ");
+  const res = await db.execute({
+    sql: `DELETE FROM household_email_links
+          WHERE app_user_id IN (
+            SELECT app_user_id FROM household_store_entitlements
+            WHERE transaction_id IN (${marks}) OR original_transaction_id IN (${marks})
+          )
+          AND NOT EXISTS (
+            SELECT 1 FROM household_store_entitlements e
+            WHERE e.product = household_email_links.product
+              AND e.app_user_id = household_email_links.app_user_id
+              AND e.revoked = 0
+          )`,
+    args: [...ids, ...ids],
+  });
+  return res.rowsAffected;
 }
 
 export async function linkedAppUsers(db: Client, product: string, hash: string): Promise<string[]> {
@@ -401,7 +465,7 @@ export async function anyPaddleHouseholdLicence(
 // ---------------------------------------------------------------------------------------------
 // Codes
 
-export type CodePurpose = "signin" | "link";
+export type CodePurpose = "signin" | "link" | "remove";
 
 export interface NewCodeInput {
   purpose: CodePurpose;
@@ -433,6 +497,53 @@ export async function purgeOldCodes(db: Client, now: Date): Promise<number> {
   const cutoff = new Date(now.getTime() - RETENTION_HOURS * 3_600_000).toISOString();
   const res = await db.execute({
     sql: "DELETE FROM household_codes WHERE MIN(expires_at, COALESCE(closed_at, expires_at)) < ?",
+    args: [cutoff],
+  });
+  return res.rowsAffected;
+}
+
+/**
+ * Deletes links whose last sign-in (or, never used, whose linking) was more than LINK_RETENTION_DAYS
+ * ago (KL.8; 16 CFR 312.10: no indefinite retention). julianday() reads both of the time formats
+ * the table holds (SQLite's default and ISO 8601).
+ */
+export async function purgeStaleLinks(db: Client, now: Date): Promise<number> {
+  const cutoff = new Date(now.getTime() - LINK_RETENTION_DAYS * 86_400_000).toISOString();
+  const stale = await db.execute({
+    sql: "DELETE FROM household_email_links WHERE julianday(COALESCE(last_used_at, created_at)) < julianday(?)",
+    args: [cutoff],
+  });
+  // A link exists only to restore a store purchase: one whose app user id has no purchase left that
+  // is not revoked has nothing to restore (the refund webhook drops these at once; this catches the rest).
+  const orphaned = await db.execute(`DELETE FROM household_email_links
+    WHERE NOT EXISTS (
+      SELECT 1 FROM household_store_entitlements e
+      WHERE e.product = household_email_links.product
+        AND e.app_user_id = household_email_links.app_user_id
+        AND e.revoked = 0
+    )`);
+  return stale.rowsAffected + orphaned.rowsAffected;
+}
+
+/**
+ * Deletes store purchases refunded more than REVOKED_RETENTION_DAYS ago, with their issued records
+ * and device counts (KL.8). A refunded purchase is kept that long for chargebacks and disputes.
+ */
+export async function purgeRevokedPurchases(db: Client, now: Date): Promise<number> {
+  const cutoff = new Date(now.getTime() - REVOKED_RETENTION_DAYS * 86_400_000).toISOString();
+  const old = `SELECT product, lid FROM household_store_entitlements
+               WHERE revoked = 1 AND revoked_at IS NOT NULL AND julianday(revoked_at) < julianday(?)`;
+  await db.execute({
+    sql: `DELETE FROM household_issued WHERE (product, lid) IN (${old})`,
+    args: [cutoff],
+  });
+  await db.execute({
+    sql: `DELETE FROM household_devices WHERE (product, lid) IN (${old})`,
+    args: [cutoff],
+  });
+  const res = await db.execute({
+    sql: `DELETE FROM household_store_entitlements
+          WHERE revoked = 1 AND revoked_at IS NOT NULL AND julianday(revoked_at) < julianday(?)`,
     args: [cutoff],
   });
   return res.rowsAffected;

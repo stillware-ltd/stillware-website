@@ -215,7 +215,7 @@ test("a refund revokes the licence; the record already issued stays valid", asyn
 
   const refund = await send(w, purchase({ type: "CANCELLATION", cancel_reason: "CUSTOMER_SUPPORT" }));
   assert.equal(refund.status, 200);
-  assert.deepEqual(refund.body, { ok: true, revoked: 1 });
+  assert.deepEqual(refund.body, { ok: true, revoked: 1, unlinked: 0 });
   assert.equal((await rows(w.db))[0].revoked, 1);
 
   // no new record, no sign-in, for the revoked licence ...
@@ -232,11 +232,11 @@ test("a refund is found by either transaction id, and a refund of something unkn
   await send(w, purchase({ app_user_id: "u2", transaction_id: "T3", original_transaction_id: "O3" }));
 
   const byOriginal = await send(w, { event: { type: "REFUND", original_transaction_id: "O1" } });
-  assert.deepEqual(byOriginal.body, { ok: true, revoked: 1 });
+  assert.deepEqual(byOriginal.body, { ok: true, revoked: 1, unlinked: 0 });
 
   const unknown = await send(w, purchase({ type: "CANCELLATION", cancel_reason: "CUSTOMER_SUPPORT", transaction_id: "nope", original_transaction_id: "nope2" }));
   assert.equal(unknown.status, 200);
-  assert.deepEqual(unknown.body, { ok: true, revoked: 0 });
+  assert.deepEqual(unknown.body, { ok: true, revoked: 0, unlinked: 0 });
 
   const state = (await rows(w.db)).map((r) => r.revoked);
   assert.deepEqual(state, [1, 0], "only the refunded purchase was revoked");

@@ -11,6 +11,27 @@ export const DEFAULT_DEVICE_CAP = 10;
 /** A sign-in or link code works for this long. */
 export const CODE_TTL_MINUTES = 10;
 
+// ---- KL.8: verifiable parental consent by "email plus" (16 CFR 312.5(b)(2)(viii)) ----
+
+/**
+ * The version of the notice a parent agrees to: the code email's words (email.ts). Kept with a
+ * linked email (household_email_links.notice_version) so it is known what was agreed. Change it
+ * whenever the notice's meaning changes.
+ */
+export const NOTICE_VERSION = "2026-11-01";
+
+/** The privacy notice the emails link to (16 CFR 312.4(c)(1)(v)): canonical form, trailing slash. */
+export const PRIVACY_URL = "https://www.stillwareltd.com/privacy/";
+
+/** Where a parent writes, or replies, to ask a question or remove their email. */
+export const SUPPORT_EMAIL = "support@stillwareltd.com";
+
+/** A linked email is deleted this many days after its last sign-in (or its linking, if never used). */
+export const LINK_RETENTION_DAYS = 730;
+
+/** A refunded store purchase is deleted this many days after the refund (the chargeback window). */
+export const REVOKED_RETENTION_DAYS = 395;
+
 /** Wrong guesses allowed per code. */
 export const MAX_TRIES = 5;
 

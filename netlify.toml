@@ -86,6 +86,16 @@
   status = 200
 
 [[redirects]]
+  from = "/api/household/email/remove/start"
+  to = "/.netlify/functions/household-email-remove-start"
+  status = 200
+
+[[redirects]]
+  from = "/api/household/email/remove/verify"
+  to = "/.netlify/functions/household-email-remove-verify"
+  status = 200
+
+[[redirects]]
   from = "/api/household/prices"
   to = "/.netlify/functions/household-prices"
   status = 200

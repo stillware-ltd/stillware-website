@@ -3,6 +3,7 @@ import {
   CODES_PER_EMAIL_PER_HOUR,
   CODE_TTL_MINUTES,
   LEGACY_LOOKUPS_PER_ID_PER_HOUR,
+  NOTICE_VERSION,
   type HouseholdSettings,
 } from "./household-config.js";
 import {
@@ -31,9 +32,11 @@ import {
   newCode,
   putIssued,
   recordPurchase,
+  removeEmail,
   storeCode,
   takeDeviceSlot,
   takeHit,
+  touchLinks,
   type CodeCheck,
   type CodePurpose,
   type PaddleLicenceRow,
@@ -53,6 +56,14 @@ export type SendCode = (
   purpose: CodePurpose
 ) => Promise<void>;
 
+/** The "plus" of email plus (KL.8): the confirmation after a link, a sign-in or a removal. */
+export type SendConfirmation = (
+  to: string,
+  product: ProductConfig,
+  kind: "link" | "signin" | "remove",
+  at: Date
+) => Promise<void>;
+
 /** What the logic needs from the outside. The handlers build the real ones; tests build fakes. */
 export interface HouseholdDeps {
   db: Client;
@@ -66,6 +77,7 @@ export interface HouseholdDeps {
    */
   emailKey: Buffer | null;
   sendCode: SendCode;
+  sendConfirmation: SendConfirmation;
   /** Ids of the completed Paddle transactions of the customer(s) with this address. */
   paddleTransactionIds: (email: string) => Promise<string[]>;
   /**
@@ -363,10 +375,11 @@ export async function verifySignin(
   const signer = readSigner(deps);
   if (!signer) return SERVER_MISCONFIGURED;
   const now = deps.now();
+  const hash = emailHash(rawEmail, keyOf(deps));
   const checked = await checkCode(deps.db, {
     purpose: "signin",
     product,
-    emailHash: emailHash(rawEmail, keyOf(deps)),
+    emailHash: hash,
     appUserId: "",
     code,
     now,
@@ -380,7 +393,11 @@ export async function verifySignin(
   if (!(await takeDeviceSlot(deps.db, product, licence.lid, deps.settings.deviceCap, now))) {
     return answer(409, { error: "device_cap" });
   }
-  return answer(200, { ...(await issueRecord(deps, product, licence)) });
+  const record = await issueRecord(deps, product, licence);
+  // A sign-in through a linked email restarts that link's retention clock (KL.8).
+  await touchLinks(deps.db, product, hash, now);
+  await confirm(deps, rawEmail, product, "signin", now);
+  return answer(200, { ...record });
 }
 
 /**
@@ -433,21 +450,80 @@ export async function verifyLink(
 ): Promise<Answer> {
   await ensureHouseholdTables(deps.db);
   const hash = emailHash(rawEmail, keyOf(deps));
+  const now = deps.now();
   const checked = await checkCode(deps.db, {
     purpose: "link",
     product,
     emailHash: hash,
     appUserId,
     code,
-    now: deps.now(),
+    now,
   });
   if (!checked.ok) return codeError(checked);
   // Checked again now: the purchase may have been refunded since the code was sent.
   if ((await entitlementForAppUsers(deps.db, product, [appUserId])) === null) {
     return answer(404, { error: "none" });
   }
-  await addLink(deps.db, product, hash, appUserId);
+  // The parent agreed to this notice (the code mail) by entering its code: keep which one (KL.8).
+  await addLink(deps.db, product, hash, appUserId, NOTICE_VERSION, now);
+  await confirm(deps, rawEmail, product, "link", now);
   return answer(200, { linked: true });
+}
+
+/**
+ * email/remove/start (KL.8): a parent asks to remove a linked address. A code goes to the address
+ * only when it is linked to something; the answer is 200 either way, and a decoy is stored when
+ * nothing is sent, so removal cannot be used to learn whose address is linked.
+ */
+export async function startRemove(
+  deps: HouseholdDeps,
+  product: ProductSlug,
+  rawEmail: string
+): Promise<{ answer: Answer; outcome: "sent" | "no_match" | "limited" }> {
+  await ensureHouseholdTables(deps.db);
+  const email = rawEmail.trim();
+  const hash = emailHash(email, keyOf(deps));
+  const now = deps.now();
+  if (!(await takeHit(deps.db, emailBucket(hash), CODES_PER_EMAIL_PER_HOUR, now))) {
+    return { answer: OK, outcome: "limited" };
+  }
+  const linked = (await linkedAppUsers(deps.db, product, hash)).length > 0;
+  const code = newCode();
+  await storeCode(deps.db, {
+    purpose: "remove",
+    product,
+    emailHash: hash,
+    appUserId: "",
+    code: linked ? code : null,
+    lid: null,
+    lidSource: null,
+    now,
+    ttlMinutes: CODE_TTL_MINUTES,
+  });
+  if (!linked) return { answer: OK, outcome: "no_match" };
+  await mail(deps, email, code, product, "remove");
+  return { answer: OK, outcome: "sent" };
+}
+
+/**
+ * email/remove/verify (KL.8): the code proves the address is the asker's; then every link of it,
+ * its code rows and its rate-limit hits are deleted, and a last mail confirms it. 200
+ * {"removed":true}, or the same code errors as signin/verify.
+ */
+export async function verifyRemove(
+  deps: HouseholdDeps,
+  product: ProductSlug,
+  rawEmail: string,
+  code: string
+): Promise<Answer> {
+  await ensureHouseholdTables(deps.db);
+  const hash = emailHash(rawEmail, keyOf(deps));
+  const now = deps.now();
+  const checked = await checkCode(deps.db, { purpose: "remove", product, emailHash: hash, appUserId: "", code, now });
+  if (!checked.ok) return codeError(checked);
+  await removeEmail(deps.db, product, hash);
+  await confirm(deps, rawEmail, product, "remove", now);
+  return answer(200, { removed: true });
 }
 
 // ---------------------------------------------------------------------------------------------
@@ -466,6 +542,21 @@ function readSigner(deps: HouseholdDeps): Signer | null {
 function codeError(c: Exclude<CodeCheck, { ok: true }>): Answer {
   if (c.error === "wrong_code") return answer(400, { error: "wrong_code", triesLeft: c.triesLeft });
   return answer(400, { error: c.error });
+}
+
+/** Sends a confirmation; like mail(), a failure is logged (never the address) and changes nothing. */
+async function confirm(
+  deps: HouseholdDeps,
+  rawEmail: string,
+  product: ProductSlug,
+  kind: "link" | "signin" | "remove",
+  at: Date
+): Promise<void> {
+  try {
+    await deps.sendConfirmation(rawEmail.trim(), PRODUCTS[product], kind, at);
+  } catch (err) {
+    console.error(`household: could not send a ${kind} confirmation:`, err instanceof Error ? err.message : err);
+  }
 }
 
 async function mail(

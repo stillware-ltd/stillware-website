@@ -6,7 +6,7 @@ import { join, sep } from "node:path";
 import { createClient, type Client } from "@libsql/client";
 import { householdSettings, type Env, type HouseholdSettings } from "../../netlify/functions/lib/household-config.js";
 import { householdHandlers, type HouseholdHandlers } from "../../netlify/functions/lib/household-http.js";
-import type { HouseholdDeps, SendCode } from "../../netlify/functions/lib/household.js";
+import type { HouseholdDeps, SendCode, SendConfirmation } from "../../netlify/functions/lib/household.js";
 import { type Signer } from "../../netlify/functions/lib/household-record.js";
 import type { LegacyLookupResult } from "../../netlify/functions/lib/revenuecat-lookup.js";
 import { emailHash, recordPurchase, type CodePurpose } from "../../netlify/functions/lib/household-store.js";
@@ -88,6 +88,12 @@ export interface SentMail {
   purpose: CodePurpose;
 }
 
+export interface SentConfirmation {
+  to: string;
+  kind: "link" | "signin" | "remove";
+  at: Date;
+}
+
 export interface WorldOptions {
   env?: Env;
   startMinMs?: number;
@@ -107,12 +113,14 @@ export interface World {
   key: TestKey;
   env: Env;
   sent: SentMail[];
+  /** The confirmations (the "plus" of email plus, KL.8), in order. */
+  confirmations: SentConfirmation[];
   /** Paddle's side: a lower-cased address -> its completed transaction ids. */
   paddle: Map<string, string[]>;
   paddleCalls: string[];
   paddleFails: { value: boolean };
   sleeps: number[];
-  mail: { fail: boolean };
+  mail: { fail: boolean; failConfirm: boolean };
   /** While true the signing key is "not configured": the signer throws. */
   signerFails: { value: boolean };
   /**
@@ -141,17 +149,23 @@ export async function makeWorld(opts: WorldOptions = {}): Promise<World> {
   const key = makeKey();
   const env: Env = { HOUSEHOLD_ENABLED: "1", ...opts.env };
   const sent: SentMail[] = [];
+  const confirmations: SentConfirmation[] = [];
   const paddle = new Map<string, string[]>();
   const paddleCalls: string[] = [];
   const paddleFails = { value: false };
   const sleeps: number[] = [];
-  const mail = { fail: opts.failSend ?? false };
+  const mail = { fail: opts.failSend ?? false, failConfirm: false };
   const signerFails = { value: false };
   const legacy: World["legacy"] = { enabled: false, result: { status: "none" }, calls: [] };
 
   const sendCode: SendCode = async (to, code, _product, purpose) => {
     if (mail.fail) throw new Error("fake outage");
     sent.push({ to, code, purpose });
+  };
+
+  const sendConfirmation: SendConfirmation = async (to, _product, kind, at) => {
+    if (mail.failConfirm) throw new Error("fake outage");
+    confirmations.push({ to, kind, at });
   };
 
   const buildDeps = (settings: HouseholdSettings): HouseholdDeps => ({
@@ -164,6 +178,7 @@ export async function makeWorld(opts: WorldOptions = {}): Promise<World> {
     },
     emailKey: opts.emailKey === undefined ? TEST_EMAIL_KEY : opts.emailKey,
     sendCode,
+    sendConfirmation,
     legacyLookup: legacy.enabled
       ? async (appUserId, entitlementId, platform) => {
           legacy.calls.push({ appUserId, entitlementId, platform });
@@ -217,7 +232,7 @@ export async function makeWorld(opts: WorldOptions = {}): Promise<World> {
     return mails[mails.length - 1].code;
   };
 
-  return { db, clock, key, env, sent, paddle, paddleCalls, paddleFails, sleeps, mail, signerFails, legacy, handlers, depsNow, call, lastCode };
+  return { db, clock, key, env, sent, confirmations, paddle, paddleCalls, paddleFails, sleeps, mail, signerFails, legacy, handlers, depsNow, call, lastCode };
 }
 
 let txnCounter = 0;

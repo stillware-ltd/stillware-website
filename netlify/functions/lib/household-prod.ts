@@ -1,5 +1,5 @@
 import { getDb } from "./db.js";
-import { sendHouseholdCodeEmail } from "./email.js";
+import { sendHouseholdCodeEmail, sendHouseholdConfirmationEmail } from "./email.js";
 import { REQUESTS_PER_IP_PER_HOUR, START_MIN_MS } from "./household-config.js";
 import { householdHandlers, type HouseholdHandlers } from "./household-http.js";
 import { loadSigner, type Signer } from "./household-record.js";
@@ -52,6 +52,7 @@ export function productionHandlers(): HouseholdHandlers {
         signer: signerFromEnv,
         emailKey: emailKeyFromEnv(),
         sendCode: sendHouseholdCodeEmail,
+        sendConfirmation: sendHouseholdConfirmationEmail,
         paddleTransactionIds: (email) => paddleCompletedTransactionIds(process.env.PADDLE_API_KEY, email),
       },
       sleep: (ms) => new Promise((resolve) => setTimeout(resolve, ms)),

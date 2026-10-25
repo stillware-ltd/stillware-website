@@ -5,10 +5,12 @@ import { verifySignedRecord } from "../../netlify/functions/lib/household-record
 import type { HouseholdHandlers } from "../../netlify/functions/lib/household-http.js";
 import { addStorePurchase, dumpHouseholdTables, makeWorld } from "./helpers.js";
 
-// Each of the five endpoints (contract §5): valid input, invalid input, the flag off, a wrong
+// Each of the seven endpoints (contract §5; the remove pair is KL.8): valid input, invalid input, the flag off, a wrong
 // product. The sign-in and link flows have their own files.
 
-const NAMES: Array<keyof HouseholdHandlers> = ["fetch", "signinStart", "signinVerify", "linkStart", "linkVerify"];
+const NAMES: Array<keyof HouseholdHandlers> = [
+  "fetch", "signinStart", "signinVerify", "linkStart", "linkVerify", "removeStart", "removeVerify",
+];
 
 const VALID: Record<keyof HouseholdHandlers, object> = {
   fetch: { product: "rankup", appUserId: "$RCAnonymousID:abc", platform: "android" },
@@ -16,6 +18,8 @@ const VALID: Record<keyof HouseholdHandlers, object> = {
   signinVerify: { product: "rankup", email: "parent@example.com", code: "123456", platform: "ios" },
   linkStart: { product: "rankup", appUserId: "$RCAnonymousID:abc", email: "parent@example.com" },
   linkVerify: { product: "rankup", appUserId: "$RCAnonymousID:abc", email: "parent@example.com", code: "123456" },
+  removeStart: { product: "rankup", email: "parent@example.com" },
+  removeVerify: { product: "rankup", email: "parent@example.com", code: "123456" },
 };
 
 test("the flag off: every endpoint answers 404 {error:off}, whatever it is sent", async () => {

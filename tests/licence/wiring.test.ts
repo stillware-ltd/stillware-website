@@ -124,18 +124,20 @@ test("netlify.toml: clean URLs for the five endpoints and the webhook, above the
   }
 });
 
-test("the mail: plain words, the code and the 10 minutes, nothing else", () => {
+test("the mail: plain text, the code and the 10 minutes first, one link (the privacy notice), no marketing", () => {
   const signin = householdCodeMessage(PRODUCTS.rankup, "signin", "123456");
   assert.equal(signin.subject, "Your RankUp Chess sign-in code");
-  assert.equal(
-    signin.text,
-    "Your RankUp Chess sign-in code is 123456. It works for 10 minutes.\n\n" +
-      "If you did not ask for this, you can ignore this email.\n"
-  );
+  assert.match(signin.text, /^Your RankUp Chess sign-in code is 123456\. It works for 10 minutes\.\n\n/);
   const link = householdCodeMessage(PRODUCTS.rankup, "link", "654321");
+  assert.equal(link.subject, "Your RankUp Chess confirmation code");
   assert.match(link.text, /^Your RankUp Chess confirmation code is 654321\. It works for 10 minutes\./);
-  for (const m of [signin, link]) {
-    assert.equal(/https?:|<|price|\$|offer|buy/i.test(m.text), false, "no links, markup or marketing");
+  const remove = householdCodeMessage(PRODUCTS.rankup, "remove", "111222");
+  assert.equal(remove.subject, "Your RankUp Chess code to remove your email");
+  assert.match(remove.text, /^Your RankUp Chess code is 111222\. It works for 10 minutes\./);
+  for (const m of [signin, link, remove]) {
+    const urls = m.text.match(/https?:\/\/\S+/g) ?? [];
+    assert.deepEqual(urls, ["https://www.stillwareltd.com/privacy/"], "the privacy notice is the only link");
+    assert.equal(/<|price|\$|offer|buy|discount/i.test(m.text), false, "no markup or marketing");
   }
 });
 
@@ -158,6 +160,8 @@ test("sendHouseholdCodeEmail: sends the text mail through Resend's API, and thro
     assert.equal(calls[0].body.subject, "Your RankUp Chess sign-in code");
     assert.match(calls[0].body.text, /^Your RankUp Chess sign-in code is 123456\. It works for 10 minutes\./);
     assert.equal("html" in calls[0].body, false, "plain text only");
+    // replies reach support, so "reply to this email" is a real way to take consent back (KL.8)
+    assert.equal(calls[0].body.reply_to, "support@stillwareltd.com");
 
     reply = new Response(JSON.stringify({ name: "validation_error", message: "bad", statusCode: 422 }), { status: 422 });
     await assert.rejects(sendHouseholdCodeEmail("parent@example.com", "123456", PRODUCTS.rankup, "link"), /Resend refused/);

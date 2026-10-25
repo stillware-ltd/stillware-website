@@ -4,6 +4,7 @@ import type { Env } from "./household-config.js";
 import {
   ensureHouseholdTables,
   recordPurchase,
+  dropLinksOfRefunded,
   revokeByTransaction,
   transferAppUser,
   type StoreName,
@@ -113,7 +114,9 @@ export async function handleRevenueCatWebhook(req: Request, deps: RevenueCatDeps
     if (isRefund(ev)) {
       const ids = [str(ev.transaction_id), str(ev.original_transaction_id)].filter((x): x is string => x !== null);
       const revoked = await revokeByTransaction(db, ids, now);
-      return ok({ revoked });
+      // A link exists only to restore a purchase: a household left with none loses its links (KL.8).
+      const unlinked = await dropLinksOfRefunded(db, ids);
+      return ok({ revoked, unlinked });
     }
 
     if (ev.type === "TRANSFER") {

@@ -59,7 +59,7 @@ test("link: the same record comes back by fetch and by the linked address", asyn
   assert.deepEqual(bySignin.body, byFetch.body);
 });
 
-test("link: the address is kept only as a SHA-256 of its normalised form", async () => {
+test("link: the address is kept only as a keyed hash of its normalised form (KL.8)", async () => {
   const w = await makeWorld();
   await addStorePurchase(w, { appUserId: USER });
   await linkStart(w);

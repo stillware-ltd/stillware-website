@@ -212,7 +212,7 @@ test("a refunded upgrade is not brought back by the lookup", async () => {
     new Request("https://x/", { method: "POST", headers: { Authorization: "Bearer s" }, body: JSON.stringify(refund) }),
     { getDb: () => w.db, now: w.clock.now, env: { REVENUECAT_WEBHOOK_AUTH: "Bearer s" } }
   );
-  assert.deepEqual(await wh.json(), { ok: true, revoked: 1 });
+  assert.deepEqual(await wh.json(), { ok: true, revoked: 1, unlinked: 0 });
 
   // even if the lookup still reported the purchase, the same transaction does not become valid again
   const res = await doFetch(w);

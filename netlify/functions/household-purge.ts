@@ -6,15 +6,20 @@ import { purgeHousehold } from "./lib/household-purge.js";
 //  - sign-in and link codes (decoys too) that stopped working more than 24 hours ago, whether
 //    they expired, were used or were replaced;
 //  - rate-limit hits older than 24 hours;
-//  - cached local prices stored more than 24 hours ago.
-// Linked-email hashes, store entitlements, issued records and device counts are not touched.
+//  - cached local prices stored more than 24 hours ago;
+//  - linked-email hashes whose last sign-in (or linking) was more than 730 days ago (KL.8);
+//  - store purchases refunded more than 395 days ago, with their issued records and device counts (KL.8).
+// Other links, purchases, issued records and device counts are not touched.
 // It runs whether or not HOUSEHOLD_ENABLED is on, and needs no variable beyond the database's.
 // It deploys with the site, and Netlify runs scheduled functions on the published production deploy.
 // What is kept and for how long: docs/household-licence-server.md, "Data kept".
 export default async function handler(_req: Request) {
   try {
     const deleted = await purgeHousehold(getDb(), new Date());
-    console.log(`household-purge: deleted ${deleted.codes} code rows, ${deleted.hits} rate-limit rows and ${deleted.prices} cached prices`);
+    console.log(
+      `household-purge: deleted ${deleted.codes} code rows, ${deleted.hits} rate-limit rows, ${deleted.prices} cached prices, ` +
+        `${deleted.links} stale links and ${deleted.revoked} refunded purchases`
+    );
     return new Response(JSON.stringify({ ok: true, ...deleted }), {
       status: 200,
       headers: { "Content-Type": "application/json" },

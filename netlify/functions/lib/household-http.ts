@@ -1,5 +1,14 @@
 import { householdSettings, type Env, type HouseholdSettings } from "./household-config.js";
-import { fetchRecord, isEmail, startLink, startSignin, verifyLink, verifySignin } from "./household.js";
+import {
+  fetchRecord,
+  isEmail,
+  startLink,
+  startRemove,
+  startSignin,
+  verifyLink,
+  verifyRemove,
+  verifySignin,
+} from "./household.js";
 import type { Answer, HouseholdDeps } from "./household.js";
 import { ensureHouseholdTables, ipBucket, takeHit } from "./household-store.js";
 import { isHouseholdProduct, type ProductSlug } from "./products.js";
@@ -32,6 +41,9 @@ export interface HouseholdHandlers {
   signinVerify: HouseholdHandler;
   linkStart: HouseholdHandler;
   linkVerify: HouseholdHandler;
+  /** KL.8: a parent removes a linked address (email/remove/start and email/remove/verify). */
+  removeStart: HouseholdHandler;
+  removeVerify: HouseholdHandler;
 }
 
 const MAX_BODY_BYTES = 8192;
@@ -167,6 +179,22 @@ export function householdHandlers(source: HandlerSource): HouseholdHandlers {
         if (!isEmail(body.email)) return bad("bad_email");
         if (!isCode(body.code)) return bad();
         return reply(await verifyLink(deps.household, product, body.appUserId, body.email, body.code));
+      },
+      { limitIp: true }
+    ),
+    removeStart: endpoint(
+      async ({ deps, product, body }) => {
+        if (!isEmail(body.email)) return bad("bad_email");
+        const email = body.email;
+        return padded(deps, async () => reply((await startRemove(deps.household, product, email)).answer));
+      },
+      { limitIp: true }
+    ),
+    removeVerify: endpoint(
+      async ({ deps, product, body }) => {
+        if (!isEmail(body.email)) return bad("bad_email");
+        if (!isCode(body.code)) return bad();
+        return reply(await verifyRemove(deps.household, product, body.email, body.code));
       },
       { limitIp: true }
     ),

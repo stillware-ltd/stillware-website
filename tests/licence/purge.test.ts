@@ -125,16 +125,16 @@ test("cached prices: stored over 24 hours ago go, 24 hours or less stay", async 
 
 test("a run with nothing to delete deletes nothing, and a second run finds nothing new", async () => {
   const db = await freshDb();
-  assert.deepEqual(await purgeHousehold(db, NOW), { codes: 0, hits: 0, prices: 0 });
+  assert.deepEqual(await purgeHousehold(db, NOW), { codes: 0, hits: 0, prices: 0, links: 0, revoked: 0 });
   await code(db, "old", { created: iso(-3 * DAY), expires: iso(-3 * DAY + 600_000) });
   await hit(db, iso(-3 * DAY));
-  assert.deepEqual(await purgeHousehold(db, NOW), { codes: 1, hits: 1, prices: 0 });
-  assert.deepEqual(await purgeHousehold(db, NOW), { codes: 0, hits: 0, prices: 0 });
+  assert.deepEqual(await purgeHousehold(db, NOW), { codes: 1, hits: 1, prices: 0, links: 0, revoked: 0 });
+  assert.deepEqual(await purgeHousehold(db, NOW), { codes: 0, hits: 0, prices: 0, links: 0, revoked: 0 });
 });
 
 test("it works on a database that has no household tables yet", async () => {
   const db = await freshDb(false);
-  assert.deepEqual(await purgeHousehold(db, NOW), { codes: 0, hits: 0, prices: 0 });
+  assert.deepEqual(await purgeHousehold(db, NOW), { codes: 0, hits: 0, prices: 0, links: 0, revoked: 0 });
 });
 
 test("it leaves the ledger alone: links, entitlements (revoked ones too), issued records and device counts", async () => {
@@ -162,23 +162,32 @@ test("it leaves the ledger alone: links, entitlements (revoked ones too), issued
   assert.equal(await snapshot(), before);
 });
 
-test("a refunded entitlement keeps its row but can no longer issue a record, however long after", async () => {
+test("a refunded purchase: kept 395 days for disputes, issuing nothing; then gone with its record and count (KL.8)", async () => {
   const w = await makeWorld();
   await addStorePurchase(w, { appUserId: "u1", transactionId: "T-REFUND" });
   await addLink(w.db, "rankup", testEmailHash("parent@example.com"), "u1");
   const first = await w.call("fetch", { product: "rankup", appUserId: "u1", platform: "ios" });
   assert.equal(first.status, 200);
+  const count = async (t: string) => Number((await w.db.execute(`SELECT COUNT(*) AS n FROM ${t}`)).rows[0].n);
 
   await w.db.execute({ sql: "UPDATE household_store_entitlements SET revoked = 1, revoked_at = ?", args: [iso(0)] });
-  await purgeHousehold(w.db, new Date(NOW.getTime() + 400 * DAY));
-  w.clock.t = NOW.getTime() + 400 * DAY;
+  await purgeHousehold(w.db, new Date(NOW.getTime() + 394 * DAY));
+  w.clock.t = NOW.getTime() + 394 * DAY;
 
-  // the row is still there (the ledger) ...
+  // day 394: the row is still there (the ledger); its link has nothing left to restore, so it went
   const rows = (await w.db.execute("SELECT revoked FROM household_store_entitlements")).rows;
   assert.equal(rows.length, 1);
   assert.equal(rows[0].revoked, 1);
-  // ... the link too, but nothing signs, links or fetches for it any more
-  assert.equal((await w.db.execute("SELECT COUNT(*) AS n FROM household_email_links")).rows[0].n, 1);
+  assert.equal(await count("household_email_links"), 0);
+  assert.equal(await count("household_issued"), 1);
+
+  // day 396: the refunded purchase, its issued record and its device count are deleted
+  await w.db.execute({ sql: "INSERT INTO household_devices (product, lid, devices, updated_at) SELECT product, lid, 2, ? FROM household_store_entitlements", args: [iso(0)] });
+  const gone = await purgeHousehold(w.db, new Date(NOW.getTime() + 396 * DAY));
+  assert.equal(gone.revoked, 1);
+  assert.equal(await count("household_store_entitlements"), 0);
+  assert.equal(await count("household_issued"), 0);
+  assert.equal(await count("household_devices"), 0);
   assert.equal((await w.call("fetch", { product: "rankup", appUserId: "u1", platform: "ios" })).status, 404);
   const sent = w.sent.length;
   await w.call("signinStart", { product: "rankup", email: "parent@example.com" });
@@ -254,7 +263,7 @@ test("household-purge.ts: an hourly schedule, and a handler that runs the purge 
   try {
     const res = await mod.default(new Request("https://x/", { method: "POST", body: JSON.stringify({ next_run: "x" }) }));
     assert.equal(res.status, 200);
-    assert.deepEqual(await res.json(), { ok: true, codes: 1, hits: 1, prices: 1 });
+    assert.deepEqual(await res.json(), { ok: true, codes: 1, hits: 1, prices: 1, links: 0, revoked: 0 });
   } finally {
     console.log = log;
   }
