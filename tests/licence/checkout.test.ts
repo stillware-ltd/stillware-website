@@ -139,13 +139,15 @@ function visit(slug: CheckoutSlug, address: string, tab: Tab = new Tab(), o: { c
   return { ...out, tab };
 }
 
-test("the two new pages exist, grant a rankup licence, and say 'not available yet' until KL.3 gives them a price id", () => {
+test("the two new pages exist, grant a rankup licence, and carry the price ids KL.3 made; without one they say 'not available yet'", () => {
+  const ids = { "rankup-every-device": "pri_01m5t1fevddc28paxqbpa4q5ks", "rankup-upgrade": "pri_01m5t1gwdqpdt1ewebtjchcpqh" } as const;
   for (const slug of ["rankup-every-device", "rankup-upgrade"] as const) {
     const c = PADDLE_PRODUCTS[slug];
     assert.ok(c, slug);
     assert.equal(c.slug, "rankup");
-    assert.equal(c.priceId, "", `${slug}: no price id until KL.3`);
-    assert.equal(isComingSoon(c), true, `${slug}: opens no checkout`);
+    assert.equal(c.priceId, ids[slug], `${slug}: the KL.3 price id`);
+    assert.equal(isComingSoon(c), false, `${slug}: opens its checkout`);
+    assert.equal(isComingSoon({ ...c, priceId: "" }), true, `${slug}: no id, no checkout`);
     assert.match(c.unavailableHeading ?? "", /Not available yet/);
     assert.match(c.unavailableText ?? "", /isn't available/);
     assert.match(c.unavailableText ?? "", /Nothing has been charged/);

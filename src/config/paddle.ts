@@ -99,7 +99,7 @@ export const PADDLE_PRODUCTS: Record<CheckoutSlug, PaddleProductConfig> = {
     slug: "rankup",
     name: "RankUp Chess: Every device",
     tagline: "Software you own.",
-    priceId: "",
+    priceId: "pri_01m5t1fevddc28paxqbpa4q5ks",
     unavailableHeading: "Not available yet",
     unavailableText: "Every device isn't available to buy yet. Nothing has been charged.",
     licenceNote:
@@ -111,7 +111,7 @@ export const PADDLE_PRODUCTS: Record<CheckoutSlug, PaddleProductConfig> = {
     slug: "rankup",
     name: "RankUp Chess: add Every device",
     tagline: "Software you own.",
-    priceId: "",
+    priceId: "pri_01m5t1gwdqpdt1ewebtjchcpqh",
     unavailableHeading: "Not available yet",
     unavailableText: "Adding Every device isn't available yet. Nothing has been charged.",
     licenceNote:

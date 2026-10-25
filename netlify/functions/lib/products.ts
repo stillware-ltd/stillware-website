@@ -50,9 +50,13 @@ export const PRICE_ID_TO_PRODUCT: Record<string, ProductSlug> = {
   pri_01knnyfj5zezrch30qqbzkc378: "zeroed",
   // RankUp Chess — Lifetime, Windows/Linux ($14.99)
   pri_01knztpnwdqxx8ecnbrjt4zkzq: "rankup",
-  // RankUp Chess — Lifetime, macOS ($19.99). A separate price, but the same
-  // licence product: keys are scoped to `rankup`, not to a platform.
+  // RankUp Chess — Lifetime, macOS ($19.99; $14.99 from 28 October 2026, same id). A separate
+  // price, but the same licence product: keys are scoped to `rankup`, not to a platform.
   pri_01m194cc17phxmgqdqs737mw2p: "rankup",
+  // RankUp Chess — Every device ($24.99), any platform (KL.3, 25 October 2026)
+  pri_01m5t1fevddc28paxqbpa4q5ks: "rankup",
+  // RankUp Chess — the Every device upgrade for a key holder ($9.99) (KL.3, 25 October 2026)
+  pri_01m5t1gwdqpdt1ewebtjchcpqh: "rankup",
 };
 
 /**
@@ -185,14 +189,19 @@ export function isHouseholdProduct(slug: unknown): slug is ProductSlug {
  *   rankupchess_every_device_upgrade: "rankup",
  * The One platform product (rankupchess_premium_unlock) must NOT be listed.
  */
-export const EVERY_DEVICE_STORE_PRODUCT_IDS: Record<string, ProductSlug> = {};
+export const EVERY_DEVICE_STORE_PRODUCT_IDS: Record<string, ProductSlug> = {
+  // The same ids on the App Store and Google Play, as RevenueCat reports them (no suffix),
+  // filled at KL.3 on 25 October 2026.
+  rankupchess_every_device: "rankup",
+  rankupchess_every_device_upgrade: "rankup",
+};
 
 /**
  * Paddle price ids that are Every device. THE FOUNDER FILLS THIS IN AT KL.3; empty until then.
  * Add each id here AND to PRICE_ID_TO_PRODUCT above (the webhook refuses a price it does not
  * know). Do not add it to PRICE_ID_TO_PLATFORM: an Every device licence is for any platform.
  */
-export const EVERY_DEVICE_PADDLE_PRICE_IDS: readonly string[] = [];
+export const EVERY_DEVICE_PADDLE_PRICE_IDS: readonly string[] = ["pri_01m5t1fevddc28paxqbpa4q5ks"];
 
 /**
  * Paddle price ids of the Every device UPGRADE for a desktop key holder ($9.99). THE FOUNDER FILLS
@@ -205,7 +214,7 @@ export const EVERY_DEVICE_PADDLE_PRICE_IDS: readonly string[] = [];
  * email. If the custom data is missing, malformed or matches no upgradable licence, the buyer
  * gets a new Every device licence and key instead: the purchase is never lost.
  */
-export const EVERY_DEVICE_UPGRADE_PADDLE_PRICE_IDS: readonly string[] = [];
+export const EVERY_DEVICE_UPGRADE_PADDLE_PRICE_IDS: readonly string[] = ["pri_01m5t1gwdqpdt1ewebtjchcpqh"];
 
 /** The only tier a household record is issued for. */
 export type LicenceTier = "every_device";
