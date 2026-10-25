@@ -26,7 +26,7 @@
 | A forged household record | Records are signed with Ed25519; the app checks the signature against keys built into it | KD-12 in the RankUp repo |
 | Interception | HTTPS only (Netlify), `www` only | `netlify.toml` |
 | A provider misuses data | Only the providers in `service-providers.md`, each under written terms; nothing is sent to anyone else | `service-providers.md` |
-| Account takeover of a dashboard | `[FOUNDER: two-factor sign-in on Netlify, Turso, Resend, RevenueCat, Paddle and GitHub; confirm each]` | the dashboards |
+| Account takeover of a dashboard | Two-factor sign-in on every dashboard that reaches the data, the logs or the secrets. **Checked 25 October 2026 (read-only):** the Google account the founder signs in with has 2-Step Verification on (since 26 December 2025), which covers **Resend** and **Turso** (both sign in only through Google); **Netlify, Paddle and RevenueCat: off**, to turn on; **GitHub: not confirmed**. `[FOUNDER: confirm when all six are on]` | the dashboards |
 | Too many people with access | Only the founder can read the database, the environment variables and the function logs | the dashboards |
 
 **Data minimisation is a safeguard too:** the service asks for an email only when a grown-up chooses, keeps none for a sign-in, and never receives anything about a child.
