@@ -252,10 +252,11 @@ export const isEmail = (s: unknown): s is string =>
  * fetch: the record of the licence an app user id owns through a store purchase.
  * 404 none otherwise (including a revoked one).
  *
- * An earlier buyer has no entitlement here yet (their purchase predates the webhook), so when
- * none is found and HOUSEHOLD_UPGRADE_BEFORE and a RevenueCat key are set, RevenueCat is asked
- * once (upgradeFromRevenueCat). 503 try_later when it cannot be reached; 429 when this app user
- * id has used up its lookups for the hour.
+ * When none is found and a RevenueCat key is set, RevenueCat is asked (upgradeFromRevenueCat):
+ * an Every device purchase whose webhook row is missing is recorded as the webhook would have,
+ * and an earlier buyer (purchase before HOUSEHOLD_UPGRADE_BEFORE, which predates the webhook)
+ * gets the free upgrade. 503 try_later when it cannot be reached; 429 when this app user id has
+ * used up its lookups for the hour.
  */
 export async function fetchRecord(
   deps: HouseholdDeps,
@@ -278,6 +279,11 @@ export async function fetchRecord(
 }
 
 /**
+ * An Every device purchase the webhook did not record: RevenueCat lists it, so it is recorded
+ * now with the store as `via`, exactly as the webhook records it (the same transaction id, so
+ * a webhook arriving later does not record it twice, and a refund revokes it). No switch date
+ * is needed for this.
+ *
  * The free upgrade of an earlier store buyer. Asks RevenueCat for the app user id's One platform
  * entitlement (at most LEGACY_LOOKUPS_PER_ID_PER_HOUR times an hour per id, counted before the
  * call). A purchase first made before HOUSEHOLD_UPGRADE_BEFORE is stored as an entitlement with
@@ -293,7 +299,7 @@ async function upgradeFromRevenueCat(
   platform?: string
 ): Promise<Eligible | null | "unavailable" | "limited"> {
   const { settings, legacyLookup } = deps;
-  if (!legacyLookup || !settings.upgradeBefore) return null;
+  if (!legacyLookup) return null;
   if (!(await takeHit(deps.db, legacyLookupBucket(appUserId, keyOf(deps)), LEGACY_LOOKUPS_PER_ID_PER_HOUR, deps.now()))) {
     return "limited";
   }
@@ -308,7 +314,22 @@ async function upgradeFromRevenueCat(
   if (found.status === "none") return null;
 
   const p = found.purchase;
-  if (!(p.purchased < settings.upgradeBefore)) return null;
+  if (found.status === "every_device") {
+    await recordPurchase(deps.db, {
+      product,
+      appUserId,
+      productId: p.productId,
+      store: p.store,
+      via: p.store,
+      purchased: p.purchased,
+      transactionId: p.transactionId,
+      originalTransactionId: p.transactionId,
+      environment: p.sandbox ? "SANDBOX" : "PRODUCTION",
+    });
+    // Null if that transaction was recorded before and since refunded.
+    return eligibleForAppUser(deps.db, product, [appUserId]);
+  }
+  if (!settings.upgradeBefore || !(p.purchased < settings.upgradeBefore)) return null;
   await recordPurchase(deps.db, {
     product,
     appUserId,

@@ -1,5 +1,6 @@
 import crypto from "node:crypto";
 import type { StoreName } from "./household-store.js";
+import { EVERY_DEVICE_STORE_PRODUCT_IDS, everyDeviceStoreProduct, type ProductSlug } from "./products.js";
 
 // Earlier store buyers (KL.2, round 2). Their One platform purchase was made before this server
 // heard of RevenueCat's webhook, so `fetch` asks RevenueCat's REST API once, when it finds no
@@ -12,6 +13,11 @@ import type { StoreName } from "./household-store.js";
 //   subscriber.non_subscriptions[<product id>] = [{ id, store, purchase_date, original_purchase_date,
 //                                                    is_sandbox, store_transaction_id }]
 // A sandbox purchase at KL.3 confirms it (docs/household-licence-server.md says so too).
+//
+// The same answer also lists Every device purchases. When the webhook's row is missing (the
+// webhook not set up yet, or a delivery that failed), an Every device purchase found there is
+// "every_device", and `fetch` records it as the webhook would have (found 26 October 2026: a
+// missing webhook otherwise left a buyer waiting for their licence for good).
 //
 // The secret API key is only ever put in the Authorization header. It is not logged, and an
 // error is logged by its class name alone: a message could carry the key.
@@ -32,6 +38,7 @@ export interface LegacyPurchase {
 }
 
 export type LegacyLookupResult =
+  | { status: "every_device"; purchase: LegacyPurchase }
   | { status: "purchase"; purchase: LegacyPurchase }
   | { status: "none" }
   | { status: "unavailable" };
@@ -69,13 +76,12 @@ function storeFromPlatform(platform: string | undefined): StoreName | null {
  * RevenueCat lists no such entry at all, the entitlement's own `purchase_date` is used, with
  * the store taken from the platform the asking device reported.
  */
-export function legacyPurchaseFrom(
+/** The subscriber and its active entitlement [entitlementId], or null. */
+function activeEntitlement(
   body: unknown,
   entitlementId: string,
-  appUserId: string,
-  platform?: string,
-  now: Date = new Date()
-): LegacyPurchase | null {
+  now: Date
+): { subscriber: Record<string, unknown>; entitlement: Record<string, unknown> } | null {
   const subscriber = asObject(asObject(body)?.subscriber);
   if (!subscriber) return null;
   const entitlements = asObject(subscriber.entitlements);
@@ -88,6 +94,80 @@ export function legacyPurchaseFrom(
     const expires = Date.parse(String(entitlement.expires_date));
     if (!Number.isFinite(expires) || expires <= now.getTime()) return null;
   }
+  return { subscriber, entitlement };
+}
+
+/** A `non_subscriptions` entry from a supported store, with its store and time. */
+interface StoreEntry {
+  entry: Record<string, unknown>;
+  store: StoreName;
+  ms: number;
+}
+
+/** The entries of [productId] from a supported store, earliest first. */
+function storeEntries(nonSubscriptions: Record<string, unknown> | null, productId: string): StoreEntry[] {
+  const entries =
+    nonSubscriptions && Object.hasOwn(nonSubscriptions, productId) && Array.isArray(nonSubscriptions[productId])
+      ? (nonSubscriptions[productId] as unknown[])
+      : [];
+  return entries
+    .map((raw) => {
+      const entry = asObject(raw);
+      if (!entry) return null;
+      const store = STORE_BY_REVENUECAT[String(entry.store ?? "").toLowerCase()];
+      const ms = Date.parse(String(entry.original_purchase_date ?? entry.purchase_date));
+      return store && Number.isFinite(ms) ? { entry, store, ms } : null;
+    })
+    .filter((c): c is StoreEntry => c !== null)
+    .sort((a, b) => a.ms - b.ms);
+}
+
+/**
+ * The earliest real store purchase of an Every device product (Every device, or the upgrade to
+ * it) by a subscriber whose entitlement [entitlementId] is active, or null. The products are
+ * found by id in `non_subscriptions`, not through the entitlement's `product_identifier`: a
+ * household that upgraded holds the entitlement from its first, one-device purchase.
+ */
+export function everyDevicePurchaseFrom(
+  body: unknown,
+  entitlementId: string,
+  appUserId: string,
+  now: Date = new Date(),
+  ids: Record<string, ProductSlug> = EVERY_DEVICE_STORE_PRODUCT_IDS
+): LegacyPurchase | null {
+  const active = activeEntitlement(body, entitlementId, now);
+  if (!active) return null;
+  const nonSubscriptions = asObject(active.subscriber.non_subscriptions);
+  if (!nonSubscriptions) return null;
+  const found = Object.keys(nonSubscriptions)
+    .filter((productId) => everyDeviceStoreProduct(productId, ids) !== null)
+    .flatMap((productId) => storeEntries(nonSubscriptions, productId).map((c) => ({ ...c, productId })))
+    .sort((a, b) => a.ms - b.ms);
+  const first = found[0];
+  if (!first) return null;
+  const stamp = utcDate(first.ms);
+  return {
+    productId: first.productId,
+    store: first.store,
+    purchased: stamp,
+    transactionId:
+      text(first.entry.store_transaction_id) ??
+      text(first.entry.id) ??
+      `rc-lookup:${crypto.createHash("sha256").update(appUserId).digest("hex").slice(0, 16)}:${first.productId}:${stamp}`,
+    sandbox: first.entry.is_sandbox === true,
+  };
+}
+
+export function legacyPurchaseFrom(
+  body: unknown,
+  entitlementId: string,
+  appUserId: string,
+  platform?: string,
+  now: Date = new Date()
+): LegacyPurchase | null {
+  const active = activeEntitlement(body, entitlementId, now);
+  if (!active) return null;
+  const { subscriber, entitlement } = active;
   const productId = text(entitlement.product_identifier);
   if (!productId) return null;
 
@@ -164,6 +244,8 @@ export async function lookupLegacyPurchase(o: LookupOptions): Promise<LegacyLook
     console.error("household: RevenueCat lookup failed:", err instanceof Error ? err.name : "error");
     return { status: "unavailable" };
   }
+  const everyDevice = everyDevicePurchaseFrom(body, o.entitlementId, o.appUserId, o.now);
+  if (everyDevice) return { status: "every_device", purchase: everyDevice };
   const purchase = legacyPurchaseFrom(body, o.entitlementId, o.appUserId, o.platform, o.now);
   return purchase ? { status: "purchase", purchase } : { status: "none" };
 }

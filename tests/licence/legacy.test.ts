@@ -169,14 +169,14 @@ test("no RevenueCat key (no lookup function): the answer is today's 404 none, wi
   assert.equal(w.legacy.calls.length, 0);
 });
 
-test("no switch date: RevenueCat is never asked, even with a key", async () => {
+test("no switch date: an earlier purchase is never upgraded (RevenueCat is still asked, for Every device)", async () => {
   for (const date of [undefined, "", "soon", "2026-13-45x"]) {
     const w = await makeWorld({ env: { HOUSEHOLD_UPGRADE_BEFORE: date } });
     w.legacy.enabled = true;
     w.legacy.result = { status: "purchase", purchase: purchase() };
     const res = await doFetch(w);
     assert.equal(res.status, 404, String(date));
-    assert.equal(w.legacy.calls.length, 0, String(date));
+    assert.equal((await rows(w)).length, 0, String(date));
   }
 });
 

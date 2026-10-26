@@ -109,11 +109,13 @@ test("without REVENUECAT_SECRET_API_KEY: 404 none and no call", async () => {
   assert.equal(seen.length, 0);
 });
 
-test("without HOUSEHOLD_UPGRADE_BEFORE: 404 none and no call, key or not", async () => {
+// RevenueCat is asked even without the date (an Every device purchase whose webhook row is
+// missing needs no date), but a One platform purchase is never upgraded without it.
+test("without HOUSEHOLD_UPGRADE_BEFORE: 404 none, nothing upgraded, with a key", async () => {
   process.env.REVENUECAT_SECRET_API_KEY = SECRET;
   const res = await call(`wired-${++counter}`);
   assert.equal(res.status, 404);
-  assert.equal(seen.length, 0);
+  assert.equal(seen.length, 1);
 });
 
 test("a purchase on the switch date or later is not upgraded", async () => {
