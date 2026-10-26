@@ -15,7 +15,7 @@ import { isHouseholdProduct } from "./products.js";
  * and for a revoked licence, so nothing changes for today's licences until the switch.
  */
 export function everyDeviceOfLicence(
-  row: { revoked: unknown; tier: unknown; created_at: unknown },
+  row: { revoked: unknown; tier: unknown; created_at: unknown; paddle_txn_id: unknown },
   productSlug: string,
   settings: HouseholdSettings
 ): { via: "paddle" | "upgrade"; purchased: string } | null {

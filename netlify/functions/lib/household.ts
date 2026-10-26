@@ -18,6 +18,7 @@ import {
 import {
   addLink,
   anyPaddleHouseholdLicence,
+  isClassroomTxn,
   checkCode,
   emailBucket,
   emailHash,
@@ -122,14 +123,19 @@ export interface Eligible {
  * A revoked licence is neither. `purchased` is the date the licence was created, in UTC.
  */
 export function householdTierOfLicence(
-  row: { revoked: unknown; tier: unknown; created_at: unknown },
+  // paddle_txn_id is required, so no caller can forget the classroom rule below.
+  row: { revoked: unknown; tier: unknown; created_at: unknown; paddle_txn_id: unknown },
   upgradeBefore: string | null
 ): { via: "paddle" | "upgrade"; purchased: string } | null {
   if (Number(row.revoked) !== 0) return null;
   const purchased = String(row.created_at ?? "").slice(0, 10);
   if (!/^\d{4}-\d{2}-\d{2}$/.test(purchased)) return null;
   if (row.tier === "every_device") return { via: "paddle", purchased };
-  if (upgradeBefore && purchased < upgradeBefore) return { via: "upgrade", purchased };
+  // A classroom licence was never bought: there is no earlier purchase to upgrade (E-26; found
+  // 26 October 2026, when one minted before the date would have become a household licence).
+  if (upgradeBefore && purchased < upgradeBefore && !isClassroomTxn(row.paddle_txn_id)) {
+    return { via: "upgrade", purchased };
+  }
   return null;
 }
 

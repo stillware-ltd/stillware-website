@@ -62,7 +62,12 @@ export default async function handler(req: Request, _context: Context) {
   // signed record, as license-activate's answer carries it, so a key holder gets it at the next
   // periodic check without entering the key again. Nothing is added while HOUSEHOLD_ENABLED is off.
   const everyDevice = everyDeviceOfLicence(
-    { revoked: license.revoked, tier: license.tier, created_at: license.created_at },
+    {
+      revoked: license.revoked,
+      tier: license.tier,
+      created_at: license.created_at,
+      paddle_txn_id: license.paddle_txn_id,
+    },
     productSlug,
     householdSettings(process.env)
   );

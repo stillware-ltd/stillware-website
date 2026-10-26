@@ -404,11 +404,23 @@ export async function linkedAppUsers(db: Client, product: string, hash: string):
 // ---------------------------------------------------------------------------------------------
 // Paddle licences (the existing `licenses` table)
 
+/**
+ * The txn id prefix of a free RankUp classroom licence (DECISIONS.md E-26, minted by
+ * scripts/mint-press-key.mjs --classroom as "classroom-<label>-<year>"). The switch-date rule
+ * skips these: they were never bought, so there is no earlier purchase to upgrade.
+ */
+export const CLASSROOM_TXN_PREFIX = "classroom-";
+
+/** Whether a licence's txn id marks a classroom licence. */
+export const isClassroomTxn = (txn: unknown): boolean =>
+  typeof txn === "string" && txn.startsWith(CLASSROOM_TXN_PREFIX);
+
 export interface PaddleLicenceRow {
   id: string;
   revoked: number;
   tier: string | null;
   created_at: string;
+  paddle_txn_id: string | null;
 }
 
 function toLicenceRow(row: Record<string, unknown>): PaddleLicenceRow {
@@ -417,6 +429,7 @@ function toLicenceRow(row: Record<string, unknown>): PaddleLicenceRow {
     revoked: Number(row.revoked),
     tier: row.tier === null || row.tier === undefined ? null : String(row.tier),
     created_at: String(row.created_at),
+    paddle_txn_id: row.paddle_txn_id === null || row.paddle_txn_id === undefined ? null : String(row.paddle_txn_id),
   };
 }
 
@@ -429,7 +442,7 @@ export async function licencesByTransactions(
   if (transactionIds.length === 0) return [];
   const marks = transactionIds.map(() => "?").join(", ");
   const res = await db.execute({
-    sql: `SELECT id, revoked, tier, created_at FROM licenses
+    sql: `SELECT id, revoked, tier, created_at, paddle_txn_id FROM licenses
           WHERE product = ? AND paddle_txn_id IN (${marks}) ORDER BY created_at ASC, id ASC`,
     args: [product, ...transactionIds],
   });
@@ -438,7 +451,7 @@ export async function licencesByTransactions(
 
 export async function licenceById(db: Client, product: string, id: string): Promise<PaddleLicenceRow | null> {
   const res = await db.execute({
-    sql: "SELECT id, revoked, tier, created_at FROM licenses WHERE product = ? AND id = ?",
+    sql: "SELECT id, revoked, tier, created_at, paddle_txn_id FROM licenses WHERE product = ? AND id = ?",
     args: [product, id],
   });
   return res.rows.length ? toLicenceRow(res.rows[0] as unknown as Record<string, unknown>) : null;
@@ -446,7 +459,8 @@ export async function licenceById(db: Client, product: string, id: string): Prom
 
 /**
  * Whether the licences table holds any licence that could be Every device: tagged so, or old
- * enough to be upgraded. When it holds none, sign-in skips the Paddle lookup altogether.
+ * enough to be upgraded (not a classroom licence). When it holds none, sign-in skips the Paddle
+ * lookup altogether.
  */
 export async function anyPaddleHouseholdLicence(
   db: Client,
@@ -455,9 +469,10 @@ export async function anyPaddleHouseholdLicence(
 ): Promise<boolean> {
   const res = await db.execute({
     sql: `SELECT 1 FROM licenses
-          WHERE product = ? AND revoked = 0 AND (tier = 'every_device' OR (? IS NOT NULL AND created_at < ?))
+          WHERE product = ? AND revoked = 0 AND (tier = 'every_device' OR (? IS NOT NULL AND created_at < ?
+            AND (paddle_txn_id IS NULL OR paddle_txn_id NOT LIKE ?)))
           LIMIT 1`,
-    args: [product, upgradeBefore, upgradeBefore],
+    args: [product, upgradeBefore, upgradeBefore, `${CLASSROOM_TXN_PREFIX}%`],
   });
   return res.rows.length > 0;
 }

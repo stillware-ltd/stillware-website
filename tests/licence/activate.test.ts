@@ -54,6 +54,7 @@ beforeEach(async () => {
 
 async function addLicence(o: {
   product?: string; platform?: string | null; tier?: string | null; max?: number; created?: string; revoked?: number;
+  txn?: string;
 }): Promise<{ licenceKey: string; id: string }> {
   const licenceKey = `KEY-${++counter}-${crypto.randomBytes(6).toString("hex")}`;
   const id = crypto.randomBytes(16).toString("hex");
@@ -61,7 +62,7 @@ async function addLicence(o: {
     sql: `INSERT INTO licenses (id, key_hash, email, paddle_txn_id, product, max_activations, created_at, revoked, platform, tier)
           VALUES (?, ?, 'not-stored', ?, ?, ?, ?, ?, ?, ?)`,
     args: [
-      id, hashLicenseKey(licenceKey), `txn-${counter}`, o.product ?? "rankup", o.max ?? 3,
+      id, hashLicenseKey(licenceKey), o.txn ?? `txn-${counter}`, o.product ?? "rankup", o.max ?? 3,
       o.created ?? "2026-10-10 12:00:00", o.revoked ?? 0, o.platform ?? null, o.tier ?? null,
     ],
   });
@@ -138,6 +139,25 @@ test("flag on: the free upgrade of an earlier buyer works on any platform and sa
   const fresh = await addLicence({ platform: "windows", created: "2026-10-20 00:00:00" });
   const refused = await call(fresh.licenceKey, "m1", { platform: "macos" });
   assert.equal(refused.status, 403);
+});
+
+// A free classroom licence (RankUp DECISIONS.md E-26, minted by scripts/mint-press-key.mjs
+// --classroom with the txn id "classroom-<label>-<year>") is Premium and 30 profiles on the
+// computers it activates on, not Every device: minted before the switch date, it must not
+// become a household licence whose backups would unlock any number of devices.
+test("flag on: a classroom key minted before the switch date gets no record and keeps its own limit", async () => {
+  process.env.HOUSEHOLD_ENABLED = "1";
+  process.env.HOUSEHOLD_UPGRADE_BEFORE = "2026-10-28";
+  const classroom = await addLicence({ txn: "classroom-oakwood-chess-club-2026", created: "2026-10-05 09:00:00", max: 10 });
+  const res = await call(classroom.licenceKey, "m1", { platform: "windows" });
+  assert.equal(res.status, 200);
+  assert.equal(res.body.household, undefined);
+  for (let i = 2; i <= 10; i++) assert.equal((await call(classroom.licenceKey, `m${i}`, { platform: "macos" })).status, 200);
+  assert.equal((await call(classroom.licenceKey, "m11", { platform: "windows" })).status, 403, "its own 10, not more");
+
+  // An ordinary key minted the same day is still due the free upgrade.
+  const bought = await addLicence({ platform: "windows", created: "2026-10-05 09:00:00" });
+  assert.equal((await call(bought.licenceKey, "m1", { platform: "windows" })).body.household.record.via, "upgrade");
 });
 
 test("flag on: a plain licence is untouched (platform check, device limit, no record)", async () => {

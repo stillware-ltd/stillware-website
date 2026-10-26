@@ -53,6 +53,7 @@ beforeEach(async () => {
 
 async function addLicence(o: {
   product?: string; platform?: string | null; tier?: string | null; max?: number; created?: string; revoked?: number;
+  txn?: string;
 }): Promise<{ licenceKey: string; id: string }> {
   const licenceKey = `KEY-${++counter}-${crypto.randomBytes(6).toString("hex")}`;
   const id = crypto.randomBytes(16).toString("hex");
@@ -60,7 +61,7 @@ async function addLicence(o: {
     sql: `INSERT INTO licenses (id, key_hash, email, paddle_txn_id, product, max_activations, created_at, revoked, platform, tier)
           VALUES (?, ?, 'not-stored', ?, ?, ?, ?, ?, ?, ?)`,
     args: [
-      id, hashLicenseKey(licenceKey), `txn-${counter}`, o.product ?? "rankup", o.max ?? 3,
+      id, hashLicenseKey(licenceKey), o.txn ?? `txn-${counter}`, o.product ?? "rankup", o.max ?? 3,
       o.created ?? "2026-10-10 12:00:00", o.revoked ?? 0, o.platform ?? null, o.tier ?? null,
     ],
   });
@@ -142,6 +143,15 @@ test("flag on: a per-platform licence bought on or after the switch date gets no
   const { licenceKey } = await addLicence({ platform: "windows", created: "2026-01-01 00:00:00" });
   assert.deepEqual((await check(licenceKey)).body, { valid: true });
   assert.equal((await db.execute("SELECT COUNT(*) AS n FROM household_issued")).rows[0].n, 0);
+});
+
+test("flag on: a classroom key minted before the switch date is valid, with no record", async () => {
+  process.env.HOUSEHOLD_ENABLED = "1";
+  process.env.HOUSEHOLD_UPGRADE_BEFORE = "2026-10-28";
+  const classroom = await addLicence({ txn: "classroom-oakwood-chess-club-2026", created: "2026-10-05 09:00:00", max: 10 });
+  const res = await check(classroom.licenceKey);
+  assert.equal(res.body.valid, true);
+  assert.equal(res.body.household, undefined);
 });
 
 test("flag on: a revoked licence is invalid, with no record, whatever its tier", async () => {

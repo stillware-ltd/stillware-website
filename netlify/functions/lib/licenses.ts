@@ -73,7 +73,7 @@ export async function findLicenseByKey(
   await ensureLicensePlatformColumn(db);
   await ensureLicenceTierColumn(db);
   const original = await db.execute({
-    sql: `SELECT id, max_activations, revoked, platform, tier, created_at
+    sql: `SELECT id, max_activations, revoked, platform, tier, created_at, paddle_txn_id
           FROM licenses WHERE key_hash = ? AND product = ?`,
     args: [keyHash, product],
   });
@@ -81,7 +81,7 @@ export async function findLicenseByKey(
 
   await ensureLicenseKeysTable(db);
   const reissued = await db.execute({
-    sql: `SELECT l.id, l.max_activations, l.revoked, l.platform, l.tier, l.created_at
+    sql: `SELECT l.id, l.max_activations, l.revoked, l.platform, l.tier, l.created_at, l.paddle_txn_id
           FROM license_keys k JOIN licenses l ON l.id = k.license_id
           WHERE k.key_hash = ? AND l.product = ?`,
     args: [keyHash, product],

@@ -58,7 +58,7 @@ export default async function handler(req: Request, _context: Context) {
   // HOUSEHOLD_ENABLED is off, so nothing below changes for today's licences until the switch.
   const settings = householdSettings(process.env);
   const everyDevice = everyDeviceOfLicence(
-    { revoked: row.revoked, tier: row.tier, created_at: row.created_at },
+    { revoked: row.revoked, tier: row.tier, created_at: row.created_at, paddle_txn_id: row.paddle_txn_id },
     productSlug,
     settings
   );
