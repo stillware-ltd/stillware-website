@@ -245,6 +245,21 @@ export async function recordPurchase(db: Client, p: PurchaseInput): Promise<"rec
   return res.rowsAffected > 0 ? "recorded" : "duplicate";
 }
 
+/** The app user id holding the entitlement bought in this store transaction, revoked or not. */
+export async function holderOfTransaction(
+  db: Client,
+  product: string,
+  transactionId: string
+): Promise<{ appUserId: string; revoked: boolean } | null> {
+  const res = await db.execute({
+    sql: "SELECT app_user_id, revoked FROM household_store_entitlements WHERE product = ? AND transaction_id = ?",
+    args: [product, transactionId],
+  });
+  if (!res.rows.length) return null;
+  const row = res.rows[0];
+  return { appUserId: String(row.app_user_id), revoked: Number(row.revoked) !== 0 };
+}
+
 /**
  * A refund: revokes the entitlement bought in any of these store transactions. Records already
  * issued are not touched (honour-based: the app keeps verifying them). Returns how many

@@ -26,6 +26,7 @@ import {
   entitlementByLid,
   entitlementForAppUsers,
   getIssued,
+  holderOfTransaction,
   licenceById,
   licencesByTransactions,
   linkedAppUsers,
@@ -38,6 +39,7 @@ import {
   takeDeviceSlot,
   takeHit,
   touchLinks,
+  transferAppUser,
   type CodeCheck,
   type CodePurpose,
   type PaddleLicenceRow,
@@ -297,6 +299,10 @@ export async function fetchRecord(
  * it here and RevenueCat is not asked again. A purchase on or after that date, no purchase or a
  * 404 is null (the same as never having bought). Nothing is stored when RevenueCat cannot be
  * reached.
+ *
+ * Either purchase may already be stored under another app user id: the same store account on a
+ * reinstall, a new phone or a second device, which RevenueCat has moved to this id. It is moved
+ * here (takeOverTransaction), as RevenueCat's TRANSFER event would.
  */
 async function upgradeFromRevenueCat(
   deps: HouseholdDeps,
@@ -320,35 +326,44 @@ async function upgradeFromRevenueCat(
   if (found.status === "none") return null;
 
   const p = found.purchase;
-  if (found.status === "every_device") {
-    await recordPurchase(deps.db, {
-      product,
-      appUserId,
-      productId: p.productId,
-      store: p.store,
-      via: p.store,
-      purchased: p.purchased,
-      transactionId: p.transactionId,
-      originalTransactionId: p.transactionId,
-      environment: p.sandbox ? "SANDBOX" : "PRODUCTION",
-    });
-    // Null if that transaction was recorded before and since refunded.
-    return eligibleForAppUser(deps.db, product, [appUserId]);
-  }
-  if (!settings.upgradeBefore || !(p.purchased < settings.upgradeBefore)) return null;
-  await recordPurchase(deps.db, {
+  const everyDevice = found.status === "every_device";
+  if (!everyDevice && (!settings.upgradeBefore || !(p.purchased < settings.upgradeBefore))) return null;
+  const stored = await recordPurchase(deps.db, {
     product,
     appUserId,
     productId: p.productId,
     store: p.store,
-    via: "upgrade",
+    via: everyDevice ? p.store : "upgrade",
     purchased: p.purchased,
     transactionId: p.transactionId,
     originalTransactionId: p.transactionId,
     environment: p.sandbox ? "SANDBOX" : "PRODUCTION",
   });
-  // Null if that transaction was recorded before and since refunded (or for another app user id).
+  if (stored === "duplicate") await takeOverTransaction(deps.db, product, p.transactionId, appUserId);
+  // Null if that transaction was recorded before and since refunded.
   return eligibleForAppUser(deps.db, product, [appUserId]);
+}
+
+/**
+ * A purchase RevenueCat lists for this app user id that is stored under another one. RevenueCat
+ * lists a purchase only for the id that owns it now, so the store account's purchases have moved
+ * here: the app was reinstalled, or set up on a new phone or a second device with the same store
+ * account. RevenueCat's TRANSFER event moves them, but it may not have arrived yet, or never will
+ * (it came before the webhook was set up). Found 27 October 2026, when a reinstall on the
+ * founder's phone waited for its licence for good. Moves them as that event does
+ * (transferAppUser: the entitlements and the email links), so a TRANSFER arriving later moves
+ * nothing. The licence id stays the same; a device slot is only ever taken at sign-in. A
+ * refunded purchase stays where it is.
+ */
+async function takeOverTransaction(
+  db: Client,
+  product: string,
+  transactionId: string,
+  appUserId: string
+): Promise<void> {
+  const holder = await holderOfTransaction(db, product, transactionId);
+  if (!holder || holder.revoked || holder.appUserId === appUserId) return;
+  await transferAppUser(db, [holder.appUserId], appUserId);
 }
 
 /**
