@@ -4,6 +4,8 @@ import { REQUESTS_PER_IP_PER_HOUR, START_MIN_MS } from "./household-config.js";
 import { householdHandlers, type HouseholdHandlers } from "./household-http.js";
 import { loadSigner, type Signer } from "./household-record.js";
 import { parseEmailKey } from "./household-store.js";
+import { outboxKey } from "./mail-outbox.js";
+import { codeSender, confirmationSender, realSleep } from "./mail-prod.js";
 import { paddleCompletedTransactionIds } from "./paddle-lookup.js";
 import { lookupLegacyPurchase, type LegacyLookup } from "./revenuecat-lookup.js";
 
@@ -32,6 +34,12 @@ export function emailKeyFromEnv(): Buffer | null {
   return cachedEmailKey.key;
 }
 
+/** The key failed mails are sealed with (lib/mail-outbox.ts), derived from HOUSEHOLD_EMAIL_KEY; null when that is unusable. */
+export function outboxKeyFromEnv(): Buffer | null {
+  const key = emailKeyFromEnv();
+  return key ? outboxKey(key) : null;
+}
+
 /** RevenueCat lookups for earlier buyers, only when REVENUECAT_SECRET_API_KEY is set. */
 function legacyLookupFromEnv(): LegacyLookup | undefined {
   const key = (process.env.REVENUECAT_SECRET_API_KEY ?? "").trim();
@@ -43,21 +51,27 @@ function legacyLookupFromEnv(): LegacyLookup | undefined {
 export function productionHandlers(): HouseholdHandlers {
   return householdHandlers({
     env: () => process.env,
-    build: (settings) => ({
-      household: {
-        legacyLookup: legacyLookupFromEnv(),
-        db: getDb(),
-        now: () => new Date(),
-        settings,
-        signer: signerFromEnv,
-        emailKey: emailKeyFromEnv(),
-        sendCode: sendHouseholdCodeEmail,
-        sendConfirmation: sendHouseholdConfirmationEmail,
-        paddleTransactionIds: (email) => paddleCompletedTransactionIds(process.env.PADDLE_API_KEY, email),
-      },
-      sleep: (ms) => new Promise((resolve) => setTimeout(resolve, ms)),
-      startMinMs: START_MIN_MS,
-      perIpLimit: REQUESTS_PER_IP_PER_HOUR,
-    }),
+    build: (settings) => {
+      const db = getDb();
+      const now = () => new Date();
+      return {
+        household: {
+          legacyLookup: legacyLookupFromEnv(),
+          db,
+          now,
+          settings,
+          signer: signerFromEnv,
+          emailKey: emailKeyFromEnv(),
+          // Tried again at once on a passing failure; a confirmation that still fails is kept and
+          // retried by the hourly run, a code is counted (lib/mail-prod.ts).
+          sendCode: codeSender({ db, now, sleep: realSleep, send: sendHouseholdCodeEmail }),
+          sendConfirmation: confirmationSender({ db, key: outboxKeyFromEnv(), now, sleep: realSleep, send: sendHouseholdConfirmationEmail }),
+          paddleTransactionIds: (email) => paddleCompletedTransactionIds(process.env.PADDLE_API_KEY, email),
+        },
+        sleep: realSleep,
+        startMinMs: START_MIN_MS,
+        perIpLimit: REQUESTS_PER_IP_PER_HOUR,
+      };
+    },
   });
 }
