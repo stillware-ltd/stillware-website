@@ -3,15 +3,16 @@ import Layout from '../layouts/Layout.astro';
 import KeyFacts from '../components/KeyFacts.astro';
 
 // The product version, shown wherever the page states which release this is.
-const RANKUP_VERSION = '0.10.3';
+const RANKUP_VERSION = '0.11.0';
 
-// SWITCH DAY (KL.7), not yet live: the pricing section shows two tiers, Every device and
-// "only on one kind of device", with no price figure in the HTML. The visitor's own country price
-// is filled in by the script at the bottom of this file, from /api/household/prices (the licence
-// server; docs/household-licence-server.md). The date below is the founder's (KD-13): set it
-// before merging, as 'YYYY-MM-DD'. While it is null, the line "Bought RankUp before ...? You
-// already have Every device, free." is left out rather than printed with no date.
-const RANKUP_SWITCH_DATE: string | null = null;
+// SWITCH DAY (KL.7), live from release day (deploy B, the day both stores have approved 0.11.0):
+// the pricing section shows two tiers, Every device and "only on one kind of device", with no
+// price figure in the HTML. The visitor's own country price is filled in by the script at the
+// bottom of this file, from /api/household/prices (the licence server;
+// docs/household-licence-server.md). The date below is the founder's (KD-13, KD-47): a purchase
+// before it is an earlier buyer's, with Every device free. While it is null, the line "Bought
+// RankUp before ...? You already have Every device, free." is left out rather than printed with no date.
+const RANKUP_SWITCH_DATE: string | null = '2026-10-28';
 const RANKUP_SWITCH_DATE_TEXT = RANKUP_SWITCH_DATE
   ? new Date(`${RANKUP_SWITCH_DATE}T00:00:00Z`).toLocaleDateString('en-GB', {
       day: 'numeric',
@@ -28,10 +29,12 @@ const RANKUP_SWITCH_DATE_TEXT = RANKUP_SWITCH_DATE
 // 0.8.0 on 2026-09-25; no Windows installer was built for 0.9.0; 0.10.0 (the
 // board-theme update) on 2026-10-13; 0.10.1 (licence keys activate again) on
 // 2026-10-14; no Windows installer was built for 0.10.2; 0.10.3 (per-platform
-// licences and the voice lead-in) the same day.
+// licences and the voice lead-in) the same day; 0.11.0 (Every device) on release
+// day, published (GitHub release v0.11.0, RankUpChess-Setup-0.11.0.exe) before
+// this deploy.
 // Set this to null to show "coming soon" on the Windows buttons if no
 // installer is live.
-const RANKUP_WINDOWS_VERSION: string | null = '0.10.3';
+const RANKUP_WINDOWS_VERSION: string | null = '0.11.0';
 const RANKUP_WINDOWS_DOWNLOAD = RANKUP_WINDOWS_VERSION
   ? `https://github.com/stillware-ltd/rankup-chess-releases/releases/download/v${RANKUP_WINDOWS_VERSION}/RankUpChess-Setup-${RANKUP_WINDOWS_VERSION}.exe`
   : null;
@@ -42,8 +45,9 @@ const RANKUP_WINDOWS_DOWNLOAD = RANKUP_WINDOWS_VERSION
 // needs macOS 12, so Macs on 10.15 or 11 stay on 0.8.0 (linked from the
 // release notes and the releases README); 0.10.0 (the board-theme update) on
 // 2026-10-13; 0.10.1 (licence keys activate again) on 2026-10-14; 0.10.2 (per-platform
-// licences) and 0.10.3 (voice lead-in) the same day.
-const RANKUP_MACOS_VERSION = '0.10.3';
+// licences) and 0.10.3 (voice lead-in) the same day; 0.11.0 (Every device) on release
+// day: the release v0.11.0-macos must carry RankUpChess-0.11.0-macOS.dmg (the URL below).
+const RANKUP_MACOS_VERSION = '0.11.0';
 const RANKUP_MACOS_DOWNLOAD =
   `https://github.com/stillware-ltd/rankup-chess-releases/releases/download/v${RANKUP_MACOS_VERSION}-macos/RankUpChess-${RANKUP_MACOS_VERSION}-macOS.dmg`;
 
@@ -52,12 +56,13 @@ const RANKUP_MACOS_DOWNLOAD =
 // visitor's storefront. 0.7.0 went live on 2026-09-19, 0.7.1 on 2026-09-22
 // and 0.8.0 on 2026-09-25; 0.9.0 went live on the App Store on 2026-10-12.
 // Google Play lists 0.9.0 (build 25), updated 2026-10-07 (checked
-// 2026-10-13 on the listing's app-info panel).
+// 2026-10-13 on the listing's app-info panel). 0.11.0 (Every device) is released on
+// both stores on release day, before this deploy (manual release on both).
 const RANKUP_PLAY_STORE_URL =
   'https://play.google.com/store/apps/details?id=com.stillware.rankup_chess';
 const RANKUP_APP_STORE_URL = 'https://apps.apple.com/app/id6806675796';
-const RANKUP_IOS_VERSION = '0.9.0';
-const RANKUP_ANDROID_VERSION = '0.9.0';
+const RANKUP_IOS_VERSION = '0.11.0';
+const RANKUP_ANDROID_VERSION = '0.11.0';
 
 // The "Current release" line names the platforms already on RANKUP_VERSION,
 // then any still catching up. A platform with no version (Windows set to
