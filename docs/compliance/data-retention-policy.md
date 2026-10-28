@@ -3,7 +3,7 @@
 **Status: DRAFT for the founder to adopt (written 25 October 2026, KL.8).** The COPPA Rule (16 CFR 312.10, as amended 22 April 2025) asks for a written policy that says why children's personal information is collected, the business need to keep it, and when it is deleted, and it forbids keeping it indefinitely. The policy's summary is printed in the privacy policy (`/privacy/`, RankUp section, "How Long We Keep It").
 
 - **Owner:** the founder (Stillware Ltd).
-- **Adopted:** 25 October 2026 (the founder: "F3 confirmed").
+- **Adopted:** 25 October 2026 (the founder: "F3 confirmed"). **Amendment drafted 28 October 2026** (the failed-email outbox, branch `licence/email-outbox`): the two rows marked NEW are not in force until the founder adopts them and the branch is deployed.
 - **Next review:** one year after adoption, and whenever the service starts keeping something new.
 - **Where it is enforced:** `netlify/functions/household-purge.ts` (hourly, at 17 minutes past), `lib/household-store.ts` and `lib/household-config.ts`. The tests in `tests/licence/purge.test.ts` and `consent.test.ts` hold the figures.
 
@@ -19,8 +19,10 @@ RankUp Chess is directed to children, so the service treats an email typed into 
 | **A store purchase** (`household_store_entitlements`): app user id, product, store, purchase date, transaction id, sandbox or not, revoked or not | RevenueCat's webhook records an Every device purchase | It is the purchase: it lets a family restore it | **Active:** while RankUp Chess is sold, and up to 12 months after it is withdrawn. **Refunded:** 395 days (13 months) after the refund, for disputes and chargebacks. **On request:** at once, after telling the person what it means |
 | **An issued record and its device count** (`household_issued`, `household_devices`) | The signed record a device keeps, and the sign-ins counted against the cap | As long as its purchase | With its purchase (above) |
 | **A cached price** (`household_price_cache`) | Public prices for a country; no visitor data | Used for 1 hour | Within 25 hours |
+| **NEW (28 Oct 2026, to adopt): a failed email** (`mail_outbox`): the address and what the email needs (a desktop licence key; or which confirmation and its date), sealed with AES-256-GCM under a key derived from `HOUSEHOLD_EMAIL_KEY`; the kind, product, tries and the provider's error name | To deliver a licence key or a confirmation (the "plus" of email plus) that the email provider did not take at the first try. A code email is never kept | Until it is sent; it is tried again every hour | **At once when it is sent**; otherwise **within 25 hours** (the hourly run deletes it 24 hours after it failed) |
+| **NEW (28 Oct 2026, to adopt): daily email counts** (`mail_stats`, `mail_alerts`): per day, the kind of email and what happened to it (kept, sent later, given up, refused), and the days a summary was mailed. No address, no content | To see email failures and fix them (the daily summary to the founder) | 90 days | After 90 days |
 
-**Not held here:** a website (Paddle) buyer's address. Paddle holds it as the merchant of record, and the sign-in asks Paddle without copying it. Resend keeps its own delivery records of the emails it sends for the service, under its own terms (`service-providers.md`).
+**Not held here:** a website (Paddle) buyer's address, except sealed in a failed email above for at most 25 hours. Paddle holds it as the merchant of record, and the sign-in asks Paddle without copying it. Resend keeps its own delivery records of the emails it sends for the service, under its own terms (`service-providers.md`).
 
 ## Rules
 

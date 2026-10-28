@@ -69,6 +69,8 @@ Set in Netlify (never in the repository). A changed variable reaches functions w
 
 Already set for the licence server and used here: `TURSO_DATABASE_URL`, `TURSO_AUTH_TOKEN`, `RESEND_API_KEY`, `RESEND_FROM_EMAIL` (optional), `PADDLE_API_KEY` (also what the `prices` endpoint asks Paddle with), `PADDLE_WEBHOOK_SECRET`. The `prices` endpoint needs no new variable.
 
+Optional: `MAIL_ALERT_TO`, where the daily failed-email summary goes (default `support@stillwareltd.com`). A plain variable, not a secret. The failed-email outbox needs no new secret: its key is derived from `HOUSEHOLD_EMAIL_KEY`.
+
 One scheduled function, `household-purge`, runs every hour at 17 minutes past (the retention run, see "Data kept"). It needs no new variable beyond the database's, and it deploys with the site: Netlify runs scheduled functions from the published production deploy. It runs whether or not `HOUSEHOLD_ENABLED` is on.
 
 Make a key pair on your own machine (the private key goes straight into Netlify; the public key goes into the app's `licence_keys.dart` under the same `kid`). The app reads the public key only as base64url without padding (43 characters, `A-Z a-z 0-9 - _`); a plain base64 key would count as no key and verify nothing:
@@ -162,6 +164,8 @@ The tables are created on first use by `lib/household-store.ts` and written out 
 | `household_devices` | Sign-ins counted per licence id | As `household_issued`. |
 | `household_upgrades` | Paddle transaction id and licence id of an in-place upgrade | Kept. |
 | `household_price_cache` | The `prices` answer (public prices) per product, country and platform, with the time it was stored. No IP address, no visitor data. | Used for 1 hour. The hourly run deletes entries stored more than 24 hours ago. |
+| `mail_outbox` | A licence-key email or a household confirmation that Resend did not take after two quick retries: the address and what the email needs, **sealed** with AES-256-GCM under a key derived from `HOUSEHOLD_EMAIL_KEY` (HKDF, its own label), plus the kind, product, tries and Resend's error name. A code email is never kept. | Tried again by the hourly run; **deleted at once when sent**, when Resend refuses it for good, or **24 hours after it failed** (so gone within 25 hours). Made by `lib/mail-outbox.ts`. |
+| `mail_stats`, `mail_alerts` | Per day: the kind of email and what happened to it (queued, retried_ok, gave_up, dropped, rejected); the days the summary was mailed. No address, no content. | 90 days. Once a day, at the first hourly run from 07:00 UTC, a summary of the day before goes to `MAIL_ALERT_TO` when anything failed. |
 
 The hourly run is `netlify/functions/household-purge.ts` (at 17 minutes past each hour, UTC; the 24-hour figure is `RETENTION_HOURS` in `lib/household-store.ts`). It also runs while `HOUSEHOLD_ENABLED` is off, and touches nothing but the clocks above: codes, rate-limit hits, cached prices, and (KL.8) stale or orphaned links and old refunded purchases. These are the figures for the privacy policy:
 - code rows: "within 25 hours of the code stopping working";
