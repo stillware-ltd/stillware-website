@@ -112,11 +112,13 @@ test("the owner line needs the switch date: none is printed with a blank date", 
 test("the page no longer says it has no central servers (a licence server exists), and says what it does collect", () => {
   assert.equal(/central servers?/i.test(SOURCE), false, "no 'central server' claim anywhere on the page");
   assert.equal(/literally cannot track/i.test(SOURCE), false);
+  // The wording is deploy A's (24 October, live; seo/CHANGES.md): it replaced this branch's earlier drafts.
   const frontmatter = SOURCE.slice(0, SOURCE.indexOf("---", 4));
-  assert.match(frontmatter, /No chat rooms, no ads, no tracking, and nothing about your child is collected\./);
-  assert.match(frontmatter, /It has no chat rooms and no online play\./);
-  assert.match(frontmatter, /a parent signs in with the email of their purchase and a code we send to it\. We use it for nothing else\./);
-  assert.match(SOURCE, /We have no chat rooms, no ads and no tracking, and we collect nothing about your child\./);
+  assert.match(frontmatter, /No account, no chat rooms and no data harvesting: games and progress stay on the device\./);
+  assert.match(frontmatter, /Games and progress stay on the device, and it has no chat rooms\./);
+  assert.match(frontmatter, /RankUp Chess has no account, no chat rooms and no analytics/);
+  assert.match(SOURCE, /No account, no chat rooms and no analytics: your child's games and progress never leave the device\./);
+  assert.equal(/safest digital environment possible/i.test(SOURCE), false, "dropped in deploy A: not verifiable");
   assert.match(SOURCE, /Up to 8 family profiles on one device, with no child accounts/);
 });
 
