@@ -2,6 +2,8 @@ import type { Context } from "@netlify/functions";
 import { Environment, Paddle, type Customer } from "@paddle/paddle-node-sdk";
 import { getDb } from "./lib/db.js";
 import { sendLicenseEmail } from "./lib/email.js";
+import { outboxKeyFromEnv } from "./lib/household-prod.js";
+import { keySender, realSleep } from "./lib/mail-prod.js";
 import { isValidProduct } from "./lib/products.js";
 import { resendKeys, type Purchase } from "./lib/resend-key.js";
 
@@ -74,11 +76,10 @@ export default async function handler(req: Request, _context: Context) {
   }
 
   try {
-    const outcomes = await resendKeys(
-      { db: getDb(), send: sendLicenseEmail },
-      purchases(),
-      product
-    );
+    const db = getDb();
+    // A key mail that fails is tried again at once and then kept for the hourly run (lib/mail-prod.ts).
+    const send = keySender({ db, key: outboxKeyFromEnv(), now: () => new Date(), sleep: realSleep, send: sendLicenseEmail });
+    const outcomes = await resendKeys({ db, send: (to, key, p, opts) => send(to, key, p, opts) }, purchases(), product);
     // Transaction ids and outcomes only: never the address.
     console.log(`resend-key: ${product}: ${JSON.stringify(outcomes)}`);
   } catch (err) {

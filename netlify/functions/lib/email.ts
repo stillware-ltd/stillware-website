@@ -1,9 +1,17 @@
 import { Resend } from "resend";
 import { CODE_TTL_MINUTES, LINK_RETENTION_DAYS, PRIVACY_URL, SUPPORT_EMAIL } from "./household-config.js";
 import { RETENTION_HOURS, type CodePurpose } from "./household-store.js";
+import { MailError } from "./mail-outbox.js";
 import { PLATFORM_LABEL, type LicensePlatform, type ProductConfig } from "./products.js";
 
 let resendClient: Resend | null = null;
+
+/** Resend answers a refused mail with `error` instead of throwing: turn it into a MailError carrying its name. */
+function refused(error: { name?: unknown } | null | undefined): void {
+  if (!error) return;
+  const code = typeof error.name === "string" && error.name ? error.name : "refused";
+  throw new MailError(code, `Resend refused the mail: ${code}`);
+}
 
 function getResend(): Resend {
   if (!resendClient) {
@@ -33,7 +41,8 @@ export async function sendLicenseEmail(
     ? `This key is for ${product.name} on <strong>${PLATFORM_LABEL[platform].on}</strong>. You can activate it on up to <strong>${product.maxActivations} ${PLATFORM_LABEL[platform].devices}</strong>.`
     : `You can activate this key on up to <strong>${product.maxActivations} devices</strong>.`;
 
-  await getResend().emails.send({
+  // Until 28 October 2026 the answer was ignored, so a refused key mail was not even logged.
+  const { error } = await getResend().emails.send({
     from,
     to,
     subject: `Your ${product.name} License Key`,
@@ -86,6 +95,7 @@ export async function sendLicenseEmail(
 </html>
     `.trim(),
   });
+  refused(error);
 }
 
 // ---------------------------------------------------------------------------------------------
@@ -225,9 +235,8 @@ export function householdConfirmationMessage(
 /** Sends one household mail. Replies go to support. Throws if Resend refuses it, so the caller can log it. */
 async function sendHouseholdMail(to: string, message: { subject: string; text: string }): Promise<void> {
   const from = process.env.RESEND_FROM_EMAIL || "Stillware <noreply@stillwareltd.com>";
-  // Resend reports a refused mail in `error` instead of throwing.
   const { error } = await getResend().emails.send({ from, to, replyTo: SUPPORT_EMAIL, ...message });
-  if (error) throw new Error(`Resend refused the mail: ${error.name}`);
+  refused(error);
 }
 
 /** Sends the code mail (the direct notice). Throws if Resend refuses it, so the caller can log it. */
@@ -248,4 +257,11 @@ export async function sendHouseholdConfirmationEmail(
   at: Date
 ): Promise<void> {
   await sendHouseholdMail(to, householdConfirmationMessage(product, kind, at));
+}
+
+/** The daily failed-mail summary to the founder (lib/mail-outbox.ts dailyMailAlert). Plain text. */
+export async function sendAlertEmail(to: string, subject: string, text: string): Promise<void> {
+  const from = process.env.RESEND_FROM_EMAIL || "Stillware <noreply@stillwareltd.com>";
+  const { error } = await getResend().emails.send({ from, to, subject, text });
+  refused(error);
 }

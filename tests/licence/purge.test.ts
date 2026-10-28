@@ -263,7 +263,12 @@ test("household-purge.ts: an hourly schedule, and a handler that runs the purge 
   try {
     const res = await mod.default(new Request("https://x/", { method: "POST", body: JSON.stringify({ next_run: "x" }) }));
     assert.equal(res.status, 200);
-    assert.deepEqual(await res.json(), { ok: true, codes: 1, hits: 1, prices: 1, links: 0, revoked: 0 });
+    const body = await res.json();
+    const { mail, ...purged } = body;
+    assert.deepEqual(purged, { ok: true, codes: 1, hits: 1, prices: 1, links: 0, revoked: 0 });
+    // The mail run (lib/mail-outbox.ts) ran too: nothing kept, nothing to report (the alert depends on the real hour).
+    assert.equal(mail.pending, 0);
+    assert.ok(["not_yet", "none"].includes(mail.alert), mail.alert);
   } finally {
     console.log = log;
   }
@@ -290,7 +295,7 @@ test("household-purge.ts: a database problem is a 500 that says nothing", async 
     // the tables were created by the previous test, so the run reaches the failing DELETE
     const res = await mod.default(new Request("https://x/", { method: "POST" }));
     assert.equal(res.status, 500);
-    assert.deepEqual(await res.json(), { ok: false });
+    assert.deepEqual(await res.json(), { ok: false, mail: null });
   } finally {
     console.error = err;
     (real as { execute: unknown }).execute = realExecute;

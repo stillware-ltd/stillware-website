@@ -160,3 +160,37 @@ CREATE TABLE IF NOT EXISTS household_hits (
 );
 CREATE INDEX IF NOT EXISTS idx_household_hits_bucket ON household_hits(bucket, at);
 CREATE INDEX IF NOT EXISTS idx_household_hits_at ON household_hits(at);
+
+-- Failed mails (lib/mail-outbox.ts, 28 October 2026). A licence-key mail or a household
+-- confirmation that Resend did not take is kept here for retries by the hourly run, sealed with
+-- AES-256-GCM under a key derived from HOUSEHOLD_EMAIL_KEY (no address or key readable without
+-- it), and deleted once sent or 24 hours after it failed. mail_stats holds daily counts only
+-- (kind and outcome, no address, no content); mail_alerts the days a summary was sent. Both are
+-- kept 90 days. Created on first use by lib/mail-outbox.ts (a test keeps the two in step).
+CREATE TABLE IF NOT EXISTS mail_outbox (
+  id              TEXT PRIMARY KEY,
+  kind            TEXT NOT NULL,
+  product         TEXT NOT NULL,
+  sealed          TEXT NOT NULL,
+  attempts        INTEGER NOT NULL DEFAULT 1,
+  last_error      TEXT,
+  created_at      TEXT NOT NULL,
+  next_attempt_at TEXT NOT NULL,
+  expires_at      TEXT NOT NULL
+);
+CREATE INDEX IF NOT EXISTS idx_mail_outbox_due ON mail_outbox(next_attempt_at);
+CREATE INDEX IF NOT EXISTS idx_mail_outbox_expires ON mail_outbox(expires_at);
+
+CREATE TABLE IF NOT EXISTS mail_stats (
+  day     TEXT NOT NULL,
+  kind    TEXT NOT NULL,
+  outcome TEXT NOT NULL,
+  n       INTEGER NOT NULL DEFAULT 0,
+  PRIMARY KEY (day, kind, outcome)
+);
+
+CREATE TABLE IF NOT EXISTS mail_alerts (
+  day     TEXT PRIMARY KEY,
+  sent_at TEXT NOT NULL,
+  summary TEXT NOT NULL
+);

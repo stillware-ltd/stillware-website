@@ -4,7 +4,8 @@ import { getDb } from "./lib/db.js";
 import { sendLicenseEmail } from "./lib/email.js";
 import { householdSettings } from "./lib/household-config.js";
 import { issueRecord } from "./lib/household.js";
-import { signerFromEnv } from "./lib/household-prod.js";
+import { outboxKeyFromEnv, signerFromEnv } from "./lib/household-prod.js";
+import { keySender, realSleep } from "./lib/mail-prod.js";
 import { customDataFrom, mintLicence } from "./lib/paddle-licence.js";
 import { PRODUCTS, productFromTransactionItems } from "./lib/products.js";
 
@@ -94,6 +95,8 @@ export default async function handler(req: Request, _context: Context) {
   //    the platform whose price was bought; Zeroed's are for any; an Every device price is for
   //    any platform with the household's activations, and its household record is issued
   //    alongside the key once HOUSEHOLD_ENABLED is on. Idempotent via the UNIQUE paddle_txn_id.
+  //    A key mail that fails is tried again at once and then kept, sealed, for the hourly run
+  //    (lib/mail-prod.ts), so the buyer still gets the key the webhook made.
   const db = getDb();
   const settings = householdSettings(process.env);
   let outcome: Awaited<ReturnType<typeof mintLicence>>;
@@ -101,7 +104,7 @@ export default async function handler(req: Request, _context: Context) {
     outcome = await mintLicence(
       {
         db,
-        sendKey: sendLicenseEmail,
+        sendKey: keySender({ db, key: outboxKeyFromEnv(), now: () => new Date(), sleep: realSleep, send: sendLicenseEmail }),
         deviceCap: settings.deviceCap,
         issueHousehold: settings.enabled
           ? async (licenceId, purchased) => {
