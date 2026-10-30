@@ -98,3 +98,9 @@
 /blog/best-offline-study-app-for-teens-guide                    /blog/best-focus-apps-for-teens-that-block-social-media/    301
 /blog/why-offline-apps-protect-seniors-data                     /blog/why-offline-apps-are-better/    301
 /blog/why-offline-apps-protect-seniors-data-better              /blog/why-offline-apps-are-better/    301
+
+# Short links printed inside videos (QR codes and on-screen addresses). The path is permanent because the video
+# cannot change; the 302 lets the destination change later. Never link to these from the site (verify-links).
+# /sing: the RankUp Chess sing-along "Let the Whole Board Sing", end-card QR code (2026-10-30, seo/CHANGES.md).
+/sing     /rankupchess/?utm_source=youtube&utm_medium=qr&utm_campaign=singalong   302
+/sing/    /rankupchess/?utm_source=youtube&utm_medium=qr&utm_campaign=singalong   302
