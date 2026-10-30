@@ -1,6 +1,7 @@
 ---
 import Layout from '../layouts/Layout.astro';
 import KeyFacts from '../components/KeyFacts.astro';
+import { SINGALONG_VIDEO_ID, SINGALONG_KIT_PAGE } from '../data/singalong';
 
 // The product version, shown wherever the page states which release this is.
 const RANKUP_VERSION = '0.11.0';
@@ -84,11 +85,7 @@ const RANKUP_CATCHING_UP = listOf(
   ),
 );
 
-// The sing-along "Let the Whole Board Sing" (Marketing/Rank_Up_Chess/Youtube/song): its YouTube
-// video id once it is public. While it is null the song section shows the video's still with no
-// player; set it and the still becomes a click-to-play player (youtube-nocookie, nothing loads
-// from YouTube until the visitor presses play).
-const SINGALONG_VIDEO_ID: string | null = null;
+// The sing-along's video id and the classroom kit live in src/data/singalong.ts (shared with the kit page).
 
 // Every way to get the app, in the order shown when the visitor's device is unknown. The script
 // at the bottom of the page moves the one for the visitor's device to the front and makes it the
@@ -120,7 +117,7 @@ const SONG_PIECES = [
 const ACTIVITIES = [
   { icon: 'wP', title: 'Learn every piece', text: '68 voiced lessons in 9 lands, from the Little Garden for the youngest players to My First Tournament. Rook, the friendly coach, reads every lesson out loud.' },
   { icon: 'wN', title: 'Play bot friends', text: '12 bot friends who play at the right level, from Baby Bean and Sleepy Sloth to The Grand Admiral (Level 10, 2400). Pumpkin Knight visits in the autumn and the Snow Queen in December.' },
-  { icon: 'wB', title: 'Solve puzzles', text: 'More than 30,000 puzzles on themed puzzle islands, with Puzzle Dash, a Mate-in-1 Marathon and a fresh Daily Challenge every day.' },
+  { icon: 'wB', title: 'Solve puzzles', text: 'More than 30,000 puzzles on themed puzzle islands, with Puzzle Dash, a Mate-in-1 Marathon and a fresh Daily Challenge every day. Most come from the Lichess open puzzle database (thank you, Lichess); the easiest were made by our own engine.' },
   { icon: 'wR', title: 'Play games with a twist', text: "Six playground games (Pawn Race, Hungry Rook, Bishop Slide, Knight's Treasure, Queen's Maze and King's Escape), plus Pawn Wars and King of the Hill." },
   { icon: 'wQ', title: 'Story time', text: "A story for every piece, from Pebble the Pawn to The Pawn Who Became a Queen, and famous games told as shows, starting with Morphy's Opera Game." },
   { icon: 'wK', title: 'Play together', text: 'Pass & Play on one screen, or a game between two devices on the same home Wi-Fi with no internet needed. Club tournaments for the whole family.' },
@@ -173,7 +170,7 @@ const faqItems = [
   { q: 'Is RankUp Chess free to play?', a: 'Yes. Playing chess is free forever, with no trial clock and no lockout, on every platform. The free lands teach every rule of chess, and the free game includes five bot friends, Pass & Play with every clock, 3 Daily Challenges every day, one full game review a week and four board worlds, Sing-Along among them. Progress, achievements, settings and parental controls are always free.' },
   { q: 'Is there a subscription, and what does the one-time payment unlock?', a: 'There is no subscription and no renewal. One optional one-time payment unlocks the rest of the academy: all 9 lands, more than 30,000 puzzles, all 12 bot friends up to Level 10, unlimited game review and the Opening Explorer, with all v1.x updates included. You can buy it for every device your family owns, or only for the kind of device you use. Either way you pay once.' },
   { q: 'Does RankUp Chess have ads or collect my child\'s data?', a: 'No ads, and no data harvesting. RankUp Chess has no account, no chat rooms and no analytics, and your child\'s games and progress stay on the device. The only data that leaves it is what a purchase needs, as our privacy policy explains.' },
-  { q: 'How many puzzles and AI levels does RankUp Chess have?', a: 'More than 30,000 puzzles, from simple mate-in-ones to advanced middle-game strategies, and 12 bot friends: two gentle starters, then 10 AI strength levels from Level 1 (Beginner, 400 Elo) to Level 10 (World Class, 2400 Elo). There are also 68 voiced lessons in 9 lands.' },
+  { q: 'How many puzzles and AI levels does RankUp Chess have?', a: 'More than 30,000 puzzles, from simple mate-in-ones to advanced middle-game strategies, and 12 bot friends: two gentle starters, then 10 AI strength levels from Level 1 (Beginner, 400 Elo) to Level 10 (World Class, 2400 Elo). There are also 68 voiced lessons in 9 lands. Most puzzles come from the Lichess open puzzle database (CC0), and the easiest ones were made by RankUp\'s own engine.' },
   { q: 'Are the Sing-Along pieces from the song in RankUp Chess?', a: 'Yes. The Sing-Along set from the song "Let the Whole Board Sing" is one of the eight board worlds in RankUp Chess, and it is free on every platform.' },
 ];
 const faqSchema = {
@@ -264,7 +261,7 @@ const faqSchema = {
                 ) : (
                     <img src="/rankupchess-song/sing-along-video-1280.webp" srcset="/rankupchess-song/sing-along-video-640.webp 640w, /rankupchess-song/sing-along-video-1280.webp 1280w" sizes="(max-width: 760px) 100vw, 720px" alt="Grandpa King and the little Pawn from the sing-along Let the Whole Board Sing" width="1280" height="720" loading="lazy" />
                 )}
-                <figcaption>&ldquo;Let the Whole Board Sing&rdquo;: Grandpa King teaches the little Pawn how every piece moves. A sing-along for kids and grandparents from RankUp Chess.</figcaption>
+                <figcaption>&ldquo;Let the Whole Board Sing&rdquo;: Grandpa King teaches the little Pawn how every piece moves. A sing-along for kids and grandparents from RankUp Chess. <a href={SINGALONG_KIT_PAGE}>The lyrics, a worksheet and a colouring page are free in the classroom kit.</a></figcaption>
             </figure>
         </div>
     </section>
@@ -1116,6 +1113,8 @@ const faqSchema = {
         border-top: 16px solid transparent;
         border-bottom: 16px solid transparent;
     }
+
+    .ru-video figcaption a { color: var(--ru-button); font-weight: 700; }
 
     .ru-video figcaption {
         margin-top: 0.9rem;

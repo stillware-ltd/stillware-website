@@ -1,0 +1,352 @@
+[
+ {
+  "title": "Introduction",
+  "lines": [
+   {
+    "text": "Come here, little one... shall I teach you chess?",
+    "who": "grown",
+    "spoken": true
+   },
+   {
+    "text": "Yes please, Grandpa!",
+    "who": "kid",
+    "spoken": true
+   }
+  ]
+ },
+ {
+  "title": "Sixty-four squares",
+  "lines": [
+   {
+    "text": "Sixty-four squares on a board, dark and light,",
+    "who": "grown",
+    "spoken": false
+   },
+   {
+    "text": "With a light corner square at the bottom right,",
+    "who": "grown",
+    "spoken": false
+   },
+   {
+    "text": "Two little armies, all lined up in rows,",
+    "who": "kid",
+    "spoken": false
+   },
+   {
+    "text": "Each piece is different, and here's how it goes!",
+    "who": "kid",
+    "spoken": false
+   }
+  ]
+ },
+ {
+  "title": "Chorus",
+  "lines": [
+   {
+    "text": "Pawn and Knight and Bishop,",
+    "who": "everyone",
+    "spoken": false
+   },
+   {
+    "text": "Rook and Queen and King!",
+    "who": "everyone",
+    "spoken": false
+   },
+   {
+    "text": "Each has its own special way to move,",
+    "who": "everyone",
+    "spoken": false
+   },
+   {
+    "text": "And together they make the game sing!",
+    "who": "everyone",
+    "spoken": false
+   }
+  ]
+ },
+ {
+  "title": "The Pawn",
+  "lines": [
+   {
+    "text": "The Pawn is like dawn, it's where morning begins,",
+    "who": "kid",
+    "spoken": false
+   },
+   {
+    "text": "It only moves forward, and never gives in,",
+    "who": "kid",
+    "spoken": false
+   },
+   {
+    "text": "One step at a time, on its first go, take two!",
+    "who": "grown",
+    "spoken": false
+   },
+   {
+    "text": "And it captures on slants, just one square, as pawns do.",
+    "who": "grown",
+    "spoken": false
+   }
+  ]
+ },
+ {
+  "title": "The Knight",
+  "lines": [
+   {
+    "text": "The Knight is a night with a K at the start,",
+    "who": "grown",
+    "spoken": false
+   },
+   {
+    "text": "A horse that can leap, and that's the trickiest part!",
+    "who": "grown",
+    "spoken": false
+   },
+   {
+    "text": "Two squares, then a turn, in the shape of an L,",
+    "who": "kid",
+    "spoken": false
+   },
+   {
+    "text": "The only one jumping, and oh, it jumps well!",
+    "who": "kid",
+    "spoken": false
+   }
+  ]
+ },
+ {
+  "title": "The Bishop",
+  "lines": [
+   {
+    "text": "The Bishop's tall hat is the shape of a drop,",
+    "who": "grown",
+    "spoken": false
+   },
+   {
+    "text": "It zooms on the slant till a piece makes it stop,",
+    "who": "grown",
+    "spoken": false
+   },
+   {
+    "text": "Corner to corner, like a slide in the park,",
+    "who": "kid",
+    "spoken": false
+   },
+   {
+    "text": "It stays on its colour, the light or the dark!",
+    "who": "kid",
+    "spoken": false
+   }
+  ]
+ },
+ {
+  "title": "The Rook",
+  "lines": [
+   {
+    "text": "Look at the Rook, it's a tower of stone,",
+    "who": "grown",
+    "spoken": false
+   },
+   {
+    "text": "It starts in the corner, the corner's its home,",
+    "who": "grown",
+    "spoken": false
+   },
+   {
+    "text": "It runs in straight lines like a train on a track,",
+    "who": "kid",
+    "spoken": false
+   },
+   {
+    "text": "Up, down, and sideways, and all the way back!",
+    "who": "kid",
+    "spoken": false
+   }
+  ]
+ },
+ {
+  "title": "Chorus",
+  "lines": [
+   {
+    "text": "Pawn and Knight and Bishop,",
+    "who": "everyone",
+    "spoken": false
+   },
+   {
+    "text": "Rook and Queen and King!",
+    "who": "everyone",
+    "spoken": false
+   },
+   {
+    "text": "Each has its own special way to move,",
+    "who": "everyone",
+    "spoken": false
+   },
+   {
+    "text": "And together they make the game sing!",
+    "who": "everyone",
+    "spoken": false
+   }
+  ]
+ },
+ {
+  "title": "The Queen",
+  "lines": [
+   {
+    "text": "The Queen is the strongest, so graceful and free,",
+    "who": "grown",
+    "spoken": false
+   },
+   {
+    "text": "Straight lines or slanting, as far as can be,",
+    "who": "grown",
+    "spoken": false
+   },
+   {
+    "text": "She's a Rook and a Bishop, both rolled into one,",
+    "who": "kid",
+    "spoken": false
+   },
+   {
+    "text": "So keep her safe early, the game's just begun!",
+    "who": "grown",
+    "spoken": false
+   }
+  ]
+ },
+ {
+  "title": "The King",
+  "lines": [
+   {
+    "text": "The King's very slow, just one square any way,",
+    "who": "grown",
+    "spoken": false
+   },
+   {
+    "text": "Like Grandpa in slippers at the end of the day,",
+    "who": "kid",
+    "spoken": false
+   },
+   {
+    "text": "But he matters the most: trapped in check? That's checkmate!",
+    "who": "grown",
+    "spoken": false
+   },
+   {
+    "text": "So guard yours, and catch theirs, before it's too late!",
+    "who": "everyone",
+    "spoken": false
+   }
+  ]
+ },
+ {
+  "title": "Setting up the board",
+  "lines": [
+   {
+    "text": "Rooks in the corners, then Knights by their side,",
+    "who": "grown",
+    "spoken": false
+   },
+   {
+    "text": "Bishops come next with their hats held with pride,",
+    "who": "kid",
+    "spoken": false
+   },
+   {
+    "text": "The Queen on her colour, the King takes the last,",
+    "who": "grown",
+    "spoken": false
+   },
+   {
+    "text": "And the Pawns fill the front row, standing brave, standing fast!",
+    "who": "kid",
+    "spoken": false
+   }
+  ]
+ },
+ {
+  "title": "Six kinds of pieces",
+  "lines": [
+   {
+    "text": "Just six kinds of pieces on sixty-four squares,",
+    "who": "grown",
+    "spoken": false
+   },
+   {
+    "text": "Yet more games to play than the stars way up there,",
+    "who": "grown",
+    "spoken": false
+   },
+   {
+    "text": "Each game is a story that's new, never told,",
+    "who": "kid",
+    "spoken": false
+   },
+   {
+    "text": "So set up the board, let the next one unfold!",
+    "who": "everyone",
+    "spoken": false
+   }
+  ]
+ },
+ {
+  "title": "The secret",
+  "lines": [
+   {
+    "text": "Now here is a secret, the best one of all:",
+    "who": "grown",
+    "spoken": false
+   },
+   {
+    "text": "The Pawn may be little, the Pawn may be small,",
+    "who": "grown",
+    "spoken": false
+   },
+   {
+    "text": "But step after step, if it reaches the end,",
+    "who": "grown",
+    "spoken": false
+   },
+   {
+    "text": "It can grow to a Queen, so keep marching, my friend.",
+    "who": "grown",
+    "spoken": false
+   }
+  ]
+ },
+ {
+  "title": "Final chorus",
+  "lines": [
+   {
+    "text": "Pawn and Knight and Bishop,",
+    "who": "everyone",
+    "spoken": false
+   },
+   {
+    "text": "Rook and Queen and King!",
+    "who": "everyone",
+    "spoken": false
+   },
+   {
+    "text": "Even the smallest can wear a crown,",
+    "who": "everyone",
+    "spoken": false
+   },
+   {
+    "text": "So come, let the whole board sing!",
+    "who": "everyone",
+    "spoken": false
+   },
+   {
+    "text": "So come, let the whole board sing!",
+    "who": "everyone",
+    "spoken": false
+   },
+   {
+    "text": "Your move, Grandpa!",
+    "who": "kid",
+    "spoken": true
+   }
+  ]
+ }
+]
