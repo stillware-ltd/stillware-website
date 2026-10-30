@@ -56,8 +56,8 @@ const RANKUP_MACOS_DOWNLOAD =
 // visitor's storefront. 0.7.0 went live on 2026-09-19, 0.7.1 on 2026-09-22
 // and 0.8.0 on 2026-09-25; 0.9.0 went live on the App Store on 2026-10-12.
 // Google Play lists 0.9.0 (build 25), updated 2026-10-07 (checked
-// 2026-10-13 on the listing's app-info panel). 0.11.0 (Every device) is released on
-// both stores on release day, before this deploy (manual release on both).
+// 2026-10-13 on the listing's app-info panel). 0.11.0 (Every device) was released on
+// both stores on 30 October 2026 (manual release on both).
 const RANKUP_PLAY_STORE_URL =
   'https://play.google.com/store/apps/details?id=com.stillware.rankup_chess';
 const RANKUP_APP_STORE_URL = 'https://apps.apple.com/app/id6806675796';
@@ -84,6 +84,58 @@ const RANKUP_CATCHING_UP = listOf(
   ),
 );
 
+// The sing-along "Let the Whole Board Sing" (Marketing/Rank_Up_Chess/Youtube/song): its YouTube
+// video id once it is public. While it is null the song section shows the video's still with no
+// player; set it and the still becomes a click-to-play player (youtube-nocookie, nothing loads
+// from YouTube until the visitor presses play).
+const SINGALONG_VIDEO_ID: string | null = null;
+
+// Every way to get the app, in the order shown when the visitor's device is unknown. The script
+// at the bottom of the page moves the one for the visitor's device to the front and makes it the
+// big button (research note Marketing/Rank_Up_Chess/SEO/research/
+// landing-rankupchess-kids-redesign-2026-10-30.md, rule W-L2).
+const GET_OPTIONS = [
+  { platform: 'ios', href: RANKUP_APP_STORE_URL, small: 'Download on the', label: 'App Store', external: true },
+  { platform: 'android', href: RANKUP_PLAY_STORE_URL, small: 'Get it on', label: 'Google Play', external: true },
+  ...(RANKUP_WINDOWS_DOWNLOAD
+    ? [{ platform: 'windows', href: RANKUP_WINDOWS_DOWNLOAD, small: 'Download for', label: 'Windows', external: false }]
+    : []),
+  { platform: 'mac', href: RANKUP_MACOS_DOWNLOAD, small: 'Download for', label: 'Mac', external: false },
+];
+
+// The six Sing-Along pieces and how each one moves, in the song's own simple words.
+const SONG_PIECES = [
+  { file: 'wP', name: 'Pawn', move: 'Steps forward, and takes on a slant.' },
+  { file: 'wN', name: 'Knight', move: 'Jumps in an L. The only piece that leaps.' },
+  { file: 'wB', name: 'Bishop', move: 'Slides on the slant, corner to corner.' },
+  { file: 'wR', name: 'Rook', move: 'Runs in straight lines, like a train.' },
+  { file: 'wQ', name: 'Queen', move: 'Straight or slanting, as far as she likes.' },
+  { file: 'wK', name: 'King', move: 'One square any way. Keep him safe!' },
+];
+
+// What a child does in the app. Every number is counted in the 0.11.0 build (rkmain, build 33):
+// assets/lessons (68 lessons in 9 chapters), assets/database/puzzles.json (30,737 puzzles),
+// assets/bots/bots.json (12 levelled bots plus 2 seasonal), assets/playground (6 games plus Pawn
+// Wars), assets/stories, the 8 board themes in pubspec.yaml (PurchaseConfig.freeBoardThemes).
+const ACTIVITIES = [
+  { icon: 'wP', title: 'Learn every piece', text: '68 voiced lessons in 9 lands, from the Little Garden for the youngest players to My First Tournament. Rook, the friendly coach, reads every lesson out loud.' },
+  { icon: 'wN', title: 'Play bot friends', text: '12 bot friends who play at the right level, from Baby Bean and Sleepy Sloth to The Grand Admiral (Level 10, 2400). Pumpkin Knight visits in the autumn and the Snow Queen in December.' },
+  { icon: 'wB', title: 'Solve puzzles', text: 'More than 30,000 puzzles on themed puzzle islands, with Puzzle Dash, a Mate-in-1 Marathon and a fresh Daily Challenge every day.' },
+  { icon: 'wR', title: 'Play games with a twist', text: "Six playground games (Pawn Race, Hungry Rook, Bishop Slide, Knight's Treasure, Queen's Maze and King's Escape), plus Pawn Wars and King of the Hill." },
+  { icon: 'wQ', title: 'Story time', text: "A story for every piece, from Pebble the Pawn to The Pawn Who Became a Queen, and famous games told as shows, starting with Morphy's Opera Game." },
+  { icon: 'wK', title: 'Play together', text: 'Pass & Play on one screen, or a game between two devices on the same home Wi-Fi with no internet needed. Club tournaments for the whole family.' },
+  { icon: 'bQ', title: 'Eight board worlds', text: 'Treehouse, Classic, Coral Reef and Sing-Along are free; Paper Fold, Starship, Castle and Fossil Dig come with Premium. Each has its own pieces, sounds and effects.' },
+  { icon: 'bK', title: 'Certificates and streaks', text: "Beat a land's boss to earn its certificate. Three small goals a day keep the streak going, with ranks and stickers along the way." },
+];
+
+const TRUST = [
+  'No ads. Ever.',
+  'No chat, no strangers',
+  'Works with no internet',
+  'A grown-up gate on settings and buying',
+  'Pay once, never a subscription',
+];
+
 // Product markup for search: free to play, with a one-time unlock (see the pricing section). No rating markup: none exists yet.
 const appSchema = {
   '@context': 'https://schema.org',
@@ -92,7 +144,7 @@ const appSchema = {
   name: 'RankUp Chess',
   alternateName: 'RankUp',
   url: 'https://www.stillwareltd.com/rankupchess/',
-  description: 'Offline chess academy for kids: 6,000+ puzzles, 10 AI strength levels and interactive lessons. Free to play forever, with a one-time unlock. No ads, no subscription.',
+  description: 'Offline chess academy for kids: 68 voiced lessons, more than 30,000 puzzles and 12 bot friends from 400 to 2400 Elo. Free to play forever, with a one-time unlock. No ads, no subscription.',
   applicationCategory: 'GameApplication',
   operatingSystem: 'iOS, Android, Windows, macOS',
   offers: { '@type': 'Offer', price: '0', priceCurrency: 'USD', availability: 'https://schema.org/InStock' },
@@ -103,25 +155,26 @@ const appSchema = {
   sameAs: [RANKUP_APP_STORE_URL, RANKUP_PLAY_STORE_URL],
 };
 
-// Key facts (answer-first block under the hero). Each line restates something this page already says: the hero, the
-// feature cards, the parental section and the pricing section. Keep them in step with those, not the other way round.
+// Key facts (answer-first block). Each line restates something this page already says: the hero, the activity cards, the
+// grown-ups' section and the pricing section. Keep them in step with those, not the other way round.
 const keyFacts = [
-  { term: 'What it is', detail: 'An offline chess academy designed for kids, from absolute beginner to tournament ready: 6,000+ puzzles, 10 AI strength levels (Level 1 Beginner, 400 Elo, up to Level 10 World Class, 2400 Elo) and interactive lessons.' },
+  { term: 'What it is', detail: 'An offline chess academy designed for kids, from absolute beginner to tournament ready: 68 voiced lessons in 9 lands, more than 30,000 puzzles and 12 bot friends, from two gentle starters through Level 1 (Beginner, 400 Elo) up to Level 10 (World Class, 2400 Elo).' },
   { term: 'Platforms', detail: 'Windows, macOS, iPhone and iPad (App Store) and Android (Google Play).' },
-  { term: 'Price', detail: 'Free to play forever, with no trial clock and no lockout. One optional one-time payment unlocks the complete academy: Every device, or only the kind of device you use. Adding Every device later is a smaller extra payment. No subscription. Your price, for your country, is in the pricing section below.' },
+  { term: 'Price', detail: 'Free to play forever, with no trial clock and no lockout: the free lands teach every rule of chess. One optional one-time payment unlocks the complete academy: Every device, or only the kind of device you use. Adding Every device later is a smaller extra payment. No subscription. Your price, for your country, is in the pricing section below.' },
   { term: 'Subscription and ads', detail: 'No subscription, no renewal and no ads.' },
   { term: 'Offline and privacy', detail: '100% offline, local-first gameplay. No account, no chat rooms and no data harvesting: games and progress stay on the device.' },
-  { term: 'Parents', detail: 'A Parental Gate locks sensitive settings, profile resets and the premium upgrade screen behind a parental PIN, while kids can launch the app and start a game in seconds.' },
+  { term: 'Parents', detail: 'A grown-up gate (hold for 3 seconds, then answer a times-table question, or your own PIN) guards settings, profile resets and buying, while kids can launch the app and start a game in seconds. Grown-ups also get a weekly report and a daily time limit.' },
 ];
 
 // FAQ (visible below and as FAQPage JSON-LD). Every answer uses only what this page already states elsewhere.
 const faqItems = [
   { q: 'Does RankUp Chess work offline?', a: 'Yes. RankUp Chess is a 100% offline chess academy: playing, puzzles and lessons run on your device without an internet connection. Games and progress stay on the device, and it has no chat rooms. It goes online only to buy or restore the upgrade and, on a computer, to check its licence key.' },
-  { q: 'Is RankUp Chess made for kids?', a: 'Yes. It is an offline chess academy designed for kids, from absolute beginner to tournament ready. A Parental Gate locks sensitive settings, profile resets and the premium upgrade screen behind a parental PIN, while kids can launch the app and jump into a game in seconds.' },
-  { q: 'Is RankUp Chess free to play?', a: 'Yes. Playing chess is free forever, with no trial clock and no lockout, on every platform. The free core includes the beginner-friendly AI levels, Pass & Play with family, 3 Daily Challenges every day and the first curriculum chapter. Progress, achievements, settings and parental controls are always free.' },
-  { q: 'Is there a subscription, and what does the one-time payment unlock?', a: 'There is no subscription and no renewal. One optional one-time payment unlocks the rest of the academy: the full 6,000+ puzzle library, all 10 AI strength levels, the complete curriculum and engine-powered game review, with all v1.x updates included. You can buy it for every device your family owns, or only for the kind of device you use. Either way you pay once.' },
+  { q: 'Is RankUp Chess made for kids?', a: 'Yes. It is an offline chess academy designed for kids, from absolute beginner to tournament ready, with voiced lessons, friendly bots and a story for every piece. A grown-up gate (a 3-second hold and a times-table question, or your own PIN) guards settings, profile resets and buying, while kids can launch the app and jump into a game in seconds.' },
+  { q: 'Is RankUp Chess free to play?', a: 'Yes. Playing chess is free forever, with no trial clock and no lockout, on every platform. The free lands teach every rule of chess, and the free game includes five bot friends, Pass & Play with every clock, 3 Daily Challenges every day, one full game review a week and four board worlds, Sing-Along among them. Progress, achievements, settings and parental controls are always free.' },
+  { q: 'Is there a subscription, and what does the one-time payment unlock?', a: 'There is no subscription and no renewal. One optional one-time payment unlocks the rest of the academy: all 9 lands, more than 30,000 puzzles, all 12 bot friends up to Level 10, unlimited game review and the Opening Explorer, with all v1.x updates included. You can buy it for every device your family owns, or only for the kind of device you use. Either way you pay once.' },
   { q: 'Does RankUp Chess have ads or collect my child\'s data?', a: 'No ads, and no data harvesting. RankUp Chess has no account, no chat rooms and no analytics, and your child\'s games and progress stay on the device. The only data that leaves it is what a purchase needs, as our privacy policy explains.' },
-  { q: 'How many puzzles and AI levels does RankUp Chess have?', a: 'More than 6,000 puzzles, from simple mate-in-ones to advanced middle-game strategies, and 10 AI strength levels, from Level 1 (Beginner, 400 Elo) to Level 10 (World Class, 2400 Elo), plus interactive lessons.' },
+  { q: 'How many puzzles and AI levels does RankUp Chess have?', a: 'More than 30,000 puzzles, from simple mate-in-ones to advanced middle-game strategies, and 12 bot friends: two gentle starters, then 10 AI strength levels from Level 1 (Beginner, 400 Elo) to Level 10 (World Class, 2400 Elo). There are also 68 voiced lessons in 9 lands.' },
+  { q: 'Are the Sing-Along pieces from the song in RankUp Chess?', a: 'Yes. The Sing-Along set from the song "Let the Whole Board Sing" is one of the eight board worlds in RankUp Chess, and it is free on every platform.' },
 ];
 const faqSchema = {
   '@context': 'https://schema.org',
@@ -132,109 +185,131 @@ const faqSchema = {
 
 <Layout
   title="RankUp Chess — The Offline Chess Academy for Kids"
-  description="Offline chess academy for kids: 6,000+ puzzles, 10 AI levels and lessons. Free to play forever, one payment unlocks it all. No ads, no subscription."
+  description="Offline chess academy for kids: 68 voiced lessons, 30,000+ puzzles and 12 bot friends. Free to play forever, one payment unlocks it all. No ads, no subscription."
   canonical="https://www.stillwareltd.com/rankupchess/"
 >
     <script type="application/ld+json" set:html={JSON.stringify(appSchema)} />
     <script type="application/ld+json" set:html={JSON.stringify(faqSchema)} />
 
-    <!-- Hero -->
-    <header class="chess-hero">
-        <div class="hero-ambient" aria-hidden="true"></div>
-        <div class="hero-content">
-            <div class="hero-text">
-                <h1 class="text-gradient-gold">Stop renting your kids' educational apps.</h1>
-                <p class="subheadline">Welcome to <strong>RankUp Chess</strong>. A premium, 100% offline chess academy designed for kids. Free to play forever — no trial clock, no lockout, no ads. One optional payment unlocks the complete academy. And absolutely no data harvesting. Just pure chess.</p>
-                <div class="hero-cta">
-                    {RANKUP_WINDOWS_DOWNLOAD ? (
-                        <Fragment>
-                            <a href={RANKUP_WINDOWS_DOWNLOAD} class="btn-primary pulse">
-                                Download Free
-                                <span class="btn-subtext">Windows &middot; v{RANKUP_WINDOWS_VERSION} &middot; free forever</span>
-                            </a>
-                            <a href={RANKUP_MACOS_DOWNLOAD} class="hero-cta-secondary">
-                                Download for macOS
-                                <span class="btn-subtext">macOS 12+ &middot; v{RANKUP_MACOS_VERSION} &middot; free forever</span>
-                            </a>
-                        </Fragment>
-                    ) : (
-                        <a href={RANKUP_MACOS_DOWNLOAD} class="btn-primary pulse">
-                            Download Free
-                            <span class="btn-subtext">macOS 12+ &middot; v{RANKUP_MACOS_VERSION} &middot; free forever</span>
+    <div class="ru-page">
+    <!-- Hero: the song's world, so a family arriving from the video knows where they are (rule W-L1) -->
+    <header class="ru-hero">
+        <div class="ru-sky" aria-hidden="true">
+            <span class="ru-sun"></span>
+            <img src="/rankupchess-song/cloud.svg" alt="" class="ru-cloud ru-cloud-a" width="220" height="110" />
+            <img src="/rankupchess-song/cloud.svg" alt="" class="ru-cloud ru-cloud-b" width="180" height="90" />
+            <img src="/rankupchess-song/cloud.svg" alt="" class="ru-cloud ru-cloud-c" width="140" height="70" />
+        </div>
+        <div class="ru-hero-inner">
+            <div class="ru-hero-copy">
+                <p class="ru-kicker">From the sing-along &ldquo;Let the Whole Board Sing&rdquo;</p>
+                <h1>
+                    <span class="ru-rainbow"><span>Every</span> <span>Pawn</span> <span>can</span> <span>Rank</span> <span>Up</span></span>
+                    <span class="ru-h1-sub">The offline chess academy for kids</span>
+                </h1>
+                <p class="ru-lead"><strong>RankUp Chess</strong> teaches every piece one small step at a time, with voiced lessons, friendly bots and puzzles. Free to download, with no ads, no chat and no internet needed.</p>
+                <div class="ru-get" data-get="hero">
+                    {GET_OPTIONS.map((o) => (
+                        <a href={o.href} class="ru-store" data-platform={o.platform} {...(o.external ? { target: '_blank', rel: 'noopener' } : {})}>
+                            <span class="ru-store-icon" aria-hidden="true" data-icon={o.platform}></span>
+                            <span class="ru-store-text"><small>{o.small}</small>{o.label}</span>
                         </a>
-                    )}
-                    <p class="version-line">Current release <strong>v{RANKUP_VERSION}</strong>{RANKUP_CURRENT_ON && ` on ${RANKUP_CURRENT_ON}`}.{RANKUP_CATCHING_UP && ` ${RANKUP_CATCHING_UP}, with ${RANKUP_VERSION} on its way.`}{!RANKUP_WINDOWS_VERSION && ' The Windows version is coming soon.'}</p>
-                    {RANKUP_WINDOWS_DOWNLOAD && (
-                        <p class="version-line">The Windows installer isn't code-signed yet, so the first time you run it Windows may say &ldquo;Windows protected your PC&rdquo;. Choose <strong>More info</strong>, then <strong>Run anyway</strong>.</p>
-                    )}
-                    <div class="platform-badges">
-                        <span class="platform-badge">
-                            <svg viewBox="0 0 24 24" fill="currentColor" width="18" height="18"><path d="M0 3.449L9.75 2.1v9.451H0m10.949-9.602L24 0v11.4H10.949M0 12.6h9.75v9.451L0 20.699M10.949 12.6H24V24l-12.9-1.801" /></svg>
-                            Windows
-                        </span>
-                        <a href={RANKUP_MACOS_DOWNLOAD} class="platform-badge platform-badge-link">
-                            <svg viewBox="0 0 24 24" fill="currentColor" width="18" height="18"><path d="M17.05 20.28c-.98.95-2.05.8-3.08.35-1.09-.46-2.09-.48-3.24 0-1.44.62-2.2.44-3.06-.35C2.79 15.25 3.51 7.59 9.05 7.31c1.35.07 2.29.74 3.08.8 1.18-.24 2.31-.93 3.57-.84 1.51.12 2.65.72 3.4 1.8-3.12 1.87-2.38 5.98.48 7.13-.57 1.5-1.31 2.99-2.54 4.09zM12.03 7.25c-.15-2.23 1.66-4.07 3.74-4.25.29 2.58-2.34 4.5-3.74 4.25z" /></svg>
-                            macOS
-                        </a>
-                        <a href={RANKUP_APP_STORE_URL} class="platform-badge platform-badge-link" target="_blank" rel="noopener">
-                            <svg viewBox="0 0 24 24" fill="currentColor" width="18" height="18"><path d="M17.05 20.28c-.98.95-2.05.8-3.08.35-1.09-.46-2.09-.48-3.24 0-1.44.62-2.2.44-3.06-.35C2.79 15.25 3.51 7.59 9.05 7.31c1.35.07 2.29.74 3.08.8 1.18-.24 2.31-.93 3.57-.84 1.51.12 2.65.72 3.4 1.8-3.12 1.87-2.38 5.98.48 7.13-.57 1.5-1.31 2.99-2.54 4.09zM12.03 7.25c-.15-2.23 1.66-4.07 3.74-4.25.29 2.58-2.34 4.5-3.74 4.25z" /></svg>
-                            App Store
-                        </a>
-                        <a href={RANKUP_PLAY_STORE_URL} class="platform-badge platform-badge-link" target="_blank" rel="noopener">
-                            <svg viewBox="0 0 24 24" fill="currentColor" width="18" height="18"><path d="M17.523 2.293l-1.59 2.755c-1.17-.678-2.53-1.048-3.933-1.048s-2.763.37-3.933 1.048L6.477 2.293a.578.578 0 00-.79.211.58.58 0 00.211.79l1.548 2.682A8.502 8.502 0 004 12.5h16a8.502 8.502 0 00-3.446-6.524l1.548-2.682a.58.58 0 00-.579-.79zM9 10.5a1 1 0 110-2 1 1 0 010 2zm6 0a1 1 0 110-2 1 1 0 010 2zM4 13.5v6a2.5 2.5 0 005 0v-6zm11 0v6a2.5 2.5 0 005 0v-6z" /></svg>
-                            Google Play
-                        </a>
-                    </div>
+                    ))}
                 </div>
+                <p class="ru-get-note">Free on iPhone, iPad, Android, Windows and Mac &middot; v{RANKUP_VERSION}. One optional payment unlocks the whole academy, never a subscription.</p>
+                {RANKUP_WINDOWS_DOWNLOAD && (
+                    <p class="ru-win-note" data-win-note hidden>The Windows installer isn't code-signed yet, so the first time you run it Windows may say &ldquo;Windows protected your PC&rdquo;. Choose <strong>More info</strong>, then <strong>Run anyway</strong>.</p>
+                )}
             </div>
-            <div class="hero-visual">
-                <div class="hero-carousel">
-                    <img src="/rankupchess-screens/mac_0100_04_home-1040.webp" alt="RankUp Chess on macOS: Home, with Today’s Adventure, the week’s theme and the Play AI and Pass &amp; Play tiles" class="hero-image hero-slide active" width="1200" height="900" />
-                    <img src="/rankupchess-screens/mac_0100_01_adventure_map-1040.webp" alt="RankUp Chess on macOS: the adventure map, with Rook asking where to next and the next lands to explore" class="hero-image hero-slide" width="1200" height="900" loading="lazy" />
-                    <img src="/rankupchess-screens/mac_0100_03_voiced_lesson-1040.webp" alt="RankUp Chess on macOS: a voiced lesson on kingside castling, with Rook explaining the move" class="hero-image hero-slide" width="1200" height="900" loading="lazy" />
+            <div class="ru-hero-art" aria-hidden="true">
+                <div class="ru-board">
+                    {Array.from({ length: 16 }, (_, i) => <span class={(Math.floor(i / 4) + i) % 2 ? 'dark' : 'light'}></span>)}
                 </div>
+                <img src="/rankupchess-song/pieces/wK.svg" alt="" class="ru-king" width="240" height="240" />
+                <img src="/rankupchess-song/pieces/wP.svg" alt="" class="ru-pawn" width="150" height="150" />
             </div>
         </div>
+        <div class="ru-hill" aria-hidden="true"></div>
     </header>
 
-    <KeyFacts heading="RankUp Chess key facts" facts={keyFacts} accent="gold" />
+    <!-- Safety facts, where proof would usually go (rule W-L3: true facts, never invented proof) -->
+    <section class="ru-trust-band" aria-label="Safe for kids">
+        <ul class="ru-trust">
+            {TRUST.map((t) => <li><span class="ru-tick" aria-hidden="true">&#10003;</span>{t}</li>)}
+        </ul>
+    </section>
 
-    <!-- The Stillware Difference -->
-    <section class="difference-section reveal" id="difference">
-        <div class="container">
-            <div class="section-header center-text">
-                <h2 class="text-gradient-gold">The Subscription Trap is Over.</h2>
+    <!-- The song's pieces, and the song itself (rules W-L1 and W-L5) -->
+    <section class="ru-song" id="sing-along">
+        <div class="ru-wrap">
+            <div class="ru-section-head">
+                <h2>Are the pieces from the song in the app?</h2>
+                <p>Yes. The Sing-Along pieces from &ldquo;Let the Whole Board Sing&rdquo;, the King with his glasses, the little Pawn and the rest of the set, are one of the eight board worlds in RankUp Chess. They are free, like the lessons that teach every rule.</p>
             </div>
-            <div class="difference-content reveal-up reveal-delay-1">
-                <p class="difference-lead">Most modern kids' apps are built to drain your wallet with <strong>$50/year subscriptions</strong> while secretly harvesting your child's data in the cloud.</p>
-                <p>We built RankUp Chess to be the ultimate subscription-free alternative to legacy chess giants. Every feature is designed to help your child master the game — from absolute beginner to tournament ready — while keeping them in a completely closed, <strong>100% offline environment</strong>. Zero stress. Total control.</p>
+            <ol class="ru-parade">
+                {SONG_PIECES.map((p) => (
+                    <li>
+                        <span class="ru-parade-square"><img src={`/rankupchess-song/pieces/${p.file}.svg`} alt="" width="96" height="96" loading="lazy" /></span>
+                        <strong>{p.name}</strong>
+                        <span>{p.move}</span>
+                    </li>
+                ))}
+            </ol>
+            <figure class="ru-video">
+                {SINGALONG_VIDEO_ID ? (
+                    <button type="button" class="ru-video-play" data-video-id={SINGALONG_VIDEO_ID} aria-label="Play the sing-along video Let the Whole Board Sing">
+                        <img src="/rankupchess-song/sing-along-video-1280.webp" srcset="/rankupchess-song/sing-along-video-640.webp 640w, /rankupchess-song/sing-along-video-1280.webp 1280w" sizes="(max-width: 760px) 100vw, 720px" alt="Grandpa King and the little Pawn from the sing-along Let the Whole Board Sing" width="1280" height="720" loading="lazy" />
+                        <span class="ru-play-icon" aria-hidden="true"></span>
+                    </button>
+                ) : (
+                    <img src="/rankupchess-song/sing-along-video-1280.webp" srcset="/rankupchess-song/sing-along-video-640.webp 640w, /rankupchess-song/sing-along-video-1280.webp 1280w" sizes="(max-width: 760px) 100vw, 720px" alt="Grandpa King and the little Pawn from the sing-along Let the Whole Board Sing" width="1280" height="720" loading="lazy" />
+                )}
+                <figcaption>&ldquo;Let the Whole Board Sing&rdquo;: Grandpa King teaches the little Pawn how every piece moves. A sing-along for kids and grandparents from RankUp Chess.</figcaption>
+            </figure>
+        </div>
+    </section>
+
+    <!-- What a child does (every number counted in the 0.11.0 build) -->
+    <section class="ru-activities" id="features">
+        <div class="ru-wrap">
+            <div class="ru-section-head">
+                <h2>What will my child do in RankUp Chess?</h2>
+                <p>Everything They Need. Nothing They Don't. A full chess academy that runs on the device, from the very first pawn move to a first tournament.</p>
+            </div>
+            <div class="ru-cards">
+                {ACTIVITIES.map((a) => (
+                    <article class="ru-card">
+                        <span class="ru-card-icon" aria-hidden="true"><img src={`/rankupchess-song/pieces/${a.icon}.svg`} alt="" width="64" height="64" loading="lazy" /></span>
+                        <h3>{a.title}</h3>
+                        <p>{a.text}</p>
+                    </article>
+                ))}
             </div>
         </div>
     </section>
 
-    <!-- App Slides -->
-    <section class="slides-section reveal" id="app-slides">
-        <div class="container">
-            <div class="section-header center-text">
+    <KeyFacts heading="RankUp Chess key facts" facts={keyFacts} accent="gold" />
+
+    <!-- App Slides (captions in these images are current; the stale ones were left out on 2026-10-30) -->
+    <section class="slides-section" id="app-slides">
+        <div class="ru-wrap">
+            <div class="ru-section-head">
                 <h2>See RankUp Chess in Action.</h2>
                 <p class="slides-sub">A full chess academy on your phone &mdash; running entirely on your device, no internet needed.</p>
             </div>
-            <div class="slides-ui-wrapper reveal-up reveal-delay-1">
+            <div class="slides-ui-wrapper">
                 <button class="slide-nav-btn prev" aria-label="Previous Slide">
                     <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" width="24" height="24"><path stroke-linecap="round" stroke-linejoin="round" d="M15.75 19.5L8.25 12l7.5-7.5" /></svg>
                 </button>
                 <div class="slides-container-wrapper">
                     <div class="slides-container">
                         <img src="/rankupchess-screens/phone_0100_01_adventure_map-560.webp" alt="RankUp Chess: Learn chess on a fun adventure. The adventure map, with Rook the friendly talking chess piece" class="slide-image" width="1017" height="2210" loading="lazy" />
-                        <img src="/rankupchess-screens/phone_0100_02_voiced_lesson-560.webp" alt="RankUp Chess: Rook reads every lesson out loud. A voiced lesson on kingside castling, one of 61 lessons in 8 lands" class="slide-image" width="1017" height="2210" loading="lazy" />
                         <img src="/rankupchess-screens/phone_0100_03_family_profiles-560.webp" alt="RankUp Chess: No ads. No chat. Just chess. Up to 8 family profiles on one device, with no child accounts" class="slide-image" width="1017" height="2210" loading="lazy" />
-                        <img src="/rankupchess-screens/phone_0100_04_friendly_bots-560.webp" alt="RankUp Chess: Friendly bots that grow with you. Ten computer opponents, from Pip the Pawn (400) to a 2400 expert" class="slide-image" width="1017" height="2210" loading="lazy" />
                         <img src="/rankupchess-screens/phone_0100_05_daily_goals-560.webp" alt="RankUp Chess: Small daily goals, big progress. Today’s Adventure on the home screen, with streaks and ranks" class="slide-image" width="1017" height="2210" loading="lazy" />
-                        <img src="/rankupchess-screens/phone_0100_06_puzzles-560.webp" alt="RankUp Chess: Over 6,000 puzzles to solve. Puzzle islands by theme, Puzzle Dash and a Mate-in-1 Marathon" class="slide-image" width="1017" height="2210" loading="lazy" />
-                        <img src="/rankupchess-screens/phone_0100_07_certificate-560.webp" alt="RankUp Chess: A certificate for every land you finish, to save or share" class="slide-image" width="1017" height="2210" loading="lazy" />
-                        <img src="/rankupchess-screens/phone_0100_08_weekly_report-560.webp" alt="RankUp Chess: See the progress every week. The grown-ups’ weekly report: minutes played, lessons finished and skills practised" class="slide-image" width="1017" height="2210" loading="lazy" />
                         <img src="/rankupchess-screens/phone_0100_09_daily_challenge-560.webp" alt="RankUp Chess: A fresh puzzle every day. The Daily Challenge, with hints that teach the idea" class="slide-image" width="1017" height="2210" loading="lazy" />
+                        <img src="/rankupchess-screens/phone_0100_07_certificate-560.webp" alt="RankUp Chess: A certificate for every land you finish, to save or share" class="slide-image" width="1017" height="2210" loading="lazy" />
                         <img src="/rankupchess-screens/phone_0100_10_fun_games-560.webp" alt="RankUp Chess: Chess with a twist. Pawn Wars, King of the Hill and family club tournaments" class="slide-image" width="1017" height="2210" loading="lazy" />
+                        <img src="/rankupchess-screens/phone_0100_08_weekly_report-560.webp" alt="RankUp Chess: See the progress every week. The grown-ups’ weekly report: minutes played, lessons finished and skills practised" class="slide-image" width="1017" height="2210" loading="lazy" />
                     </div>
                 </div>
                 <button class="slide-nav-btn next" aria-label="Next Slide">
@@ -245,25 +320,22 @@ const faqSchema = {
     </section>
 
     <!-- macOS Slides -->
-    <section class="slides-section reveal" id="mac-slides">
-        <div class="container">
-            <div class="section-header center-text">
+    <section class="slides-section slides-mac" id="mac-slides">
+        <div class="ru-wrap">
+            <div class="ru-section-head">
                 <h2>And the same academy on your Mac.</h2>
                 <p class="slides-sub">A native macOS app with the same built-in chess engine &mdash; one purchase, no subscription, still entirely offline.</p>
             </div>
-            <div class="slides-ui-wrapper reveal-up reveal-delay-1">
+            <div class="slides-ui-wrapper">
                 <button class="slide-nav-btn prev" aria-label="Previous Slide">
                     <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" width="24" height="24"><path stroke-linecap="round" stroke-linejoin="round" d="M15.75 19.5L8.25 12l7.5-7.5" /></svg>
                 </button>
                 <div class="slides-container-wrapper">
                     <div class="slides-container">
-                        <img src="/rankupchess-screens/mac_0100_01_adventure_map-1040.webp" alt="RankUp Chess on macOS: the adventure map, 61 lessons across 8 lands" class="slide-image slide-image-wide" width="1200" height="900" loading="lazy" />
+                        <img src="/rankupchess-screens/mac_0100_01_adventure_map-1040.webp" alt="RankUp Chess on macOS: the adventure map, with Rook asking where to next" class="slide-image slide-image-wide" width="1200" height="900" loading="lazy" />
                         <img src="/rankupchess-screens/mac_0100_02_lesson_intro-1040.webp" alt="RankUp Chess on macOS: Rook introduces today’s lesson" class="slide-image slide-image-wide" width="1200" height="900" loading="lazy" />
                         <img src="/rankupchess-screens/mac_0100_03_voiced_lesson-1040.webp" alt="RankUp Chess on macOS: a voiced lesson on kingside castling" class="slide-image slide-image-wide" width="1200" height="900" loading="lazy" />
                         <img src="/rankupchess-screens/mac_0100_04_home-1040.webp" alt="RankUp Chess on macOS: Home, with Today’s Adventure and three short goals a day" class="slide-image slide-image-wide" width="1200" height="900" loading="lazy" />
-                        <img src="/rankupchess-screens/mac_0100_05_friendly_bots-1040.webp" alt="RankUp Chess on macOS: ten computer opponents with personalities, from Pip the Pawn (400 Elo)" class="slide-image slide-image-wide" width="1200" height="900" loading="lazy" />
-                        <img src="/rankupchess-screens/mac_0100_13_board_themes-1040.webp" alt="RankUp Chess on macOS: the board gallery, seven board themes each led by its signature piece; Treehouse, Classic and Coral Reef are free and the others are marked Premium" class="slide-image slide-image-wide" width="1200" height="900" loading="lazy" />
-                        <img src="/rankupchess-screens/mac_0100_10_puzzles-1040.webp" alt="RankUp Chess on macOS: the Puzzle Library, with puzzle islands, Puzzle Dash and the Mate-in-1 Marathon" class="slide-image slide-image-wide" width="1200" height="900" loading="lazy" />
                         <img src="/rankupchess-screens/mac_0100_06_daily_challenge-1040.webp" alt="RankUp Chess on macOS: the Daily Challenge, with hints" class="slide-image slide-image-wide" width="1200" height="900" loading="lazy" />
                         <img src="/rankupchess-screens/mac_0100_07_family_profiles-1040.webp" alt="RankUp Chess on macOS: family profiles and the family’s week" class="slide-image slide-image-wide" width="1200" height="900" loading="lazy" />
                         <img src="/rankupchess-screens/mac_0100_08_weekly_report-1040.webp" alt="RankUp Chess on macOS: the grown-ups’ weekly report for a child" class="slide-image slide-image-wide" width="1200" height="900" loading="lazy" />
@@ -279,91 +351,52 @@ const faqSchema = {
         </div>
     </section>
 
-    <!-- Features -->
-    <section class="features-section reveal" id="features">
-        <div class="container">
-            <div class="section-header center-text">
-                <h2>Everything They Need.<br />Nothing They Don't.</h2>
+    <!-- For grown-ups: control, privacy and the case against renting (the page's earlier opening, kept) -->
+    <section class="ru-grownups" id="parental">
+        <div class="ru-wrap">
+            <p class="ru-label">For grown-ups</p>
+            <div class="ru-grownups-grid">
+                <div class="ru-grownups-text">
+                    <h2>Built for Kids, Controlled by Parents.</h2>
+                    <p class="ru-grownups-headline">Total Peace of Mind.</p>
+                    <p>Kids can launch the app and jump into a game in seconds with zero friction. Settings, profile resets, sharing and the upgrade page sit behind a <strong>grown-up gate</strong>: hold the button for 3 seconds, then answer a times-table question written in words, or use your own PIN.</p>
+                    <ul class="ru-checks">
+                        <li>A weekly report for each child: minutes played, lessons finished and skills practised.</li>
+                        <li>A daily time limit that you set.</li>
+                        <li>Up to 8 family profiles on one device, with no child accounts.</li>
+                        <li>No ads, no chat and no strangers, anywhere in the app.</li>
+                    </ul>
+                    <p class="ru-reassure">Let them learn, play, and make mistakes — without worrying about what they might click on.</p>
+                </div>
+                <div class="ru-grownups-visual">
+                    <img src="/rankupchess-screens/mac_0100_08_weekly_report-1040.webp" alt="RankUp Chess: the grown-ups’ weekly report for a child, with time played, a suggested next step, conversation prompts and goals" width="1200" height="900" loading="lazy" />
+                </div>
             </div>
-            <div class="features-grid">
-                <div class="feature-card reveal-up reveal-delay-1">
-                    <div class="icon-box">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="7" width="20" height="14" rx="2" ry="2"/><path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"/></svg>
-                    </div>
+            <div class="ru-why">
+                <div class="ru-why-card">
+                    <h2>Stop renting your kids' educational apps.</h2>
+                    <p class="ru-why-lead">The Subscription Trap is Over. Most modern kids' apps are built to drain your wallet with <strong>$50/year subscriptions</strong> while secretly harvesting your child's data in the cloud.</p>
+                    <p>We built RankUp Chess to be the ultimate subscription-free alternative to legacy chess giants. Every feature is designed to help your child master the game — from absolute beginner to tournament ready — while keeping them in a completely closed, <strong>100% offline environment</strong>. Zero stress. Total control.</p>
+                </div>
+                <div class="ru-why-card">
+                    <h3>The "Fort Knox" Privacy Architecture</h3>
+                    <p>100% offline, local-first gameplay. No account, no chat rooms and no analytics: your child's games and progress never leave the device. The only data that goes online is what a purchase needs.</p>
                     <h3>Free Forever. Pay Once for Everything.</h3>
                     <p>Playing chess is free, forever &mdash; no trial clock, no lockout. When your child is ready for more, a single one-time payment unlocks the complete academy. No subscription, no renewal, ever.</p>
                 </div>
-                <div class="feature-card reveal-up reveal-delay-2">
-                    <div class="icon-box">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
-                    </div>
-                    <h3>The "Fort Knox" Privacy Architecture</h3>
-                    <p>100% offline, local-first gameplay. No account, no chat rooms and no analytics: your child's games and progress never leave the device. The only data that goes online is what a purchase needs.</p>
-                </div>
-                <div class="feature-card reveal-up reveal-delay-3">
-                    <div class="icon-box">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
-                    </div>
-                    <h3>6,000+ Tactical Puzzles</h3>
-                    <p>A massive, built-in library of brain-teasing puzzles. From simple mate-in-ones to advanced middle-game strategies, your child will never run out of challenges.</p>
-                </div>
-                <div class="feature-card reveal-up reveal-delay-4">
-                    <div class="icon-box">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M8 14s1.5 2 4 2 4-2 4-2"/><line x1="9" y1="9" x2="9.01" y2="9"/><line x1="15" y1="9" x2="15.01" y2="9"/></svg>
-                    </div>
-                    <h3>10-Tier AI Engine</h3>
-                    <p>Practice against an adaptive AI. Start at Level 1 (Beginner — 400 Elo) and work up to Level 10 (World Class — 2400 Elo) as your child's skills grow.</p>
-                </div>
-                <div class="feature-card reveal-up reveal-delay-1">
-                    <div class="icon-box">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"/><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"/></svg>
-                    </div>
-                    <h3>The "Zero-Friction" Learn Module</h3>
-                    <p>An interactive, completely distraction-free learning environment. Master piece movements, castling, and advanced tactics without needing an internet connection.</p>
-                </div>
-                <div class="feature-card reveal-up reveal-delay-3">
-                    <div class="icon-box">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18M3 15h18M9 3v18M15 3v18"/></svg>
-                    </div>
-                    <h3>Seven Board Worlds</h3>
-                    <p>Every board is a little world with its own pieces, sounds and effects: a treehouse, a classic tournament board, a coral reef, folded paper, a starship, a castle and a fossil dig. Treehouse, Classic and Coral Reef are free; the other four come with Premium. Tap Shuffle to try another mid-game.</p>
-                </div>
-                <div class="feature-card reveal-up reveal-delay-2">
-                    <div class="icon-box">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21.21 15.89A10 10 0 1 1 8 2.83"/><path d="M22 12A10 10 0 0 0 12 2v10z"/></svg>
-                    </div>
-                    <h3>Advanced Coach's Dashboard</h3>
-                    <p>Review past games with instant replays and track concrete metrics to measure your child's improvement over time.</p>
-                </div>
             </div>
         </div>
     </section>
 
-    <!-- Parental Controls -->
-    <section class="parental-section reveal" id="parental">
-        <div class="container">
-            <div class="parental-grid">
-                <div class="parental-text">
-                    <h2>Built for Kids,<br />Controlled by Parents.</h2>
-                    <p class="parental-headline">Total Peace of Mind.</p>
-                    <p>We built RankUp Chess with a strict <strong>Parental Gate</strong> system. Kids can launch the app and jump into a game in seconds with zero friction. Meanwhile, sensitive settings, profile resets, and the premium upgrade screen are locked safely behind a parental pin.</p>
-                    <p class="parental-reassure">Let them learn, play, and make mistakes — without worrying about what they might click on.</p>
-                </div>
-                <div class="parental-visual">
-                    <img src="/rankupchess-screens/mac_0100_08_weekly_report-1040.webp" alt="RankUp Chess: the grown-ups’ weekly report for a child, with time played, a suggested next step, conversation prompts and goals" class="parental-image" width="1200" height="900" loading="lazy" />
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Pricing -->
-    <section class="pricing-section reveal" id="pricing">
-        <div class="container">
+    <!-- Pricing (for grown-ups; prices are never aimed at children) -->
+    <section class="pricing-section" id="pricing">
+        <div class="ru-wrap">
             <div class="pricing-header">
+                <p class="ru-label">For grown-ups</p>
                 <h2>Free to Play, Forever.</h2>
-                <p class="pricing-sub">The core game is free for life — play the beginner-friendly AI levels, Pass &amp; Play with family, take on 3 Daily Challenges every day, and learn the basics with the first curriculum chapter. Progress, achievements, settings, and parental controls are always free. No trial clock. No lockout. No ads.</p>
+                <p class="pricing-sub">The core game is free for life. The free lands teach every rule of chess, and your child also gets five bot friends, Pass &amp; Play with every clock, 3 Daily Challenges every day, one full game review a week, Pawn Wars, the Italian opening adventure and four board worlds, Sing-Along among them. Progress, achievements, settings, and parental controls are always free. No trial clock. No lockout. No ads.</p>
                 <h3 class="pricing-lead">Unlock the Complete Academy</h3>
-                <p class="pricing-desc">One payment, one time, unlocks everything else — the full 6,000+ puzzle library, all 10 AI strength levels, the complete curriculum, and engine-powered game review. We will never charge you a recurring subscription. Choose Every device, or only the kind of device you use.</p>
+                <p class="pricing-desc">One payment, one time, unlocks everything else — all 9 lands, more than 30,000 puzzles, all 12 bot friends, and engine-powered game review. We will never charge you a recurring subscription. Choose Every device, or only the kind of device you use.</p>
             </div>
             <div class="pricing-cards">
                 <div class="pricing-card featured">
@@ -390,27 +423,24 @@ const faqSchema = {
             <p class="pricing-note pricing-price-note" data-price-note>Your price is shown at checkout.</p>
             <div class="pricing-shared">
                 <ul class="features-list">
-                    <li><span class="check-icon">&#10003;</span> Full 6,000+ Puzzle Library</li>
-                    <li><span class="check-icon">&#10003;</span> All 10 AI Levels (up to 2400 Elo)</li>
-                    <li><span class="check-icon">&#10003;</span> Complete Curriculum & Skill Tree</li>
+                    <li><span class="check-icon">&#10003;</span> All 9 Lands and 68 Voiced Lessons</li>
+                    <li><span class="check-icon">&#10003;</span> 30,000+ Puzzle Library</li>
+                    <li><span class="check-icon">&#10003;</span> All 12 Bot Friends (up to 2400 Elo)</li>
                     <li><span class="check-icon">&#10003;</span> Engine Game Review & Opening Explorer</li>
-                    <li><span class="check-icon">&#10003;</span> Every Time Control & Unlimited Daily Challenges</li>
-                    <li><span class="check-icon">&#10003;</span> Four Premium Board Themes (three more are free)</li>
+                    <li><span class="check-icon">&#10003;</span> Every Opening Adventure & Unlimited Daily Challenges</li>
+                    <li><span class="check-icon">&#10003;</span> Four Premium Board Worlds (four more are free)</li>
                     <li><span class="check-icon">&#10003;</span> All v1.x Updates Included</li>
                 </ul>
-                <div class="pricing-cta-group">
-                    {RANKUP_WINDOWS_DOWNLOAD ? (
-                        <Fragment>
-                            <a href={RANKUP_WINDOWS_DOWNLOAD} class="btn-primary pulse pricing-cta">Download for Windows</a>
-                            <a href={RANKUP_MACOS_DOWNLOAD} class="btn-secondary pricing-cta-secondary">Download for macOS</a>
-                        </Fragment>
-                    ) : (
-                        <a href={RANKUP_MACOS_DOWNLOAD} class="btn-primary pulse pricing-cta">Download for macOS</a>
-                    )}
-                    <a href={RANKUP_APP_STORE_URL} class="btn-secondary pricing-cta-secondary" target="_blank" rel="noopener">Download on the App Store</a>
-                    <a href={RANKUP_PLAY_STORE_URL} class="btn-secondary pricing-cta-secondary" target="_blank" rel="noopener">Get it on Google Play</a>
+                <div class="ru-get ru-get-light" data-get="pricing">
+                    {GET_OPTIONS.map((o) => (
+                        <a href={o.href} class="ru-store" data-platform={o.platform} {...(o.external ? { target: '_blank', rel: 'noopener' } : {})}>
+                            <span class="ru-store-icon" aria-hidden="true" data-icon={o.platform}></span>
+                            <span class="ru-store-text"><small>{o.small}</small>{o.label}</span>
+                        </a>
+                    ))}
                 </div>
                 <p class="pricing-note">Free to play forever on every platform. No credit card, no trial clock, no account required.</p>
+                <p class="pricing-note">Current release <strong>v{RANKUP_VERSION}</strong>{RANKUP_CURRENT_ON && ` on ${RANKUP_CURRENT_ON}`}.{RANKUP_CATCHING_UP && ` ${RANKUP_CATCHING_UP}, with ${RANKUP_VERSION} on its way.`}{!RANKUP_WINDOWS_VERSION && ' The Windows version is coming soon.'}</p>
                 {RANKUP_WINDOWS_DOWNLOAD && (
                     <p class="pricing-note">Windows may show a SmartScreen warning the first time, because the installer isn't code-signed yet: choose More info, then Run anyway.</p>
                 )}
@@ -418,9 +448,20 @@ const faqSchema = {
         </div>
     </section>
 
+    <!-- Teachers and clubs (rule W-L6) -->
+    <section class="ru-teachers">
+        <div class="ru-wrap ru-teachers-inner">
+            <img src="/rankupchess-song/pieces/wR.svg" alt="" width="72" height="72" loading="lazy" />
+            <div>
+                <h2>Do you teach a class or run a chess club?</h2>
+                <p>Classroom licences are free for schools and clubs on Windows and Mac, with up to 30 profiles on one computer and a lesson plan for every land. Email <a href="mailto:support@stillwareltd.com">support@stillwareltd.com</a> and tell us about your class.</p>
+            </div>
+        </div>
+    </section>
+
     <!-- FAQ -->
     <section class="faq-section" id="faq">
-        <div class="container">
+        <div class="ru-wrap">
             <h2>Frequently Asked Questions</h2>
             <div class="faq-grid">
                 {faqItems.map((f) => (
@@ -434,25 +475,23 @@ const faqSchema = {
     </section>
 
     <!-- Final CTA -->
-    <section class="final-cta-section">
-        <div class="final-cta-content">
-            <img src="/RankUpChess_logo-240.webp" alt="RankUp Chess" class="final-logo" width="120" height="120" loading="lazy" />
+    <section class="ru-final">
+        <div class="ru-final-inner">
+            <img src="/RankUpChess_logo-240.webp" alt="RankUp Chess" class="ru-final-logo" width="120" height="120" loading="lazy" />
             <h2>The Chess Academy They Deserve.</h2>
             <p>No subscriptions. No data harvesting. No internet required. Just pure, premium chess education — owned by you, forever.</p>
-            <div class="final-cta-buttons">
-                {RANKUP_WINDOWS_DOWNLOAD ? (
-                    <Fragment>
-                        <a href={RANKUP_WINDOWS_DOWNLOAD} class="btn-primary pulse">Download for Windows</a>
-                        <a href={RANKUP_MACOS_DOWNLOAD} class="btn-secondary final-cta-secondary">Download for macOS</a>
-                    </Fragment>
-                ) : (
-                    <a href={RANKUP_MACOS_DOWNLOAD} class="btn-primary pulse">Download for macOS</a>
-                )}
-                <a href={RANKUP_APP_STORE_URL} class="btn-secondary final-cta-secondary" target="_blank" rel="noopener">Download on the App Store</a>
-                <a href={RANKUP_PLAY_STORE_URL} class="btn-secondary final-cta-secondary" target="_blank" rel="noopener">Get it on Google Play</a>
+            <div class="ru-get" data-get="final">
+                {GET_OPTIONS.map((o) => (
+                    <a href={o.href} class="ru-store" data-platform={o.platform} {...(o.external ? { target: '_blank', rel: 'noopener' } : {})}>
+                        <span class="ru-store-icon" aria-hidden="true" data-icon={o.platform}></span>
+                        <span class="ru-store-text"><small>{o.small}</small>{o.label}</span>
+                    </a>
+                ))}
             </div>
         </div>
+        <div class="ru-hill ru-hill-final" aria-hidden="true"></div>
     </section>
+    </div>
 </Layout>
 
 <script>
@@ -461,7 +500,7 @@ const faqSchema = {
     // If it fails, answers slowly or sends nothing usable, the page stays as it is: no figure, and
     // "Your price is shown at checkout". Text goes in with textContent, never as HTML.
     async function showLocalPrices() {
-        const slots = document.querySelectorAll('[data-price]');
+        const slots = document.querySelectorAll<HTMLElement>('[data-price]');
         if (slots.length === 0) return;
         const controller = new AbortController();
         const timer = setTimeout(() => controller.abort(), 5000);
@@ -478,7 +517,7 @@ const faqSchema = {
             if (!prices) return;
             let shown = 0;
             slots.forEach((el) => {
-                const text = prices[el.dataset.price];
+                const text = prices[el.dataset.price ?? ''];
                 if (typeof text !== 'string' || text.length > 24 || !/\d/.test(text)) return;
                 el.textContent = text;
                 el.hidden = false;
@@ -495,30 +534,82 @@ const faqSchema = {
         }
     }
 
+    // Which platform this visitor is on, from the user agent (the same test as /get/). iPadOS 13+
+    // asks for the desktop site and reports itself as a Mac; the touch points give it away.
+    function visitorPlatform(): string {
+        const ua = navigator.userAgent || '';
+        const touchMac = /Macintosh/.test(ua) && navigator.maxTouchPoints > 1;
+        if (/iPhone|iPad|iPod/.test(ua) || touchMac) return 'ios';
+        if (/Android/.test(ua)) return 'android';
+        if (/Windows/.test(ua)) return 'windows';
+        if (/Macintosh|Mac OS X/.test(ua)) return 'mac';
+        return '';
+    }
+
+    // Rule W-L2: the visitor's own platform becomes the big first button in every button group;
+    // the others stay one line below. Unknown devices keep every option the same size.
+    function personaliseGetButtons() {
+        const platform = visitorPlatform();
+        // Carry ?ref= and utm_* through to Google Play, so Play Console can answer "did YouTube send this install?".
+        const qs = location.search;
+        document.querySelectorAll<HTMLAnchorElement>('.ru-store[data-platform="android"]').forEach((a) => {
+            if (qs.length > 1 && !a.href.includes('referrer=')) a.href += '&referrer=' + encodeURIComponent(qs.slice(1));
+        });
+        document.querySelectorAll<HTMLElement>('[data-get]').forEach((group) => {
+            const mine = group.querySelector<HTMLElement>(`.ru-store[data-platform="${platform}"]`);
+            if (!mine) return;
+            group.classList.add('has-primary');
+            mine.classList.add('is-primary');
+            group.prepend(mine);
+            const free = mine.querySelector('small');
+            if (free) free.textContent = platform === 'ios' || platform === 'android' ? 'Free on' : 'Free download for';
+        });
+        if (platform === 'windows') document.querySelector<HTMLElement>('[data-win-note]')?.removeAttribute('hidden');
+        document.querySelectorAll<HTMLAnchorElement>('.ru-store').forEach((a) => {
+            a.addEventListener('click', () => {
+                const group = a.closest<HTMLElement>('[data-get]');
+                (window as any).stillTrack?.('rankup_get', {
+                    platform: a.dataset.platform || '',
+                    place: group?.dataset.get || '',
+                    primary: a.classList.contains('is-primary') ? 'yes' : 'no',
+                });
+            });
+        });
+    }
+
+    // Rule W-L5: the sing-along video loads from YouTube only when the visitor presses play.
+    function wireVideo() {
+        const btn = document.querySelector<HTMLButtonElement>('.ru-video-play');
+        if (!btn) return;
+        btn.addEventListener('click', () => {
+            const id = btn.dataset.videoId || '';
+            const frame = document.createElement('iframe');
+            frame.src = `https://www.youtube-nocookie.com/embed/${encodeURIComponent(id)}?autoplay=1&rel=0`;
+            frame.title = 'Let the Whole Board Sing, a chess sing-along for kids';
+            frame.allow = 'autoplay; encrypted-media; picture-in-picture';
+            frame.allowFullscreen = true;
+            frame.className = 'ru-video-frame';
+            btn.replaceWith(frame);
+            (window as any).stillTrack?.('video_play', { video_id: id, place: 'rankupchess' });
+        });
+    }
+
     document.addEventListener('DOMContentLoaded', () => {
         showLocalPrices();
-
-        // Hero Carousel
-        const heroSlides = document.querySelectorAll('.hero-slide');
-        let heroIndex = 0;
-        if (heroSlides.length > 1) {
-            setInterval(() => {
-                heroSlides[heroIndex].classList.remove('active');
-                heroIndex = (heroIndex + 1) % heroSlides.length;
-                heroSlides[heroIndex].classList.add('active');
-            }, 4000);
-        }
+        personaliseGetButtons();
+        wireVideo();
 
         // App Slides Carousels — one per wrapper, so the phone and Mac
         // galleries each drive their own scroller.
+        const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
         document.querySelectorAll('.slides-ui-wrapper').forEach((wrapper) => {
-            const slidesContainer = wrapper.querySelector('.slides-container');
+            const slidesContainer = wrapper.querySelector<HTMLElement>('.slides-container');
             const prevBtn = wrapper.querySelector('.slide-nav-btn.prev');
             const nextBtn = wrapper.querySelector('.slide-nav-btn.next');
             if (!slidesContainer || !prevBtn || !nextBtn) return;
 
             const slideWidth = () => {
-                const slide = slidesContainer.querySelector('.slide-image');
+                const slide = slidesContainer.querySelector<HTMLElement>('.slide-image');
                 return slide ? slide.offsetWidth + 20 : 300;
             };
 
@@ -538,6 +629,7 @@ const faqSchema = {
                 slidesContainer.scrollBy({ left: slideWidth(), behavior: 'smooth' });
             });
 
+            if (reduceMotion) return;
             let autoAdvance = setInterval(advance, 5000);
             slidesContainer.addEventListener('mouseenter', () => clearInterval(autoAdvance));
             slidesContainer.addEventListener('mouseleave', () => {
@@ -548,248 +640,552 @@ const faqSchema = {
 </script>
 
 <style>
-    /* Gold Gradient Text */
-    .text-gradient-gold {
-        background: linear-gradient(135deg, #F59E0B 0%, #FBBF24 50%, #F59E0B 100%);
-        -webkit-background-clip: text;
-        -webkit-text-fill-color: transparent;
-        background-clip: text;
+    /* The page wears the song's world: a soft sky, a lilac-and-cream board, a green hill and rounded
+       rainbow letters (the video's palette, Youtube/song/07_production_source). Colours are scoped
+       to .ru-page so the site's header and footer keep their own. */
+    .ru-page {
+        --ru-ink: #2E2547;
+        --ru-ink-soft: #564C73;
+        --ru-sky-top: #86BDEB;
+        --ru-sky-low: #CFE5F6;
+        --ru-cream: #FFF7EC;
+        --ru-cream-deep: #FDEBDC;
+        --ru-lilac: #9C8FD0;
+        --ru-lilac-deep: #5B4A8B;
+        --ru-grass: #8FCB6E;
+        --ru-grass-deep: #79B85A;
+        --ru-orange: #E9962A;
+        --ru-coral: #DE5B44;
+        --ru-pink: #D94F8E;
+        --ru-blue: #4D67D3;
+        --ru-purple: #8E4CC6;
+        --ru-button: #5B45C4;
+        --ru-button-hover: #4A35AE;
+        --ru-round: ui-rounded, 'SF Pro Rounded', 'Arial Rounded MT Bold', 'Varela Round', 'Nunito', var(--font-sans);
+        background: var(--ru-cream);
+        color: var(--ru-ink);
     }
 
-    /* Hero */
-    .chess-hero {
-        position: relative;
-        overflow: hidden;
-        padding: 10rem 0 6rem;
-        background:
-            radial-gradient(ellipse 900px 700px at 50% 40%, rgba(245, 158, 11, 0.07) 0%, transparent 70%),
-            radial-gradient(ellipse 600px 600px at 85% 20%, rgba(251, 191, 36, 0.05) 0%, transparent 60%),
-            var(--gradient-obsidian);
+    .ru-wrap {
+        width: min(1160px, 100% - 32px);
+        margin-inline: auto;
     }
 
-    .hero-ambient {
-        position: absolute;
-        inset: 0;
-        overflow: hidden;
-        pointer-events: none;
-        z-index: 0;
+    .ru-page h2,
+    .ru-page h3,
+    .ru-page h4 {
+        font-family: var(--ru-round);
+        color: var(--ru-ink);
+        letter-spacing: -0.01em;
     }
 
-    .hero-ambient::before {
-        content: '';
-        position: absolute;
-        top: -200px;
-        left: -100px;
-        width: 600px;
-        height: 600px;
-        border-radius: 50%;
-        background: radial-gradient(circle, rgba(245, 158, 11, 0.1) 0%, transparent 70%);
-        filter: blur(60px);
-        animation: float-orb-1 20s ease-in-out infinite;
-    }
-
-    .hero-ambient::after {
-        content: '';
-        position: absolute;
-        bottom: -150px;
-        right: -50px;
-        width: 500px;
-        height: 500px;
-        border-radius: 50%;
-        background: radial-gradient(circle, rgba(251, 191, 36, 0.06) 0%, transparent 70%);
-        filter: blur(80px);
-        animation: float-orb-2 25s ease-in-out infinite;
-    }
-
-    .hero-content {
-        position: relative;
-        z-index: 1;
-        max-width: 1240px;
-        margin: 0 auto;
-        padding: 0 2rem;
-        display: grid;
-        grid-template-columns: 1fr 1fr;
-        gap: 4rem;
-        align-items: center;
-    }
-
-    .hero-text h1 {
-        font-size: 3.5rem;
-        font-weight: 800;
-        margin-bottom: 1.5rem;
-        letter-spacing: -0.04em;
-        line-height: 1.1;
-    }
-
-    .subheadline {
-        font-size: 1.15rem;
-        color: rgba(255, 255, 255, 0.75);
-        margin-bottom: 2rem;
-        line-height: 1.7;
-    }
-
-    .subheadline strong {
-        color: #FBBF24;
-    }
-
-    .hero-cta {
-        display: flex;
-        flex-direction: column;
-        gap: 1.25rem;
-    }
-
-    .hero-cta .btn-primary {
-        align-self: flex-start;
-        background: linear-gradient(135deg, #F59E0B 0%, #D97706 100%);
-        border-color: transparent;
-        display: inline-flex;
-        flex-direction: column;
-        align-items: center;
-        line-height: 1.2;
-    }
-
-    .hero-cta .btn-primary:hover {
-        background: linear-gradient(135deg, #FBBF24 0%, #F59E0B 100%);
-    }
-
-    .btn-subtext {
-        display: block;
-        margin-top: 0.25rem;
-        font-size: 0.75rem;
-        font-weight: 500;
-        letter-spacing: 0.03em;
-        opacity: 0.85;
-    }
-
-    .hero-cta-secondary {
-        align-self: flex-start;
-        display: inline-flex;
-        flex-direction: column;
-        align-items: center;
-        padding: 0.85rem 1.75rem;
-        border-radius: 100px;
-        border: 1px solid rgba(245, 158, 11, 0.55);
-        color: #F59E0B;
-        font-weight: 600;
-        text-decoration: none;
-        transition: background 0.2s ease, border-color 0.2s ease;
-    }
-
-    .hero-cta-secondary:hover {
-        background: rgba(245, 158, 11, 0.12);
-        border-color: rgba(245, 158, 11, 0.85);
-    }
-
-    .version-line {
-        margin: 0;
-        font-size: 0.9rem;
-        color: rgba(255, 255, 255, 0.6);
-    }
-
-    .platform-badges {
-        display: flex;
-        gap: 0.75rem;
-        flex-wrap: wrap;
-    }
-
-    .platform-badge {
-        display: inline-flex;
-        align-items: center;
-        gap: 0.5rem;
-        padding: 0.5rem 1rem;
-        border-radius: 100px;
-        font-size: 0.85rem;
-        font-weight: 600;
-        background: rgba(255, 255, 255, 0.08);
-        color: rgba(255, 255, 255, 0.8);
-        border: 1px solid rgba(255, 255, 255, 0.12);
-        text-decoration: none;
-        transition: all 0.3s ease;
-    }
-
-    .platform-badge svg {
-        width: 18px;
-        height: 18px;
-        flex-shrink: 0;
-    }
-
-    .platform-badge.coming-soon {
-        opacity: 0.5;
-    }
-
-    /* Hero Carousel */
-    .hero-visual {
-        position: relative;
-    }
-
-    .hero-carousel {
-        position: relative;
-        border-radius: 20px;
-        overflow: hidden;
-        box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.4);
-    }
-
-    .hero-slide {
-        width: 100%;
-        display: block;
-        opacity: 0;
-        position: absolute;
-        top: 0;
-        left: 0;
-        transition: opacity 0.8s ease-in-out;
-        border-radius: 20px;
-    }
-
-    .hero-slide.active {
-        opacity: 1;
-        position: relative;
-    }
-
-    /* Difference Section */
-    .difference-section {
-        padding: 6rem 0;
-        background: var(--color-surface);
-    }
-
-    .difference-content {
-        max-width: 780px;
-        margin: 2rem auto 0;
+    .ru-section-head {
+        max-width: 760px;
+        margin: 0 auto 2.5rem;
         text-align: center;
     }
 
-    .difference-lead {
-        font-size: 1.25rem;
-        color: var(--color-text);
-        line-height: 1.7;
-        margin-bottom: 1.5rem;
+    .ru-section-head h2 {
+        font-size: clamp(1.8rem, 4.5vw, 2.6rem);
+        line-height: 1.15;
+        margin-bottom: 0.9rem;
     }
 
-    .difference-content p {
+    .ru-section-head p {
+        color: var(--ru-ink-soft);
         font-size: 1.1rem;
-        color: var(--color-text-light);
-        line-height: 1.7;
+        line-height: 1.6;
     }
 
-    .difference-content strong {
-        color: var(--color-secondary);
+    .ru-label {
+        display: inline-block;
+        font-family: var(--ru-round);
+        font-weight: 800;
+        font-size: 0.8rem;
+        letter-spacing: 0.12em;
+        text-transform: uppercase;
+        color: var(--ru-lilac-deep);
+        background: #EFEAFB;
+        border-radius: 999px;
+        padding: 0.35rem 0.9rem;
+        margin-bottom: 1rem;
     }
 
-    /* Slides Section */
+    /* ── Hero ─────────────────────────────────────────────── */
+    .ru-hero {
+        position: relative;
+        overflow: hidden;
+        padding: 9.5rem 0 7rem;
+        background: linear-gradient(180deg, var(--ru-sky-top) 0%, var(--ru-sky-low) 58%, #EAF3E2 100%);
+    }
+
+    .ru-sky {
+        position: absolute;
+        inset: 0;
+        pointer-events: none;
+    }
+
+    .ru-sun {
+        position: absolute;
+        top: 12%;
+        left: 8%;
+        width: 260px;
+        height: 260px;
+        border-radius: 50%;
+        background: radial-gradient(circle, rgba(255, 236, 160, 0.9) 0%, rgba(255, 236, 160, 0.35) 40%, transparent 70%);
+    }
+
+    .ru-cloud {
+        position: absolute;
+        height: auto;
+        opacity: 0.95;
+        animation: ru-drift 38s linear infinite alternate;
+    }
+
+    .ru-cloud-a { top: 16%; left: 54%; width: 220px; }
+    .ru-cloud-b { top: 34%; left: 82%; width: 170px; animation-duration: 46s; }
+    .ru-cloud-c { top: 8%; left: 26%; width: 130px; animation-duration: 52s; opacity: 0.8; }
+
+    @keyframes ru-drift {
+        from { transform: translateX(-24px); }
+        to { transform: translateX(24px); }
+    }
+
+    .ru-hero-inner {
+        position: relative;
+        z-index: 1;
+        width: min(1160px, 100% - 32px);
+        margin-inline: auto;
+        display: grid;
+        grid-template-columns: 1.1fr 0.9fr;
+        gap: 2.5rem;
+        align-items: center;
+    }
+
+    .ru-kicker {
+        display: inline-block;
+        font-family: var(--ru-round);
+        font-weight: 700;
+        font-size: 0.95rem;
+        color: var(--ru-lilac-deep);
+        background: rgba(255, 255, 255, 0.75);
+        border-radius: 999px;
+        padding: 0.4rem 1rem;
+        margin-bottom: 1.1rem;
+    }
+
+    .ru-hero h1 {
+        margin: 0 0 1.1rem;
+        line-height: 1;
+    }
+
+    .ru-rainbow {
+        display: block;
+        font-family: var(--ru-round);
+        font-weight: 900;
+        font-size: clamp(2.7rem, 7.2vw, 4.9rem);
+        line-height: 1.04;
+        letter-spacing: -0.015em;
+        paint-order: stroke fill;
+        -webkit-text-stroke: 0.14em #ffffff;
+        text-shadow: 0 6px 0 rgba(46, 37, 71, 0.12);
+    }
+
+    .ru-rainbow span:nth-child(1) { color: var(--ru-orange); }
+    .ru-rainbow span:nth-child(2) { color: var(--ru-coral); }
+    .ru-rainbow span:nth-child(3) { color: var(--ru-pink); }
+    .ru-rainbow span:nth-child(4) { color: var(--ru-blue); }
+    .ru-rainbow span:nth-child(5) { color: var(--ru-purple); }
+
+    .ru-h1-sub {
+        display: block;
+        margin-top: 0.9rem;
+        font-family: var(--ru-round);
+        font-weight: 800;
+        font-size: clamp(1.15rem, 2.6vw, 1.5rem);
+        color: var(--ru-ink);
+        line-height: 1.25;
+    }
+
+    .ru-lead {
+        font-size: 1.12rem;
+        line-height: 1.6;
+        color: var(--ru-ink-soft);
+        max-width: 560px;
+        margin-bottom: 1.6rem;
+    }
+
+    .ru-lead strong { color: var(--ru-ink); }
+
+    .ru-get-note,
+    .ru-win-note {
+        margin-top: 0.9rem;
+        font-size: 0.92rem;
+        line-height: 1.5;
+        color: var(--ru-ink-soft);
+        max-width: 560px;
+    }
+
+    .ru-win-note {
+        background: rgba(255, 255, 255, 0.7);
+        border-radius: 12px;
+        padding: 0.6rem 0.8rem;
+    }
+
+    /* The board, the King and the little Pawn */
+    .ru-hero-art {
+        position: relative;
+        aspect-ratio: 1 / 0.92;
+        max-width: 480px;
+        width: 100%;
+        justify-self: center;
+    }
+
+    .ru-board {
+        position: absolute;
+        right: 0;
+        top: 0;
+        width: 66%;
+        aspect-ratio: 1;
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        border: 10px solid var(--ru-lilac-deep);
+        border-radius: 22px;
+        overflow: hidden;
+        transform: rotate(4deg);
+        box-shadow: 0 18px 40px rgba(46, 37, 71, 0.22);
+    }
+
+    .ru-board .light { background: var(--ru-cream-deep); }
+    .ru-board .dark { background: var(--ru-lilac); }
+
+    .ru-king,
+    .ru-pawn {
+        position: absolute;
+        height: auto;
+        filter: drop-shadow(0 10px 8px rgba(46, 37, 71, 0.22));
+        animation: ru-bob 3.2s ease-in-out infinite;
+    }
+
+    .ru-king { left: 0; bottom: 0; width: 62%; }
+    .ru-pawn { left: 56%; bottom: 0; width: 38%; animation-delay: -1.4s; }
+
+    @keyframes ru-bob {
+        0%, 100% { transform: translateY(0); }
+        50% { transform: translateY(-8px); }
+    }
+
+    .ru-hill {
+        position: absolute;
+        left: -10%;
+        right: -10%;
+        bottom: -70px;
+        height: 150px;
+        border-radius: 50% 50% 0 0 / 100% 100% 0 0;
+        background: linear-gradient(180deg, var(--ru-grass) 0%, var(--ru-grass-deep) 100%);
+    }
+
+    /* ── Get buttons (hero, pricing, final) ───────────────── */
+    .ru-get {
+        display: grid;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 0.7rem;
+        max-width: 520px;
+    }
+
+    .ru-store {
+        display: flex;
+        align-items: center;
+        gap: 0.7rem;
+        min-height: 56px;
+        padding: 0.6rem 1rem;
+        border-radius: 16px;
+        background: var(--ru-ink);
+        color: #ffffff;
+        text-decoration: none;
+        font-family: var(--ru-round);
+        font-weight: 800;
+        font-size: 1.05rem;
+        line-height: 1.1;
+        box-shadow: 0 4px 0 rgba(0, 0, 0, 0.25);
+        transition: transform 0.15s ease, background 0.15s ease;
+    }
+
+    .ru-store:hover { transform: translateY(-2px); background: #3A2F5A; }
+    .ru-store:focus-visible { outline: 3px solid var(--ru-orange); outline-offset: 3px; }
+
+    .ru-store-text small {
+        display: block;
+        font-family: var(--font-sans);
+        font-weight: 500;
+        font-size: 0.72rem;
+        opacity: 0.85;
+        margin-bottom: 0.15rem;
+    }
+
+    .ru-store-icon {
+        flex-shrink: 0;
+        width: 26px;
+        height: 26px;
+        background: currentColor;
+        -webkit-mask: var(--ru-icon) center / contain no-repeat;
+        mask: var(--ru-icon) center / contain no-repeat;
+    }
+
+    .ru-store-icon[data-icon='ios'],
+    .ru-store-icon[data-icon='mac'] {
+        --ru-icon: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath d='M17.05 20.28c-.98.95-2.05.8-3.08.35-1.09-.46-2.09-.48-3.24 0-1.44.62-2.2.44-3.06-.35C2.79 15.25 3.51 7.59 9.05 7.31c1.35.07 2.29.74 3.08.8 1.18-.24 2.31-.93 3.57-.84 1.51.12 2.65.72 3.4 1.8-3.12 1.87-2.38 5.98.48 7.13-.57 1.5-1.31 2.99-2.54 4.09zM12.03 7.25c-.15-2.23 1.66-4.07 3.74-4.25.29 2.58-2.34 4.5-3.74 4.25z'/%3E%3C/svg%3E");
+    }
+
+    .ru-store-icon[data-icon='android'] {
+        --ru-icon: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath d='M3.6 1.8 13.3 11.5 3.6 21.2c-.4-.2-.6-.6-.6-1.1V2.9c0-.5.2-.9.6-1.1zm10.7 10.7 2.7 2.7-11.4 6.5 8.7-9.2zm3.9-3.6 2.9 1.7c.8.5.8 1.6 0 2l-2.9 1.7-3-3 3-2.4zM5.6 1.6 17 8.1l-2.7 2.7L5.6 1.6z'/%3E%3C/svg%3E");
+    }
+
+    .ru-store-icon[data-icon='windows'] {
+        --ru-icon: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath d='M0 3.449L9.75 2.1v9.451H0m10.949-9.602L24 0v11.4H10.949M0 12.6h9.75v9.451L0 20.699M10.949 12.6H24V24l-12.9-1.801'/%3E%3C/svg%3E");
+    }
+
+    /* Once the script knows the device, its button is the big one and the rest shrink. */
+    .ru-get.has-primary .ru-store {
+        min-height: 44px;
+        font-size: 0.92rem;
+        background: rgba(46, 37, 71, 0.82);
+    }
+
+    .ru-get.has-primary .ru-store small { display: none; }
+    .ru-get.has-primary .ru-store .ru-store-icon { width: 20px; height: 20px; }
+
+    .ru-get.has-primary .ru-store.is-primary {
+        grid-column: 1 / -1;
+        min-height: 66px;
+        font-size: 1.25rem;
+        justify-content: center;
+        background: var(--ru-button);
+        box-shadow: 0 5px 0 #3B2C86;
+    }
+
+    .ru-get.has-primary .ru-store.is-primary:hover { background: var(--ru-button-hover); }
+    .ru-get.has-primary .ru-store.is-primary small { display: block; }
+    .ru-get.has-primary .ru-store.is-primary .ru-store-icon { width: 30px; height: 30px; }
+
+    .ru-get.has-primary .ru-store:not(.is-primary) {
+        grid-column: auto;
+    }
+
+    .ru-get.has-primary {
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+    }
+
+    /* ── Trust band ──────────────────────────────────────── */
+    .ru-trust-band {
+        background: var(--ru-grass-deep);
+        padding: 0.4rem 0 1.6rem;
+    }
+
+    .ru-trust {
+        list-style: none;
+        margin: 0 auto;
+        padding: 0;
+        width: min(1160px, 100% - 32px);
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 0.6rem;
+    }
+
+    .ru-trust li {
+        display: inline-flex;
+        align-items: center;
+        gap: 0.45rem;
+        background: #ffffff;
+        color: var(--ru-ink);
+        border-radius: 999px;
+        padding: 0.5rem 1rem;
+        font-family: var(--ru-round);
+        font-weight: 800;
+        font-size: 0.95rem;
+        box-shadow: 0 3px 0 rgba(46, 37, 71, 0.12);
+    }
+
+    .ru-tick {
+        display: inline-grid;
+        place-items: center;
+        width: 1.3rem;
+        height: 1.3rem;
+        border-radius: 50%;
+        background: #E7F5DD;
+        color: #3D7A1F;
+        font-size: 0.8rem;
+    }
+
+    /* ── Song section ────────────────────────────────────── */
+    .ru-song {
+        padding: 5rem 0 4.5rem;
+        background: var(--ru-cream);
+    }
+
+    .ru-parade {
+        list-style: none;
+        margin: 0 0 3rem;
+        padding: 0;
+        display: grid;
+        grid-template-columns: repeat(6, minmax(0, 1fr));
+        gap: 1rem;
+    }
+
+    .ru-parade li {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+        gap: 0.35rem;
+    }
+
+    .ru-parade-square {
+        display: grid;
+        place-items: center;
+        width: 100%;
+        max-width: 140px;
+        aspect-ratio: 1;
+        border-radius: 22px;
+        background: var(--ru-cream-deep);
+        border: 4px solid var(--ru-lilac);
+        margin-bottom: 0.4rem;
+    }
+
+    .ru-parade li:nth-child(even) .ru-parade-square { background: #E3DDF6; }
+
+    .ru-parade-square img { width: 74%; height: auto; }
+
+    .ru-parade strong {
+        font-family: var(--ru-round);
+        font-size: 1.15rem;
+        color: var(--ru-ink);
+    }
+
+    .ru-parade span:last-child {
+        font-size: 0.92rem;
+        line-height: 1.4;
+        color: var(--ru-ink-soft);
+    }
+
+    .ru-video {
+        max-width: 760px;
+        margin: 0 auto;
+    }
+
+    .ru-video img,
+    .ru-video-play,
+    .ru-video :global(.ru-video-frame) {
+        display: block;
+        width: 100%;
+        aspect-ratio: 16 / 9;
+        height: auto;
+        border-radius: 22px;
+        border: 0;
+        box-shadow: 0 16px 36px rgba(46, 37, 71, 0.18);
+    }
+
+    .ru-video-play {
+        position: relative;
+        padding: 0;
+        cursor: pointer;
+        background: none;
+        overflow: hidden;
+    }
+
+    .ru-video-play img { box-shadow: none; border-radius: 0; }
+
+    .ru-play-icon {
+        position: absolute;
+        inset: 0;
+        margin: auto;
+        width: 84px;
+        height: 84px;
+        border-radius: 50%;
+        background: rgba(91, 69, 196, 0.92);
+        box-shadow: 0 6px 0 #3B2C86;
+    }
+
+    .ru-play-icon::after {
+        content: '';
+        position: absolute;
+        left: 34px;
+        top: 26px;
+        border-left: 26px solid #ffffff;
+        border-top: 16px solid transparent;
+        border-bottom: 16px solid transparent;
+    }
+
+    .ru-video figcaption {
+        margin-top: 0.9rem;
+        text-align: center;
+        font-size: 0.95rem;
+        color: var(--ru-ink-soft);
+    }
+
+    /* ── Activities ──────────────────────────────────────── */
+    .ru-activities {
+        padding: 5rem 0;
+        background: linear-gradient(180deg, #EEF6FD 0%, #F6F2FD 100%);
+    }
+
+    .ru-cards {
+        display: grid;
+        grid-template-columns: repeat(4, minmax(0, 1fr));
+        gap: 1.2rem;
+    }
+
+    .ru-card {
+        background: #ffffff;
+        border-radius: 24px;
+        padding: 1.5rem 1.4rem 1.6rem;
+        box-shadow: 0 4px 0 rgba(46, 37, 71, 0.08), 0 14px 30px rgba(46, 37, 71, 0.06);
+    }
+
+    .ru-card-icon {
+        display: grid;
+        place-items: center;
+        width: 72px;
+        height: 72px;
+        border-radius: 20px;
+        background: var(--ru-cream-deep);
+        margin-bottom: 1rem;
+    }
+
+    .ru-card:nth-child(3n + 2) .ru-card-icon { background: #E3DDF6; }
+    .ru-card:nth-child(3n) .ru-card-icon { background: #DDEFD3; }
+
+    .ru-card-icon img { width: 52px; height: auto; }
+
+    .ru-card h3 {
+        font-size: 1.2rem;
+        margin-bottom: 0.5rem;
+    }
+
+    .ru-card p {
+        color: var(--ru-ink-soft);
+        font-size: 0.98rem;
+        line-height: 1.55;
+    }
+
+    /* ── Screens ─────────────────────────────────────────── */
     .slides-section {
-        padding: 6rem 0;
+        padding: 4.5rem 0;
+        background: var(--ru-cream);
     }
+
+    .slides-mac { background: #FBF6EE; padding-top: 1rem; }
 
     .slides-sub {
-        color: var(--color-text-light);
+        color: var(--ru-ink-soft);
         font-size: 1.1rem;
-        margin-top: 0.75rem;
     }
 
     .slides-ui-wrapper {
         display: flex;
         align-items: center;
         gap: 1rem;
-        margin-top: 3rem;
     }
 
     .slide-nav-btn {
@@ -797,27 +1193,22 @@ const faqSchema = {
         width: 48px;
         height: 48px;
         border-radius: 50%;
-        border: 1px solid var(--color-border);
+        border: 0;
         background: #ffffff;
-        color: var(--color-secondary);
+        color: var(--ru-ink);
         display: flex;
         align-items: center;
         justify-content: center;
         cursor: pointer;
-        transition: all 0.3s ease;
-        box-shadow: var(--shadow-premium);
+        box-shadow: 0 3px 0 rgba(46, 37, 71, 0.15);
     }
 
-    .slide-nav-btn:hover {
-        background: var(--color-surface);
-        border-color: var(--color-primary);
-        color: var(--color-primary);
-    }
+    .slide-nav-btn:hover { color: var(--ru-button); }
 
     .slides-container-wrapper {
         overflow: hidden;
         flex: 1;
-        border-radius: 16px;
+        border-radius: 18px;
     }
 
     .slides-container {
@@ -826,586 +1217,399 @@ const faqSchema = {
         overflow-x: auto;
         scroll-snap-type: x mandatory;
         scrollbar-width: none;
-        -ms-overflow-style: none;
         padding: 1rem 0;
     }
 
-    /* macOS captures are landscape, so they need more width than the
-       phone-shaped slides the base rule is sized for. */
-    .slide-image-wide {
-        width: 520px;
-    }
-
-    .slides-container::-webkit-scrollbar {
-        display: none;
-    }
+    .slides-container::-webkit-scrollbar { display: none; }
 
     .slide-image {
         flex-shrink: 0;
-        width: 280px;
+        width: 260px;
         height: auto;
-        border-radius: 16px;
-        box-shadow: 0 8px 24px rgba(0, 0, 0, 0.12);
+        border-radius: 18px;
+        box-shadow: 0 8px 24px rgba(46, 37, 71, 0.12);
         scroll-snap-align: start;
-        transition: transform 0.3s ease;
     }
 
-    .slide-image:hover {
-        transform: scale(1.02);
-    }
+    .slide-image-wide { width: 520px; }
 
-    /* Features */
-    .features-section {
-        padding: 6rem 0;
-        background: var(--color-surface);
-    }
-
-    .features-grid {
-        display: grid;
-        grid-template-columns: repeat(3, 1fr);
-        gap: 2rem;
-        margin-top: 3rem;
-    }
-
-    .feature-card {
+    /* ── Grown-ups ───────────────────────────────────────── */
+    .ru-grownups {
+        padding: 5rem 0;
         background: #ffffff;
-        padding: 2.5rem;
-        border-radius: 20px;
-        border: 1px solid rgba(226, 232, 240, 0.6);
-        transition: all 0.4s var(--transition-premium);
-        box-shadow: var(--shadow-premium);
-        position: relative;
     }
 
-    .feature-card::before {
-        content: '';
-        position: absolute;
-        top: 0;
-        left: 0;
-        right: 0;
-        height: 3px;
-        background: linear-gradient(135deg, #F59E0B 0%, #FBBF24 100%);
-        border-radius: 20px 20px 0 0;
-        opacity: 0;
-        transition: opacity 0.4s ease;
-    }
-
-    .feature-card:hover {
-        transform: translateY(-6px);
-        box-shadow: 0 8px 24px rgba(245, 158, 11, 0.08);
-        border-color: rgba(245, 158, 11, 0.15);
-    }
-
-    .feature-card:hover::before {
-        opacity: 1;
-    }
-
-    .icon-box {
-        width: 56px;
-        height: 56px;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        border-radius: 14px;
-        background: linear-gradient(135deg, #FFFBEB, #FEF3C7);
-        color: #D97706;
-        margin-bottom: 1.25rem;
-        transition: all 0.4s var(--transition-premium);
-    }
-
-    .feature-card:hover .icon-box {
-        transform: scale(1.1) rotate(3deg);
-        background: linear-gradient(135deg, #FEF3C7, #FDE68A);
-        box-shadow: 0 4px 16px rgba(245, 158, 11, 0.2);
-    }
-
-    .feature-card h3 {
-        font-size: 1.2rem;
-        margin-bottom: 0.75rem;
-        color: var(--color-secondary);
-    }
-
-    .feature-card p {
-        color: var(--color-text-light);
-        font-size: 1rem;
-        line-height: 1.6;
-    }
-
-    /* Parental Section */
-    .parental-section {
-        padding: 8rem 0;
-    }
-
-    .parental-grid {
+    .ru-grownups-grid {
         display: grid;
         grid-template-columns: 1fr 1fr;
-        gap: 5rem;
+        gap: 3rem;
         align-items: center;
     }
 
-    .parental-text h2 {
-        font-size: 3rem;
-        margin-bottom: 1rem;
-        line-height: 1.1;
+    .ru-grownups-text h2 {
+        font-size: clamp(1.8rem, 4vw, 2.4rem);
+        line-height: 1.15;
+        margin-bottom: 0.5rem;
     }
 
-    .parental-headline {
-        font-size: 1.3rem;
+    .ru-grownups-headline {
+        font-family: var(--ru-round);
+        font-weight: 800;
+        color: var(--ru-purple);
+        font-size: 1.2rem;
+        margin-bottom: 1rem;
+    }
+
+    .ru-grownups-text p {
+        color: var(--ru-ink-soft);
+        line-height: 1.65;
+        margin-bottom: 1rem;
+    }
+
+    .ru-grownups-text strong { color: var(--ru-ink); }
+
+    .ru-checks {
+        list-style: none;
+        padding: 0;
+        margin: 0 0 1.2rem;
+        display: grid;
+        gap: 0.6rem;
+    }
+
+    .ru-checks li {
+        position: relative;
+        padding-left: 1.9rem;
+        color: var(--ru-ink);
+        line-height: 1.5;
+    }
+
+    .ru-checks li::before {
+        content: '\2713';
+        position: absolute;
+        left: 0;
+        top: 0.05rem;
+        display: grid;
+        place-items: center;
+        width: 1.3rem;
+        height: 1.3rem;
+        border-radius: 50%;
+        background: #E7F5DD;
+        color: #3D7A1F;
+        font-size: 0.8rem;
+    }
+
+    .ru-reassure {
+        font-family: var(--ru-round);
         font-weight: 700;
-        color: #D97706;
-        margin-bottom: 1.5rem;
+        color: var(--ru-ink) !important;
     }
 
-    .parental-text p {
-        font-size: 1.1rem;
-        color: var(--color-text-light);
-        line-height: 1.7;
+    .ru-grownups-visual img {
+        width: 100%;
+        height: auto;
+        border-radius: 20px;
+        box-shadow: 0 16px 36px rgba(46, 37, 71, 0.16);
+    }
+
+    .ru-why {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 1.4rem;
+        margin-top: 3.5rem;
+    }
+
+    .ru-why-card {
+        background: var(--ru-cream);
+        border-radius: 24px;
+        padding: 2rem;
+    }
+
+    .ru-why-card h2 {
+        font-size: clamp(1.4rem, 3vw, 1.8rem);
+        line-height: 1.2;
         margin-bottom: 1rem;
     }
 
-    .parental-text strong {
-        color: var(--color-secondary);
+    .ru-why-card h3 {
+        font-size: 1.15rem;
+        margin: 0 0 0.5rem;
     }
 
-    .parental-reassure {
-        font-style: italic;
-        color: var(--color-text) !important;
+    .ru-why-card h3 + p { margin-bottom: 1.2rem; }
+
+    .ru-why-card p {
+        color: var(--ru-ink-soft);
+        line-height: 1.65;
     }
 
-    .parental-image {
-        width: 100%;
-        border-radius: 20px;
-        box-shadow: 0 25px 50px -12px rgba(15, 23, 42, 0.25);
-        animation: float 6s ease-in-out infinite;
-    }
+    .ru-why-card p + p { margin-top: 0.8rem; }
+    .ru-why-lead { color: var(--ru-ink) !important; }
 
-    /* FAQ */
-    .faq-section { padding: 6rem 0; max-width: 1000px; margin: 0 auto; }
-    .faq-section h2 { text-align: center; font-size: 2.5rem; margin-bottom: 3rem; }
-    .faq-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem; }
-    .faq-item {
-        background: #ffffff;
-        padding: 2rem;
-        border-radius: 20px;
-        border: 1px solid rgba(226, 232, 240, 0.6);
-        box-shadow: var(--shadow-premium);
-    }
-    .faq-item h3 { font-size: 1.15rem; line-height: 1.4; margin-bottom: 0.75rem; }
-    .faq-item p { color: var(--color-text-light); font-size: 1.02rem; line-height: 1.6; }
-    @media (max-width: 768px) {
-        .faq-section { padding: 4rem 1rem; }
-        .faq-section h2 { font-size: 2rem; }
-        .faq-grid { grid-template-columns: 1fr; }
-    }
-
-    /* Pricing */
+    /* ── Pricing ─────────────────────────────────────────── */
     .pricing-section {
-        padding: 6rem 0;
-        background: linear-gradient(135deg, #0F172A 0%, #1E293B 50%, #0F172A 100%);
+        padding: 5rem 0;
+        background: linear-gradient(180deg, #F3EEFC 0%, #FFF7EC 100%);
     }
 
     .pricing-header {
+        max-width: 820px;
+        margin: 0 auto 2.5rem;
         text-align: center;
-        margin-bottom: 3rem;
     }
 
     .pricing-header h2 {
-        font-size: 2.5rem;
-        color: #ffffff;
+        font-size: clamp(1.9rem, 4.5vw, 2.6rem);
         margin-bottom: 1rem;
     }
 
-    .pricing-sub {
-        font-size: 1.1rem;
-        color: rgba(255, 255, 255, 0.65);
-        max-width: 650px;
-        margin: 0 auto;
-        line-height: 1.7;
-    }
-
-    .pricing-card {
-        max-width: 520px;
-        margin: 0 auto;
-        background: rgba(255, 255, 255, 0.04);
-        border: 1px solid rgba(255, 255, 255, 0.1);
-        border-radius: 24px;
-        padding: 3rem;
-        text-align: center;
-    }
-
-    .badge-pill {
-        display: inline-block;
-        padding: 0.35rem 1.25rem;
-        border-radius: 100px;
-        font-size: 0.8rem;
-        font-weight: 700;
-        text-transform: uppercase;
-        letter-spacing: 0.06em;
-        background: linear-gradient(135deg, #F59E0B, #FBBF24);
-        color: #0F172A;
-        margin-bottom: 1.5rem;
-    }
-
-    .pricing-card h3 {
-        font-size: 1.75rem;
-        color: #ffffff;
-        margin-bottom: 1rem;
-    }
-
+    .pricing-sub,
     .pricing-desc {
-        color: rgba(255, 255, 255, 0.6);
-        font-size: 1rem;
-        line-height: 1.6;
-        margin-bottom: 2rem;
+        color: var(--ru-ink-soft);
+        line-height: 1.65;
+        font-size: 1.05rem;
     }
 
-    /* Two tiers (switch day) */
     .pricing-lead {
-        font-size: 1.75rem;
-        color: #ffffff;
-        margin: 2.25rem 0 0.75rem;
-    }
-
-    .pricing-header .pricing-desc {
-        max-width: 650px;
-        margin: 0 auto 0;
-        color: rgba(255, 255, 255, 0.6);
+        font-size: 1.35rem;
+        margin: 1.6rem 0 0.6rem;
     }
 
     .pricing-cards {
         display: grid;
-        grid-template-columns: repeat(2, minmax(0, 1fr));
-        gap: 1.5rem;
-        max-width: 1040px;
+        grid-template-columns: 1fr 1fr;
+        gap: 1.4rem;
+        max-width: 880px;
         margin: 0 auto;
     }
 
-    .pricing-cards .pricing-card {
-        max-width: none;
-        margin: 0;
-        padding: 2.25rem;
-        display: flex;
-        flex-direction: column;
-        align-items: center;
+    .pricing-card {
+        position: relative;
+        background: #ffffff;
+        border-radius: 24px;
+        padding: 2rem 1.8rem;
+        border: 3px solid transparent;
+        box-shadow: 0 4px 0 rgba(46, 37, 71, 0.08), 0 14px 30px rgba(46, 37, 71, 0.06);
     }
 
-    .pricing-card.featured {
-        border-color: rgba(245, 158, 11, 0.6);
-        background: rgba(245, 158, 11, 0.06);
+    .pricing-card.featured { border-color: var(--ru-button); }
+
+    .badge-pill {
+        position: absolute;
+        top: -14px;
+        left: 50%;
+        transform: translateX(-50%);
+        background: var(--ru-button);
+        color: #ffffff;
+        font-family: var(--ru-round);
+        font-weight: 800;
+        font-size: 0.85rem;
+        padding: 0.3rem 0.9rem;
+        border-radius: 999px;
+        white-space: nowrap;
     }
 
     .pricing-card h4 {
-        font-size: 1.6rem;
-        color: #ffffff;
-        margin-bottom: 0.75rem;
+        font-size: 1.35rem;
+        margin-bottom: 0.6rem;
     }
 
     .price-line {
-        margin: 0 0 1rem;
         display: flex;
-        flex-direction: column;
-        align-items: center;
-        gap: 0.35rem;
+        align-items: baseline;
+        gap: 0.5rem;
+        margin-bottom: 0.8rem;
     }
 
     .price-amount-local {
-        font-size: 2.75rem;
-        font-weight: 800;
-        color: #10B981;
-        line-height: 1;
+        font-family: var(--ru-round);
+        font-weight: 900;
+        font-size: 2.1rem;
+        color: var(--ru-ink);
     }
 
-    .price-terms {
-        font-size: 0.95rem;
-        color: rgba(255, 255, 255, 0.7);
-    }
+    .price-terms { color: var(--ru-ink-soft); font-weight: 600; }
 
-    .price-detail {
-        color: rgba(255, 255, 255, 0.75);
-        font-size: 0.98rem;
+    .price-detail,
+    .price-owner,
+    .kind-list {
+        color: var(--ru-ink-soft);
         line-height: 1.55;
-        margin-bottom: 1rem;
+        font-size: 0.98rem;
     }
+
+    .price-owner { margin-top: 0.8rem; }
+    .price-upgrade { color: var(--ru-ink); }
 
     .kind-list {
-        list-style: none;
-        padding: 0;
-        margin: 0 0 1rem;
-        text-align: left;
-        color: rgba(255, 255, 255, 0.82);
-        font-size: 0.98rem;
-        line-height: 1.55;
+        padding-left: 1.1rem;
+        margin: 0;
     }
 
-    .kind-list li {
-        padding: 0.35rem 0;
-        border-bottom: 1px solid rgba(255, 255, 255, 0.06);
-    }
-
-    .price-owner {
-        color: rgba(255, 255, 255, 0.8);
-        font-size: 0.98rem;
-        line-height: 1.55;
-        margin: auto 0 0;
-    }
-
-    .price-upgrade {
-        color: #10B981;
-    }
-
-    .pricing-price-note {
-        max-width: 650px;
-        margin: 1.5rem auto 0;
+    .pricing-note {
         text-align: center;
+        color: var(--ru-ink-soft);
+        font-size: 0.92rem;
+        line-height: 1.5;
+        margin-top: 0.9rem;
     }
+
+    .pricing-price-note { margin-top: 1.2rem; }
 
     .pricing-shared {
-        max-width: 520px;
+        max-width: 880px;
         margin: 2.5rem auto 0;
-        text-align: center;
-    }
-
-    @media (max-width: 820px) {
-        .pricing-cards { grid-template-columns: 1fr; }
-        .pricing-cards .pricing-card { padding: 1.75rem; }
-    }
-
-    .price-container {
-        margin-bottom: 2rem;
-        display: flex;
-        flex-direction: column;
-        gap: 0.5rem;
-    }
-
-    .price-row {
-        display: grid;
-        grid-template-columns: auto 1fr auto;
-        align-items: baseline;
-        gap: 1rem;
-        padding: 0.85rem 1rem;
-        border-radius: 10px;
-        background: rgba(255, 255, 255, 0.04);
-        border: 1px solid rgba(255, 255, 255, 0.08);
-    }
-
-    .price-row-muted {
-        opacity: 0.55;
-    }
-
-    .price-platform {
-        display: inline-flex;
-        align-items: center;
-        gap: 0.5rem;
-        font-weight: 600;
-        color: rgba(255, 255, 255, 0.92);
-        font-size: 0.95rem;
-    }
-
-    .price-amount-inline {
-        font-size: 1.5rem;
-        font-weight: 800;
-        color: #10B981;
-        line-height: 1;
-        justify-self: end;
-    }
-
-    .price-meta {
-        font-size: 0.78rem;
-        color: rgba(255, 255, 255, 0.55);
-        grid-column: 1 / -1;
-        margin-top: 0.15rem;
-        line-height: 1.2;
-    }
-
-    .price-amount {
-        font-size: 4rem;
-        font-weight: 800;
-        color: #10B981;
-        display: block;
-        line-height: 1;
-    }
-
-    .price-label {
-        font-size: 1rem;
-        color: rgba(255, 255, 255, 0.5);
-        margin-top: 0.5rem;
-        display: block;
+        background: #ffffff;
+        border-radius: 24px;
+        padding: 2rem 1.8rem;
     }
 
     .features-list {
         list-style: none;
         padding: 0;
-        text-align: left;
-        margin-bottom: 2rem;
+        margin: 0 0 1.8rem;
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 0.7rem 1.4rem;
     }
 
     .features-list li {
-        padding: 0.6rem 0;
-        color: rgba(255, 255, 255, 0.8);
-        font-size: 1rem;
-        border-bottom: 1px solid rgba(255, 255, 255, 0.06);
         display: flex;
-        align-items: center;
-        gap: 0.75rem;
-    }
-
-    .check-icon {
-        color: #10B981;
-        font-weight: 700;
-        font-size: 1.1rem;
-        flex-shrink: 0;
-    }
-
-    .pricing-cta-group {
-        display: flex;
-        flex-direction: column;
-        gap: 0.75rem;
-    }
-
-    .pricing-cta {
-        width: 100%;
-        text-align: center;
-        display: block;
-        background: linear-gradient(135deg, #F59E0B 0%, #D97706 100%);
-        border-color: transparent;
-    }
-
-    .pricing-cta:hover {
-        background: linear-gradient(135deg, #FBBF24 0%, #F59E0B 100%);
-    }
-
-    .pricing-cta-secondary {
-        width: 100%;
-        text-align: center;
-        display: block;
-        padding: 0.85rem 1.5rem;
-        border-radius: 100px;
+        gap: 0.6rem;
+        align-items: flex-start;
+        color: var(--ru-ink);
         font-weight: 600;
-        font-size: 0.95rem;
-        color: rgba(255, 255, 255, 0.92);
-        background: rgba(255, 255, 255, 0.06);
-        border: 1px solid rgba(255, 255, 255, 0.18);
-        text-decoration: none;
-        transition: all 0.25s ease;
+        line-height: 1.4;
     }
 
-    .pricing-cta-secondary:hover {
-        background: rgba(255, 255, 255, 0.1);
-        border-color: rgba(255, 255, 255, 0.28);
+    .check-icon { color: #3D7A1F; font-weight: 900; }
+
+    .ru-get-light { margin: 0 auto; }
+
+    /* ── Teachers ────────────────────────────────────────── */
+    .ru-teachers {
+        padding: 3rem 0;
+        background: #ffffff;
     }
 
-    .platform-badge-link {
-        cursor: pointer;
+    .ru-teachers-inner {
+        display: flex;
+        gap: 1.4rem;
+        align-items: center;
+        background: #EEF6FD;
+        border-radius: 24px;
+        padding: 1.8rem 2rem;
     }
 
-    .platform-badge-link:hover {
-        background: rgba(255, 255, 255, 0.14);
-        border-color: rgba(255, 255, 255, 0.2);
+    .ru-teachers-inner img { flex-shrink: 0; width: 72px; height: auto; }
+    .ru-teachers h2 { font-size: 1.35rem; margin-bottom: 0.4rem; }
+    .ru-teachers p { color: var(--ru-ink-soft); line-height: 1.6; }
+    .ru-teachers a { color: var(--ru-button); font-weight: 700; }
+
+    /* ── FAQ ─────────────────────────────────────────────── */
+    .faq-section {
+        padding: 4.5rem 0;
+        background: #ffffff;
     }
 
-    .pricing-note {
-        margin-top: 1rem;
-        font-size: 0.85rem;
-        color: rgba(255, 255, 255, 0.4);
-    }
-
-    .pricing-vat-note {
-        margin-top: 0.5rem;
-        font-size: 0.75rem;
-        color: rgba(255, 255, 255, 0.35);
-        font-style: italic;
-    }
-
-    /* Final CTA */
-    .final-cta-section {
-        background: var(--color-surface);
-        padding: 6rem 0;
+    .faq-section h2 {
         text-align: center;
+        font-size: clamp(1.8rem, 4vw, 2.4rem);
+        margin-bottom: 2rem;
+    }
+
+    .faq-grid {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 1rem;
+    }
+
+    .faq-item {
+        background: var(--ru-cream);
+        border-radius: 20px;
+        padding: 1.5rem;
+    }
+
+    .faq-item h3 { font-size: 1.1rem; margin-bottom: 0.5rem; }
+    .faq-item p { color: var(--ru-ink-soft); line-height: 1.6; }
+
+    /* ── Final ───────────────────────────────────────────── */
+    .ru-final {
         position: relative;
         overflow: hidden;
+        padding: 5rem 0 7rem;
+        background: linear-gradient(180deg, var(--ru-sky-low) 0%, var(--ru-sky-top) 100%);
+        text-align: center;
     }
 
-    .final-cta-content {
+    .ru-final-inner {
         position: relative;
-        z-index: 2;
-        max-width: 650px;
-        margin: 0 auto;
-        padding: 0 2rem;
+        z-index: 1;
+        width: min(640px, 100% - 32px);
+        margin-inline: auto;
     }
 
-    .final-logo {
+    .ru-final-logo {
+        display: block;
+        margin-inline: auto;
+        width: 96px;
+        height: auto;
         border-radius: 24px;
-        margin-bottom: 2rem;
-        box-shadow: 0 8px 24px rgba(0, 0, 0, 0.1);
-    }
-
-    .final-cta-content h2 {
-        font-size: 2.5rem;
-        color: var(--color-secondary);
         margin-bottom: 1rem;
     }
 
-    .final-cta-content p {
-        font-size: 1.15rem;
-        color: var(--color-text-light);
-        margin-bottom: 2rem;
+    .ru-final h2 {
+        font-size: clamp(1.9rem, 4.5vw, 2.6rem);
+        margin-bottom: 0.8rem;
+    }
+
+    .ru-final p {
+        color: var(--ru-ink-soft);
         line-height: 1.6;
+        margin-bottom: 1.6rem;
     }
 
-    .final-cta-content .btn-primary {
-        background: linear-gradient(135deg, #F59E0B 0%, #D97706 100%);
-        border-color: transparent;
+    .ru-final .ru-get { margin: 0 auto; }
+    .ru-hill-final { bottom: -95px; }
+
+    /* ── Smaller screens (phones come from YouTube first) ── */
+    @media (max-width: 960px) {
+        .ru-cards { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+        .ru-parade { grid-template-columns: repeat(3, minmax(0, 1fr)); }
     }
 
-    .final-cta-content .btn-primary:hover {
-        background: linear-gradient(135deg, #FBBF24 0%, #F59E0B 100%);
+    @media (max-width: 820px) {
+        .ru-hero { padding: 8.5rem 0 5.5rem; }
+        .ru-hero-inner { grid-template-columns: 1fr; gap: 1.5rem; }
+        .ru-hero-art { max-width: 280px; }
+        .ru-hero-copy { text-align: center; }
+        .ru-lead, .ru-get-note, .ru-win-note { margin-inline: auto; }
+        .ru-get { margin-inline: auto; }
+        .ru-grownups-grid, .ru-why, .pricing-cards, .faq-grid { grid-template-columns: 1fr; }
+        .ru-grownups-visual { order: -1; }
+        .features-list { grid-template-columns: 1fr; }
+        .ru-cloud-b { display: none; }
     }
 
-    .final-cta-buttons {
-        display: flex;
-        gap: 1rem;
-        justify-content: center;
-        flex-wrap: wrap;
-    }
-
-    .final-cta-secondary {
-        display: inline-block;
-        padding: 0.85rem 1.75rem;
-        border-radius: 100px;
-        font-weight: 600;
-        font-size: 0.95rem;
-        color: rgba(255, 255, 255, 0.92);
-        background: rgba(255, 255, 255, 0.06);
-        border: 1px solid rgba(255, 255, 255, 0.18);
-        text-decoration: none;
-        transition: all 0.25s ease;
-    }
-
-    .final-cta-secondary:hover {
-        background: rgba(255, 255, 255, 0.12);
-        border-color: rgba(255, 255, 255, 0.3);
-    }
-
-    /* Responsive */
-    @media (max-width: 1024px) {
-        .hero-text h1 { font-size: 2.75rem; }
-        .features-grid { grid-template-columns: repeat(2, 1fr); }
-    }
-
-    @media (max-width: 768px) {
-        .chess-hero { padding: 10rem 0 4rem; }
-        .hero-content { grid-template-columns: 1fr; text-align: center; }
-        .hero-text h1 { font-size: 2.25rem; }
-        .hero-cta { align-items: center; }
-        .hero-cta .btn-primary { align-self: center; }
-        .hero-cta-secondary { align-self: center; }
-        .platform-badges { justify-content: center; }
-        .features-grid { grid-template-columns: 1fr; }
-        .parental-grid { grid-template-columns: 1fr; text-align: center; }
-        .parental-text h2 { font-size: 2.25rem; }
+    @media (max-width: 560px) {
+        .ru-cards { grid-template-columns: 1fr; }
+        .ru-parade { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+        .ru-get.has-primary { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+        .ru-get.has-primary .ru-store:not(.is-primary) { padding: 0.5rem; justify-content: center; font-size: 0.82rem; }
+        .ru-get.has-primary .ru-store:not(.is-primary) .ru-store-icon { display: none; }
+        .slide-nav-btn { display: none; }
         .slide-image { width: 220px; }
         .slide-image-wide { width: 300px; }
-        .pricing-card { padding: 2rem 1.5rem; }
-        .price-amount { font-size: 3rem; }
+        .ru-teachers-inner { flex-direction: column; text-align: center; padding: 1.5rem; }
+        .ru-hero { padding: 8rem 0 4.5rem; }
+        .ru-kicker { font-size: 0.82rem; padding: 0.35rem 0.8rem; margin-bottom: 0.8rem; }
+        .ru-lead { font-size: 1.02rem; margin-bottom: 1.2rem; }
+        .ru-trust { gap: 0.45rem; }
+        .ru-trust li { font-size: 0.8rem; padding: 0.4rem 0.75rem; gap: 0.35rem; }
+        .ru-tick { width: 1.05rem; height: 1.05rem; font-size: 0.68rem; }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+        .ru-cloud, .ru-king, .ru-pawn { animation: none; }
+        .ru-store { transition: none; }
     }
 </style>
