@@ -151,6 +151,8 @@ const breadcrumbSchema = breadcrumbs.length
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="description" content={description} />
     {appleAppId && <meta name="apple-itunes-app" content={`app-id=${appleAppId}`} />}
+    {/* Pinterest website claim for the Stillware Ltd business account (30 Oct 2026); a public token by design. */}
+    <meta name="p:domain_verify" content="0aaf6f1bc514b9ca4c6ba83b3a5d0949" />
     {/* X-Content-Type-Options and Referrer-Policy are real response headers in netlify.toml; as <meta http-equiv> browsers ignore them. */}
     {noindex && <meta name="robots" content="noindex, nofollow" />}
     {!noindex && noindexFollow && <meta name="robots" content="noindex, follow" />}
