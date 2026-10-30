@@ -54,7 +54,7 @@ Knight takes on f3, check. The king cannot go to f2, because our rook on d2 cont
 
 **The pattern.** This pattern is called the Arabian mate. If you were tempted by rook takes on a2, White answers bishop to c4, check and the chance is gone.
 
-> **Want more like this?** [RankUp Chess](https://www.stillwareltd.com/rankupchess/?ref=blog-daily-20) has 6,000+ rated puzzles like these, sorted by level and theme, with hints and lessons, fully offline. No ads; pay once, no subscription.
+> **Want more like this?** [RankUp Chess](https://www.stillwareltd.com/rankupchess/?ref=blog-daily-20) has 30,000+ rated puzzles like these, sorted by level and theme, with hints and lessons, fully offline. No ads; pay once, no subscription.
 
 ## Puzzle 2: Skewer (intermediate, rated 1383)
 

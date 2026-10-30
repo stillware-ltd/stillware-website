@@ -53,7 +53,7 @@ Rook to c8, check. The king cannot go to h7, because our bishop on e4 controls t
 
 **The pattern.** Pillsbury's mate: a rook on the open g-file and a bishop on the long diagonal aim at the castled king together. Open the file, and the bishop does the rest. If you were tempted by rook takes on e3, Black answers pawn to f5 and the chance is gone.
 
-> **Want more like this?** [RankUp Chess](https://www.stillwareltd.com/rankupchess/?ref=blog-daily-9) has 6,000+ rated puzzles like these, sorted by level and theme, with hints and lessons, fully offline. Pay once, no subscription.
+> **Want more like this?** [RankUp Chess](https://www.stillwareltd.com/rankupchess/?ref=blog-daily-9) has 30,000+ rated puzzles like these, sorted by level and theme, with hints and lessons, fully offline. Pay once, no subscription.
 
 ## Puzzle 2: Pin (intermediate, rated 1525)
 

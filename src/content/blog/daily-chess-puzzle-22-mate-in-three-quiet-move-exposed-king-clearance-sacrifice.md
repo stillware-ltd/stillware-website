@@ -56,7 +56,7 @@ Queen to b1, check. The king cannot go to f1, because our queen on b1 controls t
 
 **The pattern.** A mate in three. Every move is a check, so the opponent never gets a free move to defend.
 
-> **Want more like this?** [RankUp Chess](https://www.stillwareltd.com/rankupchess/?ref=blog-daily-22) has 6,000+ rated puzzles like these, sorted by level and theme, with hints and lessons, fully offline. No ads; pay once, no subscription.
+> **Want more like this?** [RankUp Chess](https://www.stillwareltd.com/rankupchess/?ref=blog-daily-22) has 30,000+ rated puzzles like these, sorted by level and theme, with hints and lessons, fully offline. No ads; pay once, no subscription.
 
 ## Puzzle 2: Quiet move (intermediate, rated 1587)
 

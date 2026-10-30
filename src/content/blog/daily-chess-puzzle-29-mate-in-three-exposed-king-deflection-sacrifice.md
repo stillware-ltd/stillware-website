@@ -56,7 +56,7 @@ Rook to e1, check. The rook attacks the king on g1 and the rook on d1 at the sam
 
 **The pattern.** A mate in three. Every move is a check, so the opponent never gets a free move to defend.
 
-> **Want more like this?** [RankUp Chess](https://www.stillwareltd.com/rankupchess/?ref=blog-daily-29) has 6,000+ rated puzzles like these, sorted by level and theme, with hints and lessons, fully offline. No ads; pay once, no subscription.
+> **Want more like this?** [RankUp Chess](https://www.stillwareltd.com/rankupchess/?ref=blog-daily-29) has 30,000+ rated puzzles like these, sorted by level and theme, with hints and lessons, fully offline. No ads; pay once, no subscription.
 
 ## Puzzle 2: Exposed king (intermediate, rated 1667)
 

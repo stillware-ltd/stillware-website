@@ -54,7 +54,7 @@ Queen takes on f2, check. We give up the queen for a pawn. White has no choice. 
 
 **The pattern.** A back-rank mate. The king's own pawns become its prison, and one heavy piece on the last rank ends the game.
 
-> **Want more like this?** [RankUp Chess](https://www.stillwareltd.com/rankupchess/?ref=blog-daily-27) has 6,000+ rated puzzles like these, sorted by level and theme, with hints and lessons, fully offline. No ads; pay once, no subscription.
+> **Want more like this?** [RankUp Chess](https://www.stillwareltd.com/rankupchess/?ref=blog-daily-27) has 30,000+ rated puzzles like these, sorted by level and theme, with hints and lessons, fully offline. No ads; pay once, no subscription.
 
 ## Puzzle 2: Promotion (intermediate, rated 1623)
 

@@ -40,7 +40,7 @@ Rook to d8, check. The rook attacks the king on f8 and the bishop on c8 at the s
 
 **The pattern.** A mate in two. The first move takes away the escape, the second delivers mate, and the reply in between is forced. Forcing moves first, and the mate appears. If you were tempted by knight takes on e5, Black answers bishop to f5 and the chance is gone.
 
-> **Want more like this?** [RankUp Chess](https://www.stillwareltd.com/rankupchess/?ref=blog-daily-3) has 6,000+ rated puzzles like these, sorted by level and theme, with hints and lessons, fully offline. Pay once, no subscription.
+> **Want more like this?** [RankUp Chess](https://www.stillwareltd.com/rankupchess/?ref=blog-daily-3) has 30,000+ rated puzzles like these, sorted by level and theme, with hints and lessons, fully offline. Pay once, no subscription.
 
 ## Puzzle 2: Discovered attack (intermediate, rated 1661)
 

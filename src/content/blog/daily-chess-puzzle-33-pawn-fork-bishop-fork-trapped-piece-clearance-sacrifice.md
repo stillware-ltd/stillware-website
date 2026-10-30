@@ -54,7 +54,7 @@ Pawn to e4, check. The pawn attacks the king on f5 and the rook on d5 at the sam
 
 **The pattern.** We win the rook for a pawn. A pawn fork. The humblest piece attacks two bigger ones at once, and whichever moves, the other falls.
 
-> **Want more like this?** [RankUp Chess](https://www.stillwareltd.com/rankupchess/?ref=blog-daily-33) has 6,000+ rated puzzles like these, sorted by level and theme, with hints and lessons, fully offline. No ads; pay once, no subscription.
+> **Want more like this?** [RankUp Chess](https://www.stillwareltd.com/rankupchess/?ref=blog-daily-33) has 30,000+ rated puzzles like these, sorted by level and theme, with hints and lessons, fully offline. No ads; pay once, no subscription.
 
 ## Puzzle 2: Bishop fork (intermediate, rated 1428)
 

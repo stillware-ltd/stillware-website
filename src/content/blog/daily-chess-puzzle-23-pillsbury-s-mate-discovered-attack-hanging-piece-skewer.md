@@ -54,7 +54,7 @@ Queen takes on d8, check. We give up the queen for a rook. So Black has just one
 
 **The pattern.** Pillsbury's mate: a rook on the open g-file and a bishop on the long diagonal aim at the castled king together. Open the file, and the bishop does the rest.
 
-> **Want more like this?** [RankUp Chess](https://www.stillwareltd.com/rankupchess/?ref=blog-daily-23) has 6,000+ rated puzzles like these, sorted by level and theme, with hints and lessons, fully offline. No ads; pay once, no subscription.
+> **Want more like this?** [RankUp Chess](https://www.stillwareltd.com/rankupchess/?ref=blog-daily-23) has 30,000+ rated puzzles like these, sorted by level and theme, with hints and lessons, fully offline. No ads; pay once, no subscription.
 
 ## Puzzle 2: Discovered attack (intermediate, rated 1374)
 

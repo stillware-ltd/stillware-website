@@ -40,7 +40,7 @@ Queen to h8, check. We offer the queen, and the king cannot take it, because our
 
 **The pattern.** A swallow's tail mate. The queen checks from directly in front, protected by a rook or bishop, while the king's own pieces sit behind it and take away the flight squares.
 
-> **Want more like this?** [RankUp Chess](https://www.stillwareltd.com/rankupchess/?ref=blog-daily-6) has 6,000+ rated puzzles like these, sorted by level and theme, with hints and lessons, fully offline. Pay once, no subscription.
+> **Want more like this?** [RankUp Chess](https://www.stillwareltd.com/rankupchess/?ref=blog-daily-6) has 30,000+ rated puzzles like these, sorted by level and theme, with hints and lessons, fully offline. Pay once, no subscription.
 
 ## Puzzle 2: Skewer (intermediate, rated 1631)
 

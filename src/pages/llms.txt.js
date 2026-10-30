@@ -46,7 +46,7 @@ export async function GET() {
     link(
       'RankUp Chess',
       '/rankupchess/',
-      'Offline chess academy for kids: 6,000+ puzzles, 10 AI strength levels and interactive lessons. Free to play forever; one optional one-time payment unlocks everything. No ads, no subscription, no data harvesting. Runs on iPhone and iPad, Android, Windows and macOS. RankUp Chess. No ads, no subscription and it works offline.',
+      'Offline chess academy for kids: 30,000+ puzzles, 10 AI strength levels and interactive lessons. Free to play forever; one optional one-time payment unlocks everything. No ads, no subscription, no data harvesting. Runs on iPhone and iPad, Android, Windows and macOS. RankUp Chess. No ads, no subscription and it works offline.',
     ),
     link('About Stillware Ltd', '/about/', 'Who is behind the apps: the company, the founder (Tejaswi Dhulipala) and how Stillware works.'),
     '',

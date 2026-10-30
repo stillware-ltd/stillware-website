@@ -54,7 +54,7 @@ Rook to d1, check. The rook attacks the king on g1 and the rook on a1 at the sam
 
 **The pattern.** A back-rank mate. The king's own pawns become its prison, and one heavy piece on the last rank ends the game. Before you castle and forget about it, ask whether your back rank has an escape square.
 
-> **Want more like this?** [RankUp Chess](https://www.stillwareltd.com/rankupchess/?ref=blog-daily-12) has 6,000+ rated puzzles like these, sorted by level and theme, with hints and lessons, fully offline. No ads; pay once, no subscription.
+> **Want more like this?** [RankUp Chess](https://www.stillwareltd.com/rankupchess/?ref=blog-daily-12) has 30,000+ rated puzzles like these, sorted by level and theme, with hints and lessons, fully offline. No ads; pay once, no subscription.
 
 ## Puzzle 2: Trapped piece (intermediate, rated 1394)
 

@@ -54,7 +54,7 @@ Queen takes on e8, check. The queen attacks the king on g8 and the queen on d8 a
 
 **The pattern.** A back-rank mate. The king's own pawns become its prison, and one heavy piece on the last rank ends the game.
 
-> **Want more like this?** [RankUp Chess](https://www.stillwareltd.com/rankupchess/?ref=blog-daily-19) has 6,000+ rated puzzles like these, sorted by level and theme, with hints and lessons, fully offline. No ads; pay once, no subscription.
+> **Want more like this?** [RankUp Chess](https://www.stillwareltd.com/rankupchess/?ref=blog-daily-19) has 30,000+ rated puzzles like these, sorted by level and theme, with hints and lessons, fully offline. No ads; pay once, no subscription.
 
 ## Puzzle 2: Knight fork (intermediate, rated 1470)
 

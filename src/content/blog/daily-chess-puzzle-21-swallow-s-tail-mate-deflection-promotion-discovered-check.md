@@ -54,7 +54,7 @@ Queen to h1, check. The king cannot go to e1, because our bishop on g3 controls 
 
 **The pattern.** A swallow's tail mate. The queen checks from directly in front, protected by a rook or bishop, while the king's own pieces sit behind it and take away the flight squares.
 
-> **Want more like this?** [RankUp Chess](https://www.stillwareltd.com/rankupchess/?ref=blog-daily-21) has 6,000+ rated puzzles like these, sorted by level and theme, with hints and lessons, fully offline. No ads; pay once, no subscription.
+> **Want more like this?** [RankUp Chess](https://www.stillwareltd.com/rankupchess/?ref=blog-daily-21) has 30,000+ rated puzzles like these, sorted by level and theme, with hints and lessons, fully offline. No ads; pay once, no subscription.
 
 ## Puzzle 2: Deflection (intermediate, rated 1332)
 

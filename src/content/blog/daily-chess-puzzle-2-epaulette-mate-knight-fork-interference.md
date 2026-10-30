@@ -40,7 +40,7 @@ Rook to d7, check. We offer the rook, and the king cannot take it, because our r
 
 **The pattern.** An epaulette mate. The king is flanked by its own rooks, like epaulettes on a uniform, so a check from straight in front, by a queen or a rook, is the end. Your opponent's own pieces can be the bars of the cage.
 
-> **Want more like this?** [RankUp Chess](https://www.stillwareltd.com/rankupchess/?ref=blog-daily-2) has 6,000+ rated puzzles like these, sorted by level and theme, with hints and lessons, fully offline. Pay once, no subscription.
+> **Want more like this?** [RankUp Chess](https://www.stillwareltd.com/rankupchess/?ref=blog-daily-2) has 30,000+ rated puzzles like these, sorted by level and theme, with hints and lessons, fully offline. Pay once, no subscription.
 
 ## Puzzle 2: Knight fork (intermediate, rated 1338)
 

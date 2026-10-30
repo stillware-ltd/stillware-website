@@ -54,7 +54,7 @@ Queen takes on c6, check. We give up the queen for a pawn. Black has no choice. 
 
 **The pattern.** Boden's mate: two bishops on crossing diagonals, and the king's own pieces block the rest. When a king has castled long and the diagonals open up, this is the picture to look for.
 
-> **Want more like this?** [RankUp Chess](https://www.stillwareltd.com/rankupchess/?ref=blog-daily-26) has 6,000+ rated puzzles like these, sorted by level and theme, with hints and lessons, fully offline. No ads; pay once, no subscription.
+> **Want more like this?** [RankUp Chess](https://www.stillwareltd.com/rankupchess/?ref=blog-daily-26) has 30,000+ rated puzzles like these, sorted by level and theme, with hints and lessons, fully offline. No ads; pay once, no subscription.
 
 ## Puzzle 2: Queen fork (intermediate, rated 1527)
 

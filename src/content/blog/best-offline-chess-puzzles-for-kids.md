@@ -24,7 +24,7 @@ We’re going to fix that. We’ll compare the offline capabilities of popular p
 
 Let’s be clear: platforms like lichess and Chess.com offer incredible value. They’re vast, community-driven, and mostly free. But for a child’s focused puzzle training, their online-first design creates significant hidden costs.
 
-The primary cost is **interruption**. These apps rely on streaming puzzles and tactics from their servers. A weak signal means lag, frozen boards, and frustration. The learning flow shatters. Compare this to an app where 6,000+ puzzles live directly on the device. The response is instant, every time. The child’s focus remains on the knight’s fork, not the loading icon.
+The primary cost is **interruption**. These apps rely on streaming puzzles and tactics from their servers. A weak signal means lag, frozen boards, and frustration. The learning flow shatters. Compare this to an app where 30,000+ puzzles live directly on the device. The response is instant, every time. The child’s focus remains on the knight’s fork, not the loading icon.
 
 The secondary, more insidious cost is **data**. Even educational apps collect staggering amounts of information. A 2023 study of popular "kids" apps found that over 70% transmitted device identifiers and usage patterns to third-party analytics services. Every puzzle attempted, every wrong move, every session length can be packaged, analyzed, and sold. For a game centered on strategic thinking, it’s a poor trade: their mental patterns for your "free" access.
 
@@ -36,7 +36,7 @@ Consider the typical features of online-centric apps:
 
 **The business model of a free online app is fundamentally at odds with focused, offline, private skill development.** It needs your child’s attention and data to survive. An offline-first app has a simpler model: you pay once for the software. Its success is tied to how well it teaches, not how long it can keep a child online.
 
-<!-- IMAGE: type=comparison-table | layout=full-width | caption=Feature comparison: Online platforms vs. dedicated offline apps for kids | data=Access:Puzzles require live internet connection,Progress:Synced to cloud account,Privacy:Collects usage data for analytics,Business Model:Freemium with ads or subscription,Offline Use:Partial or none;Access:6,000+ puzzles stored on device,Progress:Saved locally on device,Privacy:Zero data collection, COPPA-compliant,Business Model:One-time purchase,Offline Use:100% fully functional -->
+<!-- IMAGE: type=comparison-table | layout=full-width | caption=Feature comparison: Online platforms vs. dedicated offline apps for kids | data=Access:Puzzles require live internet connection,Progress:Synced to cloud account,Privacy:Collects usage data for analytics,Business Model:Freemium with ads or subscription,Offline Use:Partial or none;Access:30,000+ puzzles stored on device,Progress:Saved locally on device,Privacy:Zero data collection, COPPA-compliant,Business Model:One-time purchase,Offline Use:100% fully functional -->
 
 ## Why Offline Capability is Non-Negotiable for Learning
 
@@ -87,7 +87,7 @@ This confuses "cloud sync" with "progress tracking." A local app can track every
 ## The Architecture of a Truly Offline Learning Tool
 
 So what does it take to build an app that works this way? The architecture is fundamentally different from a standard web app. It’s what we call a "thick client"—the device does all the work.
-1.  **Local Database:** All content—the 6,000+ puzzles, the curriculum text, the AI engine—is packaged into the app download. It’s like having an entire chess library in your pocket.
+1.  **Local Database:** All content—the 30,000+ puzzles, the curriculum text, the AI engine—is packaged into the app download. It’s like having an entire chess library in your pocket.
 2.  **On-Device Processing:** When a child attempts a puzzle, the solution is verified by logic running on the device’s processor. The AI calculates its moves using the phone’s CPU/GPU. Nothing is sent out for computation.
 3.  **Local Save Files:** Progress, achievements, and settings are written to a small file in the app’s private storage sandbox. Other apps can’t access it. It’s not uploaded anywhere.
 4.  **Zero-Permission Design:** The app doesn’t request network access, so it *can’t* transmit data even if a line of code tried to. This is the ultimate technical guarantee.

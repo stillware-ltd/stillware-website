@@ -55,7 +55,7 @@ Knight to e7, check. Black has to move the king. King to h7. And now, rook to h4
 
 **The pattern.** Anastasia's mate. A knight takes away the king's flight squares on one side, and a rook arrives on the open file to finish. Knight first, then the rook slides in.
 
-> **Want more like this?** [RankUp Chess](https://www.stillwareltd.com/rankupchess/?ref=blog-daily-10) has 6,000+ rated puzzles like these, sorted by level and theme, with hints and lessons, fully offline. Pay once, no subscription.
+> **Want more like this?** [RankUp Chess](https://www.stillwareltd.com/rankupchess/?ref=blog-daily-10) has 30,000+ rated puzzles like these, sorted by level and theme, with hints and lessons, fully offline. Pay once, no subscription.
 
 ## Puzzle 2: Sacrifice (intermediate, rated 1440)
 

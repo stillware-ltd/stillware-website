@@ -54,7 +54,7 @@ Queen to f1, check. We offer the queen, and the king cannot take it, because our
 
 **The pattern.** The opera mate. A rook on the back rank, protected by a bishop on the long diagonal, and the king's own pawn blocking the escape.
 
-> **Want more like this?** [RankUp Chess](https://www.stillwareltd.com/rankupchess/?ref=blog-daily-24) has 6,000+ rated puzzles like these, sorted by level and theme, with hints and lessons, fully offline. No ads; pay once, no subscription.
+> **Want more like this?** [RankUp Chess](https://www.stillwareltd.com/rankupchess/?ref=blog-daily-24) has 30,000+ rated puzzles like these, sorted by level and theme, with hints and lessons, fully offline. No ads; pay once, no subscription.
 
 ## Puzzle 2: Removing the defender (intermediate, rated 1334)
 
