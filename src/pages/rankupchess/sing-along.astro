@@ -2,6 +2,7 @@
 import Layout from '../../layouts/Layout.astro';
 import lyrics from '../../data/singalong-lyrics.json';
 import { SINGALONG_VIDEO_ID, SINGALONG_KIT_PDF } from '../../data/singalong';
+import NewsletterSignup from '../../components/NewsletterSignup.astro';
 
 // The free classroom kit for the sing-along "Let the Whole Board Sing" (launch plan D-L3, agreed 30 Oct 2026:
 // Marketing/Rank_Up_Chess/Launches/singalong-launch-plan-2026-11.md). The PDF, the board and colouring SVGs and
@@ -151,6 +152,9 @@ const whoClass = { grown: 'ly-grown', kid: 'ly-kid', everyone: 'ly-all' } as Rec
                 <p class="sa-label">For grown-ups</p>
                 <h2>Where do the Sing-Along pieces come from?</h2>
                 <p>The pieces in the video are one of the eight board worlds in <a href="/rankupchess/">RankUp Chess</a>, our offline chess academy for kids, and they are free in the app. RankUp Chess has voiced lessons, more than 30,000 puzzles and friendly bots, with no ads, no chat and no account to play, on iPhone, iPad, Android, Windows and Mac. Classroom licences for Windows and Mac are free for schools and clubs. New to the app? The <a href="/rankupchess/guide/">grown-up's guide</a> shows where everything is and what you control.</p>
+                <div class="sa-news">
+                    <NewsletterSignup placement="singalong-kit" heading="For grown-ups: the next sing-along printable" promise="One email when there is a new song, verse or free printable, and when RankUp Chess ships something. At most once a month." />
+                </div>
             </div>
         </section>
 
@@ -301,6 +305,7 @@ const whoClass = { grown: 'ly-grown', kid: 'ly-kid', everyone: 'ly-all' } as Rec
     .sa-grownups { max-width: 820px; }
     .sa-grownups p { color: var(--ink-soft); line-height: 1.65; font-size: 1.05rem; }
     .sa-grownups a { color: var(--button); font-weight: 700; }
+    .sa-news { margin-top: 1.6rem; padding: 1.4rem 1.5rem; border-radius: 20px; background: #fff; }
 
     .sa-faq { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
     .sa-faq div { background: #fff; border-radius: 18px; padding: 1.3rem; }

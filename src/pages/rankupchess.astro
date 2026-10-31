@@ -3,6 +3,7 @@ import Layout from '../layouts/Layout.astro';
 import KeyFacts from '../components/KeyFacts.astro';
 import { SINGALONG_VIDEO_ID, SINGALONG_KIT_PAGE } from '../data/singalong';
 import { GUIDES } from '../data/guides';
+import NewsletterSignup from '../components/NewsletterSignup.astro';
 
 // The product version, shown wherever the page states which release this is.
 const RANKUP_VERSION = '0.11.0';
@@ -366,6 +367,9 @@ const faqSchema = {
                         <li>No ads, no chat and no strangers, anywhere in the app.</li>
                     </ul>
                     <p class="ru-reassure">Let them learn, play, and make mistakes — without worrying about what they might click on.</p>
+                    <div class="ru-news">
+                        <NewsletterSignup placement="rankupchess-grownups" heading="For grown-ups: the next free printable" promise="One email when RankUp Chess ships something, the next free chess printable or song, and the dates that matter." />
+                    </div>
                     <p class="ru-guide"><a href={GUIDES.rankup.page}>Read the grown-up's guide</a> to where everything is and what you control, or <a href={GUIDES.rankup.pdf} download>print it ({GUIDES.rankup.label})</a>.</p>
                 </div>
                 <div class="ru-grownups-visual">
@@ -1301,6 +1305,7 @@ const faqSchema = {
     }
 
     .ru-guide { margin-top: 1rem; font-weight: 700; }
+    .ru-news { margin-top: 1.4rem; padding: 1.3rem 1.4rem; border-radius: 18px; background: rgba(255, 255, 255, 0.7); }
     .ru-guide a { color: var(--ru-ink); text-decoration: underline; text-underline-offset: 3px; }
 
     .ru-reassure {

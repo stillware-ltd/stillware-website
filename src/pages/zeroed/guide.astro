@@ -1,6 +1,7 @@
 ---
 import Layout from '../../layouts/Layout.astro';
 import { GUIDES, GUIDES_CHECKED } from '../../data/guides';
+import NewsletterSignup from '../../components/NewsletterSignup.astro';
 
 // Getting started with Zeroed: the web version of the printable PDF (same content, same screens). Written answer-first
 // for "how to use Zeroed". Facts as the app shows them in 1.7 (labels from the 1.7.3 strings) and as /zeroed/ states
@@ -175,6 +176,9 @@ const faqSchema = {
                     </div>
                     <a class="zg-btn" href={G.pdf} download>Download the PDF</a>
                 </div>
+                <div class="zg-news">
+                    <NewsletterSignup placement="zeroed-guide" heading="Hear when Zeroed changes" promise="One email when a new version ships or this guide changes, one free budgeting printable or calculator, and one reminder before the founder price ends." />
+                </div>
                 <p class="zg-checked">Checked against Zeroed {G.version} on {GUIDES_CHECKED}. Source: the app itself; the screens are real captures from versions 1.7.1 and 1.7.2 with a demo budget, unedited. Still stuck? <a href="mailto:support@stillwareltd.com">support@stillwareltd.com</a>. <a href="/support/">All guides and help</a>.</p>
             </div>
         </section>
@@ -252,6 +256,7 @@ const faqSchema = {
     .zg-print { display: flex; align-items: center; justify-content: space-between; gap: 1.5rem; border-top: 2px solid var(--head); padding-top: 1.6rem; margin-top: 2.2rem; }
     .zg-print p { color: var(--sub); margin: 0; line-height: 1.55; }
     .zg-print .zg-btn { white-space: nowrap; flex: none; }
+    .zg-news { margin-top: 2rem; padding: 1.5rem 1.6rem; border: 1px solid var(--line); border-radius: 14px; background: #F8FAFC; }
     .zg-checked { margin-top: 1.4rem; color: var(--sub); font-size: 0.9rem; line-height: 1.6; }
     .zg-checked a { color: var(--blue); font-weight: 600; }
 

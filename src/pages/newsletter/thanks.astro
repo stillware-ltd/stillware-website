@@ -1,0 +1,32 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import { GUIDES } from '../../data/guides';
+// Where Buttondown sends people after they enter an address (Buttondown → Settings → Subscribing → After subscribing).
+---
+
+<Layout
+  title="Check Your Inbox — Stillware Ltd"
+  description="One more step: confirm your email address to join the Stillware newsletter."
+  noindex
+>
+    <section class="nlt">
+        <div class="nlt-box">
+            <h1>Check your inbox</h1>
+            <p>We've sent one email from Stillware. Click the link in it to confirm, and you're in. Nothing else arrives until you do.</p>
+            <p class="nlt-small">Can't see it after a few minutes? Look in spam or promotions, or join again with the same address.</p>
+            <div class="nlt-links">
+                <a href={GUIDES.zeroed.page} class="btn-text">Getting started with Zeroed &rarr;</a>
+                <a href={GUIDES.rankup.page} class="btn-text">A grown-up's guide to RankUp Chess &rarr;</a>
+            </div>
+        </div>
+    </section>
+</Layout>
+
+<style>
+    .nlt { min-height: 80vh; display: flex; align-items: center; justify-content: center; padding: 10rem 1.5rem 4rem; }
+    .nlt-box { max-width: 560px; text-align: center; }
+    .nlt h1 { font-size: 2.5rem; margin-bottom: 1rem; }
+    .nlt p { color: var(--color-text-light); font-size: 1.1rem; line-height: 1.6; margin-bottom: 1rem; }
+    .nlt-small { font-size: 0.95rem !important; }
+    .nlt-links { display: flex; flex-direction: column; gap: 0.6rem; margin-top: 1.6rem; }
+</style>

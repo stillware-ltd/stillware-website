@@ -1,0 +1,96 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import NewsletterSignup from '../../components/NewsletterSignup.astro';
+import { NEWSLETTER } from '../../data/newsletter';
+
+// The newsletter's own page (31 Oct 2026): what arrives, how often, what happens to an address, and the archive to read
+// first. Answer-first for "Stillware newsletter". Rules: Marketing/Newsletter/newsletter-growth-strategy-2026-10-31.md.
+const WHAT = [
+  { t: 'What shipped', d: 'A new version of Zeroed or RankUp Chess, what changed and why, in plain words.' },
+  { t: 'One free thing', d: 'A printable, a guide or a calculator we made that month, linked straight to the file. Never behind a form.' },
+  { t: 'Dates that matter', d: 'For example, one reminder before the Zeroed founder price ends on 14 February 2027, and the RankUp Chess Christmas sing-along.' },
+];
+
+const faqItems = [
+  { q: 'How often will Stillware email me?', a: 'At most once a month, and only when something has shipped or a date matters. Some months there is nothing, so nothing is sent.' },
+  { q: 'Do you track whether I open the emails?', a: 'No. The emails carry no tracking pixel and links are not rewritten to count clicks. We judge an issue by your replies, so reply whenever you like.' },
+  { q: 'What do you keep, and who sends the emails?', a: 'Your email address, the date you joined and which page you joined from. The emails are sent by Buttondown, which stores the list for us. We never sell, share or buy addresses.' },
+  { q: 'How do I leave?', a: 'Every email has an unsubscribe link: one click and you are off the list. You can also reply and ask us to delete your address.' },
+  { q: 'Do I need to join to download your printables or guides?', a: 'No. Every printable, guide and tool on this site downloads without an email address. The newsletter only tells you when there is a new one.' },
+  { q: 'Is there a way to follow without email?', a: 'Yes: the newsletter has an RSS feed, and every issue is published in the public archive.' },
+];
+const faqSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'FAQPage',
+  mainEntity: faqItems.map((f) => ({ '@type': 'Question', name: f.q, acceptedAnswer: { '@type': 'Answer', text: f.a } })),
+};
+---
+
+<Layout
+  title="The Stillware Newsletter: Join the Rebellion"
+  description="One email when Stillware ships something: a new version of Zeroed or RankUp Chess, a free printable and the dates that matter. At most monthly, no tracking pixels."
+  canonical="https://www.stillwareltd.com/newsletter/"
+>
+    <script type="application/ld+json" set:html={JSON.stringify(faqSchema)} />
+
+    <header class="nlp-hero">
+        <div class="container nlp-hero-grid">
+            <div>
+                <p class="nlp-kicker">The Stillware newsletter</p>
+                <h1>Join the Rebellion</h1>
+                <p class="nlp-answer">One email when Stillware ships something: a new version of Zeroed or RankUp Chess, a free printable or tool, and the dates that matter, such as the end of Zeroed's founder price on 14 February 2027. At most once a month. No tracking pixels, no selling your address, and you can leave in one click.</p>
+            </div>
+            <div class="nlp-form-card">
+                <NewsletterSignup placement="newsletter-page" heading="Join the list" promise="Confirm by email and you're in." tone="dark" />
+            </div>
+        </div>
+    </header>
+
+    <section class="nlp-section">
+        <div class="container">
+            <h2>What will I get?</h2>
+            <div class="nlp-what">
+                {WHAT.map((w) => <div><h3>{w.t}</h3><p>{w.d}</p></div>)}
+            </div>
+            <p class="nlp-read">Read before you join: <a href={NEWSLETTER.archive}>the archive</a> has every issue, and there is an <a href={NEWSLETTER.rss}>RSS feed</a> if you would rather not give an email address.</p>
+        </div>
+    </section>
+
+    <section class="nlp-section nlp-tint">
+        <div class="container">
+            <h2>Frequently asked questions</h2>
+            <div class="nlp-faq">
+                {faqItems.map((f) => (<div><h3>{f.q}</h3><p>{f.a}</p></div>))}
+            </div>
+            <p class="nlp-checked">Promise written 31 October 2026. The full privacy details are in our <a href="/privacy/">privacy policy</a>.</p>
+        </div>
+    </section>
+</Layout>
+
+<style>
+    .nlp-hero { padding: 11rem 0 4rem; background: var(--gradient-obsidian); }
+    .nlp-hero-grid { display: grid; grid-template-columns: 1.2fr 1fr; gap: 3rem; align-items: center; }
+    .nlp-kicker { color: rgba(255, 255, 255, 0.6); font-weight: 600; text-transform: uppercase; letter-spacing: 0.12em; font-size: 0.8rem; margin-bottom: 0.8rem; }
+    .nlp-hero h1 { color: #fff; font-size: clamp(2.4rem, 6vw, 3.6rem); line-height: 1.05; margin: 0 0 1.2rem; }
+    .nlp-answer { color: rgba(255, 255, 255, 0.75); font-size: 1.15rem; line-height: 1.65; margin: 0; }
+    .nlp-form-card { background: rgba(255, 255, 255, 0.06); border: 1px solid rgba(255, 255, 255, 0.12); border-radius: 20px; padding: 2rem; }
+
+    .nlp-section { padding: 4.5rem 0; }
+    .nlp-tint { background: var(--color-surface); }
+    .nlp-section h2 { font-size: 2rem; margin: 0 0 1.6rem; }
+    .nlp-what { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5rem; }
+    .nlp-what div { border: 1px solid var(--color-border); border-radius: 16px; padding: 1.5rem; background: #fff; }
+    .nlp-what h3 { font-size: 1.15rem; margin: 0 0 0.5rem; }
+    .nlp-what p, .nlp-faq p { color: var(--color-text-light); line-height: 1.6; margin: 0; }
+    .nlp-read { margin-top: 1.6rem; color: var(--color-text-light); line-height: 1.6; }
+    .nlp-read a, .nlp-checked a { color: var(--color-primary); font-weight: 600; }
+    .nlp-faq { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
+    .nlp-faq div { background: #fff; border: 1px solid var(--color-border); border-radius: 16px; padding: 1.3rem 1.4rem; }
+    .nlp-faq h3 { font-size: 1.05rem; margin: 0 0 0.4rem; }
+    .nlp-checked { margin-top: 1.6rem; color: var(--color-text-light); font-size: 0.9rem; }
+
+    @media (max-width: 860px) {
+        .nlp-hero { padding: 9rem 0 3rem; }
+        .nlp-hero-grid, .nlp-what, .nlp-faq { grid-template-columns: 1fr; }
+    }
+</style>

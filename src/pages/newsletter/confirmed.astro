@@ -1,0 +1,29 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import { NEWSLETTER } from '../../data/newsletter';
+// Where Buttondown sends people after they confirm (Buttondown → Settings → Subscribing → After confirming).
+---
+
+<Layout
+  title="You're In — Stillware Ltd"
+  description="You've joined the Stillware newsletter."
+  noindex
+>
+    <section class="nlc">
+        <div class="nlc-box">
+            <h1>You're in.</h1>
+            <p>The next email comes when we ship something: a new version, a free printable, or a date that matters. At most once a month.</p>
+            <p>Every issue is also in the <a href={NEWSLETTER.archive}>archive</a>. Reply to any email and it reaches a person.</p>
+            <a href="/" class="btn-secondary">Back to Stillware</a>
+        </div>
+    </section>
+</Layout>
+
+<style>
+    .nlc { min-height: 80vh; display: flex; align-items: center; justify-content: center; padding: 10rem 1.5rem 4rem; }
+    .nlc-box { max-width: 560px; text-align: center; }
+    .nlc h1 { font-size: 2.5rem; margin-bottom: 1rem; }
+    .nlc p { color: var(--color-text-light); font-size: 1.1rem; line-height: 1.6; margin-bottom: 1rem; }
+    .nlc p a { color: var(--color-primary); font-weight: 600; }
+    .nlc .btn-secondary { margin-top: 1rem; }
+</style>

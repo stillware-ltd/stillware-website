@@ -1,5 +1,6 @@
 ---
 import Layout from '../../layouts/Layout.astro';
+import NewsletterSignup from '../../components/NewsletterSignup.astro';
 ---
 
 <Layout
@@ -51,7 +52,7 @@ import Layout from '../../layouts/Layout.astro';
               </ul>
             </div>
           </div>
-          <p class="preview-note">The full PDF includes tick-boxes, a morning-of timeline, and a "forgot it?" emergency plan.</p>
+          <p class="preview-note">The full PDF includes tick-boxes, a morning-of timeline, a "forgot it?" emergency plan, and a round-by-round log.</p>
         </div>
 
         <div class="download-panel">
@@ -59,15 +60,17 @@ import Layout from '../../layouts/Layout.astro';
             <div class="pdf-icon">
               <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/><polyline points="10 9 9 9 8 9"/></svg>
             </div>
-            <h3>Get the Free Printable PDF</h3>
-            <p>High-resolution, printer-friendly. Use it every tournament. We'll email it to you instantly.</p>
-            <form name="chess-packing-list" method="POST" data-netlify="true" action="/success/" class="gated-form">
-              <input type="hidden" name="form-name" value="chess-packing-list" />
-              <input type="hidden" name="subject" value="Download: Chess Tournament Packing List" />
-              <input type="email" name="email" placeholder="your@email.com" required aria-label="Email address" />
-              <button type="submit" class="btn-primary">Send Me the PDF</button>
-            </form>
-            <p class="privacy-note">No spam. Unsubscribe anytime. We respect your inbox like we respect your data.</p>
+            <h3>Download the Free Printable PDF</h3>
+            <p>Two pages, printer-friendly. Use it every tournament. Free, no email needed.</p>
+            <div class="dl-links">
+              <a href="/printables/chess-tournament-packing-list-a4.pdf" class="btn-primary" download>Download the PDF (A4)</a>
+              <a href="/printables/chess-tournament-packing-list-letter.pdf" class="dl-alt" download>US Letter size</a>
+            </div>
+            <p class="privacy-note">PDF, 470 KB. Free to print and share with your club.</p>
+          </div>
+
+          <div class="dl-news">
+            <NewsletterSignup placement="tool-chess-tournament-packing-list" heading="For grown-ups: the next free printable" promise="One email when there is a new chess printable or song for kids, or when RankUp Chess ships something. At most once a month." />
           </div>
 
           <div class="app-promo">
@@ -212,30 +215,30 @@ import Layout from '../../layouts/Layout.astro';
     margin-bottom: 1.5rem;
   }
 
-  .gated-form {
+  .dl-links {
     display: flex;
     flex-direction: column;
     gap: 0.75rem;
+    align-items: center;
   }
 
-  .gated-form input[type="email"] {
-    padding: 0.85rem 1.25rem;
-    border: 1px solid var(--color-border);
-    border-radius: 100px;
-    font-size: 1rem;
-    font-family: var(--font-sans);
-    outline: none;
-    text-align: center;
-    transition: border-color 0.2s;
-  }
-
-  .gated-form input[type="email"]:focus {
-    border-color: var(--color-primary);
-  }
-
-  .gated-form .btn-primary {
+  .dl-links .btn-primary {
     width: 100%;
     justify-content: center;
+  }
+
+  .dl-alt {
+    color: var(--color-primary);
+    font-weight: 600;
+    font-size: 0.95rem;
+  }
+
+  .dl-news {
+    margin-top: 1.5rem;
+    padding: 1.5rem;
+    border: 1px solid var(--color-border);
+    border-radius: 16px;
+    background: #ffffff;
   }
 
   .privacy-note {

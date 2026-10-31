@@ -2,6 +2,7 @@
 import Layout from '../layouts/Layout.astro';
 import KeyFacts from '../components/KeyFacts.astro';
 import { GUIDES } from '../data/guides';
+import NewsletterSignup from '../components/NewsletterSignup.astro';
 
 // Latest Zeroed release — bump this single constant when a new version ships.
 // Per-asset versions. 1.4.0 is live on the App Store (2026-10-04) and Google Play
@@ -325,6 +326,9 @@ const faqSchema = {
                     <p class="no-cc">No credit card required &bull; 34 days free</p>
                     <p class="pricing-vat-note">Prices shown exclusive of VAT. Local taxes may apply at checkout depending on your country.</p>
                 </div>
+            </div>
+            <div class="pricing-newsletter">
+                <NewsletterSignup placement="zeroed-pricing" heading="Not ready to decide?" promise="One reminder 30 days before the founder price ends, and an email when a new version of Zeroed ships. Nothing else." align="center" />
             </div>
         </div>
     </section>
@@ -1178,6 +1182,8 @@ const faqSchema = {
     .direct-downloads-section .section-header h2 {
         font-size: 2.5rem;
     }
+
+    .pricing-newsletter { margin: 3rem auto 0; max-width: 560px; padding: 2rem; border: 1px solid var(--color-border); border-radius: 20px; background: #fff; }
 
     .direct-downloads-guide {
         max-width: 620px;

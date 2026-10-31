@@ -210,6 +210,12 @@ const breadcrumbSchema = breadcrumbs.length
                 window.stillTrack('guide_pdf_download', { app: guide[1], page: location.pathname });
                 return;
             }
+            // Free printables (31 Oct 2026): which file, and from which page.
+            var printable = href.match(/\/printables\/([a-z0-9-]+)\.pdf(\?|#|$)/);
+            if (printable) {
+                window.stillTrack('printable_download', { file: printable[1], page: location.pathname });
+                return;
+            }
             var store =
                 /play\.google\.com/.test(href) ? 'google_play' :
                 /apps\.microsoft\.com|microsoft\.com\/store/.test(href) ? 'microsoft_store' :
@@ -230,6 +236,24 @@ const breadcrumbSchema = breadcrumbs.length
                 ref: ref,
                 position: slot ? slot.getAttribute('data-cta-slot') : 'other'
             });
+        }, true);
+
+        // Newsletter forms (src/components/NewsletterSignup.astro, 31 Oct 2026): record which form was used, then hand the
+        // form to Buttondown. The submit waits for the event at most 0.8 s, so a blocked tracker never blocks a signup.
+        document.addEventListener('submit', function (ev) {
+            var f = ev.target;
+            if (!f || !f.matches || !f.matches('form[data-newsletter]') || f.getAttribute('data-sent')) return;
+            ev.preventDefault();
+            f.setAttribute('data-sent', '1');
+            var go = function () {
+                if (f.getAttribute('data-done')) return;
+                f.setAttribute('data-done', '1');
+                f.submit();
+            };
+            if (typeof window.stillTrack === 'function') {
+                window.stillTrack('newsletter_signup', { placement: f.getAttribute('data-newsletter'), page: location.pathname }, go);
+            }
+            setTimeout(go, 800);
         }, true);
     </script>
 

@@ -1,6 +1,7 @@
 ---
 import Layout from '../../layouts/Layout.astro';
 import { GUIDES, GUIDES_CHECKED } from '../../data/guides';
+import NewsletterSignup from '../../components/NewsletterSignup.astro';
 
 // A grown-up's guide to RankUp Chess: the web version of the printable PDF (same content, same screens). Written
 // answer-first for "how to use RankUp Chess". Facts as the app shows them in 0.11 (build 33) and as /rankupchess/ states
@@ -210,6 +211,9 @@ const faqSchema = {
                     </div>
                     <a class="rg-btn" href={G.pdf} download>Download the PDF</a>
                 </div>
+                <div class="rg-news">
+                    <NewsletterSignup placement="rankupchess-guide" heading="For grown-ups: the next free printable" promise="One email when RankUp Chess ships something or this guide changes, the next free chess printable or song, and the dates that matter." />
+                </div>
                 <p class="rg-checked">Checked against RankUp Chess {G.version} (build 33) on {GUIDES_CHECKED}. Source: the app itself; the screens are real captures from version 0.11.0, unedited. Still stuck? <a href="mailto:support@stillwareltd.com">support@stillwareltd.com</a>. <a href="/support/">All guides and help</a>.</p>
             </div>
         </section>
@@ -302,6 +306,7 @@ const faqSchema = {
     .rg-print h3 { color: var(--gold); margin: 0 0 0.3rem; }
     .rg-print p { color: #E7E6F2; margin: 0; line-height: 1.55; }
     .rg-print .rg-btn { white-space: nowrap; flex: none; }
+    .rg-news { margin-top: 2rem; padding: 1.5rem 1.6rem; border: 1px solid #E4E2F0; border-radius: 20px; background: #fff; }
     .rg-checked { margin-top: 1.6rem; color: var(--muted); font-size: 0.9rem; line-height: 1.6; }
     .rg-checked a { color: #5B45C4; font-weight: 700; }
 

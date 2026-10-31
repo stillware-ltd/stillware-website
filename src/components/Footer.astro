@@ -1,4 +1,5 @@
 ---
+import NewsletterSignup from './NewsletterSignup.astro';
 const year = new Date().getFullYear();
 ---
 
@@ -63,14 +64,7 @@ const year = new Date().getFullYear();
 
         <!-- Newsletter -->
         <div class="newsletter-section">
-            <p class="newsletter-title">Join the Rebellion</p>
-            <p>Get notified when we ship new apps and updates.</p>
-            <form name="newsletter" method="POST" data-netlify="true" action="/success/" class="newsletter-form">
-                <input type="hidden" name="form-name" value="newsletter" />
-                <input type="hidden" name="subject" value="New Newsletter Subscriber" />
-                <input type="email" name="email" placeholder="your@email.com" required aria-label="Email address" />
-                <button type="submit" class="btn-primary">Subscribe</button>
-            </form>
+            <NewsletterSignup placement="footer" heading="Join the Rebellion" tone="dark" align="center" />
         </div>
 
         <div class="footer-bottom">

@@ -2,6 +2,7 @@
 import Layout from '../../layouts/Layout.astro';
 import StoreLinks from '../../components/StoreLinks.astro';
 import GuideLinks from '../../components/GuideLinks.astro';
+import NewsletterSignup from '../../components/NewsletterSignup.astro';
 import { getCollection } from 'astro:content';
 import sharp from 'sharp';
 import { join } from 'node:path';
@@ -323,25 +324,13 @@ const faqSchema = faqItems.length >= 2 ? {
         <!-- Newsletter Signup -->
         <section class="newsletter-signup">
             <div class="newsletter-inner">
-                <h2 class="newsletter-heading">The Stillware Letter</h2>
-                <p class="newsletter-description">
-                    A monthly essay on software ownership, privacy, and the anti-subscription movement.
-                    No spam. Unsubscribe anytime.
-                </p>
-                <form class="newsletter-form" name="newsletter-post" method="POST" data-netlify="true" action="/success/">
-                    <input type="hidden" name="form-name" value="newsletter-post" />
-                    <input type="hidden" name="source" value={`/blog/${post.slug}/`} />
-                    <input
-                        type="email"
-                        name="email"
-                        placeholder="you@example.com"
-                        required
-                        autocomplete="email"
-                        class="newsletter-input"
-                    />
-                    <button type="submit" class="newsletter-btn">Subscribe</button>
-                </form>
-                <p class="newsletter-privacy">We'll never share your email. That's kind of our whole thing.</p>
+                {appCluster === 'zeroed' ? (
+                    <NewsletterSignup placement={`post-${post.slug}`} heading="Budgeting without a subscription?" promise="One email when Zeroed ships something, a free budgeting printable or calculator, and one reminder before the founder price ends on 14 February 2027." tone="dark" align="center" />
+                ) : appCluster === 'rankup-chess' ? (
+                    <NewsletterSignup placement={`post-${post.slug}`} heading="Teaching a child chess?" promise="For grown-ups: one email when RankUp Chess ships something, the next free chess printable or song, and the dates that matter." tone="dark" align="center" />
+                ) : (
+                    <NewsletterSignup placement={`post-${post.slug}`} heading="Join the Rebellion" tone="dark" align="center" />
+                )}
             </div>
         </section>
 
