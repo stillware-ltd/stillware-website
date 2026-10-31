@@ -1,6 +1,7 @@
 ---
 import Layout from '../layouts/Layout.astro';
 import KeyFacts from '../components/KeyFacts.astro';
+import { GUIDES } from '../data/guides';
 
 // Latest Zeroed release — bump this single constant when a new version ships.
 // Per-asset versions. 1.4.0 is live on the App Store (2026-10-04) and Google Play
@@ -85,7 +86,8 @@ const faqItems = [
   { q: "What happens if my trial ends and I don't buy?", a: "Your data is never held hostage. When the 34-day trial ends, Zeroed switches to read-only: you can still open the app, view everything, and export all of your data. You just can't add or edit entries until you unlock it." },
   { q: 'Does Zeroed connect to my bank?', a: 'No, and that is deliberate. Connecting a bank means a third-party service holding your bank login. Zeroed imports statements from any bank (CSV, PDF, OFX, QFX and QIF) with automatic duplicate detection, and has an on-device receipt scanner for cash spending.' },
   { q: 'Which devices does Zeroed run on?', a: 'iPhone and iPad (App Store), Android (Google Play), Windows (Microsoft Store or a portable download) and macOS (notarized DMG). If you turn on sync, your data and a licence key travel through your own Google Drive, so your other devices unlock too.' },
-  { q: 'Can I move my budget over from YNAB?', a: 'Yes. Export your budget data from YNAB as CSV and import the register into Zeroed, then rebuild your categories. The step-by-step guide is on our blog: how to switch from YNAB to Zeroed.' },
+  { q: 'Is there a getting-started guide for Zeroed?', a: 'Yes. The getting-started guide covers setup in four steps, the five tabs, logging and importing spending, and keeping your budget safe. Read it on this site under Zeroed, Getting started guide, or print the free 4-page PDF.' },
+  { q: 'Can I move my budget over from YNAB?', a: 'Yes. Export your budget from YNAB, then in Zeroed open Settings → Migrate from YNAB: it brings your accounts, categories, assignments and history across. The step-by-step guide is on our blog: how to switch from YNAB to Zeroed.' },
 ];
 const faqSchema = {
   '@context': 'https://schema.org',
@@ -333,6 +335,7 @@ const faqSchema = {
             <div class="section-header center-text">
                 <h2>Prefer a Direct Install?</h2>
                 <p class="direct-downloads-intro">One-click install from the App Store, Google Play or Microsoft Store, or app-store-free desktop binaries hosted on GitHub — checksummed, so you can verify with SHA256 before installing.</p>
+                <p class="direct-downloads-guide">New to Zeroed? <a href={GUIDES.zeroed.page}>The getting-started guide</a> walks through setup and the five tabs, or <a href={GUIDES.zeroed.pdf} download>print it ({GUIDES.zeroed.label})</a>.</p>
             </div>
             <div class="direct-downloads-grid">
                 <a href={`${releaseBase(DMG_VERSION)}/Zeroed-${DMG_VERSION}.dmg`} class="direct-download-card">
@@ -1175,6 +1178,15 @@ const faqSchema = {
     .direct-downloads-section .section-header h2 {
         font-size: 2.5rem;
     }
+
+    .direct-downloads-guide {
+        max-width: 620px;
+        margin: 0.8rem auto 0;
+        color: var(--color-text-light);
+        line-height: 1.6;
+    }
+
+    .direct-downloads-guide a { color: var(--color-primary); font-weight: 600; }
 
     .direct-downloads-intro {
         max-width: 620px;

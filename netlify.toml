@@ -193,6 +193,17 @@
 
 # Cache static assets. Astro writes hashed CSS/JS to /_astro/ (not /assets/), so the file name changes
 # whenever the content does and a year-long immutable cache is safe.
+# App guides (31 Oct 2026): each printable PDF points search engines at its HTML page, which carries the same content.
+[[headers]]
+  for = "/guides/rankup-chess-grown-ups-guide.pdf"
+  [headers.values]
+    Link = '<https://www.stillwareltd.com/rankupchess/guide/>; rel="canonical"'
+
+[[headers]]
+  for = "/guides/zeroed-getting-started-guide.pdf"
+  [headers.values]
+    Link = '<https://www.stillwareltd.com/zeroed/guide/>; rel="canonical"'
+
 [[headers]]
   for = "/_astro/*"
   [headers.values]

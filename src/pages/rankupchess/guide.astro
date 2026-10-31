@@ -1,0 +1,328 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import { GUIDES, GUIDES_CHECKED } from '../../data/guides';
+
+// A grown-up's guide to RankUp Chess: the web version of the printable PDF (same content, same screens). Written
+// answer-first for "how to use RankUp Chess". Facts as the app shows them in 0.11 (build 33) and as /rankupchess/ states
+// them; no prices (they differ by country). Design: the app's own night blue, gold and Home-card colours.
+const G = GUIDES.rankup;
+
+const STEPS = [
+  { t: "Pick who's playing.", d: "The first screen asks Who's Playing? Tap a name, or Add Profile for each child: up to 8 players on one device, each with their own progress." },
+  { t: 'Press the big green button.', d: "On Home, Continue always starts the one right next thing: the next lesson, today's puzzle or a game against the right bot. Today's Adventure under it has three small quests and a chest." },
+  { t: 'Grown-up things ask for a grown-up.', d: 'Buying, web links, backups, the Parent Dashboard and deleting a profile first ask you to press and hold a button for 3 seconds, then answer a times-table question written in words. Prefer a PIN? Settings → Parental Controls → Require PIN.' },
+];
+
+// Markers on the Home capture, as percentages of the cropped image (measured on the 1080 x 2400 capture).
+const HOME_POINTS = [[1, 4.0, 2.5], [2, 77.4, 1.0], [3, 89.5, 1.0], [4, 3.5, 16.0], [5, 3.5, 27.0], [6, 50.0, 76.5]];
+const HOME_KEYS = [
+  ["The player's picture", 'tap it for their profile and stats.'],
+  ['Switch player (⇄)', "back to Who's Playing?"],
+  ['Settings (⚙)', 'the grown-up area.'],
+  ['Continue', 'the next thing to do.'],
+  ["Today's Adventure", 'three quests a day, then a chest to open.'],
+  ['The four doors', 'Play AI, Pass & Play, Puzzles and Learn Skills.'],
+];
+
+const PLACES = [
+  { name: 'Learn Skills', color: '#9C27B0', what: 'The Adventure Map: 68 short lessons that Rook reads aloud, across 9 lands from Little Garden to My First Tournament. Each land ends with a friendly boss game, and a finished land earns a certificate.', path: 'Home → Learn Skills' },
+  { name: 'Play AI', color: '#4CAF50', what: 'Choose from 12 friendly bots, from Baby Bean, who is still learning to checkmate, up to a 2400-rated bot. Each bot shows your child\'s wins, draws and losses against it.', path: 'Home → Play AI → Start Game' },
+  { name: '30,000+ Puzzles', color: '#FF9800', what: 'The Puzzle Library: 30,737 puzzles by level and theme, puzzle islands, Puzzle Dash (3 minutes, 3 strikes) and the Mate-in-1 Marathon (ten checkmates in a row).', path: 'Home → 30,000+ Puzzles' },
+  { name: 'Pass & Play', color: '#2196F3', what: "Two players, one screen. Switch on Auto-Rotate Board in Settings → Board to have each player's pieces at the bottom on their turn.", path: 'Home → Pass & Play' },
+  { name: 'Daily Challenge', color: '#C79A00', what: "Today's puzzle, picked for your child's level, with hints and a skip. Free every day; the unlock makes it unlimited.", path: 'Home → scroll to More' },
+  { name: 'Fun games', color: '#00897B', what: 'Bot Cup, Pawn Wars, King of the Hill, Enter a friend code (a position or puzzle a friend shared) and a club tournament on one device or real boards.', path: 'Home → scroll to More' },
+  { name: 'Recent Games', color: '#5B5874', what: 'The latest games: tap one to replay it. The full review, which grades every move, is free once a week and unlimited with the unlock.', path: 'Home, above More' },
+];
+
+const SHOTS = [
+  { src: '/guides/rankupchess/map.webp', w: 520, h: 1065, cap: 'Learn Skills: the Adventure Map' },
+  { src: '/guides/rankupchess/bots.webp', w: 520, h: 884, cap: 'Play AI: choose a bot' },
+  { src: '/guides/rankupchess/puzzles.webp', w: 520, h: 812, cap: 'The Puzzle Library' },
+  { src: '/guides/rankupchess/fun.webp', w: 520, h: 957, cap: 'More: fun games' },
+];
+
+const SETTINGS = [
+  { s: 'Unlock', gate: true, d: 'At the very top: the one-time unlock, with Restore Purchase on its screen. Once unlocked, it says so.' },
+  { s: 'Board', d: 'Board theme (8 to choose from), tap or drag to move, a bigger board, legal-move hints, coordinates, and Auto-Rotate Board for Pass & Play.' },
+  { s: 'Audio', d: 'Sound effects and music, each with its own volume.' },
+  { s: 'Accessibility', d: 'Haptics, piece labels and high contrast.' },
+  { s: 'AI', d: "How fast the computer moves, the bots' speech bubbles, and how much Rook talks in practice games." },
+  { s: 'Parental Controls', gate: true, d: 'Require PIN, the Parent Dashboard, grown-up cards in lessons, nearby play and more.' },
+  { s: 'Healthy play', gate: true, d: 'A daily time limit, a bedtime, break reminders and one gentle daily reminder. A game in progress always finishes first.' },
+  { s: 'Account', d: 'Switch to a different player.' },
+  { s: 'About & Legal', d: 'Send feedback, privacy policy, licences.' },
+  { s: 'Backup & Restore', gate: true, d: "Export a full backup of every player's progress, restore from a backup, or export your data as CSV." },
+];
+
+const FREE = [
+  'Every rule of chess, in the first three lands: Little Garden, Beginner Village and Castle Grounds',
+  'Friendly bots up to Level 3, and Pass & Play',
+  'Daily Challenges and Pawn Wars',
+  'Four board themes: Treehouse, Classic, Coral Reef and Sing-Along',
+  'One full game review a week',
+  'Up to 8 players on a device',
+];
+const UNLOCK = [
+  'Six more lands, up to My First Tournament: 68 lessons in all',
+  'The whole puzzle library: 30,737 puzzles at the right level',
+  "All 12 bots, up to 2400, and Rook's coaching in every practice game",
+  'Unlimited game reviews, the Opening Explorer and every opening adventure',
+  'King of the Hill and all 8 board themes',
+  'One payment, no subscription; it covers every child in your family',
+];
+
+const faqItems = [
+  { q: 'Does RankUp Chess need the internet?', a: 'No. Lessons, puzzles and bots all work offline. When it is online, the app checks your purchase and the prices.' },
+  { q: 'We bought RankUp Chess on another device. How do we unlock it here?', a: 'On the unlock screen, tap Restore Purchase. Bought on a different kind of device? Sign in under Restore Purchase with the email you bought with: a 6-digit code arrives, and there is no password.' },
+  { q: 'How do we move RankUp Chess to a new phone or tablet?', a: "On the old device, open Settings → Backup & Restore → Export Full Backup. On the new one, choose Restore from Backup. Every player's progress comes with it." },
+  { q: 'How do I set a time limit or a bedtime?', a: 'Settings → Healthy play. Limits are checked between activities, so a game is never cut off halfway.' },
+  { q: 'How do I turn the sound down?', a: 'Settings → Audio: turn the music or the sound effects down, or off.' },
+  { q: 'My little one finds a lesson hard. What can I do?', a: 'Lessons can be replayed from the Adventure Map. Little Garden lessons have short grown-up cards: what to say, something to try on a real board, and when to stop.' },
+];
+const faqSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'FAQPage',
+  mainEntity: faqItems.map((f) => ({ '@type': 'Question', name: f.q, acceptedAnswer: { '@type': 'Answer', text: f.a } })),
+};
+---
+
+<Layout
+  title="How to Use RankUp Chess: A Guide for Grown-Ups"
+  description="How to use RankUp Chess: where to start, where everything is, what grown-ups control, and what is free. Read it here or print the free 4-page PDF guide."
+  canonical="https://www.stillwareltd.com/rankupchess/guide/"
+  breadcrumbs={[{ name: 'RankUp Chess', href: '/rankupchess/' }, { name: 'Guide for grown-ups', href: '/rankupchess/guide/' }]}
+>
+    <script type="application/ld+json" set:html={JSON.stringify(faqSchema)} />
+
+    <div class="rg-page">
+        <header class="rg-hero">
+            <div class="rg-wrap rg-hero-grid">
+                <div>
+                    <p class="rg-kicker">For parents, grandparents and teachers</p>
+                    <h1>How to Use RankUp Chess: <span>A Guide for Grown-Ups</span></h1>
+                    <p class="rg-answer">Pick who is playing, then press the big green <strong>Continue</strong> button on Home: it always starts the next lesson, today's puzzle or a game against the right bot. Four doors on Home lead to Learn Skills, Play AI, Pass &amp; Play and the puzzles, and everything grown-ups control sits in <strong>Settings</strong>, behind a grown-up check.</p>
+                    <div class="rg-actions">
+                        <a class="rg-btn" href={G.pdf} download>Print the guide ({G.label})</a>
+                        <a class="rg-link" href="/rankupchess/">Get RankUp Chess</a>
+                    </div>
+                </div>
+                <img class="rg-rook" src="/guides/rankupchess/rook.svg" alt="" width="220" height="220" />
+            </div>
+        </header>
+
+        <section class="rg-section">
+            <div class="rg-wrap rg-start">
+                <div>
+                    <h2>Where do you start in RankUp Chess?</h2>
+                    <ol class="rg-steps">
+                        {STEPS.map((s) => <li><strong>{s.t}</strong> {s.d}</li>)}
+                    </ol>
+                    <h3>Home at a glance</h3>
+                    <ol class="rg-keys">
+                        {HOME_KEYS.map(([k, v]) => <li><strong>{k}</strong>: {v}</li>)}
+                    </ol>
+                    <p class="rg-note">Scroll down Home for More: the Daily Challenge, Puzzle Dash, fun games, the Opening Explorer and Recent Games.</p>
+                </div>
+                <figure class="rg-phone rg-home">
+                    <div class="rg-phone-inner">
+                        <img src="/guides/rankupchess/home.webp" alt="RankUp Chess Home for a player called Maya: Continue, Today's Adventure and the four doors" width="720" height="1474" loading="lazy" />
+                        {HOME_POINTS.map(([n, x, y]) => <span class="rg-co" style={`left:${x}%;top:${y}%`} aria-hidden="true">{n}</span>)}
+                    </div>
+                    <figcaption>Home, for a player called Maya. Your child sees their own name, rank and streak.</figcaption>
+                </figure>
+            </div>
+        </section>
+
+        <section class="rg-section rg-tint">
+            <div class="rg-wrap">
+                <h2>Where is everything in RankUp Chess?</h2>
+                <p class="rg-lead">Home has four big doors. Everything else is further down Home, under More.</p>
+                <table class="rg-table">
+                    <thead><tr><th scope="col">Place</th><th scope="col">What is there</th><th scope="col">How to get there</th></tr></thead>
+                    <tbody>
+                        {PLACES.map((p) => (
+                            <tr>
+                                <th scope="row"><span class="rg-chip" style={`background:${p.color}`}>{p.name}</span></th>
+                                <td>{p.what}</td>
+                                <td class="rg-path">{p.path}</td>
+                            </tr>
+                        ))}
+                    </tbody>
+                </table>
+                <div class="rg-shots">
+                    {SHOTS.map((s) => (
+                        <figure class="rg-phone">
+                            <div class="rg-phone-inner"><img src={s.src} alt={`RankUp Chess: ${s.cap}`} width={s.w} height={s.h} loading="lazy" /></div>
+                            <figcaption>{s.cap}</figcaption>
+                        </figure>
+                    ))}
+                </div>
+            </div>
+        </section>
+
+        <section class="rg-section">
+            <div class="rg-wrap rg-grown">
+                <div>
+                    <h2>What can grown-ups control in RankUp Chess?</h2>
+                    <p class="rg-lead">Settings is the ⚙ at the top right of Home. From top to bottom, with the sections that ask for the grown-up check marked:</p>
+                    <dl class="rg-settings">
+                        {SETTINGS.map((s) => (
+                            <div><dt>{s.s}{s.gate && <span class="rg-gate">Grown-up</span>}</dt><dd>{s.d}</dd></div>
+                        ))}
+                    </dl>
+                    <div class="rg-card">
+                        <h3>The grown-up check</h3>
+                        <p>Press and hold the button for 3 seconds, then type the answer to a times-table question written in words, such as "What is seven times eight?". Too many wrong answers pause it for a short while. With Require PIN on, your PIN is asked instead.</p>
+                    </div>
+                    <div class="rg-card rg-gold">
+                        <h3>Set a goal together</h3>
+                        <p>In the Parent Dashboard, open your child's page and tap Set a goal. A goal with a small real-world reward can help: Home shows it to your child and celebrates when it is reached.</p>
+                    </div>
+                </div>
+                <figure class="rg-phone">
+                    <div class="rg-phone-inner"><img src="/guides/rankupchess/parent.webp" alt="RankUp Chess Parent Dashboard for one child: time this week, a suggested next step, things to talk about and goals" width="540" height="968" loading="lazy" /></div>
+                    <figcaption>The Parent Dashboard (Settings → Parental Controls): time played, lessons and puzzles this week, a suggested next step, things to talk about, and goals.</figcaption>
+                </figure>
+            </div>
+        </section>
+
+        <section class="rg-section rg-tint">
+            <div class="rg-wrap">
+                <h2>What is free, and what does the one-time unlock add?</h2>
+                <div class="rg-two">
+                    <div class="rg-free"><h3>Free, for good</h3><ul>{FREE.map((x) => <li>{x}</li>)}</ul></div>
+                    <div class="rg-plus"><h3>One unlock adds</h3><ul>{UNLOCK.map((x) => <li>{x}</li>)}</ul></div>
+                </div>
+                <p class="rg-note">No ads, no chat and no account needed to play. Prices differ by country; the app shows yours.</p>
+            </div>
+        </section>
+
+        <section class="rg-section">
+            <div class="rg-wrap">
+                <h2>Frequently asked questions</h2>
+                <div class="rg-faq">
+                    {faqItems.map((f) => (<div><h3>{f.q}</h3><p>{f.a}</p></div>))}
+                </div>
+                <div class="rg-print">
+                    <div>
+                        <h3>Keep it by the device</h3>
+                        <p>The same guide as a 4-page A4 PDF, with the screens and an "I want to… → Go to" table, to print or save.</p>
+                    </div>
+                    <a class="rg-btn" href={G.pdf} download>Download the PDF</a>
+                </div>
+                <p class="rg-checked">Checked against RankUp Chess {G.version} (build 33) on {GUIDES_CHECKED}. Source: the app itself; the screens are real captures from version 0.11.0, unedited. Still stuck? <a href="mailto:support@stillwareltd.com">support@stillwareltd.com</a>. <a href="/support/">All guides and help</a>.</p>
+            </div>
+        </section>
+    </div>
+</Layout>
+
+<style>
+    .rg-page {
+        --night: #1A1A2E;
+        --deep: #16213E;
+        --gold: #F5C518;
+        --ink: #1F1B3A;
+        --muted: #5B5874;
+        background: #FBFAFE;
+        color: var(--ink);
+    }
+
+    .rg-wrap { width: min(1100px, 100% - 32px); margin-inline: auto; }
+    .rg-page h1, .rg-page h2, .rg-page h3 { font-family: ui-rounded, 'SF Pro Rounded', 'Arial Rounded MT Bold', 'Nunito', var(--font-sans); color: var(--ink); }
+
+    .rg-hero { padding: 9rem 0 3.5rem; background: radial-gradient(circle at 85% 20%, rgba(245, 197, 24, 0.18), transparent 45%), var(--night); }
+    .rg-hero-grid { display: grid; grid-template-columns: 1fr 220px; gap: 2rem; align-items: center; }
+    .rg-kicker { display: inline-block; background: rgba(245, 197, 24, 0.15); color: var(--gold); font-weight: 800; font-size: 0.9rem; border-radius: 999px; padding: 0.35rem 0.9rem; margin-bottom: 1rem; }
+    .rg-hero h1 { color: #fff; font-size: clamp(2rem, 5vw, 3.1rem); line-height: 1.1; margin: 0 0 1rem; }
+    .rg-hero h1 span { display: block; color: var(--gold); }
+    .rg-answer { color: #E7E6F2; font-size: 1.1rem; line-height: 1.65; max-width: 720px; margin-bottom: 1.5rem; }
+    .rg-answer strong { color: #fff; }
+    .rg-rook { width: 100%; height: auto; }
+    .rg-actions { display: flex; flex-wrap: wrap; gap: 1rem 1.4rem; align-items: center; }
+    .rg-btn { display: inline-block; background: var(--gold); color: var(--night); font-weight: 900; padding: 0.95rem 1.4rem; border-radius: 16px; text-decoration: none; box-shadow: 0 4px 0 #B48C00; }
+    .rg-btn:hover { background: #FFD43B; }
+    .rg-btn:focus-visible, .rg-link:focus-visible { outline: 3px solid #fff; outline-offset: 3px; }
+    .rg-link { color: #fff; font-weight: 800; }
+
+    .rg-section { padding: 4rem 0; }
+    .rg-tint { background: #F1EFF9; }
+    .rg-section h2 { font-size: clamp(1.6rem, 4vw, 2.2rem); line-height: 1.2; margin: 0 0 1.2rem; }
+    .rg-section h3 { font-size: 1.15rem; margin: 1.6rem 0 0.6rem; }
+    .rg-lead { color: var(--muted); font-size: 1.05rem; line-height: 1.6; margin-bottom: 1.4rem; }
+    .rg-note { color: var(--muted); line-height: 1.6; border: 2px dashed #CFCBE6; border-radius: 16px; padding: 0.9rem 1.1rem; margin-top: 1.2rem; }
+
+    .rg-start, .rg-grown { display: grid; grid-template-columns: 1fr 300px; gap: 3rem; align-items: start; }
+    .rg-steps { list-style: none; counter-reset: s; padding: 0; margin: 0; display: grid; gap: 1.1rem; }
+    .rg-steps li { counter-increment: s; position: relative; padding-left: 3.2rem; line-height: 1.6; color: var(--muted); }
+    .rg-steps li::before { content: counter(s); position: absolute; left: 0; top: 0; width: 2.3rem; height: 2.3rem; border-radius: 50%; background: var(--gold); color: var(--night); font-weight: 900; display: flex; align-items: center; justify-content: center; font-size: 1.1rem; }
+    .rg-steps strong { display: block; color: var(--ink); font-size: 1.1rem; }
+    .rg-keys { padding-left: 1.4rem; display: grid; gap: 0.45rem; color: var(--muted); line-height: 1.5; }
+    .rg-keys li::marker { color: #B48C00; font-weight: 900; }
+    .rg-keys strong { color: var(--ink); }
+
+    .rg-phone { margin: 0; }
+    .rg-phone-inner { position: relative; }
+    .rg-phone img { display: block; width: 100%; height: auto; border-radius: 22px; border: 6px solid #0E0E1C; box-shadow: 0 14px 30px rgba(26, 26, 46, 0.2); }
+    .rg-phone figcaption { color: var(--muted); font-size: 0.9rem; line-height: 1.5; margin-top: 0.7rem; }
+    .rg-co { position: absolute; transform: translate(-50%, -50%); width: 30px; height: 30px; border-radius: 50%; background: var(--gold); color: var(--night); font-weight: 900; font-size: 0.95rem; display: flex; align-items: center; justify-content: center; border: 3px solid #fff; box-shadow: 0 2px 6px rgba(0, 0, 0, 0.35); }
+
+    .rg-table { width: 100%; border-collapse: separate; border-spacing: 0 0.5rem; }
+    .rg-table th, .rg-table td { text-align: left; padding: 0.8rem 1rem; background: #fff; vertical-align: top; line-height: 1.5; }
+    .rg-table thead th { background: none; color: var(--muted); font-size: 0.85rem; text-transform: uppercase; letter-spacing: 0.08em; padding-bottom: 0; }
+    .rg-table tbody th { border-radius: 14px 0 0 14px; white-space: nowrap; }
+    .rg-table tbody td:last-child { border-radius: 0 14px 14px 0; }
+    .rg-table td { color: var(--muted); }
+    .rg-path { font-weight: 800; color: var(--ink) !important; white-space: nowrap; }
+    .rg-chip { display: inline-block; color: #fff; font-weight: 900; border-radius: 10px; padding: 0.25rem 0.7rem; }
+    .rg-shots { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 1.5rem; margin-top: 2rem; }
+    .rg-shots img { border-width: 4px; border-radius: 16px; }
+
+    .rg-settings { margin: 0; display: grid; gap: 0; }
+    .rg-settings div { display: grid; grid-template-columns: 190px 1fr; gap: 1rem; padding: 0.75rem 0; border-bottom: 1px solid #E4E2F0; }
+    .rg-settings dt { font-weight: 900; }
+    .rg-settings dd { margin: 0; color: var(--muted); line-height: 1.55; }
+    .rg-gate { display: inline-block; margin-left: 0.5rem; font-size: 0.7rem; font-weight: 900; text-transform: uppercase; letter-spacing: 0.06em; background: var(--gold); color: var(--night); border-radius: 6px; padding: 0.1rem 0.45rem; vertical-align: 2px; }
+    .rg-card { background: #F1EFF9; border-radius: 18px; padding: 1.2rem 1.4rem; margin-top: 1.4rem; }
+    .rg-card h3 { margin-top: 0; }
+    .rg-card p { color: var(--muted); line-height: 1.6; margin: 0; }
+    .rg-gold { background: #FFF7DC; }
+
+    .rg-two { display: grid; grid-template-columns: 1fr 1fr; gap: 1.4rem; }
+    .rg-two > div { border-radius: 20px; padding: 1.4rem 1.6rem; }
+    .rg-two h3 { margin-top: 0; }
+    .rg-two ul { padding-left: 1.2rem; display: grid; gap: 0.5rem; line-height: 1.55; }
+    .rg-free { background: #EEF8EF; } .rg-free h3 { color: #2E7D32; }
+    .rg-plus { background: #FFF7DC; } .rg-plus h3 { color: #8A6A00; }
+
+    .rg-faq { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
+    .rg-faq div { background: #fff; border: 1px solid #E4E2F0; border-radius: 18px; padding: 1.2rem 1.3rem; }
+    .rg-faq h3 { margin: 0 0 0.4rem; font-size: 1.05rem; }
+    .rg-faq p { color: var(--muted); line-height: 1.55; margin: 0; }
+    .rg-print { display: flex; align-items: center; justify-content: space-between; gap: 1.5rem; background: var(--night); border-radius: 22px; padding: 1.6rem 1.8rem; margin-top: 2.2rem; }
+    .rg-print h3 { color: var(--gold); margin: 0 0 0.3rem; }
+    .rg-print p { color: #E7E6F2; margin: 0; line-height: 1.55; }
+    .rg-print .rg-btn { white-space: nowrap; flex: none; }
+    .rg-checked { margin-top: 1.6rem; color: var(--muted); font-size: 0.9rem; line-height: 1.6; }
+    .rg-checked a { color: #5B45C4; font-weight: 700; }
+
+    @media (max-width: 900px) {
+        .rg-shots { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+        .rg-start, .rg-grown { grid-template-columns: 1fr; }
+        .rg-start .rg-phone, .rg-grown .rg-phone { max-width: 320px; margin-inline: auto; }
+    }
+
+    @media (max-width: 760px) {
+        .rg-hero { padding: 8rem 0 3rem; }
+        .rg-hero-grid { grid-template-columns: 1fr; }
+        .rg-rook { width: 140px; }
+        .rg-two, .rg-faq { grid-template-columns: 1fr; }
+        .rg-settings div { grid-template-columns: 1fr; gap: 0.2rem; }
+        .rg-table thead { display: none; }
+        .rg-table, .rg-table tbody, .rg-table tr, .rg-table th, .rg-table td { display: block; width: 100%; }
+        .rg-table tr { margin-bottom: 0.8rem; }
+        .rg-table tbody th { border-radius: 14px 14px 0 0; }
+        .rg-table tbody td:last-child { border-radius: 0 0 14px 14px; }
+        .rg-table td, .rg-path { white-space: normal; }
+        .rg-print { flex-direction: column; align-items: flex-start; }
+    }
+</style>

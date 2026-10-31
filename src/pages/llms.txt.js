@@ -52,6 +52,8 @@ export async function GET() {
     '',
     '## Guides',
     '',
+    link("A grown-up's guide to RankUp Chess", '/rankupchess/guide/', 'How to use RankUp Chess: where to start, where everything is, what grown-ups control and what is free. Also a printable 4-page PDF.'),
+    link('Getting started with Zeroed', '/zeroed/guide/', 'How to use Zeroed: set up in four steps, the five tabs, logging and importing spending, keeping the budget safe. Also a printable 4-page PDF.'),
     link('Blog', '/blog/', 'Guides on budgeting without a subscription, private offline apps, and daily chess puzzles.'),
     link('Free budget calculators and printables', '/tools/', 'Debt payoff, zero-based budget, 50/30/20, emergency fund, savings goal, net worth and more. No sign-up.'),
     link('Checkmate patterns in chess', '/chess/checkmate-patterns/', 'Plain-English definitions of the common checkmate patterns, with a puzzle for each.'),

@@ -204,6 +204,12 @@ const breadcrumbSchema = breadcrumbs.length
             var a = ev.target && ev.target.closest ? ev.target.closest('a[href]') : null;
             if (!a || typeof window.stillTrack !== 'function') return;
             var href = a.href || '';
+            // App guide PDFs (31 Oct 2026): which guide, and from which page.
+            var guide = href.match(/\/guides\/(rankup-chess|zeroed)[^/]*\.pdf(\?|#|$)/);
+            if (guide) {
+                window.stillTrack('guide_pdf_download', { app: guide[1], page: location.pathname });
+                return;
+            }
             var store =
                 /play\.google\.com/.test(href) ? 'google_play' :
                 /apps\.microsoft\.com|microsoft\.com\/store/.test(href) ? 'microsoft_store' :

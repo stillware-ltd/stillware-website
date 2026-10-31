@@ -2,6 +2,7 @@
 import Layout from '../layouts/Layout.astro';
 import KeyFacts from '../components/KeyFacts.astro';
 import { SINGALONG_VIDEO_ID, SINGALONG_KIT_PAGE } from '../data/singalong';
+import { GUIDES } from '../data/guides';
 
 // The product version, shown wherever the page states which release this is.
 const RANKUP_VERSION = '0.11.0';
@@ -171,6 +172,7 @@ const faqItems = [
   { q: 'Is there a subscription, and what does the one-time payment unlock?', a: 'There is no subscription and no renewal. One optional one-time payment unlocks the rest of the academy: all 9 lands, more than 30,000 puzzles, all 12 bot friends up to Level 10, unlimited game review and the Opening Explorer, with all v1.x updates included. You can buy it for every device your family owns, or only for the kind of device you use. Either way you pay once.' },
   { q: 'Does RankUp Chess have ads or collect my child\'s data?', a: 'No ads, and no data harvesting. RankUp Chess has no account, no chat rooms and no analytics, and your child\'s games and progress stay on the device. The only data that leaves it is what a purchase needs, as our privacy policy explains.' },
   { q: 'How many puzzles and AI levels does RankUp Chess have?', a: 'More than 30,000 puzzles, from simple mate-in-ones to advanced middle-game strategies, and 12 bot friends: two gentle starters, then 10 AI strength levels from Level 1 (Beginner, 400 Elo) to Level 10 (World Class, 2400 Elo). There are also 68 voiced lessons in 9 lands. Most puzzles come from the Lichess open puzzle database (CC0), and the easiest ones were made by RankUp\'s own engine.' },
+  { q: 'Is there a guide for parents to RankUp Chess?', a: "Yes. A grown-up's guide shows where to start, where everything is in the app, what grown-ups control and what is free. Read it on this site under RankUp Chess, Guide for grown-ups, or print the free 4-page PDF." },
   { q: 'Are the Sing-Along pieces from the song in RankUp Chess?', a: 'Yes. The Sing-Along set from the song "Let the Whole Board Sing" is one of the eight board worlds in RankUp Chess, and it is free on every platform.' },
 ];
 const faqSchema = {
@@ -364,6 +366,7 @@ const faqSchema = {
                         <li>No ads, no chat and no strangers, anywhere in the app.</li>
                     </ul>
                     <p class="ru-reassure">Let them learn, play, and make mistakes — without worrying about what they might click on.</p>
+                    <p class="ru-guide"><a href={GUIDES.rankup.page}>Read the grown-up's guide</a> to where everything is and what you control, or <a href={GUIDES.rankup.pdf} download>print it ({GUIDES.rankup.label})</a>.</p>
                 </div>
                 <div class="ru-grownups-visual">
                     <img src="/rankupchess-screens/mac_0100_08_weekly_report-1040.webp" alt="RankUp Chess: the grown-ups’ weekly report for a child, with time played, a suggested next step, conversation prompts and goals" width="1200" height="900" loading="lazy" />
@@ -1296,6 +1299,9 @@ const faqSchema = {
         color: #3D7A1F;
         font-size: 0.8rem;
     }
+
+    .ru-guide { margin-top: 1rem; font-weight: 700; }
+    .ru-guide a { color: var(--ru-ink); text-decoration: underline; text-underline-offset: 3px; }
 
     .ru-reassure {
         font-family: var(--ru-round);

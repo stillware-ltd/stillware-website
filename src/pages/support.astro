@@ -1,10 +1,13 @@
 ---
 import Layout from '../layouts/Layout.astro';
+import { GUIDES } from '../data/guides';
+// Help for both apps (31 Oct 2026): the two app guides first, then RankUp Chess and Zeroed help. A protected page
+// (seo/protected-urls.txt): URL, title and H1 unchanged; words added and out-of-date Zeroed lines corrected, none cut.
 ---
 
 <Layout
   title="Support — Stillware Ltd"
-  description="Get help with Stillware apps. Guides for local sync setup, data export, and common questions."
+  description="Get help with Stillware apps: free guides to RankUp Chess and Zeroed (read online or print), Google Drive sync setup, data export, and common questions."
 >
     <header class="support-hero">
         <div class="container">
@@ -15,42 +18,97 @@ import Layout from '../layouts/Layout.astro';
 
     <section class="support-content">
         <div class="container">
+            <h2 class="support-section-title">App guides</h2>
+            <p class="support-section-lead">Short guides to where everything is in each app. Read them here, or print the PDF and keep it by the device.</p>
+            <div class="guide-grid">
+                <div class="guide-card guide-rankup reveal">
+                    <img src="/guides/rankupchess/rook.svg" alt="" width="72" height="72" loading="lazy" />
+                    <div>
+                        <h3>A grown-up's guide to RankUp Chess</h3>
+                        <p>For parents, grandparents and teachers: where to start, where everything is, what grown-ups control, and what is free.</p>
+                        <div class="guide-links">
+                            <a href={GUIDES.rankup.page} class="btn-text">Read the guide &rarr;</a>
+                            <a href={GUIDES.rankup.pdf} download class="guide-pdf">Print it ({GUIDES.rankup.label})</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="guide-card guide-zeroed reveal">
+                    <img src="/guides/zeroed/zeroed-logo.png" alt="" width="72" height="72" loading="lazy" />
+                    <div>
+                        <h3>Getting started with Zeroed</h3>
+                        <p>Set up in four steps, the five tabs, logging and importing spending, and keeping your budget safe.</p>
+                        <div class="guide-links">
+                            <a href={GUIDES.zeroed.page} class="btn-text">Read the guide &rarr;</a>
+                            <a href={GUIDES.zeroed.pdf} download class="guide-pdf">Print it ({GUIDES.zeroed.label})</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <h2 class="support-section-title">RankUp Chess</h2>
             <div class="support-grid">
                 <div class="support-card reveal">
                     <div class="support-icon">
                         <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>
                     </div>
-                    <h2>Getting Started</h2>
-                    <p>Download Zeroed from the Microsoft Store and launch it. The app walks you through setting up your first budget, categories, and accounts in under two minutes.</p>
-                    <a href="https://apps.microsoft.com/detail/9NCHJ67Q98C5" target="_blank" rel="noopener" class="btn-text">Download Zeroed &rarr;</a>
-                </div>
-
-                <div class="support-card reveal">
-                    <div class="support-icon">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17.5 19H9a7 7 0 1 1 6.71-9h1.79a4.5 4.5 0 1 1 0 9Z"/></svg>
-                    </div>
-                    <h2>Local Sync Setup</h2>
-                    <p>Zeroed syncs through your personal Google Drive. Sign in with your Google account inside the app settings. A <code>ZeroedData</code> folder is created automatically — encrypted and accessible only by Zeroed.</p>
-                    <p>Any other device signed into the same Google account will detect the folder and sync automatically.</p>
-                </div>
-
-                <div class="support-card reveal">
-                    <div class="support-icon">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
-                    </div>
-                    <h2>Data Export</h2>
-                    <p>Your data is yours. Export transactions, categories, and accounts as CSV at any time from the app's Settings menu. Since Zeroed uses your own Google Drive for storage, you can also access the encrypted database directly.</p>
+                    <h3>Getting Started</h3>
+                    <p>Download RankUp Chess free for iPhone, iPad, Android, Windows or Mac. Pick who's playing, then press the big green Continue button: it always starts the next lesson, today's puzzle or a game against the right bot. Settings, purchases and the Parent Dashboard sit behind a grown-up check.</p>
+                    <a href={GUIDES.rankup.page} class="btn-text">Read the grown-up's guide &rarr;</a>
                 </div>
 
                 <div class="support-card reveal">
                     <div class="support-icon">
                         <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
                     </div>
-                    <h2>FAQ</h2>
+                    <h3>FAQ</h3>
+                    <ul>
+                        <li><strong>Does it need the internet?</strong> — No. Lessons, puzzles and bots all work offline.</li>
+                        <li><strong>We bought it on another device.</strong> — On the unlock screen, tap Restore Purchase; bought on a different kind of device, sign in there with the email you bought with.</li>
+                        <li><strong>How do I set a time limit?</strong> — Settings → Healthy play: a daily limit, a bedtime and break reminders.</li>
+                    </ul>
+                    <a href="/rankupchess/" class="btn-text">More about RankUp Chess &rarr;</a>
+                </div>
+            </div>
+
+            <h2 class="support-section-title">Zeroed</h2>
+            <div class="support-grid">
+                <div class="support-card reveal">
+                    <div class="support-icon">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>
+                    </div>
+                    <h3>Getting Started</h3>
+                    <p>Download Zeroed from the App Store, Google Play or the Microsoft Store, or install it directly on Mac or Windows, and launch it. The app walks you through setting up your first budget, categories, and accounts in under two minutes. The getting-started guide shows every step.</p>
+                    <a href={GUIDES.zeroed.page} class="btn-text">Read the getting-started guide &rarr;</a>
+                    <a href="/zeroed/#downloads" class="btn-text">Download Zeroed &rarr;</a>
+                </div>
+
+                <div class="support-card reveal">
+                    <div class="support-icon">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17.5 19H9a7 7 0 1 1 6.71-9h1.79a4.5 4.5 0 1 1 0 9Z"/></svg>
+                    </div>
+                    <h3>Google Drive Sync Setup</h3>
+                    <p>Zeroed syncs through your personal Google Drive, and only if you turn it on. In the app, open Settings → Google Drive Sync and sign in with your Google account. A <code>ZeroedData</code> folder is created automatically — encrypted on your device before anything is uploaded, and accessible only by Zeroed.</p>
+                    <p>Any other device signed into the same Google account, with your budget password, will detect the folder and sync automatically.</p>
+                </div>
+
+                <div class="support-card reveal">
+                    <div class="support-icon">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+                    </div>
+                    <h3>Data Export</h3>
+                    <p>Your data is yours. Export your full budget as one zip from Settings → Export full budget, or any account's transactions as CSV, at any time, even after the trial ends. Settings → Backups keeps automatic copies too. If you use Google Drive Sync, you can also access the encrypted database directly.</p>
+                </div>
+
+                <div class="support-card reveal">
+                    <div class="support-icon">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
+                    </div>
+                    <h3>FAQ</h3>
                     <ul>
                         <li><strong>How does sync work without servers?</strong> — Through your personal Google Drive. We never see your data.</li>
-                        <li><strong>What if I switch phones?</strong> — Sign into the same Google account and Zeroed picks up where you left off.</li>
+                        <li><strong>What if I switch phones?</strong> — Turn on Google Drive Sync, sign into the same Google account, enter your budget password, and Zeroed picks up where you left off. No sync? Settings → Backups → Save a copy elsewhere, then Restore from a file.</li>
                         <li><strong>Can I use it offline?</strong> — Yes. Zeroed works fully offline. Sync happens when you reconnect.</li>
+                        <li><strong>I forgot my password.</strong> — Nobody can reset it, not even us: it is the only key to your encrypted budget. Write it down when you create a budget.</li>
                     </ul>
                     <a href="/zeroed/#faq" class="btn-text">More Zeroed FAQs &rarr;</a>
                 </div>
@@ -76,6 +134,24 @@ import Layout from '../layouts/Layout.astro';
     .support-hero p { font-size: 1.2rem; color: rgba(255, 255, 255, 0.65); }
 
     .support-content { padding: 4rem 0 8rem; }
+
+    .support-section-title { font-size: 2rem; margin: 0 0 0.6rem; }
+    .support-section-lead { color: var(--color-text-light); font-size: 1.1rem; line-height: 1.6; margin-bottom: 1.6rem; }
+    .support-grid + .support-section-title { margin-top: 0; }
+
+    .guide-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 2rem; margin-bottom: 4rem; }
+    .guide-card { display: flex; gap: 1.4rem; align-items: flex-start; padding: 2rem; border-radius: 20px; }
+    .guide-card img { flex: none; border-radius: 16px; }
+    .guide-card h3 { font-size: 1.35rem; margin: 0 0 0.6rem; }
+    .guide-card p { line-height: 1.6; margin: 0 0 1rem; }
+    .guide-links { display: flex; flex-wrap: wrap; gap: 0.6rem 1.4rem; align-items: center; }
+    .guide-pdf { font-weight: 600; text-decoration: underline; text-underline-offset: 3px; }
+    .guide-rankup { background: #1A1A2E; color: #E7E6F2; }
+    .guide-rankup h3 { color: #F5C518; }
+    .guide-rankup .btn-text, .guide-rankup .guide-pdf { color: #fff; }
+    .guide-zeroed { background: #F8FAFC; border: 1px solid #E2E8F0; }
+    .guide-zeroed p { color: var(--color-text-light); }
+    .guide-zeroed .guide-pdf { color: #2563EB; }
 
     .support-grid {
         display: grid;
@@ -110,10 +186,12 @@ import Layout from '../layouts/Layout.astro';
         margin-bottom: 1.5rem;
     }
 
-    .support-card h2 {
+    .support-card h3 {
         font-size: 1.5rem;
         margin-bottom: 1rem;
     }
+
+    .support-card .btn-text + .btn-text { margin-left: 1.2rem; }
 
     .support-card p {
         color: var(--color-text-light);
@@ -156,6 +234,7 @@ import Layout from '../layouts/Layout.astro';
 
     @media (max-width: 768px) {
         .support-hero h1 { font-size: 2.5rem; }
-        .support-grid { grid-template-columns: 1fr; }
+        .support-grid, .guide-grid { grid-template-columns: 1fr; }
+        .guide-card { flex-direction: column; }
     }
 </style>
