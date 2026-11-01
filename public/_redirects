@@ -108,3 +108,9 @@
 # /class: printed at the foot of every RankUp Chess worksheet and on the Teacher area's letter for parents (2026-10-31).
 /class    /rankupchess/?utm_source=classroom&utm_medium=print&utm_campaign=take_home   302
 /class/   /rankupchess/?utm_source=classroom&utm_medium=print&utm_campaign=take_home   302
+# /cert: printed on every RankUp Chess certificate, the class certificate of Class vs Rook too (0.12.0, N1.3; 2026-11-01).
+/cert     /rankupchess/?utm_source=certificate&utm_medium=print&utm_campaign=take_home   302
+/cert/    /rankupchess/?utm_source=certificate&utm_medium=print&utm_campaign=take_home   302
+# /club: printed on RankUp Chess scoresheets, for club and tournament players (0.12.0, N1.3; 2026-11-01).
+/club     /rankupchess/schools/?utm_source=scoresheet&utm_medium=print&utm_campaign=club   302
+/club/    /rankupchess/schools/?utm_source=scoresheet&utm_medium=print&utm_campaign=club   302
