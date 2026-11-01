@@ -1,0 +1,242 @@
+---
+import Layout from '../../layouts/Layout.astro';
+
+// "For schools and clubs" (RankUp next-level plan M0.5 and M0.6, NX-10; growth plan gap 6): the permanent page a
+// teacher, a club coach or a school's data-protection lead can be sent to. Facts only from the app (0.11.2) and the
+// privacy page's RankUp section; never claim "works on Chromebooks" before a real-device pass (NX-12).
+// The privacy pack is written to be printed and filed: keep it to one printed page.
+
+const CHECKED = '1 November 2026';
+
+const FREE = [
+  { t: 'Every rule of chess', d: 'The first three lands of voiced lessons teach every rule, from how the pieces move to castling, en passant and checkmate.' },
+  { t: 'Five friendly bots', d: 'Two gentle starters and the first three levels, plus Pass & Play with every clock for two children at one screen.' },
+  { t: 'Puzzles and reviews', d: 'Three Daily Challenge puzzles a day, and one full game review a week with Rook.' },
+  { t: 'The Teacher area', d: 'A lesson plan for every land, a demo board for the projector, printable worksheets with answer keys, and a letter for parents.' },
+];
+
+const SCREENING = [
+  { q: 'Does RankUp Chess process pupils’ personal data on our behalf?', a: 'No. A pupil’s profile (a chosen name, an avatar, an age group) and all their games and progress stay on the device. We never receive them.' },
+  { q: 'Systematic monitoring, profiling or tracking of pupils?', a: 'No. There are no analytics, crash-reporting or advertising services in the app, and no tracking.' },
+  { q: 'Special category or criminal offence data?', a: 'No.' },
+  { q: 'Data matching or combining data sets?', a: 'No.' },
+  { q: 'Invisible processing, or new technology such as AI?', a: 'No. The chess engine runs on the device and sends nothing.' },
+  { q: 'Data transferred outside the UK?', a: 'No pupil data is transferred, because none is collected. On school Windows and Mac computers, activating the free classroom licence sends the key and the computer’s machine ID to our licence service (Stillware Ltd, run on Netlify; its records are stored at Turso in Ireland).' },
+  { q: 'Online services offered directly to children?', a: 'The app is made for children, but it offers them no online service: no accounts, no chat, no online play. Purchases, links out of the app, sharing and backups sit behind a grown-up check.' },
+];
+
+const faqItems = [
+  { q: 'Is RankUp Chess free for schools?', a: 'Yes. On iPads, Android tablets and phones, the free version is the class version: it teaches every rule of chess and includes the Teacher area, with no time limit and no trial. On Windows and Mac computers, classroom licences that unlock everything are free for schools and clubs, with up to 30 profiles on one computer. Email support@stillwareltd.com and tell us about your class.' },
+  { q: 'Does RankUp Chess collect data about pupils?', a: 'No. Pupil profiles, games and progress stay on the device and we never receive them. The app has no ads, no chat, no accounts for children, no analytics and no tracking. The privacy pack on this page is written for a school’s data-protection lead to file.' },
+  { q: 'Do pupils need accounts or email addresses?', a: 'No. A pupil picks a profile on the device and starts. Nothing to set up, nothing to sign in to, and it works without the internet.' },
+  { q: 'Which devices does it run on?', a: 'iPhone and iPad (App Store), Android phones and tablets (Google Play), Windows 10 and 11, and Mac. The Android app no longer requires a touchscreen, so laptops with a mouse can install it; we have not yet confirmed it on a school Chromebook, and we will say so here once a partner school has.' },
+  { q: 'How do I tell parents about it?', a: 'Print the letter for parents on this page, or from the Teacher area in the app. It says what RankUp Chess is, that it is free to play, and how to get it at home at stillwareltd.com/class. Every worksheet the app prints ends with the same link.' },
+  { q: 'Will you sign our data protection agreement?', a: 'We will review any school’s or district’s data protection agreement. US districts can ask us to sign the Student Data Privacy Consortium’s National Data Privacy Agreement; email support@stillwareltd.com.' },
+];
+const faqSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'FAQPage',
+  mainEntity: faqItems.map((f) => ({ '@type': 'Question', name: f.q, acceptedAnswer: { '@type': 'Answer', text: f.a } })),
+};
+---
+
+<Layout
+  title="Free Chess App for Schools and Clubs, With a Privacy Pack | RankUp Chess"
+  description="RankUp Chess is free for schools and chess clubs: voiced lessons that teach every rule, a Teacher area with lesson plans and worksheets, and no pupil data collected. Privacy pack and parent letter inside."
+  canonical="https://www.stillwareltd.com/rankupchess/schools/"
+>
+    <script type="application/ld+json" set:html={JSON.stringify(faqSchema)} />
+
+    <div class="sc-page">
+        <header class="sc-hero">
+            <div class="sc-wrap">
+                <p class="sc-kicker">For schools and clubs</p>
+                <h1>A free chess app for schools and clubs</h1>
+                <p class="sc-answer"><strong>RankUp Chess is free for schools and chess clubs.</strong> Its voiced lessons teach every rule of chess, and its Teacher area has a lesson plan for every land, a projector demo board, printable worksheets and a letter for parents. Pupils need no accounts, it works offline, and nothing about a pupil is collected. Classroom licences for Windows and Mac are free too.</p>
+                <div class="sc-actions">
+                    <a class="sc-btn" href="mailto:support@stillwareltd.com?subject=Classroom%20licence%20for%20RankUp%20Chess">Ask for a free classroom licence</a>
+                    <a class="sc-link" href="#privacy-pack">Read the privacy pack</a>
+                </div>
+            </div>
+        </header>
+
+        <section class="sc-section">
+            <div class="sc-wrap">
+                <h2>What does a class get for free?</h2>
+                <div class="sc-grid">
+                    {FREE.map((f) => <article><h3>{f.t}</h3><p>{f.d}</p></article>)}
+                </div>
+                <table class="sc-table">
+                    <caption>What each kind of device gets</caption>
+                    <thead><tr><th scope="col">Devices</th><th scope="col">What the class uses</th><th scope="col">Cost to the school</th></tr></thead>
+                    <tbody>
+                        <tr><th scope="row">iPads, Android tablets and phones</th><td>The free version, which teaches every rule, with the Teacher area</td><td>Free</td></tr>
+                        <tr><th scope="row">Windows and Mac computers</th><td>A classroom licence: everything unlocked, up to 30 profiles on one computer</td><td>Free (ask by email)</td></tr>
+                        <tr><th scope="row">Families at home</th><td>The free version on any device, and an optional one-time purchase that unlocks the rest</td><td>Nothing; parents choose</td></tr>
+                    </tbody>
+                </table>
+            </div>
+        </section>
+
+        <section class="sc-section sc-tint">
+            <div class="sc-wrap">
+                <h2>How do I get a classroom licence?</h2>
+                <ol class="sc-steps">
+                    <li>Email <a href="mailto:support@stillwareltd.com?subject=Classroom%20licence%20for%20RankUp%20Chess">support@stillwareltd.com</a> with your school or club, the age of the children, and how many Windows or Mac computers you use.</li>
+                    <li>We send a classroom key. Install RankUp Chess on each computer from the <a href="/rankupchess/">RankUp Chess page</a> and type the key in under Premium.</li>
+                    <li>Open the Teacher area from <strong>Settings &rarr; Parent Dashboard &rarr; Teacher area</strong>: the lesson plans, the demo board, the worksheets and the parent letter are there. A grown-up check keeps children out.</li>
+                </ol>
+                <p>On iPads and Android tablets, install the free app from the App Store or Google Play; no licence is needed for the free version.</p>
+            </div>
+        </section>
+
+        <section class="sc-section" id="privacy-pack">
+            <div class="sc-wrap sc-pack">
+                <p class="sc-label">The privacy pack</p>
+                <h2>What does RankUp Chess do with pupils' data?</h2>
+                <p class="sc-lead"><strong>Nothing leaves the device about a pupil.</strong> This section is written for a school's data-protection lead, to print and file. <button type="button" class="sc-print" data-print="pack">Print the privacy pack</button></p>
+
+                <h3>What RankUp Chess processes about pupils</h3>
+                <p>Nothing, on our side. A pupil's profile is a name the pupil or a teacher chooses, an avatar and an age group. Their games, lessons, puzzles, stars and settings are kept in the app on that device. We never receive them. There are no ads, no chat, no accounts for children, no analytics, no crash reporting and no tracking.</p>
+
+                <h3>What leaves the device</h3>
+                <ul>
+                    <li><strong>On a school computer with a classroom licence:</strong> when the key is activated, the key and the computer's machine ID go to our licence service, and the app checks the licence now and then. No pupil data is sent.</li>
+                    <li><strong>On a tablet or phone:</strong> the app store's purchase library (RevenueCat) holds an anonymous ID for that install, not linked to a name or an email. The free version needs no purchase.</li>
+                    <li><strong>Only when a grown-up chooses:</strong> a backup, a certificate, a worksheet or a report, shared through the device's share sheet after the grown-up check. A parent may also give their own email to restore a purchase on another device. Neither is needed in class.</li>
+                </ul>
+
+                <h3>UK DPIA screening</h3>
+                <p>Our answers to the ICO's screening questions, for the school's own records:</p>
+                <table class="sc-table sc-screen">
+                    <thead><tr><th scope="col">Screening question</th><th scope="col">RankUp Chess</th></tr></thead>
+                    <tbody>{SCREENING.map((r) => <tr><th scope="row">{r.q}</th><td>{r.a}</td></tr>)}</tbody>
+                </table>
+                <p>On these answers we believe a full DPIA is not needed for RankUp Chess, because no pupil personal data is processed on our side. The decision is the school's, as data controller for its own records.</p>
+
+                <h3>Accessibility statement</h3>
+                <ul>
+                    <li>Rook, the coach, reads every lesson aloud, and every spoken line is also on screen.</li>
+                    <li>The board is described to screen readers: every square and its piece, and every move as it is played.</li>
+                    <li>High-contrast mode and letters on the pieces (Settings &rarr; Accessibility), and the screens are tested at twice the normal text size.</li>
+                    <li>Moves by tapping or clicking a piece and then its square, or by dragging; the board's animations follow the device's reduce-motion setting.</li>
+                    <li>Known limits: English only for now. Tell us about anything that gets in a pupil's way at support@stillwareltd.com.</li>
+                </ul>
+
+                <h3>Agreements</h3>
+                <p>We will review any school's or district's data protection agreement. In the US, ask us to sign the Student Data Privacy Consortium's National Data Privacy Agreement. Our full privacy policy, with a section for RankUp Chess, is at <a href="/privacy/#rankup-chess">stillwareltd.com/privacy</a>. Stillware Ltd is registered with the UK Information Commissioner's Office (ZC284030).</p>
+                <p class="sc-contact">Contact: support@stillwareltd.com &middot; Stillware Ltd, United Kingdom &middot; Checked {CHECKED}, RankUp Chess 0.11.2.</p>
+            </div>
+        </section>
+
+        <section class="sc-section sc-tint" id="parent-letter">
+            <div class="sc-wrap sc-letter">
+                <h2>A letter for parents</h2>
+                <p class="sc-lead">Send this home with the class. The app prints it too, from the Teacher area. <button type="button" class="sc-print" data-print="letter">Print the letter</button></p>
+                <article class="sc-paper">
+                    <h3>Chess at home with RankUp Chess</h3>
+                    <p>Dear families,</p>
+                    <p>Our class has been learning chess with RankUp Chess. If your child would like to keep playing at home, RankUp Chess is free to play on iPhone, iPad, Android phones and tablets, and Windows and Mac computers.</p>
+                    <ul>
+                        <li><strong>Free to keep:</strong> the free version teaches every rule of chess, with voiced lessons, puzzles and friendly computer opponents. It is not a trial and it does not expire.</li>
+                        <li><strong>Safe by design:</strong> it works with no internet. There are no ads and no chat, your child needs no account, and nothing about your child is collected.</li>
+                        <li><strong>You stay in charge:</strong> the grown-up settings sit behind a grown-up check or your own PIN, with a daily time limit, a bedtime and a weekly progress report.</li>
+                        <li><strong>No subscription:</strong> an optional one-time purchase unlocks the rest of the course. You never need to buy anything to keep practising.</li>
+                    </ul>
+                    <p><strong>To get it:</strong> go to <strong>stillwareltd.com/class</strong> on the device your child uses. The page has a button for every app store.</p>
+                    <p>From your child's teacher: ______________________________</p>
+                </article>
+            </div>
+        </section>
+
+        <section class="sc-section">
+            <div class="sc-wrap">
+                <h2>Frequently asked questions</h2>
+                <div class="sc-faq">
+                    {faqItems.map((f) => (<div><h3>{f.q}</h3><p>{f.a}</p></div>))}
+                </div>
+                <p class="sc-checked">Facts checked {CHECKED} against RankUp Chess 0.11.2 and our <a href="/privacy/#rankup-chess">privacy policy</a>. Sources: the app itself; the ICO's DPIA screening checklist; the Student Data Privacy Consortium (privacy.a4l.org). Also for grown-ups: the <a href="/rankupchess/guide/">grown-up's guide</a> and the free <a href="/rankupchess/sing-along/">chess song and classroom kit</a>.</p>
+            </div>
+        </section>
+    </div>
+</Layout>
+
+<script>
+    // Prints one section on its own: the privacy pack, or the parent letter.
+    document.querySelectorAll<HTMLButtonElement>('[data-print]').forEach((b) => {
+        b.addEventListener('click', () => {
+            document.body.dataset.printOnly = b.dataset.print || '';
+            (window as any).stillTrack?.('schools_print', { what: b.dataset.print });
+            window.print();
+        });
+    });
+    window.addEventListener('afterprint', () => { delete document.body.dataset.printOnly; });
+</script>
+
+<style>
+    .sc-page {
+        --ink: #2E2547;
+        --ink-soft: #564C73;
+        --button: #5B45C4;
+        background: #FFF7EC;
+        color: var(--ink);
+    }
+    .sc-wrap { width: min(1100px, 100% - 32px); margin-inline: auto; }
+    .sc-hero { padding: 4.5rem 0 3rem; }
+    .sc-kicker, .sc-label { font-weight: 800; letter-spacing: 0.06em; text-transform: uppercase; font-size: 0.85rem; color: #C9651A; margin: 0 0 0.6rem; }
+    .sc-hero h1 { font-size: clamp(2rem, 5.5vw, 3.2rem); line-height: 1.1; margin: 0 0 1rem; max-width: 22ch; }
+    .sc-answer { font-size: 1.15rem; line-height: 1.6; max-width: 65ch; color: var(--ink-soft); }
+    .sc-actions { display: flex; flex-wrap: wrap; gap: 1rem 1.5rem; align-items: center; margin-top: 1.6rem; }
+    .sc-btn { display: inline-block; background: var(--button); color: #fff; font-weight: 800; padding: 0.9rem 1.4rem; border-radius: 999px; text-decoration: none; }
+    .sc-btn:hover { background: #4A35AE; }
+    .sc-link { color: var(--button); font-weight: 700; }
+    .sc-btn:focus-visible, .sc-link:focus-visible, .sc-print:focus-visible { outline: 3px solid #E9962A; outline-offset: 3px; }
+    .sc-section { padding: 3.5rem 0; }
+    .sc-tint { background: #F3EEFC; }
+    .sc-section h2 { font-size: clamp(1.5rem, 4vw, 2.1rem); line-height: 1.2; margin: 0 0 1.3rem; }
+    .sc-section h3 { font-size: 1.15rem; margin: 1.6rem 0 0.5rem; }
+    .sc-section p, .sc-section li { line-height: 1.6; }
+    .sc-section a { color: var(--button); font-weight: 700; }
+    .sc-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1rem; margin-bottom: 2rem; }
+    .sc-grid article { background: #fff; border-radius: 18px; padding: 1.2rem; }
+    .sc-grid h3 { margin-top: 0; }
+    .sc-grid p { color: var(--ink-soft); margin: 0; }
+    .sc-table { width: 100%; border-collapse: collapse; background: #fff; border-radius: 14px; overflow: hidden; }
+    .sc-table caption { text-align: left; font-weight: 800; padding: 0 0 0.6rem; }
+    .sc-table th, .sc-table td { text-align: left; vertical-align: top; padding: 0.75rem 0.9rem; border-bottom: 1px solid #ECE4F7; }
+    .sc-table thead th { background: #EDE6FA; }
+    .sc-steps { padding-left: 1.3rem; max-width: 70ch; }
+    .sc-steps li { margin-bottom: 0.6rem; }
+    .sc-pack, .sc-letter { max-width: 820px; }
+    .sc-lead { font-size: 1.05rem; }
+    .sc-print { margin-left: 0.4rem; background: #fff; border: 2px solid var(--button); color: var(--button); font: inherit; font-weight: 800; padding: 0.35rem 0.9rem; border-radius: 999px; cursor: pointer; }
+    .sc-screen th { width: 45%; font-weight: 600; }
+    .sc-contact { color: var(--ink-soft); font-size: 0.95rem; }
+    .sc-paper { background: #fff; border-radius: 12px; padding: 1.6rem 1.8rem; box-shadow: 0 2px 12px rgba(46, 37, 71, 0.08); }
+    .sc-paper h3 { margin-top: 0; }
+    .sc-faq { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
+    .sc-faq div { background: #fff; border-radius: 18px; padding: 1.3rem; }
+    .sc-faq h3 { font-size: 1.05rem; margin: 0 0 0.4rem; }
+    .sc-faq p { color: var(--ink-soft); margin: 0; }
+    .sc-checked { margin-top: 1.6rem; color: var(--ink-soft); font-size: 0.9rem; }
+    @media (max-width: 900px) { .sc-grid { grid-template-columns: 1fr 1fr; } }
+    @media (max-width: 640px) {
+        .sc-grid, .sc-faq { grid-template-columns: 1fr; }
+        .sc-hero { padding: 3rem 0 2rem; }
+        .sc-table th, .sc-table td { padding: 0.6rem; font-size: 0.95rem; }
+        .sc-screen th { width: auto; }
+    }
+    @media print {
+        :global(body[data-print-only='pack']) .sc-section:not(#privacy-pack),
+        :global(body[data-print-only='pack']) .sc-hero,
+        :global(body[data-print-only='letter']) .sc-section:not(#parent-letter),
+        :global(body[data-print-only='letter']) .sc-hero,
+        :global(body[data-print-only]) :global(header:not(.sc-hero)),
+        :global(body[data-print-only]) :global(footer),
+        .sc-print { display: none !important; }
+        .sc-page, .sc-tint { background: #fff; }
+        .sc-section { padding: 0; }
+        .sc-paper { box-shadow: none; padding: 0; }
+        .sc-letter .sc-lead { display: none; }
+    }
+</style>
