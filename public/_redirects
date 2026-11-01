@@ -99,8 +99,12 @@
 /blog/why-offline-apps-protect-seniors-data                     /blog/why-offline-apps-are-better/    301
 /blog/why-offline-apps-protect-seniors-data-better              /blog/why-offline-apps-are-better/    301
 
-# Short links printed inside videos (QR codes and on-screen addresses). The path is permanent because the video
-# cannot change; the 302 lets the destination change later. Never link to these from the site (verify-links).
+# Short links printed inside videos and on paper (QR codes and addresses typed by hand). The path is permanent because
+# the video or the printout cannot change; the 302 lets the destination change later. Never link to these from the site
+# (verify-links).
 # /sing: the RankUp Chess sing-along "Let the Whole Board Sing", end-card QR code (2026-10-30, seo/CHANGES.md).
 /sing     /rankupchess/?utm_source=youtube&utm_medium=qr&utm_campaign=singalong   302
 /sing/    /rankupchess/?utm_source=youtube&utm_medium=qr&utm_campaign=singalong   302
+# /class: printed at the foot of every RankUp Chess worksheet and on the Teacher area's letter for parents (2026-10-31).
+/class    /rankupchess/?utm_source=classroom&utm_medium=print&utm_campaign=take_home   302
+/class/   /rankupchess/?utm_source=classroom&utm_medium=print&utm_campaign=take_home   302
