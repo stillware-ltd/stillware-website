@@ -326,6 +326,20 @@ export async function entitlementForAppUsers(
   return res.rows.length ? toEntitlement(res.rows[0] as unknown as Record<string, unknown>) : null;
 }
 
+/**
+ * Whether this app user id holds a refunded (revoked) purchase of the product (KD-53). A purchase
+ * the store account moved to another install was moved with its row (transferAppUser), so the
+ * old id holds none: only a refund leaves a revoked row behind under the id that held it.
+ */
+export async function hasRevokedEntitlement(db: Client, product: string, appUserId: string): Promise<boolean> {
+  const res = await db.execute({
+    sql: `SELECT 1 FROM household_store_entitlements
+          WHERE product = ? AND app_user_id = ? AND revoked = 1 LIMIT 1`,
+    args: [product, appUserId],
+  });
+  return res.rows.length > 0;
+}
+
 /** The entitlement with this licence id, if it is not revoked. */
 export async function entitlementByLid(db: Client, product: string, lid: string): Promise<Entitlement | null> {
   const res = await db.execute({

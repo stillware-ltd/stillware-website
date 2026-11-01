@@ -26,6 +26,7 @@ import {
   entitlementByLid,
   entitlementForAppUsers,
   getIssued,
+  hasRevokedEntitlement,
   holderOfTransaction,
   licenceById,
   licencesByTransactions,
@@ -258,7 +259,11 @@ export const isEmail = (s: unknown): s is string =>
 
 /**
  * fetch: the record of the licence an app user id owns through a store purchase.
- * 404 none otherwise (including a revoked one).
+ * 404 none otherwise (including a revoked one). When this id's own purchase was refunded and it
+ * holds nothing valid, the 404 says so: {"error":"none","refunded":true} (KD-53). A phone whose
+ * store no longer lists its purchase asks this to tell a refund (it drops its record) from the
+ * purchase moving to another install on the same store account (it keeps it). Older apps read
+ * the same `none`.
  *
  * When none is found and a RevenueCat key is set, RevenueCat is asked (upgradeFromRevenueCat):
  * an Every device purchase whose webhook row is missing is recorded as the webhook would have,
@@ -282,7 +287,10 @@ export async function fetchRecord(
     if (upgraded === "limited") return answer(429, { error: "rate_limited" });
     e = upgraded;
   }
-  if (!e) return answer(404, { error: "none" });
+  if (!e) {
+    const refunded = await hasRevokedEntitlement(deps.db, product, appUserId);
+    return answer(404, refunded ? { error: "none", refunded: true } : { error: "none" });
+  }
   return answer(200, { ...(await issueRecord(deps, product, e)) });
 }
 
