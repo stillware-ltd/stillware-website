@@ -6,9 +6,9 @@ import { SINGALONG_KIT_PAGE } from '../../../data/singalong';
 // built from the app's own per-land lesson plans (assets/teacher/lesson_plans/ch00-ch02), the sing-along kit, and the
 // Teacher area's demo board and worksheets. Only free content: the first three lands teach every rule (P8), so a
 // class on tablets needs no purchase (G-2). v2 (0.12.0, M1.2) makes lesson 5 a game of Class vs Rook.
-// Facts checked against RankUp Chess 0.11.2; lesson, puzzle-set and tool names are the app's own.
+// Facts checked against RankUp Chess 0.11.1 (the live app); lesson, puzzle-set and tool names are the app's own.
 
-const CHECKED = '1 November 2026';
+const CHECKED = '2 November 2026';
 
 type Step = { t: string; min: number; d: string };
 type Lesson = { n: number; title: string; goal: string; prep: string[]; steps: Step[]; watch: string; home: string };
@@ -31,7 +31,7 @@ const LESSONS: Lesson[] = [
       { t: 'Show me', min: 2, d: 'Hold up a hand shaped like the piece you call: a straight arm for the rook, a slant for the bishop, an L for the knight.' },
     ],
     watch: 'A board set up with a dark square in the corner, and a queen that is not on her own colour.',
-    home: 'Send the letter for parents home (Teacher area, Letter for parents): it says where to practise at home.',
+    home: 'Send the letter for parents home (print it from the For schools and clubs page): it says where to practise at home.',
   },
   {
     n: 2,
@@ -170,7 +170,7 @@ const LESSONS: Lesson[] = [
           <div><h3>Is any pupil data collected?</h3><p>No. Pupils need no accounts, and nothing about a pupil leaves the device. See the <a href="/rankupchess/schools/#privacy-pack">privacy pack</a>.</p></div>
           <div><h3>Which ages is it for?</h3><p>Children aged 7 to 11. For ages 5 to 7, use the Little Garden lessons in lessons 1 and 2 and take more time over each step.</p></div>
         </div>
-        <p class="cw-checked">Checked {CHECKED} against RankUp Chess 0.11.2 and its Teacher area lesson plans. Unit by Stillware Ltd; free to print and share for non-commercial classroom and home use.</p>
+        <p class="cw-checked">Checked {CHECKED} against RankUp Chess 0.11.1 and its Teacher area lesson plans. Unit by Stillware Ltd; free to print and share for non-commercial classroom and home use.</p>
       </div>
     </section>
   </div>
