@@ -74,7 +74,15 @@ const frictionlessTools = [
   },
 ];
 
-const gatedTools = [
+const gatedTools: { title: string; slug: string; href?: string; description: string; icon: string; tag: string }[] = [
+  {
+    title: 'Grown-up vs Child Chess Puzzles',
+    slug: 'rankupchess-puzzles',
+    href: '/rankupchess/puzzles/',
+    description: '15 checkmate puzzles for kids and the grown-ups who play with them, a score sheet, and every answer explained.',
+    icon: '&#9819;',
+    tag: 'Printable PDF',
+  },
   {
     title: 'Chess Tournament Packing List',
     slug: 'chess-tournament-packing-list',
@@ -140,7 +148,7 @@ const gatedTools = [
       </div>
       <div class="tools-grid three-col">
         {gatedTools.map(tool => (
-          <a href={`/tools/${tool.slug}/`} class="tool-card gated reveal">
+          <a href={tool.href ?? `/tools/${tool.slug}/`} class="tool-card gated reveal">
             <span class="tool-tag gated-tag">{tool.tag}</span>
             <div class="tool-icon" set:html={tool.icon} />
             <h3>{tool.title}</h3>

@@ -51,6 +51,8 @@ import NewsletterSignup from '../../components/NewsletterSignup.astro';
               <li>Works beautifully printed double-sided and stapled into a booklet</li>
             </ul>
           </div>
+
+          <p class="sibling-note">Just starting out? Our <a href="/rankupchess/puzzles/">grown-up vs child chess puzzles</a> are 15 easier checkmates in one or two moves, with every answer explained.</p>
         </div>
 
         <div class="download-panel">
@@ -273,6 +275,22 @@ import NewsletterSignup from '../../components/NewsletterSignup.astro';
 
   .chess-cta:hover {
     background: linear-gradient(135deg, #FBBF24 0%, #F59E0B 100%) !important;
+  }
+
+  .sibling-note {
+    margin-top: 2rem;
+    padding: 1rem 1.25rem;
+    border-left: 3px solid #F59E0B;
+    background: var(--color-surface);
+    border-radius: 8px;
+    color: var(--color-text);
+    font-size: 0.95rem;
+    line-height: 1.55;
+  }
+
+  .sibling-note a {
+    color: var(--color-primary);
+    font-weight: 600;
   }
 
   .privacy-note {
