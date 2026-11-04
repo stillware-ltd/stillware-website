@@ -5,10 +5,25 @@ import { SINGALONG_KIT_PAGE } from '../../../data/singalong';
 // The Chess Week unit v1 (RankUp next-level plan M0.7, NX-15): five 40-minute lessons for a class new to chess,
 // built from the app's own per-land lesson plans (assets/teacher/lesson_plans/ch00-ch02), the sing-along kit, and the
 // Teacher area's demo board and worksheets. Only free content: the first three lands teach every rule (P8), so a
-// class on tablets needs no purchase (G-2). v2 (0.12.0, M1.2) makes lesson 5 a game of Class vs Rook.
-// Facts checked against RankUp Chess 0.11.1 (the live app); lesson, puzzle-set and tool names are the app's own.
+// class on tablets needs no purchase (G-2). v2 (0.12.0, M1.2): lesson 5 opens with a game of Class vs Rook (the class
+// plays White against one of the eight class bots, N1.1) before pairs play, and one student page a child keeps (rules
+// CW1-CW5 in Marketing/Rank_Up_Chess/Outreach/research/chess-week-v2-2026-11-04.md).
+// Facts checked against RankUp Chess 0.12.0 as built (main 1605772); lesson, puzzle-set, bot and tool names are the app's own.
 
-const CHECKED = '2 November 2026';
+const CHECKED = '4 November 2026';
+
+// The class bots, weakest first (ClassGameSetup.classBotLevels, assets/bots/bots.json); the strongest are hidden in class mode.
+const CLASS_BOTS = ['Baby Bean', 'Sleepy Sloth', 'Pip the Pawn', 'Shelly the Crab', 'Barnaby Beaver', 'Origami Ollie', 'Sir Reginald', 'Rexa the Dino'];
+
+// The student page: one row per piece, a 5 by 5 grid with the piece in the middle for the child to colour.
+const PIECES = [
+  { name: 'Pawn', glyph: '♙' },
+  { name: 'Knight', glyph: '♘' },
+  { name: 'Bishop', glyph: '♗' },
+  { name: 'Rook', glyph: '♖' },
+  { name: 'Queen', glyph: '♕' },
+  { name: 'King', glyph: '♔' },
+];
 
 type Step = { t: string; min: number; d: string };
 type Lesson = { n: number; title: string; goal: string; prep: string[]; steps: Step[]; watch: string; home: string };
@@ -37,16 +52,20 @@ const LESSONS: Lesson[] = [
     n: 2,
     title: 'Moving and capturing',
     goal: 'Every child can move and capture with every piece, and use the piece values to choose the better capture.',
-    prep: ['The demo board on the projector.', 'A worksheet from the Teacher area: Worksheets, Free-Piece Falls, Level 1, six puzzles to a page, answer key on.'],
+    prep: [
+      'The demo board on the projector.',
+      'The student page, My chess pieces (on this page, after lesson 5), printed, one for each child.',
+      'A worksheet from the Teacher area: Worksheets, Free-Piece Falls, Level 1, six puzzles to a page, answer key on.',
+    ],
     steps: [
       { t: 'Warm up', min: 5, d: 'Sing the "Setting up the board" verse, or set one board up at the front with the class directing you.' },
-      { t: 'Demonstration', min: 10, d: 'On the demo board, ask a child to predict each move before you make it: the pawn’s first move and its diagonal capture, a rook that cannot jump, the knight’s L, a king that may never step into check, then the values: pawn 1, knight 3, bishop 3, rook 5, queen 9.' },
+      { t: 'Demonstration', min: 10, d: 'On the demo board, ask a child to predict each move before you make it: the pawn’s first move and its diagonal capture, a rook that cannot jump, the knight’s L, a king that may never step into check, then the values: pawn 1, knight 3, bishop 3, rook 5, queen 9. After each piece, the children colour its squares and write its value on their student page.' },
       { t: 'Practice', min: 18, d: 'Pairs take two or three of Beginner Village’s lessons each (The Humble Pawn, Pawn Captures, The Mighty Rook, The Diagonal Bishop, The Tricky Knight, The Powerful Queen, The Royal King, Piece Values), so the class covers all eight.' },
       { t: 'Worksheet', min: 5, d: 'Free-Piece Falls: find the piece nobody guards. Swap and mark with the answer key.' },
       { t: 'Show me', min: 2, d: 'Which capture? Show a bishop that can take a pawn or a rook: thumbs up for the rook.' },
     ],
     watch: 'A pawn that tries to capture straight ahead, a rook or bishop that jumps, and a queen traded for a pawn.',
-    home: 'Children can play the same lessons at home: the parent letter has the link.',
+    home: 'Children keep their student page all week and take it home on Friday. They can play the same lessons at home: the parent letter has the link.',
   },
   {
     n: 3,
@@ -81,23 +100,28 @@ const LESSONS: Lesson[] = [
   {
     n: 5,
     title: 'Play a whole game',
-    goal: 'Pairs play a whole game of chess by the rules, from setting up to the last move.',
-    prep: ['Real chess sets, or tablets with Pass & Play (Untimed) in the app.', 'The Chess Week certificates below, printed, one for each child.'],
-    steps: [
-      { t: 'Warm up', min: 5, d: 'Sing the chorus. Then the three golden rules on the board: touch a piece, move that piece; say "check"; shake hands at the start and the end.' },
-      { t: 'Model game', min: 7, d: 'On the demo board, play the first moves of a game with the class: fight for the centre, bring out the knights and bishops, castle.' },
-      { t: 'Play', min: 22, d: 'Pairs play a whole game. Walk round and help only with the rules. A pair that finishes plays again with colours swapped.' },
-      { t: 'Celebrate', min: 6, d: 'Hand out the certificates. Ask three children what they will teach someone at home.' },
+    goal: 'The class plays one whole game together against a RankUp Chess bot on the big screen, then pairs play their own game by the rules.',
+    prep: [
+      'RankUp Chess on the projector at Settings, Parent Dashboard, Teacher area, Class vs Rook. Choose the bot (Baby Bean is the gentlest), leave "How often Rook talks" on Now and then, and type the class name if you like.',
+      'No Class vs Rook in your app yet? It is new in RankUp Chess 0.12.0. Until the update reaches your devices, play the class game on the demo board instead: the class against you.',
+      'Real chess sets, or tablets with Pass & Play (Untimed) in the app.',
+      'The Chess Week certificates below, printed, one for each child.',
     ],
-    watch: 'Forgotten checks, and kings left in the middle when castling was possible.',
-    home: 'The certificate and the parent letter go home together.',
+    steps: [
+      { t: 'Warm up', min: 3, d: 'Sing the chorus. Then the three golden rules on the board: touch a piece, move that piece; say "check"; shake hands at the start and the end.' },
+      { t: 'Class vs Rook', min: 20, d: 'The class plays White. For each move, ask for ideas and ask why. Tap Count hands to put up to three of the suggested moves on the screen and count hands for each, then tap the move the class chose. Class hint shows an arrow for a good move and, where it can, the reason; Undo takes a move back. Rook says a line now and then (a check, a capture, castling, a piece in danger). If the game is still going after about 20 minutes, decide with the class: play on and shorten the pairs game, or tap End the game (a stopped game has no class certificate).' },
+      { t: 'Play in pairs', min: 12, d: 'Pairs play their own game. Walk round and help only with the rules. A pair that finishes plays again with colours swapped.' },
+      { t: 'Celebrate', min: 5, d: 'Show the class certificate from Class vs Rook on the screen, then hand out the Chess Week certificates. Ask three children what they will teach someone at home.' },
+    ],
+    watch: 'A class that follows the loudest voice: ask two or three children why before you count hands. In pairs: forgotten checks, and kings left in the middle when castling was possible.',
+    home: 'The certificate, the student page and the parent letter go home together. The class certificate can be saved from the app (behind the grown-up check) and printed for the classroom wall.',
   },
 ];
 ---
 
 <Layout
   title="Chess Week: Five Free Chess Lessons for Primary Schools | RankUp Chess"
-  description="Chess Week is a free unit of five 40-minute chess lessons for children aged 7 to 11 who have never played: the board and pieces, moving and capturing, checkmate, special moves and a whole game. Uses only free materials."
+  description="Chess Week is a free unit of five 40-minute chess lessons for children aged 7 to 11 who have never played: the board and pieces, moving and capturing, checkmate, special moves, and a whole game the class plays together against the computer. Uses only free materials."
   canonical="https://www.stillwareltd.com/rankupchess/schools/chess-week/"
 >
   <div class="cw-page">
@@ -105,7 +129,7 @@ const LESSONS: Lesson[] = [
       <div class="cw-wrap">
         <p class="cw-kicker"><a href="/rankupchess/schools/">For schools and clubs</a></p>
         <h1>Chess Week: five free chess lessons for a class</h1>
-        <p class="cw-answer"><strong>Chess Week is a free unit of five 40-minute lessons</strong> for children aged 7 to 11 who have never played chess. By the end of the week every child can set up a board, move and capture with every piece, find a checkmate, and play a whole game by the rules. It uses only free materials: a song, the free RankUp Chess app and its printable worksheets.</p>
+        <p class="cw-answer"><strong>Chess Week is a free unit of five 40-minute lessons</strong> for children aged 7 to 11 who have never played chess. By the end of the week every child can set up a board, move and capture with every piece, find a checkmate, and play a whole game by the rules, and the class plays one game together against a RankUp Chess bot on the big screen. It uses only free materials: a song, the free app and its printable worksheets. No chess knowledge is needed to teach it.</p>
         <button type="button" class="cw-print" data-print>Print the unit</button>
       </div>
     </header>
@@ -115,9 +139,9 @@ const LESSONS: Lesson[] = [
         <h2>What do you need for Chess Week?</h2>
         <table class="cw-table">
           <tbody>
-            <tr><th scope="row">Screen</th><td>A projector or big screen with RankUp Chess open at the Teacher area’s Demo board (Settings, Parent Dashboard, Teacher area).</td></tr>
+            <tr><th scope="row">Screen</th><td>A projector or big screen with RankUp Chess open at the Teacher area (Settings, Parent Dashboard, Teacher area): the Demo board for lessons 1 to 4, and Class vs Rook for lesson 5.</td></tr>
             <tr><th scope="row">Devices</th><td>One tablet or computer for each pair, with the free RankUp Chess app; or real chess sets. Every lesson in the unit is in the free version.</td></tr>
-            <tr><th scope="row">Printing</th><td>The <a href={SINGALONG_KIT_PAGE}>classroom kit</a> for lesson 1, three worksheets made in the Teacher area (lessons 2 to 4), the letter for parents, and the certificates on this page.</td></tr>
+            <tr><th scope="row">Printing</th><td>The <a href={SINGALONG_KIT_PAGE}>classroom kit</a> for lesson 1, the student page on this page (one for each child), three worksheets made in the Teacher area (lessons 2 to 4), the letter for parents, and the certificates on this page.</td></tr>
             <tr><th scope="row">Time</th><td>Five lessons of 40 minutes: on five days, or once a week for five weeks.</td></tr>
           </tbody>
         </table>
@@ -141,6 +165,34 @@ const LESSONS: Lesson[] = [
         </div>
       </section>
     ))}
+
+    <section class="cw-section" id="student-page">
+      <div class="cw-wrap">
+        <p class="cw-label cw-noprint">For each child &middot; from lesson 2</p>
+        <h2>Student page: My chess pieces</h2>
+        <p class="cw-noprint">Print one for each child for lesson 2. As you show each piece, the children colour every square it can move to from the middle, and write what it is worth. They keep the page all week and take it home.</p>
+        <p class="cw-student-name">Name ______________________</p>
+        <table class="cw-pieces">
+          <thead><tr><th scope="col">Piece</th><th scope="col">Colour every square it can move to</th><th scope="col">Worth</th></tr></thead>
+          <tbody>
+            {PIECES.map((p) => (
+              <tr>
+                <th scope="row"><span class="cw-glyph" aria-hidden="true">{p.glyph}</span> {p.name}</th>
+                <td>
+                  <div class="cw-grid" role="img" aria-label={`A five by five grid with the ${p.name.toLowerCase()} in the middle`}>
+                    {Array.from({ length: 25 }, (_, i) => (
+                      <span class={(Math.floor(i / 5) + (i % 5)) % 2 === 0 ? 'cw-sq cw-light' : 'cw-sq cw-dark'}>{i === 12 ? p.glyph : ''}</span>
+                    ))}
+                  </div>
+                </td>
+                <td class="cw-worth">{p.name === 'King' ? 'Never taken' : '____ points'}</td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+        <p class="cw-student-foot">The one rule I will teach someone at home: ______________________________________</p>
+      </div>
+    </section>
 
     <section class="cw-section" id="certificate">
       <div class="cw-wrap">
@@ -166,11 +218,13 @@ const LESSONS: Lesson[] = [
         <h2>Frequently asked questions</h2>
         <div class="cw-faq">
           <div><h3>Do the children need to know chess already?</h3><p>No. Lesson 1 starts from an empty board, and the lessons in the app talk the children through every step.</p></div>
+          <div><h3>Do I need to know how to play chess?</h3><p>No. Each lesson says what to show and what to watch for, the app checks every move by the rules, and in Class vs Rook the Class hint can suggest a good move.</p></div>
+          <div><h3>What is Class vs Rook?</h3><p>A game in the Teacher area of RankUp Chess 0.12.0 where the whole class plays White against one of eight friendly bots, from {CLASS_BOTS[0]} to {CLASS_BOTS[CLASS_BOTS.length - 1]}, on the big screen. Nothing is saved to any child’s profile; a class name, if you type one, appears only on the screen and the class certificate.</p></div>
           <div><h3>Does the school need to buy anything?</h3><p>No. Every lesson, worksheet and puzzle set in the unit is in the free version of RankUp Chess, and the song and its kit are free.</p></div>
           <div><h3>Is any pupil data collected?</h3><p>No. Pupils need no accounts, and nothing about a pupil leaves the device. See the <a href="/rankupchess/schools/#privacy-pack">privacy pack</a>.</p></div>
           <div><h3>Which ages is it for?</h3><p>Children aged 7 to 11. For ages 5 to 7, use the Little Garden lessons in lessons 1 and 2 and take more time over each step.</p></div>
         </div>
-        <p class="cw-checked">Checked {CHECKED} against RankUp Chess 0.11.1 and its Teacher area lesson plans. Unit by Stillware Ltd; free to print and share for non-commercial classroom and home use.</p>
+        <p class="cw-checked">Checked {CHECKED} against RankUp Chess 0.12.0: its lessons, Class vs Rook and the Teacher area lesson plans. Unit by Stillware Ltd; free to print and share for non-commercial classroom and home use.</p>
       </div>
     </section>
   </div>
@@ -186,7 +240,7 @@ const LESSONS: Lesson[] = [
 <style>
   .cw-page { --ink: #2E2547; --ink-soft: #564C73; --button: #5B45C4; background: #FFF7EC; color: var(--ink); }
   .cw-wrap { width: min(860px, 100% - 32px); margin-inline: auto; }
-  .cw-hero { padding: 4rem 0 2rem; }
+  .cw-hero { padding: 9rem 0 2rem; }
   .cw-kicker, .cw-label { font-weight: 800; letter-spacing: 0.06em; text-transform: uppercase; font-size: 0.85rem; color: #C9651A; margin: 0 0 0.6rem; }
   .cw-kicker a { color: inherit; }
   .cw-hero h1 { font-size: clamp(1.9rem, 5vw, 3rem); line-height: 1.12; margin: 0 0 1rem; }
@@ -215,11 +269,33 @@ const LESSONS: Lesson[] = [
   .cw-faq h3 { margin: 0 0 0.4rem; font-size: 1.02rem; }
   .cw-faq p { margin: 0; color: var(--ink-soft); }
   .cw-checked { margin-top: 1.4rem; color: var(--ink-soft); font-size: 0.9rem; }
-  @media (max-width: 640px) { .cw-faq { grid-template-columns: 1fr; } .cw-table th { width: auto; } .cw-cert-line { margin-inline: 1rem; } }
+  .cw-student-name { font-size: 1.1rem; font-weight: 700; margin: 0 0 0.8rem; }
+  .cw-pieces { width: 100%; border-collapse: collapse; background: #fff; }
+  .cw-pieces th, .cw-pieces td { text-align: left; vertical-align: middle; padding: 0.45rem 0.7rem; border-bottom: 1px solid #ECE4F7; }
+  .cw-pieces thead th { font-size: 0.9rem; }
+  .cw-pieces tbody th { font-size: 1.05rem; white-space: nowrap; }
+  .cw-glyph { font-size: 1.6rem; vertical-align: middle; }
+  .cw-grid { display: grid; grid-template-columns: repeat(5, 1.8rem); grid-template-rows: repeat(5, 1.8rem); border: 2px solid var(--ink); width: max-content; }
+  .cw-sq { display: flex; align-items: center; justify-content: center; font-size: 1.45rem; line-height: 1; }
+  .cw-light { background: #fff; }
+  .cw-dark { background: #D9D2E9; }
+  .cw-worth { white-space: nowrap; }
+  .cw-student-foot { margin-top: 1rem; }
+  @media (max-width: 640px) { .cw-hero { padding-top: 8rem; } .cw-faq { grid-template-columns: 1fr; } .cw-table th { width: auto; } .cw-cert-line { margin-inline: 1rem; } .cw-pieces th, .cw-pieces td { padding-inline: 0.35rem; } }
   @media print {
-    .cw-print, .cw-noprint, :global(header:not(.cw-hero)), :global(footer) { display: none !important; }
+    .cw-print, .cw-noprint, :global(header:not(.cw-hero)), :global(.navbar), :global(footer) { display: none !important; }
     .cw-page, .cw-lesson:nth-of-type(even) { background: #fff; }
+    .cw-page { font-size: 10.5pt; }
+    .cw-hero, .cw-section { padding: 0.6rem 0; }
+    .cw-section p, .cw-section li { line-height: 1.45; }
+    .cw-section h3 { margin: 0.8rem 0 0.3rem; }
     .cw-lesson { break-before: page; }
+    #student-page { break-before: page; }
+    .cw-pieces th, .cw-pieces td { padding: 0.2rem 0.6rem; }
+    .cw-pieces { break-inside: avoid; }
+    .cw-grid { grid-template-columns: repeat(5, 1.45rem); grid-template-rows: repeat(5, 1.45rem); }
+    .cw-sq { font-size: 1.2rem; }
+    .cw-dark { background: #D9D2E9 !important; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
     #certificate { break-before: page; }
     .cw-cert { break-inside: avoid; }
   }
