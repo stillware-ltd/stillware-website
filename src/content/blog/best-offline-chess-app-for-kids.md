@@ -95,7 +95,7 @@ The listings show the range. ChessKid lets children chat only with their parents
 
 We deliberately left the "engagement" features out of RankUp Chess, like chat rooms and friend leaderboards that connect to the internet. There are no child accounts and no chat rooms, and games and progress stay on the device. The app goes online only to buy or restore the optional upgrade and, on a computer, to check its licence key. That gives a parent four plain answers:
 
-*   **No data breach risk:** data that isn't collected can't be leaked.
+*   **Nothing of your child's to leak:** games and progress stay on the device, and the only data that goes online is what a purchase needs.
 *   **No behavioural profiling:** play patterns aren't analysed to serve ads or recommend other products.
 *   **No microtransactions:** one optional, one-time payment unlocks the whole academy, made by a grown-up behind a gate, instead of a stream of small purchases.
 *   **No surprise contacts:** with no chat, there's no way for a stranger to message your child.
