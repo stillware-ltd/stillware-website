@@ -84,7 +84,7 @@ We deliberately left out common "engagement" features from RankUp Chess, like ch
 **A COPPA-compliant, offline app ensures your child's chess development is a private story, not a data point in an analytics dashboard.** This approach provides tangible peace of mind:
 *   **No Data Breach Risk:** Data that isn't collected can't be leaked.
 *   **No Behavioral Profiling:** Play patterns aren't analyzed to serve ads or recommend other products.
-*   **No Microtransactions:** At most one optional, one-time payment, made by a grown-up, instead of a stream of small purchases.
+*   **No Microtransactions:** One optional, one-time payment unlocks the whole academy, made by a grown-up behind a gate, instead of a stream of small purchases.
 *   **No Surprise Contacts:** With no chat functions, there's zero risk of interaction with strangers.
 
 The app becomes a tool you hand to your child with the same confidence as a book or a physical chessboard—it's self-contained, predictable, and safe.
@@ -108,7 +108,7 @@ Before you download anything, use this list to evaluate your options. If an app 
 *   [ ] **Adjustable, Teaching AI:** The computer should have named difficulty levels and offer game analysis.
 *   [ ] **COPPA-Compliant Privacy Policy:** It should explicitly state no data collection for users under 13.
 *   [ ] **Clear, Upfront Pricing:** A one-time purchase or a very long, fully-featured free trial. Beware of subscriptions.
-*   [ ] **No Ads, and At Most One Payment:** The environment should be clean and focused. If there's anything to buy, it should be one optional payment behind a grown-up gate, never a stream of upsells.
+*   [ ] **No Ads and No Upsells:** The environment should be clean and focused. If there's anything to buy, it should be one optional payment behind a grown-up gate, never a stream of upsells.
 
 ![How to choose a kids' chess app](/blog/images/best-offline-chess-app-for-kids/image-04.svg)
 
