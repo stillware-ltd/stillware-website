@@ -1,0 +1,145 @@
+---
+import Layout from '../../layouts/Layout.astro';
+
+// RankUp Chess's own terms (live 11 November 2026). Before this page, the app's AppLinks.termsOfServiceUrl
+// and the footer's "Terms and Conditions" pointed at /terms/, which is Zeroed's (a 34-day trial and a lifetime licence
+// that RankUp does not have).
+// Every fact here comes from a page already live, and changes when they do:
+//   - /rankupchess/ (src/pages/rankupchess.astro): free forever, what Premium unlocks, Every device and
+//     the one-kind tiers with their device limits, the 28 October 2026 earlier-buyer date, "All v1.x
+//     updates included", no subscription, no ads, no chat, offline, the classroom licence;
+//   - /privacy/ section 4: who takes each payment, Paddle as Merchant of Record, the licence key email,
+//     the optional grown-up sign-in with a parent's agreement by email, no account or sign-in for a
+//     child, what a refund deletes; the company details in its section 10;
+//   - /rankupchess/guide/ and the app's own labels (RankUp origin/main, 11 Nov 2026): Restore Purchase on
+//     the unlock screen, the sign-in under Restore Purchases, the 6-digit code, Backup & Restore, About & Legal;
+//   - Paddle Buyer Terms and Refund Policy, Apple's and Google's refund help pages (read 5 Nov 2026).
+// No price figures: prices differ by country. No policy that is not already decided: the founder's open
+// questions (a refund window of our own for Paddle purchases, version 2, liability, governing law,
+// ending a licence, changes to these terms) are left out until answered.
+const EFFECTIVE_DATE = '11 November 2026'; // the day this page went live (drafted 5 November)
+---
+
+<Layout
+  title="Terms of Service — RankUp Chess"
+  description="The terms for RankUp Chess, the offline chess app for kids: free to play forever, one optional one-time payment, never a subscription, and how purchases, restores and refunds work."
+  canonical="https://www.stillwareltd.com/rankupchess/terms/"
+>
+    <article class="legal-page">
+        <header class="legal-hero">
+            <div class="container">
+                <p class="legal-kicker">RankUp Chess</p>
+                <h1>Terms of Service</h1>
+            </div>
+        </header>
+        <div class="legal-body">
+            <div class="container">
+                <p><strong>Effective Date:</strong> {EFFECTIVE_DATE}</p>
+                <p>These terms cover <a href="/rankupchess/">RankUp Chess</a>, the chess app for children made by Stillware Ltd ("we", "us"), on iPhone, iPad, Android, Windows and Mac. RankUp Chess is made for children, so these terms are written for the grown-up who installs it or buys its upgrade for a child: a parent, a carer or a teacher.</p>
+                <p>What the app does with information is in our <a href="/privacy/#rankup-chess">privacy policy</a>, section 4.</p>
+
+                <div class="highlight">
+                    <p><strong>The short version</strong></p>
+                    <ul>
+                        <li>Playing chess is free, forever: no trial clock and no lockout.</li>
+                        <li>One optional one-time payment unlocks the complete academy. It is never a subscription and never renews.</li>
+                        <li>No ads, no chat and no strangers. It works with no internet.</li>
+                        <li>App Store and Google Play purchases are refunded by Apple or Google. Windows and Mac purchases are sold, and refunded, by Paddle.</li>
+                        <li>Questions: <a href="mailto:support@stillwareltd.com">support@stillwareltd.com</a>.</li>
+                    </ul>
+                </div>
+
+                <h2>1. What Is Free</h2>
+                <p>Playing chess in RankUp Chess is free, forever, on every platform. There is no trial clock and no lockout. The free lands teach every rule of chess, and progress, achievements, settings and parental controls are always free. The full list of what the free game includes is on the <a href="/rankupchess/#pricing">RankUp Chess page</a>.</p>
+
+                <h2>2. The One-Time Payment (Premium)</h2>
+                <p>One optional payment, made once, unlocks the complete academy: all 9 lands, more than 30,000 puzzles, all 12 bot friends, engine game review and the Opening Explorer, every opening adventure, unlimited Daily Challenges and four more board worlds. All v1.x updates are included.</p>
+                <p>It is never a subscription. There is no renewal, and nothing is charged again.</p>
+                <p>You choose one of two kinds:</p>
+                <ul>
+                    <li><strong>Every device:</strong> every phone, tablet and computer your family owns, for every child, on Windows, Mac, Android, iPhone and iPad.</li>
+                    <li><strong>Only on one kind of device:</strong> only on Windows (up to 3 Windows or Linux PCs), only on Mac (up to 3 Macs), only on Android (Google Play), or only on iPhone and iPad (App Store).</li>
+                </ul>
+                <p>If you bought one kind of device, you can add Every device later for a smaller extra payment. If you bought RankUp Chess before 28 October 2026, you already have Every device, free.</p>
+                <p>Prices differ by country. You see your price, in your currency and with any local tax, in the store or at checkout before you pay. In the app, buying sits behind the grown-up gate (hold a button for 3 seconds, then answer a times-table question, or use your own PIN).</p>
+
+                <h2>3. Who Takes Your Payment</h2>
+                <ul>
+                    <li><strong>iPhone and iPad:</strong> Apple takes the payment through the App Store.</li>
+                    <li><strong>Android:</strong> Google takes the payment through Google Play.</li>
+                    <li><strong>Windows and Mac:</strong> the downloads are sold on our website through Paddle, which is the reseller and Merchant of Record: Paddle takes the payment and sends the receipt, under the <a href="https://www.paddle.com/legal/checkout-buyer-terms" target="_blank" rel="noopener">Paddle Buyer Terms</a>. Your licence key arrives by email.</li>
+                </ul>
+                <p>The store's or Paddle's own terms apply to the payment as well as these. We never see your card.</p>
+
+                <h2>4. Restoring a Purchase, and Your Child's Progress</h2>
+                <ul>
+                    <li><strong>On the same kind of device:</strong> open the unlock screen and tap Restore Purchase.</li>
+                    <li><strong>On a different kind of device:</strong> a grown-up can sign in under Restore Purchases with the email they bought with. A 6-digit code arrives by email; there is no password.</li>
+                </ul>
+                <p>That sign-in is optional, is for a grown-up only, and is never needed to play. Because RankUp Chess is made for children, it asks for a parent's agreement by email first (the <a href="/privacy/#rankup-chess">privacy policy</a> explains how). There is no account and no sign-in for a child, and no sign-in with Google, Apple or any other company.</p>
+                <p>Your child's games and progress are kept only on the device. We never receive them, so we cannot restore them if a device is lost or the app is deleted. To keep a copy or move to a new device, use Settings &rarr; Backup &amp; Restore &rarr; Export Full Backup, then Restore from Backup on the new device. The <a href="/rankupchess/guide/">grown-up's guide</a> shows where everything is.</p>
+
+                <h2>5. Refunds</h2>
+                <ul>
+                    <li><strong>App Store (iPhone and iPad):</strong> refunds are handled by Apple, under Apple's policies. <a href="https://support.apple.com/en-gb/118223" target="_blank" rel="noopener">How to ask Apple for a refund</a>.</li>
+                    <li><strong>Google Play (Android):</strong> refunds are handled by Google, under Google Play's policies. <a href="https://support.google.com/googleplay/answer/2479637" target="_blank" rel="noopener">Google Play's refund policies</a>.</li>
+                    <li><strong>Windows and Mac (Paddle):</strong> refunds are handled by Paddle, under the <a href="https://www.paddle.com/legal/refund-policy" target="_blank" rel="noopener">Paddle Refund Policy</a>. Ask through <a href="https://paddle.net" target="_blank" rel="noopener">paddle.net</a> or the link in your Paddle receipt.</li>
+                </ul>
+                <p>Whichever way you bought it, you can also write to <a href="mailto:support@stillwareltd.com">support@stillwareltd.com</a> (for a Windows or Mac purchase, with the reference on your Paddle receipt) and we will help.</p>
+                <p>A refund cancels the purchase it pays back: it can no longer be restored, and an email linked to it is deleted.</p>
+
+                <h2>6. What RankUp Chess Does Not Do</h2>
+                <ul>
+                    <li>No ads, ever.</li>
+                    <li>No chat, no strangers and no online play. Two devices can play each other on the same home Wi-Fi, with no internet needed.</li>
+                    <li>No analytics or tracking in the app.</li>
+                    <li>No internet needed to play. RankUp Chess goes online only to buy or restore the upgrade and, on a computer, to check its licence key.</li>
+                </ul>
+
+                <h2>7. Schools and Clubs</h2>
+                <p>Classroom licences are free for schools and clubs on Windows and Mac, with up to 30 profiles on one computer. Email <a href="mailto:support@stillwareltd.com">support@stillwareltd.com</a> and tell us about your class. What a class gets, and the privacy pack, are on <a href="/rankupchess/schools/">RankUp Chess for schools and clubs</a>.</p>
+
+                <h2>8. Puzzles and Open-Source Software</h2>
+                <p>Most puzzles in RankUp Chess come from the Lichess open puzzle database (CC0); the easiest were made by RankUp's own engine. The open-source software inside the app is listed, with its licences, under Settings &rarr; About &amp; Legal &rarr; Open source licences.</p>
+
+                <h2>9. Your Legal Rights</h2>
+                <p>Nothing in these terms takes away any right you have under the consumer law of the country you live in.</p>
+
+                <h2>10. Contact Us</h2>
+                <p><a href="mailto:support@stillwareltd.com">support@stillwareltd.com</a></p>
+                <p>Stillware Ltd, registered in England and Wales (company number 16927952). Registered office: 155 Dugdale Hill Lane, Potters Bar, England, EN6 2DF. Phone: <a href="tel:+447438371722">+44 7438 371722</a>.</p>
+            </div>
+        </div>
+    </article>
+</Layout>
+
+<style>
+    .legal-hero {
+        padding: 12rem 0 3rem;
+        background: var(--gradient-obsidian);
+        text-align: center;
+    }
+
+    .legal-hero h1 { color: #ffffff; font-size: 3rem; }
+    .legal-kicker { color: rgba(255, 255, 255, 0.7); font-weight: 700; letter-spacing: 0.04em; margin-bottom: 0.5rem; }
+
+    .legal-body {
+        padding: 3rem 0 6rem;
+        max-width: 800px;
+        margin: 0 auto;
+    }
+
+    .legal-body h2 { margin-top: 2.5rem; font-size: 1.5rem; margin-bottom: 1rem; }
+    .legal-body p { margin-bottom: 1rem; line-height: 1.7; }
+    .legal-body ul, .legal-body ol { margin: 1rem 0; padding-left: 1.5rem; }
+    .legal-body li { margin-bottom: 0.5rem; line-height: 1.6; }
+    .legal-body a { color: var(--color-primary); text-decoration: underline; }
+
+    .highlight {
+        background: rgba(37, 99, 235, 0.04);
+        padding: 1.25rem 1.5rem;
+        border-left: 4px solid var(--color-primary);
+        border-radius: 0 8px 8px 0;
+        margin: 1.5rem 0;
+    }
+</style>

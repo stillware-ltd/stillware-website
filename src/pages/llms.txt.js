@@ -70,6 +70,7 @@ export async function GET() {
     link('About', '/about/', 'Stillware Ltd, registered in England and Wales, company number 16927952.'),
     link('Press kit', '/press/', 'Fact sheet, boilerplate, logos and screenshots for Zeroed.'),
     link('Privacy policy', '/privacy/', 'What the apps and this website do and do not collect.'),
+    link('RankUp Chess terms of service', '/rankupchess/terms/', 'Free to play forever, one optional one-time payment (never a subscription), who takes each payment, restoring and refunds.'),
     link('Support', '/support/', 'Help centre and contact: support@stillwareltd.com.'),
     '',
     '## Optional',
