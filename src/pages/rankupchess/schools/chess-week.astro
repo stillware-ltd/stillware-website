@@ -7,10 +7,13 @@ import { SINGALONG_KIT_PAGE } from '../../../data/singalong';
 // Teacher area's demo board and worksheets. Only free content: the first three lands teach every rule (P8), so a
 // class on tablets needs no purchase (G-2). v2 (0.12.0, M1.2): lesson 5 opens with a game of Class vs Rook (the class
 // plays White against one of the eight class bots, N1.1) before pairs play, and one student page a child keeps (rules
-// CW1-CW5 in Marketing/Rank_Up_Chess/Outreach/research/chess-week-v2-2026-11-04.md).
-// Facts checked against RankUp Chess 0.12.0 as built (main 1605772); lesson, puzzle-set, bot and tool names are the app's own.
+// CW1-CW5 in Marketing/Rank_Up_Chess/Outreach/research/chess-week-v2-2026-11-04.md). v3 (7 Nov 2026): the worksheets
+// are the free lessons' own (Teacher area, Worksheets, Lessons): a puzzle pack's worksheet is Premium, as the pack is
+// (worksheet_sources.dart, PurchaseConfig.puzzlesPremiumOnly), and the Daily Challenge picks by rating, not by theme.
+// Facts checked against RankUp Chess 0.12.0 (main 1605772), also true on origin/main 72f04f6 (0.12.1); lesson, bot
+// and tool names are the app's own.
 
-const CHECKED = '4 November 2026';
+const CHECKED = '7 November 2026';
 
 // The class bots, weakest first (ClassGameSetup.classBotLevels, assets/bots/bots.json); the strongest are hidden in class mode.
 const CLASS_BOTS = ['Baby Bean', 'Sleepy Sloth', 'Pip the Pawn', 'Shelly the Crab', 'Barnaby Beaver', 'Origami Ollie', 'Sir Reginald', 'Rexa the Dino'];
@@ -55,13 +58,13 @@ const LESSONS: Lesson[] = [
     prep: [
       'The demo board on the projector.',
       'The student page, My chess pieces (on this page, after lesson 5), printed, one for each child.',
-      'A worksheet from the Teacher area: Worksheets, Free-Piece Falls, Level 1, six puzzles to a page, answer key on.',
+      'A worksheet from the Teacher area: Worksheets, Lessons, Piece Values (Beginner Village). Its two boards are on the first page and the answer key on the last. For a class that finishes early, Pawn Captures (three boards) makes a second worksheet.',
     ],
     steps: [
       { t: 'Warm up', min: 5, d: 'Sing the "Setting up the board" verse, or set one board up at the front with the class directing you.' },
       { t: 'Demonstration', min: 10, d: 'On the demo board, ask a child to predict each move before you make it: the pawn’s first move and its diagonal capture, a rook that cannot jump, the knight’s L, a king that may never step into check, then the values: pawn 1, knight 3, bishop 3, rook 5, queen 9. After each piece, the children colour its squares and write its value on their student page.' },
       { t: 'Practice', min: 18, d: 'Pairs take two or three of Beginner Village’s lessons each (The Humble Pawn, Pawn Captures, The Mighty Rook, The Diagonal Bishop, The Tricky Knight, The Powerful Queen, The Royal King, Piece Values), so the class covers all eight.' },
-      { t: 'Worksheet', min: 5, d: 'Free-Piece Falls: find the piece nobody guards. Swap and mark with the answer key.' },
+      { t: 'Worksheet', min: 5, d: 'Piece Values: on each board a piece can take a pawn or something bigger; find the capture worth more. Swap and mark with the answer key.' },
       { t: 'Show me', min: 2, d: 'Which capture? Show a bishop that can take a pawn or a rook: thumbs up for the rook.' },
     ],
     watch: 'A pawn that tries to capture straight ahead, a rook or bishop that jumps, and a queen traded for a pawn.',
@@ -71,27 +74,27 @@ const LESSONS: Lesson[] = [
     n: 3,
     title: 'Check and checkmate',
     goal: 'Every child can tell check, checkmate and stalemate apart, and find a checkmate in one move.',
-    prep: ['The demo board on the projector.', 'A worksheet: Worksheets, Mate-in-1 Meadow, Level 1, with the answer key.'],
+    prep: ['The demo board on the projector.', 'A worksheet: Worksheets, Lessons, Checkmate! (Castle Grounds): two boards, with the answer key on the last page.'],
     steps: [
       { t: 'Warm up', min: 5, d: 'On the demo board, put a king in check and ask three ways out: move, block, or take the attacker.' },
       { t: 'Demonstration', min: 10, d: 'Set up a back-rank mate and a queen-and-king mate: each time, the class checks every square the king could go to. Then show a stalemate: no check, no legal move, and it is a draw.' },
-      { t: 'Practice', min: 18, d: 'Pairs take Castle Grounds’ Check!, Checkmate! and Stalemate lessons, then Mate-in-1 Meadow at Level 1.' },
-      { t: 'Worksheet', min: 5, d: 'Mate-in-1 Meadow: White to move and checkmate. Mark with the answer key.' },
+      { t: 'Practice', min: 18, d: 'Pairs take Castle Grounds’ Check!, Checkmate! and Stalemate lessons, taking turns at the moves.' },
+      { t: 'Worksheet', min: 5, d: 'Checkmate!: White to move and checkmate in one, on both boards. Mark with the answer key.' },
       { t: 'Show me', min: 2, d: 'Hold up one finger for check, two for checkmate, a flat hand for stalemate, as you show three positions.' },
     ],
     watch: 'A "checkmate" that is really stalemate, and a king that moves into check to escape.',
-    home: 'Mate-in-1 puzzles are in the free app’s Daily Challenge too.',
+    home: 'Check!, Checkmate! and Stalemate are free in the app, to play again at home.',
   },
   {
     n: 4,
     title: 'Special moves',
     goal: 'Every child knows when castling, en passant and promotion are allowed.',
-    prep: ['The demo board on the projector.', 'A worksheet: Worksheets, Promotion Point, Level 1, with the answer key.'],
+    prep: ['The demo board on the projector.', 'A worksheet: Worksheets, Lessons, Pawn Promotion (Castle Grounds): two boards, with the answer key on the last page.'],
     steps: [
       { t: 'Warm up', min: 5, d: 'Quick quiz on the demo board: which pieces may jump? Which piece is worth 5?' },
       { t: 'Demonstration', min: 10, d: 'Castling both ways (never out of check, never through an attacked square, never after the king or that rook has moved); en passant (only straight after the two-square move); promotion (most children choose a queen).' },
       { t: 'Practice', min: 18, d: 'Pair A takes Kingside Castling and Queenside Castling, pair B En Passant and Pawn Promotion, pair C Types of Draws; swap after eight or nine minutes.' },
-      { t: 'Worksheet', min: 5, d: 'Promotion Point: walk the pawn home. Mark with the answer key.' },
+      { t: 'Worksheet', min: 5, d: 'Pawn Promotion: take each pawn to the last row, once with a push and once with a capture. Mark with the answer key.' },
       { t: 'Show me', min: 2, d: 'True or false, hands up: "You can castle when your king is in check." (False.)' },
     ],
     watch: 'Castling out of check, a rook that has already moved, and en passant played a move too late.',
@@ -140,8 +143,8 @@ const LESSONS: Lesson[] = [
         <table class="cw-table">
           <tbody>
             <tr><th scope="row">Screen</th><td>A projector or big screen with RankUp Chess open at the Teacher area (Settings, Parent Dashboard, Teacher area): the Demo board for lessons 1 to 4, and Class vs Rook for lesson 5.</td></tr>
-            <tr><th scope="row">Devices</th><td>One tablet or computer for each pair, with the free RankUp Chess app; or real chess sets. Every lesson in the unit is in the free version.</td></tr>
-            <tr><th scope="row">Printing</th><td>The <a href={SINGALONG_KIT_PAGE}>classroom kit</a> for lesson 1, the student page on this page (one for each child), three worksheets made in the Teacher area (lessons 2 to 4), the letter for parents, and the certificates on this page.</td></tr>
+            <tr><th scope="row">Devices</th><td>One tablet or computer for each pair, with the free RankUp Chess app; or real chess sets. Every lesson and worksheet in the unit is in the free version.</td></tr>
+            <tr><th scope="row">Printing</th><td>The <a href={SINGALONG_KIT_PAGE}>classroom kit</a> for lesson 1, the student page on this page (one for each child), three short worksheets made in the Teacher area from the app’s free lessons (lessons 2 to 4), the letter for parents, and the certificates on this page.</td></tr>
             <tr><th scope="row">Time</th><td>Five lessons of 40 minutes: on five days, or once a week for five weeks.</td></tr>
           </tbody>
         </table>
@@ -220,11 +223,11 @@ const LESSONS: Lesson[] = [
           <div><h3>Do the children need to know chess already?</h3><p>No. Lesson 1 starts from an empty board, and the lessons in the app talk the children through every step.</p></div>
           <div><h3>Do I need to know how to play chess?</h3><p>No. Each lesson says what to show and what to watch for, the app checks every move by the rules, and in Class vs Rook the Class hint can suggest a good move.</p></div>
           <div><h3>What is Class vs Rook?</h3><p>A game in the Teacher area of RankUp Chess 0.12.0 where the whole class plays White against one of eight friendly bots, from {CLASS_BOTS[0]} to {CLASS_BOTS[CLASS_BOTS.length - 1]}, on the big screen. Nothing is saved to any child’s profile; a class name, if you type one, appears only on the screen and the class certificate.</p></div>
-          <div><h3>Does the school need to buy anything?</h3><p>No. Every lesson, worksheet and puzzle set in the unit is in the free version of RankUp Chess, and the song and its kit are free.</p></div>
+          <div><h3>Does the school need to buy anything?</h3><p>No. Every lesson and worksheet in the unit is in the free version of RankUp Chess, and the song and its kit are free. The unit uses no puzzle packs: they, and the worksheets made from them, are part of the app’s one-time upgrade.</p></div>
           <div><h3>Is any pupil data collected?</h3><p>No. Pupils need no accounts, and nothing about a pupil leaves the device. See the <a href="/rankupchess/schools/#privacy-pack">privacy pack</a>.</p></div>
           <div><h3>Which ages is it for?</h3><p>Children aged 7 to 11. For ages 5 to 7, use the Little Garden lessons in lessons 1 and 2 and take more time over each step.</p></div>
         </div>
-        <p class="cw-checked">Checked {CHECKED} against RankUp Chess 0.12.0: its lessons, Class vs Rook and the Teacher area lesson plans. Unit by Stillware Ltd; free to print and share for non-commercial classroom and home use.</p>
+        <p class="cw-checked">Checked {CHECKED} against RankUp Chess 0.12.0: its lessons and the worksheets made from them, Class vs Rook and the Teacher area. Unit by Stillware Ltd; free to print and share for non-commercial classroom and home use.</p>
       </div>
     </section>
   </div>
