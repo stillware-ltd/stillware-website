@@ -114,7 +114,7 @@
 # /club: printed on RankUp Chess scoresheets, for club and tournament players (0.12.0, N1.3; 2026-11-01).
 /club     /rankupchess/schools/?utm_source=scoresheet&utm_medium=print&utm_campaign=club   302
 /club/    /rankupchess/schools/?utm_source=scoresheet&utm_medium=print&utm_campaign=club   302
-# /puzzles: spoken in RankUp Chess video E02 ("stillware L T D dot com slash puzzles"), public 28 Nov 2026; the free
+# /puzzles: spoken in RankUp Chess video E02 ("stillware L T D dot com slash puzzles"), public 7 Nov 2026; the free
 # printable's page (founder, 3 Nov 2026).
 /puzzles  /rankupchess/puzzles/?utm_source=youtube&utm_medium=video&utm_campaign=e02   302
 /puzzles/ /rankupchess/puzzles/?utm_source=youtube&utm_medium=video&utm_campaign=e02   302

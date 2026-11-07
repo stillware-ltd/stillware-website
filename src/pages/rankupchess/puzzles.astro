@@ -44,7 +44,7 @@ const videoSchema = E02_VIDEO_ID
       name: E02_VIDEO_TITLE,
       description: 'Five chess puzzles from a kids’ chess app, from level 1 to level 3, each solved and explained for grown-ups.',
       thumbnailUrl: `https://www.stillwareltd.com${videoStill}`,
-      uploadDate: '2026-11-28',
+      uploadDate: '2026-11-07',
       embedUrl: `https://www.youtube-nocookie.com/embed/${E02_VIDEO_ID}`,
       publisher: { '@id': 'https://www.stillwareltd.com/#organization' },
     }
@@ -118,13 +118,13 @@ const videoSchema = E02_VIDEO_ID
         {E02_VIDEO_ID ? (
           <figure class="pz-video">
             <button type="button" class="pz-play" data-video-id={E02_VIDEO_ID} aria-label={`Play the video ${E02_VIDEO_TITLE}`}>
-              <img src={videoStill} alt={`Still from the video ${E02_VIDEO_TITLE}`} width="1280" height="720" loading="lazy" />
+              <img src={videoStill} alt={`Thumbnail of the video ${E02_VIDEO_TITLE}`} width="1280" height="720" loading="lazy" />
               <span class="pz-play-icon" aria-hidden="true"></span>
             </button>
           </figure>
         ) : (
           <div class="pz-video-soon">
-            <p><b>The video comes out on Saturday 28 November 2026.</b></p>
+            <p><b>The video comes out on Saturday 7 November 2026.</b></p>
             <p>It solves the five puzzles on page 1 one by one, starting each time with the check that doesn&rsquo;t work.</p>
           </div>
         )}
