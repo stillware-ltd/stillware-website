@@ -51,9 +51,11 @@ const RANKUP_WINDOWS_DOWNLOAD = RANKUP_WINDOWS_VERSION
 // release notes and the releases README); 0.10.0 (the board-theme update) on
 // 2026-10-13; 0.10.1 (licence keys activate again) on 2026-10-14; 0.10.2 (per-platform
 // licences) and 0.10.3 (voice lead-in) the same day; 0.11.0 (Every device) on release
-// day; 0.11.1 (Mac only: licence keys are kept when the keychain refuses) on 2026-11-01.
-// The release v0.11.1-macos must carry RankUpChess-0.11.1-macOS.dmg (the URL below).
-const RANKUP_MACOS_VERSION = '0.11.1';
+// day; 0.11.1 (Mac only: licence keys are kept when the keychain refuses) on 2026-11-01;
+// 0.12.1 (build 38: 0.12.0's Skills Passport and Puzzle Maker, plus the way-back fixes)
+// on 2026-11-08, the first platform on 0.12.1. No Mac build of 0.12.0 was published.
+// The release v0.12.1-macos must carry RankUpChess-0.12.1-macOS.dmg (the URL below).
+const RANKUP_MACOS_VERSION = '0.12.1';
 const RANKUP_MACOS_DOWNLOAD =
   `https://github.com/stillware-ltd/rankup-chess-releases/releases/download/v${RANKUP_MACOS_VERSION}-macos/RankUpChess-${RANKUP_MACOS_VERSION}-macOS.dmg`;
 
@@ -84,8 +86,10 @@ const listOf = (items: string[]) =>
 const RANKUP_CURRENT_ON = listOf(
   RANKUP_PLATFORMS.filter((p) => p.version === RANKUP_VERSION).flatMap((p) => p.names),
 );
-// A platform on a later patch of the same release (macOS 0.11.1, a Mac-only fix, 1 Nov 2026) is
-// ahead, not catching up: it gets its own sentence instead of "with 0.11.0 on its way".
+// A platform on a later patch of the same release (macOS 0.11.1, a Mac-only fix, 1 Nov 2026;
+// macOS 0.12.1, the way-back fixes, first on Mac, 8 Nov 2026) is ahead, not catching up: it gets
+// its own sentence instead of "with 0.12.0 on its way". The sentence doesn't say the fix is for that
+// platform only, because 0.12.1's fixes are for every platform.
 const minorOf = (v: string) => v.split('.').slice(0, 2).join('.');
 const RANKUP_CATCHING_UP = listOf(
   RANKUP_PLATFORMS.filter((p) => p.version && minorOf(p.version) !== minorOf(RANKUP_VERSION)).map(
@@ -95,7 +99,7 @@ const RANKUP_CATCHING_UP = listOf(
 const RANKUP_PATCHED = listOf(
   RANKUP_PLATFORMS.filter(
     (p) => p.version && p.version !== RANKUP_VERSION && minorOf(p.version) === minorOf(RANKUP_VERSION),
-  ).map((p) => `${listOf(p.names)} ${p.names.length > 1 ? 'are' : 'is'} on v${p.version}, a fix for ${listOf(p.names)} only`),
+  ).map((p) => `${listOf(p.names)} ${p.names.length > 1 ? 'are' : 'is'} on v${p.version}, with the newest fixes`),
 );
 
 // The sing-along's video id and the classroom kit live in src/data/singalong.ts (shared with the kit page).
