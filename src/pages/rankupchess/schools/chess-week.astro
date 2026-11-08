@@ -10,10 +10,12 @@ import { SINGALONG_KIT_PAGE } from '../../../data/singalong';
 // CW1-CW5 in Marketing/Rank_Up_Chess/Outreach/research/chess-week-v2-2026-11-04.md). v3 (7 Nov 2026): the worksheets
 // are the free lessons' own (Teacher area, Worksheets, Lessons): a puzzle pack's worksheet is Premium, as the pack is
 // (worksheet_sources.dart, PurchaseConfig.puzzlesPremiumOnly), and the Daily Challenge picks by rating, not by theme.
-// Facts checked against RankUp Chess 0.12.0 (main 1605772), also true on origin/main 72f04f6 (0.12.1); lesson, bot
-// and tool names are the app's own.
+// v4 (8 Nov 2026): the app opens lessons in order on each profile (lesson_repository.dart isLessonUnlocked, the same in
+// 0.12.0 and 0.12.1), so pairs carry on in order, and lessons 3 and 4 practise on the demo board
+// (Marketing/Rank_Up_Chess/Outreach/chess-week-lesson-order-fix.md). Facts checked against RankUp Chess 0.12.0 (main
+// 1605772), also true on origin/main 72f04f6 (0.12.1); lesson, bot and tool names are the app's own.
 
-const CHECKED = '7 November 2026';
+const CHECKED = '8 November 2026';
 
 // The class bots, weakest first (ClassGameSetup.classBotLevels, assets/bots/bots.json); the strongest are hidden in class mode.
 const CLASS_BOTS = ['Baby Bean', 'Sleepy Sloth', 'Pip the Pawn', 'Shelly the Crab', 'Barnaby Beaver', 'Origami Ollie', 'Sir Reginald', 'Rexa the Dino'];
@@ -44,7 +46,7 @@ const LESSONS: Lesson[] = [
     steps: [
       { t: 'Sing', min: 5, d: 'Play "Let the Whole Board Sing". Grown-ups sing the orange lines, children the blue, everyone the rainbow choruses.' },
       { t: 'Set up the board together', min: 10, d: 'On the demo board, clear the pieces and set them up while the class calls out each step: a light square in the bottom-right corner, rooks in the corners, then knights, bishops, the queen on her own colour, the king, and the pawns.' },
-      { t: 'Practice', min: 18, d: 'Pairs share a tablet. Ages 5 to 7 take the Little Garden lessons (Little Pawn, Rolling Rook, Slidey Bishop, Queen Bee, King Steps, Jumpy Knight); older children take The Humble Pawn and The Mighty Rook in Beginner Village. Pairs with a real chess set set it up and check each other.' },
+      { t: 'Practice', min: 18, d: 'Pairs share a tablet. Ages 5 to 7 start the Little Garden at Little Pawn; older children start Beginner Village at The Humble Pawn. The lessons open in order, so each pair goes on to the next one the app opens. Pairs with a real chess set set it up and check each other.' },
       { t: 'Worksheet', min: 5, d: 'The kit’s worksheet: colour every square each piece can reach. The answer key is the next page.' },
       { t: 'Show me', min: 2, d: 'Hold up a hand shaped like the piece you call: a straight arm for the rook, a slant for the bishop, an L for the knight.' },
     ],
@@ -63,7 +65,7 @@ const LESSONS: Lesson[] = [
     steps: [
       { t: 'Warm up', min: 5, d: 'Sing the "Setting up the board" verse, or set one board up at the front with the class directing you.' },
       { t: 'Demonstration', min: 10, d: 'On the demo board, ask a child to predict each move before you make it: the pawn’s first move and its diagonal capture, a rook that cannot jump, the knight’s L, a king that may never step into check, then the values: pawn 1, knight 3, bishop 3, rook 5, queen 9. After each piece, the children colour its squares and write its value on their student page.' },
-      { t: 'Practice', min: 18, d: 'Pairs take two or three of Beginner Village’s lessons each (The Humble Pawn, Pawn Captures, The Mighty Rook, The Diagonal Bishop, The Tricky Knight, The Powerful Queen, The Royal King, Piece Values), so the class covers all eight.' },
+      { t: 'Practice', min: 18, d: 'Pairs carry on in Beginner Village from where they stopped in lesson 1, in its order: The Humble Pawn, Pawn Captures, The Mighty Rook, The Diagonal Bishop, The Tricky Knight, The Powerful Queen, The Royal King, Piece Values. The app opens each one when the one before is finished. A pair that finishes all eight goes on to Castle Grounds.' },
       { t: 'Worksheet', min: 5, d: 'Piece Values: on each board a piece can take a pawn or something bigger; find the capture worth more. Swap and mark with the answer key.' },
       { t: 'Show me', min: 2, d: 'Which capture? Show a bishop that can take a pawn or a rook: thumbs up for the rook.' },
     ],
@@ -78,12 +80,12 @@ const LESSONS: Lesson[] = [
     steps: [
       { t: 'Warm up', min: 5, d: 'On the demo board, put a king in check and ask three ways out: move, block, or take the attacker.' },
       { t: 'Demonstration', min: 10, d: 'Set up a back-rank mate and a queen-and-king mate: each time, the class checks every square the king could go to. Then show a stalemate: no check, no legal move, and it is a draw.' },
-      { t: 'Practice', min: 18, d: 'Pairs take Castle Grounds’ Check!, Checkmate! and Stalemate lessons, taking turns at the moves.' },
+      { t: 'Practice', min: 18, d: 'Ten minutes on the demo board, with the app’s own lesson boards. Put a king in check from a rook, then show the same check with a bishop that can block it, and with a rook that can take the attacker. For each, pairs agree on a way out, and one pair comes up to make the move. Then open the lesson plan’s Checkmate and Stalemate positions: pairs find the mate, and say why the stalemate is a draw. For the last eight minutes, pairs carry on in the app from where they stopped. Check!, Checkmate! and Stalemate come later in its order, after Beginner Village and Castle Grounds’ first four lessons.' },
       { t: 'Worksheet', min: 5, d: 'Checkmate!: White to move and checkmate in one, on both boards. Mark with the answer key.' },
       { t: 'Show me', min: 2, d: 'Hold up one finger for check, two for checkmate, a flat hand for stalemate, as you show three positions.' },
     ],
     watch: 'A "checkmate" that is really stalemate, and a king that moves into check to escape.',
-    home: 'Check!, Checkmate! and Stalemate are free in the app, to play again at home.',
+    home: 'Check!, Checkmate! and Stalemate are free in the app, in Castle Grounds. They open in order, after Beginner Village and the special moves.',
   },
   {
     n: 4,
@@ -93,12 +95,12 @@ const LESSONS: Lesson[] = [
     steps: [
       { t: 'Warm up', min: 5, d: 'Quick quiz on the demo board: which pieces may jump? Which piece is worth 5?' },
       { t: 'Demonstration', min: 10, d: 'Castling both ways (never out of check, never through an attacked square, never after the king or that rook has moved); en passant (only straight after the two-square move); promotion (most children choose a queen).' },
-      { t: 'Practice', min: 18, d: 'Pair A takes Kingside Castling and Queenside Castling, pair B En Passant and Pawn Promotion, pair C Types of Draws; swap after eight or nine minutes.' },
+      { t: 'Practice', min: 18, d: 'Ten minutes on the demo board, from the lesson plan’s Castling, En passant and Promotion positions. For each, pairs say whether the move is allowed and why, and one pair comes up to make it. For the last eight minutes, pairs carry on in the app from where they stopped: a pair that has finished Beginner Village is in Castle Grounds, where castling comes first.' },
       { t: 'Worksheet', min: 5, d: 'Pawn Promotion: take each pawn to the last row, once with a push and once with a capture. Mark with the answer key.' },
       { t: 'Show me', min: 2, d: 'True or false, hands up: "You can castle when your king is in check." (False.)' },
     ],
     watch: 'Castling out of check, a rook that has already moved, and en passant played a move too late.',
-    home: 'The Castle Grounds lessons are free in the app.',
+    home: 'The Castle Grounds lessons are free in the app. They open in order, after Beginner Village.',
   },
   {
     n: 5,
@@ -143,11 +145,12 @@ const LESSONS: Lesson[] = [
         <table class="cw-table">
           <tbody>
             <tr><th scope="row">Screen</th><td>A projector or big screen with RankUp Chess open at the Teacher area (Settings, Parent Dashboard, Teacher area): the Demo board for lessons 1 to 4, and Class vs Rook for lesson 5.</td></tr>
-            <tr><th scope="row">Devices</th><td>One tablet or computer for each pair, with the free RankUp Chess app; or real chess sets. Every lesson and worksheet in the unit is in the free version.</td></tr>
+            <tr><th scope="row">Devices</th><td>One tablet or computer for each pair, with the free RankUp Chess app, the same one all week; or real chess sets. Every lesson and worksheet in the unit is in the free version.</td></tr>
             <tr><th scope="row">Printing</th><td>The <a href={SINGALONG_KIT_PAGE}>classroom kit</a> for lesson 1, the student page on this page (one for each child), three short worksheets made in the Teacher area from the app’s free lessons (lessons 2 to 4), the letter for parents, and the certificates on this page.</td></tr>
             <tr><th scope="row">Time</th><td>Five lessons of 40 minutes: on five days, or once a week for five weeks.</td></tr>
           </tbody>
         </table>
+        <p><strong>How the app’s lessons open:</strong> in order, on each tablet’s profile. The next lesson opens when the one before it is finished, so keep each pair on the same tablet all week and let them carry on from where they stopped. The demo board and the worksheets in the Teacher area are open at any time.</p>
       </div>
     </section>
 
