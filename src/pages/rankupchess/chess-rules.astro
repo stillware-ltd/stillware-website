@@ -1,0 +1,314 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import { HUB, SHEETS } from '../../data/rankup-rules-cards';
+
+// A RankUp Chess series hub: its printable sheets, newest first (src/data/rankup-rules-cards.ts says where
+// everything is built). Each download is a plain link: no email, form or account (Manifesto). Layout's click handler
+// records it as `printable_download` in Umami (cookieless), so nothing about the visitor is stored. Each sheet's
+// diagrams are its video's own positions, drawn as the sheet draws them.
+
+const [latest] = SHEETS;
+const faqSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'FAQPage',
+  mainEntity: HUB.faq.map((f) => ({ '@type': 'Question', name: f.q, acceptedAnswer: { '@type': 'Answer', text: f.a } })),
+};
+const videoSchemas = SHEETS.filter((s) => s.video?.id).map((s) => ({
+  '@context': 'https://schema.org',
+  '@type': 'VideoObject',
+  name: s.video.title,
+  description: s.video.description,
+  thumbnailUrl: `https://www.stillwareltd.com${s.assets}/video-1280.webp`,
+  uploadDate: s.video.uploadDate,
+  embedUrl: `https://www.youtube-nocookie.com/embed/${s.video.id}`,
+  publisher: { '@id': 'https://www.stillwareltd.com/#organization' },
+}));
+---
+
+<Layout
+  title={HUB.title}
+  description={HUB.description}
+  ogImage={`${latest.assets}/share.png`}
+  ogImageWidth={1200}
+  ogImageHeight={630}
+  breadcrumbs={[{ name: 'RankUp Chess', href: '/rankupchess/' }, { name: 'Free chess puzzles for kids', href: HUB.route }]}
+>
+  <script type="application/ld+json" set:html={JSON.stringify(faqSchema)} />
+  {videoSchemas.map((v) => <script type="application/ld+json" set:html={JSON.stringify(v)} />)}
+
+  <div class="pz-page">
+    <header class="pz-hero">
+      <div class="pz-wrap pz-hero-grid">
+        <div class="pz-intro">
+          <p class="pz-kicker">Free printables &middot; no email, no account</p>
+          <h1>{HUB.h1}</h1>
+          <p class="pz-answer" set:html={HUB.answer} />
+          <a class="pz-btn" href={latest.pdf} download>{latest.button}</a>
+          <p class="pz-meta">Newest sheet: A4, {latest.pages} {latest.pages === 1 ? 'page' : 'pages'}, {latest.pdfSize}.{latest.pdfLetter && <> Also in <a href={latest.pdfLetter} download>US Letter</a> ({latest.pdfLetterSize}).</>} Prints well in black and white.</p>
+          {SHEETS.length > 1 && (
+            <nav class="pz-jump" aria-label="All sheets">
+              {SHEETS.map((s) => <a href={`#${s.id}`}>{s.short}</a>)}
+            </nav>
+          )}
+        </div>
+        {latest.boards.length > 0 && (
+          <div class={`pz-boards${latest.boards.length === 4 ? ' pz-four' : ''}`} role="region" tabindex="0" aria-label={`The ${HUB.itemWord} on page 1 of the newest sheet, ${latest.short}`}>
+            {latest.boards.map((p) => (
+              <figure>
+                <img src={`${latest.assets}/puzzle-${p.n}.svg`} width="429" height="428" alt={p.alt} />
+                <figcaption><span class="pz-n">{p.n}</span><span>{p.lead}<br /><small>{p.note}</small></span></figcaption>
+              </figure>
+            ))}
+          </div>
+        )}
+      </div>
+    </header>
+
+    {SHEETS.map((s, i) => (
+      <section class={`pz-section pz-sheet${i % 2 ? '' : ' pz-tint'}`} id={s.id}>
+        <div class="pz-wrap pz-narrow">
+          <h2>{s.h2}</h2>
+          <p class="pz-lead" set:html={s.answer} />
+          {i > 0 && s.boards.length > 0 && (
+            <div class={`pz-boards pz-boards-row${s.boards.length === 4 ? ' pz-four' : ''}`} role="region" tabindex="0" aria-label={`The ${HUB.itemWord} on page 1 of ${s.short}`}>
+              {s.boards.map((p) => (
+                <figure>
+                  <img src={`${s.assets}/puzzle-${p.n}.svg`} width="429" height="428" loading="lazy" alt={p.alt} />
+                  <figcaption><span class="pz-n">{p.n}</span><span>{p.lead}<br /><small>{p.note}</small></span></figcaption>
+                </figure>
+              ))}
+            </div>
+          )}
+          <h3>What&rsquo;s in the PDF?</h3>
+          <table class="pz-table">
+            <thead><tr><th scope="col">Page</th><th scope="col">What&rsquo;s on it</th></tr></thead>
+            <tbody>
+              {s.table.map(([page, what]) => (<tr><th scope="row">{page}</th><td set:html={what} /></tr>))}
+            </tbody>
+          </table>
+          <ul class="pz-facts">
+            {s.facts.map((f) => (<li set:html={f} />))}
+          </ul>
+          {s.hint && <p class="pz-hint"><b>The one hint for this sheet:</b> {s.hint}</p>}
+          <a class="pz-btn" href={s.pdf} download>{s.button}</a>
+          <p class="pz-meta">A4, {s.pages} {s.pages === 1 ? 'page' : 'pages'}, {s.pdfSize}.{s.pdfLetter && <> Also in <a href={s.pdfLetter} download>US Letter</a> ({s.pdfLetterSize}).</>}</p>
+
+          {s.video && <h3>{s.video.h3}</h3>}
+          {!s.video ? null : s.video.id ? (
+            <figure class="pz-video">
+              <button type="button" class="pz-play" data-video-id={s.video.id} data-place={s.id} aria-label={`Play the video ${s.video.title}`}>
+                <img src={`${s.assets}/video-1280.webp`} alt={`Thumbnail of the video ${s.video.title}`} width="1280" height="720" loading="lazy" />
+                <span class="pz-play-icon" aria-hidden="true"></span>
+              </button>
+            </figure>
+          ) : (
+            <div class="pz-video-soon">
+              <p><b>{s.video.soon}</b></p>
+              <p set:html={s.video.soonDetail} />
+            </div>
+          )}
+
+          <h3>{s.sourcesH3}</h3>
+          <Fragment set:html={s.sources.join('')} />
+          <p class="pz-checked">{s.checked}</p>
+        </div>
+      </section>
+    ))}
+
+    <section class="pz-section">
+      <div class="pz-wrap pz-narrow">
+        <h2>How do you use it with your child?</h2>
+        <ol class="pz-steps">
+          {HUB.steps.map((s) => (<li><b>{s.t}</b> {s.d}</li>))}
+        </ol>
+      </div>
+    </section>
+
+    <section class="pz-section pz-tint">
+      <div class="pz-wrap pz-narrow">
+        <h2>Frequently asked questions</h2>
+        <div class="pz-faq">
+          {HUB.faq.map((f) => (<div><h3>{f.q}</h3><p>{f.a}</p></div>))}
+        </div>
+      </div>
+    </section>
+  </div>
+</Layout>
+
+<script>
+  document.querySelectorAll<HTMLButtonElement>('.pz-play').forEach((play) => {
+    play.addEventListener('click', () => {
+      const id = play.dataset.videoId || '';
+      const frame = document.createElement('iframe');
+      frame.src = `https://www.youtube-nocookie.com/embed/${encodeURIComponent(id)}?autoplay=1&rel=0`;
+      frame.title = play.getAttribute('aria-label')?.replace(/^Play the video /, '') || 'Video';
+      frame.allow = 'autoplay; encrypted-media; picture-in-picture';
+      frame.allowFullscreen = true;
+      frame.className = 'pz-frame';
+      play.replaceWith(frame);
+      (window as any).stillTrack?.('video_play', { video_id: id, place: `puzzles-${play.dataset.place || ''}` });
+    });
+  });
+</script>
+
+<style>
+  .pz-page {
+    --ink: #0F172A;
+    --ink-soft: #475569;
+    --amber: #B45309;
+    --line: #E2E8F0;
+    background: #FFFFFF;
+    color: var(--ink);
+  }
+
+  .pz-wrap { width: min(1120px, 100% - 32px); margin-inline: auto; }
+  .pz-narrow { max-width: 760px; }
+
+  /* The site header is fixed and about 117 px tall. */
+  .pz-hero { padding: 9rem 0 2.5rem; background: #F8FAFC; border-bottom: 1px solid var(--line); }
+  .pz-hero-grid { display: grid; grid-template-columns: minmax(0, 0.95fr) minmax(0, 1.05fr); gap: 2.5rem; align-items: center; }
+
+  .pz-kicker {
+    display: inline-block;
+    background: #FEF3C7;
+    color: #78350F;
+    font-weight: 700;
+    font-size: 0.85rem;
+    border-radius: 999px;
+    padding: 0.3rem 0.85rem;
+    margin-bottom: 0.9rem;
+  }
+
+  .pz-hero h1 { font-size: clamp(1.85rem, 4vw, 2.6rem); line-height: 1.12; color: var(--ink); margin: 0 0 0.9rem; }
+  .pz-answer { font-size: 1.05rem; line-height: 1.6; color: var(--ink-soft); margin-bottom: 1.25rem; }
+
+  .pz-btn {
+    display: inline-block;
+    background: linear-gradient(135deg, #F59E0B 0%, #D97706 100%);
+    color: #1C1102;
+    font-weight: 800;
+    font-size: 1.05rem;
+    padding: 0.9rem 1.5rem;
+    border-radius: 14px;
+    text-decoration: none;
+    box-shadow: 0 3px 0 #92400E;
+  }
+
+  .pz-btn:hover { background: linear-gradient(135deg, #FBBF24 0%, #F59E0B 100%); }
+  .pz-btn:focus-visible { outline: 3px solid #2563EB; outline-offset: 3px; }
+  .pz-meta { font-size: 0.88rem; color: var(--ink-soft); margin-top: 0.6rem; }
+
+  .pz-jump { display: flex; flex-wrap: wrap; gap: 0.5rem 1rem; margin-top: 1rem; font-size: 0.92rem; }
+  .pz-jump a { color: #1D4ED8; font-weight: 700; }
+
+  .pz-boards { display: grid; grid-template-columns: repeat(6, minmax(0, 1fr)); gap: 1rem 0.9rem; }
+  .pz-boards figure { margin: 0; grid-column: span 2; }
+  /* Three boards on the first row, two centred on the second. */
+  .pz-boards figure:nth-child(4) { grid-column: 2 / span 2; }
+  .pz-boards.pz-four figure, .pz-boards.pz-four figure:nth-child(4) { grid-column: span 3; }  /* four boards: 2 x 2 */
+  .pz-boards img { display: block; width: 100%; height: auto; }
+  .pz-boards figcaption { display: flex; gap: 0.45rem; align-items: flex-start; margin-top: 0.35rem; font-size: 0.85rem; font-weight: 700; line-height: 1.25; }
+  .pz-boards small { font-weight: 500; color: var(--ink-soft); font-size: 0.8rem; }
+  .pz-boards-row { margin: 0 0 1.5rem; }
+  .pz-n {
+    flex: none;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 1.35rem;
+    height: 1.35rem;
+    border-radius: 50%;
+    background: var(--ink);
+    color: #fff;
+    font-size: 0.78rem;
+  }
+
+  .pz-section { padding: 3.25rem 0; }
+  .pz-tint { background: #F8FAFC; }
+  .pz-section h2 { font-size: clamp(1.4rem, 3vw, 1.8rem); color: var(--ink); margin: 0 0 1.1rem; }
+  .pz-sheet h3 { font-size: 1.15rem; color: var(--ink); margin: 2rem 0 0.8rem; }
+  .pz-section p { color: var(--color-text); line-height: 1.7; margin-bottom: 0.9rem; }
+  .pz-section a:not(.pz-btn) { color: #1D4ED8; font-weight: 600; }
+  .pz-lead { font-size: 1.05rem; }
+  .pz-hint { border-left: 4px solid var(--amber); padding-left: 0.8rem; }
+
+  .pz-steps { padding-left: 1.4rem; display: grid; gap: 0.7rem; color: var(--color-text); line-height: 1.6; }
+  .pz-steps b { color: var(--ink); }
+
+  .pz-table { width: 100%; border-collapse: collapse; margin-bottom: 1.25rem; font-size: 0.97rem; }
+  .pz-table th, .pz-table td { text-align: left; vertical-align: top; padding: 0.7rem 0.8rem; border-bottom: 1px solid var(--line); }
+  .pz-table thead th { font-size: 0.8rem; text-transform: uppercase; letter-spacing: 0.06em; color: var(--ink-soft); }
+  .pz-table tbody th { white-space: nowrap; color: var(--ink); }
+  .pz-table td { color: var(--color-text); line-height: 1.55; }
+  .pz-facts { padding-left: 1.2rem; margin-bottom: 1.5rem; color: var(--color-text); line-height: 1.7; }
+
+  .pz-video { margin: 0; }
+  .pz-play, .pz-video :global(.pz-frame) {
+    position: relative;
+    display: block;
+    width: 100%;
+    aspect-ratio: 16 / 9;
+    border: 0;
+    padding: 0;
+    border-radius: 16px;
+    overflow: hidden;
+    cursor: pointer;
+    background: #0F172A;
+  }
+  .pz-play img { display: block; width: 100%; height: 100%; object-fit: cover; }
+  .pz-play-icon {
+    position: absolute;
+    inset: 50% auto auto 50%;
+    width: 72px;
+    height: 72px;
+    margin: -36px 0 0 -36px;
+    border-radius: 50%;
+    background: rgba(15, 23, 42, 0.82);
+  }
+  .pz-play-icon::after {
+    content: '';
+    position: absolute;
+    left: 29px;
+    top: 22px;
+    border-style: solid;
+    border-width: 14px 0 14px 22px;
+    border-color: transparent transparent transparent #fff;
+  }
+  .pz-play:focus-visible { outline: 3px solid #2563EB; outline-offset: 3px; }
+
+  .pz-video-soon { border: 2px dashed #CBD5E1; border-radius: 16px; padding: 1.5rem 1.5rem 0.75rem; background: #F8FAFC; }
+
+  .pz-faq { display: grid; gap: 1.25rem; }
+  .pz-faq h3 { font-size: 1.05rem; color: var(--ink); margin: 0 0 0.35rem; }
+  .pz-faq p { margin: 0; }
+  .pz-checked { font-size: 0.85rem; color: var(--ink-soft); margin-top: 1.75rem; }
+
+  @media (max-width: 860px) {
+    .pz-hero { padding-top: 8rem; }
+    .pz-hero-grid { grid-template-columns: 1fr; gap: 1.5rem; }
+    .pz-boards { gap: 0.75rem 0.6rem; }
+  }
+
+  /* Phones: the five boards in one swipeable row, so all of them start above the fold with the button. */
+  @media (max-width: 600px) {
+    .pz-hero-grid { gap: 1.1rem; }
+    .pz-answer { font-size: 1rem; margin-bottom: 1rem; }
+    .pz-boards {
+      display: flex;
+      gap: 0.6rem;
+      overflow-x: auto;
+      scroll-snap-type: x mandatory;
+      margin-inline: -16px;
+      padding: 0 16px 0.4rem;
+      scroll-padding-inline: 16px;
+    }
+    .pz-boards figure, .pz-boards figure:nth-child(4) { flex: 0 0 38%; scroll-snap-align: start; }
+  }
+
+  @media (max-width: 480px) {
+    .pz-boards figcaption { font-size: 0.76rem; }
+    .pz-boards small { font-size: 0.72rem; }
+    .pz-n { width: 1.15rem; height: 1.15rem; font-size: 0.7rem; }
+    .pz-table tbody th { white-space: normal; }
+  }
+</style>
