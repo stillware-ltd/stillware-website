@@ -6,7 +6,7 @@ import { GUIDES } from '../data/guides';
 import NewsletterSignup from '../components/NewsletterSignup.astro';
 
 // The product version, shown wherever the page states which release this is.
-const RANKUP_VERSION = '0.12.0';
+const RANKUP_VERSION = '0.12.1';
 
 // SWITCH DAY (KL.7), live from release day (deploy B, the day both stores have approved 0.11.0):
 // the pricing section shows two tiers, Every device and "only on one kind of device", with no
@@ -36,10 +36,12 @@ const RANKUP_SWITCH_DATE_TEXT = RANKUP_SWITCH_DATE
 // day, published (GitHub release v0.11.0, RankUpChess-Setup-0.11.0.exe) before
 // this deploy; 0.12.0 (build 37: the Skills Passport, Rook's warm-up, Class vs
 // Rook) on 2026-11-04, published (GitHub release v0.12.0) before this deploy,
-// first of the platforms.
+// first of the platforms; 0.12.1 (build 38: a way back from the Puzzle Maker,
+// Esc on more pages) on 2026-11-08, published (GitHub release v0.12.1) before
+// this deploy.
 // Set this to null to show "coming soon" on the Windows buttons if no
 // installer is live.
-const RANKUP_WINDOWS_VERSION: string | null = '0.12.0';
+const RANKUP_WINDOWS_VERSION: string | null = '0.12.1';
 const RANKUP_WINDOWS_DOWNLOAD = RANKUP_WINDOWS_VERSION
   ? `https://github.com/stillware-ltd/rankup-chess-releases/releases/download/v${RANKUP_WINDOWS_VERSION}/RankUpChess-Setup-${RANKUP_WINDOWS_VERSION}.exe`
   : null;
