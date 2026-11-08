@@ -1,168 +1,151 @@
 ---
 import Layout from '../../layouts/Layout.astro';
-import { E02_VIDEO_ID, E02_VIDEO_TITLE, GVC_PAGE, GVC_PDF, GVC_PDF_SIZE, GVC_ASSETS } from '../../data/grown-up-vs-child';
+import { HUB, SHEETS } from '../../data/rankup-puzzle-sheets';
 
-// The free printable from RankUp Chess video E02 (src/data/grown-up-vs-child.ts says where everything is built). The
-// download is a plain link: no email, form or account (Manifesto). Layout's click handler records it as
-// `printable_download` in Umami (cookieless), so nothing about the visitor is stored. The five diagrams are the
-// video's puzzles, drawn from the side to move, as the app shows them after the opponent's setup move.
+// A RankUp Chess series hub: its printable sheets, newest first (src/data/rankup-puzzle-sheets.ts says where
+// everything is built). Each download is a plain link: no email, form or account (Manifesto). Layout's click handler
+// records it as `printable_download` in Umami (cookieless), so nothing about the visitor is stored. Each sheet's
+// diagrams are its video's own positions, drawn as the sheet draws them.
 
-const PUZZLES = [
-  { n: 1, side: 'White', goal: 'Checkmate in 1', pack: 'Mate-in-1 Meadow', level: 1 },
-  { n: 2, side: 'White', goal: 'Checkmate in 2', pack: 'Back-Rank Bay', level: 1 },
-  { n: 3, side: 'Black', goal: 'Checkmate in 2', pack: 'Back-Rank Bay', level: 2 },
-  { n: 4, side: 'White', goal: 'Checkmate in 1', pack: 'Mate-in-1 Meadow', level: 2 },
-  { n: 5, side: 'Black', goal: 'Checkmate in 2', pack: 'Mate-in-2 Mountain', level: 3 },
-];
-
-const STEPS = [
-  { t: 'Print pages 1 and 2.', d: 'Keep page 2 face down: it has the answers.' },
-  { t: 'Race, or take turns.', d: 'Race on the same board, or take turns to go first. Whoever finds the answer first ticks their box on the sheet.' },
-  { t: 'Don’t help for a minute.', d: 'Give your child a full minute before you say anything, even if they look stuck.' },
-  { t: 'Stuck? Give the one hint.', d: '“Look at every check, not just the first one.” In each of the five puzzles, more than one move gives check and only one of them works.' },
-  { t: 'Read the answers together.', d: 'Page 2 says which check fails and why, and ends each answer with a one-line lesson.' },
-  { t: 'Then try page 3.', d: 'Ten more, easiest first. The answers are upside down at the bottom, so cover them with a hand or fold them under.' },
-];
-
-const faqItems = [
-  { q: 'Do I need to give an email to download it?', a: 'No. The PDF downloads straight away, with no email, no form and no account. This website uses cookieless analytics, so we count downloads, not people.' },
-  { q: 'What does “checkmate in 2” mean?', a: 'You make a move, the other side replies, and your second move is checkmate, whatever they reply. In every puzzle on the sheet, the first move that works is a check.' },
-  { q: 'Which side do we play?', a: 'The side shown above each board: “White to play” or “Black to play”. When it’s Black to play, the board is drawn from Black’s side, with Black at the bottom, as the app shows it.' },
-  { q: 'Will it print well in black and white?', a: 'Yes. The squares are light and mid grey and the pieces solid black and white, so it prints clearly on a home printer. The PDF is A4; on US Letter paper, choose “fit to page”.' },
-  { q: 'Can I share it with a chess club or a class?', a: 'Yes. It’s free to print and share at home, at a club or in class.' },
-];
+const [latest] = SHEETS;
 const faqSchema = {
   '@context': 'https://schema.org',
   '@type': 'FAQPage',
-  mainEntity: faqItems.map((f) => ({ '@type': 'Question', name: f.q, acceptedAnswer: { '@type': 'Answer', text: f.a } })),
+  mainEntity: HUB.faq.map((f) => ({ '@type': 'Question', name: f.q, acceptedAnswer: { '@type': 'Answer', text: f.a } })),
 };
-const videoStill = `${GVC_ASSETS}/video-1280.webp`;
-const videoSchema = E02_VIDEO_ID
-  ? {
-      '@context': 'https://schema.org',
-      '@type': 'VideoObject',
-      name: E02_VIDEO_TITLE,
-      description: 'Five chess puzzles from a kids’ chess app, from level 1 to level 3, each solved and explained for grown-ups.',
-      thumbnailUrl: `https://www.stillwareltd.com${videoStill}`,
-      uploadDate: '2026-11-07',
-      embedUrl: `https://www.youtube-nocookie.com/embed/${E02_VIDEO_ID}`,
-      publisher: { '@id': 'https://www.stillwareltd.com/#organization' },
-    }
-  : null;
+const videoSchemas = SHEETS.filter((s) => s.video?.id).map((s) => ({
+  '@context': 'https://schema.org',
+  '@type': 'VideoObject',
+  name: s.video.title,
+  description: s.video.description,
+  thumbnailUrl: `https://www.stillwareltd.com${s.assets}/video-1280.webp`,
+  uploadDate: s.video.uploadDate,
+  embedUrl: `https://www.youtube-nocookie.com/embed/${s.video.id}`,
+  publisher: { '@id': 'https://www.stillwareltd.com/#organization' },
+}));
 ---
 
 <Layout
-  title="Chess Puzzles for Kids PDF with Answers: Grown-up vs Child"
-  description="15 free chess puzzles for kids to print: checkmate in 1 or 2, a grown-up vs child score sheet, and every answer explained. No email, no sign-up."
-  ogImage={`${GVC_ASSETS}/share.png`}
+  title={HUB.title}
+  description={HUB.description}
+  ogImage={`${latest.assets}/share.png`}
   ogImageWidth={1200}
   ogImageHeight={630}
-  breadcrumbs={[{ name: 'RankUp Chess', href: '/rankupchess/' }, { name: 'Free chess puzzles for kids', href: GVC_PAGE }]}
+  breadcrumbs={[{ name: 'RankUp Chess', href: '/rankupchess/' }, { name: 'Free chess puzzles for kids', href: HUB.route }]}
 >
   <script type="application/ld+json" set:html={JSON.stringify(faqSchema)} />
-  {videoSchema && <script type="application/ld+json" set:html={JSON.stringify(videoSchema)} />}
+  {videoSchemas.map((v) => <script type="application/ld+json" set:html={JSON.stringify(v)} />)}
 
   <div class="pz-page">
     <header class="pz-hero">
       <div class="pz-wrap pz-hero-grid">
         <div class="pz-intro">
-          <p class="pz-kicker">Free printable &middot; no email, no account</p>
-          <h1>Free chess puzzles for kids: a printable PDF with answers</h1>
-          <p class="pz-answer">This free PDF has 15 chess puzzles for children to solve on paper, each a checkmate in one or two moves, from levels 1 to 3 of RankUp Chess&rsquo;s puzzle packs. Page 1 is a grown-up vs child race, page 2 explains every answer, and page 3 has ten more. No email or account needed.</p>
-          <a class="pz-btn" href={GVC_PDF} download>Download the free PDF</a>
-          <p class="pz-meta">A4, 3 pages, {GVC_PDF_SIZE}. Prints well in black and white.</p>
+          <p class="pz-kicker">Free printables &middot; no email, no account</p>
+          <h1>{HUB.h1}</h1>
+          <p class="pz-answer" set:html={HUB.answer} />
+          <a class="pz-btn" href={latest.pdf} download>{latest.button}</a>
+          <p class="pz-meta">Newest sheet: A4, {latest.pages} {latest.pages === 1 ? 'page' : 'pages'}, {latest.pdfSize}.{latest.pdfLetter && <> Also in <a href={latest.pdfLetter} download>US Letter</a> ({latest.pdfLetterSize}).</>} Prints well in black and white.</p>
+          {SHEETS.length > 1 && (
+            <nav class="pz-jump" aria-label="All sheets">
+              {SHEETS.map((s) => <a href={`#${s.id}`}>{s.short}</a>)}
+            </nav>
+          )}
         </div>
-        <div class="pz-boards" role="region" tabindex="0" aria-label="The five puzzles on page 1">
-          {PUZZLES.map((p) => (
+        <div class={`pz-boards${latest.boards.length === 4 ? ' pz-four' : ''}`} role="region" tabindex="0" aria-label={`The ${HUB.itemWord} on page 1 of the newest sheet, ${latest.short}`}>
+          {latest.boards.map((p) => (
             <figure>
-              <img src={`${GVC_ASSETS}/puzzle-${p.n}.svg`} width="429" height="428" alt={`Puzzle ${p.n}: chess diagram, ${p.side} to play, ${p.goal.toLowerCase()} (${p.pack}, level ${p.level})`} />
-              <figcaption><span class="pz-n">{p.n}</span><span>{p.side} to play<br /><small>{p.goal}</small></span></figcaption>
+              <img src={`${latest.assets}/puzzle-${p.n}.svg`} width="429" height="428" alt={p.alt} />
+              <figcaption><span class="pz-n">{p.n}</span><span>{p.lead}<br /><small>{p.note}</small></span></figcaption>
             </figure>
           ))}
         </div>
       </div>
     </header>
 
+    {SHEETS.map((s, i) => (
+      <section class={`pz-section pz-sheet${i % 2 ? '' : ' pz-tint'}`} id={s.id}>
+        <div class="pz-wrap pz-narrow">
+          <h2>{s.h2}</h2>
+          <p class="pz-lead" set:html={s.answer} />
+          {i > 0 && (
+            <div class={`pz-boards pz-boards-row${s.boards.length === 4 ? ' pz-four' : ''}`} role="region" tabindex="0" aria-label={`The ${HUB.itemWord} on page 1 of ${s.short}`}>
+              {s.boards.map((p) => (
+                <figure>
+                  <img src={`${s.assets}/puzzle-${p.n}.svg`} width="429" height="428" loading="lazy" alt={p.alt} />
+                  <figcaption><span class="pz-n">{p.n}</span><span>{p.lead}<br /><small>{p.note}</small></span></figcaption>
+                </figure>
+              ))}
+            </div>
+          )}
+          <h3>What&rsquo;s in the PDF?</h3>
+          <table class="pz-table">
+            <thead><tr><th scope="col">Page</th><th scope="col">What&rsquo;s on it</th></tr></thead>
+            <tbody>
+              {s.table.map(([page, what]) => (<tr><th scope="row">{page}</th><td set:html={what} /></tr>))}
+            </tbody>
+          </table>
+          <ul class="pz-facts">
+            {s.facts.map((f) => (<li set:html={f} />))}
+          </ul>
+          {s.hint && <p class="pz-hint"><b>The one hint for this sheet:</b> {s.hint}</p>}
+          <a class="pz-btn" href={s.pdf} download>{s.button}</a>
+          <p class="pz-meta">A4, {s.pages} {s.pages === 1 ? 'page' : 'pages'}, {s.pdfSize}.{s.pdfLetter && <> Also in <a href={s.pdfLetter} download>US Letter</a> ({s.pdfLetterSize}).</>}</p>
+
+          {s.video && <h3>{s.video.h3}</h3>}
+          {!s.video ? null : s.video.id ? (
+            <figure class="pz-video">
+              <button type="button" class="pz-play" data-video-id={s.video.id} data-place={s.id} aria-label={`Play the video ${s.video.title}`}>
+                <img src={`${s.assets}/video-1280.webp`} alt={`Thumbnail of the video ${s.video.title}`} width="1280" height="720" loading="lazy" />
+                <span class="pz-play-icon" aria-hidden="true"></span>
+              </button>
+            </figure>
+          ) : (
+            <div class="pz-video-soon">
+              <p><b>{s.video.soon}</b></p>
+              <p set:html={s.video.soonDetail} />
+            </div>
+          )}
+
+          <h3>{s.sourcesH3}</h3>
+          <Fragment set:html={s.sources.join('')} />
+          <p class="pz-checked">{s.checked}</p>
+        </div>
+      </section>
+    ))}
+
     <section class="pz-section">
       <div class="pz-wrap pz-narrow">
         <h2>How do you use it with your child?</h2>
         <ol class="pz-steps">
-          {STEPS.map((s) => (<li><b>{s.t}</b> {s.d}</li>))}
+          {HUB.steps.map((s) => (<li><b>{s.t}</b> {s.d}</li>))}
         </ol>
       </div>
     </section>
 
     <section class="pz-section pz-tint">
       <div class="pz-wrap pz-narrow">
-        <h2>What&rsquo;s in the PDF?</h2>
-        <table class="pz-table">
-          <thead><tr><th scope="col">Page</th><th scope="col">What&rsquo;s on it</th></tr></thead>
-          <tbody>
-            <tr><th scope="row">1. Grown-up vs Child</th><td>The five puzzles above, each with a tick box for who found it first and a line for the first move, and a score box.</td></tr>
-            <tr><th scope="row">2. Answers</th><td>Every solution in plain words and in chess notation, the check that fails, and a one-line lesson, with the final position drawn.</td></tr>
-            <tr><th scope="row">3. Ten more</th><td>Ten puzzles from levels 1 and 2 of the same packs, easiest first, with the answers upside down at the bottom.</td></tr>
-          </tbody>
-        </table>
-        <ul class="pz-facts">
-          <li>15 puzzles: 6 checkmates in one move and 9 in two.</li>
-          <li>From three of RankUp Chess&rsquo;s puzzle packs: Mate-in-1 Meadow, Back-Rank Bay and Mate-in-2 Mountain.</li>
-          <li>Each solution is the only first move that forces checkmate in the moves given.</li>
-        </ul>
-        <a class="pz-btn" href={GVC_PDF} download>Download the free PDF</a>
-      </div>
-    </section>
-
-    <section class="pz-section">
-      <div class="pz-wrap pz-narrow">
-        <h2>Watch the five puzzles explained</h2>
-        {E02_VIDEO_ID ? (
-          <figure class="pz-video">
-            <button type="button" class="pz-play" data-video-id={E02_VIDEO_ID} aria-label={`Play the video ${E02_VIDEO_TITLE}`}>
-              <img src={videoStill} alt={`Thumbnail of the video ${E02_VIDEO_TITLE}`} width="1280" height="720" loading="lazy" />
-              <span class="pz-play-icon" aria-hidden="true"></span>
-            </button>
-          </figure>
-        ) : (
-          <div class="pz-video-soon">
-            <p><b>The video comes out on Saturday 7 November 2026.</b></p>
-            <p>It solves the five puzzles on page 1 one by one, starting each time with the check that doesn&rsquo;t work.</p>
-          </div>
-        )}
-      </div>
-    </section>
-
-    <section class="pz-section pz-tint">
-      <div class="pz-wrap pz-narrow">
-        <h2>Where do the puzzles come from?</h2>
-        <p>Every puzzle is from the puzzle packs in <a href="/rankupchess/">RankUp Chess</a>, and all fifteen come from the Lichess open puzzle database (CC0). Each board is drawn as the app shows it, after the other side&rsquo;s first move. We checked every solution with a full search: in each puzzle, it is the only first move that forces checkmate in the number of moves given.</p>
-        <p>RankUp Chess is the offline chess app for children that we make. It&rsquo;s free to play, and the packs these puzzles came from are part of its one-time upgrade. Want more on paper? Our <a href="/tools/chess-vision-offline-puzzles/">50 printable chess puzzles</a> add forks, pins and other tactics.</p>
-      </div>
-    </section>
-
-    <section class="pz-section">
-      <div class="pz-wrap pz-narrow">
         <h2>Frequently asked questions</h2>
         <div class="pz-faq">
-          {faqItems.map((f) => (<div><h3>{f.q}</h3><p>{f.a}</p></div>))}
+          {HUB.faq.map((f) => (<div><h3>{f.q}</h3><p>{f.a}</p></div>))}
         </div>
-        <p class="pz-checked">Puzzles, answers and app facts checked 3 November 2026. Sources: the RankUp Chess puzzle packs; the Lichess open puzzle database (CC0).</p>
       </div>
     </section>
   </div>
 </Layout>
 
 <script>
-  const play = document.querySelector<HTMLButtonElement>('.pz-play');
-  play?.addEventListener('click', () => {
-    const id = play.dataset.videoId || '';
-    const frame = document.createElement('iframe');
-    frame.src = `https://www.youtube-nocookie.com/embed/${encodeURIComponent(id)}?autoplay=1&rel=0`;
-    frame.title = play.getAttribute('aria-label')?.replace(/^Play the video /, '') || 'Video';
-    frame.allow = 'autoplay; encrypted-media; picture-in-picture';
-    frame.allowFullscreen = true;
-    frame.className = 'pz-frame';
-    play.replaceWith(frame);
-    (window as any).stillTrack?.('video_play', { video_id: id, place: 'puzzles' });
+  document.querySelectorAll<HTMLButtonElement>('.pz-play').forEach((play) => {
+    play.addEventListener('click', () => {
+      const id = play.dataset.videoId || '';
+      const frame = document.createElement('iframe');
+      frame.src = `https://www.youtube-nocookie.com/embed/${encodeURIComponent(id)}?autoplay=1&rel=0`;
+      frame.title = play.getAttribute('aria-label')?.replace(/^Play the video /, '') || 'Video';
+      frame.allow = 'autoplay; encrypted-media; picture-in-picture';
+      frame.allowFullscreen = true;
+      frame.className = 'pz-frame';
+      play.replaceWith(frame);
+      (window as any).stillTrack?.('video_play', { video_id: id, place: `puzzles-${play.dataset.place || ''}` });
+    });
   });
 </script>
 
@@ -213,13 +196,18 @@ const videoSchema = E02_VIDEO_ID
   .pz-btn:focus-visible { outline: 3px solid #2563EB; outline-offset: 3px; }
   .pz-meta { font-size: 0.88rem; color: var(--ink-soft); margin-top: 0.6rem; }
 
+  .pz-jump { display: flex; flex-wrap: wrap; gap: 0.5rem 1rem; margin-top: 1rem; font-size: 0.92rem; }
+  .pz-jump a { color: #1D4ED8; font-weight: 700; }
+
   .pz-boards { display: grid; grid-template-columns: repeat(6, minmax(0, 1fr)); gap: 1rem 0.9rem; }
   .pz-boards figure { margin: 0; grid-column: span 2; }
   /* Three boards on the first row, two centred on the second. */
   .pz-boards figure:nth-child(4) { grid-column: 2 / span 2; }
+  .pz-boards.pz-four figure, .pz-boards.pz-four figure:nth-child(4) { grid-column: span 3; }  /* four boards: 2 x 2 */
   .pz-boards img { display: block; width: 100%; height: auto; }
   .pz-boards figcaption { display: flex; gap: 0.45rem; align-items: flex-start; margin-top: 0.35rem; font-size: 0.85rem; font-weight: 700; line-height: 1.25; }
   .pz-boards small { font-weight: 500; color: var(--ink-soft); font-size: 0.8rem; }
+  .pz-boards-row { margin: 0 0 1.5rem; }
   .pz-n {
     flex: none;
     display: inline-flex;
@@ -236,8 +224,11 @@ const videoSchema = E02_VIDEO_ID
   .pz-section { padding: 3.25rem 0; }
   .pz-tint { background: #F8FAFC; }
   .pz-section h2 { font-size: clamp(1.4rem, 3vw, 1.8rem); color: var(--ink); margin: 0 0 1.1rem; }
+  .pz-sheet h3 { font-size: 1.15rem; color: var(--ink); margin: 2rem 0 0.8rem; }
   .pz-section p { color: var(--color-text); line-height: 1.7; margin-bottom: 0.9rem; }
   .pz-section a:not(.pz-btn) { color: #1D4ED8; font-weight: 600; }
+  .pz-lead { font-size: 1.05rem; }
+  .pz-hint { border-left: 4px solid var(--amber); padding-left: 0.8rem; }
 
   .pz-steps { padding-left: 1.4rem; display: grid; gap: 0.7rem; color: var(--color-text); line-height: 1.6; }
   .pz-steps b { color: var(--ink); }
