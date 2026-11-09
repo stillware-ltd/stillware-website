@@ -31,7 +31,7 @@ const videoSchemas = SHEETS.filter((s) => s.video?.id).map((s) => ({
   ogImage={`${latest.assets}/share.png`}
   ogImageWidth={1200}
   ogImageHeight={630}
-  breadcrumbs={[{ name: 'RankUp Chess', href: '/rankupchess/' }, { name: 'Free chess puzzles for kids', href: HUB.route }]}
+  breadcrumbs={[{ name: 'RankUp Chess', href: '/rankupchess/' }, { name: HUB.crumb ?? 'Free chess puzzles for kids', href: HUB.route }]}
 >
   <script type="application/ld+json" set:html={JSON.stringify(faqSchema)} />
   {videoSchemas.map((v) => <script type="application/ld+json" set:html={JSON.stringify(v)} />)}
@@ -51,14 +51,16 @@ const videoSchemas = SHEETS.filter((s) => s.video?.id).map((s) => ({
             </nav>
           )}
         </div>
-        <div class={`pz-boards${latest.boards.length === 4 ? ' pz-four' : ''}`} role="region" tabindex="0" aria-label={`The ${HUB.itemWord} on page 1 of the newest sheet, ${latest.short}`}>
-          {latest.boards.map((p) => (
-            <figure>
-              <img src={`${latest.assets}/puzzle-${p.n}.svg`} width="429" height="428" alt={p.alt} />
-              <figcaption><span class="pz-n">{p.n}</span><span>{p.lead}<br /><small>{p.note}</small></span></figcaption>
-            </figure>
-          ))}
-        </div>
+        {latest.boards.length > 0 && (
+          <div class={`pz-boards${latest.boards.length === 4 ? ' pz-four' : ''}`} role="region" tabindex="0" aria-label={`The ${HUB.itemWord} ${HUB.boardsWhere ?? 'on page 1'} of the newest sheet, ${latest.short}`}>
+            {latest.boards.map((p) => (
+              <figure>
+                <img src={`${latest.assets}/puzzle-${p.n}.svg`} width="429" height="428" alt={p.alt} />
+                <figcaption><span class="pz-n">{p.n}</span><span>{p.lead}<br /><small>{p.note}</small></span></figcaption>
+              </figure>
+            ))}
+          </div>
+        )}
       </div>
     </header>
 
@@ -67,8 +69,8 @@ const videoSchemas = SHEETS.filter((s) => s.video?.id).map((s) => ({
         <div class="pz-wrap pz-narrow">
           <h2>{s.h2}</h2>
           <p class="pz-lead" set:html={s.answer} />
-          {i > 0 && (
-            <div class={`pz-boards pz-boards-row${s.boards.length === 4 ? ' pz-four' : ''}`} role="region" tabindex="0" aria-label={`The ${HUB.itemWord} on page 1 of ${s.short}`}>
+          {i > 0 && s.boards.length > 0 && (
+            <div class={`pz-boards pz-boards-row${s.boards.length === 4 ? ' pz-four' : ''}`} role="region" tabindex="0" aria-label={`The ${HUB.itemWord} ${HUB.boardsWhere ?? 'on page 1'} of ${s.short}`}>
               {s.boards.map((p) => (
                 <figure>
                   <img src={`${s.assets}/puzzle-${p.n}.svg`} width="429" height="428" loading="lazy" alt={p.alt} />
