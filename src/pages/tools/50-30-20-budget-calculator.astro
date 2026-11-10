@@ -27,6 +27,10 @@ const faqs = [
     a: 'On $3,000 a month take-home pay it is $1,500 for needs, $900 for wants and $600 for savings and extra debt repayment. On £2,400 a month it is £1,200, £720 and £480. The rule works the same in any currency, because it only uses percentages.',
   },
   {
+    q: 'How do I use the 50/30/20 rule if I am paid weekly or bi-weekly?',
+    a: 'Apply the three shares to each paycheck. On $2,000 every two weeks that is $1,000 for needs, $600 for wants and $400 for savings and extra debt. To compare with monthly bills, use the monthly average: a bi-weekly paycheck times 26 divided by 12, or a weekly one times 52 divided by 12. This calculator does both when you choose your pay period.',
+  },
+  {
     q: 'Are minimum debt payments needs or savings?',
     a: 'Needs. A minimum payment is something you have to pay, so it sits in the 50%. Anything you pay above the minimum counts toward the 20% for savings and extra debt repayment.',
   },
@@ -58,9 +62,9 @@ const companion = [
 
 <ToolLayout
   title="50/30/20 Budget Calculator: Free, No Sign-Up"
-  description="Free 50/30/20 rule calculator: enter your monthly after-tax income to get needs, wants and savings amounts. Custom splits. No sign-up."
+  description="Free 50/30/20 rule calculator: enter your weekly, bi-weekly or monthly after-tax income to get needs, wants and savings amounts. Custom splits. No sign-up."
   heroTitle="50/30/20 Budget Calculator"
-  heroTagline="Enter your monthly take-home pay. Get your needs, wants, and savings targets in one click — or set your own split."
+  heroTagline="Enter your take-home pay, weekly, bi-weekly or monthly. Get your needs, wants, and savings targets in one click — or set your own split."
   breadcrumbLabel="50/30/20 Budget Calculator"
   faqs={faqs}
   related={related}
@@ -79,7 +83,18 @@ const companion = [
     </div>
 
     <div class="form-group">
-      <label for="income">Monthly after-tax income</label>
+      <label for="period">How often are you paid?</label>
+      <select id="period">
+        <option value="monthly" selected>Monthly</option>
+        <option value="biweekly">Every two weeks (bi-weekly)</option>
+        <option value="semimonthly">Twice a month</option>
+        <option value="weekly">Weekly</option>
+        <option value="yearly">Yearly</option>
+      </select>
+    </div>
+
+    <div class="form-group">
+      <label for="income" id="income-label">Monthly after-tax income</label>
       <p class="field-hint">Your take-home pay, plus any regular side income.</p>
       <div class="input-prefix">
         <span class="prefix">$</span>
@@ -125,6 +140,15 @@ const companion = [
       <span class="result-value" id="r-save"></span>
       <span class="result-sub">Emergency fund, investing, overpaying debts beyond the minimums.</span>
     </div>
+    <div class="result-breakdown" id="monthly-equiv" style="display:none;">
+      <h3 id="monthly-equiv-title">As a monthly budget</h3>
+      <ul>
+        <li>Average take-home pay a month: <strong id="m-income"></strong></li>
+        <li>Needs: <strong id="m-needs"></strong></li>
+        <li>Wants: <strong id="m-wants"></strong></li>
+        <li>Savings and extra debt: <strong id="m-save"></strong></li>
+      </ul>
+    </div>
     <div class="result-breakdown">
       <h3>Per year, that savings rate is</h3>
       <ul>
@@ -156,6 +180,25 @@ const companion = [
         <tr><td>$4,000</td><td>$2,000</td><td>$1,200</td><td>$800</td><td>$9,600</td></tr>
       </tbody>
     </table>
+
+    <h2>How does the 50/30/20 rule work if you are paid weekly or bi-weekly?</h2>
+    <p>
+      <strong>Apply the same three shares to each paycheck: 50% for needs, 30% for wants and 20% for savings and extra debt. On $2,000 every two weeks that is $1,000, $600 and $400 per paycheck; on $600 a week it is $300, $180 and $120.</strong>
+      Choose your pay period in the calculator above and it also shows the monthly average, which is the figure to compare with rent and other monthly bills.
+    </p>
+    <table class="worked-table">
+      <thead><tr><th>Take-home pay</th><th>Needs (50%)</th><th>Wants (30%)</th><th>Savings and extra debt (20%)</th><th>Average a month</th><th>Saved in a year</th></tr></thead>
+      <tbody>
+        <tr><td>$600 a week</td><td>$300</td><td>$180</td><td>$120</td><td>$2,600</td><td>$6,240</td></tr>
+        <tr><td>$2,000 every two weeks</td><td>$1,000</td><td>$600</td><td>$400</td><td>$4,333.33</td><td>$10,400</td></tr>
+        <tr><td>£1,100 every two weeks</td><td>£550</td><td>£330</td><td>£220</td><td>£2,383.33</td><td>£5,720</td></tr>
+      </tbody>
+    </table>
+    <p>
+      A year has 52 weekly or 26 bi-weekly paydays, so the monthly average is the weekly figure times 52 divided by 12, or the
+      bi-weekly figure times 26 divided by 12. That is why two bi-weekly paychecks come to less than an average month: two months
+      of the year have a third payday. If you plan your month on two paychecks, those two extra ones can go straight to savings.
+    </p>
 
     <h2>When does the 50/30/20 rule not fit?</h2>
     <p>
@@ -242,6 +285,21 @@ const companion = [
     sym() + n.toLocaleString(undefined, { minimumFractionDigits: 2, maximumFractionDigits: 2 });
   const fmt0 = (n: number) => sym() + Math.round(n).toLocaleString();
 
+  // Pay period: the split is worked out on the pay as entered (per paycheck), and a monthly average is shown
+  // beside it, because rent and most bills are monthly. perYear is the number of paydays in a year.
+  const PERIODS: Record<string, { perYear: number; label: string; each: string }> = {
+    monthly: { perYear: 12, label: 'Monthly after-tax income', each: 'a month' },
+    biweekly: { perYear: 26, label: 'After-tax pay every two weeks', each: 'per paycheck' },
+    semimonthly: { perYear: 24, label: 'After-tax pay, each of two paydays a month', each: 'per paycheck' },
+    weekly: { perYear: 52, label: 'Weekly after-tax pay', each: 'a week' },
+    yearly: { perYear: 1, label: 'Yearly after-tax income', each: 'a year' },
+  };
+  const periodEl = document.getElementById('period') as HTMLSelectElement;
+  const period = () => PERIODS[periodEl.value] || PERIODS.monthly;
+  periodEl.addEventListener('change', () => {
+    document.getElementById('income-label')!.textContent = period().label;
+  });
+
   document.getElementById('split-form')!.addEventListener('submit', (e) => {
     e.preventDefault();
 
@@ -261,14 +319,28 @@ const companion = [
     const wants = (income * pw) / 100;
     const save = (income * ps) / 100;
 
-    document.getElementById('l-needs')!.textContent = `Needs (${pn}%)`;
-    document.getElementById('l-wants')!.textContent = `Wants (${pw}%)`;
-    document.getElementById('l-save')!.textContent = `Savings & extra debt (${ps}%)`;
+    const p = period();
+    document.getElementById('l-needs')!.textContent = `Needs (${pn}%) ${p.each}`;
+    document.getElementById('l-wants')!.textContent = `Wants (${pw}%) ${p.each}`;
+    document.getElementById('l-save')!.textContent = `Savings & extra debt (${ps}%) ${p.each}`;
     document.getElementById('r-needs')!.textContent = fmt(needs);
     document.getElementById('r-wants')!.textContent = fmt(wants);
     document.getElementById('r-save')!.textContent = fmt(save);
-    document.getElementById('r-save-year')!.textContent = fmt0(save * 12);
-    document.getElementById('r-save-five')!.textContent = fmt0(save * 60);
+    document.getElementById('r-save-year')!.textContent = fmt0(save * p.perYear);
+    document.getElementById('r-save-five')!.textContent = fmt0(save * p.perYear * 5);
+
+    // Monthly average, shown for every pay period except monthly.
+    const equiv = document.getElementById('monthly-equiv')!;
+    if (p.perYear === 12) {
+      equiv.style.display = 'none';
+    } else {
+      const k = p.perYear / 12;
+      document.getElementById('m-income')!.textContent = fmt(income * k);
+      document.getElementById('m-needs')!.textContent = fmt(needs * k);
+      document.getElementById('m-wants')!.textContent = fmt(wants * k);
+      document.getElementById('m-save')!.textContent = fmt(save * k);
+      equiv.style.display = 'block';
+    }
 
     const results = document.getElementById('results')!;
     results.style.display = 'block';
