@@ -180,12 +180,14 @@ const keyFacts = [
   { term: 'Subscription and ads', detail: 'No subscription, no renewal and no ads.' },
   { term: 'Offline and privacy', detail: '100% offline, local-first gameplay. No account, no chat rooms and no data harvesting: games and progress stay on the device.' },
   { term: 'Parents', detail: 'A grown-up gate (hold for 3 seconds, then answer a times-table question, or your own PIN) guards settings, profile resets and buying, while kids can launch the app and start a game in seconds. Grown-ups also get a weekly report and a daily time limit.' },
+  { term: 'Teacher Approved', detail: 'Teacher Approved on Google Play: teachers and specialists rated RankUp Chess appropriate for ages 6–8.' },
 ];
 
 // FAQ (visible below and as FAQPage JSON-LD). Every answer uses only what this page already states elsewhere.
 const faqItems = [
   { q: 'Does RankUp Chess work offline?', a: 'Yes. RankUp Chess is a 100% offline chess academy: playing, puzzles and lessons run on your device without an internet connection. Games and progress stay on the device, and it has no chat rooms. It goes online only to buy or restore the upgrade and, on a computer, to check its licence key.' },
   { q: 'Is RankUp Chess made for kids?', a: 'Yes. It is an offline chess academy designed for kids, from absolute beginner to tournament ready, with voiced lessons, friendly bots and a story for every piece. A grown-up gate (a 3-second hold and a times-table question, or your own PIN) guards settings, profile resets and buying, while kids can launch the app and jump into a game in seconds.' },
+  { q: 'Is RankUp Chess Teacher Approved?', a: 'Yes, on Google Play. In Google Play’s Teacher Approved program, teachers and specialists rated RankUp Chess appropriate for ages 6–8, with notes such as “Fun & engaging”, “Sparks curiosity” and “Critical thinking”. The badge belongs to Google Play, so it shows on the Android listing.' },
   { q: 'Is RankUp Chess free to play?', a: 'Yes. Playing chess is free forever, with no trial clock and no lockout, on every platform. The free lands teach every rule of chess, and the free game includes five bot friends, Pass & Play with every clock, 3 Daily Challenges every day, one full game review a week and four board worlds, Sing-Along among them. Progress, achievements, settings and parental controls are always free.' },
   { q: 'Is there a subscription, and what does the one-time payment unlock?', a: 'There is no subscription and no renewal. One optional one-time payment unlocks the rest of the academy: all 9 lands, more than 30,000 puzzles, all 12 bot friends up to Level 10, unlimited game review and the Opening Explorer, with all v1.x updates included. You can buy it for every device your family owns, or only for the kind of device you use. Either way you pay once.' },
   { q: 'Does RankUp Chess have ads or collect my child\'s data?', a: 'No ads, and no data harvesting. RankUp Chess has no account, no chat rooms and no analytics, and your child\'s games and progress stay on the device. The only data that leaves it is what a purchase needs, as our privacy policy explains.' },
@@ -249,11 +251,14 @@ const faqSchema = {
         <div class="ru-hill" aria-hidden="true"></div>
     </header>
 
-    <!-- Safety facts, where proof would usually go (rule W-L3: true facts, never invented proof) -->
-    <section class="ru-trust-band" aria-label="Safe for kids">
+    <!-- Safety facts, where proof would usually go (rule W-L3: true facts, never invented proof). The Teacher Approved line
+         is real proof: Play Console, Approved, last reviewed 9 Nov 2026. Its age and notes are Google's words from the
+         listing (ages 6-8 only, not 9-12). Google reviews every new Play release again: if the status changes, change this line. -->
+    <section class="ru-trust-band" aria-label="Safe for kids, and Teacher Approved on Google Play">
         <ul class="ru-trust">
             {TRUST.map((t) => <li><span class="ru-tick" aria-hidden="true">&#10003;</span>{t}</li>)}
         </ul>
+        <p class="ru-trust-proof"><strong>Teacher Approved on Google Play.</strong> Teachers and specialists rated RankUp Chess appropriate for ages 6&ndash;8, with notes such as &ldquo;Fun &amp; engaging&rdquo;, &ldquo;Sparks curiosity&rdquo; and &ldquo;Critical thinking&rdquo;. <a href={RANKUP_PLAY_STORE_URL} target="_blank" rel="noopener">See it on Google Play</a></p>
     </section>
 
     <!-- The song's pieces, and the song itself (rules W-L1 and W-L5) -->
@@ -1028,6 +1033,34 @@ const faqSchema = {
         box-shadow: 0 3px 0 rgba(46, 37, 71, 0.12);
     }
 
+    /* A white card with ink text, like the pills: white text on the band's green would be about 2.4:1 contrast. */
+    .ru-trust-proof {
+        box-sizing: border-box;
+        margin: 0.9rem auto 0;
+        width: min(760px, 100% - 32px);
+        padding: 0.75rem 1.1rem;
+        text-align: center;
+        color: var(--ru-ink);
+        background: #ffffff;
+        border-radius: 18px;
+        box-shadow: 0 3px 0 rgba(46, 37, 71, 0.12);
+        font-size: 1rem;
+        line-height: 1.5;
+    }
+
+    .ru-trust-proof strong {
+        font-family: var(--ru-round);
+        font-weight: 800;
+    }
+
+    .ru-trust-proof a {
+        color: var(--ru-ink);
+        font-weight: 700;
+        text-decoration: underline;
+        text-underline-offset: 3px;
+        white-space: nowrap;
+    }
+
     .ru-tick {
         display: inline-grid;
         place-items: center;
@@ -1632,6 +1665,7 @@ const faqSchema = {
         .ru-lead { font-size: 1.02rem; margin-bottom: 1.2rem; }
         .ru-trust { gap: 0.45rem; }
         .ru-trust li { font-size: 0.8rem; padding: 0.4rem 0.75rem; gap: 0.35rem; }
+        .ru-trust-proof { font-size: 0.9rem; margin-top: 0.8rem; }
         .ru-tick { width: 1.05rem; height: 1.05rem; font-size: 0.68rem; }
     }
 
