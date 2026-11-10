@@ -21,6 +21,9 @@ const blog = defineCollection({
     // Only products that ship (or are scheduled) plus "general". An unknown value fails the build, which is the point:
     // the 28 Aug 2026 cleanup removed nine posts whose cluster mapped to no product. Add a product here when it is real.
     appCluster: z.enum(['zeroed', 'rankup-chess', 'held', 'rankup-maths', 'general']).optional(),
+    // Cross-promo for a post whose readers are a product's buyers although the post is not about it (appCluster stays
+    // "general"): parents' guides show the RankUp Chess block, worded as "also from us", never as the answer to the query.
+    promo: z.enum(['rankup-chess']).optional(),
     primaryKeyword: z.string().optional(),
     qualityScore: z.number().optional(),
     heroImage: z.string().optional(),

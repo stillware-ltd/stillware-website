@@ -6,6 +6,7 @@ description: "Stop paying monthly for chore apps. Seven gamified chore trackers 
 author: "Stillware Editorial"
 pillar: "comparison"
 appCluster: "general"
+promo: "rankup-chess"
 primaryKeyword: "gamified chore tracker for kids no subscription"
 wordCount: 2727
 tags: ["Kids & Tech", "Family", "Guide", "Offline-First", "Privacy"]

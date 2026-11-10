@@ -6,6 +6,7 @@ description: "Turn screen time into skill building: creative apps for kids that 
 author: "Stillware Editorial"
 pillar: "lifestyle"
 appCluster: "general"
+promo: "rankup-chess"
 primaryKeyword: "screen time alternatives for kids creative apps"
 wordCount: 2248
 tags: ["Kids & Tech", "Education", "Guide", "Offline-First", "Privacy"]

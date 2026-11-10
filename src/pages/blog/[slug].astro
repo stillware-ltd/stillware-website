@@ -78,6 +78,8 @@ const shareUrlEncoded = encodeURIComponent(shareUrl);
 const appCluster = post.data.appCluster || '';
 const isZeroed = appCluster === 'zeroed' || post.data.tags?.some((t: string) => ['Personal Finance', 'Anti-SaaS', 'Comparison'].includes(t));
 const isChess = appCluster === 'rankupchess' || appCluster === 'rankup-chess' || post.data.tags?.some((t: string) => t.toLowerCase().includes('chess'));
+// Parents' guides that are not about chess (frontmatter `promo: rankup-chess`): same store links, honest "also from us" wording.
+const isChessPromo = !isChess && !isZeroed && post.data.promo === 'rankup-chess';
 
 // Companion video (youtube-article skill): the post embeds the long video click-to-play and declares it as VideoObject.
 const videoId = post.data.video;
@@ -250,6 +252,16 @@ const faqSchema = faqItems.length >= 2 ? {
                 </div>
             </div>
         )}
+        {isChessPromo && (
+            <div class="article-early-cta" data-cta-slot="article-early" hidden>
+                <p>Also from us, for kids' screen time: <strong>RankUp Chess</strong>, an offline chess academy. Free to play, no ads, no subscription.</p>
+                <div class="early-cta-links">
+                    <a href="https://apps.apple.com/app/id6806675796" target="_blank" rel="noopener">App Store</a>
+                    <a href="https://play.google.com/store/apps/details?id=com.stillware.rankup_chess" target="_blank" rel="noopener">Google Play</a>
+                    <a href="/rankupchess/" class="early-cta-plain">What it is</a>
+                </div>
+            </div>
+        )}
 
         <!-- Product CTA -->
         {isZeroed && (
@@ -265,7 +277,7 @@ const faqSchema = faqItems.length >= 2 ? {
                 </div>
             </div>
         )}
-        {isChess && (
+        {(isChess || isChessPromo) && (
             <div class="product-cta-banner chess-cta-banner">
                 <div class="product-cta-inner">
                     <h3>Try RankUp Chess — The Offline Chess Academy for Kids</h3>
