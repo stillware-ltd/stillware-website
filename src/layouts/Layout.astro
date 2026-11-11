@@ -211,7 +211,7 @@ const breadcrumbSchema = breadcrumbs.length
                 return;
             }
             // Free printables (31 Oct 2026): which file, and from which page.
-            var printable = href.match(/\/printables\/([a-z0-9-]+)\.pdf(\?|#|$)/);
+            var printable = href.match(/\/printables\/([a-z0-9-]+)\.(?:pdf|xlsx)(\?|#|$)/);
             if (printable) {
                 window.stillTrack('printable_download', { file: printable[1], page: location.pathname });
                 return;

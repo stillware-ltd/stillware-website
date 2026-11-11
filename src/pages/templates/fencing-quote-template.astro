@@ -1,0 +1,138 @@
+---
+import ToolLayout from '../../layouts/ToolLayout.astro';
+import TradesWaitlist from '../../components/TradesWaitlist.astro';
+
+// Research note: Marketing/Business/research/pages/trades-tools-2026-11-11.md (rules T2–T6).
+// Files built by Marketing/Business/Assets/templates/build_templates.py; quantity rules traced in
+// Projects/Quote_to_Cash/docs/defaults-sources.md rows 30–37.
+
+const faqs = [
+  {
+    q: 'Is the fencing quote template free?',
+    a: 'Yes. The Excel file and the PDF are free to download, with no sign-up and no email needed. You can change them and send them as your own.',
+  },
+  {
+    q: 'How many posts do I need for a fence?',
+    a: 'One more than the number of bays, plus one for each corner. Divide the run by the bay width and round up to get the bays. A 12 m closeboard run at 2.4 m bays is 5 bays and 6 posts. Fence panels are 1.83 m wide, so the same run in panels is 7 bays and 8 posts.',
+  },
+  {
+    q: 'How long should fence posts be?',
+    a: 'The height of the fence plus at least 600 mm in the ground, rounded up to a length you can buy. AVS Fencing gives a 2.4 m post for a 1.8 m fence. Jacksons Fencing supplies a 2.7 m post for its 1.8 m featherboard fence.',
+  },
+  {
+    q: 'How many feather-edge boards do I need per metre?',
+    a: 'AVS Fencing gives 13 boards per metre for 100 mm boards and 10 per metre for 125 mm boards. The template divides the run by the board width less a 25 mm lap and adds 5% for splits.',
+  },
+  {
+    q: 'How many rails does a closeboard fence need?',
+    a: 'Two per bay for a fence up to 1.2 m high and three for anything taller. Jacksons Fencing specifies two rails for its 1.2 m fence and three for its 1.5 m and 1.8 m fences.',
+  },
+  {
+    q: 'Does the template add VAT?',
+    a: 'Only if you tell it to. Set VAT-registered to Yes on the Fence sheet and the quote adds VAT at 20% on its own line. Leave it at No and the quote shows no VAT.',
+  },
+];
+---
+
+<ToolLayout
+  title="Fencing Quote Template: Free Excel and PDF (UK)"
+  description="Free UK fencing quote template in Excel and PDF. Type the run and height: it counts posts, rails, boards and post mix, prices them, and fills in the quote."
+  heroTitle="Fencing Quote Template"
+  heroTagline="A free fencing quote template for the UK, in Excel and PDF. Type the length and height of the run and it counts the posts, rails, boards and post mix, then fills in the quote."
+  breadcrumbLabel="Fencing Quote Template"
+  section={{ name: 'Templates', href: '/templates/' }}
+  webApp={false}
+  faqs={faqs}
+>
+  <div class="dl-card">
+    <h2>Download the fencing quote template</h2>
+    <p>Free. No sign-up and no email needed.</p>
+    <ul>
+      <li><strong>Excel workbook:</strong> a fence calculator, a costing table and a Quote sheet to send</li>
+      <li><strong>PDF:</strong> a blank A4 quote with a measure-up box and the counting rules printed on it</li>
+      <li>Closeboard or panel fencing, in metres and pounds, with UK VAT at 20% when you switch it on</li>
+    </ul>
+    <div class="dl-buttons">
+      <a href="/printables/fencing-quote-template.xlsx" class="btn-primary" download>Download the Excel template</a>
+      <a href="/printables/fencing-quote-template-a4.pdf" class="dl-second" download>Blank PDF to print (A4)</a>
+    </div>
+    <p class="dl-small">Excel file 14 KB, PDF 4 KB. Opens in Excel, Google Sheets, LibreOffice and Numbers.</p>
+  </div>
+
+  <Fragment slot="article">
+    <h2>What is the fencing quote template?</h2>
+    <p>
+      It is a free Excel workbook and a printable PDF for quoting fencing work in the UK. You type the length of the run, the
+      height and whether it is closeboard or panels. The workbook counts the bays, posts, post mix, rails, boards and gravel
+      boards, prices them with your own costs and markup, and fills in a quote ready to send.
+    </p>
+
+    <h2>How does the template count posts, rails and boards?</h2>
+    <table class="worked-table">
+      <thead><tr><th>Item</th><th>Rule</th><th>Source</th></tr></thead>
+      <tbody>
+        <tr><td>Bays</td><td>Run ÷ bay width, rounded up. Panels are 1.83 m; closeboard is 2.4 m unless you change it, and never more than 3 m</td><td><a href="https://www.jacksons-fencing.co.uk/fence-panel-heights-and-widths" rel="noopener">Jacksons Fencing</a> (panel width); <a href="https://www.avsfencing.co.uk/blog/how-to-erect-closeboard-fencing" rel="noopener">AVS Fencing</a> (3 m limit)</td></tr>
+        <tr><td>Posts</td><td>Bays + 1, plus 1 for each corner</td><td>Martin Cashmore Fencing: a post at each end of every bay</td></tr>
+        <tr><td>Post length</td><td>Fence height + 600 mm in the ground, rounded up to a stock length</td><td>AVS Fencing</td></tr>
+        <tr><td>Post mix</td><td>2 × 20 kg bags a post (change it if you use less)</td><td><a href="https://martincashmore.co.uk/how-to-install-traditional-closeboard/" rel="noopener">Martin Cashmore Fencing</a>: 1.5 to 2 bags a post</td></tr>
+        <tr><td>Arris rails</td><td>2 a bay up to 1.2 m high, 3 a bay above that</td><td><a href="https://www.jacksons-fencing.co.uk/fencing/traditional-fencing/featherboard" rel="noopener">Jacksons Fencing</a></td></tr>
+        <tr><td>Feather-edge boards</td><td>Run ÷ (board width − 25 mm lap), plus 5%</td><td>AVS Fencing: 13 a metre at 100 mm, 10 at 125 mm</td></tr>
+        <tr><td>Gravel boards</td><td>1 a bay; the boards stand 150 mm shorter on top of it</td><td>Jacksons Fencing</td></tr>
+      </tbody>
+    </table>
+    <p class="checked-line">Sources checked 11 November 2026. A slope, a corner or a short last bay changes the count, so check it against the site before you order.</p>
+
+    <h2>What does a worked example look like?</h2>
+    <p>A 12 m closeboard fence, 1.8 m high, on 2.4 m bays with 125 mm boards and gravel boards. The unit costs are round illustrations, not quotes.</p>
+    <table class="worked-table">
+      <thead><tr><th>Item</th><th>Quantity</th><th>Cost at the example prices</th></tr></thead>
+      <tbody>
+        <tr><td>Posts, at least 2.4 m long</td><td>6</td><td>£108.00</td></tr>
+        <tr><td>Post mix, 20 kg</td><td>12 bags</td><td>£84.00</td></tr>
+        <tr><td>Arris rails</td><td>15</td><td>£135.00</td></tr>
+        <tr><td>Feather-edge boards, 1.65 m</td><td>126</td><td>£201.60</td></tr>
+        <tr><td>Gravel boards</td><td>5</td><td>£40.00</td></tr>
+        <tr><td>Fixings, capping and sundries</td><td>Allowance</td><td>£40.00</td></tr>
+        <tr><td>Labour</td><td>4 person-days at £200</td><td>£800.00</td></tr>
+        <tr><td>Taking down the old fence and tipping it</td><td>12 m and one tip charge</td><td>£216.00</td></tr>
+        <tr><td><strong>Cost</strong></td><td></td><td><strong>£1,624.60</strong></td></tr>
+        <tr><td><strong>Price at 20% markup</strong></td><td>Margin 16.7%</td><td><strong>£1,949.52</strong></td></tr>
+      </tbody>
+    </table>
+
+    <h2>How do you fill it in?</h2>
+    <ol>
+      <li><strong>Type the run</strong> on the Fence sheet: length, height, closeboard or panel, and whether there are gravel boards.</li>
+      <li><strong>Check the counts</strong> under "What to order" against the site.</li>
+      <li><strong>Type your costs</strong> in the costing table, with your labour days and your markup.</li>
+      <li><strong>Fill in the Quote sheet:</strong> your details, the client and the site. The descriptions and prices are written for you.</li>
+      <li><strong>Print or save the Quote sheet as a PDF</strong> and send it. Keep the Fence sheet to yourself.</li>
+    </ol>
+
+    <h2>What should a fencing quote include?</h2>
+    <p>
+      Citizens Advice says a quote should include a fixed total price, a breakdown of the work and materials, how long the price
+      is valid for, whether it includes VAT, and when the price can go up. The Quote sheet has a place for each: the total, a
+      line for the fence, the old fence and any gates, a valid-until date 30 days ahead, a VAT line, and a box for what the
+      price assumes, such as posts being dug to 600 mm without meeting rock or roots.
+    </p>
+    <p class="checked-line">
+      Source: <a href="https://www.citizensadvice.org.uk/consumer/getting-home-improvements-done/before-you-get-building-work-done/" rel="noopener">Citizens Advice, "Before you get work done on your home"</a>, checked 11 November 2026.
+    </p>
+
+    <h2>What does the template not do?</h2>
+    <ul>
+      <li>It counts one straight run at a time. For a second run, save a copy.</li>
+      <li>It does not allow for slopes, stepped panels or concrete posts with slotted panels beyond the bay count.</li>
+      <li>It is not legal advice. The wording about what the price covers is an example to change, not a contract.</li>
+    </ul>
+    <p>
+      Quoting other garden work? See the <a href="/templates/landscaping-quote-template/">landscaping quote template</a> and the
+      <a href="/tools/patio-cost-calculator/">patio cost calculator</a>.
+    </p>
+  </Fragment>
+
+  <Fragment slot="cta">
+    <TradesWaitlist placement="template-fencing-quote" />
+  </Fragment>
+</ToolLayout>

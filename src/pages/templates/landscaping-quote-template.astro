@@ -1,0 +1,131 @@
+---
+import ToolLayout from '../../layouts/ToolLayout.astro';
+import TradesWaitlist from '../../components/TradesWaitlist.astro';
+
+// Research note: Marketing/Business/research/pages/trades-tools-2026-11-11.md (rules T2–T5).
+// Files built by Marketing/Business/Assets/templates/build_templates.py.
+
+const faqs = [
+  {
+    q: 'Is the landscaping quote template free?',
+    a: 'Yes. The Excel file and the PDF are free to download, with no sign-up and no email needed. You can change them, put your own name on them and send them as your own.',
+  },
+  {
+    q: 'What is the difference between a quote and an estimate?',
+    a: 'Citizens Advice puts it this way: a quote is a fixed price, so the customer knows what they are getting and what it will cost, and an estimate is a rough guess, so they might end up paying more. This template is headed Quotation. If you can only give a rough figure, change the heading to Estimate and say so.',
+  },
+  {
+    q: 'Does the template add VAT?',
+    a: 'Only if you tell it to. On the Costing sheet, set VAT-registered to Yes and the quote adds VAT at 20% on its own line. Leave it at No and the quote shows no VAT. Citizens Advice says a quote should state whether the price includes VAT.',
+  },
+  {
+    q: 'Can I use it in Google Sheets or on a phone?',
+    a: 'Yes. The file is a standard .xlsx workbook with ordinary formulas, so it opens in Excel, Google Sheets, LibreOffice and Numbers. The drop-down list for the part of the job works in Excel and Google Sheets.',
+  },
+  {
+    q: 'How do I work out the price to put on the quote?',
+    a: 'List what each part of the job needs on the Costing sheet, with what it costs you, and set your markup. The sheet multiplies it out and carries the price for each part onto the quote. For a patio, the patio cost calculator works out the quantities first.',
+  },
+  {
+    q: 'What is the difference between markup and margin?',
+    a: 'Markup is profit as a percentage of your cost. Margin is profit as a percentage of the price. A 20% markup gives a 16.7% margin. The Costing sheet takes a markup and shows the margin beside it.',
+  },
+];
+---
+
+<ToolLayout
+  title="Landscaping Quote Template: Free Excel and PDF (UK)"
+  description="Free UK landscaping quote template in Excel and PDF. Cost each part of the job, set your markup, and the quote fills in the prices, VAT and payment stages."
+  heroTitle="Landscaping Quote Template"
+  heroTagline="A free quote template for UK landscapers, in Excel and PDF. Cost the job on one sheet, and the quote on the next sheet fills in the prices, VAT and payment stages."
+  breadcrumbLabel="Landscaping Quote Template"
+  section={{ name: 'Templates', href: '/templates/' }}
+  webApp={false}
+  faqs={faqs}
+>
+  <div class="dl-card">
+    <h2>Download the landscaping quote template</h2>
+    <p>Free. No sign-up and no email needed.</p>
+    <ul>
+      <li><strong>Excel workbook:</strong> a Quote sheet to send and a private Costing sheet that prices it</li>
+      <li><strong>PDF:</strong> a blank A4 quote to print and fill in by hand</li>
+      <li>Pounds, UK VAT at 20% when you switch it on, deposit and stage payments</li>
+    </ul>
+    <div class="dl-buttons">
+      <a href="/printables/landscaping-quote-template.xlsx" class="btn-primary" download>Download the Excel template</a>
+      <a href="/printables/landscaping-quote-template-a4.pdf" class="dl-second" download>Blank PDF to print (A4)</a>
+    </div>
+    <p class="dl-small">Excel file 14 KB, PDF 3 KB. Opens in Excel, Google Sheets, LibreOffice and Numbers.</p>
+  </div>
+
+  <Fragment slot="article">
+    <h2>What is the landscaping quote template?</h2>
+    <p>
+      It is a free Excel workbook and a printable PDF for quoting landscaping work in the UK. You list what each part of the
+      job costs you on a private Costing sheet, set your markup, and the Quote sheet fills in a price for each part, the VAT
+      if you are registered, and a deposit, stage payment and balance that always add up to the total.
+    </p>
+
+    <h2>What is in the template?</h2>
+    <table class="worked-table">
+      <thead><tr><th>Sheet</th><th>What it does</th><th>Who sees it</th></tr></thead>
+      <tbody>
+        <tr><td>Read me</td><td>Six lines on how to use the workbook</td><td>You</td></tr>
+        <tr><td>Quote</td><td>Your details, the client, the job, a price for up to five parts of the job, VAT, total, payment stages, what the price covers, and a place to sign</td><td>Your customer</td></tr>
+        <tr><td>Costing</td><td>Thirty lines for materials, labour, plant hire and waste, with your cost, your markup, the price, the profit and the margin</td><td>You only</td></tr>
+      </tbody>
+    </table>
+    <p>The example in the file is a 20 m² sandstone patio and a planting bed. Type over it with your own job.</p>
+
+    <h2>How do you fill it in?</h2>
+    <ol>
+      <li><strong>Name the parts of the job</strong> in the first column of the Quote sheet, for example Back patio and Planting bed.</li>
+      <li><strong>Cost each part</strong> on the Costing sheet. Pick the part from the list, then type the item, the quantity and what it costs you.</li>
+      <li><strong>Set your markup</strong> at the top of the Costing sheet, and say whether you are VAT-registered.</li>
+      <li><strong>Write what you will do</strong> for each part on the Quote sheet. The price beside it fills in by itself.</li>
+      <li><strong>Print or save the Quote sheet as a PDF</strong> and send it. Keep the Costing sheet to yourself.</li>
+    </ol>
+    <p>
+      For a patio, the <a href="/tools/patio-cost-calculator/">patio cost calculator</a> works out the sub-base, sand, cement, paving and
+      skips to put on the Costing sheet. For a fence run, use the <a href="/templates/fencing-quote-template/">fencing quote template</a>,
+      which counts the posts, rails and boards for you.
+    </p>
+
+    <h2>What should a landscaping quote include?</h2>
+    <p>Citizens Advice tells homeowners what to look for in a quote. The template has a place for each point.</p>
+    <table class="worked-table">
+      <thead><tr><th>Citizens Advice says a quote should include</th><th>Where it is on the template</th></tr></thead>
+      <tbody>
+        <tr><td>A fixed total price, not a daily rate</td><td>Total to pay</td></tr>
+        <tr><td>A breakdown of all the work to be done and the materials needed</td><td>"What we will do", one line for each part of the job</td></tr>
+        <tr><td>Separate costs for each material and part of the work</td><td>A price beside each part of the job</td></tr>
+        <tr><td>How long the price is valid for</td><td>Valid until, set to 30 days after the date</td></tr>
+        <tr><td>If the price includes VAT</td><td>The VAT line, which says so either way</td></tr>
+        <tr><td>When the price can go up</td><td>"What this price covers, and what it does not"</td></tr>
+      </tbody>
+    </table>
+    <p class="checked-line">
+      Source: <a href="https://www.citizensadvice.org.uk/consumer/getting-home-improvements-done/before-you-get-building-work-done/" rel="noopener">Citizens Advice, "Before you get work done on your home"</a>, checked 11 November 2026.
+    </p>
+
+    <h2>Is a quote different from an estimate?</h2>
+    <p>
+      Yes. In Citizens Advice's words, a quote is a fixed price and an estimate is a rough guess. It also says a trader cannot
+      charge more than the quote unless the customer asks for extra work, agrees to pay for extra work the trader tells them
+      about, or the trader made a genuine mistake in writing down or working out the price. That is why the template asks you
+      to write down what the price assumes about the ground and the access.
+    </p>
+
+    <h2>What does the template not do?</h2>
+    <ul>
+      <li>It does not work out quantities from measurements. You type the quantities in.</li>
+      <li>It does not make invoices, record payments or keep a list of clients.</li>
+      <li>It is not legal advice. The wording about what the price covers is an example to change, not a contract.</li>
+    </ul>
+    <p class="checked-line">Template and page checked 11 November 2026. The prices in the example are round illustrations, not quotes.</p>
+  </Fragment>
+
+  <Fragment slot="cta">
+    <TradesWaitlist placement="template-landscaping-quote" />
+  </Fragment>
+</ToolLayout>

@@ -105,6 +105,34 @@ const gatedTools: { title: string; slug: string; href?: string; description: str
     tag: 'Printable PDF',
   },
 ];
+
+// Trades pages (11 Nov 2026): a calculator under /tools/ and two quote templates under /templates/.
+const tradesTools = [
+  {
+    title: 'Patio Cost Calculator',
+    href: '/tools/patio-cost-calculator/',
+    description: 'Sub-base, sand, cement, paving and skips for a patio, with the working shown, then the cost and the price from your own figures.',
+    icon: '&#129521;',
+    tag: 'Calculator',
+    cta: 'Use Now',
+  },
+  {
+    title: 'Landscaping Quote Template',
+    href: '/templates/landscaping-quote-template/',
+    description: 'A free Excel and PDF quote for UK landscapers: cost each part of the job, and the quote fills in prices, VAT and payment stages.',
+    icon: '&#127793;',
+    tag: 'Excel + PDF',
+    cta: 'Get the Template',
+  },
+  {
+    title: 'Fencing Quote Template',
+    href: '/templates/fencing-quote-template/',
+    description: 'Type the run and the height: it counts posts, rails, boards and post mix, prices them, and writes the quote.',
+    icon: '&#128679;',
+    tag: 'Excel + PDF',
+    cta: 'Get the Template',
+  },
+];
 ---
 
 <Layout
@@ -154,6 +182,28 @@ const gatedTools: { title: string; slug: string; href?: string; description: str
             <h3>{tool.title}</h3>
             <p>{tool.description}</p>
             <span class="tool-cta">Get Free PDF &rarr;</span>
+          </a>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <hr class="section-divider" />
+
+  <section class="tools-section">
+    <div class="container">
+      <div class="section-header">
+        <h2>For Landscapers and Fencers</h2>
+        <p class="section-subtitle">Free to use and to download. No email. No sign-up.</p>
+      </div>
+      <div class="tools-grid three-col">
+        {tradesTools.map(tool => (
+          <a href={tool.href} class="tool-card reveal">
+            <span class="tool-tag">{tool.tag}</span>
+            <div class="tool-icon" set:html={tool.icon} />
+            <h3>{tool.title}</h3>
+            <p>{tool.description}</p>
+            <span class="tool-cta">{tool.cta} &rarr;</span>
           </a>
         ))}
       </div>

@@ -27,6 +27,10 @@ interface Props {
   ctaLabel?: string;
   /** schema.org applicationCategory for the WebApplication markup. */
   appCategory?: string;
+  /** The hub this page sits under: breadcrumb name and link. Tools by default; the quote templates pass Templates. */
+  section?: { name: string; href: string };
+  /** False for a page that is a download, not a calculator: no WebApplication markup. */
+  webApp?: boolean;
 }
 
 const {
@@ -42,6 +46,8 @@ const {
   ctaText = 'Zeroed is a zero-based budgeting app you buy once and own forever. Private, offline, no account — and no subscription eating the money you just calculated.',
   ctaLabel = 'Try Zeroed Free for 34 Days',
   appCategory = 'FinanceApplication',
+  section = { name: 'Tools', href: '/tools/' },
+  webApp = true,
 } = Astro.props;
 
 // Pages pass a short title; the brand is appended only when the result still fits in a search listing.
@@ -78,17 +84,17 @@ const faqSchema = faqs.length
   title={pageTitle}
   description={description}
   breadcrumbs={[
-    { name: 'Tools', href: '/tools/' },
+    { name: section.name, href: section.href },
     { name: breadcrumbLabel, href: Astro.url.pathname },
   ]}
 >
-  <script type="application/ld+json" set:html={JSON.stringify(appSchema)} />
+  {webApp && <script type="application/ld+json" set:html={JSON.stringify(appSchema)} />}
   {faqSchema && <script type="application/ld+json" set:html={JSON.stringify(faqSchema)} />}
 
   <header class="tool-hero">
     <div class="container">
       <nav class="breadcrumb" aria-label="Breadcrumb">
-        <a href="/tools/">Tools</a> <span>/</span> <span>{breadcrumbLabel}</span>
+        <a href={section.href}>{section.name}</a> <span>/</span> <span>{breadcrumbLabel}</span>
       </nav>
       <h1>{heroTitle}</h1>
       <p>{heroTagline}</p>
@@ -129,6 +135,10 @@ const faqSchema = faqs.length
 
   <section class="tool-cta-section">
     <div class="container">
+      {/* A page whose query Zeroed does not answer (the trades tools) passes its own banner in the `cta` slot. */}
+      {Astro.slots.has('cta') ? (
+        <div class="cta-banner"><slot name="cta" /></div>
+      ) : (
       <div class="cta-banner">
         <h3>{ctaTitle}</h3>
         <p>{ctaText}</p>
@@ -137,6 +147,7 @@ const faqSchema = faqs.length
         <StoreLinks />
 
       </div>
+      )}
     </div>
   </section>
 

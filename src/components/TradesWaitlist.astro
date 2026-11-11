@@ -1,0 +1,34 @@
+---
+// The one banner the trades pages carry (patio calculator, quote templates). The estimating app is in build and not
+// released, so this is a waiting list, never a buy button (STRATEGY.md §6.4). Sits in ToolLayout's `cta` slot.
+import NewsletterSignup from './NewsletterSignup.astro';
+
+interface Props {
+  placement: string;
+}
+const { placement } = Astro.props;
+---
+
+<h3>We are building an estimating app for landscapers</h3>
+<p>It is not released yet. It will work out quantities and prices from your measurements and your own costs, on your phone, with no signal needed, and you will buy it once. Leave your email and we will tell you when it is ready to try.</p>
+<div class="cta-nl">
+  <NewsletterSignup placement={placement} tone="dark" align="center" button="Tell me" promise="You join the Stillware email list. We write when the landscaping estimator is ready to try, and when we ship something else: an app update or a free tool." />
+</div>
+
+<style is:global>
+  .cta-nl { display: flex; justify-content: center; text-align: left; }
+  .cta-banner .cta-nl .nl-promise, .cta-banner .cta-nl .nl-terms { margin-left: 0; margin-right: 0; max-width: none; }
+  /* Shared by the trades pages */
+  .worked-table { width: 100%; border-collapse: collapse; margin: 1rem 0 1.25rem; font-size: 0.95rem; display: block; overflow-x: auto; }
+  .worked-table th, .worked-table td { text-align: left; padding: 0.55rem 0.8rem; border-bottom: 1px solid rgba(148, 163, 184, 0.35); vertical-align: top; }
+  .worked-table th { font-weight: 700; background: rgba(148, 163, 184, 0.12); }
+  .checked-line { font-size: 0.9rem; font-style: italic; }
+  .dl-card { background: #ffffff; border: 1px solid var(--color-border); border-radius: 20px; padding: 2.5rem; box-shadow: var(--shadow-premium); }
+  .dl-card h2 { font-size: 1.4rem; margin: 0 0 0.5rem; color: var(--color-secondary); }
+  .dl-card p { color: var(--color-text-light); line-height: 1.6; margin: 0 0 1.25rem; }
+  .dl-card ul { margin: 0 0 1.5rem 1.2rem; color: var(--color-text-light); line-height: 1.7; }
+  .dl-buttons { display: flex; flex-wrap: wrap; gap: 0.75rem; align-items: center; }
+  .dl-buttons .dl-second { font-weight: 600; color: var(--color-primary); text-decoration: none; padding: 0.6rem 0.4rem; }
+  .dl-buttons .dl-second:hover { text-decoration: underline; }
+  .dl-small { font-size: 0.85rem; margin-top: 1rem !important; }
+</style>

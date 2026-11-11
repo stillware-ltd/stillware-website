@@ -1,0 +1,400 @@
+---
+import ToolLayout from '../../layouts/ToolLayout.astro';
+import TradesWaitlist from '../../components/TradesWaitlist.astro';
+
+// Research note: Marketing/Business/research/pages/trades-tools-2026-11-11.md (rules T1, T3–T6).
+// Every quantity default below is traced in Projects/Quote_to_Cash/docs/defaults-sources.md.
+
+const faqs = [
+  {
+    q: 'How much does a patio cost per m² in the UK?',
+    a: 'Published figures vary. Universal Paving puts labour at £50 to £80 per m² and a professionally laid 20 m² sandstone patio at £2,200 to £3,200. Best Builders gives £2,400 to £4,600 for a 20 m² patio, depending on the paving. Both were checked on 11 November 2026. Your own figure depends on the paving, the ground, the access and local labour rates, which is what the calculator lets you set.',
+  },
+  {
+    q: 'How much sub-base do I need for a patio?',
+    a: 'Multiply the area by the compacted depth and by 2.1 tonnes per cubic metre. At the usual 100 mm for a patio, that is about 0.21 tonnes per square metre, so a 20 m² patio needs about 4.2 tonnes, or five 850 kg bulk bags. Driveways use 150 mm.',
+  },
+  {
+    q: 'How much sand and cement do I need to lay a patio?',
+    a: 'Multiply the area by the bed depth to get the volume of sand, add 10% for waste, and multiply by 1.6 tonnes per cubic metre. For a 20 m² patio on a 35 mm bed that is about 1.23 tonnes of sharp sand. At a 6:1 mix it needs about 0.19 tonnes of cement, which is eight 25 kg bags.',
+  },
+  {
+    q: 'How many skips do I need to dig out a patio?',
+    a: 'Soil takes up about 30% more room once it is dug. A 20 m² patio dug 157 mm deep is 3.14 m³ in the ground and about 4.1 m³ loose, which fits one 8-yard skip (6.1 m³). That soil weighs about 6 tonnes, so ask the skip firm for its weight limit before you book.',
+  },
+  {
+    q: 'Does the price include VAT?',
+    a: 'The calculator works without VAT and then adds 20% if you tell it the business is VAT-registered. A homeowner compares the total they pay, so a quote should say plainly whether VAT is included.',
+  },
+  {
+    q: 'Can I use this to price a patio job as a landscaper?',
+    a: 'Yes. Put in your own material prices, your crew, your days and your day rate, then set your markup. The result shows your cost, your price and your margin, with the working for every quantity so you can check it against the site.',
+  },
+];
+
+const related: { slug: string; title: string }[] = [];
+---
+
+<ToolLayout
+  title="Patio Cost Calculator UK: Materials, Labour and Price"
+  description="Free UK patio cost calculator: enter the size and your prices to get sub-base, sand, cement, paving and skips, with the working shown, then cost and price."
+  heroTitle="Patio Cost Calculator"
+  heroTagline="Enter the size of the patio and your own prices. Get the quantities to order, with the working shown, and the cost and price of the job in pounds."
+  breadcrumbLabel="Patio Cost Calculator"
+  appCategory="BusinessApplication"
+  faqs={faqs}
+  related={related}
+>
+  <form id="patio-form" class="calc-form">
+    <h2 class="calc-h">1. Size</h2>
+    <div class="form-row">
+      <div class="form-group">
+        <label for="len">Length (m)</label>
+        <input type="number" id="len" value="5" min="0" step="0.1" required />
+      </div>
+      <div class="form-group">
+        <label for="wid">Width (m)</label>
+        <input type="number" id="wid" value="4" min="0" step="0.1" required />
+      </div>
+    </div>
+
+    <h2 class="calc-h">2. Build-up</h2>
+    <div class="form-row">
+      <div class="form-group">
+        <label for="slab">Paving thickness (mm)</label>
+        <input type="number" id="slab" value="22" min="10" max="80" step="1" />
+      </div>
+      <div class="form-group">
+        <label for="bed">Mortar bed (mm)</label>
+        <input type="number" id="bed" value="35" min="20" max="60" step="5" />
+      </div>
+    </div>
+    <div class="form-row">
+      <div class="form-group">
+        <label for="sub">Sub-base, compacted (mm)</label>
+        <input type="number" id="sub" value="100" min="0" max="300" step="25" />
+      </div>
+      <div class="form-group">
+        <label for="mix">Bedding mix, sand to cement</label>
+        <select id="mix">
+          <option value="8">8:1, patio</option>
+          <option value="6" selected>6:1, contractor's mix</option>
+          <option value="3">3:1, vehicles</option>
+        </select>
+      </div>
+    </div>
+    <div class="form-row">
+      <div class="form-group">
+        <label for="ground">Ground being dug out</label>
+        <select id="ground">
+          <option value="clay" selected>Clay or mixed ground</option>
+          <option value="topsoil">Topsoil</option>
+        </select>
+      </div>
+      <div class="form-group">
+        <label for="waste">Paving waste (%)</label>
+        <input type="number" id="waste" value="10" min="0" max="25" step="1" />
+      </div>
+    </div>
+    <div class="form-row">
+      <div class="form-group">
+        <label for="size">Slab size</label>
+        <select id="size">
+          <option value="600x600" selected>600 × 600 mm</option>
+          <option value="900x600">900 × 600 mm</option>
+          <option value="600x300">600 × 300 mm</option>
+          <option value="450x450">450 × 450 mm</option>
+        </select>
+      </div>
+      <div class="form-group">
+        <label for="joint">Joint width (mm)</label>
+        <select id="joint">
+          <option value="5" selected>5 mm</option>
+          <option value="8">8 mm</option>
+          <option value="10">10 mm</option>
+        </select>
+      </div>
+    </div>
+
+    <h2 class="calc-h">3. Your prices</h2>
+    <p class="field-hint">The figures below are round examples so the calculator has something to work with. They are not quotes. Replace each one with what you pay.</p>
+    <div class="form-row">
+      <div class="form-group">
+        <label for="p-pave">Paving, per m²</label>
+        <div class="input-prefix"><span class="prefix">£</span><input type="number" id="p-pave" value="30" min="0" step="1" /></div>
+      </div>
+      <div class="form-group">
+        <label for="p-sub">Type 1, per bulk bag</label>
+        <div class="input-prefix"><span class="prefix">£</span><input type="number" id="p-sub" value="55" min="0" step="1" /></div>
+      </div>
+    </div>
+    <div class="form-row">
+      <div class="form-group">
+        <label for="p-sand">Sharp sand, per bulk bag</label>
+        <div class="input-prefix"><span class="prefix">£</span><input type="number" id="p-sand" value="50" min="0" step="1" /></div>
+      </div>
+      <div class="form-group">
+        <label for="bagkg">Bulk bag weight (kg)</label>
+        <input type="number" id="bagkg" value="850" min="500" max="1000" step="50" />
+      </div>
+    </div>
+    <div class="form-row">
+      <div class="form-group">
+        <label for="p-cem">Cement, per 25 kg bag</label>
+        <div class="input-prefix"><span class="prefix">£</span><input type="number" id="p-cem" value="7" min="0" step="0.5" /></div>
+      </div>
+      <div class="form-group">
+        <label for="p-joint">Jointing compound, per 12.5 kg tub</label>
+        <div class="input-prefix"><span class="prefix">£</span><input type="number" id="p-joint" value="35" min="0" step="1" /></div>
+      </div>
+    </div>
+    <div class="form-row">
+      <div class="form-group">
+        <label for="p-skip">8-yard skip, each</label>
+        <div class="input-prefix"><span class="prefix">£</span><input type="number" id="p-skip" value="300" min="0" step="10" /></div>
+      </div>
+      <div class="form-group">
+        <label for="p-other">Other costs (plant hire, delivery)</label>
+        <div class="input-prefix"><span class="prefix">£</span><input type="number" id="p-other" value="150" min="0" step="10" /></div>
+      </div>
+    </div>
+
+    <h2 class="calc-h">4. Labour and markup</h2>
+    <div class="form-row">
+      <div class="form-group">
+        <label for="crew">People on the job</label>
+        <input type="number" id="crew" value="2" min="1" max="10" step="1" />
+      </div>
+      <div class="form-group">
+        <label for="days">Days on site</label>
+        <input type="number" id="days" value="3" min="0" step="0.5" />
+      </div>
+    </div>
+    <div class="form-row">
+      <div class="form-group">
+        <label for="rate">Day rate, per person</label>
+        <div class="input-prefix"><span class="prefix">£</span><input type="number" id="rate" value="200" min="0" step="10" /></div>
+      </div>
+      <div class="form-group">
+        <label for="markup">Markup on cost (%)</label>
+        <input type="number" id="markup" value="20" min="0" max="200" step="1" />
+      </div>
+    </div>
+    <div class="form-group">
+      <label for="vat">VAT</label>
+      <select id="vat">
+        <option value="0" selected>Not VAT-registered: no VAT added</option>
+        <option value="20">VAT-registered: add 20%</option>
+      </select>
+    </div>
+
+    <button type="submit" class="btn-primary calc-btn">Work Out the Patio</button>
+  </form>
+
+  <div id="results" class="results-panel" style="display:none;">
+    <div class="result-card highlight">
+      <span class="result-label">Price to quote</span>
+      <span class="result-value" id="r-price"></span>
+      <span class="result-sub" id="r-price-sub"></span>
+    </div>
+    <div class="result-card">
+      <span class="result-label">Your cost</span>
+      <span class="result-value" id="r-cost"></span>
+      <span class="result-sub" id="r-cost-sub"></span>
+    </div>
+    <div class="result-card good">
+      <span class="result-label">Margin</span>
+      <span class="result-value" id="r-margin"></span>
+      <span class="result-sub" id="r-margin-sub"></span>
+    </div>
+
+    <div class="result-table-wrap">
+      <table class="result-table patio-table">
+        <thead><tr><th>What to order</th><th>Working</th><th>Quantity</th><th>Cost</th></tr></thead>
+        <tbody id="r-rows"></tbody>
+      </table>
+    </div>
+    <p class="patio-note" id="r-note"></p>
+  </div>
+
+  <Fragment slot="article">
+    <h2>How much does a patio cost?</h2>
+    <p>
+      A patio costs the materials under and on it, the labour to dig, lay and point it, the waste taken away, and the
+      builder's markup. This calculator works out each quantity from the size you enter, prices it with your own figures,
+      and shows the working. For a 5 m by 4 m sandstone patio at the example prices, the cost is £2,811 and the price is £3,373.
+    </p>
+    <p>
+      Once the price is worked out, put it on paper with the free
+      <a href="/templates/landscaping-quote-template/">landscaping quote template</a>, or the
+      <a href="/templates/fencing-quote-template/">fencing quote template</a> if the job has a fence run.
+    </p>
+
+    <h2>What do published guides say a patio costs per m²?</h2>
+    <table class="worked-table">
+      <thead><tr><th>Source</th><th>Figure</th><th>What it covers</th></tr></thead>
+      <tbody>
+        <tr><td><a href="https://universalpaving.co.uk/blogs/universal-paving/how-much-does-a-landscaper-cost" rel="noopener">Universal Paving</a></td><td>£50 to £80 per m²</td><td>Labour only, for laying a patio</td></tr>
+        <tr><td>Universal Paving</td><td>£2,200 to £3,200</td><td>A 20 m² sandstone patio, professionally installed</td></tr>
+        <tr><td><a href="https://www.bestbuilders.co.uk/costs/patio-cost-calculator" rel="noopener">Best Builders</a></td><td>£2,400 to £4,600</td><td>A 20 m² patio fully installed, by paving type</td></tr>
+      </tbody>
+    </table>
+    <p class="checked-line">Figures as published by each source, checked 11 November 2026. They are those sites' estimates, not ours.</p>
+
+    <h2>How does the calculator work out each quantity?</h2>
+    <table class="worked-table">
+      <thead><tr><th>Quantity</th><th>Formula</th><th>Where the figure comes from</th></tr></thead>
+      <tbody>
+        <tr><td>Dig depth</td><td>paving + bed + sub-base</td><td><a href="https://www.pavedirect.co.uk/guides/how-to-lay-a-patio-sub-base" rel="noopener">Pave Direct</a>: the depth is the sum of the layers</td></tr>
+        <tr><td>Soil to remove</td><td>area × dig depth × 1.3 (1.25 for topsoil)</td><td><a href="https://www.pavingexpert.com/bpvseq01" rel="noopener">Pavingexpert</a>: dug material bulks up by 20 to 30%</td></tr>
+        <tr><td>Skips</td><td>loose volume ÷ 6.1 m³, rounded up</td><td>An 8-yard skip holds 6.1 m³</td></tr>
+        <tr><td>Type 1 sub-base</td><td>area × depth × 2.1 t/m³</td><td>Pave Direct: compacted Type 1 is about 2.1 tonnes per cubic metre</td></tr>
+        <tr><td>Sharp sand</td><td>area × bed × 1.1 × 1.6 t/m³</td><td>1.6 tonnes per cubic metre, as stated by <a href="https://www.kebur.co.uk/product/sharp-sand/" rel="noopener">Kebur</a>; 10% waste</td></tr>
+        <tr><td>Cement</td><td>sand volume ÷ mix × 1.45 t/m³</td><td><a href="https://www.breedongroup.com/content/dam/breedon/corporate/documents/products-services/gb/datasheet/Portland__Cement_DS.pdf.downloadasset.pdf" rel="noopener">Breedon's data sheet</a>: settled bulk density 1,300 to 1,450 kg/m³</td></tr>
+        <tr><td>Paving</td><td>area × (1 + waste)</td><td>5 to 10% for cuts is the usual allowance</td></tr>
+        <tr><td>Jointing compound</td><td>joint length × width × depth × 1.8 t/m³</td><td><a href="https://www.sitebox.ltd.uk/docs/azcts_easyjoint/AzpectsEASYJointTechnicalData.pdf" rel="noopener">Azpects EASYJoint data sheet</a>: density 1.80 g/cm³; a tub covers 13 to 14 m² of 600 mm slabs at 5 mm joints</td></tr>
+      </tbody>
+    </table>
+    <p>
+      The mortar bed default of 35 mm and the 8:1, 6:1 and 3:1 mixes follow
+      <a href="https://www.pavingexpert.com/layflag3" rel="noopener">Pavingexpert's bedding guidance</a>; the 100 mm sub-base for a patio
+      follows its <a href="https://www.pavingexpert.com/faq_subbase" rel="noopener">sub-base table</a>, which gives 75 to 100 mm for patios and 100 to 150 mm for driveways.
+    </p>
+
+    <h2>What does a worked example look like?</h2>
+    <p>A 5 m by 4 m patio (20 m²) in 22 mm sandstone on a 35 mm bed over 100 mm of Type 1, at the example prices. The prices are illustrations.</p>
+    <table class="worked-table">
+      <thead><tr><th>Item</th><th>Quantity</th><th>Cost</th></tr></thead>
+      <tbody>
+        <tr><td>Soil to remove</td><td>3.14 m³ in the ground, 4.08 m³ loose: 1 skip</td><td>£300</td></tr>
+        <tr><td>Type 1 sub-base</td><td>4.20 tonnes: 5 bulk bags</td><td>£275</td></tr>
+        <tr><td>Sharp sand</td><td>1.23 tonnes: 2 bulk bags</td><td>£100</td></tr>
+        <tr><td>Cement, 6:1</td><td>0.19 tonnes: 8 bags</td><td>£56</td></tr>
+        <tr><td>Paving</td><td>22 m² with 10% waste</td><td>£660</td></tr>
+        <tr><td>Jointing compound</td><td>13.1 kg: 2 tubs</td><td>£70</td></tr>
+        <tr><td>Other costs</td><td>Plant hire and delivery</td><td>£150</td></tr>
+        <tr><td>Labour</td><td>2 people × 3 days × £200</td><td>£1,200</td></tr>
+        <tr><td><strong>Cost</strong></td><td></td><td><strong>£2,811</strong></td></tr>
+        <tr><td><strong>Price at 20% markup</strong></td><td>Margin 16.7%</td><td><strong>£3,373</strong></td></tr>
+      </tbody>
+    </table>
+
+    <h2>What does the calculator leave out?</h2>
+    <ul>
+      <li><strong>Labour time.</strong> It does not guess how long your crew takes. You enter the days, because that varies more between crews than anything else here.</li>
+      <li><strong>Edging, drainage, steps and walls.</strong> Add them under other costs.</li>
+      <li><strong>The edge of the sub-base.</strong> A sub-base usually runs 100 to 150 mm past the paving. Add that to the length and width if you want it counted.</li>
+      <li><strong>Skip weight.</strong> Skips are limited by weight as well as volume. The result shows the weight of the soil so you can ask.</li>
+    </ul>
+
+    <h2>What is the difference between markup and margin?</h2>
+    <p>
+      Markup is profit as a percentage of cost. Margin is profit as a percentage of the price. A 20% markup is a 16.7% margin,
+      not 20%. The calculator takes a markup and shows the margin it gives, so the two are never confused.
+    </p>
+
+    <p class="checked-line">Formulas and sources checked 11 November 2026. This is a guide for estimating, not professional advice: check quantities against the site and the product's own data sheet before you order.</p>
+  </Fragment>
+
+  <Fragment slot="cta">
+    <TradesWaitlist placement="tool-patio-cost-calculator" />
+  </Fragment>
+</ToolLayout>
+
+<script>
+  const num = (id: string) => parseFloat((document.getElementById(id) as HTMLInputElement).value) || 0;
+  const sel = (id: string) => (document.getElementById(id) as HTMLSelectElement).value;
+  const gbp = (n: number) => '£' + Math.round(n).toLocaleString('en-GB');
+  const f2 = (n: number) => n.toFixed(2);
+
+  document.getElementById('patio-form')!.addEventListener('submit', (e) => {
+    e.preventDefault();
+    const area = num('len') * num('wid');
+    if (area <= 0) return;
+
+    const slab = num('slab') / 1000, bed = num('bed') / 1000, sub = num('sub') / 1000;
+    const mix = parseFloat(sel('mix'));
+    const clay = sel('ground') === 'clay';
+    const bulk = clay ? 1.3 : 1.25;
+    const soilT = clay ? 1.9 : 1.6;
+    const bagT = num('bagkg') / 1000;
+
+    // Groundworks
+    const dig = slab + bed + sub;
+    const inGround = area * dig;
+    const loose = inGround * bulk;
+    const soilWeight = inGround * soilT;
+    const skips = Math.ceil(loose / 6.1);
+
+    // Sub-base, bed
+    const subT = area * sub * 2.1;
+    const subBags = sub > 0 ? Math.ceil(subT / bagT) : 0;
+    const sandVol = area * bed * 1.1;
+    const sandT = sandVol * 1.6;
+    const sandBags = Math.ceil(sandT / bagT);
+    const cemT = (sandVol / mix) * 1.45;
+    const cemBags = Math.ceil(cemT / 0.025);
+
+    // Paving and jointing
+    const paveM2 = area * (1 + num('waste') / 100);
+    const [a, b] = sel('size').split('x').map((v) => parseFloat(v) / 1000);
+    const j = parseFloat(sel('joint')) / 1000;
+    const jointDepth = Math.min(Math.max(slab, 0.02), 0.03);
+    const jointLen = 1 / (a + j) + 1 / (b + j); // metres of joint per m²
+    const jointKg = area * jointLen * j * jointDepth * 1800;
+    const tubs = Math.ceil(jointKg / 12.5);
+
+    // Money
+    const cSkip = skips * num('p-skip');
+    const cSub = subBags * num('p-sub');
+    const cSand = sandBags * num('p-sand');
+    const cCem = cemBags * num('p-cem');
+    const cPave = paveM2 * num('p-pave');
+    const cJoint = tubs * num('p-joint');
+    const cOther = num('p-other');
+    const cLab = num('crew') * num('days') * num('rate');
+    const cost = cSkip + cSub + cSand + cCem + cPave + cJoint + cOther + cLab;
+    const price = cost * (1 + num('markup') / 100);
+    const vat = parseFloat(sel('vat'));
+    const total = price * (1 + vat / 100);
+    const profit = price - cost;
+
+    const rows: [string, string, string, number][] = [
+      ['Soil to remove', `${f2(area)} m² × ${Math.round(dig * 1000)} mm = ${f2(inGround)} m³ in the ground, × ${bulk} = ${f2(loose)} m³ loose (about ${soilWeight.toFixed(1)} t)`, `${skips} × 8-yard skip`, cSkip],
+      ['Type 1 sub-base', `${f2(area)} m² × ${Math.round(sub * 1000)} mm × 2.1 t/m³ = ${f2(subT)} t`, `${subBags} bulk bag${subBags === 1 ? '' : 's'}`, cSub],
+      ['Sharp sand', `${f2(area)} m² × ${Math.round(bed * 1000)} mm × 1.1 = ${f2(sandVol)} m³, × 1.6 t/m³ = ${f2(sandT)} t`, `${sandBags} bulk bag${sandBags === 1 ? '' : 's'}`, cSand],
+      ['Cement', `${f2(sandVol)} m³ ÷ ${mix} × 1.45 t/m³ = ${f2(cemT)} t`, `${cemBags} × 25 kg bag`, cCem],
+      ['Paving', `${f2(area)} m² + ${num('waste')}% waste`, `${f2(paveM2)} m²`, cPave],
+      ['Jointing compound', `${f2(area)} m² × ${f2(jointLen)} m of joint per m² × ${Math.round(j * 1000)} mm × ${Math.round(jointDepth * 1000)} mm × 1.8 t/m³ = ${jointKg.toFixed(1)} kg`, `${tubs} × 12.5 kg tub`, cJoint],
+      ['Other costs', 'As entered', '', cOther],
+      ['Labour', `${num('crew')} × ${num('days')} days × ${gbp(num('rate'))}`, `${num('crew') * num('days')} person-days`, cLab],
+    ];
+    document.getElementById('r-rows')!.innerHTML = rows
+      .map((r) => `<tr><td>${r[0]}</td><td class="work">${r[1]}</td><td>${r[2]}</td><td>${gbp(r[3])}</td></tr>`)
+      .join('');
+
+    document.getElementById('r-price')!.textContent = gbp(total);
+    document.getElementById('r-price-sub')!.textContent =
+      vat > 0
+        ? `${gbp(price)} plus ${gbp(total - price)} VAT. ${gbp(total / area)} per m².`
+        : `No VAT added. ${gbp(price / area)} per m² for ${f2(area)} m².`;
+    document.getElementById('r-cost')!.textContent = gbp(cost);
+    document.getElementById('r-cost-sub')!.textContent = `Materials and waste ${gbp(cost - cLab)}, labour ${gbp(cLab)}.`;
+    document.getElementById('r-margin')!.textContent = price > 0 ? `${((profit / price) * 100).toFixed(1)}%` : '—';
+    document.getElementById('r-margin-sub')!.textContent = `${gbp(profit)} profit. A ${num('markup')}% markup on cost is a ${price > 0 ? ((profit / price) * 100).toFixed(1) : '0'}% margin on price.`;
+    document.getElementById('r-note')!.textContent =
+      `The soil weighs about ${soilWeight.toFixed(1)} tonnes. Skips are limited by weight as well as volume, so ask the skip firm for its limit.`;
+
+    const results = document.getElementById('results')!;
+    results.style.display = 'block';
+    results.scrollIntoView({ behavior: 'smooth', block: 'start' });
+  });
+</script>
+
+<style is:global>
+  .calc-h { font-size: 1.1rem; margin: 1.75rem 0 1rem; color: var(--color-secondary); }
+  .calc-form .calc-h:first-child { margin-top: 0; }
+  .patio-table td.work { text-align: left; font-size: 0.82rem; min-width: 14rem; }
+  .patio-table td:nth-child(3) { white-space: nowrap; }
+  .patio-note { margin-top: 1rem; font-size: 0.9rem; color: var(--color-text-light); }
+</style>

@@ -1,0 +1,72 @@
+---
+import Layout from '../../layouts/Layout.astro';
+
+// The templates hub (11 Nov 2026; STRATEGY.md §6.2). Every template links to exactly one app; the trades app is in
+// build, so each template page carries the waiting list.
+const templates = [
+  {
+    title: 'Landscaping Quote Template',
+    href: '/templates/landscaping-quote-template/',
+    description: 'Cost each part of the job on a private sheet, set your markup, and the quote fills in the prices, VAT, deposit, stage payment and balance.',
+    formats: 'Excel and PDF',
+  },
+  {
+    title: 'Fencing Quote Template',
+    href: '/templates/fencing-quote-template/',
+    description: 'Type the length and height of the run. It counts the posts, rails, boards and post mix, prices them with your costs, and writes the quote.',
+    formats: 'Excel and PDF',
+  },
+];
+---
+
+<Layout
+  title="Free Quote Templates for UK Trades | Stillware Ltd"
+  description="Free quote templates for UK landscapers and fencers, in Excel and PDF. Pounds, metric and UK VAT. No sign-up and no email needed."
+  breadcrumbs={[{ name: 'Templates', href: '/templates/' }]}
+>
+  <header class="tpl-hero">
+    <div class="container">
+      <h1>Free Quote Templates for UK Trades</h1>
+      <p>Quote templates in Excel and PDF, in pounds and metres, with UK VAT when you need it. Free to download, change and send as your own. No sign-up and no email needed.</p>
+    </div>
+  </header>
+
+  <section class="tpl-section">
+    <div class="container">
+      <div class="tpl-grid">
+        {templates.map((t) => (
+          <a href={t.href} class="tpl-card">
+            <span class="tpl-tag">{t.formats}</span>
+            <h2>{t.title}</h2>
+            <p>{t.description}</p>
+            <span class="tpl-cta">Get the template &rarr;</span>
+          </a>
+        ))}
+      </div>
+      <p class="tpl-more">
+        Pricing a patio? The <a href="/tools/patio-cost-calculator/">patio cost calculator</a> works out the sub-base, sand, cement,
+        paving and skips, with the working shown. More free calculators are on the <a href="/tools/">tools page</a>.
+      </p>
+    </div>
+  </section>
+</Layout>
+
+<style>
+  .tpl-hero { padding: 12rem 0 4rem; background: var(--gradient-obsidian); }
+  .tpl-hero h1 { font-size: 3rem; color: #ffffff; margin-bottom: 1rem; max-width: 760px; }
+  .tpl-hero p { font-size: 1.15rem; color: rgba(255, 255, 255, 0.65); max-width: 660px; line-height: 1.6; }
+  .tpl-section { padding: 4rem 0 6rem; }
+  .tpl-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 1.5rem; max-width: 900px; }
+  .tpl-card { display: block; background: #ffffff; border: 1px solid var(--color-border); border-radius: 20px; padding: 2rem; text-decoration: none; box-shadow: var(--shadow-premium); transition: transform 0.2s, border-color 0.2s; }
+  .tpl-card:hover { transform: translateY(-3px); border-color: var(--color-primary); }
+  .tpl-tag { display: inline-block; font-size: 0.75rem; font-weight: 700; letter-spacing: 0.04em; text-transform: uppercase; color: var(--color-primary); background: rgba(37, 99, 235, 0.08); border-radius: 100px; padding: 0.3rem 0.8rem; margin-bottom: 1rem; }
+  .tpl-card h2 { font-size: 1.35rem; color: var(--color-secondary); margin: 0 0 0.6rem; }
+  .tpl-card p { color: var(--color-text-light); line-height: 1.6; margin: 0 0 1.25rem; }
+  .tpl-cta { font-weight: 700; color: var(--color-primary); }
+  .tpl-more { max-width: 900px; margin-top: 2.5rem; color: var(--color-text-light); line-height: 1.7; }
+  .tpl-more a { color: var(--color-primary); font-weight: 500; }
+  @media (max-width: 768px) {
+    .tpl-hero h1 { font-size: 2.25rem; }
+    .tpl-grid { grid-template-columns: 1fr; }
+  }
+</style>
