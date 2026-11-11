@@ -1,0 +1,3 @@
+# Downloads are binary: never convert line endings in them (a text-like PDF would be corrupted on a Windows checkout).
+*.pdf binary
+*.xlsx binary
