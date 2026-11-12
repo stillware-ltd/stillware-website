@@ -1,0 +1,62 @@
+{
+ "_": "Zeroed YouTube series whose long videos end on a QR code (founder, 12 Nov 2026). scripts/zeroed-qr-links.mjs turns this list into the /z/<slug> short links in public/_redirects; the slugs match Marketing/Zeroed/Youtube/studio/series.json. Add a series here, then run: node scripts/zeroed-qr-links.mjs",
+ "destination": "/zeroed/",
+ "series": [
+  {
+   "slug": "true-scale",
+   "name": "True Scale"
+  },
+  {
+   "slug": "your-salary",
+   "name": "Your Salary, Visualised"
+  },
+  {
+   "slug": "same-pay-two-lives",
+   "name": "Same Pay, Two Lives"
+  },
+  {
+   "slug": "pound-street",
+   "name": "Pound Street"
+  },
+  {
+   "slug": "the-trap",
+   "name": "The Trap"
+  },
+  {
+   "slug": "debt-visualised",
+   "name": "Debt, Visualised"
+  },
+  {
+   "slug": "survive-the-month",
+   "name": "Survive the Month"
+  },
+  {
+   "slug": "the-bill-explained",
+   "name": "The Bill, Explained"
+  },
+  {
+   "slug": "how-britain-got-here",
+   "name": "How Britain Got Here"
+  },
+  {
+   "slug": "money-myths-tested",
+   "name": "Money Myths, Tested"
+  },
+  {
+   "slug": "budgeting-from-zero",
+   "name": "Budgeting From Zero"
+  },
+  {
+   "slug": "fair-isnt-50-50",
+   "name": "Fair Isn't 50/50"
+  },
+  {
+   "slug": "self-employed-survival",
+   "name": "Self-Employed Survival"
+  },
+  {
+   "slug": "money-calendar",
+   "name": "The Money Calendar"
+  }
+ ]
+}

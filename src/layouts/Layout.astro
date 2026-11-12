@@ -238,6 +238,35 @@ const breadcrumbSchema = breadcrumbs.length
             });
         }, true);
 
+        // Zeroed YouTube campaigns (12 Nov 2026). A long video's end-card QR code, /z/<series> (scripts/zeroed-qr-links.mjs),
+        // or a video description link lands here with utm_campaign=yt-z-<series>. Tag this page's Zeroed store links, so
+        // App Store Connect (ct) and Play Console (referrer) count downloads per series and per QR scan. Nothing is
+        // stored on the device: only links on the landing page change, and only for yt-z campaigns.
+        (function () {
+            var q = new URLSearchParams(location.search);
+            var campaign = q.get('utm_campaign') || '';
+            if (!/^yt-z(-[a-z0-9-]+)?$/.test(campaign)) return;
+            var medium = /^[a-z]+$/.test(q.get('utm_medium') || '') ? q.get('utm_medium') : 'video';
+            var slug = campaign.replace(/^yt-z-?/, '');
+            var ct = ((medium === 'qr' ? 'yt-z-qr' : 'yt-z') + (slug ? '-' + slug : '')).slice(0, 40);
+            var apple = 'https://apps.apple.com/app/apple-store/id6804301133?pt=128481694&ct=' + encodeURIComponent(ct) + '&mt=8';
+            var referrer = 'utm_source=youtube&utm_medium=' + medium + '&utm_campaign=' + campaign;
+            var links = document.querySelectorAll('a[href]');
+            for (var i = 0; i < links.length; i++) {
+                var a = links[i];
+                if (/apps\.apple\.com\/.*id6804301133/.test(a.href)) {
+                    a.href = apple;
+                } else if (/play\.google\.com\/store\/apps\/details/.test(a.href) && /id=com\.stillwareltd\.zeroed(&|$)/.test(a.href)) {
+                    var u = new URL(a.href);
+                    u.searchParams.set('referrer', referrer);
+                    a.href = u.toString();
+                }
+            }
+            if (typeof window.stillTrack === 'function') {
+                window.stillTrack('campaign_landing', { campaign: campaign, medium: medium, page: location.pathname });
+            }
+        })();
+
         // Newsletter forms (src/components/NewsletterSignup.astro, 31 Oct 2026): record which form was used, then hand the
         // form to Buttondown. The submit waits for the event at most 0.8 s, so a blocked tracker never blocks a signup.
         document.addEventListener('submit', function (ev) {
