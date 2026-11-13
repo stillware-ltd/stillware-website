@@ -53,23 +53,23 @@ export const PRODUCTS: Record<ProductSlug, ProductConfig> = {
   // resend-key sends nothing for it. It is in neither TRIAL_PRODUCTS (its trial is on the
   // device) nor HOUSEHOLD_PRODUCTS (no store purchases yet).
   //
-  // FOUNDER PLACEHOLDERS: the values marked below are working values, not decisions. Settle
-  // each BEFORE a Paddle price is mapped to `qtc`: from that moment the licence email prints
-  // `name` and `maxActivations` to a paying customer.
+  // FOUNDER PLACEHOLDERS: the two values marked below (the name and the page) are working
+  // values, not decisions. Settle each BEFORE a Paddle price is mapped to `qtc`: from that
+  // moment the licence email prints `name` to a paying customer.
   qtc: {
     slug: "qtc",
-    // FOUNDER PLACEHOLDER 1 of 3: the public name. "Quote-to-Cash" is the working name; the
+    // FOUNDER PLACEHOLDER 1 of 2: the public name. "Quote-to-Cash" is the working name; the
     // product is a codename until its Phase 6. Printed in the licence email and its subject.
     name: "Quote-to-Cash",
-    // Not one of the three, but also the founder's: the email footer line. The company line
+    // Not one of the two, but also the founder's: the email footer line. The company line
     // RankUp Chess uses stands in until the product has its own.
     tagline: "Software you own.",
-    // FOUNDER PLACEHOLDER 2 of 3: devices per licence. Three, as Quote_to_Cash/docs/licensing.md
-    // section 5 records (founder, 2026-11-13: the buyer's own phone and computer, and one place
-    // over). Copied to each licence when it is minted, so a later change here applies to new
-    // licences only.
+    // DECIDED (founder, 2026-11-13): one licence covers three devices. Asked "How many devices
+    // should one Quote-to-Cash licence cover?", he answered "Three": the buyer's own phone and
+    // computer, and one place over (Quote_to_Cash/docs/licensing.md section 5). Copied to each
+    // licence when it is minted, so a later change here applies to new licences only.
     maxActivations: 3,
-    // FOUNDER PLACEHOLDER 3 of 3: the product page. There is none yet, so this is the site's
+    // FOUNDER PLACEHOLDER 2 of 2: the product page. There is none yet, so this is the site's
     // home page. Only read when a key is refused for being for another platform, which cannot
     // happen while `qtc` has no per-platform price (PRICE_ID_TO_PLATFORM).
     pageUrl: "https://www.stillwareltd.com/",
@@ -98,7 +98,7 @@ export const PRICE_ID_TO_PRODUCT: Record<string, ProductSlug> = {
   // Quote-to-Cash — NO ENTRY ON PURPOSE (2026-11-13): no Paddle product or price exists yet.
   // FOUNDER: when the prices are made in Paddle, add each id here, as
   //   pri_xxxxxxxxxxxxxxxxxxxxxxxxxx: "qtc",
-  // after settling the three placeholders in PRODUCTS.qtc above. Until then the webhook answers
+  // after settling the two placeholders in PRODUCTS.qtc above. Until then the webhook answers
   // a `qtc` purchase as an unknown price (500, Paddle retries) and no `qtc` key is ever emailed.
 };
 

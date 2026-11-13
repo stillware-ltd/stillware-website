@@ -155,6 +155,7 @@ test("products: qtc has no Paddle price, no platform price, no household and no 
   assert.deepEqual(HOUSEHOLD_PRODUCTS, ["rankup"]);
   assert.equal(isTrialProduct("qtc"), false);
   assert.deepEqual(TRIAL_PRODUCTS, ["zeroed", "rankup"]);
+  // Decided by the founder on 2026-11-13: one licence covers three devices.
   assert.equal(PRODUCTS.qtc.maxActivations, 3);
 });
 
