@@ -1,17 +1,18 @@
 // QR landing-page downloads guard (2026-11-13). Runs at the end of `npm run build` and fails the build when a page that
-// a RankUp Chess short link lands on is missing any of the four downloads near its top.
+// a QR short link lands on is missing any of its app's four downloads near its top.
 //
 // Why: the founder, 13 Nov 2026: "For every QR code url the user visits there must see all 4 downloads option on each
 // of those devices for the user to download. Place that in a easy and prominent position for easy downloads." On that
-// day only /rankupchess/ had them; the printable hubs and /rankupchess/schools/ had none. Research note:
+// day only /rankupchess/ had them near its top; the printable hubs and /rankupchess/schools/ had none, and /zeroed/
+// showed its four at 776 px on a phone. Research note:
 // Marketing/Rank_Up_Chess/SEO/research/qr-landing-four-downloads-2026-11-13.md.
 //
-// For every 302 in _redirects whose target is under /rankupchess/, the target page must:
+// Every 302 in _redirects whose target is one of the APPS' pages (RankUp Chess under /rankupchess/, Zeroed at /zeroed/)
+// is a QR short link. Its target page must:
 //   1. be built (dist/<path>/index.html);
-//   2. carry exactly one downloads group marked data-rankup-downloads="top" (src/components/RankupDownloads.astro);
-//   3. hold, in that group, the four links with their labels word for word, each in the HTML and none hidden:
-//      "Download on the App Store" (apps.apple.com), "Get it on Google Play" (com.stillware.rankup_chess),
-//      "Download for Windows" (the .exe on GitHub releases) and "Download for Mac" (the .dmg);
+//   2. carry exactly one downloads group marked with the app's attribute set to "top" (data-rankup-downloads, from
+//      src/components/RankupDownloads.astro; data-zeroed-downloads, the hero's platform links in src/pages/zeroed.astro);
+//   3. hold, in that group, the app's four links with their labels word for word, each in the HTML and none hidden;
 //   4. have it near the top: after the page's one <h1>, before its first <h2>, and with no more than
 //      MAX_WORDS_BEFORE words of text between the two.
 //
@@ -25,11 +26,32 @@ import { existsSync, readFileSync } from 'node:fs';
 import { join } from 'node:path';
 
 const MAX_WORDS_BEFORE = 120;
-const FOUR = [
-  { label: 'Download on the App Store', href: /^https:\/\/apps\.apple\.com\/app\/id\d+$/ },
-  { label: 'Get it on Google Play', href: /^https:\/\/play\.google\.com\/store\/apps\/details\?id=com\.stillware\.rankup_chess$/ },
-  { label: 'Download for Windows', href: /^https:\/\/github\.com\/stillware-ltd\/rankup-chess-releases\/releases\/download\/[^/]+\/[^/]+\.exe$/ },
-  { label: 'Download for Mac', href: /^https:\/\/github\.com\/stillware-ltd\/rankup-chess-releases\/releases\/download\/[^/]+\/[^/]+\.dmg$/ },
+const APPS = [
+  {
+    name: 'RankUp Chess',
+    landing: /^\/rankupchess(\/|$)/,
+    marker: 'data-rankup-downloads',
+    where: 'src/components/RankupDownloads.astro, with top',
+    four: [
+      { label: 'Download on the App Store', href: /^https:\/\/apps\.apple\.com\/app\/id\d+$/ },
+      { label: 'Get it on Google Play', href: /^https:\/\/play\.google\.com\/store\/apps\/details\?id=com\.stillware\.rankup_chess$/ },
+      { label: 'Download for Windows', href: /^https:\/\/github\.com\/stillware-ltd\/rankup-chess-releases\/releases\/download\/[^/]+\/[^/]+\.exe$/ },
+      { label: 'Download for Mac', href: /^https:\/\/github\.com\/stillware-ltd\/rankup-chess-releases\/releases\/download\/[^/]+\/[^/]+\.dmg$/ },
+    ],
+  },
+  {
+    // Zeroed's labels are the page's own platform names (its copy is unchanged); the links are what the check holds.
+    name: 'Zeroed',
+    landing: /^\/zeroed(\/|$)/,
+    marker: 'data-zeroed-downloads',
+    where: 'the hero platform links in src/pages/zeroed.astro',
+    four: [
+      { label: 'Windows', href: /^https:\/\/(apps\.microsoft\.com\/detail\/[A-Z0-9]+|github\.com\/stillware-ltd\/zeroed-releases\/releases\/download\/[^/]+\/[^/]+\.zip)$/ },
+      { label: 'iOS', href: /^https:\/\/apps\.apple\.com\/app\/id\d+$/ },
+      { label: 'macOS', href: /^https:\/\/github\.com\/stillware-ltd\/zeroed-releases\/releases\/download\/[^/]+\/[^/]+\.dmg$/ },
+      { label: 'Android', href: /^https:\/\/play\.google\.com\/store\/apps\/details\?id=com\.stillwareltd\.zeroed$/ },
+    ],
+  },
 ];
 
 if (process.env.SKIP_LINK_CHECK) {
@@ -43,23 +65,30 @@ const args = process.argv.slice(2);
 const live = args.includes('--live');
 const origin = (args.find((a) => /^https?:\/\//.test(a)) || 'https://www.stillwareltd.com').replace(/\/$/, '');
 
-// ---- the RankUp short links ----------------------------------------------------------------------------------------
+// ---- the QR short links --------------------------------------------------------------------------------------------
 const redirectsFile = existsSync(join(dist, '_redirects')) && !live ? join(dist, '_redirects') : join(root, 'public', '_redirects');
 const links = [];
 for (const line of readFileSync(redirectsFile, 'utf8').split(/\r?\n/)) {
-  const m = line.match(/^(\/\S+)\s+(\/rankupchess\S*)\s+302!?\s*$/);
-  if (m) links.push({ from: m[1], to: m[2], page: m[2].split(/[?#]/)[0].replace(/\/?$/, '/') });
+  const m = line.match(/^(\/\S+)\s+(\/\S+)\s+302!?\s*$/);
+  if (!m) continue;
+  const page = m[2].split(/[?#]/)[0].replace(/\/?$/, '/');
+  const app = APPS.find((a) => a.landing.test(page));
+  if (app) links.push({ from: m[1], to: m[2], page, app });
 }
-if (links.length === 0) {
-  console.error(`verify-qr-downloads: no RankUp short link (a 302 to /rankupchess/...) in ${redirectsFile}`);
-  process.exit(1);
+for (const app of APPS) {
+  if (!links.some((l) => l.app === app)) {
+    console.error(`verify-qr-downloads: no ${app.name} short link (a 302 to its pages) in ${redirectsFile}`);
+    process.exit(1);
+  }
 }
-const pages = [...new Set(links.map((l) => l.page))];
+const pages = [...new Map(links.map((l) => [l.page, l.app])).entries()];
+const tally = APPS.map((a) => `${links.filter((l) => l.app === a).length} ${a.name}`).join(' + ');
 
 // ---- the HTML checks -----------------------------------------------------------------------------------------------
 const text = (html) =>
   html
     .replace(/<(script|style)\b[\s\S]*?<\/\1>/g, ' ')
+    .replace(/<!--[\s\S]*?-->/g, ' ')
     .replace(/<[^>]+>/g, ' ')
     .replace(/&nbsp;|&#160;/g, ' ')
     .replace(/&amp;/g, '&')
@@ -79,11 +108,13 @@ function element(html, start) {
   return null;
 }
 
-function checkPage(page, html) {
+function checkPage(app, page) {
+  // HTML comments are blanked (same length, so positions hold): a comment that names a marker is not a group.
+  const html = page.replace(/<!--[\s\S]*?-->/g, (c) => ' '.repeat(c.length));
   const problems = [];
-  const marks = [...html.matchAll(/data-rankup-downloads="top"/g)];
+  const marks = [...html.matchAll(new RegExp(`${app.marker}="top"`, 'g'))];
   if (marks.length !== 1) {
-    problems.push(`${marks.length} downloads groups marked "top" (need exactly 1: <RankupDownloads top /> near the top)`);
+    problems.push(`${marks.length} downloads groups marked ${app.marker}="top" (need exactly 1: ${app.where})`);
     return { problems, used: [] };
   }
   const open = html.lastIndexOf('<div', marks[0].index);
@@ -99,7 +130,7 @@ function checkPage(page, html) {
     label: text(m[2]),
   }));
   const used = [];
-  for (const want of FOUR) {
+  for (const want of app.four) {
     const got = anchors.filter((a) => a.label === want.label);
     if (got.length !== 1) {
       problems.push(`"${want.label}": ${got.length} links with that label in the group (need 1)`);
@@ -137,42 +168,42 @@ if (!live) {
     console.error('verify-qr-downloads: dist/ not found; run astro build first');
     process.exit(1);
   }
-  for (const page of pages) {
+  for (const [page, app] of pages) {
     const file = join(dist, page, 'index.html');
     if (!existsSync(file)) {
       errors.push(`${page}  not built, but a short link lands here (${links.filter((l) => l.page === page).map((l) => l.from).join(', ')})`);
       continue;
     }
-    for (const p of checkPage(page, readFileSync(file, 'utf8')).problems) errors.push(`${page}  ${p}`);
+    for (const p of checkPage(app, readFileSync(file, 'utf8')).problems) errors.push(`${page}  ${p}`);
   }
   if (errors.length) {
-    console.error(`verify-qr-downloads: ${errors.length} problem(s) on the pages RankUp short links land on:`);
+    console.error(`verify-qr-downloads: ${errors.length} problem(s) on the pages QR short links land on:`);
     for (const e of errors) console.error(`  ${e}`);
-    console.error('Every QR landing page shows all four downloads near its top (src/components/RankupDownloads.astro, top).');
+    console.error('Every QR landing page shows all four of its app\'s downloads near its top.');
     process.exit(1);
   }
-  console.log(`verify-qr-downloads: ${links.length} short links, ${pages.length} pages, all four downloads near the top of each`);
+  console.log(`verify-qr-downloads: ${tally} short links, ${pages.length} pages, all four downloads near the top of each`);
   process.exit(0);
 }
 
 // ---- live mode -------------------------------------------------------------------------------------------------------
-const pageUrls = new Set();
+const pageUrls = new Map();
 for (const l of links) {
   const res = await fetch(origin + l.from, { redirect: 'manual' });
   const loc = res.headers.get('location') || '';
   const target = new URL(l.to, origin + '/').toString();
   const got = loc ? new URL(loc, origin + '/').toString() : '';
   if (res.status !== 302 || got !== target) errors.push(`${l.from}  answers ${res.status} ${got || '(no Location)'}, want 302 ${target}`);
-  else pageUrls.add(target);
+  else pageUrls.set(target, l.app);
 }
 const downloads = new Set();
-for (const url of pageUrls) {
+for (const [url, app] of pageUrls) {
   const res = await fetch(url, { redirect: 'manual' });
   if (res.status !== 200) {
     errors.push(`${url}  answers ${res.status}`);
     continue;
   }
-  const { problems, used } = checkPage(url, await res.text());
+  const { problems, used } = checkPage(app, await res.text());
   for (const p of problems) errors.push(`${url}  ${p}`);
   used.forEach((u) => downloads.add(u));
 }
@@ -189,4 +220,5 @@ if (errors.length) {
   for (const e of errors) console.error(`  ${e}`);
   process.exit(1);
 }
-console.log(`verify-qr-downloads --live: ${links.length} short links answer 302, ${pageUrls.size} pages carry the four, ${downloads.size} download URLs answer (${origin})`);
+const livePages = new Set([...pageUrls.keys()].map((u) => new URL(u).pathname)).size;
+console.log(`verify-qr-downloads --live: ${tally} short links answer 302, ${pageUrls.size} landing URLs on ${livePages} pages carry their four, ${downloads.size} download URLs answer (${origin})`);

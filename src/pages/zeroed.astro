@@ -118,8 +118,11 @@ const faqSchema = {
                     <a href="#downloads" class="btn-primary pulse">
                         Start Your 34-Day Free Trial
                     </a>
-                    <p class="sub-text">Try every feature free for 34 days. Love it? Pay once, own it forever.</p>
-                    <div class="platform-badges">
+                    {/* The four downloads sit right under the trial button, so a viewer arriving from a /z/ QR code sees
+                        them in the first screen on a 360x640 phone and a 1366x768 laptop (the founder, 13 Nov 2026). On
+                        phones the subheadline moves below this block (CSS order); the HTML order is unchanged.
+                        scripts/verify-qr-downloads.mjs looks for this group's marker and fails the build without it. */}
+                    <div class="platform-badges" data-zeroed-downloads="top">
                         <a href="https://apps.microsoft.com/detail/9NCHJ67Q98C5" target="_blank" rel="noopener" class="platform-badge">
                             <svg viewBox="0 0 24 24" fill="currentColor" width="18" height="18"><path d="M0 3.449L9.75 2.1v9.451H0m10.949-9.602L24 0v11.4H10.949M0 12.6h9.75v9.451L0 20.699M10.949 12.6H24V24l-12.9-1.801" /></svg>
                             Windows
@@ -137,6 +140,7 @@ const faqSchema = {
                             Android
                         </a>
                     </div>
+                    <p class="sub-text">Try every feature free for 34 days. Love it? Pay once, own it forever.</p>
                 </div>
                 <div class="trust-badge">
                     <span class="lock-icon">&#127942;</span> Founder Price: $19.99 until 14 Feb 2027 (then $39.99) &bull; No Credit Card for Trial
@@ -654,13 +658,13 @@ const faqSchema = {
         display: flex;
         gap: 0.75rem;
         flex-wrap: wrap;
-        margin-top: 1rem;
     }
 
     .platform-badge {
         display: inline-flex;
         align-items: center;
         gap: 0.5rem;
+        min-height: 44px; /* a comfortable tap target (was 41 px) */
         padding: 0.5rem 1rem;
         border-radius: 8px;
         font-size: 0.85rem;
@@ -1402,6 +1406,14 @@ const faqSchema = {
         .hero-content { grid-template-columns: 1fr; text-align: center; gap: 4rem; margin-top: 2rem; }
         .hero-cta { align-items: center; }
         .subheadline { margin-left: auto; margin-right: auto; }
+        /* One column: the trial button and the four downloads come straight after the H1, so they are in a 360x640
+           first screen (they were at 776 px); the subheadline and the price follow. Visual order only: the HTML (and a
+           screen reader) still reads H1, subheadline, button, downloads. */
+        .hero-text { display: flex; flex-direction: column; align-items: center; }
+        .hero-cta { order: 1; }
+        .subheadline { order: 2; }
+        .trust-badge { order: 3; }
+        .platform-badges { justify-content: center; }
         .features-grid, .faq-grid, .direct-downloads-grid { grid-template-columns: 1fr; }
         .comparison-table-wrapper { overflow-x: auto; }
         .comparison-table { min-width: 600px; }
