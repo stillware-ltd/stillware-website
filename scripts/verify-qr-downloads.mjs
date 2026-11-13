@@ -8,7 +8,7 @@
 // Marketing/Rank_Up_Chess/SEO/research/qr-landing-four-downloads-2026-11-13.md.
 //
 // Every 302 in _redirects whose target is one of the APPS' pages (RankUp Chess under /rankupchess/, Zeroed at /zeroed/)
-// is a QR short link. Its target page must:
+// is a QR short link. Its target page, and every PROFILE_LANDINGS page (where a channel profile's link lands), must:
 //   1. be built (dist/<path>/index.html);
 //   2. carry exactly one downloads group marked with the app's attribute set to "top" (data-rankup-downloads, from
 //      src/components/RankupDownloads.astro; data-zeroed-downloads, the hero's platform links in src/pages/zeroed.astro),
@@ -56,6 +56,18 @@ const APPS = [
   },
 ];
 
+// Profile-link landings: pages that a channel profile's link (not a QR code) sends people to. They are held to the same
+// rule as the QR landing pages: the app's four downloads near the top. Added 13 Nov 2026 (the manager): Instagram's bio
+// link lands on the Sing-Along page, and the Shorts and Reels close on "tap RankUp Chess".
+const PROFILE_LANDINGS = [
+  {
+    page: '/rankupchess/sing-along/',
+    app: 'RankUp Chess',
+    from: "Instagram @rankupchess's bio link",
+    query: '?utm_source=instagram&utm_medium=social&utm_campaign=singalong',
+  },
+];
+
 if (process.env.SKIP_LINK_CHECK) {
   console.log('verify-qr-downloads: skipped (SKIP_LINK_CHECK is set)');
   process.exit(0);
@@ -84,7 +96,12 @@ for (const app of APPS) {
   }
 }
 const pages = [...new Map(links.map((l) => [l.page, l.app])).entries()];
+for (const p of PROFILE_LANDINGS) {
+  const app = APPS.find((a) => a.name === p.app);
+  if (!pages.some(([page]) => page === p.page)) pages.push([p.page, app]);
+}
 const tally = APPS.map((a) => `${links.filter((l) => l.app === a).length} ${a.name}`).join(' + ');
+const profileTally = `${PROFILE_LANDINGS.length} profile-link landing${PROFILE_LANDINGS.length === 1 ? '' : 's'}`;
 
 // ---- the HTML checks -----------------------------------------------------------------------------------------------
 const text = (html) =>
@@ -185,18 +202,20 @@ if (!live) {
   for (const [page, app] of pages) {
     const file = join(dist, page, 'index.html');
     if (!existsSync(file)) {
-      errors.push(`${page}  not built, but a short link lands here (${links.filter((l) => l.page === page).map((l) => l.from).join(', ')})`);
+      const from = links.filter((l) => l.page === page).map((l) => l.from);
+      const profile = PROFILE_LANDINGS.filter((p) => p.page === page).map((p) => p.from);
+      errors.push(`${page}  not built, but ${[...from, ...profile].join(', ')} lands here`);
       continue;
     }
     for (const p of checkPage(app, readFileSync(file, 'utf8')).problems) errors.push(`${page}  ${p}`);
   }
   if (errors.length) {
-    console.error(`verify-qr-downloads: ${errors.length} problem(s) on the pages QR short links land on:`);
+    console.error(`verify-qr-downloads: ${errors.length} problem(s) on the pages QR short links and profile links land on:`);
     for (const e of errors) console.error(`  ${e}`);
     console.error('Every QR landing page shows all four of its app\'s downloads near its top.');
     process.exit(1);
   }
-  console.log(`verify-qr-downloads: ${tally} short links, ${pages.length} pages, all four downloads near the top of each`);
+  console.log(`verify-qr-downloads: ${tally} short links + ${profileTally}, ${pages.length} pages, all four downloads near the top of each`);
   process.exit(0);
 }
 
@@ -228,6 +247,7 @@ for (const l of links) {
   if (res.status !== 302 || got !== target) errors.push(`${l.from}  answers ${res.status} ${got || '(no Location)'}, want 302 ${target}`);
   else pageUrls.set(target, l.app);
 }
+for (const p of PROFILE_LANDINGS) pageUrls.set(origin + p.page + (p.query || ''), APPS.find((a) => a.name === p.app));
 const downloads = new Set();
 for (const [url, app] of pageUrls) {
   const res = await get(url, { redirect: 'manual' });
@@ -253,4 +273,4 @@ if (errors.length) {
   process.exit(1);
 }
 const livePages = new Set([...pageUrls.keys()].map((u) => new URL(u).pathname)).size;
-console.log(`verify-qr-downloads --live: ${tally} short links answer 302, ${pageUrls.size} landing URLs on ${livePages} pages carry their four, ${downloads.size} download URLs answer (${origin})`);
+console.log(`verify-qr-downloads --live: ${tally} short links answer 302 (+ ${profileTally}), ${pageUrls.size} landing URLs on ${livePages} pages carry their four, ${downloads.size} download URLs answer (${origin})`);
