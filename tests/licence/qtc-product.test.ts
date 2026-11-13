@@ -19,8 +19,8 @@ import {
 import { resendKeys, type Purchase } from "../../netlify/functions/lib/resend-key.js";
 import { freshDb, lastDbUrl, makeKey } from "./helpers.js";
 
-// The product `qtc` (Quote-to-Cash, 2026-11-13). Before it was known, a request naming `qtc` was
-// treated as Zeroed's, so a Zeroed key unlocked Quote-to-Cash. These tests hold the fix: a `qtc`
+// The product `qtc` (Paved, built under the codename Quote-to-Cash; 2026-11-13). Before it was
+// known, a request naming `qtc` was treated as Zeroed's, so a Zeroed key unlocked it. These tests hold the fix: a `qtc`
 // request looks only among `qtc` licences. They also hold what must not move: Zeroed, RankUp
 // Chess, a request with no product and a request with a product nobody knows.
 //
@@ -155,8 +155,16 @@ test("products: qtc has no Paddle price, no platform price, no household and no 
   assert.deepEqual(HOUSEHOLD_PRODUCTS, ["rankup"]);
   assert.equal(isTrialProduct("qtc"), false);
   assert.deepEqual(TRIAL_PRODUCTS, ["zeroed", "rankup"]);
-  // Decided by the founder on 2026-11-13: one licence covers three devices.
-  assert.equal(PRODUCTS.qtc.maxActivations, 3);
+});
+
+test("products: qtc is Paved, three devices a licence, with its page under /business/", () => {
+  // The founder's decisions of 2026-11-13: the name Paved and three devices a licence. The page
+  // address follows the name (/business/<name>); the page itself is still to be built. The
+  // tagline is the one value still his to give.
+  assert.deepEqual(PRODUCTS.qtc, {
+    slug: "qtc", name: "Paved", tagline: "Software you own.", maxActivations: 3,
+    pageUrl: "https://www.stillwareltd.com/business/paved/",
+  });
 });
 
 // ------------------------------------------------------------------------------------------

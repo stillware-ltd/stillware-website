@@ -46,33 +46,41 @@ export const PRODUCTS: Record<ProductSlug, ProductConfig> = {
     maxActivations: 3,
     pageUrl: "https://www.stillwareltd.com/rankupchess/",
   },
-  // Quote-to-Cash (codename QTC; repository Projects/Quote_to_Cash, docs/licensing.md there).
-  // Known to the server from 2026-11-13 so that a request naming `qtc` looks only among
-  // Quote-to-Cash licences and a Zeroed key no longer unlocks it. Nothing is sold yet: it has
-  // no Paddle price (PRICE_ID_TO_PRODUCT below), so the webhook mints no `qtc` licence and
-  // resend-key sends nothing for it. It is in neither TRIAL_PRODUCTS (its trial is on the
-  // device) nor HOUSEHOLD_PRODUCTS (no store purchases yet).
+  // Paved: the product built under the codename Quote-to-Cash (QTC; repository
+  // Projects/Quote_to_Cash, docs/licensing.md there). The slug stays `qtc`. Known to the server
+  // from 2026-11-13 so that a request naming `qtc` looks only among its own licences and a
+  // Zeroed key no longer unlocks it. Nothing is sold yet: it has no Paddle price
+  // (PRICE_ID_TO_PRODUCT below), so the webhook mints no `qtc` licence and resend-key sends
+  // nothing for it. It is in neither TRIAL_PRODUCTS (its trial is on the device) nor
+  // HOUSEHOLD_PRODUCTS (no store purchases yet).
   //
-  // FOUNDER PLACEHOLDERS: the two values marked below (the name and the page) are working
-  // values, not decisions. Settle each BEFORE a Paddle price is mapped to `qtc`: from that
-  // moment the licence email prints `name` to a paying customer.
+  // Three things are still open before a Paddle price may be mapped to `qtc`, because from that
+  // moment the licence email reaches a paying customer: the trade mark clearance of the name,
+  // the tagline, and the product page (each marked below).
   qtc: {
     slug: "qtc",
-    // FOUNDER PLACEHOLDER 1 of 2: the public name. "Quote-to-Cash" is the working name; the
-    // product is a codename until its Phase 6. Printed in the licence email and its subject.
-    name: "Quote-to-Cash",
-    // Not one of the two, but also the founder's: the email footer line. The company line
-    // RankUp Chess uses stands in until the product has its own.
+    // DECIDED (founder, 2026-11-13, after a naming study: "Ok lets finalise Paved then"): the
+    // public name is Paved. Printed in the licence email and its subject.
+    // NOT CLEARED: no trade mark clearance has been made for Paved yet (four "PAVE" marks are
+    // registered in the UK for software). The name must not reach a customer through a licence
+    // email until the founder says it is cleared, which holds for as long as no Paddle price is
+    // mapped to `qtc`.
+    name: "Paved",
+    // FOUNDER PLACEHOLDER (the only one left): the email footer line. The company line RankUp
+    // Chess uses stands in until the founder gives the product its own.
     tagline: "Software you own.",
     // DECIDED (founder, 2026-11-13): one licence covers three devices. Asked "How many devices
-    // should one Quote-to-Cash licence cover?", he answered "Three": the buyer's own phone and
-    // computer, and one place over (Quote_to_Cash/docs/licensing.md section 5). Copied to each
-    // licence when it is minted, so a later change here applies to new licences only.
+    // should one Quote-to-Cash licence cover?" (the product still had its codename), he answered
+    // "Three": the buyer's own phone and computer, and one place over
+    // (Quote_to_Cash/docs/licensing.md section 5). Copied to each licence when it is minted, so
+    // a later change here applies to new licences only.
     maxActivations: 3,
-    // FOUNDER PLACEHOLDER 2 of 2: the product page. There is none yet, so this is the site's
-    // home page. Only read when a key is refused for being for another platform, which cannot
-    // happen while `qtc` has no per-platform price (PRICE_ID_TO_PLATFORM).
-    pageUrl: "https://www.stillwareltd.com/",
+    // DECIDED BY RULE (2026-11-13): the product's requirements put its landing page at
+    // /business/<name>, and the founder was told the address would follow the name.
+    // THE PAGE IS STILL TO BE BUILT: this address does not exist on the site yet. It is only
+    // read when a key is refused for being for another platform, which cannot happen while
+    // `qtc` has no per-platform price (PRICE_ID_TO_PLATFORM).
+    pageUrl: "https://www.stillwareltd.com/business/paved/",
   },
 };
 
@@ -95,11 +103,13 @@ export const PRICE_ID_TO_PRODUCT: Record<string, ProductSlug> = {
   pri_01m5t1fevddc28paxqbpa4q5ks: "rankup",
   // RankUp Chess — the Every device upgrade for a key holder ($9.99) (KL.3, 25 October 2026)
   pri_01m5t1gwdqpdt1ewebtjchcpqh: "rankup",
-  // Quote-to-Cash — NO ENTRY ON PURPOSE (2026-11-13): no Paddle product or price exists yet.
+  // Paved (`qtc`) — NO ENTRY ON PURPOSE (2026-11-13): no Paddle product or price exists yet.
   // FOUNDER: when the prices are made in Paddle, add each id here, as
   //   pri_xxxxxxxxxxxxxxxxxxxxxxxxxx: "qtc",
-  // after settling the two placeholders in PRODUCTS.qtc above. Until then the webhook answers
-  // a `qtc` purchase as an unknown price (500, Paddle retries) and no `qtc` key is ever emailed.
+  // but NOT before the founder says the name Paved is cleared as a trade mark; the tagline
+  // and the product page are best settled by then too (see PRODUCTS.qtc above). Until then
+  // the webhook answers a `qtc` purchase as an unknown price (500, Paddle retries) and no
+  // `qtc` key is ever emailed.
 };
 
 /**
@@ -212,7 +222,7 @@ export function isValidProduct(slug: string | undefined): slug is ProductSlug {
 /**
  * Products that use the server-anchored free trial (trial-start.ts, trial-status.ts). Until
  * 2026-11-13 those endpoints took every known product; they now take this list, which holds the
- * two products that existed then, so nothing changes for either. Quote-to-Cash (`qtc`) is left
+ * two products that existed then, so nothing changes for either. Paved (`qtc`) is left
  * out on purpose: its 30-day trial is kept on the device and makes no call
  * (Quote_to_Cash/docs/licensing.md), so the server has no reason to accept trial rows for it.
  */
@@ -230,7 +240,7 @@ export function isTrialProduct(slug: unknown): slug is ProductSlug {
 
 /**
  * Products whose household endpoints are open. RankUp Maths joins this list when it ships.
- * Quote-to-Cash (`qtc`) is left out on purpose: it has no store purchases, so its licences are
+ * Paved (`qtc`) is left out on purpose: it has no store purchases, so its licences are
  * plain keys with a device limit and never get a household record.
  */
 export const HOUSEHOLD_PRODUCTS: readonly ProductSlug[] = ["rankup"];
