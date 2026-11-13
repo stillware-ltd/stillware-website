@@ -18,7 +18,8 @@
 //
 // Live mode, after a deploy: `node scripts/verify-qr-downloads.mjs --live [origin]`. Each short link, in both forms,
 // must answer a 302 to its page in _redirects. The page is read from the live site and checked as above. Every
-// download URL must answer: the store pages 200, and GitHub's assets 200 or 302. A new QR link is not live until its
+// download URL must answer: the store pages 200, and GitHub's assets 200 or 302. A 429 (rate-limited) is retried once
+// after 10 s and logged; a second 429 fails. A new QR link is not live until its
 // page passes (Marketing/Rank_Up_Chess/Youtube/rotation/upload-playbook.md, section 6).
 //
 // Escape hatch for an emergency deploy: SKIP_LINK_CHECK=1 (the same switch as verify-links.mjs).
@@ -187,9 +188,21 @@ if (!live) {
 }
 
 // ---- live mode -------------------------------------------------------------------------------------------------------
+// A 429 (Too Many Requests) is the server rate-limiting the checker, not a broken link: the App Store answered one on
+// 13 Nov 2026 during back-to-back runs. Retry it once after RETRY_429_MS and say so; a second 429 still fails.
+const RETRY_429_MS = 10_000;
+async function get(url, opts) {
+  const res = await fetch(url, opts);
+  if (res.status !== 429) return res;
+  try { await res.body?.cancel(); } catch {}
+  console.log(`  429  ${url}  rate-limited; retrying once in ${RETRY_429_MS / 1000} s`);
+  await new Promise((r) => setTimeout(r, RETRY_429_MS));
+  return fetch(url, opts);
+}
+
 const pageUrls = new Map();
 for (const l of links) {
-  const res = await fetch(origin + l.from, { redirect: 'manual' });
+  const res = await get(origin + l.from, { redirect: 'manual' });
   const loc = res.headers.get('location') || '';
   const target = new URL(l.to, origin + '/').toString();
   const got = loc ? new URL(loc, origin + '/').toString() : '';
@@ -198,7 +211,7 @@ for (const l of links) {
 }
 const downloads = new Set();
 for (const [url, app] of pageUrls) {
-  const res = await fetch(url, { redirect: 'manual' });
+  const res = await get(url, { redirect: 'manual' });
   if (res.status !== 200) {
     errors.push(`${url}  answers ${res.status}`);
     continue;
@@ -209,7 +222,7 @@ for (const [url, app] of pageUrls) {
 }
 for (const url of downloads) {
   const github = url.startsWith('https://github.com/');
-  const res = await fetch(url, { redirect: github ? 'manual' : 'follow', headers: { 'user-agent': 'Mozilla/5.0 (link check)' } });
+  const res = await get(url, { redirect: github ? 'manual' : 'follow', headers: { 'user-agent': 'Mozilla/5.0 (link check)' } });
   const ok = github ? [200, 302].includes(res.status) : res.status === 200;
   if (!ok) errors.push(`${url}  answers ${res.status}`);
   else console.log(`  ${res.status}  ${url}`);
