@@ -5,7 +5,7 @@
   "type": "module",
   "scripts": {
     "dev": "node scripts/optimize-heroes.mjs && astro dev",
-    "build": "node scripts/verify-content.mjs && node scripts/zeroed-qr-links.mjs --check && node scripts/optimize-heroes.mjs && astro build && node scripts/verify-sitemap.mjs && node scripts/verify-links.mjs && node scripts/verify-protected.mjs",
+    "build": "node scripts/verify-content.mjs && node scripts/zeroed-qr-links.mjs --check && node scripts/optimize-heroes.mjs && astro build && node scripts/verify-sitemap.mjs && node scripts/verify-links.mjs && node scripts/verify-protected.mjs && node scripts/verify-qr-downloads.mjs",
     "preview": "astro preview",
     "test:licence": "node --import ./tests/licence/register-ts.mjs --test \"tests/licence/*.test.ts\""
   },

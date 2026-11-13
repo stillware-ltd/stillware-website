@@ -1,0 +1,236 @@
+---
+// The four ways to get RankUp Chess (13 Nov 2026): App Store, Google Play, Windows and Mac, from
+// src/data/rankup-downloads.ts.
+//
+// Why: the founder, 13 Nov 2026: "For every QR code url the user visits there must see all 4 downloads option on each
+// of those devices for the user to download. Place that in a easy and prominent position for easy downloads."
+//
+// Rules (research note Marketing/Rank_Up_Chess/SEO/research/qr-landing-four-downloads-2026-11-13.md):
+//   - All four are in the HTML, on every device and with JavaScript off. With JavaScript off they show as two rows of
+//     two. Once the script knows the visitor's device, that button moves first and becomes the big one, and the other
+//     three stay in one row below with their labels (rule W-L2).
+//   - The labels are the stores' own wording. The buttons carry no Apple logo, Play prism or Windows logo: Apple and
+//     Google allow only their own badge artwork, and the Windows logo is Microsoft's mark (rule QD-4). A phone or a
+//     computer glyph shows the kind of device.
+//   - Every button is at least 44 px tall (rule QD-5).
+//   - Nothing is tracked here. Layout.astro's existing store_click handler counts the clicks, as on every page. The
+//     script only passes the page's ?utm_* and ?ref= on to Google Play as the install referrer, as /rankupchess/ did.
+//
+// `top` marks the group a QR landing page shows near its top: scripts/verify-qr-downloads.mjs looks for it on every
+// page a RankUp short link in public/_redirects lands on, and fails the build without it.
+import { RANKUP_DOWNLOADS, RANKUP_WINDOWS_DOWNLOAD } from '../data/rankup-downloads';
+
+interface Props {
+  /** Where on the page this group sits; /rankupchess/ reports it with its own click event. */
+  place: string;
+  /** A short line above the buttons, for pages that are not about the app itself. */
+  heading?: string;
+  /** Colours: the RankUp page's purple, or the hubs' slate. */
+  tone?: 'rankup' | 'slate';
+  /** Centre the group in its column. */
+  align?: 'start' | 'center';
+  /** The group near the top of a QR landing page (the build check looks for it). */
+  top?: boolean;
+  /** Show the Windows SmartScreen note under the buttons, to Windows visitors only. */
+  winNote?: boolean;
+}
+
+const { place, heading, tone = 'rankup', align = 'start', top = false, winNote = false } = Astro.props;
+const glyph = (platform: string) => (platform === 'ios' || platform === 'android' ? 'phone' : 'computer');
+---
+
+<div class:list={['rd', `rd-${tone}`, `rd-${align}`]} data-get={place} data-rankup-downloads={top ? 'top' : 'more'}>
+  {heading && <p class="rd-head">{heading}</p>}
+  <div class="rd-grid">
+    {RANKUP_DOWNLOADS.map((o) => (
+      <a href={o.href} class="rd-btn" data-platform={o.platform} {...(o.external ? { target: '_blank', rel: 'noopener' } : {})}>
+        <span class="rd-icon" aria-hidden="true" data-icon={glyph(o.platform)}></span>
+        <span class="rd-text"><small>{o.small}</small> <span class="rd-label">{o.label}</span></span>
+      </a>
+    ))}
+  </div>
+  {winNote && RANKUP_WINDOWS_DOWNLOAD && (
+    <p class="rd-win" data-win-note hidden>The Windows installer isn't code-signed yet, so the first time you run it Windows may say &ldquo;Windows protected your PC&rdquo;. Choose <strong>More info</strong>, then <strong>Run anyway</strong>.</p>
+  )}
+</div>
+
+<script>
+  // Which platform this visitor is on, from the user agent (the same test as /get/). iPadOS 13+ asks for the desktop
+  // site and reports itself as a Mac; the touch points give it away.
+  function visitorPlatform(): string {
+    const ua = navigator.userAgent || '';
+    const touchMac = /Macintosh/.test(ua) && navigator.maxTouchPoints > 1;
+    if (/iPhone|iPad|iPod/.test(ua) || touchMac) return 'ios';
+    if (/Android/.test(ua)) return 'android';
+    if (/Windows/.test(ua)) return 'windows';
+    if (/Macintosh|Mac OS X/.test(ua)) return 'mac';
+    return '';
+  }
+
+  // Rule W-L2: the visitor's own platform becomes the big first button in every group; the other three stay, one row
+  // below. Unknown devices keep the two rows of two.
+  function personaliseDownloads() {
+    const platform = visitorPlatform();
+    // Carry ?ref= and utm_* through to Google Play, so Play Console can answer "did YouTube send this install?".
+    const qs = location.search;
+    document.querySelectorAll<HTMLAnchorElement>('.rd-btn[data-platform="android"]').forEach((a) => {
+      if (qs.length > 1 && !a.href.includes('referrer=')) a.href += '&referrer=' + encodeURIComponent(qs.slice(1));
+    });
+    document.querySelectorAll<HTMLElement>('[data-rankup-downloads]').forEach((group) => {
+      const mine = group.querySelector<HTMLElement>(`.rd-btn[data-platform="${platform}"]`);
+      if (!mine) return;
+      group.classList.add('has-primary');
+      mine.classList.add('is-primary');
+      mine.parentElement?.prepend(mine);
+    });
+    if (platform === 'windows') {
+      document.querySelectorAll<HTMLElement>('.rd [data-win-note]').forEach((n) => n.removeAttribute('hidden'));
+    }
+  }
+
+  if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', personaliseDownloads);
+  else personaliseDownloads();
+</script>
+
+<style>
+  .rd {
+    --rd-ink: #2E2547;
+    --rd-ink-hover: #3A2F5A;
+    --rd-primary: #5B45C4;
+    --rd-primary-hover: #4A35AE;
+    --rd-primary-shadow: #3B2C86;
+    --rd-focus: #E9962A;
+    --rd-head: #2E2547;
+    container-type: inline-size;
+    width: 100%;
+    max-width: 560px;
+  }
+
+  .rd-slate {
+    --rd-ink: #0F172A;
+    --rd-ink-hover: #1E293B;
+    --rd-primary: #1D4ED8;
+    --rd-primary-hover: #1E40AF;
+    --rd-primary-shadow: #1E3A8A;
+    --rd-focus: #2563EB;
+    --rd-head: #0F172A;
+  }
+
+  .rd-center { margin-inline: auto; }
+  .rd-center .rd-head { text-align: center; }
+
+  .rd-head {
+    margin: 0 0 0.5rem;
+    font-weight: 800;
+    font-size: 0.95rem;
+    line-height: 1.3;
+    color: var(--rd-head);
+  }
+
+  .rd-grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 0.5rem;
+  }
+
+  .rd-btn {
+    display: flex;
+    align-items: center;
+    gap: 0.6rem;
+    min-height: 52px;
+    padding: 0.45rem 0.85rem;
+    border-radius: 14px;
+    background: var(--rd-ink);
+    color: #FFFFFF;
+    text-decoration: none;
+    text-align: left;
+    font-weight: 800;
+    font-size: 1rem;
+    line-height: 1.1;
+    box-shadow: 0 3px 0 rgba(0, 0, 0, 0.25);
+    transition: transform 0.15s ease, background 0.15s ease;
+  }
+
+  .rd-btn:hover { transform: translateY(-1px); background: var(--rd-ink-hover); color: #FFFFFF; }
+  .rd-btn:focus-visible { outline: 3px solid var(--rd-focus); outline-offset: 3px; }
+
+  .rd-text small {
+    display: block;
+    margin-bottom: 0.1rem;
+    font-weight: 500;
+    font-size: 0.7rem;
+    opacity: 0.9;
+  }
+
+  .rd-icon {
+    flex: none;
+    width: 22px;
+    height: 22px;
+    background: currentColor;
+    -webkit-mask: var(--rd-icon) center / contain no-repeat;
+    mask: var(--rd-icon) center / contain no-repeat;
+  }
+
+  /* Generic glyphs, not the stores' or the platforms' logos (rule QD-4). */
+  .rd-icon[data-icon='phone'] {
+    --rd-icon: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath fill-rule='evenodd' d='M8 1.5h8A2.5 2.5 0 0 1 18.5 4v16a2.5 2.5 0 0 1-2.5 2.5H8A2.5 2.5 0 0 1 5.5 20V4A2.5 2.5 0 0 1 8 1.5zM7.5 4.5v13h9v-13h-9zM12 18.6a1.1 1.1 0 1 0 0 2.2 1.1 1.1 0 0 0 0-2.2z'/%3E%3C/svg%3E");
+  }
+
+  .rd-icon[data-icon='computer'] {
+    --rd-icon: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath fill-rule='evenodd' d='M5.5 3h13A1.5 1.5 0 0 1 20 4.5V15H4V4.5A1.5 1.5 0 0 1 5.5 3zM6 5v8h12V5H6zM1.5 16.5h21v1A2.5 2.5 0 0 1 20 20H4a2.5 2.5 0 0 1-2.5-2.5v-1z'/%3E%3C/svg%3E");
+  }
+
+  /* Once the script knows the device: its button first, full width and bigger; the other three in one row below. */
+  .rd.has-primary .rd-grid { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+
+  .rd.has-primary .rd-btn {
+    min-height: 48px;
+    padding: 0.4rem 0.6rem;
+    gap: 0.45rem;
+    font-size: 0.9rem;
+  }
+
+  .rd.has-primary .rd-btn .rd-icon { width: 18px; height: 18px; }
+
+  .rd.has-primary .rd-btn.is-primary {
+    grid-column: 1 / -1;
+    min-height: 60px;
+    justify-content: center;
+    gap: 0.7rem;
+    font-size: 1.2rem;
+    background: var(--rd-primary);
+    box-shadow: 0 4px 0 var(--rd-primary-shadow);
+  }
+
+  .rd.has-primary .rd-btn.is-primary:hover { background: var(--rd-primary-hover); }
+  .rd.has-primary .rd-btn.is-primary small { font-size: 0.75rem; }
+  .rd.has-primary .rd-btn.is-primary .rd-icon { width: 28px; height: 28px; }
+
+  /* Narrow columns (phones): the three smaller buttons drop their glyph, so the full label fits. */
+  @container (max-width: 440px) {
+    .rd.has-primary .rd-btn:not(.is-primary) {
+      justify-content: center;
+      text-align: center;
+      padding: 0.4rem 0.35rem;
+      font-size: 0.84rem;
+    }
+    .rd.has-primary .rd-btn:not(.is-primary) small { font-size: 0.64rem; }
+    .rd.has-primary .rd-btn:not(.is-primary) .rd-icon { display: none; }
+  }
+
+  .rd-win {
+    margin: 0.7rem 0 0;
+    padding: 0.55rem 0.75rem;
+    border-radius: 12px;
+    background: rgba(255, 255, 255, 0.75);
+    color: var(--rd-head);
+    font-size: 0.88rem;
+    line-height: 1.45;
+    text-align: left;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .rd-btn { transition: none; }
+    .rd-btn:hover { transform: none; }
+  }
+</style>

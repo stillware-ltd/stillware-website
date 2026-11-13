@@ -1,11 +1,16 @@
 ---
 import Layout from '../../layouts/Layout.astro';
 import { HUB, SHEETS } from '../../data/rankup-trap-cards';
+import RankupDownloads from '../../components/RankupDownloads.astro';
 
 // A RankUp Chess series hub: its printable sheets, newest first (src/data/rankup-trap-cards.ts says where
 // everything is built). Each download is a plain link: no email, form or account (Manifesto). Layout's click handler
 // records it as `printable_download` in Umami (cookieless), so nothing about the visitor is stored. Each sheet's
 // diagrams are its video's own positions, drawn as the sheet draws them.
+// A QR short link lands here, so the hero carries all four app downloads straight after the sheet's own button, in the
+// first screen on a phone (the founder, 13 Nov 2026; research note
+// Marketing/Rank_Up_Chess/SEO/research/qr-landing-four-downloads-2026-11-13.md, rule QD-2). The site's build check
+// (scripts/verify-qr-downloads.mjs) fails without them.
 
 const [latest] = SHEETS;
 const faqSchema = {
@@ -42,9 +47,12 @@ const videoSchemas = SHEETS.filter((s) => s.video?.id).map((s) => ({
         <div class="pz-intro">
           <p class="pz-kicker">Free printables &middot; no email, no account</p>
           <h1>{HUB.h1}</h1>
-          <p class="pz-answer" set:html={HUB.answer} />
           <a class="pz-btn" href={latest.pdf} download>{latest.button}</a>
           <p class="pz-meta">Newest sheet: A4, {latest.pages} {latest.pages === 1 ? 'page' : 'pages'}, {latest.pdfSize}.{latest.pdfLetter && <> Also in <a href={latest.pdfLetter} download>US Letter</a> ({latest.pdfLetterSize}).</>} Prints well in black and white.</p>
+          <div class="pz-app">
+            <RankupDownloads place="hub" heading="Get RankUp Chess, free to download" tone="slate" top winNote />
+          </div>
+          <p class="pz-answer" set:html={HUB.answer} />
           {SHEETS.length > 1 && (
             <nav class="pz-jump" aria-label="All sheets">
               {SHEETS.map((s) => <a href={`#${s.id}`}>{s.short}</a>)}
@@ -180,7 +188,8 @@ const videoSchemas = SHEETS.filter((s) => s.video?.id).map((s) => ({
   }
 
   .pz-hero h1 { font-size: clamp(1.85rem, 4vw, 2.6rem); line-height: 1.12; color: var(--ink); margin: 0 0 0.9rem; }
-  .pz-answer { font-size: 1.05rem; line-height: 1.6; color: var(--ink-soft); margin-bottom: 1.25rem; }
+  .pz-answer { font-size: 1.05rem; line-height: 1.6; color: var(--ink-soft); margin: 1.25rem 0 0; }
+  .pz-app { margin-top: 1.1rem; }
 
   .pz-btn {
     display: inline-block;
@@ -292,7 +301,8 @@ const videoSchemas = SHEETS.filter((s) => s.video?.id).map((s) => ({
   /* Phones: the five boards in one swipeable row, so all of them start above the fold with the button. */
   @media (max-width: 600px) {
     .pz-hero-grid { gap: 1.1rem; }
-    .pz-answer { font-size: 1rem; margin-bottom: 1rem; }
+    .pz-answer { font-size: 1rem; margin-top: 1rem; }
+    .pz-app { margin-top: 0.9rem; }
     .pz-boards {
       display: flex;
       gap: 0.6rem;
@@ -305,7 +315,10 @@ const videoSchemas = SHEETS.filter((s) => s.video?.id).map((s) => ({
     .pz-boards figure, .pz-boards figure:nth-child(4) { flex: 0 0 38%; scroll-snap-align: start; }
   }
 
+  /* A 5-line title (evidence, at 30 px) pushed the app downloads below a 360x640 first screen; at 27 px every hub
+     keeps the printable and all four downloads in it, with 30 px or more to spare (measured 13 Nov 2026). */
   @media (max-width: 480px) {
+    .pz-hero h1 { font-size: 1.7rem; }
     .pz-boards figcaption { font-size: 0.76rem; }
     .pz-boards small { font-size: 0.72rem; }
     .pz-n { width: 1.15rem; height: 1.15rem; font-size: 0.7rem; }

@@ -4,9 +4,19 @@ import KeyFacts from '../components/KeyFacts.astro';
 import { SINGALONG_VIDEO_ID, SINGALONG_KIT_PAGE } from '../data/singalong';
 import { GUIDES } from '../data/guides';
 import NewsletterSignup from '../components/NewsletterSignup.astro';
-
-// The product version, shown wherever the page states which release this is.
-const RANKUP_VERSION = '0.12.1';
+import RankupDownloads from '../components/RankupDownloads.astro';
+// Versions and every download URL live in src/data/rankup-downloads.ts (13 Nov 2026), so a release changes one file.
+import {
+  RANKUP_VERSION,
+  RANKUP_WINDOWS_VERSION,
+  RANKUP_WINDOWS_DOWNLOAD,
+  RANKUP_MACOS_VERSION,
+  RANKUP_MACOS_DOWNLOAD,
+  RANKUP_APP_STORE_URL,
+  RANKUP_PLAY_STORE_URL,
+  RANKUP_IOS_VERSION,
+  RANKUP_ANDROID_VERSION,
+} from '../data/rankup-downloads';
 
 // SWITCH DAY (KL.7), live from release day (deploy B, the day both stores have approved 0.11.0):
 // the pricing section shows two tiers, Every device and "only on one kind of device", with no
@@ -24,55 +34,6 @@ const RANKUP_SWITCH_DATE_TEXT = RANKUP_SWITCH_DATE
       timeZone: 'UTC',
     })
   : null;
-
-// Download URLs derive from their own per-platform constants, which track the
-// release asset that actually exists rather than the product version.
-// Windows: the earlier installers (0.5.0 and older) were withdrawn with the
-// 0.7.0 release; 0.7.0 was published on 2026-09-19 and 0.7.1 the same evening;
-// 0.8.0 on 2026-09-25; no Windows installer was built for 0.9.0; 0.10.0 (the
-// board-theme update) on 2026-10-13; 0.10.1 (licence keys activate again) on
-// 2026-10-14; no Windows installer was built for 0.10.2; 0.10.3 (per-platform
-// licences and the voice lead-in) the same day; 0.11.0 (Every device) on release
-// day, published (GitHub release v0.11.0, RankUpChess-Setup-0.11.0.exe) before
-// this deploy; 0.12.0 (build 37: the Skills Passport, Rook's warm-up, Class vs
-// Rook) on 2026-11-04, published (GitHub release v0.12.0) before this deploy,
-// first of the platforms; 0.12.1 (build 38: a way back from the Puzzle Maker,
-// Esc on more pages) on 2026-11-08, published (GitHub release v0.12.1) before
-// this deploy.
-// Set this to null to show "coming soon" on the Windows buttons if no
-// installer is live.
-const RANKUP_WINDOWS_VERSION: string | null = '0.12.1';
-const RANKUP_WINDOWS_DOWNLOAD = RANKUP_WINDOWS_VERSION
-  ? `https://github.com/stillware-ltd/rankup-chess-releases/releases/download/v${RANKUP_WINDOWS_VERSION}/RankUpChess-Setup-${RANKUP_WINDOWS_VERSION}.exe`
-  : null;
-
-// macOS ships Developer ID signed and notarised, so it installs without a
-// Gatekeeper warning. Universal binary. 0.8.0 (board themes, macOS 10.15+)
-// was published on 2026-09-25; 0.9.0 (the family adventure) on 2026-10-07
-// needs macOS 12, so Macs on 10.15 or 11 stay on 0.8.0 (linked from the
-// release notes and the releases README); 0.10.0 (the board-theme update) on
-// 2026-10-13; 0.10.1 (licence keys activate again) on 2026-10-14; 0.10.2 (per-platform
-// licences) and 0.10.3 (voice lead-in) the same day; 0.11.0 (Every device) on release
-// day; 0.11.1 (Mac only: licence keys are kept when the keychain refuses) on 2026-11-01;
-// 0.12.1 (build 38: 0.12.0's Skills Passport and Puzzle Maker, plus the way-back fixes)
-// on 2026-11-08, the first platform on 0.12.1. No Mac build of 0.12.0 was published.
-// The release v0.12.1-macos must carry RankUpChess-0.12.1-macOS.dmg (the URL below).
-const RANKUP_MACOS_VERSION = '0.12.1';
-const RANKUP_MACOS_DOWNLOAD =
-  `https://github.com/stillware-ltd/rankup-chess-releases/releases/download/v${RANKUP_MACOS_VERSION}-macos/RankUpChess-${RANKUP_MACOS_VERSION}-macOS.dmg`;
-
-// Mobile store links. The iOS app went live on the App Store on 2026-09-16
-// (iPhone and iPad, iOS 15+); the link is country-neutral so Apple picks the
-// visitor's storefront. 0.7.0 went live on 2026-09-19, 0.7.1 on 2026-09-22
-// and 0.8.0 on 2026-09-25; 0.9.0 went live on the App Store on 2026-10-12.
-// Google Play lists 0.9.0 (build 25), updated 2026-10-07 (checked
-// 2026-10-13 on the listing's app-info panel). 0.11.0 (Every device) was released on
-// both stores on 30 October 2026 (manual release on both).
-const RANKUP_PLAY_STORE_URL =
-  'https://play.google.com/store/apps/details?id=com.stillware.rankup_chess';
-const RANKUP_APP_STORE_URL = 'https://apps.apple.com/app/id6806675796';
-const RANKUP_IOS_VERSION = '0.12.1';
-const RANKUP_ANDROID_VERSION = '0.12.1';
 
 // The "Current release" line names the platforms already on RANKUP_VERSION,
 // then any still catching up. A platform with no version (Windows set to
@@ -105,19 +66,6 @@ const RANKUP_PATCHED = listOf(
 );
 
 // The sing-along's video id and the classroom kit live in src/data/singalong.ts (shared with the kit page).
-
-// Every way to get the app, in the order shown when the visitor's device is unknown. The script
-// at the bottom of the page moves the one for the visitor's device to the front and makes it the
-// big button (research note Marketing/Rank_Up_Chess/SEO/research/
-// landing-rankupchess-kids-redesign-2026-10-30.md, rule W-L2).
-const GET_OPTIONS = [
-  { platform: 'ios', href: RANKUP_APP_STORE_URL, small: 'Download on the', label: 'App Store', external: true },
-  { platform: 'android', href: RANKUP_PLAY_STORE_URL, small: 'Get it on', label: 'Google Play', external: true },
-  ...(RANKUP_WINDOWS_DOWNLOAD
-    ? [{ platform: 'windows', href: RANKUP_WINDOWS_DOWNLOAD, small: 'Download for', label: 'Windows', external: false }]
-    : []),
-  { platform: 'mac', href: RANKUP_MACOS_DOWNLOAD, small: 'Download for', label: 'Mac', external: false },
-];
 
 // The six Sing-Along pieces and how each one moves, in the song's own simple words.
 const SONG_PIECES = [
@@ -227,18 +175,8 @@ const faqSchema = {
                     <span class="ru-h1-sub">The offline chess academy for kids</span>
                 </h1>
                 <p class="ru-lead"><strong>RankUp Chess</strong> teaches every piece one small step at a time, with voiced lessons, friendly bots and puzzles. Free to download, with no ads, no chat and no internet needed.</p>
-                <div class="ru-get" data-get="hero">
-                    {GET_OPTIONS.map((o) => (
-                        <a href={o.href} class="ru-store" data-platform={o.platform} {...(o.external ? { target: '_blank', rel: 'noopener' } : {})}>
-                            <span class="ru-store-icon" aria-hidden="true" data-icon={o.platform}></span>
-                            <span class="ru-store-text"><small>{o.small}</small>{o.label}</span>
-                        </a>
-                    ))}
-                </div>
+                <RankupDownloads place="hero" top winNote />
                 <p class="ru-get-note">Free on iPhone, iPad, Android, Windows and Mac. One optional payment unlocks the whole academy, never a subscription.</p>
-                {RANKUP_WINDOWS_DOWNLOAD && (
-                    <p class="ru-win-note" data-win-note hidden>The Windows installer isn't code-signed yet, so the first time you run it Windows may say &ldquo;Windows protected your PC&rdquo;. Choose <strong>More info</strong>, then <strong>Run anyway</strong>.</p>
-                )}
             </div>
             <div class="ru-hero-art" aria-hidden="true">
                 <div class="ru-board">
@@ -457,14 +395,7 @@ const faqSchema = {
                     <li><span class="check-icon">&#10003;</span> Four Premium Board Worlds (four more are free)</li>
                     <li><span class="check-icon">&#10003;</span> All v1.x Updates Included</li>
                 </ul>
-                <div class="ru-get ru-get-light" data-get="pricing">
-                    {GET_OPTIONS.map((o) => (
-                        <a href={o.href} class="ru-store" data-platform={o.platform} {...(o.external ? { target: '_blank', rel: 'noopener' } : {})}>
-                            <span class="ru-store-icon" aria-hidden="true" data-icon={o.platform}></span>
-                            <span class="ru-store-text"><small>{o.small}</small>{o.label}</span>
-                        </a>
-                    ))}
-                </div>
+                <RankupDownloads place="pricing" align="center" />
                 <p class="pricing-note">Free to play forever on every platform. No credit card, no trial clock, no account required.</p>
                 <p class="pricing-note">Current release <strong>v{RANKUP_VERSION}</strong>{RANKUP_CURRENT_ON && ` on ${RANKUP_CURRENT_ON}`}.{RANKUP_CATCHING_UP && ` ${RANKUP_CATCHING_UP}, with ${RANKUP_VERSION} on its way.`}{RANKUP_PATCHED && ` ${RANKUP_PATCHED}.`}{!RANKUP_WINDOWS_VERSION && ' The Windows version is coming soon.'}</p>
                 {RANKUP_WINDOWS_DOWNLOAD && (
@@ -506,14 +437,7 @@ const faqSchema = {
             <img src="/RankUpChess_logo-240.webp" alt="RankUp Chess" class="ru-final-logo" width="120" height="120" loading="lazy" />
             <h2>The Chess Academy They Deserve.</h2>
             <p>No subscriptions. No data harvesting. No internet required. Just pure, premium chess education — owned by you, forever.</p>
-            <div class="ru-get" data-get="final">
-                {GET_OPTIONS.map((o) => (
-                    <a href={o.href} class="ru-store" data-platform={o.platform} {...(o.external ? { target: '_blank', rel: 'noopener' } : {})}>
-                        <span class="ru-store-icon" aria-hidden="true" data-icon={o.platform}></span>
-                        <span class="ru-store-text"><small>{o.small}</small>{o.label}</span>
-                    </a>
-                ))}
-            </div>
+            <RankupDownloads place="final" align="center" />
         </div>
         <div class="ru-hill ru-hill-final" aria-hidden="true"></div>
     </section>
@@ -560,38 +484,11 @@ const faqSchema = {
         }
     }
 
-    // Which platform this visitor is on, from the user agent (the same test as /get/). iPadOS 13+
-    // asks for the desktop site and reports itself as a Mac; the touch points give it away.
-    function visitorPlatform(): string {
-        const ua = navigator.userAgent || '';
-        const touchMac = /Macintosh/.test(ua) && navigator.maxTouchPoints > 1;
-        if (/iPhone|iPad|iPod/.test(ua) || touchMac) return 'ios';
-        if (/Android/.test(ua)) return 'android';
-        if (/Windows/.test(ua)) return 'windows';
-        if (/Macintosh|Mac OS X/.test(ua)) return 'mac';
-        return '';
-    }
-
-    // Rule W-L2: the visitor's own platform becomes the big first button in every button group;
-    // the others stay one line below. Unknown devices keep every option the same size.
-    function personaliseGetButtons() {
-        const platform = visitorPlatform();
-        // Carry ?ref= and utm_* through to Google Play, so Play Console can answer "did YouTube send this install?".
-        const qs = location.search;
-        document.querySelectorAll<HTMLAnchorElement>('.ru-store[data-platform="android"]').forEach((a) => {
-            if (qs.length > 1 && !a.href.includes('referrer=')) a.href += '&referrer=' + encodeURIComponent(qs.slice(1));
-        });
-        document.querySelectorAll<HTMLElement>('[data-get]').forEach((group) => {
-            const mine = group.querySelector<HTMLElement>(`.ru-store[data-platform="${platform}"]`);
-            if (!mine) return;
-            group.classList.add('has-primary');
-            mine.classList.add('is-primary');
-            group.prepend(mine);
-            const free = mine.querySelector('small');
-            if (free) free.textContent = platform === 'ios' || platform === 'android' ? 'Free on' : 'Free download for';
-        });
-        if (platform === 'windows') document.querySelector<HTMLElement>('[data-win-note]')?.removeAttribute('hidden');
-        document.querySelectorAll<HTMLAnchorElement>('.ru-store').forEach((a) => {
+    // The four download buttons (hero, pricing, final) come from RankupDownloads.astro, whose own script puts the
+    // visitor's device first (rule W-L2) and passes the query string on to Google Play. This page keeps its own click
+    // event, as before, so W-L2's falsifier can still be read: which group, which platform, the big button or not.
+    function trackGetClicks() {
+        document.querySelectorAll<HTMLAnchorElement>('.rd-btn').forEach((a) => {
             a.addEventListener('click', () => {
                 const group = a.closest<HTMLElement>('[data-get]');
                 (window as any).stillTrack?.('rankup_get', {
@@ -622,7 +519,7 @@ const faqSchema = {
 
     document.addEventListener('DOMContentLoaded', () => {
         showLocalPrices();
-        personaliseGetButtons();
+        trackGetClicks();
         wireVideo();
 
         // App Slides Carousels — one per wrapper, so the phone and Mac
@@ -843,19 +740,12 @@ const faqSchema = {
 
     .ru-lead strong { color: var(--ru-ink); }
 
-    .ru-get-note,
-    .ru-win-note {
+    .ru-get-note {
         margin-top: 0.9rem;
         font-size: 0.92rem;
         line-height: 1.5;
         color: var(--ru-ink-soft);
         max-width: 560px;
-    }
-
-    .ru-win-note {
-        background: rgba(255, 255, 255, 0.7);
-        border-radius: 12px;
-        padding: 0.6rem 0.8rem;
     }
 
     /* The board, the King and the little Pawn */
@@ -911,96 +801,8 @@ const faqSchema = {
         background: linear-gradient(180deg, var(--ru-grass) 0%, var(--ru-grass-deep) 100%);
     }
 
-    /* ── Get buttons (hero, pricing, final) ───────────────── */
-    .ru-get {
-        display: grid;
-        grid-template-columns: repeat(2, minmax(0, 1fr));
-        gap: 0.7rem;
-        max-width: 520px;
-    }
-
-    .ru-store {
-        display: flex;
-        align-items: center;
-        gap: 0.7rem;
-        min-height: 56px;
-        padding: 0.6rem 1rem;
-        border-radius: 16px;
-        background: var(--ru-ink);
-        color: #ffffff;
-        text-decoration: none;
-        font-family: var(--ru-round);
-        font-weight: 800;
-        font-size: 1.05rem;
-        line-height: 1.1;
-        box-shadow: 0 4px 0 rgba(0, 0, 0, 0.25);
-        transition: transform 0.15s ease, background 0.15s ease;
-    }
-
-    .ru-store:hover { transform: translateY(-2px); background: #3A2F5A; }
-    .ru-store:focus-visible { outline: 3px solid var(--ru-orange); outline-offset: 3px; }
-
-    .ru-store-text small {
-        display: block;
-        font-family: var(--font-sans);
-        font-weight: 500;
-        font-size: 0.72rem;
-        opacity: 0.85;
-        margin-bottom: 0.15rem;
-    }
-
-    .ru-store-icon {
-        flex-shrink: 0;
-        width: 26px;
-        height: 26px;
-        background: currentColor;
-        -webkit-mask: var(--ru-icon) center / contain no-repeat;
-        mask: var(--ru-icon) center / contain no-repeat;
-    }
-
-    .ru-store-icon[data-icon='ios'],
-    .ru-store-icon[data-icon='mac'] {
-        --ru-icon: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath d='M17.05 20.28c-.98.95-2.05.8-3.08.35-1.09-.46-2.09-.48-3.24 0-1.44.62-2.2.44-3.06-.35C2.79 15.25 3.51 7.59 9.05 7.31c1.35.07 2.29.74 3.08.8 1.18-.24 2.31-.93 3.57-.84 1.51.12 2.65.72 3.4 1.8-3.12 1.87-2.38 5.98.48 7.13-.57 1.5-1.31 2.99-2.54 4.09zM12.03 7.25c-.15-2.23 1.66-4.07 3.74-4.25.29 2.58-2.34 4.5-3.74 4.25z'/%3E%3C/svg%3E");
-    }
-
-    .ru-store-icon[data-icon='android'] {
-        --ru-icon: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath d='M3.6 1.8 13.3 11.5 3.6 21.2c-.4-.2-.6-.6-.6-1.1V2.9c0-.5.2-.9.6-1.1zm10.7 10.7 2.7 2.7-11.4 6.5 8.7-9.2zm3.9-3.6 2.9 1.7c.8.5.8 1.6 0 2l-2.9 1.7-3-3 3-2.4zM5.6 1.6 17 8.1l-2.7 2.7L5.6 1.6z'/%3E%3C/svg%3E");
-    }
-
-    .ru-store-icon[data-icon='windows'] {
-        --ru-icon: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath d='M0 3.449L9.75 2.1v9.451H0m10.949-9.602L24 0v11.4H10.949M0 12.6h9.75v9.451L0 20.699M10.949 12.6H24V24l-12.9-1.801'/%3E%3C/svg%3E");
-    }
-
-    /* Once the script knows the device, its button is the big one and the rest shrink. */
-    .ru-get.has-primary .ru-store {
-        min-height: 44px;
-        font-size: 0.92rem;
-        background: rgba(46, 37, 71, 0.82);
-    }
-
-    .ru-get.has-primary .ru-store small { display: none; }
-    .ru-get.has-primary .ru-store .ru-store-icon { width: 20px; height: 20px; }
-
-    .ru-get.has-primary .ru-store.is-primary {
-        grid-column: 1 / -1;
-        min-height: 66px;
-        font-size: 1.25rem;
-        justify-content: center;
-        background: var(--ru-button);
-        box-shadow: 0 5px 0 #3B2C86;
-    }
-
-    .ru-get.has-primary .ru-store.is-primary:hover { background: var(--ru-button-hover); }
-    .ru-get.has-primary .ru-store.is-primary small { display: block; }
-    .ru-get.has-primary .ru-store.is-primary .ru-store-icon { width: 30px; height: 30px; }
-
-    .ru-get.has-primary .ru-store:not(.is-primary) {
-        grid-column: auto;
-    }
-
-    .ru-get.has-primary {
-        grid-template-columns: repeat(3, minmax(0, 1fr));
-    }
+    /* Get buttons (hero, pricing, final): src/components/RankupDownloads.astro styles them; the 820 px rule centres the
+       hero's group on phones. */
 
     /* ── Trust band ──────────────────────────────────────── */
     .ru-trust-band {
@@ -1543,8 +1345,6 @@ const faqSchema = {
 
     .check-icon { color: #3D7A1F; font-weight: 900; }
 
-    .ru-get-light { margin: 0 auto; }
-
     /* ── Teachers ────────────────────────────────────────── */
     .ru-teachers {
         padding: 3rem 0;
@@ -1628,7 +1428,6 @@ const faqSchema = {
         margin-bottom: 1.6rem;
     }
 
-    .ru-final .ru-get { margin: 0 auto; }
     .ru-hill-final { bottom: -95px; }
 
     /* ── Smaller screens (phones come from YouTube first) ── */
@@ -1642,8 +1441,8 @@ const faqSchema = {
         .ru-hero-inner { grid-template-columns: 1fr; gap: 1.5rem; }
         .ru-hero-art { max-width: 280px; }
         .ru-hero-copy { text-align: center; }
-        .ru-lead, .ru-get-note, .ru-win-note { margin-inline: auto; }
-        .ru-get { margin-inline: auto; }
+        .ru-lead, .ru-get-note { margin-inline: auto; }
+        .ru-hero-copy :global(.rd) { margin-inline: auto; }
         .ru-grownups-grid, .ru-why, .pricing-cards, .faq-grid { grid-template-columns: 1fr; }
         .ru-grownups-visual { order: -1; }
         .features-list { grid-template-columns: 1fr; }
@@ -1653,9 +1452,6 @@ const faqSchema = {
     @media (max-width: 560px) {
         .ru-cards { grid-template-columns: 1fr; }
         .ru-parade { grid-template-columns: repeat(2, minmax(0, 1fr)); }
-        .ru-get.has-primary { grid-template-columns: repeat(3, minmax(0, 1fr)); }
-        .ru-get.has-primary .ru-store:not(.is-primary) { padding: 0.5rem; justify-content: center; font-size: 0.82rem; }
-        .ru-get.has-primary .ru-store:not(.is-primary) .ru-store-icon { display: none; }
         .slide-nav-btn { display: none; }
         .slide-image { width: 220px; }
         .slide-image-wide { width: 300px; }
@@ -1671,6 +1467,5 @@ const faqSchema = {
 
     @media (prefers-reduced-motion: reduce) {
         .ru-cloud, .ru-king, .ru-pawn { animation: none; }
-        .ru-store { transition: none; }
     }
 </style>
