@@ -11,7 +11,8 @@
 // is a QR short link. Its target page must:
 //   1. be built (dist/<path>/index.html);
 //   2. carry exactly one downloads group marked with the app's attribute set to "top" (data-rankup-downloads, from
-//      src/components/RankupDownloads.astro; data-zeroed-downloads, the hero's platform links in src/pages/zeroed.astro);
+//      src/components/RankupDownloads.astro; data-zeroed-downloads, the hero's platform links in src/pages/zeroed.astro),
+//      set on the group's own <div> (the Producer's qr_endcard.py --link reads the group the same way);
 //   3. hold, in that group, the app's four links with their labels word for word, each in the HTML and none hidden;
 //   4. have it near the top: after the page's one <h1>, before its first <h2>, and with no more than
 //      MAX_WORDS_BEFORE words of text between the two.
@@ -118,8 +119,20 @@ function checkPage(app, page) {
     problems.push(`${marks.length} downloads groups marked ${app.marker}="top" (need exactly 1: ${app.where})`);
     return { problems, used: [] };
   }
-  const open = html.lastIndexOf('<div', marks[0].index);
-  const group = open >= 0 ? element(html, open) : null;
+  // The marker must sit on the group's own <div> start tag. This check, and the Producer's end-card check
+  // (Marketing/Zeroed/Youtube/scripts/qr_endcard.py --link, RankUp pages), read the group as that <div>.
+  // On a <section> or <nav> both would read another element, so the build fails instead.
+  const tagAt = html.lastIndexOf('<', marks[0].index);
+  const tag = (html.slice(tagAt).match(/^<([a-zA-Z][\w-]*)/) || [])[1] || '?';
+  if (tag.toLowerCase() !== 'div') {
+    problems.push(
+      `the ${app.marker}="top" marker is on a <${tag}>, not a <div>: this check and qr_endcard.py --link ` +
+        `read the group as the <div> it sits on (update both if the component changes)`,
+    );
+    return { problems, used: [] };
+  }
+  const open = tagAt;
+  const group = element(html, open);
   if (!group) return { problems: ['the downloads group has no closing tag'], used: [] };
   if (/^<div\b[^>]*\shidden[\s=>]/.test(group) || /^<div\b[^>]*style="[^"]*display:\s*none/.test(group)) {
     problems.push('the downloads group is hidden');
