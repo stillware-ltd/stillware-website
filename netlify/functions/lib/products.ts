@@ -1,12 +1,22 @@
 // Multi-product config for the shared license backend.
 //
 // To onboard a new Stillware product:
-//  1. Add its Paddle price ID(s) to PRICE_ID_TO_PRODUCT below.
+//  1. Add its slug to ProductSlug and to isValidProduct below. Until both know it, a request
+//     naming it is treated as Zeroed's (DEFAULT_PRODUCT_FOR_LEGACY_CLIENTS), so a Zeroed key
+//     would unlock the new app.
 //  2. Add its display config to PRODUCTS below.
-//  3. Tell the new app's client to send `product: '<slug>'` on every
+//  3. Add its Paddle price ID(s) to PRICE_ID_TO_PRODUCT below, once they exist. Without one,
+//     no licence of the product can be sold or re-sent; activation of licences already in the
+//     database works.
+//  4. Decide whether it uses the server-anchored trial (TRIAL_PRODUCTS) and the household
+//     licence (HOUSEHOLD_PRODUCTS). Both are opt-in lists: a product is in neither by default.
+//  5. Tell the new app's client to send `product: '<slug>'` on every
 //     activate/validate/deactivate request.
+//
+// The `licenses.product` column is plain TEXT with no CHECK constraint (lib/schema.sql), so a
+// new slug needs no database migration.
 
-export type ProductSlug = "zeroed" | "rankup";
+export type ProductSlug = "zeroed" | "rankup" | "qtc";
 
 export interface ProductConfig {
   /** Slug stored in the `licenses.product` column. */
@@ -36,6 +46,34 @@ export const PRODUCTS: Record<ProductSlug, ProductConfig> = {
     maxActivations: 3,
     pageUrl: "https://www.stillwareltd.com/rankupchess/",
   },
+  // Quote-to-Cash (codename QTC; repository Projects/Quote_to_Cash, docs/licensing.md there).
+  // Known to the server from 2026-11-13 so that a request naming `qtc` looks only among
+  // Quote-to-Cash licences and a Zeroed key no longer unlocks it. Nothing is sold yet: it has
+  // no Paddle price (PRICE_ID_TO_PRODUCT below), so the webhook mints no `qtc` licence and
+  // resend-key sends nothing for it. It is in neither TRIAL_PRODUCTS (its trial is on the
+  // device) nor HOUSEHOLD_PRODUCTS (no store purchases yet).
+  //
+  // FOUNDER PLACEHOLDERS: the values marked below are working values, not decisions. Settle
+  // each BEFORE a Paddle price is mapped to `qtc`: from that moment the licence email prints
+  // `name` and `maxActivations` to a paying customer.
+  qtc: {
+    slug: "qtc",
+    // FOUNDER PLACEHOLDER 1 of 3: the public name. "Quote-to-Cash" is the working name; the
+    // product is a codename until its Phase 6. Printed in the licence email and its subject.
+    name: "Quote-to-Cash",
+    // Not one of the three, but also the founder's: the email footer line. The company line
+    // RankUp Chess uses stands in until the product has its own.
+    tagline: "Software you own.",
+    // FOUNDER PLACEHOLDER 2 of 3: devices per licence. Three, as Quote_to_Cash/docs/licensing.md
+    // section 5 records (founder, 2026-11-13: the buyer's own phone and computer, and one place
+    // over). Copied to each licence when it is minted, so a later change here applies to new
+    // licences only.
+    maxActivations: 3,
+    // FOUNDER PLACEHOLDER 3 of 3: the product page. There is none yet, so this is the site's
+    // home page. Only read when a key is refused for being for another platform, which cannot
+    // happen while `qtc` has no per-platform price (PRICE_ID_TO_PLATFORM).
+    pageUrl: "https://www.stillwareltd.com/",
+  },
 };
 
 /**
@@ -57,6 +95,11 @@ export const PRICE_ID_TO_PRODUCT: Record<string, ProductSlug> = {
   pri_01m5t1fevddc28paxqbpa4q5ks: "rankup",
   // RankUp Chess — the Every device upgrade for a key holder ($9.99) (KL.3, 25 October 2026)
   pri_01m5t1gwdqpdt1ewebtjchcpqh: "rankup",
+  // Quote-to-Cash — NO ENTRY ON PURPOSE (2026-11-13): no Paddle product or price exists yet.
+  // FOUNDER: when the prices are made in Paddle, add each id here, as
+  //   pri_xxxxxxxxxxxxxxxxxxxxxxxxxx: "qtc",
+  // after settling the three placeholders in PRODUCTS.qtc above. Until then the webhook answers
+  // a `qtc` purchase as an unknown price (500, Paddle retries) and no `qtc` key is ever emailed.
 };
 
 /**
@@ -163,7 +206,20 @@ export const DEFAULT_PRODUCT_FOR_LEGACY_CLIENTS: ProductSlug = "zeroed";
  * otherwise `null`.
  */
 export function isValidProduct(slug: string | undefined): slug is ProductSlug {
-  return slug === "zeroed" || slug === "rankup";
+  return slug === "zeroed" || slug === "rankup" || slug === "qtc";
+}
+
+/**
+ * Products that use the server-anchored free trial (trial-start.ts, trial-status.ts). Until
+ * 2026-11-13 those endpoints took every known product; they now take this list, which holds the
+ * two products that existed then, so nothing changes for either. Quote-to-Cash (`qtc`) is left
+ * out on purpose: its 30-day trial is kept on the device and makes no call
+ * (Quote_to_Cash/docs/licensing.md), so the server has no reason to accept trial rows for it.
+ */
+export const TRIAL_PRODUCTS: readonly ProductSlug[] = ["zeroed", "rankup"];
+
+export function isTrialProduct(slug: unknown): slug is ProductSlug {
+  return typeof slug === "string" && (TRIAL_PRODUCTS as readonly string[]).includes(slug);
 }
 
 // ---------------------------------------------------------------------------------------------
@@ -172,7 +228,11 @@ export function isValidProduct(slug: string | undefined): slug is ProductSlug {
 // Everything below is dark until HOUSEHOLD_ENABLED is "1" (lib/household-config.ts).
 // ---------------------------------------------------------------------------------------------
 
-/** Products whose household endpoints are open. RankUp Maths joins this list when it ships. */
+/**
+ * Products whose household endpoints are open. RankUp Maths joins this list when it ships.
+ * Quote-to-Cash (`qtc`) is left out on purpose: it has no store purchases, so its licences are
+ * plain keys with a device limit and never get a household record.
+ */
 export const HOUSEHOLD_PRODUCTS: readonly ProductSlug[] = ["rankup"];
 
 export function isHouseholdProduct(slug: unknown): slug is ProductSlug {

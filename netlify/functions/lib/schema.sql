@@ -11,7 +11,7 @@ CREATE TABLE IF NOT EXISTS licenses (
   key_hash        TEXT NOT NULL UNIQUE,
   email           TEXT NOT NULL,
   paddle_txn_id   TEXT NOT NULL UNIQUE,
-  product         TEXT NOT NULL DEFAULT 'zeroed',  -- 'zeroed' | 'rankup' | ...
+  product         TEXT NOT NULL DEFAULT 'zeroed',  -- 'zeroed' | 'rankup' | 'qtc' | ... (no CHECK: a new slug needs no migration)
   max_activations INTEGER NOT NULL DEFAULT 3,
   created_at      TEXT NOT NULL DEFAULT (datetime('now')),
   revoked         INTEGER NOT NULL DEFAULT 0,

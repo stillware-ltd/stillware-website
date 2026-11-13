@@ -1,6 +1,6 @@
 import type { Context } from "@netlify/functions";
 import { getDb } from "./lib/db.js";
-import { isValidProduct } from "./lib/products.js";
+import { isTrialProduct } from "./lib/products.js";
 
 // Server-anchored free-trial start (fixes the Android reinstall-reset bug).
 // Idempotent per (product, device_id): a reinstall hits the same key and gets
@@ -18,7 +18,7 @@ export default async function handler(req: Request, _context: Context) {
   }
 
   const { product, device_id } = body;
-  if (!isValidProduct(product)) {
+  if (!isTrialProduct(product)) {
     return jsonResponse({ error: "Unknown product" }, 400);
   }
   if (!device_id || typeof device_id !== "string" || !device_id.trim()) {

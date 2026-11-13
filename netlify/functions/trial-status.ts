@@ -1,6 +1,6 @@
 import type { Context } from "@netlify/functions";
 import { getDb } from "./lib/db.js";
-import { isValidProduct } from "./lib/products.js";
+import { isTrialProduct } from "./lib/products.js";
 
 // Returns the recorded trial start for a device, or 404 when the device has
 // no trial on record (the client treats 404 as "start fresh").
@@ -13,7 +13,7 @@ export default async function handler(req: Request, _context: Context) {
   const product = url.searchParams.get("product") ?? undefined;
   const deviceId = url.searchParams.get("device_id")?.trim();
 
-  if (!isValidProduct(product)) {
+  if (!isTrialProduct(product)) {
     return jsonResponse({ error: "Unknown product" }, 400);
   }
   if (!deviceId) {
