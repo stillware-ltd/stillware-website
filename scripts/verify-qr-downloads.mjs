@@ -19,8 +19,8 @@
 //
 // Live mode, after a deploy: `node scripts/verify-qr-downloads.mjs --live [origin]`. Each short link, in both forms,
 // must answer a 302 to its page in _redirects. The page is read from the live site and checked as above. Every
-// download URL must answer: the store pages 200, and GitHub's assets 200 or 302. A 429 (rate-limited) is retried once
-// after 10 s and logged; a second 429 fails. A new QR link is not live until its
+// download URL must answer: the store pages 200, and GitHub's assets 200 or 302. A 429 (rate-limited) gets up to three
+// retries, after 10, 30 and 60 s, each logged; a 429 after the third fails. A new QR link is not live until its
 // page passes (Marketing/Rank_Up_Chess/Youtube/rotation/upload-playbook.md, section 6).
 //
 // Escape hatch for an emergency deploy: SKIP_LINK_CHECK=1 (the same switch as verify-links.mjs).
@@ -201,16 +201,22 @@ if (!live) {
 }
 
 // ---- live mode -------------------------------------------------------------------------------------------------------
-// A 429 (Too Many Requests) is the server rate-limiting the checker, not a broken link: the App Store answered one on
-// 13 Nov 2026 during back-to-back runs. Retry it once after RETRY_429_MS and say so; a second 429 still fails.
-const RETRY_429_MS = 10_000;
+// A 429 (Too Many Requests) is the server rate-limiting the checker, not a broken link. The App Store answered one on
+// 13 Nov 2026 during back-to-back runs, and at 05:50 that day it answered two in a row, 10 s apart. So a 429 gets up
+// to three retries, after 10, 30 and 60 s (the manager, 13 Nov 2026), each logged; a 429 after the third still fails.
+const RETRY_429_WAITS_S = [10, 30, 60];
 async function get(url, opts) {
-  const res = await fetch(url, opts);
-  if (res.status !== 429) return res;
-  try { await res.body?.cancel(); } catch {}
-  console.log(`  429  ${url}  rate-limited; retrying once in ${RETRY_429_MS / 1000} s`);
-  await new Promise((r) => setTimeout(r, RETRY_429_MS));
-  return fetch(url, opts);
+  let res = await fetch(url, opts);
+  for (let i = 0; res.status === 429 && i < RETRY_429_WAITS_S.length; i++) {
+    try { await res.body?.cancel(); } catch {}
+    const wait = RETRY_429_WAITS_S[i];
+    console.log(`  429  ${url}  rate-limited; retry ${i + 1} of ${RETRY_429_WAITS_S.length} in ${wait} s`);
+    await new Promise((r) => setTimeout(r, wait * 1000));
+    res = await fetch(url, opts);
+    if (res.status !== 429) console.log(`  ${res.status}  ${url}  answered on retry ${i + 1}`);
+  }
+  if (res.status === 429) console.log(`  429  ${url}  still rate-limited after ${RETRY_429_WAITS_S.length} retries`);
+  return res;
 }
 
 const pageUrls = new Map();
