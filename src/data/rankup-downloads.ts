@@ -23,9 +23,10 @@ export const RANKUP_VERSION = '0.12.1';
 // Rook) on 2026-11-04, published (GitHub release v0.12.0) before this deploy,
 // first of the platforms; 0.12.1 (build 38: a way back from the Puzzle Maker,
 // Esc on more pages) on 2026-11-08, published (GitHub release v0.12.1) before
-// this deploy.
+// this deploy; 0.12.2 (build 39: the same changes as the Mac's 0.12.2 below) on
+// 2026-11-14, published (GitHub release v0.12.2) before this deploy.
 // Set this to null to show "coming soon" on /rankupchess/ if no installer is live (the QR check then fails the build).
-export const RANKUP_WINDOWS_VERSION: string | null = '0.12.1';
+export const RANKUP_WINDOWS_VERSION: string | null = '0.12.2';
 export const RANKUP_WINDOWS_DOWNLOAD = RANKUP_WINDOWS_VERSION
   ? `https://github.com/stillware-ltd/rankup-chess-releases/releases/download/v${RANKUP_WINDOWS_VERSION}/RankUpChess-Setup-${RANKUP_WINDOWS_VERSION}.exe`
   : null;
