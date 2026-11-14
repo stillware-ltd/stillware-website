@@ -1,6 +1,7 @@
 import test from "node:test";
 import assert from "node:assert/strict";
 import { readFileSync } from "node:fs";
+import { stripTypeScriptTypes } from "node:module";
 
 // The switch-day RankUp page (src/pages/rankupchess.astro): the HTML has no price figure, and the
 // small script fills in the visitor's own price from /api/household/prices. The script is run here
@@ -58,7 +59,12 @@ async function run(fetchImpl: (url: string, init: any) => Promise<any>) {
     calls.push({ url, init });
     return fetchImpl(url, init);
   };
-  const fn = new Function("document", "fetch", "AbortController", "setTimeout", "clearTimeout", `${scriptSource()}; return showLocalPrices;`)(
+  // The page's script is TypeScript (Astro compiles it for the browser). It is run here as the
+  // browser runs it, with its type annotations taken out the way Node itself takes them out.
+  // Without this, one annotation is enough to stop every test below before it tests anything:
+  // that happened from 30 October to 14 November 2026.
+  const script = stripTypeScriptTypes(scriptSource());
+  const fn = new Function("document", "fetch", "AbortController", "setTimeout", "clearTimeout", `${script}; return showLocalPrices;`)(
     p.doc, fetchSpy, AbortController, setTimeout, clearTimeout
   );
   await fn();
@@ -122,10 +128,19 @@ test("the page no longer says it has no central servers (a licence server exists
   assert.match(SOURCE, /Up to 8 family profiles on one device, with no child accounts/);
 });
 
+/** The words of the page's one H1, with its markup taken out. */
+function headingText(): string {
+  const all = SOURCE.match(/<h1[\s>][\s\S]*?<\/h1>/g) ?? [];
+  assert.equal(all.length, 1, "the page has one H1");
+  return all[0].replace(/<[^>]+>/g, " ").replace(/\s+/g, " ").trim();
+}
+
 test("title, H1 and URL are the page's own, unchanged", () => {
   assert.match(SOURCE, /title="RankUp Chess — The Offline Chess Academy for Kids"/);
   assert.match(SOURCE, /canonical="https:\/\/www\.stillwareltd\.com\/rankupchess\/"/);
-  assert.match(SOURCE, /<h1 class="text-gradient-gold">Stop renting your kids' educational apps\.<\/h1>/);
+  // The heading since the page was rebuilt for the sing-along on 30 October 2026 (e364dcd).
+  // Before that it was "Stop renting your kids' educational apps."
+  assert.equal(headingText(), "Every Pawn can Rank Up The offline chess academy for kids");
 });
 
 test("script: asks for platform web, and fills in the figures it is given (card 2 included)", async () => {
