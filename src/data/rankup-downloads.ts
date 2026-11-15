@@ -23,9 +23,10 @@ export const RANKUP_VERSION = '0.12.1';
 // Rook) on 2026-11-04, published (GitHub release v0.12.0) before this deploy,
 // first of the platforms; 0.12.1 (build 38: a way back from the Puzzle Maker,
 // Esc on more pages) on 2026-11-08, published (GitHub release v0.12.1) before
-// this deploy.
+// this deploy; 0.12.2 (build 39: the same changes as the Mac's 0.12.2 below) on
+// 2026-11-14, published (GitHub release v0.12.2) before this deploy.
 // Set this to null to show "coming soon" on /rankupchess/ if no installer is live (the QR check then fails the build).
-export const RANKUP_WINDOWS_VERSION: string | null = '0.12.1';
+export const RANKUP_WINDOWS_VERSION: string | null = '0.12.2';
 export const RANKUP_WINDOWS_DOWNLOAD = RANKUP_WINDOWS_VERSION
   ? `https://github.com/stillware-ltd/rankup-chess-releases/releases/download/v${RANKUP_WINDOWS_VERSION}/RankUpChess-Setup-${RANKUP_WINDOWS_VERSION}.exe`
   : null;
@@ -40,8 +41,11 @@ export const RANKUP_WINDOWS_DOWNLOAD = RANKUP_WINDOWS_VERSION
 // day; 0.11.1 (Mac only: licence keys are kept when the keychain refuses) on 2026-11-01;
 // 0.12.1 (build 38: 0.12.0's Skills Passport and Puzzle Maker, plus the way-back fixes)
 // on 2026-11-08, the first platform on 0.12.1. No Mac build of 0.12.0 was published.
-// The release v0.12.1-macos must carry RankUpChess-0.12.1-macOS.dmg (the URL below).
-export const RANKUP_MACOS_VERSION = '0.12.1';
+// 0.12.2 (build 39: flag-fall draws against a bare king, the Piece Values challenge, the
+// Castle Grounds card, the Teacher area's Classroom switch) on 2026-11-14, the first
+// platform on 0.12.2 (iOS 0.12.2 is in App Review).
+// The release v0.12.2-macos must carry RankUpChess-0.12.2-macOS.dmg (the URL below).
+export const RANKUP_MACOS_VERSION = '0.12.2';
 export const RANKUP_MACOS_DOWNLOAD =
   `https://github.com/stillware-ltd/rankup-chess-releases/releases/download/v${RANKUP_MACOS_VERSION}-macos/RankUpChess-${RANKUP_MACOS_VERSION}-macOS.dmg`;
 

@@ -59,10 +59,15 @@ const RANKUP_CATCHING_UP = listOf(
     (p) => `${listOf(p.names)} ${p.names.length > 1 ? 'are' : 'is'} on v${p.version}`,
   ),
 );
+// Platforms on the same later patch share one sentence (Windows and macOS on 0.12.2, 14 Nov 2026).
+const RANKUP_PATCHED_PLATFORMS = RANKUP_PLATFORMS.filter(
+  (p) => p.version && p.version !== RANKUP_VERSION && minorOf(p.version) === minorOf(RANKUP_VERSION),
+);
 const RANKUP_PATCHED = listOf(
-  RANKUP_PLATFORMS.filter(
-    (p) => p.version && p.version !== RANKUP_VERSION && minorOf(p.version) === minorOf(RANKUP_VERSION),
-  ).map((p) => `${listOf(p.names)} ${p.names.length > 1 ? 'are' : 'is'} on v${p.version}, with the newest fixes`),
+  [...new Set(RANKUP_PATCHED_PLATFORMS.map((p) => p.version))].map((v) => {
+    const names = RANKUP_PATCHED_PLATFORMS.filter((p) => p.version === v).flatMap((p) => p.names);
+    return `${listOf(names)} ${names.length > 1 ? 'are' : 'is'} on v${v}, with the newest fixes`;
+  }),
 );
 
 // The sing-along's video id and the classroom kit live in src/data/singalong.ts (shared with the kit page).
