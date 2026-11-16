@@ -8,7 +8,7 @@
 // Marketing/Rank_Up_Chess/SEO/research/qr-landing-four-downloads-2026-11-13.md.
 
 // The product version, shown wherever a page states which release this is.
-export const RANKUP_VERSION = '0.12.1';
+export const RANKUP_VERSION = '0.12.2';
 
 // Download URLs derive from their own per-platform constants, which track the
 // release asset that actually exists rather than the product version.
@@ -42,8 +42,8 @@ export const RANKUP_WINDOWS_DOWNLOAD = RANKUP_WINDOWS_VERSION
 // 0.12.1 (build 38: 0.12.0's Skills Passport and Puzzle Maker, plus the way-back fixes)
 // on 2026-11-08, the first platform on 0.12.1. No Mac build of 0.12.0 was published.
 // 0.12.2 (build 39: flag-fall draws against a bare king, the Piece Values challenge, the
-// Castle Grounds card, the Teacher area's Classroom switch) on 2026-11-14, the first
-// platform on 0.12.2 (iOS 0.12.2 is in App Review).
+// Castle Grounds card, the Teacher area's Classroom switch) on 2026-11-14 (the Mac build).
+// Every platform is on 0.12.2 (checked 2026-11-16, see the mobile block below).
 // The release v0.12.2-macos must carry RankUpChess-0.12.2-macOS.dmg (the URL below).
 export const RANKUP_MACOS_VERSION = '0.12.2';
 export const RANKUP_MACOS_DOWNLOAD =
@@ -55,12 +55,15 @@ export const RANKUP_MACOS_DOWNLOAD =
 // and 0.8.0 on 2026-09-25; 0.9.0 went live on the App Store on 2026-10-12.
 // Google Play lists 0.9.0 (build 25), updated 2026-10-07 (checked
 // 2026-10-13 on the listing's app-info panel). 0.11.0 (Every device) was released on
-// both stores on 30 October 2026 (manual release on both).
+// both stores on 30 October 2026 (manual release on both). 0.12.1 went live on the App Store on
+// 2026-11-08. 0.12.2 (build 39) went live on the App Store on 2026-11-12 (the store's own
+// release date, 16:50 UTC) and on Google Play with the listing's "Updated on" 11 Nov 2026
+// (both checked 2026-11-16).
 export const RANKUP_PLAY_STORE_URL =
   'https://play.google.com/store/apps/details?id=com.stillware.rankup_chess';
 export const RANKUP_APP_STORE_URL = 'https://apps.apple.com/app/id6806675796';
-export const RANKUP_IOS_VERSION = '0.12.1';
-export const RANKUP_ANDROID_VERSION = '0.12.1';
+export const RANKUP_IOS_VERSION = '0.12.2';
+export const RANKUP_ANDROID_VERSION = '0.12.2';
 
 export type RankupPlatform = 'ios' | 'android' | 'windows' | 'mac';
 

@@ -59,7 +59,8 @@ const RANKUP_CATCHING_UP = listOf(
     (p) => `${listOf(p.names)} ${p.names.length > 1 ? 'are' : 'is'} on v${p.version}`,
   ),
 );
-// Platforms on the same later patch share one sentence (Windows and macOS on 0.12.2, 14 Nov 2026).
+// Platforms on the same later patch share one sentence (Windows and macOS on 0.12.2 while the phones were on 0.12.1,
+// 14 Nov 2026). With every platform on RANKUP_VERSION (0.12.2, 16 Nov 2026) the line is just "on Windows, macOS, ...".
 const RANKUP_PATCHED_PLATFORMS = RANKUP_PLATFORMS.filter(
   (p) => p.version && p.version !== RANKUP_VERSION && minorOf(p.version) === minorOf(RANKUP_VERSION),
 );
