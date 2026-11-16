@@ -1,0 +1,310 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import RankupDownloads from '../../components/RankupDownloads.astro';
+
+// Even the Odds (series K) results: every test and every score from RankUp Chess's video k-01, the top bot without its
+// queen (YouTube, Wed 18 Nov 2026). The video's end card QR (stillwareltd.com/noqueen, public/_redirects) lands here and
+// promises "Scan for the full results. Every test and every score. No email needed." So the whole result set is on the
+// page, in HTML, with no form, email or account (Manifesto).
+//
+// Source of every number: Marketing/Rank_Up_Chess/Youtube/plans/k-01-top-bot-without-its-queen/verify/results.md
+// (500 games, re-played with python-chess, 0 illegal moves). The bots' names and the free levels (freeAiMaxLevel 3) are
+// the app's own (RankUp Chess origin/main a0277d1e). Only measured numbers are drawn: the bars are the games' own
+// counts.
+//
+// A QR short link lands here, so the hero carries all four app downloads straight after the H1 and its one line, in the
+// first screen on a phone (the founder, 13 Nov 2026; research note
+// Marketing/Rank_Up_Chess/SEO/research/qr-landing-four-downloads-2026-11-13.md, rule QD-2). The site's build check
+// (scripts/verify-qr-downloads.mjs) fails without them.
+
+type Row = {
+  without: string;
+  against: string;
+  won: number;
+  lost: number;
+  drawn: number;
+  ended: string;
+  moves: string;
+  level: string;
+  queens: string;
+};
+
+// The ladder: the Grand Admiral (level 10) gives odds, 50 games a row, 25 with each colour (results.md, the ladder).
+const LADDER: Row[] = [
+  { without: 'nothing', against: 'Pip the Pawn (level 1)', won: 50, lost: 0, drawn: 0, ended: '50 checkmates', moves: '19', level: '—', queens: '5' },
+  { without: "the queen's knight", against: 'Pip the Pawn (level 1)', won: 50, lost: 0, drawn: 0, ended: '50 checkmates', moves: '18', level: '46 games, move 6.5', queens: '6' },
+  { without: "the queen's rook", against: 'Pip the Pawn (level 1)', won: 50, lost: 0, drawn: 0, ended: '50 checkmates', moves: '18', level: '48 games, move 8', queens: '14' },
+  { without: 'the queen', against: 'Pip the Pawn (level 1)', won: 49, lost: 0, drawn: 1, ended: '49 checkmates, 1 threefold repetition', moves: '25', level: '47 games, move 12', queens: '17' },
+  { without: 'the queen', against: 'Barnaby Beaver (level 3)', won: 50, lost: 0, drawn: 0, ended: '50 checkmates', moves: '33.5', level: '45 games, move 19', queens: '22' },
+  { without: 'the queen', against: 'Sir Reginald (level 5)', won: 50, lost: 0, drawn: 0, ended: '50 checkmates', moves: '40.5', level: '47 games, move 25', queens: '28' },
+  { without: 'the queen', against: 'Captain Nova (level 7)', won: 18, lost: 22, drawn: 10, ended: '40 checkmates; 5 threefold repetition, 3 fifty-move rule, 1 stalemate, 1 insufficient material', moves: '64.5', level: '28 games, move 34', queens: '17 (11 of them in its 18 wins)' },
+  { without: 'the queen', against: 'Professor Bones (level 9)', won: 0, lost: 50, drawn: 0, ended: '50 checkmates', moves: '48', level: 'never', queens: '0' },
+];
+
+// At a glance: the five queen rows, as the hero's scoreboard.
+const GLANCE = LADDER.filter((r) => r.without === 'the queen');
+
+// The app's own offer: Shelly the Crab (level 2) against Pip (level 1), 50 games each (results.md, the offer).
+const SHELLY = [
+  { without: 'nothing', won: 44, lost: 6, drawn: 0, ended: '50 checkmates', moves: '49' },
+  { without: 'her queen', won: 32, lost: 14, drawn: 4, ended: '46 checkmates, 3 fifty-move rule, 1 stopped at 200 moves (counted as a draw)', moves: '66' },
+];
+
+const pct = (n: number) => `${(n / 50) * 100}%`;
+const score = (r: { won: number; lost: number; drawn: number }) => `${r.won} won, ${r.lost} lost, ${r.drawn} drawn`;
+
+const description =
+  "We took the queen off RankUp Chess's strongest bot and played 500 bot-against-bot games. Every test and every score, free to read, no email needed.";
+---
+
+<Layout
+  title="Top Chess Bot Without Its Queen: Every Score | RankUp Chess"
+  description={description}
+  breadcrumbs={[{ name: 'RankUp Chess', href: '/rankupchess/' }, { name: 'The top bot without its queen', href: '/rankupchess/odds/' }]}
+>
+  <div class="od-page">
+    <header class="od-hero">
+      <div class="od-wrap od-hero-grid">
+        <div class="od-intro">
+          <p class="od-kicker">The full results &middot; no email, no account</p>
+          <h1>The top bot without its queen: every test and every score</h1>
+          <p class="od-lead">Without its queen, RankUp Chess's strongest bot still won 149 of 150 games against levels 1, 3 and 5. Level 7 beat it 22 times in 50, and level 9 won all 50.</p>
+          <div class="od-app">
+            <RankupDownloads place="odds-hero" heading="Get RankUp Chess, free to download" tone="slate" top winNote />
+          </div>
+        </div>
+        <figure class="od-board" aria-labelledby="od-board-cap">
+          <figcaption id="od-board-cap"><b>The Grand Admiral (level 10) without its queen</b><small>50 games against each bot, 25 with each colour</small></figcaption>
+          <ul class="od-bars">
+            {GLANCE.map((r) => (
+              <li>
+                <span class="od-who">{r.against}</span>
+                <span class="od-bar" aria-hidden="true">
+                  {r.won > 0 && <span class="od-w" style={`width:${pct(r.won)}`}></span>}
+                  {r.drawn > 0 && <span class="od-d" style={`width:${pct(r.drawn)}`}></span>}
+                  {r.lost > 0 && <span class="od-l" style={`width:${pct(r.lost)}`}></span>}
+                </span>
+                <span class="od-score">{score(r)}</span>
+              </li>
+            ))}
+          </ul>
+          <p class="od-key" aria-hidden="true"><span class="od-sw od-w"></span>won <span class="od-sw od-d"></span>drawn <span class="od-sw od-l"></span>lost</p>
+        </figure>
+      </div>
+    </header>
+
+    <section class="od-section">
+      <div class="od-wrap od-narrow">
+        <h2>Every test and every score</h2>
+        <p class="od-p">The strongest bot, the Grand Admiral (level 10), started each test without a piece. It played 50 games against each bot, 25 as White and 25 as Black: 400 games in all. <b>Level again</b> is the first move at which its material (pawn 1, knight and bishop 3, rook 5, queen 9) was back to equal or ahead, with the median move. <b>Moves</b> is the median length of a game, in full moves.</p>
+        <div class="od-scroll" role="region" tabindex="0" aria-label="The ladder: every test, scrolls sideways on a phone">
+          <table class="od-table">
+            <thead>
+              <tr>
+                <th scope="col">The top bot starts without</th>
+                <th scope="col">Against</th>
+                <th scope="col">Top bot won</th>
+                <th scope="col">Lost</th>
+                <th scope="col">Drawn</th>
+                <th scope="col">How the games ended</th>
+                <th scope="col">Median moves</th>
+                <th scope="col">Level again: in how many games, median move</th>
+                <th scope="col">Games where the top bot made a new queen</th>
+              </tr>
+            </thead>
+            <tbody>
+              {LADDER.map((r) => (
+                <tr>
+                  <th scope="row">{r.without}</th>
+                  <td>{r.against}</td>
+                  <td class="od-num"><b>{r.won}</b></td>
+                  <td class="od-num">{r.lost}</td>
+                  <td class="od-num">{r.drawn}</td>
+                  <td>{r.ended}</td>
+                  <td class="od-num">{r.moves}</td>
+                  <td>{r.level}</td>
+                  <td>{r.queens}</td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
+        <ul class="od-facts">
+          <li><b>Against Pip, the top bot never lost a game,</b> whatever it started without. Its only dropped result was one draw without its queen.</li>
+          <li><b>Without its queen, it beat levels 3 and 5 in all 50 games.</b> Levels 2, 4, 6 and 8 weren't tested: the ladder goes two levels at a time. Each step took longer: it was level again by a median move of 12 against Pip, 19 against Barnaby Beaver and 25 against Sir Reginald, and the games ran 25, 33.5 and 40.5 moves.</li>
+          <li><b>Captain Nova was the first bot tested to beat it:</b> 22 wins to 18, with 10 draws. Captain Nova's wins ran a median of 74 moves (45 to 134); the top bot's ran 54.5 (32 to 95).</li>
+          <li><b>Professor Bones won all 50,</b> in a median of 48 moves (35 to 66). The top bot was never level on material in any of them.</li>
+          <li><b>Its wins, by length</b> (medians, with ranges): against Pip, 19 moves with no odds (5 to 30), 18 without the knight (7 to 28), 18 without the rook (6 to 32) and 25 without the queen (13 to 43); against Barnaby Beaver 33.5 (13 to 57); against Sir Reginald 40.5 (10 to 64).</li>
+        </ul>
+      </div>
+    </section>
+
+    <section class="od-section od-tint">
+      <div class="od-wrap od-narrow">
+        <h2>Pip's one draw</h2>
+        <p class="od-p">The top bot played White, without its queen. The game ended in a draw by threefold repetition: the same position, Black to move after Bd6+, came up for the third time.</p>
+        <p class="od-moves">1.Nf3 f5 2.d4 e6 3.Nc3 h5 4.Bf4 Kf7 5.Ne5+ Kf6 6.h4 Ke7 7.Ng6+ Ke8 8.Nxh8 c6 9.e3 b5 10.Be2 Ba6 11.Bxh5+ Ke7 12.Ng6+ Kf7 13.Ne5+ Ke7 14.Ng6+ Ke8 15.Nh8+ g6 16.Bxg6+ Ke7 17.Bd6+ Kf6 18.Be5+ Ke7 19.Bd6+ Kf6 20.Be5+ Ke7 21.Bd6+, drawn</p>
+        <ul class="od-facts">
+          <li>By then the top bot had won a rook and two pawns back, so it finished <b>2 points behind</b>: the queen's 9 against a rook's 5 and two pawns.</li>
+          <li>The app's own engine, checking the game afterwards at depth 9, scored moves 15 and 16 at 0, preferred 17.e4 at +0.21 to the game's 17.Bd6+, and scored the repeating checks of moves 18 to 21 at 0. A score of 0 means level.</li>
+        </ul>
+      </div>
+    </section>
+
+    <section class="od-section">
+      <div class="od-wrap od-narrow">
+        <h2>The app's own offer: Shelly without her queen</h2>
+        <p class="od-p">RankUp Chess has its own version of these odds. After two losses in a row to the same bot, the app may offer a gentler game: &ldquo;Shall Shelly start without the queen?&rdquo; (with that bot's name). One tap starts the game with that bot a queen down, and it doesn't count on the ladder. So we tested the offer too: Shelly the Crab (level 2) against Pip (level 1), 50 games each way, 25 with each colour.</p>
+        <div class="od-scroll" role="region" tabindex="0" aria-label="Shelly against Pip: both tests">
+          <table class="od-table">
+            <thead>
+              <tr>
+                <th scope="col">Shelly starts without</th>
+                <th scope="col">Shelly won</th>
+                <th scope="col">Pip won</th>
+                <th scope="col">Drawn</th>
+                <th scope="col">How the games ended</th>
+                <th scope="col">Median moves</th>
+              </tr>
+            </thead>
+            <tbody>
+              {SHELLY.map((r) => (
+                <tr>
+                  <th scope="row">{r.without}</th>
+                  <td class="od-num"><b>{r.won}</b></td>
+                  <td class="od-num"><b>{r.lost}</b></td>
+                  <td class="od-num">{r.drawn}</td>
+                  <td>{r.ended}</td>
+                  <td class="od-num">{r.moves}</td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
+        <ul class="od-facts">
+          <li><b>Pip's wins went from 6 to 14 out of 50;</b> Shelly still won 32. In all four draws Shelly was ahead on material at the end (by 5, 6, 9 and 11 points).</li>
+          <li>Without her queen, Shelly was level again on material in 38 of the 50 games, at a median move of 29, and made a new queen in 26.</li>
+        </ul>
+      </div>
+    </section>
+
+    <section class="od-section od-tint">
+      <div class="od-wrap od-narrow">
+        <h2>How we tested</h2>
+        <ul class="od-facts">
+          <li><b>500 games, bot against bot,</b> on 7 Nov 2026: 400 on the ladder and 100 for Shelly's offer. Each test was 50 games, 25 with each colour.</li>
+          <li><b>The app's own bots and settings,</b> on a desktop PC at low priority, with up to three games at once.</li>
+          <li><b>The app's own start positions:</b> its &ldquo;Even the odds&rdquo; starts without the queen, the queen's rook or the queen's knight. Against the computer the app's odds are the queen; the rook and knight starts are its choices for two-player games.</li>
+          <li><b>How much a queen is worth here:</b> the app's engine, at depth 9, scores the start without White's queen at &minus;9.19 for White, about a queen's value on the points above.</li>
+          <li><b>Checked move by move:</b> all 500 games were re-played from their own start positions with the python-chess library, with 0 illegal moves, and every test has its 50 games once, with no gaps and no repeats.</li>
+          <li><b>The ratings are the app's own,</b> kept behind the scenes: 2400 for the Grand Admiral and 400 for Pip. The bot cards in the app show the level, not the rating.</li>
+        </ul>
+      </div>
+    </section>
+
+    <section class="od-section">
+      <div class="od-wrap od-narrow">
+        <h2>What these results don't show</h2>
+        <ul class="od-facts">
+          <li><b>Bots, not people.</b> Every game was bot against bot; a child or a parent plays differently.</li>
+          <li><b>Level 10 depends on the device.</b> Levels 1 to 9 stop at a fixed depth, so they play the same on any machine. Level 10 thinks for up to 3 seconds a move (a median of 2.0 seconds here), so on a slower phone it searches less deeply.</li>
+          <li><b>50 games a test.</b> Captain Nova's 22 wins to 18 is close; another 50 games could come out the other way. We report what happened, not which bot is stronger.</li>
+          <li><b>Time odds weren't tested:</b> the app's &ldquo;Half the time&rdquo; is for games between two people.</li>
+        </ul>
+      </div>
+    </section>
+
+    <section class="od-section od-tint">
+      <div class="od-wrap od-narrow">
+        <h2>Play the bots yourself</h2>
+        <p class="od-p">RankUp Chess is an offline chess app with bots from Baby Bean to the Grand Admiral. Levels 1 to 3 and the starter bots are free. Levels 4 to 10, among them Captain Nova (7), Professor Bones (9) and the Grand Admiral (10), are part of the one-time upgrade, as are the premium board themes, such as the Starship board in the video.</p>
+        <RankupDownloads place="odds-end" tone="slate" />
+        <p class="od-checked">Every number on this page comes from our test's results file, checked on 16 Nov 2026. <a href="/rankupchess/">More about RankUp Chess</a></p>
+      </div>
+    </section>
+  </div>
+</Layout>
+
+<style>
+  .od-page {
+    --ink: #0F172A;
+    --ink-soft: #475569;
+    --line: #E2E8F0;
+    --won: #15803D;
+    --drawn: #94A3B8;
+    --lost: #B91C1C;
+    background: #FFFFFF;
+    color: var(--ink);
+  }
+
+  .od-wrap { width: min(1120px, 100% - 32px); margin-inline: auto; }
+  .od-narrow { max-width: 860px; }
+
+  /* The site header is fixed and about 117 px tall. */
+  .od-hero { padding: 9rem 0 2.5rem; background: #F8FAFC; border-bottom: 1px solid var(--line); }
+  .od-hero-grid { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: 2.5rem; align-items: center; }
+
+  .od-kicker {
+    display: inline-block;
+    background: #FEF3C7;
+    color: #78350F;
+    font-weight: 700;
+    font-size: 0.85rem;
+    border-radius: 999px;
+    padding: 0.3rem 0.85rem;
+    margin-bottom: 0.9rem;
+  }
+
+  .od-hero h1 { font-size: clamp(1.85rem, 4vw, 2.6rem); line-height: 1.12; color: var(--ink); margin: 0 0 0.9rem; }
+  .od-lead { font-size: 1.05rem; line-height: 1.55; color: var(--ink-soft); margin: 0; }
+  .od-app { margin-top: 1.1rem; }
+
+  .od-board { margin: 0; background: #FFFFFF; border: 1px solid var(--line); border-radius: 16px; padding: 1.25rem 1.25rem 1rem; }
+  .od-board figcaption { display: grid; gap: 0.15rem; margin-bottom: 1rem; font-size: 1rem; color: var(--ink); }
+  .od-board figcaption small { font-size: 0.85rem; color: var(--ink-soft); }
+  .od-bars { list-style: none; margin: 0; padding: 0; display: grid; gap: 0.85rem; }
+  .od-bars li { display: grid; grid-template-columns: 1fr; gap: 0.3rem; }
+  .od-who { font-weight: 700; font-size: 0.92rem; }
+  .od-bar { display: flex; height: 14px; border-radius: 7px; overflow: hidden; background: #F1F5F9; }
+  .od-bar span { display: block; height: 100%; }
+  .od-score { font-size: 0.85rem; color: var(--ink-soft); }
+  .od-w { background: var(--won); }
+  .od-d { background: var(--drawn); }
+  .od-l { background: var(--lost); }
+  .od-key { display: flex; flex-wrap: wrap; align-items: center; gap: 0.35rem 0.5rem; margin: 1rem 0 0; font-size: 0.82rem; color: var(--ink-soft); }
+  .od-sw { display: inline-block; width: 12px; height: 12px; border-radius: 3px; margin-left: 0.4rem; }
+  .od-sw:first-child { margin-left: 0; }
+
+  .od-section { padding: 3.25rem 0; }
+  .od-tint { background: #F8FAFC; }
+  .od-section h2 { font-size: clamp(1.4rem, 3vw, 1.8rem); color: var(--ink); margin: 0 0 1.1rem; }
+  .od-p { color: var(--color-text); line-height: 1.7; margin: 0 0 1.1rem; }
+  .od-section a { color: #1D4ED8; font-weight: 600; }
+
+  .od-scroll { overflow-x: auto; margin: 0 0 1.25rem; border: 1px solid var(--line); border-radius: 12px; background: #FFFFFF; }
+  .od-scroll:focus-visible { outline: 3px solid #2563EB; outline-offset: 3px; }
+  .od-table { width: 100%; min-width: 760px; border-collapse: collapse; font-size: 0.93rem; }
+  .od-table th, .od-table td { text-align: left; vertical-align: top; padding: 0.65rem 0.75rem; border-bottom: 1px solid var(--line); line-height: 1.45; }
+  .od-table thead th { font-size: 0.76rem; text-transform: uppercase; letter-spacing: 0.05em; color: var(--ink-soft); background: #F8FAFC; }
+  .od-table tbody th { color: var(--ink); white-space: nowrap; }
+  .od-table tbody tr:last-child th, .od-table tbody tr:last-child td { border-bottom: 0; }
+  .od-table td { color: var(--color-text); }
+  .od-num { text-align: right; font-variant-numeric: tabular-nums; }
+
+  .od-facts { padding-left: 1.2rem; margin: 0; display: grid; gap: 0.6rem; color: var(--color-text); line-height: 1.65; }
+  .od-facts b { color: var(--ink); }
+  .od-moves { font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace; font-size: 0.9rem; line-height: 1.7; background: #FFFFFF; border: 1px solid var(--line); border-radius: 12px; padding: 0.9rem 1rem; margin: 0 0 1.1rem; overflow-wrap: anywhere; }
+  .od-checked { font-size: 0.88rem; color: var(--ink-soft); margin-top: 1.5rem; }
+
+  @media (max-width: 860px) {
+    .od-hero { padding-top: 8rem; }
+    .od-hero-grid { grid-template-columns: 1fr; gap: 1.5rem; }
+  }
+
+  @media (max-width: 480px) {
+    .od-hero h1 { font-size: 1.7rem; }
+    .od-lead { font-size: 1rem; }
+    .od-app { margin-top: 0.9rem; }
+    .od-board { padding: 1rem; }
+  }
+</style>
