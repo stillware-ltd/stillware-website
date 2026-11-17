@@ -1,5 +1,6 @@
 ---
 import Layout from '../../../layouts/Layout.astro';
+import RankupDownloads from '../../../components/RankupDownloads.astro';
 import { SINGALONG_KIT_PAGE } from '../../../data/singalong';
 
 // The Chess Week unit v1 (RankUp next-level plan M0.7, NX-15): five 40-minute lessons for a class new to chess,
@@ -134,6 +135,9 @@ const LESSONS: Lesson[] = [
       <div class="cw-wrap">
         <p class="cw-kicker"><a href="/rankupchess/schools/">For schools and clubs</a></p>
         <h1>Chess Week: five free chess lessons for a class</h1>
+        <div class="cw-app">
+          <RankupDownloads place="chess-week" heading="Get RankUp Chess, free to download" top winNote />
+        </div>
         <p class="cw-answer"><strong>Chess Week is a free unit of five 40-minute lessons</strong> for children aged 7 to 11 who have never played chess. By the end of the week every child can set up a board, move and capture with every piece, find a checkmate, and play a whole game by the rules, and the class plays one game together against a RankUp Chess bot on the big screen. It uses only free materials: a song, the free app and its printable worksheets. No chess knowledge is needed to teach it.</p>
         <button type="button" class="cw-print" data-print>Print the unit</button>
       </div>
@@ -250,6 +254,7 @@ const LESSONS: Lesson[] = [
   .cw-kicker, .cw-label { font-weight: 800; letter-spacing: 0.06em; text-transform: uppercase; font-size: 0.85rem; color: #C9651A; margin: 0 0 0.6rem; }
   .cw-kicker a { color: inherit; }
   .cw-hero h1 { font-size: clamp(1.9rem, 5vw, 3rem); line-height: 1.12; margin: 0 0 1rem; }
+  .cw-app { margin: 0 0 1.4rem; }
   .cw-answer { font-size: 1.12rem; line-height: 1.6; color: var(--ink-soft); }
   .cw-print { margin-top: 1rem; background: var(--button); color: #fff; border: 0; font: inherit; font-weight: 800; padding: 0.8rem 1.3rem; border-radius: 999px; cursor: pointer; min-height: 44px; }
   .cw-print:focus-visible { outline: 3px solid #E9962A; outline-offset: 3px; }
@@ -289,7 +294,7 @@ const LESSONS: Lesson[] = [
   .cw-student-foot { margin-top: 1rem; }
   @media (max-width: 640px) { .cw-hero { padding-top: 8rem; } .cw-faq { grid-template-columns: 1fr; } .cw-table th { width: auto; } .cw-cert-line { margin-inline: 1rem; } .cw-pieces th, .cw-pieces td { padding-inline: 0.35rem; } .cw-grid { grid-template-columns: repeat(5, 1.5rem); grid-template-rows: repeat(5, 1.5rem); } .cw-sq { font-size: 1.2rem; } .cw-worth { white-space: normal; } }
   @media print {
-    .cw-print, .cw-noprint, :global(header:not(.cw-hero)), :global(.navbar), :global(footer) { display: none !important; }
+    .cw-app, .cw-print, .cw-noprint, :global(header:not(.cw-hero)), :global(.navbar), :global(footer) { display: none !important; }
     .cw-page, .cw-lesson:nth-of-type(even) { background: #fff; }
     .cw-page { font-size: 10.5pt; }
     .cw-hero, .cw-section { padding: 0.6rem 0; }
