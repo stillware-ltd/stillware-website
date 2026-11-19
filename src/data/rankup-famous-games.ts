@@ -92,10 +92,18 @@ export const SHEETS = [
     ],
     "sources": [
       "<p>The game is Anderssen v Kieseritzky, a casual game played in London in June 1851, during the tournament Anderssen won. Kieseritzky published it himself in <i>La Régence</i> that July; Ernst Falkbeer named it &ldquo;the Immortal Game&rdquo; in 1855. The analysis quoted is Robert Hübner&rsquo;s (1995) and Garry Kasparov&rsquo;s (2003).</p>",
+      "<p>The portrait in the video&rsquo;s thumbnail: Adolf Anderssen, a photograph from about 1860, photographer unknown (public domain, via Wikimedia Commons).</p>",
       "<p>RankUp Chess is the offline chess app for children that we make. It&rsquo;s free to play, and its puzzles ask the same question as this sheet: what&rsquo;s the move? Want more on paper? See our <a href=\"/rankupchess/puzzles/\">free puzzle sheets</a>.</p>"
     ],
     "checked": "Positions, answers and history checked 7 November 2026. Sources: Kieseritzky in La Régence (1851); R. Hübner (1995); G. Kasparov (2003).",
-    "video": null,
+    "video": {
+      "id": "JKvHK08v93Q",
+      "title": "The Immortal Game (1851): Checkmate With Three Small Pieces",
+      "description": "The Immortal Game, Anderssen v Kieseritzky, London 1851, explained simply, with two chances to find the moves yourself.",
+      "uploadDate": "2026-11-10",
+      "h3": "Watch the game explained",
+      "soonDetail": "It plays the whole game, with two pauses to find the moves yourself."
+    },
     "pdf": "/printables/immortal-game-find-the-move-a4.pdf",
     "pdfSize": "570 KB",
     "pages": 2,

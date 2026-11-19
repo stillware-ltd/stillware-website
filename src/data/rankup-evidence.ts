@@ -79,7 +79,13 @@ export const SHEETS = [
       "<p>RankUp Chess is the offline chess app for children that we make. Want something to play together? See our <a href=\"/rankupchess/puzzles/\">free puzzle sheets</a>.</p>"
     ],
     "checked": "Studies read 7 November 2026; links checked 8 November 2026.",
-    "video": null,
+    "video": {
+      "id": "4o0WJWcCy_8",
+      "title": "Does Chess Make Your Child Smarter? What the Studies Found",
+      "description": "A large trial in England and the main reviews of chess and school results, in plain words.",
+      "uploadDate": "2026-11-12",
+      "h3": "Watch the evidence explained"
+    },
     "pdf": "/printables/does-chess-make-children-smarter-a4.pdf",
     "pdfSize": "370 KB",
     "pages": 1,

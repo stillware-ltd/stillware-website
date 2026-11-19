@@ -84,10 +84,18 @@ export const SHEETS = [
     ],
     "sources": [
       "<p>Wikipedia&rsquo;s &ldquo;World Chess Championship&rdquo; article and each champion&rsquo;s own article, read on 7 November 2026; the years are each champion&rsquo;s reign in the undisputed line.</p>",
+      "<p>The photos in the video&rsquo;s thumbnail, each via Wikimedia Commons: <a href=\"https://commons.wikimedia.org/wiki/File:Steinitz,_William-4_-_DPLA_-_9eeab9ac335135c24b69ab7e36fc5354_(cropped).jpg\">Steinitz</a> by Fritz Schumann (public domain); <a href=\"https://commons.wikimedia.org/wiki/File:CAPABLANCA,_JOSE_R._CUBAN_CHESS_PLAYER;_WORLD_CHAMPION_LCCN2016866175_(cropped).jpg\">Capablanca</a> by Harris &amp; Ewing (public domain); <a href=\"https://commons.wikimedia.org/wiki/File:Alexandre_Alekhine_01.jpg\">Alekhine</a> from the George Grantham Bain Collection, Library of Congress (public domain); <a href=\"https://commons.wikimedia.org/wiki/File:Bobby_Fischer_1972.jpg\">Fischer</a> by Bert Verhoeff / Anefo (CC0).</p>",
       "<p>RankUp Chess is the offline chess app we make, with bots that start at a child&rsquo;s very first game. Want to see how a champion learned? See our <a href=\"/rankupchess/prodigy/\">game that made them worksheets</a>.</p>"
     ],
     "checked": "Every name, country and year checked against the championship table on 11 November 2026.",
-    "video": null,
+    "video": {
+      "id": "Aam_GuIXuQU",
+      "title": "All 18 World Chess Champions, Explained Simply",
+      "description": "Every undisputed world chess champion, from Steinitz in 1886 to Gukesh, with the years each held the title and what each is known for.",
+      "uploadDate": "2026-11-16",
+      "h3": "Watch all 18",
+      "soonDetail": "It tells each champion’s story in about half a minute."
+    },
     "pdf": "/printables/world-chess-champions-card-a4.pdf",
     "pdfSize": "310 KB",
     "pages": 1,

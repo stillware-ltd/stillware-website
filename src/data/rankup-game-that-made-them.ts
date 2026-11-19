@@ -85,10 +85,18 @@ export const SHEETS = [
     ],
     "sources": [
       "<p>From Capablanca himself: &lsquo;How I Learned to Play Chess&rsquo;, <i>Munsey&rsquo;s Magazine</i>, October 1916, and his book <i>My Chess Career</i> (1920). The game score is the one in <i>My Chess Career</i>, which matches chessgames.com move for move. The match facts are Edward Winter&rsquo;s (chesshistory.com). The diagrams use RankUp Chess&rsquo;s own Classic piece set.</p>",
+      "<p>The photo in the video&rsquo;s thumbnail: Capablanca by Harris &amp; Ewing, 1915 (Library of Congress; public domain, via <a href=\"https://commons.wikimedia.org/wiki/File:CAPABLANCA,_JOSE_R._CUBAN_CHESS_PLAYER;_WORLD_CHAMPION_LCCN2016866175_(cropped).jpg\">Wikimedia Commons</a>).</p>",
       "<p>RankUp Chess is the offline chess app for children that we make; its free first lessons include the knight&rsquo;s jump. Want more famous games? See our <a href=\"/rankupchess/famous-games/\">famous games worksheets</a>.</p>"
     ],
     "checked": "Every position and move checked on 11 November 2026.",
-    "video": null,
+    "video": {
+      "id": "HzYNl_xtJmg",
+      "title": "At 12, Capablanca Took On Cuba's Chess Champion",
+      "description": "How José Raúl Capablanca learned chess at four, in his own words, and the game from his 1901 match against Juan Corzo, champion of Cuba.",
+      "uploadDate": "2026-11-14",
+      "h3": "Watch the story",
+      "soonDetail": "It tells how he learned, in his own words, and plays the game he won at 13."
+    },
     "pdf": "/printables/capablanca-worksheet-a4.pdf",
     "pdfSize": "310 KB",
     "pages": 2,

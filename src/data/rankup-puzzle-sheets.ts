@@ -75,12 +75,12 @@ export const SHEETS = [
     "episode": "pvk-02",
     "printable": "Marketing/Rank_Up_Chess/Youtube/rotation/kit/episodes/pvk-02/printable.json",
     "h2": "Forks and pins: 15 puzzles with answers (PDF)",
-    "answer": "Five fork and pin puzzles, ten more to practise, and the answers in plain words. Free to print, no email.",
+    "answer": "Five fork and pin puzzles from the video, ten more to practise, and the answers in plain words. Free to print, no email.",
     "button": "Download the forks and pins PDF",
     "table": [
       [
         "1. Grown-up vs Child",
-        "The five puzzles, each with a tick box for who found it first and a line for the first move, and a score box."
+        "The video&rsquo;s five puzzles, each with a tick box for who found it first and a line for the first move, and a score box."
       ],
       [
         "2. Answers",
@@ -101,7 +101,14 @@ export const SHEETS = [
       "<p>RankUp Chess is the offline chess app for children that we make. It&rsquo;s free to play, and the packs these puzzles came from, Fork Forest and Pin Peaks, are part of its one-time upgrade.</p>"
     ],
     "checked": "Puzzles, answers and app facts checked 7 November 2026. Sources: the RankUp Chess puzzle packs; the Lichess open puzzle database (CC0).",
-    "video": null,
+    "video": {
+      "id": "JDMRnGprhik",
+      "title": "Forks and Pins Explained in 5 Puzzles. Can You Solve Them?",
+      "description": "Five fork and pin puzzles from RankUp Chess, from level 1 to level 3, each solved and explained for grown-ups.",
+      "uploadDate": "2026-11-09",
+      "h3": "Watch the five puzzles explained",
+      "soonDetail": "It solves the five puzzles on page 1 one by one, starting each time with the move that doesn&rsquo;t work."
+    },
     "short": "Forks and pins",
     "pdf": "/printables/grown-up-vs-child-forks-and-pins-a4.pdf",
     "pdfSize": "620 KB",

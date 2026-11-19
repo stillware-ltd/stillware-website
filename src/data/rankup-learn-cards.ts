@@ -79,7 +79,14 @@ export const SHEETS = [
       "<p>RankUp Chess is the offline chess app for children that we make, where each rule is a short lesson you play. Want to check the rules people often get wrong? See our <a href=\"/rankupchess/chess-rules/\">chess rules card</a>.</p>"
     ],
     "checked": "Every rule, square and answer checked on 11 November 2026.",
-    "video": null,
+    "video": {
+      "id": "njwNTCCzj10",
+      "title": "How to Play Chess: Every Rule in 10 Minutes",
+      "description": "Every rule of chess, one piece at a time, with a “your turn” after each.",
+      "uploadDate": "2026-11-17",
+      "h3": "Watch the lesson",
+      "soonDetail": "It teaches each rule, then gives you a board to try."
+    },
     "pdf": "/printables/every-chess-rule-card-a4.pdf",
     "pdfSize": "510 KB",
     "pages": 2,

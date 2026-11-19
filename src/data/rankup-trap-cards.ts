@@ -92,7 +92,14 @@ export const SHEETS = [
       "<p>RankUp Chess is the offline chess app for children that we make, with bots from Baby Bean to level 10. Levels 4 to 10 are part of RankUp Chess’s one-time upgrade; levels 1 to 3 and the starter bots are free. Want puzzles on paper too? See our <a href=\"/rankupchess/puzzles/\">free puzzle sheets</a>.</p>"
     ],
     "checked": "Results from RankUp Chess’s bot code on 7 November 2026; every position and count on the card checked on 9 November 2026.",
-    "video": null,
+    "video": {
+      "id": "jDwxdZYKAjY",
+      "title": "Does Scholar's Mate Work? We Tested It 1,800 Times",
+      "description": "Scholar's Mate played 200 times against each RankUp Chess bot, from Baby Bean to level 10, and the three ways to stop it.",
+      "uploadDate": "2026-11-13",
+      "h3": "Watch the test",
+      "soonDetail": "It plays the trap against each bot, from Baby Bean to level 10, and shows the three defences."
+    },
     "pdf": "/printables/scholars-mate-trap-card-a4.pdf",
     "pdfSize": "680 KB",
     "pages": 2,

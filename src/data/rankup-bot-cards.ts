@@ -87,7 +87,14 @@ export const SHEETS = [
       "<p>RankUp Chess is the offline chess app for children that we make; Baby Bean, Sleepy Sloth and Pip the Pawn are free to play. Want to see a trap tested against every bot? See our <a href=\"/rankupchess/traps/\">chess trap cards</a>.</p>"
     ],
     "checked": "Results from RankUp Chess’s bot code on 7 November 2026; every count on the card checked on 11 November 2026.",
-    "video": null,
+    "video": {
+      "id": "Rkul5QUJ8CY",
+      "title": "How to Beat the Easiest Chess Bots (We Watched 600 Games)",
+      "description": "What the first three bots in RankUp Chess do, from 600 test games, and the two questions that beat all three.",
+      "uploadDate": "2026-11-15",
+      "h3": "Watch the test",
+      "soonDetail": "It shows each bot’s games and how to beat it."
+    },
     "pdf": "/printables/first-three-bots-card-a4.pdf",
     "pdfSize": "340 KB",
     "pages": 1,

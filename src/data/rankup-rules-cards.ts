@@ -95,7 +95,14 @@ export const SHEETS = [
       "<p>RankUp Chess is the offline chess app for children that we make. In RankUp Chess, castling, en passant, promotion and stalemate are in the free Castle Grounds lessons, which open in order after Beginner Village (how the pieces move). Touch-move and Adjust are taught and played in the My First Tournament land, part of RankUp Chess&rsquo;s one-time upgrade. Want puzzles on paper too? See our <a href=\"/rankupchess/puzzles/\">free puzzle sheets</a>.</p>"
     ],
     "checked": "Rules checked against the FIDE Laws of Chess (in force from 1 January 2023) on 8 November 2026.",
-    "video": null,
+    "video": {
+      "id": "lMy85JRk4mw",
+      "title": "Chess Rules You Might Be Playing Wrong, Explained",
+      "description": "Five chess rules families often play differently, each with the official rule and shown in RankUp Chess.",
+      "uploadDate": "2026-11-11",
+      "h3": "Watch the five rules explained",
+      "soonDetail": "It shows each rule in the app, which refuses the illegal castle."
+    },
     "pdf": "/printables/chess-rules-family-card-a4.pdf",
     "pdfSize": "300 KB",
     "pages": 2,
