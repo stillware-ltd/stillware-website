@@ -59,6 +59,14 @@ export interface PaddleProductConfig {
   passesLicence?: boolean;
   /** Where Paddle sends the buyer afterwards. `/buy/success` when left out. */
   successPath?: string;
+  /**
+   * A Paddle discount code the buy page applies by itself when its address has no `discount_code`
+   * of its own (one in the address always wins). `until` is an ISO 8601 instant: the page compares
+   * it with the visitor's clock when it loads (the site is static, so not at build time) and stops
+   * sending the code from that instant on. Keep `until` no later than the discount's own expiry in
+   * Paddle, so an expired code is never sent.
+   */
+  defaultDiscount?: { code: string; until: string };
 }
 
 export const PADDLE_PRODUCTS: Record<CheckoutSlug, PaddleProductConfig> = {
@@ -68,6 +76,12 @@ export const PADDLE_PRODUCTS: Record<CheckoutSlug, PaddleProductConfig> = {
     tagline: "Software you own.",
     priceId: "pri_01knnyfj5zezrch30qqbzkc378",
     appStoreUrl: "https://apps.apple.com/app/id6804301133",
+    // The founder price. The Paddle price is $39.99; the $19.99 that /zeroed/ advertises until
+    // 14 February 2027 is the Paddle discount "Founders special" (code FOUNDER, which expires that
+    // day). The app adds ?discount_code=FOUNDER itself; this covers every other way of reaching
+    // /buy/zeroed, which used to show $39.99. Move `until` only together with the discount in
+    // Paddle and the date on /zeroed/.
+    defaultDiscount: { code: "FOUNDER", until: "2027-02-14T00:00:00Z" },
   },
   // RankUp Chess — Only on Windows (also Linux), $14.99. SWITCH DAY: the P8 tier name (docs/kl/switch-day-copy.md
   // section 2.6); the price this page opens is unchanged.
