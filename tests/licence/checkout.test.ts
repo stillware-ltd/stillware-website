@@ -98,6 +98,18 @@ interface Visit {
   noKey: { hidden: boolean; innerText: string };
   handOverRan: boolean;
   window: any;
+  /** Every stillTrack() call the page made: the arguments, as given. */
+  tracked: unknown[][];
+}
+
+interface VisitOptions {
+  comingSoon?: boolean;
+  /** The visitor's clock when the page loads (an ISO instant). The real clock when left out. */
+  now?: string;
+  /** Stands in for the product's own `defaultDiscount` (src/config/paddle.ts). */
+  defaultDiscount?: { code: string; until: string } | null;
+  /** A page where the layout's stillTrack is missing. */
+  noTracker?: boolean;
 }
 
 /**
@@ -105,7 +117,7 @@ interface Visit {
  * renders it, which the source test checks) and then, unless the page says "not available yet", the
  * checkout script with a stand-in price id so that every page can be run.
  */
-function visit(slug: CheckoutSlug, address: string, tab: Tab = new Tab(), o: { comingSoon?: boolean } = {}): Visit & { tab: Tab } {
+function visit(slug: CheckoutSlug, address: string, tab: Tab = new Tab(), o: VisitOptions = {}): Visit & { tab: Tab } {
   const config = PADDLE_PRODUCTS[slug];
   tab.url = new URL(address, SITE);
   const window = tab.window();
@@ -115,7 +127,10 @@ function visit(slug: CheckoutSlug, address: string, tab: Tab = new Tab(), o: { c
     noKey: { hidden: true, innerText: "" },
     handOverRan: false,
     window,
+    tracked: [],
   };
+  // the layout defines stillTrack in the head, before any script in the body runs
+  if (!o.noTracker) window.stillTrack = (...args: unknown[]) => void out.tracked.push(args);
   if (config.passesLicence) {
     new Function("window", handOverScript())(window);
     out.handOverRan = true;
@@ -131,13 +146,45 @@ function visit(slug: CheckoutSlug, address: string, tab: Tab = new Tab(), o: { c
       Checkout: { open: (x: unknown) => void (out.options = x) },
     };
     const document = { getElementById: (id: string) => elements[id] ?? null };
+    const at = o.now === undefined ? null : Date.parse(o.now);
+    if (at !== null) assert.ok(Number.isFinite(at), `a clock the test can read: ${o.now}`);
+    // the script reads the time with Date.now() and Date.parse() only (a source test checks it)
+    const clock = at === null ? Date : { now: () => at, parse: (text: string) => Date.parse(text) };
+    const defaultDiscount = o.defaultDiscount !== undefined ? o.defaultDiscount : config.defaultDiscount ?? null;
     // define:vars gives these names to the script
-    new Function("token", "priceId", "productName", "passLicence", "successPath", "document", "window", "Paddle", checkoutScript())(
-      "test_token", "pri_stand_in", config.name, config.passesLicence === true, config.successPath ?? "/buy/success", document, window, Paddle
+    new Function(
+      "token", "priceId", "productName", "checkoutSlug", "passLicence", "successPath", "defaultDiscount",
+      "document", "window", "Paddle", "Date",
+      checkoutScript()
+    )(
+      "test_token", "pri_stand_in", config.name, slug, config.passesLicence === true, config.successPath ?? "/buy/success", defaultDiscount,
+      document, window, Paddle, clock
     );
   }
   return { ...out, tab };
 }
+
+/** What Paddle hands its eventCallback: the name, and a body full of things the page must never send on. */
+function paddleEvent(name: string): any {
+  return {
+    name,
+    type: name,
+    data: {
+      id: "che_01test",
+      transaction_id: "txn_01test",
+      status: "ready",
+      currency_code: "USD",
+      customer: { id: "ctm_01test", email: "buyer@example.com", address: { country_code: "GB", postal_code: "AB1 2CD" } },
+      items: [{ price_id: "pri_stand_in", quantity: 1, totals: { subtotal: 3999, total: 1999 } }],
+      totals: { subtotal: 3999, discount: 2000, total: 1999 },
+      discount: { code: "FOUNDER" },
+    },
+  };
+}
+
+// A moment while the founder price runs, and the instant it ends (src/config/paddle.ts).
+const BEFORE = "2026-11-22T12:00:00Z";
+const DEADLINE = "2027-02-14T00:00:00Z";
 
 test("the two new pages exist, grant a rankup licence, and carry the price ids KL.3 made; without one they say 'not available yet'", () => {
   const ids = { "rankup-every-device": "pri_01m5t1fevddc28paxqbpa4q5ks", "rankup-upgrade": "pri_01m5t1gwdqpdt1ewebtjchcpqh" } as const;
@@ -378,7 +425,9 @@ test("every other page never stores, reads or removes the parameter, and ignores
 
 test("the checkout is otherwise as it was: the token, the discount code and the success page", () => {
   const plain = visit("rankup", "/buy/rankup/?discount_code=SAVE10");
-  assert.deepEqual(plain.initialised, { token: "test_token" });
+  // the token, and the callback that counts checkout events (tested below); nothing else
+  assert.equal(plain.initialised.token, "test_token");
+  assert.deepEqual(Object.keys(plain.initialised), ["token", "eventCallback"]);
   assert.equal(plain.options.discountCode, "SAVE10");
   assert.equal(plain.options.settings.successUrl, "https://www.stillwareltd.com/buy/success");
   assert.deepEqual(plain.options.items, [{ priceId: "pri_stand_in", quantity: 1 }]);
@@ -387,6 +436,164 @@ test("the checkout is otherwise as it was: the token, the discount code and the 
   assert.equal(up.options.discountCode, "SAVE10");
   assert.equal(up.options.settings.successUrl, "https://www.stillwareltd.com/buy/success?upgrade=1");
   assert.equal(visit("rankup-every-device", "/buy/rankup-every-device/").options.settings.successUrl, "https://www.stillwareltd.com/buy/success");
+});
+
+test("the founder code and its end date are data beside Zeroed (src/config/paddle.ts), and the page takes them from there", () => {
+  assert.deepEqual(PADDLE_PRODUCTS.zeroed.defaultDiscount, { code: "FOUNDER", until: DEADLINE });
+  assert.equal(Date.parse(PADDLE_PRODUCTS.zeroed.defaultDiscount!.until), Date.UTC(2027, 1, 14, 0, 0, 0), "14 February 2027, 00:00 UTC");
+  const withDefault = Object.entries(PADDLE_PRODUCTS).filter(([, c]) => c.defaultDiscount !== undefined).map(([slug]) => slug);
+  assert.deepEqual(withDefault, ["zeroed"], "no RankUp page has a default code");
+  // the page hands the product's own value to its script, and holds no code or date of its own
+  assert.match(PAGE, /defaultDiscount: config\.defaultDiscount \?\? null,/);
+  assert.equal(/FOUNDER|2027/.test(PAGE), false);
+  // the date is compared in the browser when the page loads, not in the frontmatter at build time
+  const frontmatter = PAGE.slice(0, PAGE.indexOf("\n---\n", 4));
+  assert.equal(/Date|defaultDiscount/.test(frontmatter), false);
+  assert.match(checkoutScript(), /Date\.now\(\) < Date\.parse\(defaultDiscount\.until\)/);
+  assert.deepEqual([...new Set(checkoutScript().match(/\bDate\.\w+|new Date\b/g))].sort(), ["Date.now", "Date.parse"]);
+});
+
+test("Zeroed, no discount_code in the address, before the founder price ends: the checkout opens with FOUNDER", () => {
+  for (const address of ["/buy/zeroed/", "/buy/zeroed", "/buy/zeroed/?", "/buy/zeroed/?ref=yt&utm_source=youtube#top", "/buy/zeroed/?discount_code="]) {
+    const v = visit("zeroed", address, new Tab(), { now: BEFORE });
+    assert.equal(v.options.discountCode, "FOUNDER", address);
+    assert.deepEqual(v.options.items, [{ priceId: "pri_stand_in", quantity: 1 }], address);
+    assert.equal(v.options.settings.successUrl, "https://www.stillwareltd.com/buy/success");
+    assert.equal("customData" in v.options, false);
+    // the code goes to Paddle only: the address is left as it was, and nothing is stored
+    assert.deepEqual(v.tab.replaced, [], address);
+    assert.deepEqual(v.tab.writes, []);
+  }
+  // up to the last millisecond
+  assert.equal(visit("zeroed", "/buy/zeroed/", new Tab(), { now: "2027-02-13T23:59:59.999Z" }).options.discountCode, "FOUNDER");
+});
+
+test("a discount_code in the address always wins over the default", () => {
+  for (const now of [BEFORE, DEADLINE, "2027-06-01T00:00:00Z"]) {
+    assert.equal(visit("zeroed", "/buy/zeroed/?discount_code=SAVE10", new Tab(), { now }).options.discountCode, "SAVE10", now);
+    // the app's own link: the same code, passed on as the address gave it
+    assert.equal(visit("zeroed", "/buy/zeroed/?discount_code=FOUNDER", new Tab(), { now }).options.discountCode, "FOUNDER", now);
+    assert.equal(visit("zeroed", "/buy/zeroed/?ref=app&discount_code=founder", new Tab(), { now }).options.discountCode, "founder", now);
+  }
+});
+
+test("from 2027-02-14T00:00:00Z the default is no longer sent: Zeroed opens with no discount code", () => {
+  for (const now of [DEADLINE, "2027-02-14T00:00:00.001Z", "2027-02-14T09:00:00Z", "2027-02-15T00:00:00Z", "2028-01-01T00:00:00Z"]) {
+    for (const address of ["/buy/zeroed/", "/buy/zeroed/?ref=yt", "/buy/zeroed/?discount_code="]) {
+      const v = visit("zeroed", address, new Tab(), { now });
+      assert.ok(v.options, `${now} ${address}: the checkout still opens`);
+      assert.equal("discountCode" in v.options, false, `${now} ${address}`);
+    }
+  }
+  // an end date that cannot be read sends nothing either
+  for (const until of ["", "soon", "14 Feb"]) {
+    const v = visit("zeroed", "/buy/zeroed/", new Tab(), { now: BEFORE, defaultDiscount: { code: "FOUNDER", until } });
+    assert.equal("discountCode" in v.options, false, JSON.stringify(until));
+  }
+});
+
+test("the RankUp pages get no default: no discount_code in the address, no discount code", () => {
+  const rankup = (Object.keys(PADDLE_PRODUCTS) as CheckoutSlug[]).filter((slug) => slug !== "zeroed");
+  assert.deepEqual(rankup, ["rankup", "rankup-mac", "rankup-every-device", "rankup-upgrade"]);
+  for (const slug of rankup) {
+    for (const now of [BEFORE, DEADLINE]) {
+      const v = visit(slug, `/buy/${slug}/`, new Tab(), { now });
+      assert.ok(v.options, `${slug} opened a checkout`);
+      assert.equal("discountCode" in v.options, false, `${slug} at ${now}`);
+      assert.equal(visit(slug, `/buy/${slug}/?discount_code=`, new Tab(), { now }).options.discountCode, undefined, slug);
+      assert.equal(visit(slug, `/buy/${slug}/?discount_code=SAVE10`, new Tab(), { now }).options.discountCode, "SAVE10", slug);
+    }
+  }
+});
+
+test("checkout events: opened, completed and closed, each with the page's slug and nothing of the buyer's", () => {
+  const v = visit("zeroed", "/buy/zeroed/", new Tab(), { now: BEFORE });
+  const fire = v.initialised.eventCallback;
+  assert.equal(typeof fire, "function");
+  assert.deepEqual(v.tracked, [], "nothing is sent until Paddle says the checkout loaded");
+
+  fire(paddleEvent("checkout.loaded"));
+  fire(paddleEvent("checkout.completed"));
+  fire(paddleEvent("checkout.closed"));
+  // exactly these arguments: a name and the data, no callback
+  assert.deepEqual(v.tracked, [
+    ["checkout_opened", { product: "zeroed", founder: true }],
+    ["checkout_completed", { product: "zeroed" }],
+    ["checkout_closed", { product: "zeroed" }],
+  ]);
+  const sent = JSON.stringify(v.tracked);
+  for (const secret of ["buyer@example.com", "ctm_01test", "txn_01test", "che_01test", "AB1 2CD", "3999", "1999", "2000", "USD", "FOUNDER", "pri_"]) {
+    assert.equal(sent.includes(secret), false, secret);
+  }
+
+  // every page sends its own slug (the address segment, so the two RankUp prices stay apart)
+  for (const slug of Object.keys(PADDLE_PRODUCTS) as CheckoutSlug[]) {
+    const page = visit(slug, `/buy/${slug}/`, new Tab(), { now: BEFORE });
+    for (const name of ["checkout.loaded", "checkout.completed", "checkout.closed"]) page.initialised.eventCallback(paddleEvent(name));
+    assert.deepEqual(page.tracked, [
+      ["checkout_opened", { product: slug, founder: slug === "zeroed" }],
+      ["checkout_completed", { product: slug }],
+      ["checkout_closed", { product: slug }],
+    ], slug);
+  }
+});
+
+test("checkout_opened says whether the page added the founder code by itself", () => {
+  const opened = (address: string, now: string) => {
+    const v = visit("zeroed", address, new Tab(), { now });
+    v.initialised.eventCallback(paddleEvent("checkout.loaded"));
+    return v.tracked;
+  };
+  assert.deepEqual(opened("/buy/zeroed/", BEFORE), [["checkout_opened", { product: "zeroed", founder: true }]]);
+  // the app's link brings the code itself, and any other code is the caller's: not the default
+  assert.deepEqual(opened("/buy/zeroed/?discount_code=FOUNDER", BEFORE), [["checkout_opened", { product: "zeroed", founder: false }]]);
+  assert.deepEqual(opened("/buy/zeroed/?discount_code=SAVE10", BEFORE), [["checkout_opened", { product: "zeroed", founder: false }]]);
+  // after the founder price has ended
+  assert.deepEqual(opened("/buy/zeroed/", DEADLINE), [["checkout_opened", { product: "zeroed", founder: false }]]);
+});
+
+test("no other Paddle event is sent on, and a missing tracker or an odd event never stops the checkout", () => {
+  const v = visit("zeroed", "/buy/zeroed/", new Tab(), { now: BEFORE });
+  for (const name of [
+    "checkout.customer.created",
+    "checkout.customer.updated",
+    "checkout.payment.selected",
+    "checkout.payment.initiated",
+    "checkout.payment.failed",
+    "checkout.discount.applied",
+    "checkout.items.updated",
+    "checkout.error",
+    "checkout.warning",
+    "checkout.loaded ",
+    "Checkout.Loaded",
+    "constructor",
+    "toString",
+    "",
+  ]) {
+    v.initialised.eventCallback(paddleEvent(name));
+  }
+  for (const odd of [undefined, null, {}, "checkout.loaded", 7, { name: null }, { name: ["checkout.loaded"] }]) {
+    v.initialised.eventCallback(odd);
+  }
+  assert.deepEqual(v.tracked, []);
+
+  // the tracker blocked or missing: the checkout opens with the code all the same, and the events are dropped
+  const bare = visit("zeroed", "/buy/zeroed/", new Tab(), { now: BEFORE, noTracker: true });
+  assert.equal(bare.options.discountCode, "FOUNDER");
+  for (const name of ["checkout.loaded", "checkout.completed", "checkout.closed"]) bare.initialised.eventCallback(paddleEvent(name));
+  assert.deepEqual(bare.tracked, []);
+
+  // from the source: of Paddle's event only the name is read, and stillTrack is the one way out
+  const text = checkoutScript();
+  assert.deepEqual([...text.matchAll(/\bevent\.(\w+)/g)].map((m) => m[1]), ["name"]);
+  assert.equal(/umami|fetch\(|sendBeacon|XMLHttpRequest|new Image/.test(text), false);
+  assert.equal((text.match(/window\.stillTrack\(/g) ?? []).length, 2);
+  assert.match(text, /window\.stillTrack\(name, \{ product: checkoutSlug, founder: defaultDiscountApplied \}\);/);
+  assert.match(text, /window\.stillTrack\(name, \{ product: checkoutSlug \}\);/);
+  assert.match(PAGE, /checkoutSlug: product,/);
+  // the page is on the site's layout, which defines stillTrack in the head and loads the tracker
+  assert.match(PAGE, /import Layout from '\.\.\/\.\.\/layouts\/Layout\.astro';/);
+  assert.match(LAYOUT, /window\.stillTrack = function \(name, data, done\) \{/);
 });
 
 test("customData is set in one place only, inside the passLicence branch, from the hand-over value", () => {

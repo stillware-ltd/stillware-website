@@ -124,8 +124,10 @@ const unavailableText =
           token: PADDLE_CLIENT_TOKEN,
           priceId: config.priceId,
           productName: config.name,
+          checkoutSlug: product,
           passLicence: config.passesLicence === true,
           successPath: config.successPath ?? '/buy/success',
+          defaultDiscount: config.defaultDiscount ?? null,
         }}
       >
         (function () {
@@ -144,16 +146,42 @@ const unavailableText =
             return;
           }
 
+          // Checkout events for the site's analytics (the layout's stillTrack): which buy page it was and,
+          // for "opened", whether this page added its default discount code by itself (false when the
+          // address brought its own code, as the app's does). Paddle's event also carries the customer,
+          // the amounts and the transaction: only its name is read, and none of that is sent.
+          let defaultDiscountApplied = false;
+          function onPaddleEvent(event) {
+            const paddleName = event && event.name;
+            const name =
+              paddleName === 'checkout.loaded' ? 'checkout_opened' :
+              paddleName === 'checkout.completed' ? 'checkout_completed' :
+              paddleName === 'checkout.closed' ? 'checkout_closed' : null;
+            if (!name || typeof window.stillTrack !== 'function') return;
+            if (name === 'checkout_opened') {
+              window.stillTrack(name, { product: checkoutSlug, founder: defaultDiscountApplied });
+            } else {
+              window.stillTrack(name, { product: checkoutSlug });
+            }
+          }
+
           try {
-            Paddle.Initialize({ token: token });
+            Paddle.Initialize({ token: token, eventCallback: onPaddleEvent });
           } catch (e) {
             showError('Failed to initialise Paddle: ' + (e && e.message ? e.message : e));
             return;
           }
 
-          // Optional discount code via ?discount_code=...
+          // Discount code: one in the address (?discount_code=...) always wins. Without one, a page whose
+          // product has a default code (src/config/paddle.ts: Zeroed's founder price) opens with that
+          // code, until the instant it ends. The site is static, so the date is compared here, with the
+          // visitor's clock, when the page loads; a date that does not parse compares false and sends nothing.
           const params = new URLSearchParams(window.location.search);
-          const discountCode = params.get('discount_code') || undefined;
+          let discountCode = params.get('discount_code') || undefined;
+          if (!discountCode && defaultDiscount && Date.now() < Date.parse(defaultDiscount.until)) {
+            discountCode = defaultDiscount.code;
+            defaultDiscountApplied = true;
+          }
 
           const checkoutOptions = {
             items: [{ priceId: priceId, quantity: 1 }],
