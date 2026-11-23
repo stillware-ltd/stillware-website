@@ -5,8 +5,8 @@ import { GUIDES } from '../data/guides';
 import NewsletterSignup from '../components/NewsletterSignup.astro';
 
 // Latest Zeroed release — bump this single constant when a new version ships.
-// Per-asset versions. The macOS 1.7.6 DMG (notarised, macOS 12 or later; budget file schema v17, which 1.4.x apps
-// cannot open) is on zeroed-releases since 2026-11-23; Macs on 10.15 or 11 stay on 1.4.0, linked from the 1.7.6
+// Per-asset versions. The macOS 1.7.7 DMG (notarised, macOS 12 or later; budget file schema v17, which 1.4.x apps
+// cannot open) is on zeroed-releases since 2026-11-23; Macs on 10.15 or 11 stay on 1.4.0, linked from the 1.7.7
 // release notes.
 // Windows is Microsoft Store only: the portable zip card (stuck on the retired 1.3.0 line) was removed on
 // 2026-11-23 on the founder's word. MS_STORE_VERSION only labels the Microsoft Store card.
@@ -15,7 +15,7 @@ import NewsletterSignup from '../components/NewsletterSignup.astro';
 // Android is Google Play only: the sideload APK card was removed on 2026-09-22
 // (Android developer verification registers Play's signing key, not the local one).
 // Bump each line as its asset is published.
-const DMG_VERSION = '1.7.6';
+const DMG_VERSION = '1.7.7';
 const MS_STORE_VERSION = '1.7.6';
 const PLAY_VERSION = '1.7.6';
 const IOS_VERSION = '1.7.5';
