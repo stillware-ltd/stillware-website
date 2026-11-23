@@ -5,18 +5,20 @@ import { GUIDES } from '../data/guides';
 import NewsletterSignup from '../components/NewsletterSignup.astro';
 
 // Latest Zeroed release — bump this single constant when a new version ships.
-// Per-asset versions. 1.4.0 is live on the App Store (2026-10-04) and Google Play
-// (confirmed 2026-10-05). The macOS 1.7.3 DMG (1.4.2 plus 1.5.0 to 1.7.3, with the licence-activation
-// fix; budget file schema v17, which 1.4.x apps cannot open) is on zeroed-releases and needs macOS 12;
-// Macs on 10.15 or 11 stay on 1.4.0, linked from the 1.7.3 release notes. iOS 1.4.1 is in App Review: bump IOS_VERSION when it is released.
-// The Windows zip stays on 1.3.0 until a newer build lands on zeroed-releases.
+// Per-asset versions. The macOS 1.7.6 DMG (notarised, macOS 12 or later; budget file schema v17, which 1.4.x apps
+// cannot open) is on zeroed-releases since 2026-11-23; Macs on 10.15 or 11 stay on 1.4.0, linked from the 1.7.6
+// release notes.
+// Windows is Microsoft Store only: the portable zip card (stuck on the retired 1.3.0 line) was removed on
+// 2026-11-23 on the founder's word. MS_STORE_VERSION only labels the Microsoft Store card.
+// Store labels as read on 2026-11-23: Microsoft Store 1.7.6 and Google Play 1.7.6 live; App Store 1.7.5 live,
+// 1.7.6 in App Review (bump IOS_VERSION when it is released).
 // Android is Google Play only: the sideload APK card was removed on 2026-09-22
 // (Android developer verification registers Play's signing key, not the local one).
 // Bump each line as its asset is published.
-const DMG_VERSION = '1.7.3';
-const WINDOWS_VERSION = '1.3.0';
-const PLAY_VERSION = '1.4.0';
-const IOS_VERSION = '1.4.0';
+const DMG_VERSION = '1.7.6';
+const MS_STORE_VERSION = '1.7.6';
+const PLAY_VERSION = '1.7.6';
+const IOS_VERSION = '1.7.5';
 const LATEST_VERSION = DMG_VERSION;
 const APPLE_APP_ID = '6804301133';
 const APP_STORE_URL = `https://apps.apple.com/app/id${APPLE_APP_ID}`;
@@ -45,9 +47,9 @@ const appSchema = {
   operatingSystem: 'iOS, iPadOS, Android, Windows, macOS',
   offers: { '@type': 'Offer', price: '19.99', priceCurrency: 'USD', priceValidUntil: '2027-02-14', availability: 'https://schema.org/InStock' },
   publisher: { '@id': 'https://www.stillwareltd.com/#organization' },
-  // Where to get it: the three store listings, and the direct downloads this page offers (macOS DMG, Windows portable zip).
+  // Where to get it: the three store listings, and the one direct download this page offers (the macOS DMG).
   installUrl: [APP_STORE_URL, PLAY_STORE_URL, MS_STORE_URL],
-  downloadUrl: [`${releaseBase(DMG_VERSION)}/Zeroed-${DMG_VERSION}.dmg`, `${releaseBase(WINDOWS_VERSION)}/Zeroed-Windows-${WINDOWS_VERSION}.zip`],
+  downloadUrl: [`${releaseBase(DMG_VERSION)}/Zeroed-${DMG_VERSION}.dmg`],
   // The store listings and the AlternativeTo listing the press kit links.
   sameAs: [APP_STORE_URL, PLAY_STORE_URL, MS_STORE_URL, 'https://alternativeto.net/software/zeroed/'],
 };
@@ -56,7 +58,7 @@ const appSchema = {
 // pricing section, the fit check and the FAQ. Keep them in step with those, not the other way round.
 const keyFacts = [
   { term: 'What it is', detail: 'An offline zero-based (envelope) budgeting app, where every dollar gets a job before the month starts.' },
-  { term: 'Platforms', detail: 'iPhone and iPad (App Store), Android (Google Play), Windows (Microsoft Store or a portable download) and macOS (notarized DMG).' },
+  { term: 'Platforms', detail: 'iPhone and iPad (App Store), Android (Google Play), Windows (Microsoft Store) and macOS (notarized DMG).' },
   { term: 'Price', detail: 'Pay once and own it: $19.99 at the founder price until 14 February 2027, then $39.99. All v1.x updates are included. No subscription.' },
   { term: 'Free trial', detail: '34 days with every feature unlocked and no credit card. If you do not buy, Zeroed becomes read-only: you can still open it, view everything and export all of your data.' },
   { term: 'Offline and your data', detail: 'Works fully offline. Your data stays on your own device, encrypted with AES-256, with no servers holding it. Syncing is optional and goes through your own Google Drive.' },
@@ -86,7 +88,7 @@ const faqItems = [
   { q: 'Why is the price so low right now?', a: 'Zeroed is new, and honest feedback from early owners is worth more to us than revenue right now. Until 14 February 2027 the founder price is $19.99 — less than three months of any subscription budgeting app. After that date it becomes $39.99.' },
   { q: "What happens if my trial ends and I don't buy?", a: "Your data is never held hostage. When the 34-day trial ends, Zeroed switches to read-only: you can still open the app, view everything, and export all of your data. You just can't add or edit entries until you unlock it." },
   { q: 'Does Zeroed connect to my bank?', a: 'No, and that is deliberate. Connecting a bank means a third-party service holding your bank login. Zeroed imports statements from any bank (CSV, PDF, OFX, QFX and QIF) with automatic duplicate detection, and has an on-device receipt scanner for cash spending.' },
-  { q: 'Which devices does Zeroed run on?', a: 'iPhone and iPad (App Store), Android (Google Play), Windows (Microsoft Store or a portable download) and macOS (notarized DMG). If you turn on sync, your data and a licence key travel through your own Google Drive, so your other devices unlock too.' },
+  { q: 'Which devices does Zeroed run on?', a: 'iPhone and iPad (App Store), Android (Google Play), Windows (Microsoft Store) and macOS (notarized DMG). If you turn on sync, your data and a licence key travel through your own Google Drive, so your other devices unlock too.' },
   { q: 'Is there a getting-started guide for Zeroed?', a: 'Yes. The getting-started guide covers setup in four steps, the five tabs, logging and importing spending, and keeping your budget safe. Read it on this site under Zeroed, Getting started guide, or print the free 4-page PDF.' },
   { q: 'Can I move my budget over from YNAB?', a: 'Yes. Export your budget from YNAB, then in Zeroed open Settings → Migrate from YNAB: it brings your accounts, categories, assignments and history across. The step-by-step guide is on our blog: how to switch from YNAB to Zeroed.' },
 ];
@@ -342,7 +344,7 @@ const faqSchema = {
         <div class="container">
             <div class="section-header center-text">
                 <h2>Prefer a Direct Install?</h2>
-                <p class="direct-downloads-intro">One-click install from the App Store, Google Play or Microsoft Store, or app-store-free desktop binaries hosted on GitHub — checksummed, so you can verify with SHA256 before installing.</p>
+                <p class="direct-downloads-intro">One-click install from the App Store, Google Play or Microsoft Store, or an app-store-free macOS download hosted on GitHub — checksummed, so you can verify with SHA256 before installing.</p>
                 <p class="direct-downloads-guide">New to Zeroed? <a href={GUIDES.zeroed.page}>The getting-started guide</a> walks through setup and the five tabs, or <a href={GUIDES.zeroed.pdf} download>print it ({GUIDES.zeroed.label})</a>.</p>
             </div>
             <div class="direct-downloads-grid">
@@ -352,7 +354,7 @@ const faqSchema = {
                     </div>
                     <h3>macOS</h3>
                     <p>Notarized <code>.dmg</code> — open and drag Zeroed into Applications. Apple Silicon &amp; Intel, macOS 12 or later.</p>
-                    <span class="download-meta">53 MB &middot; v{DMG_VERSION}</span>
+                    <span class="download-meta">54 MB &middot; v{DMG_VERSION}</span>
                 </a>
                 <a href={APP_STORE_URL} target="_blank" rel="noopener" class="direct-download-card">
                     <div class="download-icon">
@@ -368,15 +370,7 @@ const faqSchema = {
                     </div>
                     <h3>Windows (Microsoft Store)</h3>
                     <p>One-click install, signed by Microsoft, with automatic updates.</p>
-                    <span class="download-meta">Microsoft Store &middot; v{WINDOWS_VERSION}</span>
-                </a>
-                <a href={`${releaseBase(WINDOWS_VERSION)}/Zeroed-Windows-${WINDOWS_VERSION}.zip`} class="direct-download-card">
-                    <div class="download-icon">
-                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" width="20" height="20"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
-                    </div>
-                    <h3>Windows (Portable)</h3>
-                    <p>Extract anywhere and run <code>zeroed.exe</code> — no install, no admin rights.</p>
-                    <span class="download-meta">21 MB &middot; v{WINDOWS_VERSION}</span>
+                    <span class="download-meta">Microsoft Store &middot; v{MS_STORE_VERSION}</span>
                 </a>
                 <a href={PLAY_STORE_URL} target="_blank" rel="noopener" class="direct-download-card">
                     <div class="download-icon">

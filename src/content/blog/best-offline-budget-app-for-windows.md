@@ -1,7 +1,7 @@
 ---
 title: "Best Offline Budget App for Windows (2026, No Subscription)"
 date: 2026-04-02
-updated: 2026-09-29
+updated: 2026-11-23
 description: "The best offline budget apps for Windows in 2026: no account, no subscription, works without internet, and your data stays on your own PC."
 author: "Stillware Team"
 heroImage: "/blog/images/best-offline-budget-app-for-windows/hero.webp"
@@ -27,7 +27,7 @@ Most popular budgeting apps are websites and phone apps: YNAB, Monarch, Copilot 
 | **Money Manager Ex** | Free, open source | Yearly and monthly budgets | CSV and QIF import | Local |
 | **GnuCash** | Free, open source | Double-entry accounting | Import and transaction matching | Local |
 
-Sources: [Zeroed](/zeroed/), [Actual Budget](https://actualbudget.org/), [Buckets](https://www.budgetwithbuckets.com/), [HomeBank](https://www.gethomebank.org/), [Money Manager Ex](https://moneymanagerex.org/) and [GnuCash](https://www.gnucash.org/). All six run on Windows. Actual Budget has a desktop app in the Microsoft Store and on GitHub, and Zeroed is in the Microsoft Store with a portable download as well.
+Sources: [Zeroed](/zeroed/), [Actual Budget](https://actualbudget.org/), [Buckets](https://www.budgetwithbuckets.com/), [HomeBank](https://www.gethomebank.org/), [Money Manager Ex](https://moneymanagerex.org/) and [GnuCash](https://www.gnucash.org/). All six run on Windows. Actual Budget has a desktop app in the Microsoft Store and on GitHub, and Zeroed is in the Microsoft Store.
 
 ## Which one fits?
 
@@ -65,7 +65,7 @@ It depends on what you value. For guided envelope budgeting with a one-time pric
 Yes: Actual Budget, HomeBank, Money Manager Ex and GnuCash are all free and open source, and all run on Windows.
 
 **Does Zeroed work on Windows?**
-Yes. Install it from the Microsoft Store, or download the portable version, which runs without installation or admin rights. It also runs on macOS, iPhone and iPad, and Android.
+Yes. Install it from the Microsoft Store. It also runs on macOS, iPhone and iPad, and Android.
 
 **Can I use a budgeting app without an internet connection?**
 Yes, if your data lives on your device. Local-first apps such as Zeroed, Actual Budget and Buckets work without a connection; cloud apps do not. See our guide to a [budgeting app that works without internet](/blog/budgeting-app-that-works-without-internet/).
