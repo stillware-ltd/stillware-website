@@ -77,11 +77,12 @@ export const PADDLE_PRODUCTS: Record<CheckoutSlug, PaddleProductConfig> = {
     priceId: "pri_01knnyfj5zezrch30qqbzkc378",
     appStoreUrl: "https://apps.apple.com/app/id6804301133",
     // The founder price. The Paddle price is $39.99; the $19.99 that /zeroed/ advertises until
-    // 14 February 2027 is the Paddle discount "Founders special" (code FOUNDER, which expires that
-    // day). The app adds ?discount_code=FOUNDER itself; this covers every other way of reaching
+    // The founder price runs until 14 February 2027 inclusive, as every public text says (founder's
+    // decision, 23 Nov 2026): the default ends at 12:00 UTC on 15 February, the end of the 14th in
+    // every time zone. The Paddle discount "Founders special" (code FOUNDER) must not expire before it. The app adds ?discount_code=FOUNDER itself; this covers every other way of reaching
     // /buy/zeroed, which used to show $39.99. Move `until` only together with the discount in
     // Paddle and the date on /zeroed/.
-    defaultDiscount: { code: "FOUNDER", until: "2027-02-14T00:00:00Z" },
+    defaultDiscount: { code: "FOUNDER", until: "2027-02-15T12:00:00Z" },
   },
   // RankUp Chess — Only on Windows (also Linux), $14.99. SWITCH DAY: the P8 tier name (docs/kl/switch-day-copy.md
   // section 2.6); the price this page opens is unchanged.

@@ -184,7 +184,7 @@ function paddleEvent(name: string): any {
 
 // A moment while the founder price runs, and the instant it ends (src/config/paddle.ts).
 const BEFORE = "2026-11-22T12:00:00Z";
-const DEADLINE = "2027-02-14T00:00:00Z";
+const DEADLINE = "2027-02-15T12:00:00Z";
 
 test("the two new pages exist, grant a rankup licence, and carry the price ids KL.3 made; without one they say 'not available yet'", () => {
   const ids = { "rankup-every-device": "pri_01m5t1fevddc28paxqbpa4q5ks", "rankup-upgrade": "pri_01m5t1gwdqpdt1ewebtjchcpqh" } as const;
@@ -440,7 +440,7 @@ test("the checkout is otherwise as it was: the token, the discount code and the 
 
 test("the founder code and its end date are data beside Zeroed (src/config/paddle.ts), and the page takes them from there", () => {
   assert.deepEqual(PADDLE_PRODUCTS.zeroed.defaultDiscount, { code: "FOUNDER", until: DEADLINE });
-  assert.equal(Date.parse(PADDLE_PRODUCTS.zeroed.defaultDiscount!.until), Date.UTC(2027, 1, 14, 0, 0, 0), "14 February 2027, 00:00 UTC");
+  assert.equal(Date.parse(PADDLE_PRODUCTS.zeroed.defaultDiscount!.until), Date.UTC(2027, 1, 15, 12, 0, 0), "15 February 2027, 12:00 UTC: the end of 14 February everywhere");
   const withDefault = Object.entries(PADDLE_PRODUCTS).filter(([, c]) => c.defaultDiscount !== undefined).map(([slug]) => slug);
   assert.deepEqual(withDefault, ["zeroed"], "no RankUp page has a default code");
   // the page hands the product's own value to its script, and holds no code or date of its own
@@ -477,8 +477,8 @@ test("a discount_code in the address always wins over the default", () => {
   }
 });
 
-test("from 2027-02-14T00:00:00Z the default is no longer sent: Zeroed opens with no discount code", () => {
-  for (const now of [DEADLINE, "2027-02-14T00:00:00.001Z", "2027-02-14T09:00:00Z", "2027-02-15T00:00:00Z", "2028-01-01T00:00:00Z"]) {
+test("from 2027-02-15T12:00:00Z the default is no longer sent: Zeroed opens with no discount code", () => {
+  for (const now of [DEADLINE, "2027-02-15T12:00:00.001Z", "2027-02-15T18:00:00Z", "2027-02-16T00:00:00Z", "2028-01-01T00:00:00Z"]) {
     for (const address of ["/buy/zeroed/", "/buy/zeroed/?ref=yt", "/buy/zeroed/?discount_code="]) {
       const v = visit("zeroed", address, new Tab(), { now });
       assert.ok(v.options, `${now} ${address}: the checkout still opens`);
@@ -621,4 +621,13 @@ test("the success page: the key-email text stays, and ?upgrade=1 swaps in the up
   assert.match(up.lead, /Every device is now on for the key you already have/);
   assert.match(up.how, /could not match your key, we've emailed you a new Every device key/);
   assert.match(SUCCESS, /We've sent your license key to the email/, "the usual text is still the default");
+});
+
+test("the whole of 14 February 2027 still gets the founder default, in every time zone", () => {
+  // Noon UK time on the 14th, the end of the 14th in the UK, and the last second before the cut-off
+  // (the end of the 14th at UTC-12).
+  for (const now of ["2027-02-14T12:00:00Z", "2027-02-15T00:00:00Z", "2027-02-15T11:59:59Z"]) {
+    const v = visit("zeroed", "/buy/zeroed/", new Tab(), { now });
+    assert.equal(v.options.discountCode, "FOUNDER", now);
+  }
 });
