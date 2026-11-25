@@ -21,7 +21,7 @@ export const RANKUP_MS_STORE_VERSION = '0.12.3';
 
 // Download URLs derive from their own per-platform constants, which track the
 // release asset that actually exists rather than the product version.
-// Windows installer (.exe, unsigned): since 2026-11-25 only the fallback under the buttons ("Or download the
+// Windows installer (.exe, unsigned): since 2026-11-25 only the fallback under the buttons ("Or download the Windows
 // installer (.exe)"), for PCs where the Microsoft Store is switched off; the Windows button is the Store.
 // The earlier installers (0.5.0 and older) were withdrawn with the
 // 0.7.0 release; 0.7.0 was published on 2026-09-19 and 0.7.1 the same evening;

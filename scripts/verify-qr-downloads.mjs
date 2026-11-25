@@ -44,7 +44,8 @@ const APPS = [
       { label: 'Get it from the Microsoft Store', href: /^https:\/\/apps\.microsoft\.com\/detail\/9NNC1515C24X$/ },
       { label: 'Download for Mac', href: /^https:\/\/github\.com\/stillware-ltd\/rankup-chess-releases\/releases\/download\/[^/]+\/[^/]+\.dmg$/ },
     ],
-    // Allowed, not required: the Windows installer fallback line ("Or download the installer (.exe)").
+    // Allowed, not required: the Windows installer fallback line ("Or download the Windows installer (.exe)"). The
+    // component's script hides it on phones, tablets and Macs at run time; in the HTML it is never hidden.
     optional: [
       {
         name: 'the Windows installer fallback',

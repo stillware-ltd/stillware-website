@@ -2,8 +2,10 @@
 // The four ways to get RankUp Chess (13 Nov 2026): App Store, Google Play, Windows and Mac, from
 // src/data/rankup-downloads.ts. Since 25 Nov 2026 the Windows button is the Microsoft Store (signed by Microsoft, no
 // SmartScreen warning, updates itself), and the unsigned installer (.exe) is a small fallback line under the buttons,
-// "Or download the installer (.exe)", for PCs where the Store is switched off. The SmartScreen note belongs to that
-// line only (the founder, 25 Nov 2026: "Do as proposed").
+// "Or download the Windows installer (.exe)", for PCs where the Store is switched off. The SmartScreen note belongs to
+// that line only (the founder, 25 Nov 2026: "Do as proposed"). The line is in the HTML for everyone (JavaScript off
+// included); once the script knows the visitor is on iPhone/iPad, Android or a Mac it hides the line, and it stays for
+// Windows and for devices the script can't identify (the coordinator, 25 Nov 2026).
 //
 // Why: the founder, 13 Nov 2026: "For every QR code url the user visits there must see all 4 downloads option on each
 // of those devices for the user to download. Place that in a easy and prominent position for easy downloads."
@@ -55,7 +57,7 @@ const glyph = (platform: string) => (platform === 'ios' || platform === 'android
   </div>
   {RANKUP_WINDOWS_DOWNLOAD && (
     <div class="rd-alt" data-win-fallback>
-      <p class="rd-alt-line">Or <a href={RANKUP_WINDOWS_DOWNLOAD} class="rd-alt-link">download the installer (.exe)</a></p>
+      <p class="rd-alt-line">Or <a href={RANKUP_WINDOWS_DOWNLOAD} class="rd-alt-link">download the Windows installer (.exe)</a></p>
       {winNote && (
         <p class="rd-win" data-win-note hidden>The Windows installer isn't code-signed yet, so the first time you run it Windows may say &ldquo;Windows protected your PC&rdquo;. Choose <strong>More info</strong>, then <strong>Run anyway</strong>.</p>
       )}
@@ -94,6 +96,11 @@ const glyph = (platform: string) => (platform === 'ios' || platform === 'android
     });
     if (platform === 'windows') {
       document.querySelectorAll<HTMLElement>('.rd [data-win-note]').forEach((n) => n.removeAttribute('hidden'));
+    }
+    // The Windows installer line: hidden once the device is known to be a phone, a tablet or a Mac; kept on Windows and
+    // on devices the script can't identify (and, with JavaScript off, it never runs, so the line shows).
+    if (platform === 'ios' || platform === 'android' || platform === 'mac') {
+      document.querySelectorAll<HTMLElement>('.rd [data-win-fallback]').forEach((n) => n.setAttribute('hidden', ''));
     }
   }
 
