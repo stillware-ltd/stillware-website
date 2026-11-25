@@ -3,7 +3,7 @@ import Layout from '../../layouts/Layout.astro';
 import StoreLinks from '../../components/StoreLinks.astro';
 import GuideLinks from '../../components/GuideLinks.astro';
 import NewsletterSignup from '../../components/NewsletterSignup.astro';
-import { RANKUP_APP_STORE_URL, RANKUP_PLAY_STORE_URL } from '../../data/rankup-downloads';
+import { RANKUP_APP_STORE_URL, RANKUP_MS_STORE_URL, RANKUP_PLAY_STORE_URL } from '../../data/rankup-downloads';
 import { getCollection } from 'astro:content';
 import sharp from 'sharp';
 import { join } from 'node:path';
@@ -242,12 +242,14 @@ const faqSchema = faqItems.length >= 2 ? {
             </div>
         )}
         {/* Chess articles (the daily puzzle companions) had no early store link at all; same node, same script below.
-            Only one .article-early-cta is rendered per page, so a post tagged for both keeps the Zeroed one. */}
+            Only one .article-early-cta is rendered per page, so a post tagged for both keeps the Zeroed one.
+            The Microsoft Store link (25 Nov 2026) is RankUp's Windows download, in the same place as Zeroed's. */}
         {isChess && !isZeroed && (
             <div class="article-early-cta" data-cta-slot="article-early" hidden>
                 <p><strong>RankUp Chess</strong> trains this on your own device - offline, no ads, no subscription.</p>
                 <div class="early-cta-links">
                     <a href={RANKUP_APP_STORE_URL} target="_blank" rel="noopener">App Store</a>
+                    <a href={RANKUP_MS_STORE_URL} target="_blank" rel="noopener">Microsoft Store</a>
                     <a href={RANKUP_PLAY_STORE_URL} target="_blank" rel="noopener">Google Play</a>
                     <a href="/rankupchess/" class="early-cta-plain">What it is</a>
                 </div>
@@ -258,6 +260,7 @@ const faqSchema = faqItems.length >= 2 ? {
                 <p>Also from us, for kids' screen time: <strong>RankUp Chess</strong>, an offline chess academy. Free to play, no ads, no subscription.</p>
                 <div class="early-cta-links">
                     <a href={RANKUP_APP_STORE_URL} target="_blank" rel="noopener">App Store</a>
+                    <a href={RANKUP_MS_STORE_URL} target="_blank" rel="noopener">Microsoft Store</a>
                     <a href={RANKUP_PLAY_STORE_URL} target="_blank" rel="noopener">Google Play</a>
                     <a href="/rankupchess/" class="early-cta-plain">What it is</a>
                 </div>

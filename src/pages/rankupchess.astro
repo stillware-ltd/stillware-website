@@ -10,6 +10,8 @@ import {
   RANKUP_VERSION,
   RANKUP_WINDOWS_VERSION,
   RANKUP_WINDOWS_DOWNLOAD,
+  RANKUP_MS_STORE_URL,
+  RANKUP_MS_STORE_VERSION,
   RANKUP_MACOS_VERSION,
   RANKUP_MACOS_DOWNLOAD,
   RANKUP_APP_STORE_URL,
@@ -36,10 +38,10 @@ const RANKUP_SWITCH_DATE_TEXT = RANKUP_SWITCH_DATE
   : null;
 
 // The "Current release" line names the platforms already on RANKUP_VERSION,
-// then any still catching up. A platform with no version (Windows set to
-// null) is left out of both and gets its own "coming soon" sentence.
+// then any still catching up. Windows is the Microsoft Store's version (the Windows button since 25 Nov 2026); the
+// installer's own version is stated in the note under the pricing buttons.
 const RANKUP_PLATFORMS = [
-  { names: ['Windows'], version: RANKUP_WINDOWS_VERSION },
+  { names: ['Windows'], version: RANKUP_MS_STORE_VERSION },
   { names: ['macOS'], version: RANKUP_MACOS_VERSION },
   { names: ['iPhone', 'iPad'], version: RANKUP_IOS_VERSION },
   { names: ['Android'], version: RANKUP_ANDROID_VERSION },
@@ -61,6 +63,7 @@ const RANKUP_CATCHING_UP = listOf(
 );
 // Platforms on the same later patch share one sentence (Windows and macOS on 0.12.2 while the phones were on 0.12.1,
 // 14 Nov 2026). With every platform on RANKUP_VERSION (0.12.2, 16 Nov 2026) the line is just "on Windows, macOS, ...".
+// On 25 Nov 2026 Windows (the Microsoft Store), iPhone and iPad are on 0.12.3 while macOS and Android are on 0.12.2.
 const RANKUP_PATCHED_PLATFORMS = RANKUP_PLATFORMS.filter(
   (p) => p.version && p.version !== RANKUP_VERSION && minorOf(p.version) === minorOf(RANKUP_VERSION),
 );
@@ -119,10 +122,11 @@ const appSchema = {
   operatingSystem: 'iOS, Android, Windows, macOS',
   offers: { '@type': 'Offer', price: '0', priceCurrency: 'USD', availability: 'https://schema.org/InStock' },
   publisher: { '@id': 'https://www.stillwareltd.com/#organization' },
-  // Where to get it: the App Store and Google Play listings, and the direct downloads this page offers (macOS DMG, Windows installer).
-  installUrl: [RANKUP_APP_STORE_URL, RANKUP_PLAY_STORE_URL],
+  // Where to get it: the App Store, Google Play and Microsoft Store listings, and the direct downloads this page offers
+  // (macOS DMG, and the Windows installer as the fallback to the Microsoft Store).
+  installUrl: [RANKUP_APP_STORE_URL, RANKUP_PLAY_STORE_URL, RANKUP_MS_STORE_URL],
   downloadUrl: [RANKUP_MACOS_DOWNLOAD, ...(RANKUP_WINDOWS_DOWNLOAD ? [RANKUP_WINDOWS_DOWNLOAD] : [])],
-  sameAs: [RANKUP_APP_STORE_URL, RANKUP_PLAY_STORE_URL],
+  sameAs: [RANKUP_APP_STORE_URL, RANKUP_PLAY_STORE_URL, RANKUP_MS_STORE_URL],
 };
 
 // Key facts (answer-first block). Each line restates something this page already says: the hero, the activity cards, the
@@ -408,9 +412,9 @@ const faqSchema = {
                 </ul>
                 <RankupDownloads place="pricing" align="center" />
                 <p class="pricing-note">Free to play forever on every platform. No credit card, no trial clock, no account required.</p>
-                <p class="pricing-note">Current release <strong>v{RANKUP_VERSION}</strong>{RANKUP_CURRENT_ON && ` on ${RANKUP_CURRENT_ON}`}.{RANKUP_CATCHING_UP && ` ${RANKUP_CATCHING_UP}, with ${RANKUP_VERSION} on its way.`}{RANKUP_PATCHED && ` ${RANKUP_PATCHED}.`}{!RANKUP_WINDOWS_VERSION && ' The Windows version is coming soon.'}</p>
+                <p class="pricing-note">Current release <strong>v{RANKUP_VERSION}</strong>{RANKUP_CURRENT_ON && ` on ${RANKUP_CURRENT_ON}`}.{RANKUP_CATCHING_UP && ` ${RANKUP_CATCHING_UP}, with ${RANKUP_VERSION} on its way.`}{RANKUP_PATCHED && ` ${RANKUP_PATCHED}.`}</p>
                 {RANKUP_WINDOWS_DOWNLOAD && (
-                    <p class="pricing-note">Windows may show a SmartScreen warning the first time, because the installer isn't code-signed yet: choose More info, then Run anyway.</p>
+                    <p class="pricing-note">On Windows, the Microsoft Store version is signed by Microsoft and updates itself. The installer (.exe, v{RANKUP_WINDOWS_VERSION}) is for PCs where the Store is switched off. It isn't code-signed yet, so Windows may show a SmartScreen warning the first time: choose More info, then Run anyway.</p>
                 )}
             </div>
         </div>
