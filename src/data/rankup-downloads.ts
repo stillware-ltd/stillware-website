@@ -7,7 +7,7 @@
 // Marketing/Rank_Up_Chess/SEO/research/qr-landing-four-downloads-2026-11-13.md.
 
 // The product version, shown wherever a page states which release this is: the release every platform has
-// (Android, macOS and the Windows installer are on 0.12.2; the App Store and the Microsoft Store are ahead on 0.12.3).
+// (Android and the Windows installer are on 0.12.2; the App Store and the Microsoft Store are on 0.12.3; macOS on 0.12.4).
 export const RANKUP_VERSION = '0.12.2';
 
 // Windows is the Microsoft Store first (the founder, 25 Nov 2026: "Do as proposed"). The Store build is signed by
@@ -57,8 +57,10 @@ export const RANKUP_WINDOWS_DOWNLOAD = RANKUP_WINDOWS_VERSION
 // 0.12.2 (build 39: flag-fall draws against a bare king, the Piece Values challenge, the
 // Castle Grounds card, the Teacher area's Classroom switch) on 2026-11-14 (the Mac build).
 // Every platform is on 0.12.2 (checked 2026-11-16, see the mobile block below).
-// The release v0.12.2-macos must carry RankUpChess-0.12.2-macOS.dmg (the URL below).
-export const RANKUP_MACOS_VERSION = '0.12.2';
+// 0.12.4 (build 41: age signals where a law requires them, parent-approved purchases unlock at once) on 2026-11-25,
+// published (GitHub release v0.12.4-macos) before this deploy; on macOS Apple never applies age features, so it never asks.
+// The release v0.12.4-macos must carry RankUpChess-0.12.4-macOS.dmg (the URL below).
+export const RANKUP_MACOS_VERSION = '0.12.4';
 export const RANKUP_MACOS_DOWNLOAD =
   `https://github.com/stillware-ltd/rankup-chess-releases/releases/download/v${RANKUP_MACOS_VERSION}-macos/RankUpChess-${RANKUP_MACOS_VERSION}-macOS.dmg`;
 
