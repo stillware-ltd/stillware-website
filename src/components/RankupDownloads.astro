@@ -1,6 +1,11 @@
 ---
 // The four ways to get RankUp Chess (13 Nov 2026): App Store, Google Play, Windows and Mac, from
-// src/data/rankup-downloads.ts.
+// src/data/rankup-downloads.ts. Since 25 Nov 2026 the Windows button is the Microsoft Store (signed by Microsoft, no
+// SmartScreen warning, updates itself), and the unsigned installer (.exe) is a small fallback line under the buttons,
+// "Or download the Windows installer (.exe)", for PCs where the Store is switched off. The SmartScreen note belongs to
+// that line only (the founder, 25 Nov 2026: "Do as proposed"). The line is in the HTML for everyone (JavaScript off
+// included); once the script knows the visitor is on iPhone/iPad, Android or a Mac it hides the line, and it stays for
+// Windows and for devices the script can't identify (the coordinator, 25 Nov 2026).
 //
 // Why: the founder, 13 Nov 2026: "For every QR code url the user visits there must see all 4 downloads option on each
 // of those devices for the user to download. Place that in a easy and prominent position for easy downloads."
@@ -12,9 +17,10 @@
 //   - The labels are the stores' own wording. The buttons carry no Apple logo, Play prism or Windows logo: Apple and
 //     Google allow only their own badge artwork, and the Windows logo is Microsoft's mark (rule QD-4). A phone or a
 //     computer glyph shows the kind of device.
-//   - Every button is at least 44 px tall (rule QD-5).
-//   - Nothing is tracked here. Layout.astro's existing store_click handler counts the clicks, as on every page. The
-//     script only passes the page's ?utm_* and ?ref= on to Google Play as the install referrer, as /rankupchess/ did.
+//   - Every button is at least 44 px tall (rule QD-5), and so is the fallback link's tap area.
+//   - Nothing is tracked here. Layout.astro's existing store_click handler counts the clicks, as on every page: the
+//     Store button as microsoft_store, the fallback link as windows_exe. The script only passes the page's ?utm_* and
+//     ?ref= on to Google Play as the install referrer, as /rankupchess/ did.
 //
 // `top` marks the group a QR landing page shows near its top: scripts/verify-qr-downloads.mjs looks for it on every
 // page a RankUp short link in public/_redirects lands on, and fails the build without it.
@@ -31,7 +37,7 @@ interface Props {
   align?: 'start' | 'center';
   /** The group near the top of a QR landing page (the build check looks for it). */
   top?: boolean;
-  /** Show the Windows SmartScreen note under the buttons, to Windows visitors only. */
+  /** Show the SmartScreen note with the installer (.exe) fallback line, to Windows visitors only. */
   winNote?: boolean;
 }
 
@@ -49,8 +55,13 @@ const glyph = (platform: string) => (platform === 'ios' || platform === 'android
       </a>
     ))}
   </div>
-  {winNote && RANKUP_WINDOWS_DOWNLOAD && (
-    <p class="rd-win" data-win-note hidden>The Windows installer isn't code-signed yet, so the first time you run it Windows may say &ldquo;Windows protected your PC&rdquo;. Choose <strong>More info</strong>, then <strong>Run anyway</strong>.</p>
+  {RANKUP_WINDOWS_DOWNLOAD && (
+    <div class="rd-alt" data-win-fallback>
+      <p class="rd-alt-line">Or <a href={RANKUP_WINDOWS_DOWNLOAD} class="rd-alt-link">download the Windows installer (.exe)</a></p>
+      {winNote && (
+        <p class="rd-win" data-win-note hidden>The Windows installer isn't code-signed yet, so the first time you run it Windows may say &ldquo;Windows protected your PC&rdquo;. Choose <strong>More info</strong>, then <strong>Run anyway</strong>.</p>
+      )}
+    </div>
   )}
 </div>
 
@@ -85,6 +96,11 @@ const glyph = (platform: string) => (platform === 'ios' || platform === 'android
     });
     if (platform === 'windows') {
       document.querySelectorAll<HTMLElement>('.rd [data-win-note]').forEach((n) => n.removeAttribute('hidden'));
+    }
+    // The Windows installer line: hidden once the device is known to be a phone, a tablet or a Mac; kept on Windows and
+    // on devices the script can't identify (and, with JavaScript off, it never runs, so the line shows).
+    if (platform === 'ios' || platform === 'android' || platform === 'mac') {
+      document.querySelectorAll<HTMLElement>('.rd [data-win-fallback]').forEach((n) => n.setAttribute('hidden', ''));
     }
   }
 
@@ -217,6 +233,32 @@ const glyph = (platform: string) => (platform === 'ios' || platform === 'android
     .rd.has-primary .rd-btn:not(.is-primary) small { font-size: 0.64rem; }
     .rd.has-primary .rd-btn:not(.is-primary) .rd-icon { display: none; }
   }
+
+  /* The installer (.exe) fallback: one small line under the buttons, its link a 44 px tap area (rule QD-5). */
+  .rd-alt { margin-top: 0.35rem; }
+  .rd-center .rd-alt-line { text-align: center; }
+
+  .rd-alt-line {
+    margin: 0;
+    font-size: 0.85rem;
+    line-height: 1.3;
+    color: var(--rd-head);
+  }
+
+  .rd-alt-link {
+    display: inline-flex;
+    align-items: center;
+    min-height: 44px;
+    color: var(--rd-head);
+    font-weight: 700;
+    text-decoration: underline;
+    text-underline-offset: 2px;
+  }
+
+  .rd-alt-link:hover { color: var(--rd-primary); }
+  .rd-alt-link:focus-visible { outline: 3px solid var(--rd-focus); outline-offset: 2px; border-radius: 4px; }
+
+  .rd-alt .rd-win { margin-top: 0.1rem; }
 
   .rd-win {
     margin: 0.7rem 0 0;

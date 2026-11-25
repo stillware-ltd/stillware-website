@@ -17,6 +17,10 @@
 //   4. have it near the top: after the page's one <h1>, before its first <h2>, and with no more than
 //      MAX_WORDS_BEFORE words of text between the two.
 //
+// RankUp Chess's Windows link is the Microsoft Store (the founder, 25 Nov 2026: "Do as proposed"). The installer
+// (.exe) on GitHub may sit in the group as a fallback line, but is not required; when it is there, it must be a
+// GitHub release .exe (an app's `optional` links: checked when present, live mode included, never required).
+//
 // Live mode, after a deploy: `node scripts/verify-qr-downloads.mjs --live [origin]`. Each short link, in both forms,
 // must answer a 302 to its page in _redirects. The page is read from the live site and checked as above. Every
 // download URL must answer: the store pages 200, and GitHub's assets 200 or 302. A 429 (rate-limited) gets up to three
@@ -37,8 +41,17 @@ const APPS = [
     four: [
       { label: 'Download on the App Store', href: /^https:\/\/apps\.apple\.com\/app\/id\d+$/ },
       { label: 'Get it on Google Play', href: /^https:\/\/play\.google\.com\/store\/apps\/details\?id=com\.stillware\.rankup_chess$/ },
-      { label: 'Download for Windows', href: /^https:\/\/github\.com\/stillware-ltd\/rankup-chess-releases\/releases\/download\/[^/]+\/[^/]+\.exe$/ },
+      { label: 'Get it from the Microsoft Store', href: /^https:\/\/apps\.microsoft\.com\/detail\/9NNC1515C24X$/ },
       { label: 'Download for Mac', href: /^https:\/\/github\.com\/stillware-ltd\/rankup-chess-releases\/releases\/download\/[^/]+\/[^/]+\.dmg$/ },
+    ],
+    // Allowed, not required: the Windows installer fallback line ("Or download the Windows installer (.exe)"). The
+    // component's script hides it on phones, tablets and Macs at run time; in the HTML it is never hidden.
+    optional: [
+      {
+        name: 'the Windows installer fallback',
+        matches: (a) => /\.exe(\?|#|$)/.test(a.href),
+        href: /^https:\/\/github\.com\/stillware-ltd\/rankup-chess-releases\/releases\/download\/[^/]+\/[^/]+\.exe$/,
+      },
     ],
   },
   {
@@ -173,6 +186,12 @@ function checkPage(app, page) {
       problems.push(`"${want.label}" is hidden`);
     }
     used.push(a.href);
+  }
+  for (const opt of app.optional || []) {
+    for (const a of anchors.filter(opt.matches)) {
+      if (!opt.href.test(a.href)) problems.push(`${opt.name} goes to ${a.href || '(no href)'}`);
+      else used.push(a.href);
+    }
   }
 
   const h1s = [...html.matchAll(/<h1\b/g)];

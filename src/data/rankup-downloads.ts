@@ -3,16 +3,27 @@
 // (src/components/RankupDownloads.astro) and the blog's early store links all read from here.
 //
 // The founder (13 Nov 2026): every page a QR short link lands on shows all four downloads, on every device.
-// scripts/verify-qr-downloads.mjs fails the build if a RankUp short link's page lacks any of the four, so setting
-// a platform to null below stops the build until that page is dealt with. Research note:
+// scripts/verify-qr-downloads.mjs fails the build if a RankUp short link's page lacks any of the four. Research note:
 // Marketing/Rank_Up_Chess/SEO/research/qr-landing-four-downloads-2026-11-13.md.
 
-// The product version, shown wherever a page states which release this is.
+// The product version, shown wherever a page states which release this is: the release every platform has
+// (Android, macOS and the Windows installer are on 0.12.2; the App Store and the Microsoft Store are ahead on 0.12.3).
 export const RANKUP_VERSION = '0.12.2';
+
+// Windows is the Microsoft Store first (the founder, 25 Nov 2026: "Do as proposed"). The Store build is signed by
+// Microsoft, so there is no SmartScreen warning, and it updates itself; buying still goes through the same Paddle
+// checkout and licence key as the installer. Product ID 9NNC1515C24X (free, Education), submitted on 2026-11-24 and
+// live when checked on 2026-11-25, when the catalog served package 1.12.3.0, which is app version 0.12.3.
+// Bump RANKUP_MS_STORE_VERSION when the Store serves a newer package.
+export const RANKUP_MS_STORE_ID = '9NNC1515C24X';
+export const RANKUP_MS_STORE_URL = `https://apps.microsoft.com/detail/${RANKUP_MS_STORE_ID}`;
+export const RANKUP_MS_STORE_VERSION = '0.12.3';
 
 // Download URLs derive from their own per-platform constants, which track the
 // release asset that actually exists rather than the product version.
-// Windows: the earlier installers (0.5.0 and older) were withdrawn with the
+// Windows installer (.exe, unsigned): since 2026-11-25 only the fallback under the buttons ("Or download the Windows
+// installer (.exe)"), for PCs where the Microsoft Store is switched off; the Windows button is the Store.
+// The earlier installers (0.5.0 and older) were withdrawn with the
 // 0.7.0 release; 0.7.0 was published on 2026-09-19 and 0.7.1 the same evening;
 // 0.8.0 on 2026-09-25; no Windows installer was built for 0.9.0; 0.10.0 (the
 // board-theme update) on 2026-10-13; 0.10.1 (licence keys activate again) on
@@ -24,8 +35,10 @@ export const RANKUP_VERSION = '0.12.2';
 // first of the platforms; 0.12.1 (build 38: a way back from the Puzzle Maker,
 // Esc on more pages) on 2026-11-08, published (GitHub release v0.12.1) before
 // this deploy; 0.12.2 (build 39: the same changes as the Mac's 0.12.2 below) on
-// 2026-11-14, published (GitHub release v0.12.2) before this deploy.
-// Set this to null to show "coming soon" on /rankupchess/ if no installer is live (the QR check then fails the build).
+// 2026-11-14, published (GitHub release v0.12.2) before this deploy. Still 0.12.2 on 2026-11-25, when the
+// Microsoft Store became the Windows button.
+// Set this to null to drop the .exe fallback line (and its SmartScreen note) if no installer is live; the Windows
+// button (the Store) stays, so the QR check still passes.
 export const RANKUP_WINDOWS_VERSION: string | null = '0.12.2';
 export const RANKUP_WINDOWS_DOWNLOAD = RANKUP_WINDOWS_VERSION
   ? `https://github.com/stillware-ltd/rankup-chess-releases/releases/download/v${RANKUP_WINDOWS_VERSION}/RankUpChess-Setup-${RANKUP_WINDOWS_VERSION}.exe`
@@ -58,11 +71,12 @@ export const RANKUP_MACOS_DOWNLOAD =
 // both stores on 30 October 2026 (manual release on both). 0.12.1 went live on the App Store on
 // 2026-11-08. 0.12.2 (build 39) went live on the App Store on 2026-11-12 (the store's own
 // release date, 16:50 UTC) and on Google Play with the listing's "Updated on" 11 Nov 2026
-// (both checked 2026-11-16).
+// (both checked 2026-11-16). 0.12.3 is live on the App Store (checked 2026-11-25); on Google Play 0.12.3 is in
+// Google's review, so Android stays on 0.12.2 until the listing serves it.
 export const RANKUP_PLAY_STORE_URL =
   'https://play.google.com/store/apps/details?id=com.stillware.rankup_chess';
 export const RANKUP_APP_STORE_URL = 'https://apps.apple.com/app/id6806675796';
-export const RANKUP_IOS_VERSION = '0.12.2';
+export const RANKUP_IOS_VERSION = '0.12.3';
 export const RANKUP_ANDROID_VERSION = '0.12.2';
 
 export type RankupPlatform = 'ios' | 'android' | 'windows' | 'mac';
@@ -80,13 +94,12 @@ export interface RankupDownload {
 
 // The four, in the order shown when the visitor's device is unknown (JavaScript off, or a device the script doesn't
 // recognise). The component's script moves the visitor's own to the front and makes it the big button (rule W-L2).
-// The labels are the stores' own wording (research note, QD-5). A platform whose URL is null drops out, and the QR
-// check then fails the build.
+// The labels are the stores' own wording (research note, QD-5): Microsoft's badge reads "Get it from", and the site
+// names the store "Microsoft Store", as Zeroed's links do. Windows is the Microsoft Store (25 Nov 2026); the .exe is
+// not one of the four but the fallback line under them (RANKUP_WINDOWS_DOWNLOAD, in RankupDownloads.astro).
 export const RANKUP_DOWNLOADS: RankupDownload[] = [
   { platform: 'ios', href: RANKUP_APP_STORE_URL, small: 'Download on the', label: 'App Store', external: true },
   { platform: 'android', href: RANKUP_PLAY_STORE_URL, small: 'Get it on', label: 'Google Play', external: true },
-  ...(RANKUP_WINDOWS_DOWNLOAD
-    ? [{ platform: 'windows' as const, href: RANKUP_WINDOWS_DOWNLOAD, small: 'Download for', label: 'Windows', external: false }]
-    : []),
+  { platform: 'windows', href: RANKUP_MS_STORE_URL, small: 'Get it from the', label: 'Microsoft Store', external: true },
   { platform: 'mac', href: RANKUP_MACOS_DOWNLOAD, small: 'Download for', label: 'Mac', external: false },
 ];
