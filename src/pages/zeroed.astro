@@ -10,17 +10,17 @@ import NewsletterSignup from '../components/NewsletterSignup.astro';
 // release notes.
 // Windows is Microsoft Store only: the portable zip card (stuck on the retired 1.3.0 line) was removed on
 // 2026-11-23 on the founder's word. MS_STORE_VERSION only labels the Microsoft Store card.
-// The macOS 1.7.9 DMG (notarised) was published on zeroed-releases on 2026-11-25; the stores keep 1.7.8 until
-// each store's review of 1.7.9 clears.
-// Store labels as read on 2026-11-25: 1.7.8 is live on every platform, the Microsoft Store (1.7.8.0), Google Play,
-// the App Store and the Mac DMG (bump each label when its store releases a newer version).
+// The macOS 1.7.9 DMG (notarised) was published on zeroed-releases on 2026-11-25.
+// Store labels as read on 2026-11-26: 1.7.9 is live on every platform, the Microsoft Store (1.7.9.0), Google Play
+// (production 44), the App Store (Ready for Sale) and the Mac DMG (bump each label when its store releases a newer
+// version).
 // Android is Google Play only: the sideload APK card was removed on 2026-09-22
 // (Android developer verification registers Play's signing key, not the local one).
 // Bump each line as its asset is published.
 const DMG_VERSION = '1.7.9';
-const MS_STORE_VERSION = '1.7.8';
-const PLAY_VERSION = '1.7.8';
-const IOS_VERSION = '1.7.8';
+const MS_STORE_VERSION = '1.7.9';
+const PLAY_VERSION = '1.7.9';
+const IOS_VERSION = '1.7.9';
 const LATEST_VERSION = DMG_VERSION;
 const APPLE_APP_ID = '6804301133';
 const APP_STORE_URL = `https://apps.apple.com/app/id${APPLE_APP_ID}`;
